@@ -10,10 +10,14 @@
 // Same as static in c, local to compilation unit
 namespace
 {
-	const size_t MAX_TURTLES = 15;
-	const size_t MAX_FISH = 5;
-	const size_t TURTLE_DELAY_MS = 2000;
-	const size_t FISH_DELAY_MS = 5000;
+	// const size_t MAX_TURTLES = 15;
+	// const size_t MAX_FISH = 5;
+	// const size_t TURTLE_DELAY_MS = 2000;
+	// const size_t FISH_DELAY_MS = 5000;
+	
+
+	//TODO
+	//insert constants such as max_zombies, 
 
 	namespace
 	{
@@ -25,9 +29,9 @@ namespace
 }
 
 World::World() : 
-	m_points(0),
-	m_next_turtle_spawn(0.f),
-	m_next_fish_spawn(0.f)
+	m_points(0)
+	// m_next_turtle_spawn(0.f),
+	// m_next_fish_spawn(0.f)
 {
 	// Seeding rng with random device
 	m_rng = std::default_random_engine(std::random_device()());
@@ -59,7 +63,7 @@ bool World::init(vec2 screen)
 	glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
 #endif
 	glfwWindowHint(GLFW_RESIZABLE, 0);
-	m_window = glfwCreateWindow((int)screen.x, (int)screen.y, "A1 Assignment", nullptr, nullptr);
+	m_window = glfwCreateWindow((int)screen.x, (int)screen.y, "Zombified", nullptr, nullptr);
 	if (m_window == nullptr)
 		return false;
 
@@ -92,15 +96,18 @@ bool World::init(vec2 screen)
 		return false;
 	}
 
-	m_background_music = Mix_LoadMUS(audio_path("music.wav"));
-	m_salmon_dead_sound = Mix_LoadWAV(audio_path("salmon_dead.wav"));
-	m_salmon_eat_sound = Mix_LoadWAV(audio_path("salmon_eat.wav"));
 
-	if (m_background_music == nullptr || m_salmon_dead_sound == nullptr || m_salmon_eat_sound == nullptr)
-	{
-		fprintf(stderr, "Failed to load sounds, make sure the data directory is present");
-		return false;
-	}
+	//TODO: set up music files here
+	// m_background_music = Mix_LoadMUS(audio_path("music.wav"));
+	// m_salmon_dead_sound = Mix_LoadWAV(audio_path("salmon_dead.wav"));
+	// m_salmon_eat_sound = Mix_LoadWAV(audio_path("salmon_eat.wav"));
+
+	//TODO: check if sounds were loaded
+	// if (m_background_music == nullptr || m_salmon_dead_sound == nullptr || m_salmon_eat_sound == nullptr)
+	// {
+	// 	fprintf(stderr, "Failed to load sounds, make sure the data directory is present");
+	// 	return false;
+	// }
 
 	// Playing background music undefinitely
 	Mix_PlayMusic(m_background_music, -1);
@@ -109,28 +116,34 @@ bool World::init(vec2 screen)
 
 	m_current_speed = 1.f;
 
+
+	//TODO return players && walls???
 	return m_salmon.init();
 }
 
 // Releases all the associated resources
 void World::destroy()
 {
-	if (m_background_music != nullptr)
-		Mix_FreeMusic(m_background_music);
-	if (m_salmon_dead_sound != nullptr)
-		Mix_FreeChunk(m_salmon_dead_sound);
-	if (m_salmon_eat_sound != nullptr)
-		Mix_FreeChunk(m_salmon_eat_sound);
+
+	//TODO: free audio files
+
+	// if (m_background_music != nullptr)
+	// 	Mix_FreeMusic(m_background_music);
+	// if (m_salmon_dead_sound != nullptr)
+	// 	Mix_FreeChunk(m_salmon_dead_sound);
+	// if (m_salmon_eat_sound != nullptr)
+	// 	Mix_FreeChunk(m_salmon_eat_sound);
 
 	Mix_CloseAudio();
 
-	m_salmon.destroy();
-	for (auto& turtle : m_turtles)
-		turtle.destroy();
-	for (auto& fish : m_fish)
-		fish.destroy();
-	m_turtles.clear();
-	m_fish.clear();
+	//TODO: free players, zombies, limbs, any items on the map, walls
+	// m_salmon.destroy();
+	// for (auto& turtle : m_turtles)
+	// 	turtle.destroy();
+	// for (auto& fish : m_fish)
+	// 	fish.destroy();
+	// m_turtles.clear();
+	// m_fish.clear();
 	glfwDestroyWindow(m_window);
 }
 
@@ -141,97 +154,112 @@ bool World::update(float elapsed_ms)
         glfwGetFramebufferSize(m_window, &w, &h);
 	vec2 screen = { (float)w, (float)h };
 
+	//TODO: check for
+	//player to antidote collisions?
+	//limb to limb collision?
+	//zombie to antidote collision?
+	//zombie to player collision?
+	//item to player collision?
+
+
 	// Checking Salmon - Turtle collisions
-	for (const auto& turtle : m_turtles)
-	{
-		if (m_salmon.collides_with(turtle))
-		{
-			if (m_salmon.is_alive())
-				Mix_PlayChannel(-1, m_salmon_dead_sound, 0);
-			m_salmon.kill();
-			break;
-		}
-	}
+	// for (const auto& turtle : m_turtles)
+	// {
+	// 	if (m_salmon.collides_with(turtle))
+	// 	{
+	// 		if (m_salmon.is_alive())
+	// 			Mix_PlayChannel(-1, m_salmon_dead_sound, 0);
+	// 		m_salmon.kill();
+	// 		break;
+	// 	}
+	// }
 
 	// Checking Salmon - Fish collisions
-	auto fish_it = m_fish.begin();
-	while (fish_it != m_fish.end())
-	{
-		if (m_salmon.collides_with(*fish_it))
-		{
-			fish_it = m_fish.erase(fish_it);
-			m_salmon.light_up();
-			Mix_PlayChannel(-1, m_salmon_eat_sound, 0);
-			++m_points;
-		}
-		else
-			++fish_it;
-	}
-	
+	// auto fish_it = m_fish.begin();
+	// while (fish_it != m_fish.end())
+	// {
+	// 	if (m_salmon.collides_with(*fish_it))
+	// 	{
+	// 		fish_it = m_fish.erase(fish_it);
+	// 		m_salmon.light_up();
+	// 		Mix_PlayChannel(-1, m_salmon_eat_sound, 0);
+	// 		++m_points;
+	// 	}
+	// 	else
+	// 		++fish_it;
+	// }
+
+	//TODO: upating all entities (player, zombies, limbs, items )	
 	// Updating all entities, making the turtle and fish
 	// faster based on current
-	m_salmon.update(elapsed_ms);
-	for (auto& turtle : m_turtles)
-		turtle.update(elapsed_ms * m_current_speed);
-	for (auto& fish : m_fish)
-		fish.update(elapsed_ms * m_current_speed);
+	// m_salmon.update(elapsed_ms);
+	// for (auto& turtle : m_turtles)
+	// 	turtle.update(elapsed_ms * m_current_speed);
+	// for (auto& fish : m_fish)
+	// 	fish.update(elapsed_ms * m_current_speed);
 
-	// Removing out of screen turtles
-	auto turtle_it = m_turtles.begin();
-	while (turtle_it != m_turtles.end())
-	{
-		float w = turtle_it->get_bounding_box().x / 2;
-		if (turtle_it->get_position().x + w < 0.f)
-		{
-			turtle_it = m_turtles.erase(turtle_it);
-			continue;
-		}
 
-		++turtle_it;
-	}
+	//TOOD: removing all out of screen entities, probably not needed if collision with edges of screen is
+	//always checked
 
-	// Removing out of screen fish
-	fish_it = m_fish.begin();
-	while (fish_it != m_fish.end())
-	{
-		float w = fish_it->get_bounding_box().x / 2;
-		if (fish_it->get_position().x + w < 0.f)
-		{
-			fish_it = m_fish.erase(fish_it);
-			continue;
-		}
+	// // Removing out of screen turtles
+	// auto turtle_it = m_turtles.begin();
+	// while (turtle_it != m_turtles.end())
+	// {
+	// 	float w = turtle_it->get_bounding_box().x / 2;
+	// 	if (turtle_it->get_position().x + w < 0.f)
+	// 	{
+	// 		turtle_it = m_turtles.erase(turtle_it);
+	// 		continue;
+	// 	}
 
-		++fish_it;
-	}
+	// 	++turtle_it;
+	// }
 
-	// Spawning new turtles
-	m_next_turtle_spawn -= elapsed_ms * m_current_speed;
-	if (m_turtles.size() <= MAX_TURTLES && m_next_turtle_spawn < 0.f)
-	{
-		if (!spawn_turtle())
-			return false;
+	// // Removing out of screen fish
+	// fish_it = m_fish.begin();
+	// while (fish_it != m_fish.end())
+	// {
+	// 	float w = fish_it->get_bounding_box().x / 2;
+	// 	if (fish_it->get_position().x + w < 0.f)
+	// 	{
+	// 		fish_it = m_fish.erase(fish_it);
+	// 		continue;
+	// 	}
 
-		Turtle& new_turtle = m_turtles.back();
+	// 	++fish_it;
+	// }
+
+
+	//TODO: spawn limbs, items
+	// // Spawning new turtles
+	// m_next_turtle_spawn -= elapsed_ms * m_current_speed;
+	// if (m_turtles.size() <= MAX_TURTLES && m_next_turtle_spawn < 0.f)
+	// {
+	// 	if (!spawn_turtle())
+	// 		return false;
+
+	// 	Turtle& new_turtle = m_turtles.back();
 	
-		// Setting random initial position
-		new_turtle.set_position({ screen.x + 150, 50 + m_dist(m_rng) * (screen.y - 100) });
+	// 	// Setting random initial position
+	// 	new_turtle.set_position({ screen.x + 150, 50 + m_dist(m_rng) * (screen.y - 100) });
 
-		// Next spawn
-		m_next_turtle_spawn = (TURTLE_DELAY_MS / 2) + m_dist(m_rng) * (TURTLE_DELAY_MS/2);
-	}
+	// 	// Next spawn
+	// 	m_next_turtle_spawn = (TURTLE_DELAY_MS / 2) + m_dist(m_rng) * (TURTLE_DELAY_MS/2);
+	// }
 
-	// Spawning new fish
-	m_next_fish_spawn -= elapsed_ms * m_current_speed;
-	if (m_fish.size() <= MAX_FISH && m_next_fish_spawn < 0.f)
-	{
-		if (!spawn_fish())
-			return false;
-		Fish& new_fish = m_fish.back();
+	// // Spawning new fish
+	// m_next_fish_spawn -= elapsed_ms * m_current_speed;
+	// if (m_fish.size() <= MAX_FISH && m_next_fish_spawn < 0.f)
+	// {
+	// 	if (!spawn_fish())
+	// 		return false;
+	// 	Fish& new_fish = m_fish.back();
 
-		new_fish.set_position({ screen.x + 150, 50 + m_dist(m_rng) *  (screen.y - 100) });
+	// 	new_fish.set_position({ screen.x + 150, 50 + m_dist(m_rng) *  (screen.y - 100) });
 
-		m_next_fish_spawn = (FISH_DELAY_MS / 2) + m_dist(m_rng) * (FISH_DELAY_MS / 2);
-	}
+	// 	m_next_fish_spawn = (FISH_DELAY_MS / 2) + m_dist(m_rng) * (FISH_DELAY_MS / 2);
+	// }
 
 	return true;
 }
@@ -273,12 +301,12 @@ void World::draw()
 	float ty = -(top + bottom) / (top - bottom);
 	mat3 projection_2D{ { sx, 0.f, 0.f },{ 0.f, sy, 0.f },{ tx, ty, 1.f } };
 
-	// Drawing entities
-	for (auto& turtle : m_turtles)
-		turtle.draw(projection_2D);
-	for (auto& fish : m_fish)
-		fish.draw(projection_2D);
-	m_salmon.draw(projection_2D);
+	//TODO: Drawing entities
+	// for (auto& turtle : m_turtles)
+	// 	turtle.draw(projection_2D);
+	// for (auto& fish : m_fish)
+	// 	fish.draw(projection_2D);
+	// m_salmon.draw(projection_2D);
 
 	// Presenting
 	glfwSwapBuffers(m_window);
