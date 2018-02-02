@@ -176,12 +176,16 @@ void Salmon::draw(const mat3& projection)
 
 	// !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 	// REMOVE THE FOLLOWING LINES BEFORE ADDING ANY TRANSFORMATION CODE
-	transform_translate({ m_position });
-	transform_rotate(m_rotation);
-	transform_scale(m_scale);
+	//transform_translate({ m_position });
+	//transform_rotate(m_rotation);
+	//transform_scale(m_scale);
 	// !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    vec2 position = get_position();
+    transform_translate({position.x, position.y});
+    transform_scale(m_scale);
 
-
+    transform_rotate(m_rotation);
+    
 	transform_end();
 
 	// Setting shaders

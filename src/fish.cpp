@@ -12,7 +12,7 @@ bool Fish::init()
 	{
 		if (!fish_texture.load_from_file(textures_path("fish.png")))
 		{
-			fprintf(stderr, "Failed to load turtle texture!");
+//			fprintf(stderr, "Failed to load turtle texture!");
 			return false;
 		}
 	}

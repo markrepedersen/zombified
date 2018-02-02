@@ -114,11 +114,11 @@ bool World::init(vec2 screen)
 	
 	fprintf(stderr, "Loaded music");
 
-	m_current_speed = 1.f;
+	//m_current_speed = 1.f;
 
 
 	//TODO return players && walls???
-	return m_salmon.init();
+	return m_player1.init() && m_player2.init() && m_arms.init() && m_legs.init() && m_water.init() && m_freeze.init() ;
 }
 
 // Releases all the associated resources
@@ -306,7 +306,15 @@ void World::draw()
 	// 	turtle.draw(projection_2D);
 	// for (auto& fish : m_fish)
 	// 	fish.draw(projection_2D);
-	// m_salmon.draw(projection_2D);
+    //m_salmon.draw(projection_2D);
+    m_player1.draw(projection_2D);
+    m_player2.draw(projection_2D);
+    
+    // TODO: will need to spawn random arms and legs
+    m_arms.draw(projection_2D);
+    m_legs.draw(projection_2D);
+    m_water.draw(projection_2D);
+    m_freeze.draw(projection_2D);
 
 	// Presenting
 	glfwSwapBuffers(m_window);
@@ -319,30 +327,30 @@ bool World::is_over()const
 }
 
 // Creates a new turtle and if successfull adds it to the list of turtles
-bool World::spawn_turtle()
-{
-	Turtle turtle;
-	if (turtle.init())
-	{
-		m_turtles.emplace_back(turtle);
-		return true;
-	}
-	fprintf(stderr, "Failed to spawn turtle");
-	return false;
-}
+//bool World::spawn_turtle()
+//{
+//	Turtle turtle;
+//	if (turtle.init())
+//	{
+//		m_turtles.emplace_back(turtle);
+//		return true;
+//	}
+//	fprintf(stderr, "Failed to spawn turtle");
+//	return false;
+//}
 
 // Creates a new fish and if successfull adds it to the list of fish
-bool World::spawn_fish()
-{
-	Fish fish;
-	if (fish.init())
-	{
-		m_fish.emplace_back(fish);
-		return true;
-	}
-	fprintf(stderr, "Failed to spawn fish");
-	return false;
-}
+//bool World::spawn_fish()
+//{
+//	Fish fish;
+//	if (fish.init())
+//	{
+//		m_fish.emplace_back(fish);
+//		return true;
+//	}
+//	fprintf(stderr, "Failed to spawn fish");
+//	return false;
+//}
 
 // On key callback
 void World::on_key(GLFWwindow*, int key, int, int action, int mod)
@@ -353,34 +361,34 @@ void World::on_key(GLFWwindow*, int key, int, int action, int mod)
 	// action can be GLFW_PRESS GLFW_RELEASE GLFW_REPEAT
 	// !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
-	if (action == GLFW_PRESS && key == GLFW_KEY_UP)
-		m_salmon.press_key(0);
-	if (action == GLFW_PRESS && key == GLFW_KEY_DOWN)
-		m_salmon.press_key(1);
-	if (action == GLFW_PRESS && key == GLFW_KEY_LEFT)
-		m_salmon.press_key(2);
-	if (action == GLFW_PRESS && key == GLFW_KEY_RIGHT)
-		m_salmon.press_key(3);
-
-	// Resetting game
-	if (action == GLFW_RELEASE && key == GLFW_KEY_R)
-	{
-		int w, h;
-		glfwGetWindowSize(m_window, &w, &h);
-		m_salmon.destroy(); 
-		m_salmon.init();
-		m_turtles.clear();
-		m_fish.clear();
-		m_current_speed = 1.f;
-	}
-
-	// Control the current speed with `<` `>`
-	if (action == GLFW_RELEASE && (mod & GLFW_MOD_SHIFT) &&  key == GLFW_KEY_COMMA)
-		m_current_speed -= 0.1f;
-	if (action == GLFW_RELEASE && (mod & GLFW_MOD_SHIFT) && key == GLFW_KEY_PERIOD)
-		m_current_speed += 0.1f;
-	
-	m_current_speed = fmax(0.f, m_current_speed);
+//	if (action == GLFW_PRESS && key == GLFW_KEY_UP)
+//		m_salmon.press_key(0);
+//	if (action == GLFW_PRESS && key == GLFW_KEY_DOWN)
+//		m_salmon.press_key(1);
+//	if (action == GLFW_PRESS && key == GLFW_KEY_LEFT)
+//		m_salmon.press_key(2);
+//	if (action == GLFW_PRESS && key == GLFW_KEY_RIGHT)
+//		m_salmon.press_key(3);
+//
+//	// Resetting game
+//	if (action == GLFW_RELEASE && key == GLFW_KEY_R)
+//	{
+//		int w, h;
+//		glfwGetWindowSize(m_window, &w, &h);
+//		m_salmon.destroy();
+//		m_salmon.init();
+//		//m_turtles.clear();
+//		//m_fish.clear();
+//		m_current_speed = 1.f;
+//	}
+//
+//	// Control the current speed with `<` `>`
+//	if (action == GLFW_RELEASE && (mod & GLFW_MOD_SHIFT) &&  key == GLFW_KEY_COMMA)
+//		m_current_speed -= 0.1f;
+//	if (action == GLFW_RELEASE && (mod & GLFW_MOD_SHIFT) && key == GLFW_KEY_PERIOD)
+//		m_current_speed += 0.1f;
+//	
+//	m_current_speed = fmax(0.f, m_current_speed);
 }
 
 void World::on_mouse_move(GLFWwindow* window, double xpos, double ypos)
@@ -391,14 +399,14 @@ void World::on_mouse_move(GLFWwindow* window, double xpos, double ypos)
 	// default facing direction is (1, 0)
 	// !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
-	vec2 curr_pos = m_salmon.get_position();
-
-	float delta_x = curr_pos.x - xpos;
-	float delta_y = curr_pos.y - ypos;
-
-	float rad = atan( delta_y / delta_x );
-
-	if (delta_x > 0) rad += M_PI;
-
-	m_salmon.set_rotation(rad);
+//	vec2 curr_pos = m_salmon.get_position();
+//
+//	float delta_x = curr_pos.x - xpos;
+//	float delta_y = curr_pos.y - ypos;
+//
+//	float rad = atan( delta_y / delta_x );
+//
+//	if (delta_x > 0) rad += M_PI;
+//
+//	m_salmon.set_rotation(rad);
 }
