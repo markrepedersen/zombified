@@ -116,6 +116,8 @@ bool World::init(vec2 screen)
 
 	m_current_speed = 1.f;
 
+	//initialize toolbox
+	m_toolboxManager.init({screen.x, screen.y + 400});
 
 	//TODO return players && walls???
 	return m_salmon.init();
@@ -307,6 +309,7 @@ void World::draw()
 	// for (auto& fish : m_fish)
 	// 	fish.draw(projection_2D);
 	// m_salmon.draw(projection_2D);
+	m_toolboxManager.draw(projection_2D);
 
 	// Presenting
 	glfwSwapBuffers(m_window);
@@ -361,6 +364,21 @@ void World::on_key(GLFWwindow*, int key, int, int action, int mod)
 		m_salmon.press_key(2);
 	if (action == GLFW_PRESS && key == GLFW_KEY_RIGHT)
 		m_salmon.press_key(3);
+
+
+	//DUMMY TOOLBOX KEYS HERE
+	// if (action == GLFW_PRESS && key == GLFW_KEY_P)
+	// 	m_salmon.press_key(0);
+	// if (action == GLFW_PRESS && key == GLFW_KEY_DOWN)
+	// 	m_salmon.press_key(1);
+	// if (action == GLFW_PRESS && key == GLFW_KEY_LEFT)
+	// 	m_salmon.press_key(2);
+	// if (action == GLFW_PRESS && key == GLFW_KEY_RIGHT)
+	// 	m_salmon.press_key(3);
+
+
+
+
 
 	// Resetting game
 	if (action == GLFW_RELEASE && key == GLFW_KEY_R)

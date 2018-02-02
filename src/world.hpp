@@ -5,6 +5,7 @@
 #include "salmon.hpp"
 #include "turtle.hpp"
 #include "fish.hpp"
+#include "toolboxManager.hpp"
 
 // stlib
 #include <vector>
@@ -55,8 +56,10 @@ private:
 	// Number of fish eaten by the salmon, displayed in the window title
 	unsigned int m_points;
 
+
 	// Game entities
 	Salmon m_salmon;
+	ToolboxManager m_toolboxManager;
 	std::vector<Turtle> m_turtles;
 	std::vector<Fish> m_fish;
 

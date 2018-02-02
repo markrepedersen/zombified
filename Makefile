@@ -2,7 +2,7 @@ CXXFLAGS = -Iext/gl3w -std=c++11 -Wall -pedantic -DENABLE_SOUND
 LIB = -ldl -framework OpenGL -framework Cocoa -framework CoreFoundation -lglfw -lSDL -lSDL_mixer -lpthread -lSDLmain
 
 BIN=main
-OBJ=$(BIN).o common.o fish.o salmon.o turtle.o world.o
+OBJ=$(BIN).o common.o fish.o salmon.o turtle.o toolbox.o toolboxSlot.o toolboxManager.o world.o
 
 default: build
 	
