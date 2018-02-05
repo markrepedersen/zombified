@@ -113,6 +113,13 @@ void Player1::draw(const mat3& projection)
     glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_SHORT, nullptr);
 }
 
+void Player1::set_key(int key, bool pressed) {
+    if (pressed)
+        m_keys[key] = true;
+    if (!pressed)
+        m_keys[key] = false;
+}
+
 vec2 Player1::get_position()const
 {
     return m_position;
@@ -122,3 +129,24 @@ bool Player1::is_alive()const
 {
     return m_is_alive;
 }
+
+void Player1::update(float ms)
+{
+    const float PLAYER_SPEED = 200.f;
+	float step = PLAYER_SPEED * (ms / 1000);
+
+    if (m_keys[0])
+        move({0, -step});
+    if (m_keys[1])
+        move({-step, 0});
+    if (m_keys[2])
+        move({0, step});
+    if (m_keys[3])
+        move({step, 0});
+}
+
+void Player1::move(vec2 off)
+{
+	m_position.x += off.x; m_position.y += off.y;
+}
+

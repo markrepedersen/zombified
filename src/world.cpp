@@ -200,7 +200,8 @@ bool World::update(float elapsed_ms)
     //TODO: upating all entities (player, zombies, limbs, items )
     // Updating all entities, making the turtle and fish
     // faster based on current
-    // m_salmon.update(elapsed_ms);
+    m_player1.update(elapsed_ms);
+    m_player2.update(elapsed_ms);
     // for (auto& turtle : m_turtles)
     // 	turtle.update(elapsed_ms * m_current_speed);
     // for (auto& fish : m_fish)
@@ -446,15 +447,40 @@ void World::on_key(GLFWwindow*, int key, int, int action, int mod)
     // action can be GLFW_PRESS GLFW_RELEASE GLFW_REPEAT
     // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     
-    //	if (action == GLFW_PRESS && key == GLFW_KEY_UP)
-    //		m_salmon.press_key(0);
-    //	if (action == GLFW_PRESS && key == GLFW_KEY_DOWN)
-    //		m_salmon.press_key(1);
-    //	if (action == GLFW_PRESS && key == GLFW_KEY_LEFT)
-    //		m_salmon.press_key(2);
-    //	if (action == GLFW_PRESS && key == GLFW_KEY_RIGHT)
-    //		m_salmon.press_key(3);
-    //
+    if (action == GLFW_PRESS && key == GLFW_KEY_UP)
+    	m_player1.set_key(0, true);
+    if (action == GLFW_RELEASE && key == GLFW_KEY_UP)
+        m_player1.set_key(0, false);
+    if (action == GLFW_PRESS && key == GLFW_KEY_LEFT)
+    	m_player1.set_key(1, true);
+    if (action == GLFW_RELEASE && key == GLFW_KEY_LEFT)
+        m_player1.set_key(1, false);
+    if (action == GLFW_PRESS && key == GLFW_KEY_DOWN)
+    	m_player1.set_key(2, true);
+    if (action == GLFW_RELEASE && key == GLFW_KEY_DOWN)
+        m_player1.set_key(2, false);
+    if (action == GLFW_PRESS && key == GLFW_KEY_RIGHT)
+    	m_player1.set_key(3, true);
+    if (action == GLFW_RELEASE && key == GLFW_KEY_RIGHT)
+        m_player1.set_key(3, false);
+
+    if (action == GLFW_PRESS && key == GLFW_KEY_W)
+    	m_player2.set_key(0, true);
+    if (action == GLFW_RELEASE && key == GLFW_KEY_W)
+        m_player2.set_key(0, false);
+    if (action == GLFW_PRESS && key == GLFW_KEY_A)
+    	m_player2.set_key(1, true);
+    if (action == GLFW_RELEASE && key == GLFW_KEY_A)
+        m_player2.set_key(1, false);
+    if (action == GLFW_PRESS && key == GLFW_KEY_S)
+    	m_player2.set_key(2, true);
+    if (action == GLFW_RELEASE && key == GLFW_KEY_S)
+        m_player2.set_key(2, false);
+    if (action == GLFW_PRESS && key == GLFW_KEY_D)
+    	m_player2.set_key(3, true);
+    if (action == GLFW_RELEASE && key == GLFW_KEY_D)
+        m_player2.set_key(3, false);
+    
     //	// Resetting game
     //	if (action == GLFW_RELEASE && key == GLFW_KEY_R)
     //	{
