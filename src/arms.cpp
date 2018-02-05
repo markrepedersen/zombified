@@ -118,6 +118,11 @@ vec2 Arms::get_position()const
     return m_position;
 }
 
+void Arms::set_position(vec2 position)
+{
+    m_position = position;
+}
+
 bool Arms::is_alive()const
 {
     return m_is_alive;

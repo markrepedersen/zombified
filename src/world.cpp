@@ -14,10 +14,13 @@ namespace
 	// const size_t MAX_FISH = 5;
 	// const size_t TURTLE_DELAY_MS = 2000;
 	// const size_t FISH_DELAY_MS = 5000;
-	
 
 	//TODO
-	//insert constants such as max_zombies, 
+	//insert constants such as max_zombies,
+    const size_t MAX_ARMS = 5;
+    const size_t MAX_LEGS = 5;
+    const size_t ARM_DELAY_MS = 10000;
+    const size_t LEG_DELAY_MS = 10000;
 
 	namespace
 	{
@@ -29,7 +32,9 @@ namespace
 }
 
 World::World() : 
-	m_points(0)
+	m_points(0),
+    m_next_arm_spawn(rand()%(10000) +500),
+    m_next_leg_spawn(rand()%(10000) +500)
 	// m_next_turtle_spawn(0.f),
 	// m_next_fish_spawn(0.f)
 {
@@ -110,15 +115,15 @@ bool World::init(vec2 screen)
 	// }
 
 	// Playing background music undefinitely
-	Mix_PlayMusic(m_background_music, -1);
+	//Mix_PlayMusic(m_background_music, -1);
 	
-	fprintf(stderr, "Loaded music");
+	//fprintf(stderr, "Loaded music");
 
 	//m_current_speed = 1.f;
 
 
 	//TODO return players && walls???
-	return m_player1.init() && m_player2.init() && m_arms.init() && m_legs.init() && m_water.init() && m_freeze.init() ;
+	return m_player1.init() && m_player2.init() && m_water.init() && m_freeze.init() ;
 }
 
 // Releases all the associated resources
@@ -232,6 +237,53 @@ bool World::update(float elapsed_ms)
 
 
 	//TODO: spawn limbs, items
+    m_next_arm_spawn -= elapsed_ms;
+    m_next_leg_spawn -= elapsed_ms;
+    srand((int)time(0));
+    int randNum = rand()%(10000-500 + 1) +500;
+    
+    if (randNum%2 == 0)
+    {
+        if (m_arms.size() <= MAX_ARMS && m_next_arm_spawn < 0.f)
+        {
+            if (!spawn_arms())
+                return false;
+            
+            Arms& new_arm = m_arms.back();
+            
+            // Setting random initial position
+            //TODO: should make sure they spawn a certain distance away from each other and check collision with wall
+            srand((int)time(0));
+            new_arm.set_position({ (float)((rand() % (int)screen.x) + 1),
+                (float)((rand() % (int)screen.y) + 1) });
+            
+            // Next spawn
+            srand((int)time(0));
+            m_next_arm_spawn = (ARM_DELAY_MS/2) + rand()%(10000-500 + 1) +500;
+        }
+    }
+    if (randNum%5 == 0)
+    {
+        if (m_legs.size() <= MAX_LEGS && m_next_leg_spawn < 0.f)
+        {
+            if (!spawn_legs())
+                return false;
+            
+            Legs& new_leg = m_legs.back();
+            
+            // Setting random initial position
+            //TODO: should make sure they spawn a certain distance away from each other and check collision with wall
+            srand((int)time(0));
+            new_leg.set_position({ (float)((rand() % (int)screen.x) + 1),
+                (float)((rand() % (int)screen.y) + 1) });
+            
+            // Next spawn
+            srand((int)time(0));
+            m_next_leg_spawn = (LEG_DELAY_MS/2) + rand()%(1000-500 + 1) +500;
+        }
+    }
+
+    
 	// // Spawning new turtles
 	// m_next_turtle_spawn -= elapsed_ms * m_current_speed;
 	// if (m_turtles.size() <= MAX_TURTLES && m_next_turtle_spawn < 0.f)
@@ -260,6 +312,7 @@ bool World::update(float elapsed_ms)
 
 	// 	m_next_fish_spawn = (FISH_DELAY_MS / 2) + m_dist(m_rng) * (FISH_DELAY_MS / 2);
 	// }
+    
 
 	return true;
 }
@@ -302,17 +355,17 @@ void World::draw()
 	mat3 projection_2D{ { sx, 0.f, 0.f },{ 0.f, sy, 0.f },{ tx, ty, 1.f } };
 
 	//TODO: Drawing entities
-	// for (auto& turtle : m_turtles)
-	// 	turtle.draw(projection_2D);
-	// for (auto& fish : m_fish)
-	// 	fish.draw(projection_2D);
+	for (auto& arms : m_arms)
+	 	arms.draw(projection_2D);
+	for (auto& legs : m_legs)
+	 	legs.draw(projection_2D);
     //m_salmon.draw(projection_2D);
     m_player1.draw(projection_2D);
     m_player2.draw(projection_2D);
     
     // TODO: will need to spawn random arms and legs
-    m_arms.draw(projection_2D);
-    m_legs.draw(projection_2D);
+//    m_arms.draw(projection_2D);
+    //m_legs.draw(projection_2D);
     m_water.draw(projection_2D);
     m_freeze.draw(projection_2D);
 
@@ -324,6 +377,30 @@ void World::draw()
 bool World::is_over()const
 {
 	return glfwWindowShouldClose(m_window);
+}
+
+bool World::spawn_arms()
+{
+	Arms arm;
+	if (arm.init())
+	{
+		m_arms.emplace_back(arm);
+		return true;
+	}
+	fprintf(stderr, "Failed to spawn arm");
+	return false;
+}
+
+bool World::spawn_legs()
+{
+    Legs leg;
+    if (leg.init())
+    {
+        m_legs.emplace_back(leg);
+        return true;
+    }
+    fprintf(stderr, "Failed to spawn arm");
+    return false;
 }
 
 // Creates a new turtle and if successfull adds it to the list of turtles

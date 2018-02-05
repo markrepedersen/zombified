@@ -15,6 +15,9 @@ public:
     // Returns the current salmon position
     vec2 get_position()const;
     
+    // Sets the new turtle position
+    void set_position(vec2 position);
+    
     // True if the salmon is alive
     bool is_alive()const;
     

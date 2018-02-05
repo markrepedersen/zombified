@@ -44,7 +44,8 @@ public:
 
 private:
 	// Generates a new turtle
-	//bool spawn_turtle();
+	bool spawn_arms();
+	bool spawn_legs();
 
 	// Generates a new fish
 	//bool spawn_fish();
@@ -63,23 +64,26 @@ private:
 	// Game entities
     Player1 m_player1;
     Player2 m_player2;
-    Arms m_arms;
-    Legs m_legs;
+    //Arms m_arms;
+    //Legs m_legs;
     Water m_water;
     Freeze m_freeze;
 //	Salmon m_salmon;
 //	std::vector<Turtle> m_turtles;
 //	std::vector<Fish> m_fish;
+    std::vector<Arms> m_arms;
+    std::vector<Legs> m_legs;
 //
 //	float m_current_speed;
-//	float m_next_turtle_spawn;
+	float m_next_arm_spawn;
+    float m_next_leg_spawn;
 //	float m_next_fish_spawn;
 	
-	Mix_Music* m_background_music;
-	Mix_Chunk* m_salmon_dead_sound;
-	Mix_Chunk* m_salmon_eat_sound;
+	//Mix_Music* m_background_music;
+	//Mix_Chunk* m_salmon_dead_sound;
+	//Mix_Chunk* m_salmon_eat_sound;
 
 	// C++ rng
 	std::default_random_engine m_rng;
-	std::uniform_real_distribution<float> m_dist; // default 0..1
+	std::uniform_real_distribution<float> m_dist; // default 0..1c
 };

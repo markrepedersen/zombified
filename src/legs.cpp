@@ -118,6 +118,11 @@ vec2 Legs::get_position()const
     return m_position;
 }
 
+void Legs::set_position(vec2 position)
+{
+    m_position = position;
+}
+
 bool Legs::is_alive()const
 {
     return m_is_alive;
