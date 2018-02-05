@@ -242,7 +242,7 @@ bool World::update(float elapsed_ms)
     m_next_arm_spawn -= elapsed_ms;
     m_next_leg_spawn -= elapsed_ms;
     srand((int)time(0));
-    int randNum = rand()%(1000-500 + 1) +500;
+    int randNum = rand()%(1000);
     
     if (randNum%2 == 0)
     {
@@ -261,7 +261,7 @@ bool World::update(float elapsed_ms)
             
             // Next spawn
             srand((int)time(0));
-            m_next_arm_spawn = (ARM_DELAY_MS/2) + rand()%(10000-500 + 1) +500;
+            m_next_arm_spawn = (ARM_DELAY_MS/2) + rand()%(10000);
         }
     }
     if (randNum%5 == 0)
@@ -281,7 +281,7 @@ bool World::update(float elapsed_ms)
             
             // Next spawn
             srand((int)time(0));
-            m_next_leg_spawn = (LEG_DELAY_MS/2) + rand()%(1000-500 + 1) +500;
+            m_next_leg_spawn = (LEG_DELAY_MS/2) + rand()%(1000);
         }
     }
 
@@ -355,6 +355,10 @@ void World::draw()
     mat3 projection_2D{ { sx, 0.f, 0.f },{ 0.f, sy, 0.f },{ tx, ty, 1.f } };
     
     //TODO: Drawing entities
+    for (auto& arms : m_arms)
+        arms.draw(projection_2D);
+    for (auto& legs : m_legs)
+        legs.draw(projection_2D);
     // for (auto& turtle : m_turtles)
     // 	turtle.draw(projection_2D);
     // for (auto& fish : m_fish)
