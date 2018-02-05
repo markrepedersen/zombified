@@ -34,8 +34,8 @@ namespace
 
 World::World() :
 m_points(0),
-m_next_arm_spawn(rand()%(10000) +500),
-m_next_leg_spawn(rand()%(10000) +500)
+m_next_arm_spawn(rand()%(1000)+500),
+m_next_leg_spawn(rand()%(1000)+500)
 // m_next_turtle_spawn(0.f),
 // m_next_fish_spawn(0.f)
 {
@@ -123,10 +123,10 @@ bool World::init(vec2 screen)
     //m_current_speed = 1.f;
     
     //initialize toolbox
-    m_toolboxManager.init({screen.x, screen.y + 400});
+    m_toolboxManager.init({screen.x, screen.y + 400.f});
     
     //TODO return players && walls???
-    return m_player1.init() && m_player2.init() && m_water.init() && m_freeze.init() ;
+    return m_player1.init(screen) && m_player2.init(screen) && m_water.init() && m_freeze.init() ;
 }
 
 // Releases all the associated resources
@@ -241,10 +241,10 @@ bool World::update(float elapsed_ms)
     //TODO: spawn limbs, items
     m_next_arm_spawn -= elapsed_ms;
     m_next_leg_spawn -= elapsed_ms;
-    srand((int)time(0));
+    srand((unsigned)time(0));
     int randNum = rand()%(1000);
     
-    if (randNum%2 == 0)
+    if (randNum%3 == 0)
     {
         if (m_arms.size() <= MAX_ARMS && m_next_arm_spawn < 0.f)
         {
@@ -255,16 +255,17 @@ bool World::update(float elapsed_ms)
             
             // Setting random initial position
             //TODO: should make sure they spawn a certain distance away from each other and check collision with wall
-            srand((int)time(0));
-            new_arm.set_position({ (float)((rand() % (int)screen.x) + 1),
-                (float)((rand() % (int)screen.y) + 1) });
+            //srand((unsigned)time(0));
+            new_arm.set_position({ (float)((rand() % (int)screen.x)),
+                (float)((rand() % (int)screen.y)) });
             
             // Next spawn
-            srand((int)time(0));
-            m_next_arm_spawn = (ARM_DELAY_MS/2) + rand()%(10000);
+            //srand((unsigned)time(0));
+            m_next_arm_spawn = (ARM_DELAY_MS/2) + rand()%(1000);
         }
     }
-    if (randNum%5 == 0)
+    
+    if (randNum%8 == 0)
     {
         if (m_legs.size() <= MAX_LEGS && m_next_leg_spawn < 0.f)
         {
@@ -275,12 +276,12 @@ bool World::update(float elapsed_ms)
             
             // Setting random initial position
             //TODO: should make sure they spawn a certain distance away from each other and check collision with wall
-            srand((int)time(0));
-            new_leg.set_position({ (float)((rand() % (int)screen.x) + 1),
-                (float)((rand() % (int)screen.y) + 1) });
+            //srand((unsigned)time(0));
+            new_leg.set_position({ (float)((rand() % (int)screen.x)),
+                (float)((rand() % (int)screen.y)) });
             
             // Next spawn
-            srand((int)time(0));
+            //srand((unsigned)time(0));
             m_next_leg_spawn = (LEG_DELAY_MS/2) + rand()%(1000);
         }
     }

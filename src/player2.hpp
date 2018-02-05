@@ -7,7 +7,7 @@ class Player2 : public Renderable
     static Texture player2_texture;
 public:
     // Creates all the associated render resources and default transform
-    bool init();
+    bool init(vec2 screen);
     
     // Renders the salmon
     void draw(const mat3& projection)override;

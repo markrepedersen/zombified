@@ -10,7 +10,7 @@ bool Arms::init()
     // Load shared texture
     if (!arms_texture.is_valid())
     {
-        if (!arms_texture.load_from_file(tools_textures_path("arm 1.png")))
+        if (!arms_texture.load_from_file(tools_textures_path("zombie arm.png")))
         {
             fprintf(stderr, "Failed to load arms texture!");
             return false;

@@ -10,7 +10,7 @@ bool Legs::init()
     // Load shared texture
     if (!legs_texture.is_valid())
     {
-        if (!legs_texture.load_from_file(tools_textures_path("leg 1.png")))
+        if (!legs_texture.load_from_file(tools_textures_path("zombie leg.png")))
         {
             fprintf(stderr, "Failed to load leg texture!");
             return false;

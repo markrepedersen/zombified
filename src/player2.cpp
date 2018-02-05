@@ -5,7 +5,7 @@
 
 Texture Player2::player2_texture;
 
-bool Player2::init()
+bool Player2::init(vec2 screen)
 {
     // Load shared texture
     if (!player2_texture.is_valid())
@@ -60,7 +60,7 @@ bool Player2::init()
     m_scale.x = -0.25f;
     m_scale.y = 0.25f;
     m_is_alive = true;
-    m_position = { 1150.f, 350.f };
+    m_position = { screen.x-50.f, screen.y - 450.f };
     
     return true;
 }
