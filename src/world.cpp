@@ -20,8 +20,8 @@ namespace
     //insert constants such as max_zombies,
     const size_t MAX_ARMS = 5;
     const size_t MAX_LEGS = 5;
-    const size_t ARM_DELAY_MS = 10000;
-    const size_t LEG_DELAY_MS = 10000;
+    const size_t ARM_DELAY_MS = 1000;
+    const size_t LEG_DELAY_MS = 1000;
 
     namespace
     {
@@ -116,9 +116,9 @@ bool World::init(vec2 screen)
     // }
     
     // Playing background music undefinitely
-    Mix_PlayMusic(m_background_music, -1);
+    //Mix_PlayMusic(m_background_music, -1);
     
-    fprintf(stderr, "Loaded music");
+    //fprintf(stderr, "Loaded music");
     
     //m_current_speed = 1.f;
     
@@ -126,7 +126,7 @@ bool World::init(vec2 screen)
     m_toolboxManager.init({screen.x, screen.y + 400});
     
     //TODO return players && walls???
-    return m_player1.init() && m_player2.init() && m_arms.init() && m_legs.init() && m_water.init() && m_freeze.init() ;
+    return m_player1.init() && m_player2.init() && m_water.init() && m_freeze.init() ;
 }
 
 // Releases all the associated resources
@@ -242,7 +242,7 @@ bool World::update(float elapsed_ms)
     m_next_arm_spawn -= elapsed_ms;
     m_next_leg_spawn -= elapsed_ms;
     srand((int)time(0));
-    int randNum = rand()%(10000-500 + 1) +500;
+    int randNum = rand()%(1000-500 + 1) +500;
     
     if (randNum%2 == 0)
     {
@@ -367,8 +367,8 @@ void World::draw()
     m_player2.draw(projection_2D);
     
     // TODO: will need to spawn random arms and legs
-    m_arms.draw(projection_2D);
-    m_legs.draw(projection_2D);
+    //m_arms.draw(projection_2D);
+    //m_legs.draw(projection_2D);
     m_water.draw(projection_2D);
     m_freeze.draw(projection_2D);
     

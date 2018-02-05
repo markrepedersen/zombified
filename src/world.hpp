@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 #pragma once
 
 // internal
@@ -6,6 +6,7 @@
 //#include "salmon.hpp"
 //#include "turtle.hpp"
 //#include "fish.hpp"
+#include "toolboxManager.hpp"
 #include "player1.hpp"
 #include "player2.hpp"
 #include "arms.hpp"
@@ -63,6 +64,7 @@ private:
 	unsigned int m_points;
 
 	// Game entities
+    ToolboxManager m_toolboxManager;
     Player1 m_player1;
     Player2 m_player2;
     //Arms m_arms;
