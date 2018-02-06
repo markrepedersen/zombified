@@ -1,5 +1,6 @@
 // internal
 #include "common.hpp"
+#include "startworld.hpp"
 #include "world.hpp"
 
 #define GL3W_IMPLEMENTATION
@@ -11,7 +12,8 @@
 
 using Clock = std::chrono::high_resolution_clock;
 
-// Global 
+// Global
+Startworld startworld;
 World world;
 const int width = 1200;
 const int height = 800;
@@ -20,6 +22,28 @@ const char* title = "Your Title Here";
 // Entry point
 int main(int argc, char* argv[])
 {
+    
+    //while startworld is destroyed
+    if (!startworld.init({ (float)width, (float)height }))
+    {
+        // Time to read the error message
+        std::cout << "Press any key to exit" << std::endl;
+        std::cin.get();
+        return EXIT_FAILURE;
+    }
+    
+    // start page
+    while (!startworld.buttonclicked())
+    {
+        // Processes system messages, if this wasn't present the window would become unresponsive
+        glfwPollEvents();
+        startworld.draw();
+    }
+    
+    // GAME DOESNT START UNTIL THE BUTTON IS CLICKED
+    //fprintf(stderr, "start screen should be destroyed");
+    startworld.destroy();
+    
 	// Initializing world (after renderer.init().. sorry)
 	if (!world.init({ (float)width, (float)height }))
 	{

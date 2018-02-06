@@ -1,25 +1,25 @@
 // Header
-#include "water.hpp"
+#include "button.hpp"
 
 #include <cmath>
 
-Texture Water::water_texture;
+Texture Button::button_texture;
 
-bool Water::init()
+bool Button::init()
 {
     // Load shared texture
-    if (!water_texture.is_valid())
+    if (!button_texture.is_valid())
     {
-        if (!water_texture.load_from_file(tools_textures_path("water.png")))
+        if (!button_texture.load_from_file(startworld_textures_path("startbutton unclick.png")))
         {
-            fprintf(stderr, "Failed to load water texture!");
+            fprintf(stderr, "Failed to load start button texture!");
             return false;
         }
     }
     
     // The position corresponds to the center of the texture
-    float wr = water_texture.width * 0.5f;
-    float hr = water_texture.height * 0.5f;
+    float wr = button_texture.width * 0.5f;
+    float hr = button_texture.height * 0.5f;
     
     TexturedVertex vertices[4];
     vertices[0].position = { -wr, +hr, -0.02f };
@@ -57,15 +57,15 @@ bool Water::init()
         return false;
     
     // Setting initial values
-    m_scale.x = -0.45f;
-    m_scale.y = 0.45f;
-    m_is_alive = true;
-    m_position = { 170.f, 650.f };
+    b_is_clicked = false;
+    m_scale.x = -0.65f;
+    m_scale.y = 0.65f;
+    m_position = { 600, 400.f };
     
     return true;
 }
 
-void Water::draw(const mat3& projection)
+void Button::draw(const mat3& projection)
 {
     // Transformation code, see Rendering and Transformation in the template specification for more info
     // Incrementally updates transformation matrix, thus ORDER IS IMPORTANT
@@ -101,7 +101,7 @@ void Water::draw(const mat3& projection)
     
     // Enabling and binding texture to slot 0
     glActiveTexture(GL_TEXTURE0);
-    glBindTexture(GL_TEXTURE_2D, water_texture.id);
+    glBindTexture(GL_TEXTURE_2D, button_texture.id);
     
     // Setting uniform values to the currently bound program
     glUniformMatrix3fv(transform_uloc, 1, GL_FALSE, (float*)&transform);
@@ -113,12 +113,35 @@ void Water::draw(const mat3& projection)
     glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_SHORT, nullptr);
 }
 
-vec2 Water::get_position()const
+void Button::click()
 {
-    return m_position;
+    b_is_clicked = true;
+    if(!button_texture.load_from_file(startworld_textures_path("startbutton unclick.png")))
+    {
+        fprintf(stderr, "Failed to load start button texture!");
+    }
 }
 
-bool Water::is_alive()const
+void Button::clickicon()
 {
-    return m_is_alive;
+    if(!button_texture.load_from_file(startworld_textures_path("startbutton click.png")))
+    {
+        fprintf(stderr, "Failed to load start button clicked texture!");
+    }
+}
+
+bool Button::is_clicked()const
+{
+    return b_is_clicked;
+}
+
+void Button::destroy()
+{
+    glDeleteBuffers(1, &mesh.vbo);
+    glDeleteBuffers(1, &mesh.ibo);
+    glDeleteBuffers(1, &mesh.vao);
+    
+    glDeleteShader(effect.vertex);
+    glDeleteShader(effect.fragment);
+    glDeleteShader(effect.program);
 }

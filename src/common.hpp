@@ -21,6 +21,7 @@
 #define p1_textures_path(name) data_path "/textures/p1/" name
 #define p2_textures_path(name) data_path "/textures/p2/" name
 #define tools_textures_path(name) data_path "/textures/tools/" name
+#define startworld_textures_path(name) data_path "/textures/start screen/" name
 #define audio_path(name) data_path "/audio/" name
 #define mesh_path(name) data_path "/meshes/" name
 
