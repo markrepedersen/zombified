@@ -10,62 +10,69 @@ bool Player1::init(vec2 screen)
     // Load shared texture
     if (!player1_texture.is_valid())
     {
-        if (!player1_texture.load_from_file(p1_textures_path("p1 standing left.png")))
+        if (!player1_texture.load_from_file(p1_textures_path("p1.png")))
         {
             fprintf(stderr, "Failed to load player1 texture!");
             return false;
         }
     }
-    
+
+    int frameIndex = 1;
+    int spriteWidth = 225;
+    int spriteHeight = 365;
+
+    int numPerRow = player1_texture.width / spriteWidth;
+    int numPerCol = player1_texture.height / spriteHeight;
+
     // The position corresponds to the center of the texture
-    float wr = player1_texture.width * 0.5f;
-    float hr = player1_texture.height * 0.5f;
-    
+    float wr = spriteWidth;  //* 0.5f;
+    float hr = spriteHeight; //* 0.5f;
+
     TexturedVertex vertices[4];
-    vertices[0].position = { -wr, +hr, -0.02f };
-    vertices[0].texcoord = { 0.f, 1.f };
-    vertices[1].position = { +wr, +hr, -0.02f };
-    vertices[1].texcoord = { 1.f, 1.f };
-    vertices[2].position = { +wr, -hr, -0.02f };
-    vertices[2].texcoord = { 1.f, 0.f };
-    vertices[3].position = { -wr, -hr, -0.02f };
-    vertices[3].texcoord = { 0.f, 0.f };
-    
+    vertices[0].position = {-wr, +hr, -0.02f};
+    vertices[0].texcoord = {-1 / 5.f, 1 / 3.f};
+    vertices[1].position = {+wr, +hr, -0.02f};
+    vertices[1].texcoord = {-0.f, 1 / 3.f};
+    vertices[2].position = {+wr, -hr, -0.02f};
+    vertices[2].texcoord = {-0.f, 0.f};
+    vertices[3].position = {-wr, -hr, -0.02f};
+    vertices[3].texcoord = {-1 / 5.f, 0.f};
+
     // counterclockwise as it's the default opengl front winding direction
-    uint16_t indices[] = { 0, 3, 1, 1, 3, 2 };
-    
+    uint16_t indices[] = {0, 3, 1, 1, 3, 2};
+
     // Clearing errors
     gl_flush_errors();
-    
+
     // Vertex Buffer creation
     glGenBuffers(1, &mesh.vbo);
     glBindBuffer(GL_ARRAY_BUFFER, mesh.vbo);
     glBufferData(GL_ARRAY_BUFFER, sizeof(TexturedVertex) * 4, vertices, GL_STATIC_DRAW);
-    
+
     // Index Buffer creation
     glGenBuffers(1, &mesh.ibo);
     glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, mesh.ibo);
     glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(uint16_t) * 6, indices, GL_STATIC_DRAW);
-    
+
     // Vertex Array (Container for Vertex + Index buffer)
     glGenVertexArrays(1, &mesh.vao);
     if (gl_has_errors())
         return false;
-    
+
     // Loading shaders
     if (!effect.load_from_file(shader_path("textured.vs.glsl"), shader_path("textured.fs.glsl")))
         return false;
-    
+
     // Setting initial values
     m_scale.x = -0.25f;
     m_scale.y = 0.25f;
     m_is_alive = true;
-    m_position = { screen.x - 1150.f, screen.y - 450.f };
-    
+    m_position = {screen.x - 1150.f, screen.y - 450.f};
+
     return true;
 }
 
-void Player1::draw(const mat3& projection)
+void Player1::draw(const mat3 &projection)
 {
     // Transformation code, see Rendering and Transformation in the template specification for more info
     // Incrementally updates transformation matrix, thus ORDER IS IMPORTANT
@@ -73,59 +80,61 @@ void Player1::draw(const mat3& projection)
     transform_translate(m_position);
     transform_scale(m_scale);
     transform_end();
-    
+
     // Setting shaders
     glUseProgram(effect.program);
-    
+
     // Enabling alpha channel for textures
-    glEnable(GL_BLEND); glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+    glEnable(GL_BLEND);
+    glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
     glDisable(GL_DEPTH_TEST);
-    
+
     // Getting uniform locations for glUniform* calls
     GLint transform_uloc = glGetUniformLocation(effect.program, "transform");
     GLint color_uloc = glGetUniformLocation(effect.program, "fcolor");
     GLint projection_uloc = glGetUniformLocation(effect.program, "projection");
-    
+
     // Setting vertices and indices
     glBindVertexArray(mesh.vao);
     glBindBuffer(GL_ARRAY_BUFFER, mesh.vbo);
     glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, mesh.ibo);
-    
+
     // Input data location as in the vertex buffer
     GLint in_position_loc = glGetAttribLocation(effect.program, "in_position");
     GLint in_texcoord_loc = glGetAttribLocation(effect.program, "in_texcoord");
     glEnableVertexAttribArray(in_position_loc);
     glEnableVertexAttribArray(in_texcoord_loc);
-    glVertexAttribPointer(in_position_loc, 3, GL_FLOAT, GL_FALSE, sizeof(TexturedVertex), (void*)0);
-    glVertexAttribPointer(in_texcoord_loc, 2, GL_FLOAT, GL_FALSE, sizeof(TexturedVertex), (void*)sizeof(vec3));
-    
+    glVertexAttribPointer(in_position_loc, 3, GL_FLOAT, GL_FALSE, sizeof(TexturedVertex), (void *)0);
+    glVertexAttribPointer(in_texcoord_loc, 2, GL_FLOAT, GL_FALSE, sizeof(TexturedVertex), (void *)sizeof(vec3));
+
     // Enabling and binding texture to slot 0
     glActiveTexture(GL_TEXTURE0);
     glBindTexture(GL_TEXTURE_2D, player1_texture.id);
-    
+
     // Setting uniform values to the currently bound program
-    glUniformMatrix3fv(transform_uloc, 1, GL_FALSE, (float*)&transform);
-    float color[] = { 1.f, 1.f, 1.f };
+    glUniformMatrix3fv(transform_uloc, 1, GL_FALSE, (float *)&transform);
+    float color[] = {1.f, 1.f, 1.f};
     glUniform3fv(color_uloc, 1, color);
-    glUniformMatrix3fv(projection_uloc, 1, GL_FALSE, (float*)&projection);
-    
+    glUniformMatrix3fv(projection_uloc, 1, GL_FALSE, (float *)&projection);
+
     // Drawing!
     glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_SHORT, nullptr);
 }
 
-void Player1::set_key(int key, bool pressed) {
+void Player1::set_key(int key, bool pressed)
+{
     if (pressed)
         m_keys[key] = true;
     if (!pressed)
         m_keys[key] = false;
 }
 
-vec2 Player1::get_position()const
+vec2 Player1::get_position() const
 {
     return m_position;
 }
 
-bool Player1::is_alive()const
+bool Player1::is_alive() const
 {
     return m_is_alive;
 }
@@ -133,7 +142,7 @@ bool Player1::is_alive()const
 void Player1::update(float ms)
 {
     const float PLAYER_SPEED = 200.f;
-	float step = PLAYER_SPEED * (ms / 1000);
+    float step = PLAYER_SPEED * (ms / 1000);
 
     if (m_keys[0])
         move({0, -step});
@@ -142,11 +151,55 @@ void Player1::update(float ms)
     if (m_keys[2])
         move({0, step});
     if (m_keys[3])
+    {
         move({step, 0});
+    }
 }
 
 void Player1::move(vec2 off)
 {
-	m_position.x += off.x; m_position.y += off.y;
+    m_position.x += off.x;
+    m_position.y += off.y;
 }
 
+void Player1::start_animate(int direction)
+{
+    switch (direction)
+    {
+    case 3:
+        animate(3);
+    }
+}
+
+void Player1::animate(int direction)
+{
+    int frameIndex = 1;
+    int spriteWidth = 225;
+    int spriteHeight = 365;
+
+    int numPerRow = player1_texture.width / spriteWidth;
+    int numPerCol = player1_texture.height / spriteHeight;
+
+    // The position corresponds to the center of the texture
+    float wr = spriteWidth;
+    float hr = spriteHeight;
+
+    int currFrame = 0;
+
+    if (m_keys[3])
+    {
+        TexturedVertex vertices[4];
+
+        vertices[0].position = {-wr, +hr, -0.02f};
+        vertices[0].texcoord = {5 / 5.f, 2 / 3.f};
+        vertices[1].position = {+wr, +hr, -0.02f};
+        vertices[1].texcoord = {4 / 5.f, 2 / 3.f};
+        vertices[2].position = {+wr, -hr, -0.02f};
+        vertices[2].texcoord = {4 / 5.f, 1 / 3.f};
+        vertices[3].position = {-wr, -hr, -0.02f};
+        vertices[3].texcoord = {5 / 5.f, 1 / 3.f};
+
+        glBindBuffer(GL_ARRAY_BUFFER, mesh.vbo);
+        glBufferSubData(GL_ARRAY_BUFFER, 0, sizeof(TexturedVertex) * 4, vertices);
+    }
+}

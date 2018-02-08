@@ -18,8 +18,8 @@ bool Player2::init(vec2 screen)
     }
     
     // The position corresponds to the center of the texture
-    float wr = player2_texture.width * 0.5f;
-    float hr = player2_texture.height * 0.5f;
+    float wr = player2_texture.width;
+    float hr = player2_texture.height;
     
     TexturedVertex vertices[4];
     vertices[0].position = { -wr, +hr, -0.02f };
