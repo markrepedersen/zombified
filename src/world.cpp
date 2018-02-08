@@ -454,7 +454,7 @@ void World::on_key(GLFWwindow *, int key, int, int action, int mod)
     if (action == GLFW_PRESS && key == GLFW_KEY_RIGHT)
     {
         m_player1.set_key(3, true);
-        m_player1.start_animate(3);
+        // m_player1.start_animate(3);
     }
     if (action == GLFW_RELEASE && key == GLFW_KEY_RIGHT)
         m_player1.set_key(3, false);
