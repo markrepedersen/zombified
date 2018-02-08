@@ -126,8 +126,13 @@ void Player1::draw(const mat3 &projection)
 
 void Player1::set_key(int key, bool pressed)
 {
-    if (pressed)
+    if (pressed) {
+        // Reset all keys to allow for only uni-directional movement
+        for (int i = 0; i < 4; i++) {
+            m_keys[i] = false;
+        }
         m_keys[key] = true;
+    }
     if (!pressed)
         m_keys[key] = false;
 }
