@@ -20,12 +20,12 @@ bool Player2::init(vec2 screen)
         }
     }
 
-    int frameIndex = 1;
+    // int frameIndex = 1;
     int spriteWidth = 225;
     int spriteHeight = 365;
 
-    int numPerRow = player2_texture.width / spriteWidth;
-    int numPerCol = player2_texture.height / spriteHeight;
+    // int numPerRow = player2_texture.width / spriteWidth;
+    // int numPerCol = player2_texture.height / spriteHeight;
     
     // The position corresponds to the center of the texture
     float wr = spriteWidth;  //* 0.5f;
@@ -172,12 +172,12 @@ void Player2::move(vec2 off)
 
 void Player2::animate(int direction)
 {
-    int frameIndex = 1;
+    // int frameIndex = 1;
     int spriteWidth = 225;
     int spriteHeight = 365;
 
-    int numPerRow = player2_texture.width / spriteWidth;
-    int numPerCol = player2_texture.height / spriteHeight;
+    // int numPerRow = player2_texture.width / spriteWidth;
+    // int numPerCol = player2_texture.height / spriteHeight;
 
     // The position corresponds to the center of the texture
     float wr = spriteWidth;
