@@ -144,14 +144,20 @@ void World::destroy()
     // if (m_salmon_eat_sound != nullptr)
     // 	Mix_FreeChunk(m_salmon_eat_sound);
     
-    Mix_CloseAudio();
+    //Mix_CloseAudio();
+    m_worldtexture.destroy();
+    //m_toolboxManager.destroy();
+    //m_player1.destroy();
+    //m_player2.destroy();
+    //m_water.destroy();
+    //m_freeze.destroy();
     
     //TODO: free players, zombies, limbs, any items on the map, walls
     // m_salmon.destroy();
-    // for (auto& turtle : m_turtles)
-    // 	turtle.destroy();
-    // for (auto& fish : m_fish)
-    // 	fish.destroy();
+    for (auto& legs : m_legs)
+     	legs.destroy();
+    for (auto& arms : m_arms)
+     	arms.destroy();
     // m_turtles.clear();
     // m_fish.clear();
     glfwDestroyWindow(m_window);

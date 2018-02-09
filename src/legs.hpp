@@ -20,6 +20,7 @@ public:
     
     // True if the salmon is alive
     bool is_alive()const;
+    void destroy();
     
 private:
     bool m_is_alive; // True if the salmon is alive
