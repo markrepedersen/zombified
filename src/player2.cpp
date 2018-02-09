@@ -57,10 +57,10 @@ bool Player2::init(vec2 screen)
         return false;
     
     // Setting initial values
-    m_scale.x = -0.25f;
-    m_scale.y = 0.25f;
+    m_scale.x = -0.25f * ViewHelper::getRatio();;
+    m_scale.y = 0.25f * ViewHelper::getRatio();;
     m_is_alive = true;
-    m_position = { screen.x-100.f, screen.y - 550.f };
+    m_position = { (screen.x-(screen.x/5)) * ViewHelper::getRatio(), (screen.y/2) * ViewHelper::getRatio()};
     
     return true;
 }

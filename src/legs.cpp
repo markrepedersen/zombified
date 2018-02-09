@@ -57,10 +57,10 @@ bool Legs::init()
         return false;
     
     // Setting initial values
-    m_scale.x = -0.25f;
-    m_scale.y = 0.25f;
-    m_is_alive = true;
-    m_position = { 100.f, 650.f };
+    m_scale.x = -0.25f * ViewHelper::getRatio();
+    m_scale.y = 0.25f * ViewHelper::getRatio();
+    m_is_alive = true * ViewHelper::getRatio();
+    m_position = { 100.f * ViewHelper::getRatio(), 650.f * ViewHelper::getRatio()};
     
     return true;
 }

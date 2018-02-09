@@ -57,10 +57,10 @@ bool Freeze::init()
         return false;
     
     // Setting initial values
-    m_scale.x = -0.15f;
-    m_scale.y = 0.15f;
+    m_scale.x = -0.15f * ViewHelper::getRatio();
+    m_scale.y = 0.15f * ViewHelper::getRatio();
     m_is_alive = true;
-    m_position = { 450.f, 450.f };
+    m_position = { 450.f * ViewHelper::getRatio(), 450.f * ViewHelper::getRatio()};
     
     return true;
 }

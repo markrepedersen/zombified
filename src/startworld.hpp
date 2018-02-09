@@ -4,6 +4,7 @@
 // internal
 #include "common.hpp"
 #include "button.hpp"
+#include "viewHelper.hpp"
 // stlib
 #include <vector>
 #include <random>

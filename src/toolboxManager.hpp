@@ -1,6 +1,7 @@
 #pragma once
 
 #include "common.hpp"
+#include "viewHelper.hpp"
 #include "toolbox.hpp"
 #include "toolboxSlot.hpp"
 #include <list>

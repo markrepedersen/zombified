@@ -15,14 +15,14 @@ using Clock = std::chrono::high_resolution_clock;
 // Global
 Startworld startworld;
 World world;
-const int width = 1440;
-const int height = 810;
+const int width = 1200;
+const int height = 700;
 const char* title = "Your Title Here";
 
 // Entry point
 int main(int argc, char* argv[])
 {
-    
+
     //while startworld is destroyed
     if (!startworld.init({ (float)width, (float)height }))
     {
@@ -44,6 +44,7 @@ int main(int argc, char* argv[])
     //fprintf(stderr, "start screen should be destroyed");
     startworld.destroy();
     
+	
 	// Initializing world (after renderer.init().. sorry)
 	if (!world.init({ (float)width, (float)height }))
 	{

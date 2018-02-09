@@ -7,7 +7,7 @@
 
 Texture Toolbox::toolbox_texture;
 
-bool Toolbox::init(vec2 position)
+bool Toolbox::init(vec2 screen)
 {
 
     //Load shared texture
@@ -58,13 +58,10 @@ bool Toolbox::init(vec2 position)
 	if (!effect.load_from_file(shader_path("textured.vs.glsl"), shader_path("textured.fs.glsl")))
 		return false;
 
-
-    
-
-    m_scale.x = 2.45f;
-	m_scale.y = 1.5f;
+    m_scale.x = 1.3f * ViewHelper::getRatio();
+	m_scale.y = 0.6f * ViewHelper::getRatio();
 	m_rotation = 0.f;
-    m_position = position;
+    m_position = {(screen.x*0.5f) * ViewHelper::getRatio(), (screen.y - (hr/2)) * ViewHelper::getRatio()};
     
 
     return true;

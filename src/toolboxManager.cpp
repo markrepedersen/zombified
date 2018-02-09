@@ -9,7 +9,7 @@
 bool ToolboxManager::init(vec2 screen)
 {
     m_screen = screen;
-    if(!m_toolbox.init({screen.x, screen.y + 150})) return false;
+    if(!m_toolbox.init({screen.x, screen.y})) return false;
     
     //initialize player 1 with 2 empty slots
     m_listOfSlotsPlayer1.push_back(0);

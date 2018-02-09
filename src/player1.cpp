@@ -55,12 +55,13 @@ bool Player1::init(vec2 screen)
     // Loading shaders
     if (!effect.load_from_file(shader_path("textured.vs.glsl"), shader_path("textured.fs.glsl")))
         return false;
-    
+
+
     // Setting initial values
-    m_scale.x = -0.25f;
-    m_scale.y = 0.25f;
+    m_scale.x = -0.25f * ViewHelper::getRatio();
+    m_scale.y = 0.25f * ViewHelper::getRatio();
     m_is_alive = true;
-    m_position = { screen.x - 1150.f, screen.y - 450.f };
+    m_position = { (screen.x * ViewHelper::getRatio())/5, (screen.y * ViewHelper::getRatio())/2 };
     
     return true;
 }

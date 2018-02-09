@@ -57,10 +57,10 @@ bool Worldtexture::init(vec2 screen)
         return false;
     
     // Setting initial values
-    m_scale.x = -0.325f;
-    m_scale.y = 0.325f;
-    float xpos = screen.x*0.5;
-    float ypos = screen.y*0.5 +45;
+    m_scale.x = -0.325f * ViewHelper::getRatio();
+    m_scale.y = 0.325f * ViewHelper::getRatio();
+    float xpos = (screen.x*0.5) * ViewHelper::getRatio();
+    float ypos = (screen.y*0.5 +45) * ViewHelper::getRatio();
     m_position = { xpos, ypos };
     
     return true;

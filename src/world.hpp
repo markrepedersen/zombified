@@ -14,6 +14,7 @@
 #include "water.hpp"
 #include "freeze.hpp"
 #include "worldtexture.hpp"
+#include "viewHelper.hpp"
 // stlib
 #include <vector>
 #include <random>

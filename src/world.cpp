@@ -121,11 +121,16 @@ bool World::init(vec2 screen)
     //fprintf(stderr, "Loaded music");
     
     //m_current_speed = 1.f;
-    
+
+
+      //set game screen to resolution ratio
+    ViewHelper* vh = ViewHelper::getInstance(m_window);
+
+
     //draw world texture
     m_worldtexture.init(screen);
     //initialize toolbox
-    m_toolboxManager.init({screen.x, screen.y + 400.f});
+    m_toolboxManager.init({screen.x, screen.y});
     
     //TODO return players && walls???
     return m_player1.init(screen) && m_player2.init(screen) && m_water.init() && m_freeze.init() ;
@@ -263,6 +268,7 @@ bool World::update(float elapsed_ms)
             
             // Setting random initial position
             //TODO: should make sure they spawn a certain distance away from each other and check collision with wall
+            //TODO: should we scale this with ViewHelper::getRatio();???
             //srand((unsigned)time(0));
             new_arm.set_position({ (float)((rand() % (int)screen.x)),
                 (float)((rand() % (int)screen.y)) });
