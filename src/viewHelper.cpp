@@ -4,6 +4,9 @@
 #include <list>
 #include <cmath>
 
+
+ViewHelper* ViewHelper::instance = 0;
+
 ViewHelper* ViewHelper::getInstance(GLFWwindow* m_window)
  {
      if (instance == 0)
@@ -24,7 +27,7 @@ ViewHelper* ViewHelper::getInstance(GLFWwindow* m_window)
 ViewHelper::ViewHelper()
 {}
 
- float ViewHelper::getRatio()
- {
+float ViewHelper::getRatio()
+{
     return instance->m_ratio;
- }
+}
