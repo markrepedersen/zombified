@@ -57,10 +57,10 @@ bool Water::init()
         return false;
     
     // Setting initial values
-    m_scale.x = -0.25f;
-    m_scale.y = 0.25f;
+    m_scale.x = -0.10f * ViewHelper::getRatio();
+    m_scale.y = 0.10f * ViewHelper::getRatio();
     m_is_alive = true;
-    m_position = { 170.f, 650.f };
+    m_position = { 350.f * ViewHelper::getRatio(), 450.f* ViewHelper::getRatio() };
     
     return true;
 }

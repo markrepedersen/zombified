@@ -57,10 +57,10 @@ bool Legs::init()
         return false;
     
     // Setting initial values
-    m_scale.x = -0.25f;
-    m_scale.y = 0.25f;
-    m_is_alive = true;
-    m_position = { 100.f, 650.f };
+    m_scale.x = -0.25f * ViewHelper::getRatio();
+    m_scale.y = 0.25f * ViewHelper::getRatio();
+    m_is_alive = true * ViewHelper::getRatio();
+    m_position = { 100.f * ViewHelper::getRatio(), 650.f * ViewHelper::getRatio()};
     
     return true;
 }
@@ -126,4 +126,15 @@ void Legs::set_position(vec2 position)
 bool Legs::is_alive()const
 {
     return m_is_alive;
+}
+
+void Legs::destroy()
+{
+    glDeleteBuffers(1, &mesh.vbo);
+    glDeleteBuffers(1, &mesh.ibo);
+    glDeleteBuffers(1, &mesh.vao);
+    
+    glDeleteShader(effect.vertex);
+    glDeleteShader(effect.fragment);
+    glDeleteShader(effect.program);
 }

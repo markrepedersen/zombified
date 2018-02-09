@@ -6,6 +6,7 @@
 #include <cassert>
 #include <sstream>
 #include <math.h>
+#include <time.h>
 
 // Same as static in c, local to compilation unit
 namespace
@@ -31,9 +32,11 @@ void glfw_err_cb(int error, const char *desc)
 }
 }
 
-World::World() : m_points(0),
-                 m_next_arm_spawn(rand() % (1000) + 500),
-                 m_next_leg_spawn(rand() % (1000) + 500)
+
+World::World() :
+//m_points(0),
+m_next_arm_spawn(rand()%(1000)+500),
+m_next_leg_spawn(rand()%(1000)+500)
 // m_next_turtle_spawn(0.f),
 // m_next_fish_spawn(0.f)
 {
@@ -87,18 +90,20 @@ bool World::init(vec2 screen)
 
     //-------------------------------------------------------------------------
     // Loading music and sounds
-    if (SDL_Init(SDL_INIT_AUDIO) < 0)
-    {
-        fprintf(stderr, "Failed to initialize SDL Audio");
-        return false;
-    }
 
-    if (Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 2048) == -1)
-    {
-        fprintf(stderr, "Failed to open audio device");
-        return false;
-    }
-
+//    if (SDL_Init(SDL_INIT_AUDIO) < 0)
+//    {
+//        fprintf(stderr, "Failed to initialize SDL Audio");
+//        return false;
+//    }
+//    
+//    if (Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 2048) == -1)
+//    {
+//        fprintf(stderr, "Failed to open audio device");
+//        return false;
+//    }
+    
+    
     //TODO: set up music files here
     // m_background_music = Mix_LoadMUS(audio_path("music.wav"));
     // m_salmon_dead_sound = Mix_LoadWAV(audio_path("salmon_dead.wav"));
@@ -118,9 +123,19 @@ bool World::init(vec2 screen)
 
     //m_current_speed = 1.f;
 
-    //initialize toolbox
-    m_toolboxManager.init({screen.x, screen.y + 400.f});
 
+      //set game screen to resolution ratio
+    ViewHelper* vh = ViewHelper::getInstance(m_window);
+
+    m_min = 6;
+    m_sec = 0;
+    m_counter = 5;
+    start = time(0);
+    //draw world texture
+    m_worldtexture.init(screen);
+    //initialize toolbox
+    m_toolboxManager.init({screen.x, screen.y+200});
+    
     //TODO return players && walls???
     return m_player1.init(screen) && m_player2.init(screen) && m_water.init() && m_freeze.init();
 }
@@ -138,14 +153,21 @@ void World::destroy()
     // if (m_salmon_eat_sound != nullptr)
     // 	Mix_FreeChunk(m_salmon_eat_sound);
 
-    Mix_CloseAudio();
-
+    
+    //Mix_CloseAudio();
+    m_worldtexture.destroy();
+    //m_toolboxManager.destroy();
+    //m_player1.destroy();
+    //m_player2.destroy();
+    //m_water.destroy();
+    //m_freeze.destroy();
+    
     //TODO: free players, zombies, limbs, any items on the map, walls
     // m_salmon.destroy();
-    // for (auto& turtle : m_turtles)
-    // 	turtle.destroy();
-    // for (auto& fish : m_fish)
-    // 	fish.destroy();
+    for (auto& legs : m_legs)
+     	legs.destroy();
+    for (auto& arms : m_arms)
+     	arms.destroy();
     // m_turtles.clear();
     // m_fish.clear();
     glfwDestroyWindow(m_window);
@@ -250,6 +272,7 @@ bool World::update(float elapsed_ms)
 
             // Setting random initial position
             //TODO: should make sure they spawn a certain distance away from each other and check collision with wall
+            //TODO: should we scale this with ViewHelper::getRatio();???
             //srand((unsigned)time(0));
             new_arm.set_position({(float)((rand() % (int)screen.x)),
                                   (float)((rand() % (int)screen.y))});
@@ -310,7 +333,26 @@ bool World::update(float elapsed_ms)
     // 	m_next_fish_spawn = (FISH_DELAY_MS / 2) + m_dist(m_rng) * (FISH_DELAY_MS / 2);
     // }
 
+    if ((int)difftime( time(0), start) == m_counter)
+        timer_update();
     return true;
+}
+
+void World::timer_update()
+{
+
+    if (m_sec == 0)
+    {
+        m_sec = 59;
+        m_min -=1;
+        m_counter++;
+    }
+    else
+    {
+        m_sec -= 1;
+        m_counter ++;
+    }
+
 }
 
 // Render our game world
@@ -325,14 +367,18 @@ void World::draw()
 
     // Updating window title with points
     std::stringstream title_ss;
-    title_ss << "Points: " << m_points;
+    if (m_sec < 10)
+        title_ss << "Time remaining " << m_min << ":" << "0" << m_sec;
+    else
+        title_ss << "Time remaining " << m_min << ":" << m_sec;
     glfwSetWindowTitle(m_window, title_ss.str().c_str());
 
     // Clearing backbuffer
     glViewport(0, 0, w, h);
     glDepthRange(0.00001, 10);
-    const float clear_color[3] = {0.3f, 0.3f, 0.8f};
-    glClearColor(clear_color[0], clear_color[1], clear_color[2], 1.0);
+
+    //const float clear_color[3] = { 0.3f, 0.3f, 0.8f };
+    glClearColor(1.0, 1.0, 1.0, 1.0);//0.05, 0.09, 0.16, 1.0);//clear_color[1], clear_color[1], clear_color[0], 1.0);
     glClearDepth(1.f);
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
@@ -347,8 +393,10 @@ void World::draw()
     float sy = 2.f / (top - bottom);
     float tx = -(right + left) / (right - left);
     float ty = -(top + bottom) / (top - bottom);
-    mat3 projection_2D{{sx, 0.f, 0.f}, {0.f, sy, 0.f}, {tx, ty, 1.f}};
 
+    mat3 projection_2D{ { sx, 0.f, 0.f },{ 0.f, sy, 0.f },{ tx, ty, 1.f } };
+    
+    m_worldtexture.draw(projection_2D);
     //TODO: Drawing entities
     for (auto &arms : m_arms)
         arms.draw(projection_2D);

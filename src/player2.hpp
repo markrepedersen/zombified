@@ -1,6 +1,7 @@
 #pragma once
 
 #include "common.hpp"
+#include "viewHelper.hpp"
 
 class Player2 : public Renderable
 {

@@ -67,7 +67,7 @@ bool ToolboxSlot::init(float initialOffset, float offset, float index, float y, 
 	m_rotation = 0.f;
 
     float objectWidth = std::fabs(m_scale.x) * toolboxSlot_texture.width;
-    m_position = {initialOffset + ((offset + objectWidth) * index ), y};
+    m_position = {initialOffset + ((offset + objectWidth) * index ), y+300};
     
 
     return true;

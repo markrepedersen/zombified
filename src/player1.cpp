@@ -15,7 +15,7 @@ bool Player1::init(vec2 screen)
     {
         if (!player1_texture.load_from_file(p1_textures_path("p1.png")))
         {
-            fprintf(stderr, "Failed to load player1 texture!");
+            //fprintf(stderr, "Failed to load player1 texture!");
             return false;
         }
     }
@@ -67,11 +67,14 @@ bool Player1::init(vec2 screen)
         return false;
 
     // Setting initial values
-    m_scale.x = -0.25f;
-    m_scale.y = 0.25f;
+    m_scale.x = -0.10f * ViewHelper::getRatio();
+    m_scale.y = 0.10f * ViewHelper::getRatio();
     m_is_alive = true;
-    m_position = {screen.x - 1150.f, screen.y - 450.f};
 
+    // m_position = {screen.x - 1150.f, screen.y - 450.f};
+
+    m_position = { (screen.x * ViewHelper::getRatio())/5, (screen.y * ViewHelper::getRatio())/2 };
+    
     return true;
 }
 

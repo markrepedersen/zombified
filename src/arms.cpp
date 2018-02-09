@@ -57,10 +57,10 @@ bool Arms::init()
         return false;
     
     // Setting initial values
-    m_scale.x = -0.25f;
-    m_scale.y = 0.25f;
+    m_scale.x = -0.25f * ViewHelper::getRatio();
+    m_scale.y = 0.25f * ViewHelper::getRatio();;
     m_is_alive = true;
-    m_position = { 50.f, 650.f };
+    m_position = { 50.f * ViewHelper::getRatio(), 650.f *ViewHelper::getRatio()};
     
     return true;
 }
@@ -126,4 +126,15 @@ void Arms::set_position(vec2 position)
 bool Arms::is_alive()const
 {
     return m_is_alive;
+}
+
+void Arms::destroy()
+{
+    glDeleteBuffers(1, &mesh.vbo);
+    glDeleteBuffers(1, &mesh.ibo);
+    glDeleteBuffers(1, &mesh.vao);
+    
+    glDeleteShader(effect.vertex);
+    glDeleteShader(effect.fragment);
+    glDeleteShader(effect.program);
 }

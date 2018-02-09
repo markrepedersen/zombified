@@ -13,6 +13,8 @@
 #include "legs.hpp"
 #include "water.hpp"
 #include "freeze.hpp"
+#include "worldtexture.hpp"
+#include "viewHelper.hpp"
 // stlib
 #include <vector>
 #include <random>
@@ -20,6 +22,7 @@
 #define SDL_MAIN_HANDLED
 #include <SDL/SDL.h>
 #include <SDL/SDL_mixer.h>
+#include <time.h>
 
 // Container for all our entities and game logic. Individual rendering / update is 
 // deferred to the relative update() methods
@@ -43,6 +46,8 @@ public:
 
 	// Should the game be over ?
 	bool is_over()const;
+    
+    void timer_update();
 
 private:
 	// Generates a new turtle
@@ -61,9 +66,13 @@ private:
 	GLFWwindow* m_window;
 
 	// Number of fish eaten by the salmon, displayed in the window title
-	unsigned int m_points;
+	unsigned int m_min;
+    unsigned int m_sec;
+    unsigned int m_counter;
+    time_t start;
 
 	// Game entities
+    Worldtexture m_worldtexture;
     ToolboxManager m_toolboxManager;
     Player1 m_player1;
     Player2 m_player2;
