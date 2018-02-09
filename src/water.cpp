@@ -57,10 +57,10 @@ bool Water::init()
         return false;
     
     // Setting initial values
-    m_scale.x = -0.45f;
-    m_scale.y = 0.45f;
+    m_scale.x = -0.15f;
+    m_scale.y = 0.15f;
     m_is_alive = true;
-    m_position = { 170.f, 650.f };
+    m_position = { 350.f, 450.f };
     
     return true;
 }

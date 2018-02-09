@@ -12,7 +12,7 @@ bool Player1::init(vec2 screen)
     {
         if (!player1_texture.load_from_file(p1_textures_path("p1 standing left.png")))
         {
-            fprintf(stderr, "Failed to load player1 texture!");
+            //fprintf(stderr, "Failed to load player1 texture!");
             return false;
         }
     }

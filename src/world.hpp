@@ -13,6 +13,7 @@
 #include "legs.hpp"
 #include "water.hpp"
 #include "freeze.hpp"
+#include "worldtexture.hpp"
 // stlib
 #include <vector>
 #include <random>
@@ -64,6 +65,7 @@ private:
 	unsigned int m_points;
 
 	// Game entities
+    Worldtexture m_worldtexture;
     ToolboxManager m_toolboxManager;
     Player1 m_player1;
     Player2 m_player2;

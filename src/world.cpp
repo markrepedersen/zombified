@@ -90,17 +90,17 @@ bool World::init(vec2 screen)
     
     //-------------------------------------------------------------------------
     // Loading music and sounds
-    if (SDL_Init(SDL_INIT_AUDIO) < 0)
-    {
-        fprintf(stderr, "Failed to initialize SDL Audio");
-        return false;
-    }
-    
-    if (Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 2048) == -1)
-    {
-        fprintf(stderr, "Failed to open audio device");
-        return false;
-    }
+//    if (SDL_Init(SDL_INIT_AUDIO) < 0)
+//    {
+//        fprintf(stderr, "Failed to initialize SDL Audio");
+//        return false;
+//    }
+//    
+//    if (Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 2048) == -1)
+//    {
+//        fprintf(stderr, "Failed to open audio device");
+//        return false;
+//    }
     
     
     //TODO: set up music files here
@@ -122,6 +122,8 @@ bool World::init(vec2 screen)
     
     //m_current_speed = 1.f;
     
+    //draw world texture
+    m_worldtexture.init(screen);
     //initialize toolbox
     m_toolboxManager.init({screen.x, screen.y + 400.f});
     
@@ -337,8 +339,8 @@ void World::draw()
     // Clearing backbuffer
     glViewport(0, 0, w, h);
     glDepthRange(0.00001, 10);
-    const float clear_color[3] = { 0.3f, 0.3f, 0.8f };
-    glClearColor(clear_color[1], clear_color[1], clear_color[0], 1.0);
+    //const float clear_color[3] = { 0.3f, 0.3f, 0.8f };
+    glClearColor(1.0, 1.0, 1.0, 1.0);//0.05, 0.09, 0.16, 1.0);//clear_color[1], clear_color[1], clear_color[0], 1.0);
     glClearDepth(1.f);
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     
@@ -355,6 +357,7 @@ void World::draw()
     float ty = -(top + bottom) / (top - bottom);
     mat3 projection_2D{ { sx, 0.f, 0.f },{ 0.f, sy, 0.f },{ tx, ty, 1.f } };
     
+    m_worldtexture.draw(projection_2D);
     //TODO: Drawing entities
     for (auto& arms : m_arms)
         arms.draw(projection_2D);
@@ -366,7 +369,6 @@ void World::draw()
     // 	fish.draw(projection_2D);
     //m_salmon.draw(projection_2D);
 
-    
     m_toolboxManager.draw(projection_2D);
     m_player1.draw(projection_2D);
     m_player2.draw(projection_2D);

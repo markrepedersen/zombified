@@ -57,10 +57,10 @@ bool Freeze::init()
         return false;
     
     // Setting initial values
-    m_scale.x = -0.25f;
-    m_scale.y = 0.25f;
+    m_scale.x = -0.15f;
+    m_scale.y = 0.15f;
     m_is_alive = true;
-    m_position = { 250.f, 650.f };
+    m_position = { 450.f, 450.f };
     
     return true;
 }
