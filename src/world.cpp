@@ -6,6 +6,7 @@
 #include <cassert>
 #include <sstream>
 #include <math.h>
+#include <time.h>
 
 // Same as static in c, local to compilation unit
 namespace
@@ -33,7 +34,7 @@ namespace
 }
 
 World::World() :
-m_points(0),
+//m_points(0),
 m_next_arm_spawn(rand()%(1000)+500),
 m_next_leg_spawn(rand()%(1000)+500)
 // m_next_turtle_spawn(0.f),
@@ -121,7 +122,10 @@ bool World::init(vec2 screen)
     //fprintf(stderr, "Loaded music");
     
     //m_current_speed = 1.f;
-    
+    m_min = 6;
+    m_sec = 0;
+    m_counter = 5;
+    start = time(0);
     //draw world texture
     m_worldtexture.init(screen);
     //initialize toolbox
@@ -322,8 +326,27 @@ bool World::update(float elapsed_ms)
     
     // 	m_next_fish_spawn = (FISH_DELAY_MS / 2) + m_dist(m_rng) * (FISH_DELAY_MS / 2);
     // }
-    
+
+    if ((int)difftime( time(0), start) == m_counter)
+        timer_update();
     return true;
+}
+
+void World::timer_update()
+{
+
+    if (m_sec == 0)
+    {
+        m_sec = 59;
+        m_min -=1;
+        m_counter++;
+    }
+    else
+    {
+        m_sec -= 1;
+        m_counter ++;
+    }
+
 }
 
 // Render our game world
@@ -339,7 +362,10 @@ void World::draw()
     
     // Updating window title with points
     std::stringstream title_ss;
-    title_ss << "Points: " << m_points;
+    if (m_sec < 10)
+        title_ss << "Time remaining " << m_min << ":" << "0" << m_sec;
+    else
+        title_ss << "Time remaining " << m_min << ":" << m_sec;
     glfwSetWindowTitle(m_window, title_ss.str().c_str());
     
     // Clearing backbuffer
