@@ -23,6 +23,10 @@ public:
     bool is_alive()const;
 
     void set_key(int key, bool pressed);
+
+    void start_animate(int direction);
+
+    void animate(int direction);
     
 private:
     bool m_is_alive; // True if the salmon is alive
