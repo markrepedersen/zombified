@@ -2,6 +2,7 @@
 #include "player1.hpp"
 
 #include <cmath>
+#include <iostream>
 
 Texture Player1::player1_texture;
 int currFrame = 0;
@@ -132,9 +133,21 @@ void Player1::set_key(int key, bool pressed)
     if (pressed)
     {
         m_keys.push_front(key);
+        
+        // for (auto v : m_keys) {
+        //     std::cout << v << " ";
+        // }
+        
+        // std::cout << "\n";
     }
     if (!pressed)
         m_keys.remove(key);
+        
+        // for (auto v : m_keys) {
+        //     std::cout << v << " ";
+        // }
+        
+        // std::cout << "\n";
 }
 
 vec2 Player1::get_position() const
@@ -153,18 +166,18 @@ void Player1::update(float ms)
     float step = PLAYER_SPEED * (ms / 1000);
 
     if (m_keys.front() == GLFW_KEY_UP)
-        move({0, -step});
-        animate(0);
+        {move({0, -step});
+        animate();}
     if (m_keys.front() == GLFW_KEY_LEFT)
-        move({-step, 0});
-        animate(2);
+        {move({-step, 0});
+        animate();}
     if (m_keys.front() == GLFW_KEY_DOWN)
-        move({0, step});
-        animate(2);
+        {move({0, step});
+        animate();}
     if (m_keys.front() == GLFW_KEY_RIGHT)
     {
         move({step, 0});
-        animate(3);
+        animate();
     }
     else
     {
@@ -178,7 +191,7 @@ void Player1::move(vec2 off)
     m_position.y += off.y;
 }
 
-void Player1::animate(int direction)
+void Player1::animate()
 {
     // int frameIndex = 1;
     int spriteWidth = 225;
