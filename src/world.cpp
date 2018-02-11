@@ -487,26 +487,11 @@ void World::on_key(GLFWwindow *, int key, int, int action, int mod)
     // action can be GLFW_PRESS GLFW_RELEASE GLFW_REPEAT
     // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
-    if (action == GLFW_PRESS && key == GLFW_KEY_UP)
-        m_player1.set_key(0, true);
-    if (action == GLFW_RELEASE && key == GLFW_KEY_UP)
-        m_player1.set_key(0, false);
-    if (action == GLFW_PRESS && key == GLFW_KEY_LEFT)
-        m_player1.set_key(1, true);
-    if (action == GLFW_RELEASE && key == GLFW_KEY_LEFT)
-        m_player1.set_key(1, false);
-    if (action == GLFW_PRESS && key == GLFW_KEY_DOWN)
-        m_player1.set_key(2, true);
-    if (action == GLFW_RELEASE && key == GLFW_KEY_DOWN)
-        m_player1.set_key(2, false);
-    if (action == GLFW_PRESS && key == GLFW_KEY_RIGHT)
-    {
-        m_player1.set_key(3, true);
-        // m_player1.start_animate(3);
-    }
-    if (action == GLFW_RELEASE && key == GLFW_KEY_RIGHT)
-        m_player1.set_key(3, false);
-
+    if (action == GLFW_PRESS && (key == GLFW_KEY_UP || key == GLFW_KEY_LEFT || key == GLFW_KEY_DOWN || key == GLFW_KEY_RIGHT))
+        m_player1.set_key(key, true);
+    if (action == GLFW_RELEASE && (key == GLFW_KEY_UP || key == GLFW_KEY_LEFT || key == GLFW_KEY_DOWN || key == GLFW_KEY_RIGHT))
+        m_player1.set_key(key, false);
+    
     if (action == GLFW_PRESS && key == GLFW_KEY_W)
         m_player2.set_key(0, true);
     if (action == GLFW_RELEASE && key == GLFW_KEY_W)

@@ -131,15 +131,10 @@ void Player1::set_key(int key, bool pressed)
 {
     if (pressed)
     {
-        // Reset all keys to allow for only uni-directional movement
-        for (int i = 0; i < 4; i++)
-        {
-            m_keys[i] = false;
-        }
-        m_keys[key] = true;
+        m_keys.push_front(key);
     }
     if (!pressed)
-        m_keys[key] = false;
+        m_keys.remove(key);
 }
 
 vec2 Player1::get_position() const
@@ -157,16 +152,16 @@ void Player1::update(float ms)
     const float PLAYER_SPEED = 200.f;
     float step = PLAYER_SPEED * (ms / 1000);
 
-    if (m_keys[0])
+    if (m_keys.front() == GLFW_KEY_UP)
         move({0, -step});
         animate(0);
-    if (m_keys[1])
+    if (m_keys.front() == GLFW_KEY_LEFT)
         move({-step, 0});
         animate(2);
-    if (m_keys[2])
+    if (m_keys.front() == GLFW_KEY_DOWN)
         move({0, step});
         animate(2);
-    if (m_keys[3])
+    if (m_keys.front() == GLFW_KEY_RIGHT)
     {
         move({step, 0});
         animate(3);
@@ -201,7 +196,7 @@ void Player1::animate(int direction)
 
     if (milliseconds > frameTime)
     {
-        if (m_keys[0])
+        if (m_keys.front() == GLFW_KEY_UP)
         {
             switch (currFrame)
             {
@@ -267,7 +262,7 @@ void Player1::animate(int direction)
             }
             }
         }
-        else if (m_keys[1])
+        else if (m_keys.front() == GLFW_KEY_LEFT)
         {
             switch (currFrame)
             {
@@ -333,7 +328,7 @@ void Player1::animate(int direction)
             }
             }
         }
-        else if (m_keys[2])
+        else if (m_keys.front() == GLFW_KEY_DOWN)
         {
             switch (currFrame)
             {
@@ -399,7 +394,7 @@ void Player1::animate(int direction)
             }
             }
         }
-        else if (m_keys[3])
+        else if (m_keys.front() == GLFW_KEY_RIGHT)
         {
             switch (currFrame)
             {
