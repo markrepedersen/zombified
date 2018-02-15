@@ -2,6 +2,8 @@
 
 #include "common.hpp"
 #include "viewHelper.hpp"
+#include <list>
+#include <iostream>
 
 class Player1 : public Renderable
 {
@@ -25,15 +27,12 @@ public:
 
     void set_key(int direction, bool pressed);
 
-    void start_animate(int direction);
-
-    void animate(int direction);
+    void animate();
 
 private:
     bool m_is_alive; // True if the salmon is alive
     vec2 m_position; // Window coordinates
     vec2 m_scale; // 1.f in each dimension. 1.f is as big as the associated texture
 
-    bool m_keys[4];
-    enum {up, left, down, right, stop} direction;
+    std::list<int> m_keys;
 };
