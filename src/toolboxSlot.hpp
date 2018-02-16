@@ -1,6 +1,7 @@
 #pragma once
 
 #include "common.hpp"
+#include "viewHelper.hpp"
 #include <list>
 
 //game screen toolbox

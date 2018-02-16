@@ -9,8 +9,8 @@
 bool ToolboxManager::init(vec2 screen)
 {
     m_screen = screen;
-    if(!m_toolbox.init({screen.x, screen.y})) return false;
-    
+    //if(!m_toolbox.init({screen.x, screen.y})) return false;
+
     //initialize player 1 with 2 empty slots
     m_listOfSlotsPlayer1.push_back(0);
     m_listOfSlotsPlayer1.push_back(0);
@@ -20,10 +20,10 @@ bool ToolboxManager::init(vec2 screen)
 
 void ToolboxManager::draw(const mat3& projection)
 {
-    m_toolbox.draw(projection);
+    //m_toolbox.draw(projection);
 
-    float initialOffset = m_screen.x/10;
-    float offset = m_screen.x /30;
+    float initialOffset = m_screen.x/22;
+    float offset = m_screen.x /65;
     float index = 0.f;
     
     std::list<int>::iterator it;
@@ -31,7 +31,7 @@ void ToolboxManager::draw(const mat3& projection)
         ToolboxSlot tb;
         // std::cout << offset<< std::endl;;
         // std::cout<< index;
-        tb.init(initialOffset, offset, index, m_screen.y + 50, *it);
+        tb.init(initialOffset, offset, index, 580.f, *it);
         tb.draw(projection);
         //
         index++;

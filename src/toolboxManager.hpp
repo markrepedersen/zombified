@@ -2,7 +2,6 @@
 
 #include "common.hpp"
 #include "viewHelper.hpp"
-#include "toolbox.hpp"
 #include "toolboxSlot.hpp"
 #include <list>
 
@@ -42,5 +41,4 @@ private:
     std::list<int> m_listOfSlotsPlayer1; //list of slots, 0 if empty and available. Non-zero numbers each maps to an item
     std::list<int> m_listOfSlotsPlayer2;
     std::list<ToolboxSlot> m_listOfToolboxSlots;
-    Toolbox m_toolbox; //toolbox
 };

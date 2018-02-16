@@ -145,11 +145,11 @@ void World::destroy()
  
     //TODO: free players, zombies, limbs, any items on the map, walls
     m_worldtexture.destroy();
-    m_toolboxManager.destroy();
-    m_player1.destroy();
-    m_player2.destroy();
-    m_water.destroy();
-    m_freeze.destroy();
+    //m_toolboxManager.destroy();
+    //m_player1.destroy();
+    //m_player2.destroy();
+    //m_water.destroy();
+    //m_freeze.destroy();
     for (auto& legs : m_legs)
      	legs.destroy();
     for (auto& arms : m_arms)
