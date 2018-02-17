@@ -78,9 +78,12 @@ bool World::init(vec2 screen)
     // http://www.glfw.org/docs/latest/input_guide.html
     glfwSetWindowUserPointer(m_window, this);
     auto key_redirect = [](GLFWwindow *wnd, int _0, int _1, int _2, int _3) { ((World *)glfwGetWindowUserPointer(wnd))->on_key(wnd, _0, _1, _2, _3); };
-    auto cursor_pos_redirect = [](GLFWwindow *wnd, double _0, double _1) { ((World *)glfwGetWindowUserPointer(wnd))->on_mouse_move(wnd, _0, _1); };
+    //auto cursor_pos_redirect = [](GLFWwindow *wnd, double _0, double _1) { ((World *)glfwGetWindowUserPointer(wnd))->on_mouse_move(wnd, _0, _1); };
+    auto mouse_button_callback = [](GLFWwindow* wnd, int _0, int _1, int _2) { ((World*)glfwGetWindowUserPointer(wnd))->on_mouse_move(wnd, _0, _1, _2); };
+    
     glfwSetKeyCallback(m_window, key_redirect);
-    glfwSetCursorPosCallback(m_window, cursor_pos_redirect);
+    //glfwSetCursorPosCallback(m_window, cursor_pos_redirect);
+    glfwSetMouseButtonCallback(m_window, mouse_button_callback);
 
     //-------------------------------------------------------------------------
     // Loading music and sounds
@@ -119,17 +122,8 @@ bool World::init(vec2 screen)
       //set game screen to resolution ratio
     ViewHelper* vh = ViewHelper::getInstance(m_window);
 
-    m_min = 6;
-    m_sec = 0;
-    m_counter = 5;
-    start = time(0);
-    //draw world texture
-    m_worldtexture.init(screen);
-    //initialize toolbox
-    m_toolboxManager.init({screen.x, screen.y+200});
-    
-    //TODO return players && walls???
-    return m_player1.init(screen) && m_player2.init(screen) && m_water.init() && m_freeze.init();
+    game_started = false;
+    return m_button.init();
 }
 
 // Releases all the associated resources
@@ -171,67 +165,100 @@ bool World::update(float elapsed_ms)
     //zombie to antidote collision?
     //zombie to player collision?
     //item to player collision?
+    
+    // start page
+    while (!game_started)
+    {
+        if(buttonclicked())
+        {
+            game_started = true;
+            m_button.destroy();
+            
+            // initialize everything for the main game world once the button is pressed
+            m_min = 6;
+            m_sec = 0;
+            m_counter = 5;
+            start = time(0);
+            m_worldtexture.init(screen);
+            m_toolboxManager.init({screen.x, screen.y+200});
+            m_player1.init(screen) && m_player2.init(screen) && m_water.init() && m_freeze.init();
+        }
+        else
+        {
+        // Processes system messages, if this wasn't present the window would become unresponsive
+            glfwPollEvents();
+            return true;
+        }
+    }
+    
+    // GAME DOESNT START UNTIL THE BUTTON IS CLICKED
+    //fprintf(stderr, "start screen should be destroyed");
 
     
-    //TODO: upating all entities (player, zombies, limbs, items )
-    m_player1.update(elapsed_ms);
-    m_player2.update(elapsed_ms);
-  
-    //TOOD: removing all out of screen entities, probably not needed if collision with edges of screen is
-    //always checked
-
-
-    //TODO: spawn limbs, items
-    m_next_arm_spawn -= elapsed_ms;
-    m_next_leg_spawn -= elapsed_ms;
-    srand((unsigned)time(0));
-    int randNum = rand() % (1000);
-
-    if (randNum % 3 == 0)
+    if (game_started)
     {
-        if (m_arms.size() <= MAX_ARMS && m_next_arm_spawn < 0.f)
+        //TODO: upating all entities (player, zombies, limbs, items )
+        m_player1.update(elapsed_ms);
+        m_player2.update(elapsed_ms);
+        
+        //TOOD: removing all out of screen entities, probably not needed if collision with edges of screen is
+        //always checked
+        
+        
+        //TODO: spawn limbs, items
+        m_next_arm_spawn -= elapsed_ms;
+        m_next_leg_spawn -= elapsed_ms;
+        srand((unsigned)time(0));
+        int randNum = rand() % (1000);
+        
+        if (randNum % 3 == 0)
         {
-            if (!spawn_arms())
-                return false;
-
-            Arms &new_arm = m_arms.back();
-
-            // Setting random initial position
-            //TODO: should make sure they spawn a certain distance away from each other and check collision with wall
-            //TODO: should we scale this with ViewHelper::getRatio();???
-            //srand((unsigned)time(0));
-            new_arm.set_position({(float)((rand() % (int)screen.x)),
-                                  (float)((rand() % (int)screen.y))});
-
-            // Next spawn
-            //srand((unsigned)time(0));
-            m_next_arm_spawn = (ARM_DELAY_MS / 2) + rand() % (1000);
+            if (m_arms.size() <= MAX_ARMS && m_next_arm_spawn < 0.f)
+            {
+                if (!spawn_arms())
+                    return false;
+                
+                Arms &new_arm = m_arms.back();
+                
+                // Setting random initial position
+                //TODO: should make sure they spawn a certain distance away from each other and check collision with wall
+                //TODO: should we scale this with ViewHelper::getRatio();???
+                //srand((unsigned)time(0));
+                new_arm.set_position({(float)((rand() % (int)screen.x)),
+                    (float)((rand() % (int)screen.y))});
+                
+                // Next spawn
+                //srand((unsigned)time(0));
+                m_next_arm_spawn = (ARM_DELAY_MS / 2) + rand() % (1000);
+            }
         }
-    }
-
-    if (randNum % 8 == 0)
-    {
-        if (m_legs.size() <= MAX_LEGS && m_next_leg_spawn < 0.f)
+        
+        if (randNum % 8 == 0)
         {
-            if (!spawn_legs())
-                return false;
-
-            Legs &new_leg = m_legs.back();
-
-            // Setting random initial position
-            //TODO: should make sure they spawn a certain distance away from each other and check collision with wall
-            //srand((unsigned)time(0));
-            new_leg.set_position({(float)((rand() % (int)screen.x)),
-                                  (float)((rand() % (int)screen.y))});
-
-            // Next spawn
-            //srand((unsigned)time(0));
-            m_next_leg_spawn = (LEG_DELAY_MS / 2) + rand() % (1000);
+            if (m_legs.size() <= MAX_LEGS && m_next_leg_spawn < 0.f)
+            {
+                if (!spawn_legs())
+                    return false;
+                
+                Legs &new_leg = m_legs.back();
+                
+                // Setting random initial position
+                //TODO: should make sure they spawn a certain distance away from each other and check collision with wall
+                //srand((unsigned)time(0));
+                new_leg.set_position({(float)((rand() % (int)screen.x)),
+                    (float)((rand() % (int)screen.y))});
+                
+                // Next spawn
+                //srand((unsigned)time(0));
+                m_next_leg_spawn = (LEG_DELAY_MS / 2) + rand() % (1000);
+            }
         }
+        
+        if ((int)difftime( time(0), start) == m_counter)
+            timer_update();
+        
+        return true;
     }
-
-    if ((int)difftime( time(0), start) == m_counter)
-        timer_update();
     return true;
 }
 
@@ -275,41 +302,48 @@ void World::draw()
     glViewport(0, 0, w, h);
     glDepthRange(0.00001, 10);
 
-    //const float clear_color[3] = { 0.3f, 0.3f, 0.8f };
-    glClearColor(1.0, 1.0, 1.0, 1.0);//0.05, 0.09, 0.16, 1.0);//clear_color[1], clear_color[1], clear_color[0], 1.0);
-    glClearDepth(1.f);
-    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-
     // Fake projection matrix, scales with respect to window coordinates
     // PS: 1.f / w in [1][1] is correct.. do you know why ? (:
     float left = 0.f;        // *-0.5;
     float top = 0.f;         // (float)h * -0.5;
     float right = (float)w;  // *0.5;
     float bottom = (float)h; // *0.5;
-
+    
     float sx = 2.f / (right - left);
     float sy = 2.f / (top - bottom);
     float tx = -(right + left) / (right - left);
     float ty = -(top + bottom) / (top - bottom);
-
+    
     mat3 projection_2D{ { sx, 0.f, 0.f },{ 0.f, sy, 0.f },{ tx, ty, 1.f } };
     
-    m_worldtexture.draw(projection_2D);
-    //TODO: Drawing entities
-    for (auto &arms : m_arms)
-        arms.draw(projection_2D);
-    for (auto &legs : m_legs)
-        legs.draw(projection_2D);
-
-    m_toolboxManager.draw(projection_2D);
-    m_player1.draw(projection_2D);
-    m_player2.draw(projection_2D);
-
-    // TODO: will need to spawn random arms and legs
-    //m_arms.draw(projection_2D);
-    //m_legs.draw(projection_2D);
-    m_water.draw(projection_2D);
-    m_freeze.draw(projection_2D);
+    if (!game_started)
+    {
+        const float clear_color[3] = { 0.3f, 0.3f, 0.8f };
+        glClearColor(clear_color[1], clear_color[1], clear_color[1], 1.0);
+        glClearDepth(1.f);
+        glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+        
+        m_button.draw(projection_2D);
+    }
+    else
+    {
+        m_worldtexture.draw(projection_2D);
+        //TODO: Drawing entities
+        for (auto &arms : m_arms)
+            arms.draw(projection_2D);
+        for (auto &legs : m_legs)
+            legs.draw(projection_2D);
+        
+        m_toolboxManager.draw(projection_2D);
+        m_player1.draw(projection_2D);
+        m_player2.draw(projection_2D);
+        
+        // TODO: will need to spawn random arms and legs
+        //m_arms.draw(projection_2D);
+        //m_legs.draw(projection_2D);
+        m_water.draw(projection_2D);
+        m_freeze.draw(projection_2D);
+    }
 
     // Presenting
     glfwSwapBuffers(m_window);
@@ -394,7 +428,27 @@ void World::on_key(GLFWwindow *, int key, int, int action, int mod)
     //
 }
 
-void World::on_mouse_move(GLFWwindow *window, double xpos, double ypos)
+void World::on_mouse_move(GLFWwindow* window, int button, int action, int mod)
 {
-   
+    // TODO: check that the part clicked is the button
+    //      will do when figure out how things are scaled properly ***
+    double xpos, ypos;
+    glfwGetCursorPos(window, &xpos, &ypos);
+    if (action == GLFW_PRESS && button == GLFW_MOUSE_BUTTON_1)
+    {
+        m_button.clickicon();
+    }
+    if (action == GLFW_RELEASE && button == GLFW_MOUSE_BUTTON_1)
+    {
+        m_button.click();
+    }
+}
+
+bool World::buttonclicked()
+{
+    if(m_button.is_clicked()) // true if the button has been clicked
+    {
+        glfwWindowShouldClose(m_window);
+    }
+    return m_button.is_clicked();
 }

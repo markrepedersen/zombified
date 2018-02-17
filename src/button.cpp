@@ -58,9 +58,9 @@ bool Button::init()
     
     // Setting initial values
     b_is_clicked = false;
-    m_scale.x = -0.95f;
-    m_scale.y = 0.95f;
-    m_position = { 1200.f, 560.f };
+    m_scale.x = -0.95f* ViewHelper::getRatio();
+    m_scale.y = 0.95f* ViewHelper::getRatio();
+    m_position = { 640.f* ViewHelper::getRatio(), 360.f* ViewHelper::getRatio() };
     
     return true;
 }
@@ -115,11 +115,11 @@ void Button::draw(const mat3& projection)
 
 void Button::click()
 {
-    b_is_clicked = true;
     if(!button_texture.load_from_file(startworld_textures_path("startbutton unclick.png")))
     {
         fprintf(stderr, "Failed to load start button texture!");
     }
+    b_is_clicked = true;
 }
 
 void Button::clickicon()

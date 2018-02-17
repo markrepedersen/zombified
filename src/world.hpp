@@ -15,6 +15,7 @@
 #include "freeze.hpp"
 #include "worldtexture.hpp"
 #include "viewHelper.hpp"
+#include "button.hpp"
 // stlib
 #include <vector>
 #include <random>
@@ -48,6 +49,12 @@ public:
 	bool is_over()const;
     
     void timer_update();
+    
+    //start button
+    bool buttonclicked();
+    
+    // true if the start button was pressed to start the main game world
+    bool game_started;
 
 private:
 	// Generates a new turtle
@@ -59,7 +66,8 @@ private:
 
 	// !!! INPUT CALLBACK FUNCTIONS
 	void on_key(GLFWwindow*, int key, int, int action, int mod);
-	void on_mouse_move(GLFWwindow* window, double xpos, double ypos);
+	//void on_mouse_move(GLFWwindow* window, double xpos, double ypos);
+    void on_mouse_move(GLFWwindow* window, int button, int action, int mod);
 
 private:
 	// Window hjandle
@@ -98,4 +106,6 @@ private:
 	// C++ rng
 	std::default_random_engine m_rng;
 	std::uniform_real_distribution<float> m_dist; // default 0..1c
+    
+    Button m_button;
 };

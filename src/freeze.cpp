@@ -33,7 +33,7 @@ bool Freeze::init()
     
     // counterclockwise as it's the default opengl front winding direction
     uint16_t indices[] = { 0, 3, 1, 1, 3, 2 };
-    
+  
     // Clearing errors
     gl_flush_errors();
     
@@ -55,7 +55,7 @@ bool Freeze::init()
     // Loading shaders
     if (!effect.load_from_file(shader_path("textured.vs.glsl"), shader_path("textured.fs.glsl")))
         return false;
-    
+
     // Setting initial values
     m_scale.x = -0.10f * ViewHelper::getRatio();
     m_scale.y = 0.10f * ViewHelper::getRatio();
