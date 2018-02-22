@@ -163,7 +163,7 @@ void World::destroy()
 bool World::update(float elapsed_ms)
 {
     int w, h;
-    glfwGetFramebufferSize(m_window, &w, &h);
+    glfwGetWindowSize(m_window, &w, &h);
     vec2 screen = {(float)w, (float)h};
 
     //TODO: check for
@@ -174,7 +174,7 @@ bool World::update(float elapsed_ms)
     //item to player collision?
     
     // start page
-    while (!game_started)
+    if (!game_started)
     {
         if(m_button.is_clicked())
         {
@@ -182,7 +182,7 @@ bool World::update(float elapsed_ms)
             m_button.destroy();
             
             // initialize everything for the main game world once the button is pressed
-            m_min = 6;
+            m_min = 2;
             m_sec = 0;
             m_counter = 5;
             start = time(0);

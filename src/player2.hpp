@@ -7,7 +7,6 @@
 #include "water.hpp"
 #include "antidote.hpp"
 
-
 class Player2 : public Renderable
 {
     static Texture player2_texture;
