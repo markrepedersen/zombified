@@ -187,7 +187,7 @@ bool World::update(float elapsed_ms)
             m_counter = 5;
             start = time(0);
             m_worldtexture.init(screen);
-            m_toolboxManager.init({screen.x, screen.y+200});
+            m_toolboxManager.init({screen.x, screen.y});
             m_player1.init(screen) && m_player2.init(screen)&& m_antidote.init(screen);
         }
         else

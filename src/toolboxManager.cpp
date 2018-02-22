@@ -30,7 +30,7 @@ void ToolboxManager::draw(const mat3& projection)
 {
     //m_toolbox.draw(projection)
     float initialOffset = 0.f;
-    float offset = m_screen.x /65;
+    float offset = (m_screen.x /65);
     float index = 0.f;
     
     std::list<int>::iterator it;

@@ -24,7 +24,8 @@ public:
 
 private:
         vec2 m_position; // Window coordinates
-	    vec2 m_scale; // 1.f in each dimension. 1.f is as big as the associated texture
+        vec2 m_scale_original; // the scale of the texture, before scaling by viewHelper's getRatio();
+	    vec2 m_scale; // 1.f in each dimension. 1.f is as big as the associated texture, already scaled by the viewHelper's getRatio();
 	    float m_rotation; // in radians
 
 

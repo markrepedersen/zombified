@@ -58,12 +58,14 @@ bool ToolboxSlot::init(float initialOffset, float offset, float index, float y, 
 	if (!effect.load_from_file(shader_path("textured.vs.glsl"), shader_path("textured.fs.glsl")))
 		return false;
 
-    m_scale.x = 0.25f * ViewHelper::getRatio();
-	m_scale.y = 0.25f* ViewHelper::getRatio();
+	m_scale_original.x = 0.25f;
+	m_scale_original.y = 0.25f;
+    m_scale.x = m_scale_original.x * ViewHelper::getRatio();
+	m_scale.y = m_scale_original.y * ViewHelper::getRatio();
 	m_rotation = 0.f;
 
-    float objectWidth = std::fabs(m_scale.x) * toolboxSlot_texture.width;
-    m_position = {(initialOffset + ((offset + objectWidth) * index ))* ViewHelper::getRatio(),
+    float objectWidth = std::fabs(m_scale_original.x) * toolboxSlot_texture.width;
+    m_position = {(initialOffset + ((offset + objectWidth) * (index) ))* ViewHelper::getRatio(),
         y* ViewHelper::getRatio()};
     
 
