@@ -1,6 +1,7 @@
 #pragma once
 
 #include "common.hpp"
+//#include "world.hpp"
 #include "viewHelper.hpp"
 
 class Arms : public Renderable
@@ -21,7 +22,10 @@ public:
     
     // True if the salmon is alive
     bool is_alive()const;
+    
     void destroy();
+    
+    vec2 get_bounding_box()const;
     
 private:
     bool m_is_alive; // True if the salmon is alive

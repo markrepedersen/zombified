@@ -475,3 +475,60 @@ void Player1::animate()
         }
     }
 }
+
+// Simple bounding box collision check,
+bool Player1::collides_with(const Freeze& freeze)
+{
+    float dx = m_position.x - freeze.get_position().x;
+    float dy = m_position.y - freeze.get_position().y;
+    float d_sq = dx * dx + dy * dy;
+    float other_r = std::max(freeze.get_bounding_box().x, freeze.get_bounding_box().y);
+    float my_r = std::max(m_scale.x, m_scale.y);
+    float r = std::max(other_r, my_r);
+    r *= 0.6f;
+    if (d_sq < r * r)
+        return true;
+    return false;
+}
+
+bool Player1::collides_with(const Water& water)
+{
+    float dx = m_position.x - water.get_position().x;
+    float dy = m_position.y - water.get_position().y;
+    float d_sq = dx * dx + dy * dy;
+    float other_r = std::max(water.get_bounding_box().x, water.get_bounding_box().y);
+    float my_r = std::max(m_scale.x, m_scale.y);
+    float r = std::max(other_r, my_r);
+    r *= 0.6f;
+    if (d_sq < r * r)
+        return true;
+    return false;
+}
+
+bool Player1::collides_with(const Arms& arm)
+{
+    float dx = m_position.x - arm.get_position().x;
+    float dy = m_position.y - arm.get_position().y;
+    float d_sq = dx * dx + dy * dy;
+    float other_r = std::max(arm.get_bounding_box().x, arm.get_bounding_box().y);
+    float my_r = std::max(m_scale.x, m_scale.y);
+    float r = std::max(other_r, my_r);
+    r *= 0.6f;
+    if (d_sq < r * r)
+        return true;
+    return false;
+}
+
+bool Player1::collides_with(const Antidote& antidote)
+{
+    float dx = m_position.x - antidote.get_position().x;
+    float dy = m_position.y - antidote.get_position().y;
+    float d_sq = dx * dx + dy * dy;
+    float other_r = std::max(antidote.get_bounding_box().x, antidote.get_bounding_box().y);
+    float my_r = std::max(m_scale.x, m_scale.y);
+    float r = std::max(other_r, my_r);
+    r *= 0.6f;
+    if (d_sq < r * r)
+        return true;
+    return false;
+}

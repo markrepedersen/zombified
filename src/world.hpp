@@ -16,6 +16,7 @@
 #include "worldtexture.hpp"
 #include "viewHelper.hpp"
 #include "button.hpp"
+#include "antidote.hpp"
 // stlib
 #include <vector>
 #include <random>
@@ -49,9 +50,11 @@ public:
 	bool is_over()const;
     
     void timer_update();
+    void check_add_tools(vec2 screen);
+    bool random_spawn(float elapsed_ms, vec2 screen);
     
     //start button
-    bool buttonclicked();
+    //bool buttonclicked();
     
     // true if the start button was pressed to start the main game world
     bool game_started;
@@ -60,6 +63,8 @@ private:
 	// Generates a new turtle
 	bool spawn_arms();
 	bool spawn_legs();
+    bool spawn_freeze();
+    bool spawn_water();
 
 	// Generates a new fish
 	//bool spawn_fish();
@@ -68,7 +73,7 @@ private:
 	void on_key(GLFWwindow*, int key, int, int action, int mod);
 	//void on_mouse_move(GLFWwindow* window, double xpos, double ypos);
     void on_mouse_move(GLFWwindow* window, int button, int action, int mod);
-
+    
 private:
 	// Window hjandle
 	GLFWwindow* m_window;
@@ -84,20 +89,18 @@ private:
     ToolboxManager m_toolboxManager;
     Player1 m_player1;
     Player2 m_player2;
-    //Arms m_arms;
-    //Legs m_legs;
-    Water m_water;
-    Freeze m_freeze;
-//	Salmon m_salmon;
-//	std::vector<Turtle> m_turtles;
-//	std::vector<Fish> m_fish;
+    Antidote m_antidote;
+
     std::vector<Arms> m_arms;
     std::vector<Legs> m_legs;
-//
-//	float m_current_speed;
+    std::vector<Freeze> m_freeze;
+    std::vector<Water> m_water;
+    std::vector<Freeze> m_freeze_collected;
+    std::vector<Water> m_water_collected;
+
 	float m_next_arm_spawn;
     float m_next_leg_spawn;
-//	float m_next_fish_spawn;
+    float m_next_spawn;
 	
 	//Mix_Music* m_background_music;
 	//Mix_Chunk* m_salmon_dead_sound;

@@ -20,7 +20,7 @@ public:
         //update slot
         void update();
 
-        void draw(const mat3& projection) override;     
+        void draw(const mat3& projection) override;
 
 private:
         vec2 m_position; // Window coordinates

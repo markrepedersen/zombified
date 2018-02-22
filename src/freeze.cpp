@@ -113,6 +113,16 @@ void Freeze::draw(const mat3& projection)
     glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_SHORT, nullptr);
 }
 
+void Freeze::set_position(vec2 position)
+{
+    m_position = position;
+}
+
+void Freeze::set_scale(vec2 scale)
+{
+    m_scale = scale;
+}
+
 vec2 Freeze::get_position()const
 {
     return m_position;
@@ -121,4 +131,35 @@ vec2 Freeze::get_position()const
 bool Freeze::is_alive()const
 {
     return m_is_alive;
+}
+
+void Freeze::destroy()
+{
+    glDeleteBuffers(1, &mesh.vbo);
+    glDeleteBuffers(1, &mesh.ibo);
+    glDeleteBuffers(1, &mesh.vao);
+    
+    glDeleteShader(effect.vertex);
+    glDeleteShader(effect.fragment);
+    glDeleteShader(effect.program);
+}
+
+vec2 Freeze::get_bounding_box()const
+{
+    // fabs is to avoid negative scale due to the facing direction
+    return { std::fabs(m_scale.x) * freeze_texture.width, std::fabs(m_scale.y) * freeze_texture.height };
+}
+
+bool Freeze::collides_with(const Freeze& freeze)
+{
+    float dx = m_position.x - freeze.get_position().x;
+    float dy = m_position.y - freeze.get_position().y;
+    float d_sq = dx * dx + dy * dy;
+    float other_r = std::max(freeze.get_bounding_box().x, freeze.get_bounding_box().y);
+    float my_r = std::max(m_scale.x, m_scale.y);
+    float r = std::max(other_r, my_r);
+    r *= 0.6f;
+    if (d_sq < r * r)
+        return true;
+    return false;
 }

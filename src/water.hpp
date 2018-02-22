@@ -13,11 +13,18 @@ public:
     // Renders the salmon
     void draw(const mat3& projection)override;
 
+    void set_position(vec2 position);
     // Returns the current salmon position
     vec2 get_position()const;
     
+    void set_scale(vec2 scale);
+    
     // True if the salmon is alive
     bool is_alive()const;
+    
+    void destroy();
+    
+    vec2 get_bounding_box()const;
     
 private:
     bool m_is_alive; // True if the salmon is alive

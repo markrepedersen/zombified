@@ -138,3 +138,9 @@ void Arms::destroy()
     glDeleteShader(effect.fragment);
     glDeleteShader(effect.program);
 }
+
+vec2 Arms::get_bounding_box()const
+{
+    // fabs is to avoid negative scale due to the facing direction
+    return { std::fabs(m_scale.x) * arms_texture.width, std::fabs(m_scale.y) * arms_texture.height };
+}

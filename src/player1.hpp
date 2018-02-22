@@ -4,6 +4,10 @@
 #include "viewHelper.hpp"
 #include <list>
 #include <iostream>
+#include "freeze.hpp"
+#include "water.hpp"
+#include "arms.hpp"
+#include "antidote.hpp"
 
 class Player1 : public Renderable
 {
@@ -28,6 +32,11 @@ public:
     void set_key(int direction, bool pressed);
 
     void animate();
+    
+    bool collides_with(const Freeze& freeze);
+    bool collides_with(const Water& water);
+    bool collides_with(const Arms& arm);
+    bool collides_with(const Antidote& antidote);
 
 private:
     bool m_is_alive; // True if the salmon is alive

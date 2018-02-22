@@ -71,8 +71,6 @@ bool ToolboxSlot::init(float initialOffset, float offset, float index, float y, 
 
 }
 
-
-
 // Releases all the associated resources
 void ToolboxSlot::destroy()
 {
