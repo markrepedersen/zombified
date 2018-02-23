@@ -2,6 +2,8 @@
 
 #include "common.hpp"
 #include "viewHelper.hpp"
+#include "toolboxmanager.hpp"
+#include <vector>
 
 class Freeze : public Renderable
 {

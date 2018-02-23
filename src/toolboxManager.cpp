@@ -86,9 +86,13 @@ bool ToolboxManager::addSlot(int player)
     return false;
 }
 
-void ToolboxManager::decreaseSlot()
+void ToolboxManager::decreaseSlot(int player)
 {
-    m_listOfSlotsPlayer1.pop_back();
+    if (player == 1)
+        m_listOfSlotsPlayer1.pop_front();
+    
+    if (player == 2)
+        m_listOfSlotsPlayer2.pop_front();
 }
 
 int ToolboxManager::addItem(int itemIndex, int player)
@@ -109,8 +113,6 @@ int ToolboxManager::addItem(int itemIndex, int player)
             }
             count++;
         }
-        //max_slots_filled1 = true;
-        //return 100;
     }
     
     if (player ==2)
@@ -123,16 +125,22 @@ int ToolboxManager::addItem(int itemIndex, int player)
             }
             count++;
         }
-        //max_slots_filled2 = true;
-        //return 100;
     }
     
     return 100;
 }
 
-void ToolboxManager::useItem()
+int ToolboxManager::useItem(int player)
 {
-    m_listOfSlotsPlayer1.pop_front();
+    int item_number;
+    
+    if (player == 1)
+        item_number = m_listOfSlotsPlayer1.front();
+
+    if (player == 2)
+        item_number = m_listOfSlotsPlayer2.front();
+    
+    return item_number;
 }
 
 vec2 ToolboxManager::new_tool_position(float index, int player)
@@ -147,6 +155,27 @@ vec2 ToolboxManager::new_tool_position(float index, int player)
     
     return {(initialOffset + (offset * index ))* ViewHelper::getRatio(),
         580.f* ViewHelper::getRatio()};
+}
+
+void ToolboxManager::move_antidoteback(int player)
+{
+
+    if (player == 1)
+        m_listOfSlotsPlayer1.push_back(3);
+    
+    if (player == 2)
+        m_listOfSlotsPlayer2.push_back(3);
+    
+}
+
+std::list<int> ToolboxManager::getListOfSlot_1()
+{
+    return m_listOfSlotsPlayer1;
+}
+
+std::list<int> ToolboxManager::getListOfSlot_2()
+{
+    return m_listOfSlotsPlayer2;
 }
 
 

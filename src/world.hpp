@@ -53,6 +53,9 @@ public:
     void check_add_tools(vec2 screen);
     bool random_spawn(float elapsed_ms, vec2 screen);
     
+    void use_tool_1(int tool_number);
+    void use_tool_2(int tool_number);
+    
     //start button
     //bool buttonclicked();
     
@@ -65,6 +68,9 @@ private:
 	bool spawn_legs();
     bool spawn_freeze();
     bool spawn_water();
+    
+    void shift_1();
+    void shift_2();
 
 	// Generates a new fish
 	//bool spawn_fish();
@@ -73,6 +79,9 @@ private:
 	void on_key(GLFWwindow*, int key, int, int action, int mod);
 	//void on_mouse_move(GLFWwindow* window, double xpos, double ypos);
     void on_mouse_move(GLFWwindow* window, int button, int action, int mod);
+    
+    void collect_freeze(Freeze freeze, int player, float index);
+    void collect_water(Water water, int player, float index);
     
 private:
 	// Window hjandle
@@ -95,8 +104,13 @@ private:
     std::vector<Legs> m_legs;
     std::vector<Freeze> m_freeze;
     std::vector<Water> m_water;
-    std::vector<Freeze> m_freeze_collected;
-    std::vector<Water> m_water_collected;
+    //std::vector<Freeze> m_freeze_collected;
+    //std::vector<Water> m_water_collected;
+    
+    std::vector<Freeze> m_freeze_collected_1;
+    std::vector<Water> m_water_collected_1;
+    std::vector<Freeze> m_freeze_collected_2;
+    std::vector<Water> m_water_collected_2;
 
 	float m_next_arm_spawn;
     float m_next_leg_spawn;

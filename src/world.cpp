@@ -14,10 +14,10 @@ namespace
 
 //TODO
 //insert constants such as max_zombies,
-const size_t MAX_ARMS = 5;
-const size_t MAX_LEGS = 5;
-const size_t MAX_FREEZE = 5;
-const size_t MAX_WATER = 5;
+const size_t MAX_ARMS = 3;
+const size_t MAX_LEGS = 3;
+const size_t MAX_FREEZE = 2;
+const size_t MAX_WATER = 2;
 const size_t ARM_DELAY_MS = 1000;
 const size_t LEG_DELAY_MS = 1000;
 const size_t DELAY_MS = 1000;
@@ -147,14 +147,22 @@ void World::destroy()
     //m_toolboxManager.destroy();
     //m_player1.destroy();
     //m_player2.destroy();
-    //m_water.destroy();
-   // m_freeze.destroy();
     for (auto& legs : m_legs)
      	legs.destroy();
     for (auto& arms : m_arms)
      	arms.destroy();
     for (auto& freeze : m_freeze)
         freeze.destroy();
+    for (auto& water : m_water)
+        water.destroy();
+    for (auto &freeze_collected : m_freeze_collected_1)
+        freeze_collected.destroy();
+    for (auto &water_collected : m_water_collected_1)
+        water_collected.destroy();
+    for (auto &freeze_collected : m_freeze_collected_2)
+        freeze_collected.destroy();
+    for (auto &water_collected : m_water_collected_2)
+        water_collected.destroy();
 
     glfwDestroyWindow(m_window);
 }
@@ -189,12 +197,6 @@ bool World::update(float elapsed_ms)
             m_worldtexture.init(screen);
             m_toolboxManager.init({screen.x, screen.y});
             m_player1.init(screen) && m_player2.init(screen)&& m_antidote.init(screen);
-        }
-        else
-        {
-        // Processes system messages, if this wasn't present the window would become unresponsive
-            glfwPollEvents();
-            return true;
         }
     }
     
@@ -296,22 +298,23 @@ void World::draw()
             arms.draw(projection_2D);
         for (auto &legs : m_legs)
             legs.draw(projection_2D);
-        for (auto &freeze : m_freeze_collected)
-            freeze.draw(projection_2D);
         for (auto &freeze : m_freeze)
             freeze.draw(projection_2D);
         for (auto &water : m_water)
             water.draw(projection_2D);
-        for (auto &water : m_water_collected)
-            water.draw(projection_2D);
+        
+        for (auto &water_collected : m_water_collected_1)
+            water_collected.draw(projection_2D);
+        for (auto &water_collected : m_water_collected_2)
+            water_collected.draw(projection_2D);
+        
+        for (auto &freeze_collected : m_freeze_collected_1)
+            freeze_collected.draw(projection_2D);
+        for (auto &freeze_collected : m_freeze_collected_2)
+            freeze_collected.draw(projection_2D);
+        
         m_player1.draw(projection_2D);
         m_player2.draw(projection_2D);
-        
-        // TODO: will need to spawn random arms and legs
-        //m_arms.draw(projection_2D);
-        //m_legs.draw(projection_2D);
-        //m_water.draw(projection_2D);
-        //m_freeze.draw(projection_2D);
     }
 
     // Presenting
@@ -349,6 +352,12 @@ void World::on_key(GLFWwindow *, int key, int, int action, int mod)
         m_player2.set_key(3, true);
     if (action == GLFW_RELEASE && key == GLFW_KEY_D)
         m_player2.set_key(3, false);
+    
+    // use tools
+    if (action == GLFW_PRESS && key == GLFW_KEY_RIGHT_SHIFT)
+        use_tool_1(m_toolboxManager.useItem(1));
+    if (action == GLFW_PRESS && key == GLFW_KEY_Q)
+        use_tool_2(m_toolboxManager.useItem(2));
 
     //	// Resetting game
     //	if (action == GLFW_RELEASE && key == GLFW_KEY_R)
@@ -387,7 +396,7 @@ void World::on_mouse_move(GLFWwindow* window, int button, int action, int mod)
     }
 }
 
-//======== SPAWNS =======
+//======== SPAWNING =======
 // Creates a new turtle and if successfull adds it to the list of turtles
 bool World::spawn_arms()
 {
@@ -437,7 +446,82 @@ bool World::spawn_water()
     return false;
 }
 
-//==== add items to toolbox =====
+//TODO: should make sure they spawn a certain distance away from each other and not on top of each other
+//  check collision with wall
+bool World::random_spawn(float elapsed_ms, vec2 screen)
+{
+    m_next_arm_spawn -= elapsed_ms;
+    m_next_leg_spawn -= elapsed_ms;
+    m_next_spawn -= elapsed_ms;
+    
+    srand((unsigned)time(0));
+    int randNum = rand() % (1000);
+    
+    if (randNum % 13 == 0)
+    {
+        if (m_arms.size() <= MAX_ARMS && m_next_arm_spawn < 0.f)
+        {
+            if (!spawn_arms())
+                return false;
+            
+            Arms &new_arm = m_arms.back();
+            
+            // Setting random initial position
+            new_arm.set_position({(float)((rand() % (int)screen.x)),
+                (float)((rand() % (int)screen.y))});
+            
+            // Next spawn
+            //srand((unsigned)time(0));
+            m_next_arm_spawn = (ARM_DELAY_MS / 2) + rand() % (1000);
+        }
+    }
+    
+    if (randNum % 19 == 0)
+    {
+        if (m_legs.size() <= MAX_LEGS && m_next_leg_spawn < 0.f)
+        {
+            if (!spawn_legs())
+                return false;
+            
+            Legs &new_leg = m_legs.back();
+            
+            new_leg.set_position({(float)((rand() % (int)screen.x)),
+                (float)((rand() % (int)screen.y))});
+            
+            m_next_leg_spawn = (LEG_DELAY_MS / 2) + rand() % (1000);
+        }
+    }
+    if (randNum % 7 == 0)
+    {
+        if (m_freeze.size() <= MAX_FREEZE && m_next_spawn < 0.f)
+        {
+            if (!spawn_freeze())
+                return false;
+            
+            Freeze &new_freeze = m_freeze.back();
+            new_freeze.set_position({(float)((rand() % (int)screen.x)),
+                (float)((rand() % (int)screen.y))});
+            
+            m_next_spawn = (DELAY_MS / 2) + rand() % (1000);
+        }
+    }
+    if (randNum % 9 == 0)
+    {
+        if (m_water.size() <= MAX_WATER && m_next_spawn < 0.f)
+        {
+            if (!spawn_water())
+                return false;
+            Water &new_water = m_water.back();
+            new_water.set_position({(float)((rand() % (int)screen.x)),
+                (float)((rand() % (int)screen.y))});
+            
+            m_next_spawn = (DELAY_MS / 2) + rand() % (1000);
+        }
+    }
+    return true;
+}
+
+//==== ADD ITEMS TO TOOLBOX =====
 void World::check_add_tools(vec2 screen)
 {
 
@@ -457,15 +541,10 @@ void World::check_add_tools(vec2 screen)
             float index = (float)m_toolboxManager.addItem(1, collided);
             if ((int)index != 100)
             {
-                Freeze newfreeze;
-                newfreeze.init();
-                m_freeze_collected.emplace_back(newfreeze);
-                Freeze &new_freeze = m_freeze_collected.back();
-                new_freeze.set_position(m_toolboxManager.new_tool_position(index, collided));
-                new_freeze.set_scale({-0.08f * ViewHelper::getRatio(), 0.08f * ViewHelper::getRatio()});
-                
                 m_freeze.erase(m_freeze.begin()+freezecount);
-                freeze.destroy();
+                collect_freeze(freeze, collided, index);
+                //fprintf(stderr, "freeze count %d \n", freezecount);
+                
             }
         
         }
@@ -487,15 +566,9 @@ void World::check_add_tools(vec2 screen)
             float index = (float)m_toolboxManager.addItem(2, collided);
             if ((int)index != 100)
             {
-                Water newwater;
-                newwater.init();
-                m_water_collected.emplace_back(newwater);
-                Water &new_water = m_water_collected.back();
-                new_water.set_position(m_toolboxManager.new_tool_position(index, collided));
-                new_water.set_scale({-0.08f * ViewHelper::getRatio(), 0.08f * ViewHelper::getRatio()});
-                
                 m_water.erase(m_water.begin()+watercount);
-                water.destroy();
+                collect_water(water, collided, index);
+                //fprintf(stderr, "water count %d \n", watercount);
             }
         }
         watercount++;
@@ -517,6 +590,8 @@ void World::check_add_tools(vec2 screen)
             {
                 m_arms.erase(m_arms.begin()+armcount);
                 arm.destroy();
+                //fprintf(stderr, "arm count %d \n", armcount);
+                
             }
         }
         armcount++;
@@ -528,14 +603,18 @@ void World::check_add_tools(vec2 screen)
         collided = 1;
     if (m_player2.collides_with(m_antidote))
         collided = 2;
-    if (collided != 0)
+    if (collided != 0 && m_antidote.belongs_to == 0)
     {
         float index = (float)m_toolboxManager.addItem(3, collided);
         if ((int)index != 100)
         {
+            if (collided == 1)
+                m_antidote.belongs_to = 1;
+            if (collided == 2)
+                m_antidote.belongs_to = 2;
             m_antidote.set_position(m_toolboxManager.new_tool_position(index, collided));
             m_antidote.set_scale({-0.08f * ViewHelper::getRatio(), 0.08f * ViewHelper::getRatio()});
-            
+            //fprintf(stderr, "antidote belongs to %d \n", m_antidote.belongs_to);
         }
         collided = 0;
     }
@@ -543,82 +622,160 @@ void World::check_add_tools(vec2 screen)
     
 }
 
-bool World::random_spawn(float elapsed_ms, vec2 screen)
+// =========== COLLECT AND SET TOOLS ===================
+void World::collect_freeze(Freeze freeze, int player, float index)
 {
-    m_next_arm_spawn -= elapsed_ms;
-    m_next_leg_spawn -= elapsed_ms;
-    m_next_spawn -= elapsed_ms;
-    
-    srand((unsigned)time(0));
-    int randNum = rand() % (1000);
-    
-    if (randNum % 3 == 0)
+    if (player == 1)
     {
-        if (m_arms.size() <= MAX_ARMS && m_next_arm_spawn < 0.f)
-        {
-            if (!spawn_arms())
-                return false;
-            
-            Arms &new_arm = m_arms.back();
-            
-            // Setting random initial position
-            //TODO: should make sure they spawn a certain distance away from each other and check collision with wall
-            //TODO: should we scale this with ViewHelper::getRatio();???
-            //srand((unsigned)time(0));
-            new_arm.set_position({(float)((rand() % (int)screen.x)),
-                (float)((rand() % (int)screen.y))});
-            
-            // Next spawn
-            //srand((unsigned)time(0));
-            m_next_arm_spawn = (ARM_DELAY_MS / 2) + rand() % (1000);
-        }
+        m_freeze_collected_1.emplace_back(freeze);
+        Freeze &new_freeze = m_freeze_collected_1.back();
+        new_freeze.set_position(m_toolboxManager.new_tool_position(index, player));
+        new_freeze.set_scale({-0.08f * ViewHelper::getRatio(), 0.08f * ViewHelper::getRatio()});
     }
-    
-    if (randNum % 8 == 0)
+    if (player == 2)
     {
-        if (m_legs.size() <= MAX_LEGS && m_next_leg_spawn < 0.f)
-        {
-            if (!spawn_legs())
-                return false;
-            
-            Legs &new_leg = m_legs.back();
-            
-            // Setting random initial position
-            //TODO: should make sure they spawn a certain distance away from each other and check collision with wall
-            //srand((unsigned)time(0));
-            new_leg.set_position({(float)((rand() % (int)screen.x)),
-                (float)((rand() % (int)screen.y))});
-            
-            m_next_leg_spawn = (LEG_DELAY_MS / 2) + rand() % (1000);
-        }
+        m_freeze_collected_2.emplace_back(freeze);
+        Freeze &new_freeze = m_freeze_collected_2.back();
+        new_freeze.set_position(m_toolboxManager.new_tool_position(index, player));
+        new_freeze.set_scale({-0.08f * ViewHelper::getRatio(), 0.08f * ViewHelper::getRatio()});
     }
-    if (randNum % 7 == 0)
-    {
-        if (m_freeze.size() <= MAX_FREEZE && m_next_spawn < 0.f)
-        {
-            if (!spawn_freeze())
-                return false;
-            
-            Freeze &new_freeze = m_freeze.back();
-            new_freeze.set_position({(float)((rand() % (int)screen.x)),
-                (float)((rand() % (int)screen.y))});
 
-            m_next_spawn = (DELAY_MS / 2) + rand() % (1000);
-        }
-    }
-    if (randNum % 9 == 0)
-    {
-        if (m_water.size() <= MAX_WATER && m_next_spawn < 0.f)
-        {
-            if (!spawn_water())
-                return false;
-            Water &new_water = m_water.back();
-            new_water.set_position({(float)((rand() % (int)screen.x)),
-                (float)((rand() % (int)screen.y))});
+}
 
-            m_next_spawn = (DELAY_MS / 2) + rand() % (1000);
+void World::collect_water(Water water, int player, float index)
+{
+    if (player == 1)
+    {
+        m_water_collected_1.emplace_back(water);
+        Water &new_water = m_water_collected_1.back();
+        new_water.set_position(m_toolboxManager.new_tool_position(index, player));
+        new_water.set_scale({-0.08f * ViewHelper::getRatio(), 0.08f * ViewHelper::getRatio()});
+    }
+    if (player == 2)
+    {
+        m_water_collected_2.emplace_back(water);
+        Water &new_water = m_water_collected_2.back();
+        new_water.set_position(m_toolboxManager.new_tool_position(index, player));
+        new_water.set_scale({-0.08f * ViewHelper::getRatio(), 0.08f * ViewHelper::getRatio()});
+    }
+}
+
+
+// =========== USE TOOLS and SHIFT the ones unused ===================
+void World::use_tool_1(int tool_number)
+{
+    if (tool_number == 1)
+    {
+        m_freeze_collected_1.erase(m_freeze_collected_1.begin());
+        m_toolboxManager.decreaseSlot(1);
+    }
+    if (tool_number == 2)
+    {
+        m_water_collected_1.erase(m_water_collected_1.begin());
+        m_toolboxManager.decreaseSlot(1);
+    }
+    
+    //antidote is the first tool, move it to the back
+    if (tool_number == 3)
+    {
+        m_toolboxManager.decreaseSlot(1);
+        m_toolboxManager.addSlot(1);
+        
+        float index = (float)m_toolboxManager.addItem(3, 1);
+        if ((int)index != 100)
+        {
+            m_antidote.set_position(m_toolboxManager.new_tool_position(index, 1));
+            m_antidote.set_scale({-0.08f * ViewHelper::getRatio(), 0.08f * ViewHelper::getRatio()});
         }
     }
-    return true;
+    shift_1();
+}
+
+void World::shift_1()
+{
+    std::list<int> list = m_toolboxManager.getListOfSlot_1();
+    std::list<int>::iterator it;
+    int freezecount = 0;
+    int watercount = 0;
+    float index = 0.f;
+    for (it = list.begin(); it != list.end(); ++it)
+    {
+        if (*it == 1)
+        {
+            Freeze& freeze = m_freeze_collected_1.at(freezecount);
+            freeze.set_position(m_toolboxManager.new_tool_position(index, 1));
+            freezecount++;
+        }
+        if (*it == 2)
+        {
+            Water& water = m_water_collected_1.at(watercount);
+            water.set_position(m_toolboxManager.new_tool_position(index, 1));
+            watercount++;
+        }
+        if (*it == 3)
+        {
+            m_antidote.set_position(m_toolboxManager.new_tool_position(index, 1));
+        }
+        index++;
+    }
+}
+    
+void World::use_tool_2(int tool_number)
+{
+    if (tool_number == 1)
+    {
+        m_freeze_collected_2.erase(m_freeze_collected_2.begin());
+        m_toolboxManager.decreaseSlot(2);
+    }
+    if (tool_number == 2)
+    {
+        m_water_collected_2.erase(m_water_collected_2.begin());
+        m_toolboxManager.decreaseSlot(2);
+    }
+    
+    //antidote is the first tool, move it to the back
+    if (tool_number == 3)
+    {
+        m_toolboxManager.decreaseSlot(2);
+        m_toolboxManager.addSlot(2);
+        
+        float index = (float)m_toolboxManager.addItem(3, 2);
+        if ((int)index != 100)
+        {
+            m_antidote.set_position(m_toolboxManager.new_tool_position(index, 2));
+            m_antidote.set_scale({-0.08f * ViewHelper::getRatio(), 0.08f * ViewHelper::getRatio()});
+        }
+    }
+    shift_2();
+    
+}
+
+void World::shift_2()
+{
+    std::list<int> list = m_toolboxManager.getListOfSlot_2();
+    std::list<int>::iterator it;
+    int freezecount = 0;
+    int watercount = 0;
+    float index = 0.f;
+    for (it = list.begin(); it != list.end(); ++it)
+    {
+        if (*it == 1)
+        {
+            Freeze& freeze = m_freeze_collected_2.at(freezecount);
+            freeze.set_position(m_toolboxManager.new_tool_position(index, 2));
+            freezecount++;
+        }
+        if (*it == 2)
+        {
+            Water& water = m_water_collected_2.at(watercount);
+            water.set_position(m_toolboxManager.new_tool_position(index, 2));
+            watercount++;
+        }
+        if (*it == 3)
+        {
+            m_antidote.set_position(m_toolboxManager.new_tool_position(index, 2));
+        }
+        index++;
+    }
 }
 

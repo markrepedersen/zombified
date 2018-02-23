@@ -62,6 +62,7 @@ bool Antidote::init(vec2 screen)
     m_is_alive = true;
     m_position = { screen.x/2 * ViewHelper::getRatio(), screen.y/2* ViewHelper::getRatio()};
     
+    belongs_to = 0;
     return true;
 }
 

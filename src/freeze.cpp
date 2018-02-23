@@ -163,3 +163,4 @@ bool Freeze::collides_with(const Freeze& freeze)
         return true;
     return false;
 }
+
