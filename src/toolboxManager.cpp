@@ -178,5 +178,9 @@ std::list<int> ToolboxManager::getListOfSlot_2()
     return m_listOfSlotsPlayer2;
 }
 
-
+void ToolboxManager::destroy()
+{
+    m_listOfSlotsPlayer1.clear();
+    m_listOfSlotsPlayer2.clear();
+}
 

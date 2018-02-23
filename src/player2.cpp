@@ -512,3 +512,13 @@ bool Player2::collides_with(const Antidote& antidote)
     return false;
 }
 
+void Player2::destroy()
+{
+    glDeleteBuffers(1, &mesh.vbo);
+    glDeleteBuffers(1, &mesh.ibo);
+    glDeleteBuffers(1, &mesh.vao);
+    
+    glDeleteShader(effect.vertex);
+    glDeleteShader(effect.fragment);
+    glDeleteShader(effect.program);
+}

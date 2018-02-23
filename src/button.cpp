@@ -144,4 +144,5 @@ void Button::destroy()
     glDeleteShader(effect.vertex);
     glDeleteShader(effect.fragment);
     glDeleteShader(effect.program);
+    b_is_clicked = false;
 }

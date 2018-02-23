@@ -58,9 +58,6 @@ public:
     
     //start button
     //bool buttonclicked();
-    
-    // true if the start button was pressed to start the main game world
-    bool game_started;
 
 private:
 	// Generates a new turtle
@@ -86,6 +83,10 @@ private:
 private:
 	// Window hjandle
 	GLFWwindow* m_window;
+    
+    // true if the start button was pressed to start the main game world
+    bool game_started;
+    bool game_over;
 
 	// Number of fish eaten by the salmon, displayed in the window title
 	unsigned int m_min;

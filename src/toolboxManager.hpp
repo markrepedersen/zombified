@@ -43,6 +43,7 @@ public:
     
     void move_antidoteback(int player);
     
+    void destroy();
     //bool max_slots_filled1;
     //bool max_slots_filled2;
 

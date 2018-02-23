@@ -38,6 +38,7 @@ public:
     bool collides_with(const Arms& arm);
     bool collides_with(const Antidote& antidote);
     
+    void destroy();
 private:
     bool m_is_alive; // True if the salmon is alive
     vec2 m_position; // Window coordinates

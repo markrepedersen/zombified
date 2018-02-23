@@ -128,6 +128,7 @@ bool World::init(vec2 screen)
     ViewHelper* vh = ViewHelper::getInstance(m_window);
 
     game_started = false;
+    game_over = false;
     return m_button.init();
 }
 
@@ -144,9 +145,9 @@ void World::destroy()
  
     //TODO: free players, zombies, limbs, any items on the map, walls
     m_worldtexture.destroy();
-    //m_toolboxManager.destroy();
-    //m_player1.destroy();
-    //m_player2.destroy();
+    m_toolboxManager.destroy();
+    m_player1.destroy();
+    m_player2.destroy();
     for (auto& legs : m_legs)
      	legs.destroy();
     for (auto& arms : m_arms)
@@ -163,8 +164,17 @@ void World::destroy()
         freeze_collected.destroy();
     for (auto &water_collected : m_water_collected_2)
         water_collected.destroy();
+    
+    m_legs.clear();
+    m_arms.clear();
+    m_freeze.clear();
+    m_water.clear();
+    m_freeze_collected_1.clear();
+    m_freeze_collected_2.clear();
+    m_water_collected_1.clear();
+    m_water_collected_2.clear();
 
-    glfwDestroyWindow(m_window);
+    //glfwDestroyWindow(m_window);
 }
 
 // Update our game world
@@ -229,10 +239,20 @@ void World::timer_update()
 {
 
 //TODO use time elapsed instead?
-    if (m_sec == 0)
+    if (m_min == 0 && m_sec == 0)
+    {
+        game_over = true;
+        fprintf(stderr, "winner is %d \n", m_antidote.belongs_to);
+        destroy();
+        m_button.init();
+        game_started = false;
+        m_min = 0;
+        m_sec = 0;
+    }
+    else if (m_sec == 0)
     {
         m_sec = 59;
-        m_min -=1;
+        m_min -= 1;
         m_counter++;
     }
     else
@@ -589,7 +609,7 @@ void World::check_add_tools(vec2 screen)
             if(m_toolboxManager.addSlot(collided))
             {
                 m_arms.erase(m_arms.begin()+armcount);
-                arm.destroy();
+                //arm.destroy();
                 //fprintf(stderr, "arm count %d \n", armcount);
                 
             }

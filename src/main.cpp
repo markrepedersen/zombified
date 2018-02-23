@@ -68,10 +68,7 @@ int main(int argc, char* argv[])
 		t = now;
 
 		world.update(elapsed_sec);
-        //if (!world.game_started)
-          //  world.startworld_draw();
-        //else
-            world.draw();
+        world.draw();
 	}
 
 	world.destroy();
