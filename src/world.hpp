@@ -91,8 +91,9 @@ private:
 	// Number of fish eaten by the salmon, displayed in the window title
 	unsigned int m_min;
     unsigned int m_sec;
-    unsigned int m_counter;
+    unsigned int timeDelay;
     time_t start;
+    time_t freezeTime;
 
 	// Game entities
     Worldtexture m_worldtexture;
@@ -116,6 +117,8 @@ private:
 	float m_next_arm_spawn;
     float m_next_leg_spawn;
     float m_next_spawn;
+    
+    int check_freeze_used;
 	
 	//Mix_Music* m_background_music;
 	//Mix_Chunk* m_salmon_dead_sound;

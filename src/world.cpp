@@ -202,8 +202,9 @@ bool World::update(float elapsed_ms)
             // initialize everything for the main game world once the button is pressed
             m_min = 2;
             m_sec = 0;
-            m_counter = 5;
+            timeDelay = 5;
             start = time(0);
+            check_freeze_used = 0;
             m_worldtexture.init(screen);
             m_toolboxManager.init({screen.x, screen.y});
             m_player1.init(screen) && m_player2.init(screen)&& m_antidote.init(screen);
@@ -224,7 +225,7 @@ bool World::update(float elapsed_ms)
         //TODO: spawn limbs, items
         random_spawn(elapsed_ms, screen);
         
-        if ((int)difftime( time(0), start) == m_counter)
+        if ((int)difftime( time(0), start) == timeDelay)
             timer_update();
         
         // Next milestone this will be handled by the collision
@@ -253,12 +254,12 @@ void World::timer_update()
     {
         m_sec = 59;
         m_min -= 1;
-        m_counter++;
+        timeDelay++;
     }
     else
     {
         m_sec -= 1;
-        m_counter ++;
+        timeDelay ++;
     }
 
 }
@@ -351,33 +352,68 @@ bool World::is_over() const
 void World::on_key(GLFWwindow *, int key, int, int action, int mod)
 {
 
-    if (action == GLFW_PRESS && (key == GLFW_KEY_UP || key == GLFW_KEY_LEFT || key == GLFW_KEY_DOWN || key == GLFW_KEY_RIGHT))
-        m_player1.set_key(key, true);
-    if (action == GLFW_RELEASE && (key == GLFW_KEY_UP || key == GLFW_KEY_LEFT || key == GLFW_KEY_DOWN || key == GLFW_KEY_RIGHT))
-        m_player1.set_key(key, false);
+    // player1 actions
+    if (check_freeze_used != 1)
+    {
+        if (action == GLFW_PRESS && (key == GLFW_KEY_UP || key == GLFW_KEY_LEFT || key == GLFW_KEY_DOWN || key == GLFW_KEY_RIGHT))
+            m_player1.set_key(key, true);
+        if (action == GLFW_RELEASE && (key == GLFW_KEY_UP || key == GLFW_KEY_LEFT || key == GLFW_KEY_DOWN || key == GLFW_KEY_RIGHT))
+            m_player1.set_key(key, false);
+        if (action == GLFW_PRESS && key == GLFW_KEY_RIGHT_SHIFT)
+            use_tool_1(m_toolboxManager.useItem(1));
+    }
+    if (check_freeze_used == 1) //player is frozen
+    {
+        //fprintf(stderr, "frozen");
+        m_player1.set_key(GLFW_KEY_UP, false);
+        m_player1.set_key(GLFW_KEY_LEFT, false);
+        m_player1.set_key(GLFW_KEY_DOWN, false);
+        m_player1.set_key(GLFW_KEY_RIGHT, false);
+        if((int)difftime( time(0), freezeTime) >= 5)
+        {
+            check_freeze_used = 0;
+            //fprintf(stderr, "start");
+        }
+    }
     
-    if (action == GLFW_PRESS && key == GLFW_KEY_W)
-        m_player2.set_key(0, true);
-    if (action == GLFW_RELEASE && key == GLFW_KEY_W)
+    // player2 actions
+    if (check_freeze_used != 2)
+    {
+        if (action == GLFW_PRESS && key == GLFW_KEY_W)
+            m_player2.set_key(0, true);
+        if (action == GLFW_PRESS && key == GLFW_KEY_A)
+            m_player2.set_key(1, true);
+        if (action == GLFW_PRESS && key == GLFW_KEY_S)
+            m_player2.set_key(2, true);
+        if (action == GLFW_PRESS && key == GLFW_KEY_D)
+            m_player2.set_key(3, true);
+        if (action == GLFW_RELEASE && key == GLFW_KEY_W)
+            m_player2.set_key(0, false);
+        if (action == GLFW_RELEASE && key == GLFW_KEY_A)
+            m_player2.set_key(1, false);
+        if (action == GLFW_RELEASE && key == GLFW_KEY_S)
+            m_player2.set_key(2, false);
+        if (action == GLFW_RELEASE && key == GLFW_KEY_D)
+            m_player2.set_key(3, false);
+        
+        // use tools
+        if (action == GLFW_PRESS && key == GLFW_KEY_Q)
+            use_tool_2(m_toolboxManager.useItem(2));
+
+    }
+    if (check_freeze_used == 2) //player is frozen
+    {
         m_player2.set_key(0, false);
-    if (action == GLFW_PRESS && key == GLFW_KEY_A)
-        m_player2.set_key(1, true);
-    if (action == GLFW_RELEASE && key == GLFW_KEY_A)
         m_player2.set_key(1, false);
-    if (action == GLFW_PRESS && key == GLFW_KEY_S)
-        m_player2.set_key(2, true);
-    if (action == GLFW_RELEASE && key == GLFW_KEY_S)
         m_player2.set_key(2, false);
-    if (action == GLFW_PRESS && key == GLFW_KEY_D)
-        m_player2.set_key(3, true);
-    if (action == GLFW_RELEASE && key == GLFW_KEY_D)
         m_player2.set_key(3, false);
+        if((int)difftime( time(0), freezeTime) >= 5)
+        {
+            check_freeze_used = 0;
+            //fprintf(stderr, "start");
+        }
+    }
     
-    // use tools
-    if (action == GLFW_PRESS && key == GLFW_KEY_RIGHT_SHIFT)
-        use_tool_1(m_toolboxManager.useItem(1));
-    if (action == GLFW_PRESS && key == GLFW_KEY_Q)
-        use_tool_2(m_toolboxManager.useItem(2));
 
     //	// Resetting game
     //	if (action == GLFW_RELEASE && key == GLFW_KEY_R)
@@ -711,6 +747,8 @@ void World::use_tool_1(int tool_number)
 {
     if (tool_number == 1)
     {
+        check_freeze_used = m_freeze_collected_1.front().use_freeze(2);
+        freezeTime = time(0);
         m_freeze_collected_1.erase(m_freeze_collected_1.begin());
         m_toolboxManager.decreaseSlot(1);
     }
@@ -769,6 +807,8 @@ void World::use_tool_2(int tool_number)
 {
     if (tool_number == 1)
     {
+        check_freeze_used = m_freeze_collected_1.front().use_freeze(1);
+        freezeTime = time(0);
         m_freeze_collected_2.erase(m_freeze_collected_2.begin());
         m_toolboxManager.decreaseSlot(2);
     }
