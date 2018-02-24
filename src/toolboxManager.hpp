@@ -6,6 +6,7 @@
 #include "freeze.hpp"
 #include "antidote.hpp"
 #include <list>
+#include <vector>
 
 //game screen toolbox manager
 class ToolboxManager
@@ -36,8 +37,8 @@ public:
 
     void setListOfSlots(std::list<int>);
 
-    std::list<int> getListOfSlot_1();
-    std::list<int> getListOfSlot_2();
+    std::vector<int> getListOfSlot_1();
+    std::vector<int> getListOfSlot_2();
     
     vec2 new_tool_position(float index, int player);
     
@@ -49,8 +50,8 @@ public:
 
 private:
     vec2 m_screen; //screen size
-    std::list<int> m_listOfSlotsPlayer1; //list of slots, 0 if empty and available. Non-zero numbers each maps to an item
-    std::list<int> m_listOfSlotsPlayer2;
+    std::vector<int> m_listOfSlotsPlayer1; //list of slots, 0 if empty and available. Non-zero numbers each maps to an item
+    std::vector<int> m_listOfSlotsPlayer2;
     std::list<ToolboxSlot> m_listOfToolboxSlots;
     
 };

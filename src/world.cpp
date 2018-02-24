@@ -548,73 +548,98 @@ void World::check_add_tools(vec2 screen)
     int collided = 0;
     
 //=================check for water freeze
-    int freezecount = 0;
-    for (auto& freeze : m_freeze)
+  //  int freezecount = 0;
+    std::vector<Freeze>::iterator itf;
+    for (itf = m_freeze.begin(); itf != m_freeze.end();)
     {
-        if (m_player1.collides_with(freeze))
+        if (m_player1.collides_with(*itf))
             collided = 1;
-        if (m_player2.collides_with(freeze))
+        if (m_player2.collides_with(*itf))
             collided = 2;
         
         if (collided != 0)
         {
+            //fprintf(stderr, "collided");
             float index = (float)m_toolboxManager.addItem(1, collided);
             if ((int)index != 100)
             {
-                m_freeze.erase(m_freeze.begin()+freezecount);
-                collect_freeze(freeze, collided, index);
+                itf = m_freeze.erase(itf);//m_freeze.begin()+freezecount);
+                collect_freeze(*itf, collided, index);
                 //fprintf(stderr, "freeze count %d \n", freezecount);
                 
             }
+            else
+                ++itf;
         
         }
-        freezecount++;
+        else
+            ++itf;
+       // freezecount++;
         collided = 0;
     }
 
 //=================check for water collision
-    int watercount = 0;
-    for (auto& water : m_water)
+   // int watercount = 0;
+    //for (auto& water : m_water)
+    std::vector<Water>::iterator itw;
+    for (itw = m_water.begin(); itw != m_water.end();)
     {
-        if (m_player1.collides_with(water))
+        if (m_player1.collides_with(*itw))//water))
             collided = 1;
-        if (m_player2.collides_with(water))
+        if (m_player2.collides_with(*itw))//water))
             collided = 2;
         
         if (collided != 0)
         {
+            //fprintf(stderr, "collided");
             float index = (float)m_toolboxManager.addItem(2, collided);
             if ((int)index != 100)
             {
-                m_water.erase(m_water.begin()+watercount);
-                collect_water(water, collided, index);
+                itw = m_water.erase(itw);//m_water.begin()+watercount);
+                collect_water(*itw, collided, index);
                 //fprintf(stderr, "water count %d \n", watercount);
             }
+            else
+                //fprintf(stderr, "stuck");
+                ++itw;
         }
-        watercount++;
+        else
+            ++itw;
+        //watercount++;
         collided = 0;
     }
     
 //=================check for arm collision
-    int armcount = 0;
-    for (auto& arm : m_arms)
+   // int armcount = 0;
+    std::vector<int> erase;
+   // for (auto& arm : m_arms)
+    std::vector<Arms>::iterator it;
+    for (it = m_arms.begin(); it != m_arms.end();)
     {
-        if (m_player1.collides_with(arm))
+        if (m_player1.collides_with(*it)) //arm))
             collided = 1;
-        if (m_player2.collides_with(arm))
+        if (m_player2.collides_with(*it)) //arm))
             collided = 2;
+        
         
         if (collided != 0)
         {
+            //fprintf(stderr, "collided");
             if(m_toolboxManager.addSlot(collided))
             {
-                m_arms.erase(m_arms.begin()+armcount);
-                //arm.destroy();
+                //erase.push_back(armcount);
+                it = m_arms.erase(it);
+                it->destroy();
                 //fprintf(stderr, "arm count %d \n", armcount);
                 
             }
+            else
+                ++it;
+            
         }
-        armcount++;
+        else
+            ++it;
+       // armcount++;
         collided = 0;
     }
     
@@ -713,8 +738,8 @@ void World::use_tool_1(int tool_number)
 
 void World::shift_1()
 {
-    std::list<int> list = m_toolboxManager.getListOfSlot_1();
-    std::list<int>::iterator it;
+    std::vector<int> list = m_toolboxManager.getListOfSlot_1();
+    std::vector<int>::iterator it;
     int freezecount = 0;
     int watercount = 0;
     float index = 0.f;
@@ -772,8 +797,8 @@ void World::use_tool_2(int tool_number)
 
 void World::shift_2()
 {
-    std::list<int> list = m_toolboxManager.getListOfSlot_2();
-    std::list<int>::iterator it;
+    std::vector<int> list = m_toolboxManager.getListOfSlot_2();
+    std::vector<int>::iterator it;
     int freezecount = 0;
     int watercount = 0;
     float index = 0.f;

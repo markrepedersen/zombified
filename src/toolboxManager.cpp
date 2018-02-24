@@ -33,7 +33,7 @@ void ToolboxManager::draw(const mat3& projection)
     float offset = (m_screen.x /65);
     float index = 0.f;
     
-    std::list<int>::iterator it;
+    std::vector<int>::iterator it;
     for (it = m_listOfSlotsPlayer1.begin(); it != m_listOfSlotsPlayer1.end(); ++it) {
         
         initialOffset = m_screen.x/22;
@@ -89,16 +89,16 @@ bool ToolboxManager::addSlot(int player)
 void ToolboxManager::decreaseSlot(int player)
 {
     if (player == 1)
-        m_listOfSlotsPlayer1.pop_front();
+        m_listOfSlotsPlayer1.erase(m_listOfSlotsPlayer1.begin());
     
     if (player == 2)
-        m_listOfSlotsPlayer2.pop_front();
+        m_listOfSlotsPlayer2.erase(m_listOfSlotsPlayer2.begin());
 }
 
 int ToolboxManager::addItem(int itemIndex, int player)
 {
     int count = 0;
-    std::list<int>::iterator it;
+    std::vector<int>::iterator it;
     if (player ==1)
     {
         for (it = m_listOfSlotsPlayer1.begin(); it != m_listOfSlotsPlayer1.end(); it++)
@@ -168,12 +168,12 @@ void ToolboxManager::move_antidoteback(int player)
     
 }
 
-std::list<int> ToolboxManager::getListOfSlot_1()
+std::vector<int> ToolboxManager::getListOfSlot_1()
 {
     return m_listOfSlotsPlayer1;
 }
 
-std::list<int> ToolboxManager::getListOfSlot_2()
+std::vector<int> ToolboxManager::getListOfSlot_2()
 {
     return m_listOfSlotsPlayer2;
 }
