@@ -107,17 +107,12 @@ private:
     std::vector<Freeze> m_freeze;
     std::vector<Water> m_water;
 
-	std::unordered_set<vec2> arms_set;
-	std::unordered_set<vec2> legs_set;
-	std::unordered_set<vec2> freeze_set;
-	std::unordered_set<vec2> water_set;
-
     std::vector<Freeze> m_freeze_collected_1;
     std::vector<Water> m_water_collected_1;
     std::vector<Freeze> m_freeze_collected_2;
     std::vector<Water> m_water_collected_2;
 
-	MapGrid *mapGrid;
+//	MapGrid *mapGrid;
 
 	float m_next_arm_spawn;
     float m_next_leg_spawn;
