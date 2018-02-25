@@ -1,10 +1,10 @@
 #pragma once
 
 #include "common.hpp"
-//#include "world.hpp"
 #include "viewHelper.hpp"
+#include "Limb.h"
 
-class Arms : public Renderable
+class Arms : public Renderable, public Limb
 {
     static Texture arms_texture;
 public:

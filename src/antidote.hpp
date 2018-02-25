@@ -26,6 +26,8 @@ public:
     
     vec2 get_bounding_box()const;
 
+    int belongs_to; // who is currently holding the antidote
+    
 private:
     bool m_is_alive; // True if the salmon is alive
     vec2 m_position; // Window coordinates

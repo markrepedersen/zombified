@@ -33,7 +33,7 @@ void ToolboxManager::draw(const mat3& projection)
     float offset = (m_screen.x /65);
     float index = 0.f;
     
-    std::list<int>::iterator it;
+    std::vector<int>::iterator it;
     for (it = m_listOfSlotsPlayer1.begin(); it != m_listOfSlotsPlayer1.end(); ++it) {
         
         initialOffset = m_screen.x/22;
@@ -86,15 +86,19 @@ bool ToolboxManager::addSlot(int player)
     return false;
 }
 
-void ToolboxManager::decreaseSlot()
+void ToolboxManager::decreaseSlot(int player)
 {
-    m_listOfSlotsPlayer1.pop_back();
+    if (player == 1)
+        m_listOfSlotsPlayer1.erase(m_listOfSlotsPlayer1.begin());
+    
+    if (player == 2)
+        m_listOfSlotsPlayer2.erase(m_listOfSlotsPlayer2.begin());
 }
 
 int ToolboxManager::addItem(int itemIndex, int player)
 {
     int count = 0;
-    std::list<int>::iterator it;
+    std::vector<int>::iterator it;
     if (player ==1)
     {
         for (it = m_listOfSlotsPlayer1.begin(); it != m_listOfSlotsPlayer1.end(); it++)
@@ -109,8 +113,6 @@ int ToolboxManager::addItem(int itemIndex, int player)
             }
             count++;
         }
-        //max_slots_filled1 = true;
-        //return 100;
     }
     
     if (player ==2)
@@ -123,16 +125,22 @@ int ToolboxManager::addItem(int itemIndex, int player)
             }
             count++;
         }
-        //max_slots_filled2 = true;
-        //return 100;
     }
     
     return 100;
 }
 
-void ToolboxManager::useItem()
+int ToolboxManager::useItem(int player)
 {
-    m_listOfSlotsPlayer1.pop_front();
+    int item_number;
+    
+    if (player == 1)
+        item_number = m_listOfSlotsPlayer1.front();
+
+    if (player == 2)
+        item_number = m_listOfSlotsPlayer2.front();
+    
+    return item_number;
 }
 
 vec2 ToolboxManager::new_tool_position(float index, int player)
@@ -149,5 +157,30 @@ vec2 ToolboxManager::new_tool_position(float index, int player)
         580.f* ViewHelper::getRatio()};
 }
 
+void ToolboxManager::move_antidoteback(int player)
+{
 
+    if (player == 1)
+        m_listOfSlotsPlayer1.push_back(3);
+    
+    if (player == 2)
+        m_listOfSlotsPlayer2.push_back(3);
+    
+}
+
+std::vector<int> ToolboxManager::getListOfSlot_1()
+{
+    return m_listOfSlotsPlayer1;
+}
+
+std::vector<int> ToolboxManager::getListOfSlot_2()
+{
+    return m_listOfSlotsPlayer2;
+}
+
+void ToolboxManager::destroy()
+{
+    m_listOfSlotsPlayer1.clear();
+    m_listOfSlotsPlayer2.clear();
+}
 

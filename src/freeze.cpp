@@ -61,6 +61,7 @@ bool Freeze::init()
     m_scale.y = 0.10f * ViewHelper::getRatio();
     m_is_alive = true;
     m_position = { 450.f * ViewHelper::getRatio(), 450.f * ViewHelper::getRatio()};
+    frozen = 0;
     
     return true;
 }
@@ -163,3 +164,15 @@ bool Freeze::collides_with(const Freeze& freeze)
         return true;
     return false;
 }
+
+int Freeze::use_freeze(int useOnPlayer)
+{
+    return useOnPlayer;
+
+    
+   // while((int)difftime( time(0), start) != 5)
+        //fprintf(stderr, "over");
+    
+    //return true;
+}
+

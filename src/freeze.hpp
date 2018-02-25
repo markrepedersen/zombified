@@ -2,6 +2,10 @@
 
 #include "common.hpp"
 #include "viewHelper.hpp"
+#include "toolboxManager.hpp"
+#include <vector>
+#include <tuple>
+#include <unistd.h>
 
 class Freeze : public Renderable
 {
@@ -27,10 +31,16 @@ public:
     vec2 get_bounding_box()const;
     
     bool collides_with(const Freeze& freeze);
+    
+    int use_freeze(int useOnPlayer);
 
 private:
     bool m_is_alive; // True if the salmon is alive
     vec2 m_position; // Window coordinates
     vec2 m_scale; // 1.f in each dimension. 1.f is as big as the associated texture
+    
+    //int = player 1 or 2
+    int frozen;
+    
 
 };
