@@ -525,7 +525,7 @@ void World::computePaths(float ms) {
         }
         arm.get_position();
         vec2 dir = scale(step, direction(arm.get_position(), {arm.getPath()[i].x, arm.getPath()[i].y}));
-
+        arm.set_position(dir);
         arm.setLastTarget(target);
     }
 }
