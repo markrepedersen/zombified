@@ -122,7 +122,7 @@ bool World::init(vec2 screen)
 
     //fprintf(stderr, "Loaded music");
 
-
+    mapGrid = new MapGrid(screen.x/64, screen.y/64);
 
       //set game screen to resolution ratio
     ViewHelper* vh = ViewHelper::getInstance(m_window);
@@ -230,6 +230,7 @@ bool World::update(float elapsed_ms)
         
         // Next milestone this will be handled by the collision
         check_add_tools(screen);
+        computePaths(elapsed_ms);
         
         return true;
     }
@@ -459,6 +460,8 @@ bool World::spawn_arms()
     Arms arm;
     if (arm.init())
     {
+        arm.setCurrentTarget({0,0});
+        arm.setLastTarget(arm.getCurrentTarget());
         m_arms.emplace_back(arm);
         return true;
     }
@@ -500,6 +503,29 @@ bool World::spawn_water()
     }
     fprintf(stderr, "Failed to spawn arm");
     return false;
+}
+
+void World::computePaths(float ms) {
+    JPS::PathVector path;
+
+    for (auto& arm : m_arms) {
+        vec2 target = arm.getCurrentTarget();
+
+        if (arm.getLastTarget() != arm.getCurrentTarget() && mapGrid->findPath(path, arm.get_position(), target)) {
+            JPS::PathVector oldPath = arm.getPath() != nullptr ? arm.getPath() : path;
+            arm.setPath(path);
+        }
+
+        float step = 200 * (ms / 1000);
+        float curNode = powf(arm.get_position().x, 2) + powf(arm.get_position().y, 2);
+        float nextNode = 0, i = 0;
+        while (nextNode <= curNode) {
+            nextNode = powf(arm.getPath()[i].x, 2) + powf(arm.getPath()[i].y, 2);
+        }
+
+
+        arm.setLastTarget(target);
+    }
 }
 
 //TODO: should make sure they spawn a certain distance away from each other and not on top of each other
@@ -863,4 +889,6 @@ void World::shift_2()
         index++;
     }
 }
+
+
 

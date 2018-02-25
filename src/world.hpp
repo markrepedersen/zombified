@@ -1,11 +1,7 @@
 
 #pragma once
 
-// internal
 #include "common.hpp"
-//#include "salmon.hpp"
-//#include "turtle.hpp"
-//#include "fish.hpp"
 #include "toolboxManager.hpp"
 #include "player1.hpp"
 #include "player2.hpp"
@@ -17,14 +13,16 @@
 #include "viewHelper.hpp"
 #include "button.hpp"
 #include "antidote.hpp"
-// stlib
+#include "MapGrid.h"
+#include "JPS.h"
 #include <vector>
-#include <random>
 
 #define SDL_MAIN_HANDLED
 #include <SDL/SDL.h>
 #include <SDL/SDL_mixer.h>
 #include <time.h>
+#include <random>
+#include <unordered_set>
 
 // Container for all our entities and game logic. Individual rendering / update is 
 // deferred to the relative update() methods
@@ -79,9 +77,11 @@ private:
     
     void collect_freeze(Freeze freeze, int player, float index);
     void collect_water(Water water, int player, float index);
+
+	void computePaths(float ms);
     
 private:
-	// Window hjandle
+	// Window handle
 	GLFWwindow* m_window;
     
     // true if the start button was pressed to start the main game world
@@ -106,25 +106,25 @@ private:
     std::vector<Legs> m_legs;
     std::vector<Freeze> m_freeze;
     std::vector<Water> m_water;
-    //std::vector<Freeze> m_freeze_collected;
-    //std::vector<Water> m_water_collected;
-    
+
+	std::unordered_set<vec2> arms_set;
+	std::unordered_set<vec2> legs_set;
+	std::unordered_set<vec2> freeze_set;
+	std::unordered_set<vec2> water_set;
+
     std::vector<Freeze> m_freeze_collected_1;
     std::vector<Water> m_water_collected_1;
     std::vector<Freeze> m_freeze_collected_2;
     std::vector<Water> m_water_collected_2;
 
+	MapGrid *mapGrid;
+
 	float m_next_arm_spawn;
     float m_next_leg_spawn;
     float m_next_spawn;
-    
+
     int check_freeze_used;
 	
-	//Mix_Music* m_background_music;
-	//Mix_Chunk* m_salmon_dead_sound;
-	//Mix_Chunk* m_salmon_eat_sound;
-
-	// C++ rng
 	std::default_random_engine m_rng;
 	std::uniform_real_distribution<float> m_dist; // default 0..1c
     

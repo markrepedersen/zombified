@@ -2,8 +2,9 @@
 
 #include "common.hpp"
 #include "viewHelper.hpp"
+#include "Limb.h"
 
-class Legs : public Renderable
+class Legs : public Renderable, public Limb
 {
     static Texture legs_texture;
 public:

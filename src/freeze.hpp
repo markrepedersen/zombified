@@ -2,7 +2,7 @@
 
 #include "common.hpp"
 #include "viewHelper.hpp"
-#include "toolboxmanager.hpp"
+#include "toolboxManager.hpp"
 #include <vector>
 #include <tuple>
 #include <unistd.h>

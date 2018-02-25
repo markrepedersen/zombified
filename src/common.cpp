@@ -84,6 +84,12 @@ vec2 normalize(vec2 v)
 	return { v.x / m, v.y / m };
 }
 
+vec2 scale(float c, vec2 v) {
+    float x = c*v.x;
+    float y = c*v.y;
+    return {x, y};
+}
+
 Texture::Texture()
 {
 
