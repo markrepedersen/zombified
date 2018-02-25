@@ -519,10 +519,12 @@ void World::computePaths(float ms) {
         float step = 200 * (ms / 1000);
         float curNode = powf(arm.get_position().x, 2) + powf(arm.get_position().y, 2);
         float nextNode = 0, i = 0;
+
         while (nextNode <= curNode) {
             nextNode = powf(arm.getPath()[i].x, 2) + powf(arm.getPath()[i].y, 2);
         }
-
+        arm.get_position();
+        vec2 dir = scale(step, direction(arm.get_position(), {arm.getPath()[i].x, arm.getPath()[i].y}));
 
         arm.setLastTarget(target);
     }

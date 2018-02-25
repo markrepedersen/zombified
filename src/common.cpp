@@ -90,6 +90,10 @@ vec2 scale(float c, vec2 v) {
     return {x, y};
 }
 
+vec2 direction(vec2 v1, vec2 v2) {
+	return {v2.x - v1.x, v2.y - v1.y};
+}
+
 Texture::Texture()
 {
 
