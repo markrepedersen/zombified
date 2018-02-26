@@ -60,7 +60,9 @@ bool Antidote::init(vec2 screen)
     m_scale.x = -0.10f * ViewHelper::getRatio();
     m_scale.y = 0.10f * ViewHelper::getRatio();
     m_is_alive = true;
-    m_position = { screen.x/2 * ViewHelper::getRatio(), screen.y/2* ViewHelper::getRatio()};
+    
+    srand((unsigned)time(0));
+    m_position = {screen.x/2 * ViewHelper::getRatio(), (float)((rand() % (int)screen.y))};
     
     belongs_to = 0;
     return true;
