@@ -454,7 +454,6 @@ void World::on_mouse_move(GLFWwindow* window, int button, int action, int mod)
 }
 
 //======== SPAWNING =======
-// Creates a new turtle and if successfull adds it to the list of turtles
 bool World::spawn_arms()
 {
     Arms arm;

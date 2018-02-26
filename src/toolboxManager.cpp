@@ -145,13 +145,13 @@ int ToolboxManager::useItem(int player)
 
 vec2 ToolboxManager::new_tool_position(float index, int player)
 {
-    float initialOffset = 0.f*ViewHelper::getRatio();
-    float offset = (m_screen.x /65+60)*ViewHelper::getRatio();
+    float initialOffset = 0.f;
+    float offset = (m_screen.x /65+60);
     
     if (player == 1)
-        initialOffset = (m_screen.x/22)*ViewHelper::getRatio();
+        initialOffset = (m_screen.x/22);
     if (player ==2)
-        initialOffset =  (m_screen.x/1.32)*ViewHelper::getRatio();
+        initialOffset =  (m_screen.x/1.32);
     
     return {(initialOffset + (offset * index ))* ViewHelper::getRatio(),
         580.f* ViewHelper::getRatio()};
