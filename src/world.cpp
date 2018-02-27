@@ -459,7 +459,6 @@ bool World::spawn_arms()
     Arms arm;
     if (arm.init())
     {
-        arm.setCurrentTarget({10,10});
         m_arms.emplace_back(arm);
         return true;
     }
@@ -504,18 +503,21 @@ bool World::spawn_water()
 }
 
 void World::computePaths(float ms) {
+    vec2 pos1 = {m_player1.get_position().x, m_player1.get_position().y};
+    vec2 pos2 = {m_player2.get_position().x, m_player2.get_position().y};
     for (auto &arm : m_arms) {
         JPS::PathVector path;
+        arm.setCurrentTarget(distance(pos1, arm.get_position()) > distance(pos2, arm.get_position()) ? pos2 : pos1);
         vec2 target = arm.getCurrentTarget();
 
-        if ((arm.getLastTarget() != target) || (arm.getLastPath() == arm.getCurrentPath())) {
+        if (arm.getLastTarget() != target || arm.getLastTarget() == (vec2) {0,0}) {
             JPS::findPath(path,
                           *mapGrid,
                           (unsigned) arm.get_position().x,
                           (unsigned) arm.get_position().y,
-                          (unsigned) arm.getCurrentTarget().x,
-                          (unsigned) arm.getCurrentTarget().y,
-                          1);
+                          (unsigned) target.x,
+                          (unsigned) target.y,
+                          0);
             arm.setCurrentPath(path);
         } else arm.setCurrentPath(arm.getLastPath());
 

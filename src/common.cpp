@@ -90,6 +90,13 @@ vec2 scale(float c, vec2 v) {
     return {x, y};
 }
 
+float distance(vec2 v1, vec2 v2) {
+	float diffY = v1.y - v2.y;
+	float diffX = v1.x - v2.x;
+	return sqrt((diffY * diffY) + (diffX * diffX));
+}
+
+
 vec2 direction(vec2 v1, vec2 v2) {
 	return {v2.x - v1.x, v2.y - v1.y};
 }

@@ -45,7 +45,11 @@ struct vec2 {
 	bool operator<=(vec2 const& p) const {
 		return this->x <= p.x && this->y <= p.y;
 	}
-
+    vec2& operator-(vec2 const& p) {
+        this->x -= p.x;
+        this->y -=p.y;
+        return *this;
+    }
 	vec2& operator+=(vec2 const& p) {
 		this->x += p.x;
 		this->y += p.y;
@@ -69,6 +73,7 @@ mat3  mul(const mat3& l, const mat3& r);
 vec2  normalize(vec2 v);
 vec2 scale(float, vec2);
 vec2 direction(vec2, vec2);
+float distance(vec2, vec2);
 
 // OpenGL utilities
 // cleans error buffer
