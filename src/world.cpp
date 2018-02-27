@@ -117,12 +117,11 @@ bool World::init(vec2 screen)
     // 	return false;
     // }
 
-    // Playing background music undefinitely
+    // Playing background music indefinitely
     //Mix_PlayMusic(m_background_music, -1);
 
     //fprintf(stderr, "Loaded music");
-
-//    mapGrid = new MapGrid(screen.x/64, screen.y/64);
+    mapGrid = new MapGrid((unsigned) screen.x, (unsigned) screen.y);
 
       //set game screen to resolution ratio
     ViewHelper* vh = ViewHelper::getInstance(m_window);
@@ -230,7 +229,7 @@ bool World::update(float elapsed_ms)
         
         // Next milestone this will be handled by the collision
         check_add_tools(screen);
-//        computePaths(elapsed_ms);
+        computePaths(elapsed_ms);
         
         return true;
     }
@@ -460,8 +459,7 @@ bool World::spawn_arms()
     Arms arm;
     if (arm.init())
     {
-        arm.setCurrentTarget({0,0});
-        arm.setLastTarget(arm.getCurrentTarget());
+        arm.setCurrentTarget({10,10});
         m_arms.emplace_back(arm);
         return true;
     }
@@ -505,30 +503,38 @@ bool World::spawn_water()
     return false;
 }
 
-//void World::computePaths(float ms) {
-//    JPS::PathVector path;
-//
-//    for (auto& arm : m_arms) {
-//        vec2 target = arm.getCurrentTarget();
-//
-//        if (arm.getLastTarget() != arm.getCurrentTarget() && mapGrid->findPath(path, arm.get_position(), target)) {
-//            JPS::PathVector oldPath = arm.getPath().empty() ? path : arm.getPath();
-//            arm.setPath(path);
-//        }
-//
-//        float step = 200 * (ms / 1000);
-//        float curNode = powf(arm.get_position().x, 2) + powf(arm.get_position().y, 2);
-//        float nextNode = 0, i = 0;
-//
-//        while (nextNode <= curNode) {
-//            nextNode = powf(arm.getPath()[i].x, 2) + powf(arm.getPath()[i].y, 2);
-//        }
-//        arm.get_position();
-//        vec2 dir = scale(step, direction(arm.get_position(), {static_cast<float>(arm.getPath()[i].x), static_cast<float>(arm.getPath()[i].y)}));
-//        arm.set_position(dir);
-//        arm.setLastTarget(target);
-//    }
-//}
+void World::computePaths(float ms) {
+    for (auto &arm : m_arms) {
+        JPS::PathVector path;
+        vec2 target = arm.getCurrentTarget();
+
+        if ((arm.getLastTarget() != target) || (arm.getLastPath() == arm.getCurrentPath())) {
+            JPS::findPath(path,
+                          *mapGrid,
+                          (unsigned) arm.get_position().x,
+                          (unsigned) arm.get_position().y,
+                          (unsigned) arm.getCurrentTarget().x,
+                          (unsigned) arm.getCurrentTarget().y,
+                          1);
+            arm.setCurrentPath(path);
+        } else arm.setCurrentPath(arm.getLastPath());
+
+        if (!path.empty()) {
+            vec2 nextNode, curNode;
+            curNode = nextNode = {std::powf(arm.get_position().x, 2), std::powf(arm.get_position().y,2)};
+
+            for (int i = 0; i < arm.getCurrentPath().size() && curNode <= nextNode; ++i) {
+                nextNode = {static_cast<float>(arm.getCurrentPath()[i].x), static_cast<float>(arm.getCurrentPath()[i].y)};
+            }
+            float step = 20 * (ms / 1000);
+            vec2 dir = normalize(scale(step, nextNode));
+
+            arm.move(dir);
+            arm.setLastPath(path);
+            arm.setLastTarget(target);
+        }
+    }
+}
 
 //TODO: should make sure they spawn a certain distance away from each other and not on top of each other
 //  check collision with wall

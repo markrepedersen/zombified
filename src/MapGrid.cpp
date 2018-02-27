@@ -3,13 +3,16 @@
 //
 #include "MapGrid.h"
 
-MapGrid::MapGrid(unsigned w, unsigned h) : width(w), height(h) {}
+MapGrid::MapGrid(unsigned w, unsigned h) : width(w), height(h) {
+    mapdata.resize(width);
+    for (int i = 0; i < width; ++i) {
+        mapdata[i].resize(height);
+        for (int j = 0; j < height; ++j) {
+            mapdata[i][j] = new Node(1, true, REGULAR);
+        }
+    }
+}
 
 bool MapGrid::operator()(unsigned x, unsigned y) const {
-    return x < width && y < height && this->mapdata[y][x].walkable;
+    return x < width && y < height;
 }
-
-bool MapGrid::findPath(std::vector<JPS::Position> path, vec2 src, vec2 dst) {
-    return JPS::findPath(path, *this, src.x, src.y, dst.x, dst.y, 0);
-}
-

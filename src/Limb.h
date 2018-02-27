@@ -5,21 +5,16 @@
 #ifndef ZOMBIE_LIMB_H
 #define ZOMBIE_LIMB_H
 
-#include "common.hpp"
 #include "JPS.h"
 
 class Limb {
 public:
-    void setLastNode(vec2 node) {
-        this->lastNode = node;
-    }
-
-    void setCurrentNode(vec2 node) {
-        this->curNode = node;
-    }
-
-    void setPath(JPS::PathVector path) {
+    void setLastPath(JPS::PathVector path) {
         this->lastPath = path;
+    }
+
+    void setCurrentPath(JPS::PathVector path) {
+        this->currentPath = path;
     }
 
     void setCurrentTarget(vec2 target) {
@@ -38,23 +33,18 @@ public:
         return last_target;
     }
 
-    vec2 getLastNode()const {
-        return lastNode;
+    JPS::PathVector getCurrentPath()const {
+        return currentPath;
     }
 
-    vec2 getCurrentNode()const {
-        return curNode;
-    }
-
-    JPS::PathVector getPath()const {
+    JPS::PathVector getLastPath()const {
         return lastPath;
     }
 protected:
-    vec2 curNode;
-    vec2 lastNode;
     vec2 cur_target;
     vec2 last_target;
     JPS::PathVector lastPath;
+    JPS::PathVector currentPath;
 };
 
 #endif //ZOMBIE_LIMB_H

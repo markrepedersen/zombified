@@ -112,7 +112,7 @@ private:
     std::vector<Freeze> m_freeze_collected_2;
     std::vector<Water> m_water_collected_2;
 
-//	MapGrid *mapGrid;
+	MapGrid *mapGrid;
 
 	float m_next_arm_spawn;
     float m_next_leg_spawn;

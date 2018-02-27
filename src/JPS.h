@@ -574,7 +574,7 @@ template <typename GRID> unsigned Searcher<GRID>::findNeighborsAStar(const Node 
 
         template <typename GRID> Result Searcher<GRID>::findPathInit(Position start, Position end)
         {
-            for(NodeGrid::iterator it = nodegrid.begin(); it != nodegrid.end(); ++it)
+            for(auto it = nodegrid.begin(); it != nodegrid.end(); ++it)
                 it->second.clearState();
             open.clear();
             endNode = NULL;

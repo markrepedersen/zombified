@@ -41,6 +41,16 @@ struct vec2 {
 	bool operator!=(vec2 const& p) const {
 		return this->x != p.x || this->y != p.y;
 	}
+
+	bool operator<=(vec2 const& p) const {
+		return this->x <= p.x && this->y <= p.y;
+	}
+
+	vec2& operator+=(vec2 const& p) {
+		this->x += p.x;
+		this->y += p.y;
+		return *this;
+	}
 };
 template<>
 struct std::hash<vec2> {
