@@ -146,12 +146,13 @@ void World::destroy()
     //TODO: free players, zombies, limbs, any items on the map, walls
     m_worldtexture.destroy();
     m_toolboxManager.destroy();
+    m_limbsManager.destroy();
     m_player1.destroy();
     m_player2.destroy();
-    for (auto& legs : m_legs)
-     	legs.destroy();
-    for (auto& arms : m_arms)
-     	arms.destroy();
+        for (auto& arm : m_arms)
+        arm.destroy();
+    for (auto& leg : m_legs)
+        leg.destroy();
     for (auto& freeze : m_freeze)
         freeze.destroy();
     for (auto& water : m_water)
@@ -165,8 +166,6 @@ void World::destroy()
     for (auto &water_collected : m_water_collected_2)
         water_collected.destroy();
     
-    m_legs.clear();
-    m_arms.clear();
     m_freeze.clear();
     m_water.clear();
     m_freeze_collected_1.clear();
@@ -207,6 +206,7 @@ bool World::update(float elapsed_ms)
             check_freeze_used = 0;
             m_worldtexture.init(screen);
             m_toolboxManager.init({screen.x, screen.y});
+            m_limbsManager.init({screen.x, screen.y});
             m_player1.init(screen) && m_player2.init(screen)&& m_antidote.init(screen);
         }
     }
@@ -315,11 +315,8 @@ void World::draw()
         m_worldtexture.draw(projection_2D);
         m_toolboxManager.draw(projection_2D);
         m_antidote.draw(projection_2D);
+        m_limbsManager.draw(projection_2D);
         //TODO: Drawing entities
-        for (auto &arms : m_arms)
-            arms.draw(projection_2D);
-        for (auto &legs : m_legs)
-            legs.draw(projection_2D);
         for (auto &freeze : m_freeze)
             freeze.draw(projection_2D);
         for (auto &water : m_water)
@@ -454,31 +451,31 @@ void World::on_mouse_move(GLFWwindow* window, int button, int action, int mod)
 }
 
 //======== SPAWNING =======
-bool World::spawn_arms()
-{
-    Arms arm;
-    if (arm.init())
-    {
-        arm.setCurrentTarget({0,0});
-        arm.setLastTarget(arm.getCurrentTarget());
-        m_arms.emplace_back(arm);
-        return true;
-    }
-    fprintf(stderr, "Failed to spawn arm");
-    return false;
-}
+// bool World::spawn_arms()
+// {
+//     Arms arm;
+//     if (arm.init())
+//     {
+//         arm.setCurrentTarget({0,0});
+//         arm.setLastTarget(arm.getCurrentTarget());
+//         m_arms.emplace_back(arm);
+//         return true;
+//     }
+//     fprintf(stderr, "Failed to spawn arm");
+//     return false;
+// }
 
-bool World::spawn_legs()
-{
-    Legs leg;
-    if (leg.init())
-    {
-        m_legs.emplace_back(leg);
-        return true;
-    }
-    fprintf(stderr, "Failed to spawn arm");
-    return false;
-}
+// bool World::spawn_legs()
+// {
+//     Legs leg;
+//     if (leg.init())
+//     {
+//         m_legs.emplace_back(leg);
+//         return true;
+//     }
+//     fprintf(stderr, "Failed to spawn leg");
+//     return false;
+// }
 
 bool World::spawn_freeze()
 {
@@ -542,16 +539,10 @@ bool World::random_spawn(float elapsed_ms, vec2 screen)
     
     if (randNum % 13 == 0)
     {
-        if (m_arms.size() <= MAX_ARMS && m_next_arm_spawn < 0.f)
+        if (m_limbsManager.get_arms_size() <= MAX_ARMS && m_next_arm_spawn < 0.f)
         {
-            if (!spawn_arms())
+            if (!(m_limbsManager.spawn_arms()))
                 return false;
-            
-            Arms &new_arm = m_arms.back();
-            
-            // Setting random initial position
-            new_arm.set_position({(float)((rand() % (int)screen.x)),
-                (float)((rand() % (int)screen.y))});
             
             // Next spawn
             //srand((unsigned)time(0));
@@ -561,15 +552,10 @@ bool World::random_spawn(float elapsed_ms, vec2 screen)
     
     if (randNum % 19 == 0)
     {
-        if (m_legs.size() <= MAX_LEGS && m_next_leg_spawn < 0.f)
+        if (m_limbsManager.get_legs_size() <= MAX_LEGS && m_next_leg_spawn < 0.f)
         {
-            if (!spawn_legs())
+            if (!(m_limbsManager.spawn_legs()))
                 return false;
-            
-            Legs &new_leg = m_legs.back();
-            
-            new_leg.set_position({(float)((rand() % (int)screen.x)),
-                (float)((rand() % (int)screen.y))});
             
             m_next_leg_spawn = (LEG_DELAY_MS / 2) + rand() % (1000);
         }
@@ -676,36 +662,21 @@ void World::check_add_tools(vec2 screen)
    // int armcount = 0;
     std::vector<int> erase;
    // for (auto& arm : m_arms)
-    std::vector<Arms>::iterator it;
-    for (it = m_arms.begin(); it != m_arms.end();)
-    {
-        if (m_player1.collides_with(*it)) //arm))
-            collided = 1;
-        if (m_player2.collides_with(*it)) //arm))
-            collided = 2;
-        
-        
-        if (collided != 0)
-        {
-            //fprintf(stderr, "collided");
-            if(m_toolboxManager.addSlot(collided))
-            {
-                //erase.push_back(armcount);
-                it = m_arms.erase(it);
-                it->destroy();
-                //fprintf(stderr, "arm count %d \n", armcount);
-                
-            }
-            else
-                ++it;
-            
+
+    collided = m_limbsManager.check_collision_with_players(&m_player1, &m_player2);
+    if(collided != 0) {
+        if (collided <= 2) {
+        m_toolboxManager.addSlot(collided);
+        } else {
+            m_toolboxManager.addSlot(1);
+            m_toolboxManager.addSlot(2);
         }
-        else
-            ++it;
-       // armcount++;
-        collided = 0;
     }
-    
+
+    collided = 0;
+
+
+  
 //=================check for antidote collision
     if (m_player1.collides_with(m_antidote))
         collided = 1;

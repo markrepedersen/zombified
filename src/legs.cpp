@@ -138,3 +138,9 @@ void Legs::destroy()
     glDeleteShader(effect.fragment);
     glDeleteShader(effect.program);
 }
+
+vec2 Legs::get_bounding_box()const
+{
+    // fabs is to avoid negative scale due to the facing direction
+    return { std::fabs(m_scale.x) * legs_texture.width, std::fabs(m_scale.y) * legs_texture.height };
+}

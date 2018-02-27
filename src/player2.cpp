@@ -455,6 +455,15 @@ void Player2::animate(int direction)
     }
 }
 
+
+void Player2::increase_speed(){
+    m_speed = fmin(m_speed + 1, 4);
+}
+
+void Player2::decrease_speed(){
+    m_speed = fmax(m_speed - 1, 1);
+}
+
 // Simple bounding box collision check,
 bool Player2::collides_with(const Freeze& freeze)
 {
@@ -490,6 +499,20 @@ bool Player2::collides_with(const Arms& arm)
     float dy = m_position.y - arm.get_position().y;
     float d_sq = dx * dx + dy * dy;
     float other_r = std::max(arm.get_bounding_box().x, arm.get_bounding_box().y);
+    float my_r = std::max(m_scale.x, m_scale.y);
+    float r = std::max(other_r, my_r);
+    r *= 0.6f;
+    if (d_sq < r * r)
+        return true;
+    return false;
+}
+
+bool Player2::collides_with(const Legs& leg)
+{
+    float dx = m_position.x - leg.get_position().x;
+    float dy = m_position.y - leg.get_position().y;
+    float d_sq = dx * dx + dy * dy;
+    float other_r = std::max(leg.get_bounding_box().x, leg.get_bounding_box().y);
     float my_r = std::max(m_scale.x, m_scale.y);
     float r = std::max(other_r, my_r);
     r *= 0.6f;

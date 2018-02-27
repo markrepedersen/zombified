@@ -59,6 +59,7 @@ mat3  mul(const mat3& l, const mat3& r);
 vec2  normalize(vec2 v);
 vec2 scale(float, vec2);
 vec2 direction(vec2, vec2);
+double getDistance(vec2, vec2);
 
 // OpenGL utilities
 // cleans error buffer

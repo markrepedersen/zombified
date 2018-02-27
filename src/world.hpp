@@ -3,6 +3,7 @@
 
 #include "common.hpp"
 #include "toolboxManager.hpp"
+#include "limbsManager.hpp"
 #include "player1.hpp"
 #include "player2.hpp"
 #include "arms.hpp"
@@ -98,6 +99,7 @@ private:
 	// Game entities
     Worldtexture m_worldtexture;
     ToolboxManager m_toolboxManager;
+    LimbsManager m_limbsManager;
     Player1 m_player1;
     Player2 m_player2;
     Antidote m_antidote;
