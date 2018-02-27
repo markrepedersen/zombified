@@ -39,6 +39,10 @@ public:
     //find most optimal clusters of leg clusters and arm clusters to make a common enemy zombie
     void cluster_limbs();
 
+    double distance_between_pairs(std::pair<Legs*, Legs*> l, std::pair<Arms*, Arms*> a);
+
+    vec2 get_centroid(std::pair<Legs*, Legs*> l, std::pair<Arms*, Arms*> a);
+    
     //update the target locations of each limb
     void update_limb_targets();
    

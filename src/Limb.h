@@ -23,6 +23,9 @@ public:
     }
 
     void setCurrentTarget(vec2 target) {
+        if(this->cur_target != NULL) {
+            this->last_target = this->cur_target;
+        }
         this->cur_target = target;
     }
 

@@ -33,7 +33,7 @@
                 (float)((rand() % (int)m_screen.y))});
 
            
-
+            update_clusters();
             return true;
         }
         fprintf(stderr, "Failed to spawn arm");
@@ -59,6 +59,7 @@
 
         m_legs.emplace_back(leg);
 
+        update_clusters();
         return true;
     }
     fprintf(stderr, "Failed to spawn leg");
@@ -71,7 +72,7 @@
         pair_legs();
         pair_arms();
         cluster_limbs();
-        update_limb_targets();
+        // update_limb_targets();
 
     }
 
@@ -156,30 +157,152 @@
     //find most optimal clusters of leg clusters and arm clusters to make a common enemy zombie using k-means
     void LimbsManager::cluster_limbs()
     {
-        //if !limbcentroids,
-        //findrandom points = max of map values(arms or legs)
-        //get closest clusters
-        //centerized
-        //get closest clusters
-        //is same?
+        std::map<Legs*, Legs*>::iterator itL;
+        for (itL = m_leg_pairs.begin(); itL != m_leg_pairs.end();)
+        {
+            std::map<Arms*, Arms*>::iterator itA;
+
+            std::pair<Arms*, Arms*> curr_pair;
+            double curr_min_distance = std::numeric_limits<double>::max();
+
+            for (itA = m_arm_pairs.begin(); itA != m_arm_pairs.end();)
+            {
+                if(distance_between_pairs(*itL, *itA) < curr_min_distance)
+                {
+                    curr_min_distance = distance_between_pairs(*itL, *itA);
+                    curr_pair = *itA;
+                }
+            }
+
+            if(curr_pair.empty()) {
+                vec2 target = get_centroid(*itL, curr_pair);
+                (std::get<0>(*itL))->setCurrentTarget(target);
+                (std::get<1>(*itL))->setCurrentTarget(target);
+                (std::get<0>(curr_pair)).setCurrentTarget(target);
+                (std::get<1>(curr_pair)).setCurrentTarget(target);
+
+                m_leg_pairs.erase(itL);
+                m_arm_pairs.erase(curr_pair);
+            }
+
+        }
+        
+        if(!m_arm_pairs.empty()) {
+            for(std::pair<Arms*, Arms*> a : m_arm_pairs)
+            {
+                Arms* a1 = std::get<0>(a);
+                Arms* a2 = std::get<1>(a);
+                
+                float x = ((a1->get_position()).x + (a2->get_position()).x)/2;
+                float y = ((a1->get_position()).y + (a2->get_position()).y)/2;
+
+                vec2 midpoint = {x, y};
+
+                a1->setCurrentTarget(midpoint);
+                a2->setCurrentTarget(midpoint);
+            
+            }
+        }
+        if(!m_leg_pairs.empty()) {
+            for(std::pair<Legs*, Legs*> l : m_leg_pairs)
+            {
+                Legs* l1 = std::get<0>(l);
+                Legs* l2 = std::get<1>(l);
+                
+                float x = ((l1->get_position()).x + (l2->get_position()).x)/2
+                float y = ((l1->get_position()).y + (l2->get_position()).y)/2
+
+                vec2 midpoint = {x, y};
+
+                l1->setCurrentTarget(midpoint);
+                l2->setCurrentTarget(midpoint);
+            }
+        }
 
     }
-
-    //find random points on screen (no of points), update centroids
-    
-    //return cluster mappings
-
-
     //check if limbs centroids are empty
     //if empty, find random points
     //if not empty, use points to find new clustering of limbs
     //once new centroids are found, update the targetNode of each limb
     //if new centroid is further from limb than the current targetNode, abort. set the far limb to also go to the closest centroid.
 
+
+
+    double distance_between_pairs(std::pair<Legs*, Legs*> l, std::pair<Arms*, Arms*> a)
+    {
+            //check for null pointers
+            return 0.0;
+
+    }
+
+    vec2 get_centroid(std::pair<Legs*, Legs*> l, std::pair<Arms*, Arms*> a)
+    {
+        std::list<vec2> positions;
+        if (std::get<0>(l)) != NULL)
+        {
+            positions.push_back(std::get<0>(l)).get_position());
+        }
+
+        if (std::get<1>(l)) != NULL)
+        {
+            positions.push_back(std::get<1>(l)).get_position());
+        }
+
+        if (std::get<0>(a)) != NULL)
+        {
+            positions.push_back(std::get<0>(a).get_position());
+        }
+
+        if (std::get<1>(a))) != NULL)
+        {
+            positions.push_back(std::get<1>(a)).get_position());
+        }
+
+        float max_x = NULL;
+        float max_y = NULL;
+        float min_x = NULL;
+        float min_y = NULL;
+
+        for (vec2 position : positions)
+        {
+            if (max_x == NULL)
+            {
+                max_x = position.x;
+            } else if (max_x < position.x) {
+                max_x = position.x;
+            }
+
+            if (max_y == NULL)
+            {
+                max_y = position.y;
+            } else if (max_y < position.y) {
+                max_y = position.y;
+            }
+
+            if (min_x == NULL)
+            {
+                min_x = position.x;
+            } else if (min_x > position.x) {
+                min_x = position.x;
+            }
+
+            if (min_y == NULL)
+            {
+                min_y = position.y;
+            } else if (min_y > position.y) {
+                min_y = position.y;
+            }
+        }
+
+    float x = min_x + ((max_x - min_x) /2.f);
+    float y = min_y + ((max_y - min_y) /2.f);
+    return {x,y};
+
+    }
    
     void update_limb_targets()
     {
-        
+
     }
 
     //check if players collide with any limbs
@@ -249,6 +372,7 @@
             
         }
 
+    update_clusters();
     return collided;
     }
 
