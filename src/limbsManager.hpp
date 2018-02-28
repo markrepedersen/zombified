@@ -43,8 +43,6 @@ public:
 
     vec2 get_centroid(std::pair<Legs*, Legs*> l, std::pair<Arms*, Arms*> a);
     
-    //update the target locations of each limb
-    void update_limb_targets();
    
     //check if players collide with any limbs
     int check_collision_with_players(Player1 *p1, Player2 *p2);

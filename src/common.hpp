@@ -60,6 +60,7 @@ vec2  normalize(vec2 v);
 vec2 scale(float, vec2);
 vec2 direction(vec2, vec2);
 double getDistance(vec2, vec2);
+double getDistancePointToLine(vec2 a, vec2 b, vec2 c); //line ab to point c
 
 // OpenGL utilities
 // cleans error buffer

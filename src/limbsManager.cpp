@@ -69,8 +69,7 @@
     //everytime a limb is spawned or a limb collided with a player, we need to update the clusters
     void LimbsManager::update_clusters()
     {
-        pair_legs();
-        pair_arms();
+
         cluster_limbs();
         // update_limb_targets();
 
@@ -110,6 +109,8 @@
         }
         
         leg_pointers.clear();
+
+        //IF no pair, set itself as its own pair
     }
     //check if leg centroids are empty
     //if empty, find random points
@@ -134,7 +135,7 @@
             Arms* curr_pair = NULL;
             double curr_min_distance = std::numeric_limits<double>::max();
 
-            for (it2 = it2 ; it2 != arm_pointers.end();)
+            for (it2 = it2 ; it2 != arm_pointers.end(); it2++)
             {
                 if(getDistance((*it)->get_position(), (*it2)->get_position()) < curr_min_distance)
                 {
@@ -157,67 +158,79 @@
     //find most optimal clusters of leg clusters and arm clusters to make a common enemy zombie using k-means
     void LimbsManager::cluster_limbs()
     {
-        std::map<Legs*, Legs*>::iterator itL;
-        for (itL = m_leg_pairs.begin(); itL != m_leg_pairs.end();)
-        {
-            std::map<Arms*, Arms*>::iterator itA;
+        // std::map<Legs*, Legs*>::iterator itL;
+        // for (itL = m_leg_pairs.begin(); itL != m_leg_pairs.end(); itL++)
+        // {
+        //     std::map<Arms*, Arms*>::iterator itA;
 
-            std::pair<Arms*, Arms*> curr_pair;
-            double curr_min_distance = std::numeric_limits<double>::max();
+        //     std::pair<Arms*, Arms*> curr_pair;
+        //     std::map<Arms*, Arms*>::iterator curr_itA;
+        //     double curr_min_distance = std::numeric_limits<double>::max();
 
-            for (itA = m_arm_pairs.begin(); itA != m_arm_pairs.end();)
-            {
-                if(distance_between_pairs(*itL, *itA) < curr_min_distance)
-                {
-                    curr_min_distance = distance_between_pairs(*itL, *itA);
-                    curr_pair = *itA;
-                }
-            }
+        //     for (itA = m_arm_pairs.begin(); itA != m_arm_pairs.end(); itA++)
+        //     {
+        //         if(distance_between_pairs(*itL, *itA) < curr_min_distance)
+        //         {
+        //             curr_min_distance = distance_between_pairs(*itL, *itA);
+        //             curr_pair = *itA;
+        //             curr_itA = itA;
+        //         }
 
-            if(curr_pair.empty()) {
-                vec2 target = get_centroid(*itL, curr_pair);
-                (std::get<0>(*itL))->setCurrentTarget(target);
-                (std::get<1>(*itL))->setCurrentTarget(target);
-                (std::get<0>(curr_pair)).setCurrentTarget(target);
-                (std::get<1>(curr_pair)).setCurrentTarget(target);
+        //     }
 
-                m_leg_pairs.erase(itL);
-                m_arm_pairs.erase(curr_pair);
-            }
+        //     if(curr_pair.first == 0 && curr_pair.second == 0) {
+        //         vec2 target = get_centroid(*itL, curr_pair);
+        //         (std::get<0>(*itL))->setCurrentTarget(target);
+        //         (std::get<1>(*itL))->setCurrentTarget(target);
+        //         (std::get<0>(curr_pair))->setCurrentTarget(target);
+        //         (std::get<1>(curr_pair))->setCurrentTarget(target);
 
-        }
+        //         m_leg_pairs.erase(itL);
+        //         m_arm_pairs.erase(curr_itA);
+        //     }
+
+           
+
+        // }
         
-        if(!m_arm_pairs.empty()) {
-            for(std::pair<Arms*, Arms*> a : m_arm_pairs)
-            {
-                Arms* a1 = std::get<0>(a);
-                Arms* a2 = std::get<1>(a);
+        // if(!m_arm_pairs.empty()) {
+        //     for(std::pair<Arms*, Arms*> a : m_arm_pairs)
+        //     {
+        //         Arms* a1 = std::get<0>(a);
+        //         Arms* a2 = std::get<1>(a);
                 
-                float x = ((a1->get_position()).x + (a2->get_position()).x)/2;
-                float y = ((a1->get_position()).y + (a2->get_position()).y)/2;
+        //         float x = ((a1->get_position()).x + (a2->get_position()).x)/2;
+        //         float y = ((a1->get_position()).y + (a2->get_position()).y)/2;
 
-                vec2 midpoint = {x, y};
+        //         vec2 midpoint = {x, y};
 
-                a1->setCurrentTarget(midpoint);
-                a2->setCurrentTarget(midpoint);
+        //         a1->setCurrentTarget(midpoint);
+        //         a2->setCurrentTarget(midpoint);
             
-            }
-        }
-        if(!m_leg_pairs.empty()) {
-            for(std::pair<Legs*, Legs*> l : m_leg_pairs)
-            {
-                Legs* l1 = std::get<0>(l);
-                Legs* l2 = std::get<1>(l);
+        //     }
+        // }
+        // if(!m_leg_pairs.empty()) {
+        //     for(std::pair<Legs*, Legs*> l : m_leg_pairs)
+        //     {
+        //         Legs* l1 = std::get<0>(l);
+        //         Legs* l2 = std::get<1>(l);
                 
-                float x = ((l1->get_position()).x + (l2->get_position()).x)/2
-                float y = ((l1->get_position()).y + (l2->get_position()).y)/2
+        //         float x = ((l1->get_position()).x + (l2->get_position()).x)/2;
+        //         float y = ((l1->get_position()).y + (l2->get_position()).y)/2;
 
-                vec2 midpoint = {x, y};
+        //         vec2 midpoint = {x, y};
 
-                l1->setCurrentTarget(midpoint);
-                l2->setCurrentTarget(midpoint);
-            }
-        }
+        //         l1->setCurrentTarget(midpoint);
+        //         l2->setCurrentTarget(midpoint);
+        //     }
+        // }
+
+
+        //vector of arms
+        //vector of legs
+        //map position to arm*/leg*
+
+        
 
     }
     //check if limbs centroids are empty
@@ -228,65 +241,66 @@
 
 
 
-    double distance_between_pairs(std::pair<Legs*, Legs*> l, std::pair<Arms*, Arms*> a)
+    double LimbsManager::distance_between_pairs(std::pair<Legs*, Legs*> l, std::pair<Arms*, Arms*> a)
     {
+
             //check for null pointers
             return 0.0;
 
     }
 
-    vec2 get_centroid(std::pair<Legs*, Legs*> l, std::pair<Arms*, Arms*> a)
+    vec2 LimbsManager::get_centroid(std::pair<Legs*, Legs*> l, std::pair<Arms*, Arms*> a)
     {
         std::list<vec2> positions;
-        if (std::get<0>(l)) != NULL)
+        if (l.first != 0)
         {
-            positions.push_back(std::get<0>(l)).get_position());
+            positions.push_back(l.first->get_position());
         }
 
-        if (std::get<1>(l)) != NULL)
+        if (l.second != 0)
         {
-            positions.push_back(std::get<1>(l)).get_position());
+            positions.push_back(l.second->get_position());
         }
 
-        if (std::get<0>(a)) != NULL)
+        if (a.first != 0)
         {
-            positions.push_back(std::get<0>(a).get_position());
+            positions.push_back(a.first->get_position());
         }
 
-        if (std::get<1>(a))) != NULL)
+        if (a.second != 0)
         {
-            positions.push_back(std::get<1>(a)).get_position());
+            positions.push_back(a.second->get_position());
         }
 
-        float max_x = NULL;
-        float max_y = NULL;
-        float min_x = NULL;
-        float min_y = NULL;
+        float max_x;
+        float max_y;
+        float min_x;
+        float min_y;
 
         for (vec2 position : positions)
         {
-            if (max_x == NULL)
+            if (max_x == 0)
             {
                 max_x = position.x;
             } else if (max_x < position.x) {
                 max_x = position.x;
             }
 
-            if (max_y == NULL)
+            if (max_y == 0)
             {
                 max_y = position.y;
             } else if (max_y < position.y) {
                 max_y = position.y;
             }
 
-            if (min_x == NULL)
+            if (min_x == 0)
             {
                 min_x = position.x;
             } else if (min_x > position.x) {
                 min_x = position.x;
             }
 
-            if (min_y == NULL)
+            if (min_y == 0)
             {
                 min_y = position.y;
             } else if (min_y > position.y) {
@@ -299,11 +313,7 @@
     return {x,y};
 
     }
-   
-    void update_limb_targets()
-    {
 
-    }
 
     //check if players collide with any limbs
     //returns 1 if an arm collides with player 1
