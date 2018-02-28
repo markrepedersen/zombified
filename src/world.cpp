@@ -539,6 +539,7 @@ bool World::random_spawn(float elapsed_ms, vec2 screen)
     
     if (randNum % 13 == 0)
     {
+        std::cout<< "spawning limb";
         if (m_limbsManager.get_arms_size() <= MAX_ARMS && m_next_arm_spawn < 0.f)
         {
             if (!(m_limbsManager.spawn_arms()))

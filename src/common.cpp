@@ -100,11 +100,11 @@ double getDistance(vec2 v1, vec2 v2) {
 }
 
 double getDistancePointToLine(vec2 a, vec2 b, vec2 c) {
-  const double l2 = pow(std::fabs(w-v), 2);
-  if (l2 == 0.0) return getDistance(c, a);
-  const double t = max(0, min(1, dot(c - a, c - b) / l2));
-  const vec2 projection = a + t * (b - a);
-  return getDistance(c, projection);
+//   const double l2 = pow(std::fabs(b-a), 2);
+//   if (l2 == 0.0) return getDistance(c, a);
+//   const double t = max(0, min(1, dot(c - a, c - b) / l2));
+//   const vec2 projection = a + t * (b - a);
+//   return getDistance(c, projection);
 } //line ab to point c
 
 Texture::Texture()

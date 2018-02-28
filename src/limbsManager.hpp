@@ -10,6 +10,19 @@
 
 class LimbsManager
 {
+struct Cluster {
+    int size;
+    // std::vector<Limb*> limbs;
+        std::vector<Node*> nodes;
+};
+
+struct Node {
+    int key;
+    Limb* limb;
+    vec2 limb_position;
+    // std::vector<Node*> connectedNodes;
+};
+
 public:
     // initialize a limbsManager
     bool init(vec2 screen);
@@ -70,7 +83,9 @@ private:
     // std::vector<vec2> m_legCentroids;
     std::vector<vec2> m_limbCentroids;
     //
-    std::map<vec2, std::pair<Legs*, Legs*> > clusters;
+    // std::map<vec2, std::pair<Legs*, Legs*> > clusters;
+
+      std::map<int, Cluster> clusters;
 
 
 

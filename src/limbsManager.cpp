@@ -78,39 +78,6 @@
     //find most optimal clusters of legs and updates the mapping using k-means
     void LimbsManager::pair_legs()
     {
-        std::list<Legs*> leg_pointers;
-        for(Legs l : m_legs)
-        {
-            leg_pointers.push_back(&l);
-        }
-        
-        std::list<Legs*>::iterator it;
-        for (it = leg_pointers.begin(); it != leg_pointers.end();)
-        {
-            std::list<Legs*>::iterator it2;
-            it2 = leg_pointers.begin();
-            it2++;
-
-            Legs* curr_pair = NULL;
-            double curr_min_distance = std::numeric_limits<double>::max();
-
-            for (it2 = it2 ; it2 != leg_pointers.end();)
-            {
-                if(getDistance((*it)->get_position(), (*it2)->get_position()) < curr_min_distance)
-                {
-                    curr_min_distance = getDistance((*it)->get_position(), (*it2)->get_position());
-                    curr_pair = *it2;
-                }
-            }
-    
-        m_leg_pairs.insert(std::pair<Legs*, Legs*>(*it, curr_pair));
-        leg_pointers.remove(*it);
-        leg_pointers.remove(curr_pair);
-        }
-        
-        leg_pointers.clear();
-
-        //IF no pair, set itself as its own pair
     }
     //check if leg centroids are empty
     //if empty, find random points
@@ -119,37 +86,6 @@
     //find most optimal clusters of arms and updates the mapping using k-means
     void LimbsManager::pair_arms()
     {
-        std::list<Arms*> arm_pointers;
-        for(Arms a : m_arms)
-        {
-            arm_pointers.push_back(&a);
-        }
-        
-        std::list<Arms*>::iterator it;
-        for (it = arm_pointers.begin(); it != arm_pointers.end();)
-        {
-            std::list<Arms*>::iterator it2;
-            it2 = arm_pointers.begin();
-            it2++;
-
-            Arms* curr_pair = NULL;
-            double curr_min_distance = std::numeric_limits<double>::max();
-
-            for (it2 = it2 ; it2 != arm_pointers.end(); it2++)
-            {
-                if(getDistance((*it)->get_position(), (*it2)->get_position()) < curr_min_distance)
-                {
-                    curr_min_distance = getDistance((*it)->get_position(), (*it2)->get_position());
-                    curr_pair = *it2;
-                }
-            }
-    
-        m_arm_pairs.insert(std::pair<Arms*, Arms*>(*it, curr_pair));
-        arm_pointers.remove(*it);
-        arm_pointers.remove(curr_pair);
-        }
-        
-        arm_pointers.clear();
     }
       //check if leg centroids are empty
     //if empty, find random points
@@ -158,79 +94,20 @@
     //find most optimal clusters of leg clusters and arm clusters to make a common enemy zombie using k-means
     void LimbsManager::cluster_limbs()
     {
-        // std::map<Legs*, Legs*>::iterator itL;
-        // for (itL = m_leg_pairs.begin(); itL != m_leg_pairs.end(); itL++)
-        // {
-        //     std::map<Arms*, Arms*>::iterator itA;
-
-        //     std::pair<Arms*, Arms*> curr_pair;
-        //     std::map<Arms*, Arms*>::iterator curr_itA;
-        //     double curr_min_distance = std::numeric_limits<double>::max();
-
-        //     for (itA = m_arm_pairs.begin(); itA != m_arm_pairs.end(); itA++)
-        //     {
-        //         if(distance_between_pairs(*itL, *itA) < curr_min_distance)
-        //         {
-        //             curr_min_distance = distance_between_pairs(*itL, *itA);
-        //             curr_pair = *itA;
-        //             curr_itA = itA;
-        //         }
-
-        //     }
-
-        //     if(curr_pair.first == 0 && curr_pair.second == 0) {
-        //         vec2 target = get_centroid(*itL, curr_pair);
-        //         (std::get<0>(*itL))->setCurrentTarget(target);
-        //         (std::get<1>(*itL))->setCurrentTarget(target);
-        //         (std::get<0>(curr_pair))->setCurrentTarget(target);
-        //         (std::get<1>(curr_pair))->setCurrentTarget(target);
-
-        //         m_leg_pairs.erase(itL);
-        //         m_arm_pairs.erase(curr_itA);
-        //     }
-
-           
-
-        // }
         
-        // if(!m_arm_pairs.empty()) {
-        //     for(std::pair<Arms*, Arms*> a : m_arm_pairs)
-        //     {
-        //         Arms* a1 = std::get<0>(a);
-        //         Arms* a2 = std::get<1>(a);
-                
-        //         float x = ((a1->get_position()).x + (a2->get_position()).x)/2;
-        //         float y = ((a1->get_position()).y + (a2->get_position()).y)/2;
+        //vector of all nodes
+        //temp list of nodes pointers
 
-        //         vec2 midpoint = {x, y};
-
-        //         a1->setCurrentTarget(midpoint);
-        //         a2->setCurrentTarget(midpoint);
-            
-        //     }
-        // }
-        // if(!m_leg_pairs.empty()) {
-        //     for(std::pair<Legs*, Legs*> l : m_leg_pairs)
-        //     {
-        //         Legs* l1 = std::get<0>(l);
-        //         Legs* l2 = std::get<1>(l);
-                
-        //         float x = ((l1->get_position()).x + (l2->get_position()).x)/2;
-        //         float y = ((l1->get_position()).y + (l2->get_position()).y)/2;
-
-        //         vec2 midpoint = {x, y};
-
-        //         l1->setCurrentTarget(midpoint);
-        //         l2->setCurrentTarget(midpoint);
-        //     }
-        // }
-
-
-        //vector of arms
-        //vector of legs
-        //map position to arm*/leg*
-
+       //initialize nodes from limbs with cluster -1
+       
+       //for each node in vector, find closest other node from list of temp nodes
+       //and put them in one cluster
+        //check if the other node has a positive cluster key,
+            //if yes, add to that cluster on cluster map
+                //if this makes 4, remove all those node pointers pointing to nodes from temp lsit
+            //if no, create new cluster and add to cluster map
         
+        //iterate through all clusters, find its centroids, update targets of each limb
 
     }
     //check if limbs centroids are empty
