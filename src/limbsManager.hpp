@@ -10,11 +10,6 @@
 
 class LimbsManager
 {
-struct Cluster {
-    int size;
-    // std::vector<Limb*> limbs;
-        std::vector<Node*> nodes;
-};
 
 struct Node {
     int key;
@@ -22,6 +17,13 @@ struct Node {
     vec2 limb_position;
     // std::vector<Node*> connectedNodes;
 };
+
+struct Cluster {
+    int size;
+    // std::vector<Limb*> limbs;
+        std::vector<Node*> nodes;
+};
+
 
 public:
     // initialize a limbsManager

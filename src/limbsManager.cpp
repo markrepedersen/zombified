@@ -21,17 +21,19 @@
    //spawn new arm in random
     bool LimbsManager::spawn_arms()
     {
+        srand((unsigned)time(0));
+
         Arms arm;
         if (arm.init())
         {
-            arm.setCurrentTarget({0,0});
+            arm.setCurrentTarget({100,300});
             arm.setLastTarget(arm.getCurrentTarget());
 
-             m_arms.emplace_back(arm);
             // Setting random initial position
             arm.set_position({(float)((rand() % (int)m_screen.x)),
                 (float)((rand() % (int)m_screen.y))});
 
+            m_arms.emplace_back(arm);
            
             update_clusters();
             return true;
@@ -48,9 +50,10 @@
     bool LimbsManager::spawn_legs()
     {
     Legs leg;
+     srand((unsigned)time(0));
     if (leg.init())
     {
-        leg.setCurrentTarget({0,0});
+        leg.setCurrentTarget({100,300});
         leg.setLastTarget(leg.getCurrentTarget());
         
         // Setting random initial position
@@ -126,70 +129,14 @@
 
     }
 
-    vec2 LimbsManager::get_centroid(std::pair<Legs*, Legs*> l, std::pair<Arms*, Arms*> a)
-    {
-        std::list<vec2> positions;
-        if (l.first != 0)
-        {
-            positions.push_back(l.first->get_position());
-        }
-
-        if (l.second != 0)
-        {
-            positions.push_back(l.second->get_position());
-        }
-
-        if (a.first != 0)
-        {
-            positions.push_back(a.first->get_position());
-        }
-
-        if (a.second != 0)
-        {
-            positions.push_back(a.second->get_position());
-        }
-
-        float max_x;
-        float max_y;
-        float min_x;
-        float min_y;
-
-        for (vec2 position : positions)
-        {
-            if (max_x == 0)
-            {
-                max_x = position.x;
-            } else if (max_x < position.x) {
-                max_x = position.x;
-            }
-
-            if (max_y == 0)
-            {
-                max_y = position.y;
-            } else if (max_y < position.y) {
-                max_y = position.y;
-            }
-
-            if (min_x == 0)
-            {
-                min_x = position.x;
-            } else if (min_x > position.x) {
-                min_x = position.x;
-            }
-
-            if (min_y == 0)
-            {
-                min_y = position.y;
-            } else if (min_y > position.y) {
-                min_y = position.y;
-            }
-        }
-
-    float x = min_x + ((max_x - min_x) /2.f);
-    float y = min_y + ((max_y - min_y) /2.f);
-    return {x,y};
-
+    vec2 LimbsManager::get_centroid(std::pair<Legs *, Legs *> pair1, std::pair<Arms *, Arms *> pair2) {
+        vec2 pos1 = pair1.first->get_position();
+        vec2 pos2 = pair1.second->get_position();
+        vec2 pos3 = pair2.first->get_position();
+        vec2 pos4 = pair2.second->get_position();
+        return {(pos1.x + pos2.x + pos3.x + pos4.x) / 4, (pos1.y + pos2.y + pos3.y + pos4.y) / 4};
     }
+
 
 
     //check if players collide with any limbs

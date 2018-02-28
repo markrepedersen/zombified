@@ -230,7 +230,7 @@ bool World::update(float elapsed_ms)
         
         // Next milestone this will be handled by the collision
         check_add_tools(screen);
-//        computePaths(elapsed_ms);
+    //    computePaths(elapsed_ms);
         
         return true;
     }
@@ -501,21 +501,21 @@ bool World::spawn_water()
     return false;
 }
 
-//void World::computePaths(float ms) {
+// void World::computePaths(float ms) {
 //    JPS::PathVector path;
-//
+
 //    for (auto& arm : m_arms) {
 //        vec2 target = arm.getCurrentTarget();
-//
+
 //        if (arm.getLastTarget() != arm.getCurrentTarget() && mapGrid->findPath(path, arm.get_position(), target)) {
 //            JPS::PathVector oldPath = arm.getPath().empty() ? path : arm.getPath();
 //            arm.setPath(path);
 //        }
-//
+
 //        float step = 200 * (ms / 1000);
 //        float curNode = powf(arm.get_position().x, 2) + powf(arm.get_position().y, 2);
 //        float nextNode = 0, i = 0;
-//
+
 //        while (nextNode <= curNode) {
 //            nextNode = powf(arm.getPath()[i].x, 2) + powf(arm.getPath()[i].y, 2);
 //        }
@@ -524,7 +524,7 @@ bool World::spawn_water()
 //        arm.set_position(dir);
 //        arm.setLastTarget(target);
 //    }
-//}
+// }
 
 //TODO: should make sure they spawn a certain distance away from each other and not on top of each other
 //  check collision with wall
