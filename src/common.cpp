@@ -80,8 +80,10 @@ mat3 mul(const mat3 & l, const mat3 & r)
 
 vec2 normalize(vec2 v)
 {
-	float m = sqrtf(dot(v, v));
-	return { v.x / m, v.y / m };
+	float hyp = sqrt(v.x*v.x + v.y*v.y);
+	v.x /= hyp;
+	v.y /= hyp;
+	return {v.x, v.y};
 }
 
 vec2 scale(float c, vec2 v) {

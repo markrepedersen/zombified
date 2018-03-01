@@ -517,11 +517,10 @@ void World::computePaths(float ms) {
                           (unsigned) arm.get_position().y,
                           (unsigned) target.x,
                           (unsigned) target.y,
-                          0);
+                          1);
             arm.setCurrentPath(path);
         } else arm.setCurrentPath(arm.getLastPath());
-
-        if (!path.empty()) {
+        if (!arm.getCurrentPath().empty()) {
             vec2 nextNode, curNode;
             curNode = nextNode = {std::powf(arm.get_position().x, 2), std::powf(arm.get_position().y,2)};
 
@@ -529,10 +528,12 @@ void World::computePaths(float ms) {
                 nextNode = {static_cast<float>(arm.getCurrentPath()[i].x), static_cast<float>(arm.getCurrentPath()[i].y)};
             }
             float step = 20 * (ms / 1000);
-            vec2 dir = normalize(scale(step, nextNode));
+            vec2 dir;
+            dir.x = arm.getCurrentTarget().x - arm.get_position().x;
+            dir.y = arm.getCurrentTarget().y - arm.get_position().y;
+            arm.move(scale(step, normalize(dir)));
 
-            arm.move(dir);
-            arm.setLastPath(path);
+            arm.setLastPath(arm.getCurrentPath());
             arm.setLastTarget(target);
         }
     }
