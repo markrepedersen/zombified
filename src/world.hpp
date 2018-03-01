@@ -5,6 +5,7 @@
 #include "toolboxManager.hpp"
 #include "player1.hpp"
 #include "player2.hpp"
+#include "zombie.hpp"
 #include "arms.hpp"
 #include "legs.hpp"
 #include "water.hpp"
@@ -100,6 +101,7 @@ private:
     ToolboxManager m_toolboxManager;
     Player1 m_player1;
     Player2 m_player2;
+    Zombie m_zombie;
     Antidote m_antidote;
 
     std::vector<Arms> m_arms;

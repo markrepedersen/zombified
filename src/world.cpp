@@ -147,6 +147,7 @@ void World::destroy()
     m_toolboxManager.destroy();
     m_player1.destroy();
     m_player2.destroy();
+    m_zombie.destroy();
     for (auto& legs : m_legs)
      	legs.destroy();
     for (auto& arms : m_arms)

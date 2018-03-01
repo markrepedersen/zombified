@@ -20,6 +20,7 @@
 #define textures_path(name) data_path "/textures/" name
 #define p1_textures_path(name) data_path "/textures/p1/" name
 #define p2_textures_path(name) data_path "/textures/p2/" name
+#define zombie_textures_path(name) data_path "/textures/ai/" name
 #define tools_textures_path(name) data_path "/textures/tools/" name
 #define startworld_textures_path(name) data_path "/textures/start screen/" name
 #define background_textures_path(name) data_path "/textures/background/" name
