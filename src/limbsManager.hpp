@@ -12,7 +12,7 @@ class LimbsManager
 {
 
 struct Node {
-    int key;
+    int cluster_key;
     Limb* limb;
     vec2 limb_position;
     // std::vector<Node*> connectedNodes;
@@ -21,7 +21,7 @@ struct Node {
 struct Cluster {
     int size;
     // std::vector<Limb*> limbs;
-        std::vector<Node*> nodes;
+        std::vector<struct Node*> nodes;
 };
 
 
@@ -53,6 +53,8 @@ public:
 
     //find most optimal clusters of leg clusters and arm clusters to make a common enemy zombie
     void cluster_limbs();
+
+    void update_limb_targets();
 
     double distance_between_pairs(std::pair<Legs*, Legs*> l, std::pair<Arms*, Arms*> a);
 
@@ -87,7 +89,7 @@ private:
     //
     // std::map<vec2, std::pair<Legs*, Legs*> > clusters;
 
-      std::map<int, Cluster> clusters;
+      std::map<int, struct Cluster> m_clusters;
 
 
 

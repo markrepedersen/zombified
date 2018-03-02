@@ -59,8 +59,11 @@ mat3  mul(const mat3& l, const mat3& r);
 vec2  normalize(vec2 v);
 vec2 scale(float, vec2);
 vec2 direction(vec2, vec2);
-double getDistance(vec2, vec2);
-double getDistancePointToLine(vec2 a, vec2 b, vec2 c); //line ab to point c
+float getDistance(vec2, vec2);
+float getDistancePointToLine(vec2 a, vec2 b, vec2 c); //line ab to point c
+vec2 subtractVectors(vec2 a, vec2 b);
+vec2 sumVectors(vec2 a, vec2 b);
+vec2 multiplyScalarVector(float a, vec2 b);
 
 // OpenGL utilities
 // cleans error buffer

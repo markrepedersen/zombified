@@ -30,8 +30,8 @@
             arm.setLastTarget(arm.getCurrentTarget());
 
             // Setting random initial position
-            arm.set_position({(float)((rand() % (int)m_screen.x)),
-                (float)((rand() % (int)m_screen.y))});
+            arm.set_position({(float)((rand() % (int)m_screen.x) * ViewHelper::getRatio()),
+                (float)((rand() % (int)m_screen.y) * ViewHelper::getRatio())});
 
             m_arms.emplace_back(arm);
            
@@ -57,8 +57,8 @@
         leg.setLastTarget(leg.getCurrentTarget());
         
         // Setting random initial position
-        leg.set_position({(float)((rand() % (int)m_screen.x)),
-            (float)((rand() % (int)m_screen.y))});
+        leg.set_position({(float)((rand() % (int)m_screen.x) * ViewHelper::getRatio()),
+            (float)((rand() % (int)m_screen.y) * ViewHelper::getRatio())});
 
         m_legs.emplace_back(leg);
 
@@ -74,7 +74,7 @@
     {
 
         cluster_limbs();
-        // update_limb_targets();
+        update_limb_targets();
 
     }
 
@@ -90,36 +90,142 @@
     void LimbsManager::pair_arms()
     {
     }
-      //check if leg centroids are empty
-    //if empty, find random points
-    //if not empty, use points to find new clustering of legs
-
-    //find most optimal clusters of leg clusters and arm clusters to make a common enemy zombie using k-means
-    void LimbsManager::cluster_limbs()
-    {
-        
-        //vector of all nodes
-        //temp list of nodes pointers
-
-       //initialize nodes from limbs with cluster -1
-       
-       //for each node in vector, find closest other node from list of temp nodes
-       //and put them in one cluster
+     
+     
+//cluster_limbs:
+      //if temp nodes not empty
+       //find closest from temp nodes that does not have a full cluster
         //check if the other node has a positive cluster key,
             //if yes, add to that cluster on cluster map
                 //if this makes 4, remove all those node pointers pointing to nodes from temp lsit
             //if no, create new cluster and add to cluster map
+        //if temp nodes empty, set as its own cluster
+    void LimbsManager::cluster_limbs()
+    {
         
-        //iterate through all clusters, find its centroids, update targets of each limb
+        //vector of all nodes
+        std::vector<struct Node> limb_nodes;
+
+        //temp list of nodes pointers that are not in full clusters
+        std::list<struct Node*> temp_nodes;
+
+        //initialize nodes from limbs with cluster -1   
+        for (Arms a : m_arms)
+        {
+            Node n = {-1, &a, a.get_position()};
+            limb_nodes.push_back(n);
+            temp_nodes.push_back(&n);
+        }
+        for (Legs l : m_legs)
+        {
+            Node n = {-1, &l, l.get_position()};
+            limb_nodes.push_back(n);
+            temp_nodes.push_back(&n);
+        }
+
+        // for (struct Node* n : temp_nodes)
+        // {
+        //     std::cout << "start of node" << std::endl;
+        //     std::cout<< n->limb_position.x << std::endl;
+        //     std::cout<< n->limb_position.y << std::endl;
+        //     std::cout<< "done" << std::endl;
+        // }
+        // std::cout << "end of loop";
+       
+       m_clusters.clear();
+       std::cout << "number of nodes in this round is..." << limb_nodes.size() << std::endl;
+       //for each node in limb_nodes
+       for(struct Node ln : limb_nodes)
+       {
+
+            struct Node* temp_closest_node;
+            bool temp_closest_node_empty = true;
+            if (ln.cluster_key == -1) {
+            if (!temp_nodes.empty())
+            {
+                float temp_closest_distance = 10000.0;
+
+                for (struct Node* n : temp_nodes)
+                {
+                    //TODO:: check if node is not itself
+                    float distance = getDistance(ln.limb_position, n->limb_position);
+                    if (distance < temp_closest_distance)
+                    {
+                        temp_closest_node_empty = false;
+                        temp_closest_node = n;
+                        temp_closest_distance = distance;
+                    }
+                }
+
+           }
+
+           if(temp_closest_node_empty)
+           {
+               std::cout<< "temp_closest node is empty" << std::endl;
+                int curr_cluster_key = m_clusters.size() + 1;
+                std::vector<struct Node*> cluster_limbs;
+                cluster_limbs.push_back(&ln);
+                ln.cluster_key = curr_cluster_key;
+                struct Cluster c = {1, cluster_limbs};
+                m_clusters[curr_cluster_key] = c;
+
+           } else {
+                if (temp_closest_node->cluster_key == -1)
+                    {
+                        std::cout << "closest node has no clusters assigned" << std::endl;
+                        int curr_cluster_key = m_clusters.size() + 1;
+                        std::vector<struct Node*> cluster_limbs;
+                        cluster_limbs.push_back(temp_closest_node);
+                        temp_closest_node->cluster_key = curr_cluster_key;
+                        cluster_limbs.push_back(&ln);
+                        ln.cluster_key = curr_cluster_key;
+                        struct Cluster c = {2, cluster_limbs};
+                        m_clusters[curr_cluster_key] = c;
+                    } else if ((m_clusters[temp_closest_node->cluster_key]).size < 4)
+                    {
+                        std::cout<< "closest node has a cluster assigned that's not full"<< std::endl;
+                        (m_clusters[temp_closest_node->cluster_key]).nodes.push_back(&ln);
+                        (m_clusters[temp_closest_node->cluster_key]).size++;
+                        ln.cluster_key = temp_closest_node->cluster_key;
+
+                        if ((m_clusters[temp_closest_node->cluster_key]).size == 4)
+                        {
+                            for(struct Node* full_cluster_node : (m_clusters[temp_closest_node->cluster_key]).nodes)
+                            {
+                                temp_nodes.remove(full_cluster_node);
+                            }
+                        }
+                    }
+           }
+           std::cout << "one limb down" <<std::endl;
+            }
+       }
+       std::cout << "looked through all the limbs in this round"<< std::endl;
+      
+
+
+        //TODO::
+        //go through all clusters, find centroids
+        //update targets for each limb
+        for (std::map<int, LimbsManager::Cluster>::iterator it_clusters = m_clusters.begin();
+        it_clusters != m_clusters.end(); ++it_clusters)
+        {
+            std::cout << "printing a cluster size";
+            std::cout << (it_clusters->second).size << std::endl;
+        }
+
+        std::cout << "done this round" << std::endl;
+      
+            
+        
 
     }
-    //check if limbs centroids are empty
-    //if empty, find random points
-    //if not empty, use points to find new clustering of limbs
-    //once new centroids are found, update the targetNode of each limb
-    //if new centroid is further from limb than the current targetNode, abort. set the far limb to also go to the closest centroid.
+    
 
-
+    void LimbsManager::update_limb_targets()
+    {
+        //iterate through all clusters, find its centroids, update targets of each limb
+    }
 
     double LimbsManager::distance_between_pairs(std::pair<Legs*, Legs*> l, std::pair<Arms*, Arms*> a)
     {
@@ -184,7 +290,6 @@
                 {
                     collided = 3;
                 }
-                
             }
             if (m_player2->collides_with(*itA)){
                 if (collided == 0) {
@@ -197,6 +302,7 @@
 
             if (collided != 0)
             {
+                update_clusters();
                 //erase.push_back(armcount);
                 itA = m_arms.erase(itA);
                 itA->destroy();
@@ -205,8 +311,6 @@
             }
             
         }
-
-    update_clusters();
     return collided;
     }
 

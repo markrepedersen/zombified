@@ -7,6 +7,7 @@
 // stlib
 #include <vector>
 #include <sstream>
+#include <math.h>
 
 void gl_flush_errors()
 {
@@ -95,17 +96,38 @@ vec2 direction(vec2 v1, vec2 v2) {
 	return {v2.x - v1.x, v2.y - v1.y};
 }
 
-double getDistance(vec2 v1, vec2 v2) {
+float getDistance(vec2 v1, vec2 v2) {
 	return sqrt(pow(v1.x - v2.x, 2) + pow(v1.y - v2.y, 2));
 }
 
-double getDistancePointToLine(vec2 a, vec2 b, vec2 c) {
-//   const double l2 = pow(std::fabs(b-a), 2);
-//   if (l2 == 0.0) return getDistance(c, a);
-//   const double t = max(0, min(1, dot(c - a, c - b) / l2));
-//   const vec2 projection = a + t * (b - a);
-//   return getDistance(c, projection);
+float getDistancePointToLine(vec2 a, vec2 b, vec2 c) {
+
+	float x = (b.y - a.y) * c.x;
+	float y = (b.x - a.x) * c.y;
+	float z = (b.x * a.y) - (b.y * a.x);
+	float xyz = std::fabs(x - y + z);
+
+	float d1 = pow((b.y - a.y), 2);
+	float d2 = pow((b.x - a.x), 2);
+	float denominator = sqrt(d1 + d2);
+
+	return (xyz/denominator);
 } //line ab to point c
+
+vec2 subtractVectors(vec2 a, vec2 b)
+{
+	return {a.x - b.x, a.y - b.y};
+}
+
+vec2 sumVectors(vec2 a, vec2 b)
+{
+	return {a.x + b.x, a.y + b.y};
+}
+
+vec2 multiplyScalarVector(float a, vec2 b)
+{
+	return {a * b.x, a * b.y};
+}
 
 Texture::Texture()
 {
