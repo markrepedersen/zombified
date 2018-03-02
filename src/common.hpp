@@ -20,6 +20,7 @@
 #define textures_path(name) data_path "/textures/" name
 #define p1_textures_path(name) data_path "/textures/p1/" name
 #define p2_textures_path(name) data_path "/textures/p2/" name
+#define zombie_textures_path(name) data_path "/textures/ai/" name
 #define tools_textures_path(name) data_path "/textures/tools/" name
 #define startworld_textures_path(name) data_path "/textures/start screen/" name
 #define background_textures_path(name) data_path "/textures/background/" name
@@ -41,6 +42,20 @@ struct vec2 {
 	bool operator!=(vec2 const& p) const {
 		return this->x != p.x || this->y != p.y;
 	}
+
+	bool operator<=(vec2 const& p) const {
+		return this->x <= p.x && this->y <= p.y;
+	}
+    vec2& operator-(vec2 const& p) {
+        this->x -= p.x;
+        this->y -=p.y;
+        return *this;
+    }
+	vec2& operator+=(vec2 const& p) {
+		this->x += p.x;
+		this->y += p.y;
+		return *this;
+	}
 };
 template<>
 struct std::hash<vec2> {
@@ -59,6 +74,7 @@ mat3  mul(const mat3& l, const mat3& r);
 vec2  normalize(vec2 v);
 vec2 scale(float, vec2);
 vec2 direction(vec2, vec2);
+float distance(vec2, vec2);
 float getDistance(vec2, vec2);
 float getDistancePointToLine(vec2 a, vec2 b, vec2 c); //line ab to point c
 vec2 subtractVectors(vec2 a, vec2 b);

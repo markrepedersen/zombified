@@ -1,25 +1,25 @@
 // Header
-#include "antidote.hpp"
+#include "zombie.hpp"
 
 #include <cmath>
 
-Texture Antidote::antidote_texture;
+Texture Zombie::zombie_texture;
 
-bool Antidote::init(vec2 screen)
+bool Zombie::init()
 {
     // Load shared texture
-    if (!antidote_texture.is_valid())
+    if (!zombie_texture.is_valid())
     {
-        if (!antidote_texture.load_from_file(tools_textures_path("antidote.png")))
+        if (!zombie_texture.load_from_file(zombie_textures_path("ai standing left.png")))
         {
-            fprintf(stderr, "Failed to load antidote texture!");
+            fprintf(stderr, "Failed to load zombie texture!");
             return false;
         }
     }
     
     // The position corresponds to the center of the texture
-    float wr = antidote_texture.width * 0.5f;
-    float hr = antidote_texture.height * 0.5f;
+    float wr = zombie_texture.width * 0.5f;
+    float hr = zombie_texture.height * 0.5f;
     
     TexturedVertex vertices[4];
     vertices[0].position = { -wr, +hr, -0.02f };
@@ -33,7 +33,7 @@ bool Antidote::init(vec2 screen)
     
     // counterclockwise as it's the default opengl front winding direction
     uint16_t indices[] = { 0, 3, 1, 1, 3, 2 };
-  
+    
     // Clearing errors
     gl_flush_errors();
     
@@ -55,20 +55,17 @@ bool Antidote::init(vec2 screen)
     // Loading shaders
     if (!effect.load_from_file(shader_path("textured.vs.glsl"), shader_path("textured.fs.glsl")))
         return false;
-
+    
     // Setting initial values
-    m_scale.x = -0.10f * ViewHelper::getRatio();
-    m_scale.y = 0.10f * ViewHelper::getRatio();
+    m_scale.x = -0.23f * ViewHelper::getRatio();
+    m_scale.y = 0.23f * ViewHelper::getRatio();
     m_is_alive = true;
+    m_position = { 350.f * ViewHelper::getRatio(), 450.f* ViewHelper::getRatio() };
     
-    srand((unsigned)time(0));
-    m_position = {screen.x/2 * ViewHelper::getRatio(), (float)((rand() % (int)screen.y))};
-    
-    belongs_to = 0;
     return true;
 }
 
-void Antidote::draw(const mat3& projection)
+void Zombie::draw(const mat3& projection)
 {
     // Transformation code, see Rendering and Transformation in the template specification for more info
     // Incrementally updates transformation matrix, thus ORDER IS IMPORTANT
@@ -104,7 +101,7 @@ void Antidote::draw(const mat3& projection)
     
     // Enabling and binding texture to slot 0
     glActiveTexture(GL_TEXTURE0);
-    glBindTexture(GL_TEXTURE_2D, antidote_texture.id);
+    glBindTexture(GL_TEXTURE_2D, zombie_texture.id);
     
     // Setting uniform values to the currently bound program
     glUniformMatrix3fv(transform_uloc, 1, GL_FALSE, (float*)&transform);
@@ -116,27 +113,27 @@ void Antidote::draw(const mat3& projection)
     glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_SHORT, nullptr);
 }
 
-void Antidote::set_position(vec2 position)
+void Zombie::set_position(vec2 position)
 {
     m_position = position;
 }
 
-void Antidote::set_scale(vec2 scale)
-{
-    m_scale = scale;
-}
-
-vec2 Antidote::get_position()const
+vec2 Zombie::get_position()const
 {
     return m_position;
 }
 
-bool Antidote::is_alive()const
+void Zombie::set_scale(vec2 scale)
+{
+    m_scale = scale;
+}
+
+bool Zombie::is_alive()const
 {
     return m_is_alive;
 }
 
-void Antidote::destroy()
+void Zombie::destroy()
 {
     glDeleteBuffers(1, &mesh.vbo);
     glDeleteBuffers(1, &mesh.ibo);
@@ -147,8 +144,8 @@ void Antidote::destroy()
     glDeleteShader(effect.program);
 }
 
-vec2 Antidote::get_bounding_box()const
+vec2 Zombie::get_bounding_box()const
 {
     // fabs is to avoid negative scale due to the facing direction
-    return { std::fabs(m_scale.x) * antidote_texture.width, std::fabs(m_scale.y) * antidote_texture.height };
+    return { std::fabs(m_scale.x) * zombie_texture.width, std::fabs(m_scale.y) * zombie_texture.height };
 }

@@ -8,7 +8,6 @@
 #include "common.hpp"
 #include <vector>
 #include "JPS.h"
-
 enum Terrain {
     REGULAR = 1,
     POOP,
@@ -27,10 +26,9 @@ class MapGrid {
 public:
     MapGrid (unsigned, unsigned);
     bool operator()(unsigned x, unsigned y) const;
-    bool findPath(std::vector<JPS::Position>, vec2 src, vec2 dst);
 private:
     const unsigned width, height;
-    std::vector<std::vector<Node>> mapdata;
+    std::vector<std::vector<Node*>> mapdata;
 };
 
 #endif //ZOMBIE_MAPGRID_H

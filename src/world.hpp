@@ -6,6 +6,7 @@
 #include "limbsManager.hpp"
 #include "player1.hpp"
 #include "player2.hpp"
+#include "zombie.hpp"
 #include "arms.hpp"
 #include "legs.hpp"
 #include "water.hpp"
@@ -102,6 +103,7 @@ private:
     LimbsManager m_limbsManager;
     Player1 m_player1;
     Player2 m_player2;
+    Zombie m_zombie;
     Antidote m_antidote;
 
     std::vector<Arms> m_arms;
@@ -114,7 +116,7 @@ private:
     std::vector<Freeze> m_freeze_collected_2;
     std::vector<Water> m_water_collected_2;
 
-	// MapGrid *mapGrid;
+	MapGrid *mapGrid;
 
 	float m_next_arm_spawn;
     float m_next_leg_spawn;

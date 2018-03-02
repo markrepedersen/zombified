@@ -82,8 +82,10 @@ mat3 mul(const mat3 & l, const mat3 & r)
 
 vec2 normalize(vec2 v)
 {
-	float m = sqrtf(dot(v, v));
-	return { v.x / m, v.y / m };
+	float hyp = sqrt(v.x*v.x + v.y*v.y);
+	v.x /= hyp;
+	v.y /= hyp;
+	return {v.x, v.y};
 }
 
 vec2 scale(float c, vec2 v) {
@@ -91,6 +93,13 @@ vec2 scale(float c, vec2 v) {
     float y = c*v.y;
     return {x, y};
 }
+
+float distance(vec2 v1, vec2 v2) {
+	float diffY = v1.y - v2.y;
+	float diffX = v1.x - v2.x;
+	return sqrt((diffY * diffY) + (diffX * diffX));
+}
+
 
 vec2 direction(vec2 v1, vec2 v2) {
 	return {v2.x - v1.x, v2.y - v1.y};

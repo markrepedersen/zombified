@@ -117,12 +117,11 @@ bool World::init(vec2 screen)
     // 	return false;
     // }
 
-    // Playing background music undefinitely
+    // Playing background music indefinitely
     //Mix_PlayMusic(m_background_music, -1);
 
     //fprintf(stderr, "Loaded music");
-
-//    mapGrid = new MapGrid(screen.x/64, screen.y/64);
+    mapGrid = new MapGrid((unsigned) screen.x, (unsigned) screen.y);
 
       //set game screen to resolution ratio
     ViewHelper* vh = ViewHelper::getInstance(m_window);
@@ -149,10 +148,15 @@ void World::destroy()
     m_limbsManager.destroy();
     m_player1.destroy();
     m_player2.destroy();
-        for (auto& arm : m_arms)
+    m_zombie.destroy();
+    for (auto& arm : m_arms)
         arm.destroy();
     for (auto& leg : m_legs)
         leg.destroy();
+    for (auto& legs : m_legs)
+     	legs.destroy();
+    for (auto& arms : m_arms)
+     	arms.destroy();
     for (auto& freeze : m_freeze)
         freeze.destroy();
     for (auto& water : m_water)
@@ -165,7 +169,7 @@ void World::destroy()
         freeze_collected.destroy();
     for (auto &water_collected : m_water_collected_2)
         water_collected.destroy();
-    
+
     m_freeze.clear();
     m_water.clear();
     m_freeze_collected_1.clear();
@@ -230,7 +234,7 @@ bool World::update(float elapsed_ms)
         
         // Next milestone this will be handled by the collision
         check_add_tools(screen);
-    //    computePaths(elapsed_ms);
+        computePaths(elapsed_ms);
         
         return true;
     }
@@ -450,20 +454,17 @@ void World::on_mouse_move(GLFWwindow* window, int button, int action, int mod)
     }
 }
 
-//======== SPAWNING =======
-// bool World::spawn_arms()
-// {
-//     Arms arm;
-//     if (arm.init())
-//     {
-//         arm.setCurrentTarget({0,0});
-//         arm.setLastTarget(arm.getCurrentTarget());
-//         m_arms.emplace_back(arm);
-//         return true;
-//     }
-//     fprintf(stderr, "Failed to spawn arm");
-//     return false;
-// }
+//bool World::spawn_arms()
+//{
+//    Arms arm;
+//    if (arm.init())
+//    {
+//        m_arms.emplace_back(arm);
+//        return true;
+//    }
+//    fprintf(stderr, "Failed to spawn arm");
+//    return false;
+//}
 
 // bool World::spawn_legs()
 // {
@@ -501,30 +502,42 @@ bool World::spawn_water()
     return false;
 }
 
-// void World::computePaths(float ms) {
-//    JPS::PathVector path;
+void World::computePaths(float ms) {
+    vec2 pos1 = {m_player1.get_position().x, m_player1.get_position().y};
+    vec2 pos2 = {m_player2.get_position().x, m_player2.get_position().y};
+    for (auto &arm : m_arms) {
+        JPS::PathVector path;
+        arm.setCurrentTarget(distance(pos1, arm.get_position()) > distance(pos2, arm.get_position()) ? pos2 : pos1);
+        vec2 target = arm.getCurrentTarget();
 
-//    for (auto& arm : m_arms) {
-//        vec2 target = arm.getCurrentTarget();
+        if (arm.getLastTarget() != target || arm.getLastTarget() == (vec2) {0,0}) {
+            JPS::findPath(path,
+                          *mapGrid,
+                          (unsigned) arm.get_position().x,
+                          (unsigned) arm.get_position().y,
+                          (unsigned) target.x,
+                          (unsigned) target.y,
+                          1);
+            arm.setCurrentPath(path);
+        } else arm.setCurrentPath(arm.getLastPath());
+        if (!arm.getCurrentPath().empty()) {
+            vec2 nextNode, curNode;
+            curNode = nextNode = {std::powf(arm.get_position().x, 2), std::powf(arm.get_position().y,2)};
 
-//        if (arm.getLastTarget() != arm.getCurrentTarget() && mapGrid->findPath(path, arm.get_position(), target)) {
-//            JPS::PathVector oldPath = arm.getPath().empty() ? path : arm.getPath();
-//            arm.setPath(path);
-//        }
+            for (int i = 0; i < arm.getCurrentPath().size() && curNode <= nextNode; ++i) {
+                nextNode = {static_cast<float>(arm.getCurrentPath()[i].x), static_cast<float>(arm.getCurrentPath()[i].y)};
+            }
+            float step = 20 * (ms / 1000);
+            vec2 dir;
+            dir.x = arm.getCurrentTarget().x - arm.get_position().x;
+            dir.y = arm.getCurrentTarget().y - arm.get_position().y;
+            arm.move(scale(step, normalize(dir)));
 
-//        float step = 200 * (ms / 1000);
-//        float curNode = powf(arm.get_position().x, 2) + powf(arm.get_position().y, 2);
-//        float nextNode = 0, i = 0;
-
-//        while (nextNode <= curNode) {
-//            nextNode = powf(arm.getPath()[i].x, 2) + powf(arm.getPath()[i].y, 2);
-//        }
-//        arm.get_position();
-//        vec2 dir = scale(step, direction(arm.get_position(), {static_cast<float>(arm.getPath()[i].x), static_cast<float>(arm.getPath()[i].y)}));
-//        arm.set_position(dir);
-//        arm.setLastTarget(target);
-//    }
-// }
+            arm.setLastPath(arm.getCurrentPath());
+            arm.setLastTarget(target);
+        }
+    }
+}
 
 //TODO: should make sure they spawn a certain distance away from each other and not on top of each other
 //  check collision with wall
@@ -545,6 +558,12 @@ bool World::random_spawn(float elapsed_ms, vec2 screen)
             if (!(m_limbsManager.spawn_arms()))
                 return false;
             
+            Arms &new_arm = m_arms.back();
+            
+            // Setting random initial position
+            new_arm.set_position({(float)((rand() % (int)screen.x)),
+                (float)((rand() % (int)screen.y))});
+            
             // Next spawn
             //srand((unsigned)time(0));
             m_next_arm_spawn = (ARM_DELAY_MS / 2) + rand() % (1000);
@@ -557,6 +576,11 @@ bool World::random_spawn(float elapsed_ms, vec2 screen)
         {
             if (!(m_limbsManager.spawn_legs()))
                 return false;
+            
+            Legs &new_leg = m_legs.back();
+            
+            new_leg.set_position({(float)((rand() % (int)screen.x)),
+                (float)((rand() % (int)screen.y))});
             
             m_next_leg_spawn = (LEG_DELAY_MS / 2) + rand() % (1000);
         }
@@ -677,7 +701,7 @@ void World::check_add_tools(vec2 screen)
     collided = 0;
 
 
-  
+
 //=================check for antidote collision
     if (m_player1.collides_with(m_antidote))
         collided = 1;
