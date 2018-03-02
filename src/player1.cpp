@@ -527,19 +527,19 @@ bool Player1::collides_with(const Arms& arm)
     return false;
 }
 
-bool Player1::collides_with(const Legs& leg)
-{
-    float dx = m_position.x - leg.get_position().x;
-    float dy = m_position.y - leg.get_position().y;
-    float d_sq = dx * dx + dy * dy;
-    float other_r = std::max(leg.get_bounding_box().x, leg.get_bounding_box().y);
-    float my_r = std::max(m_scale.x, m_scale.y);
-    float r = std::max(other_r, my_r);
-    r *= 0.6f;
-    if (d_sq < r * r)
-        return true;
-    return false;
-}
+//bool Player1::collides_with(const Legs& leg)
+//{
+//    float dx = m_position.x - leg.get_position().x;
+//    float dy = m_position.y - leg.get_position().y;
+//    float d_sq = dx * dx + dy * dy;
+//    float other_r = std::max(leg.get_bounding_box().x, leg.get_bounding_box().y);
+//    float my_r = std::max(m_scale.x, m_scale.y);
+//    float r = std::max(other_r, my_r);
+//    r *= 0.6f;
+//    if (d_sq < r * r)
+//        return true;
+//    return false;
+//}
 
 bool Player1::collides_with(const Antidote& antidote)
 {
