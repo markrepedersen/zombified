@@ -142,7 +142,7 @@ bool Player2::is_alive()const
 
 void Player2::update(float ms)
 {
-    const float PLAYER_SPEED = 200.f;
+    const float PLAYER_SPEED = 500.f;
     float step = PLAYER_SPEED * (ms / 1000);
 
     if (m_keys[0])

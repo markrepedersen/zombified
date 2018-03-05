@@ -1,7 +1,10 @@
 // Header
 #include "limbsManager.hpp"
+#include "KMeans.h"
 
 #include <cmath>
+
+#define MAX_ITERATIONS 100
 
 // initialize a limbsManager
 bool LimbsManager::init(vec2 screen) {
@@ -52,8 +55,8 @@ bool LimbsManager::spawn_legs() {
         leg.setLastTarget(leg.getCurrentTarget());
 
         // Setting random initial position
-        leg.set_position({(float) ((rand() % (int) m_screen.x) * ViewHelper::getRatio()),
-                          (float) ((rand() % (int) m_screen.y) * ViewHelper::getRatio())});
+        leg.set_position({((rand() % (int) m_screen.x) * ViewHelper::getRatio()),
+                          ((rand() % (int) m_screen.y) * ViewHelper::getRatio())});
 
         m_legs.emplace_back(leg);
 
@@ -66,158 +69,45 @@ bool LimbsManager::spawn_legs() {
 
 //everytime a limb is spawned or a limb collided with a player, we need to update the clusters
 void LimbsManager::update_clusters() {
-
     cluster_limbs();
     update_limb_targets();
 
 }
 
-//find most optimal clusters of legs and updates the mapping using k-means
-void LimbsManager::pair_legs() {
-}
-//check if leg centroids are empty
-//if empty, find random points
-//if not empty, use points to find new clustering of legs
-
-//find most optimal clusters of arms and updates the mapping using k-means
-void LimbsManager::pair_arms() {
-}
-
-
-//cluster_limbs:
-//if temp nodes not empty
-//find closest from temp nodes that does not have a full cluster
-//check if the other node has a positive cluster key,
-//if yes, add to that cluster on cluster map
-//if this makes 4, remove all those node pointers pointing to nodes from temp lsit
-//if no, create new cluster and add to cluster map
-//if temp nodes empty, set as its own cluster
 void LimbsManager::cluster_limbs() {
-
-    //vector of all nodes
-    std::vector<struct Node> limb_nodes;
-
-    //temp list of nodes pointers that are not in full clusters
-    std::list<struct Node *> temp_nodes;
-
-    //initialize nodes from limbs with cluster -1
-    for (Arms a : m_arms) {
-        Node n = {-1, &a, a.get_position()};
-        limb_nodes.push_back(n);
-        temp_nodes.push_back(&n);
-    }
-    for (Legs l : m_legs) {
-        Node n = {-1, &l, l.get_position()};
-        limb_nodes.push_back(n);
-        temp_nodes.push_back(&n);
+    std::vector<Point> points;
+    for (int i = 0; i < m_arms.size(); ++i) {
+        std::vector<float> values = {m_arms[i].get_position().x, m_arms[i].get_position().x};
+        Point p(i, values);
+        points.emplace_back(p);
     }
 
-    // for (struct Node* n : temp_nodes)
-    // {
-    //     std::cout << "start of node" << std::endl;
-    //     std::cout<< n->limb_position.x << std::endl;
-    //     std::cout<< n->limb_position.y << std::endl;
-    //     std::cout<< "done" << std::endl;
-    // }
-    // std::cout << "end of loop";
+    for (int i = 0; i < m_legs.size(); ++i) {
+        std::vector<float> values = {m_legs[i].get_position().x, m_legs[i].get_position().x};
+        Point p(i*m_arms.size(), values);
+        points.emplace_back(p);
+    }
 
-    m_clusters.clear();
-    std::cout << "number of nodes in this round is..." << limb_nodes.size() << std::endl;
-    //for each node in limb_nodes
-    for (struct Node ln : limb_nodes) {
+    KMeans::KMeans clusterize(points.size()/4, points.size(), points.size()*2, MAX_ITERATIONS);
+    clusterize.run(points);
 
-        struct Node *temp_closest_node;
-        bool temp_closest_node_empty = true;
-        if (ln.cluster_key == -1) {
-            if (!temp_nodes.empty()) {
-                float temp_closest_distance = 10000.0;
-
-                for (struct Node *n : temp_nodes) {
-                    //TODO:: check if node is not itself
-                    float distance = getDistance(ln.limb_position, n->limb_position);
-                    if (distance < temp_closest_distance) {
-                        temp_closest_node_empty = false;
-                        temp_closest_node = n;
-                        temp_closest_distance = distance;
-                    }
-                }
-
+    for (auto cluster : clusterize.getClusters()) {
+        for (auto point : cluster.getPoints()) {
+            int id = point.getID();
+            if (id >= m_arms.size()) {
+                m_legs[id/m_arms.size()].move({cluster.getCentralValue(0), cluster.getCentralValue(1)});
             }
-
-            if (temp_closest_node_empty) {
-                std::cout << "temp_closest node is empty" << std::endl;
-                int curr_cluster_key = m_clusters.size() + 1;
-                std::vector<struct Node *> cluster_limbs;
-                cluster_limbs.push_back(&ln);
-                ln.cluster_key = curr_cluster_key;
-                struct Cluster c = {1, cluster_limbs};
-                m_clusters[curr_cluster_key] = c;
-
-            } else {
-                if (temp_closest_node->cluster_key == -1) {
-                    std::cout << "closest node has no clusters assigned" << std::endl;
-                    int curr_cluster_key = m_clusters.size() + 1;
-                    std::vector<struct Node *> cluster_limbs;
-                    cluster_limbs.push_back(temp_closest_node);
-                    temp_closest_node->cluster_key = curr_cluster_key;
-                    cluster_limbs.push_back(&ln);
-                    ln.cluster_key = curr_cluster_key;
-                    struct Cluster c = {2, cluster_limbs};
-                    m_clusters[curr_cluster_key] = c;
-                } else if ((m_clusters[temp_closest_node->cluster_key]).size < 4) {
-                    std::cout << "closest node has a cluster assigned that's not full" << std::endl;
-                    (m_clusters[temp_closest_node->cluster_key]).nodes.push_back(&ln);
-                    (m_clusters[temp_closest_node->cluster_key]).size++;
-                    ln.cluster_key = temp_closest_node->cluster_key;
-
-                    if ((m_clusters[temp_closest_node->cluster_key]).size == 4) {
-                        for (struct Node *full_cluster_node : (m_clusters[temp_closest_node->cluster_key]).nodes) {
-                            temp_nodes.remove(full_cluster_node);
-                        }
-                    }
-                }
+            else {
+                m_arms[id].move({cluster.getCentralValue(0), cluster.getCentralValue(1)});
             }
-            std::cout << "one limb down" << std::endl;
         }
     }
-    std::cout << "looked through all the limbs in this round" << std::endl;
-
-
-
-    //TODO::
-    //go through all clusters, find centroids
-    //update targets for each limb
-    for (std::map<int, LimbsManager::Cluster>::iterator it_clusters = m_clusters.begin();
-         it_clusters != m_clusters.end(); ++it_clusters) {
-        std::cout << "printing a cluster size";
-        std::cout << (it_clusters->second).size << std::endl;
-    }
-
-    std::cout << "done this round" << std::endl;
-
-
 }
 
 
 void LimbsManager::update_limb_targets() {
     //iterate through all clusters, find its centroids, update targets of each limb
 }
-
-double LimbsManager::distance_between_pairs(std::pair<Legs *, Legs *> l, std::pair<Arms *, Arms *> a) {
-
-    //check for null pointers
-    return 0.0;
-
-}
-
-vec2 LimbsManager::get_centroid(std::pair<Legs *, Legs *> pair1, std::pair<Arms *, Arms *> pair2) {
-    vec2 pos1 = pair1.first->get_position();
-    vec2 pos2 = pair1.second->get_position();
-    vec2 pos3 = pair2.first->get_position();
-    vec2 pos4 = pair2.second->get_position();
-    return {(pos1.x + pos2.x + pos3.x + pos4.x) / 4, (pos1.y + pos2.y + pos3.y + pos4.y) / 4};
-}
-
 
 //check if players collide with any limbs
 //returns 1 if an arm collides with player 1

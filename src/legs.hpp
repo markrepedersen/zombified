@@ -26,7 +26,9 @@ public:
     void destroy();
     
     vec2 get_bounding_box()const;
-    
+
+    void move(vec2);
+
 private:
     bool m_is_alive; // True if the leg is alive
     vec2 m_position; // Window coordinates

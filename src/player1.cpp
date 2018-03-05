@@ -162,7 +162,7 @@ bool Player1::is_alive() const
 
 void Player1::update(float ms)
 {
-    const float PLAYER_SPEED = 200.f;
+    const float PLAYER_SPEED = 600.f;
     float step = PLAYER_SPEED * (ms / 1000);
 
     if (m_keys.front() == GLFW_KEY_UP)
