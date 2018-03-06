@@ -11,8 +11,7 @@
 
 using namespace std;
 
-struct Point
-{
+struct Point {
 private:
     int id_point, id_cluster;
     vector<double> values;
@@ -20,56 +19,47 @@ private:
     string name;
 
 public:
-    Point(int id_point, vector<float>& values, string name = "")
-    {
+    Point(int id_point, vector<float> &values, string name = "") {
         this->id_point = id_point;
         total_values = values.size();
 
-        for(int i = 0; i < total_values; i++)
+        for (int i = 0; i < total_values; i++)
             this->values.push_back(values[i]);
 
         this->name = name;
         id_cluster = -1;
     }
 
-    int getID()
-    {
+    int getID() {
         return id_point;
     }
 
-    void setCluster(int id_cluster)
-    {
+    void setCluster(int id_cluster) {
         this->id_cluster = id_cluster;
     }
 
-    int getCluster()
-    {
+    int getCluster() {
         return id_cluster;
     }
 
-    double getValue(int index)
-    {
+    double getValue(int index) {
         return values[index];
     }
 
-    int getTotalValues()
-    {
+    int getTotalValues() {
         return total_values;
     }
 
-    void addValue(double value)
-    {
+    void addValue(double value) {
         values.push_back(value);
     }
 
-    string getName()
-    {
+    string getName() {
         return name;
     }
 };
 
-struct Cluster
-{
+struct Cluster {
 private:
     int id_cluster;
     int size;
@@ -77,31 +67,26 @@ private:
     vector<Point> points;
 
 public:
-    Cluster(int id_cluster, Point point)
-    {
+    Cluster(int id_cluster, Point point) {
         this->id_cluster = id_cluster;
 
         int total_values = point.getTotalValues();
 
-        for(int i = 0; i < total_values; i++)
+        for (int i = 0; i < total_values; i++)
             central_values.push_back(point.getValue(i));
 
         points.push_back(point);
     }
 
-    void addPoint(Point point)
-    {
+    void addPoint(Point point) {
         points.push_back(point);
     }
 
-    bool removePoint(int id_point)
-    {
+    bool removePoint(int id_point) {
         int total_points = points.size();
 
-        for(int i = 0; i < total_points; i++)
-        {
-            if(points[i].getID() == id_point)
-            {
+        for (int i = 0; i < total_points; i++) {
+            if (points[i].getID() == id_point) {
                 points.erase(points.begin() + i);
                 if (size > 0) {
                 }
@@ -111,18 +96,15 @@ public:
         return false;
     }
 
-    double getCentralValue(int index)
-    {
+    double getCentralValue(int index) {
         return central_values[index];
     }
 
-    void setCentralValue(int index, double value)
-    {
+    void setCentralValue(int index, double value) {
         central_values[index] = value;
     }
 
-    Point getPoint(int index)
-    {
+    Point getPoint(int index) {
         return points[index];
     }
 
@@ -130,13 +112,11 @@ public:
         return points;
     }
 
-    int getTotalPoints()
-    {
+    int getTotalPoints() {
         return points.size();
     }
 
-    int getID()
-    {
+    int getID() {
         return id_cluster;
     }
 };
@@ -166,7 +146,7 @@ public:
      * Runs the K-Means algorithm on a bunch of points
      * @param points: the list of points of which clusters will be formed
      */
-    void run(vector<Point> & points);
+    void run(vector<Point> &points);
 };
 
 #endif //JPS_KMEANS_H

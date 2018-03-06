@@ -7,8 +7,8 @@ int KMeans::getIDNearestCenter(Point point) {
     int id_cluster_center = 0;
 
     for (int i = 0; i < total_values; i++) {
-        sum += pow(clusters[0].getCentralValue(i) -
-                   point.getValue(i), 2.0);
+        sum += pow(clusters[0].getCentralValue(i) - point.getValue(i), 2.0);
+
     }
 
     min_dist = sqrt(sum);
@@ -91,31 +91,5 @@ void KMeans::run(vector<Point> &points) {
         }
 
         iter++;
-    }
-
-    // shows elements of clusters
-    for (int i = 0; i < K; i++) {
-        int total_points_cluster = clusters[i].getTotalPoints();
-
-        cout << "Cluster " << clusters[i].getID() + 1 << endl;
-        for (int j = 0; j < total_points_cluster; j++) {
-            cout << "Point " << clusters[i].getPoint(j).getID() + 1 << ": ";
-            for (int p = 0; p < total_values; p++)
-                cout << clusters[i].getPoint(j).getValue(p) << " ";
-
-            string point_name = clusters[i].getPoint(j).getName();
-
-            if (point_name.empty())
-                cout << "- " << point_name;
-
-            cout << endl;
-        }
-
-        cout << "Cluster values: ";
-
-        for (int j = 0; j < total_values; j++)
-            cout << clusters[i].getCentralValue(j) << " ";
-
-        cout << "\n\n";
     }
 }

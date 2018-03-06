@@ -30,12 +30,12 @@ bool LimbsManager::spawn_arms() {
         arm.setLastTarget(arm.getCurrentTarget());
 
         // Setting random initial position
-        arm.set_position({(float) ((rand() % (int) m_screen.x) * ViewHelper::getRatio()),
-                          (float) ((rand() % (int) m_screen.y) * ViewHelper::getRatio())});
+        arm.set_position({((rand() % (int) m_screen.x) * ViewHelper::getRatio()),
+                          ((rand() % (int) m_screen.y) * ViewHelper::getRatio())});
 
         m_arms.emplace_back(arm);
 
-        update_clusters();
+        cluster_limbs();
         return true;
     }
     fprintf(stderr, "Failed to spawn arm");
@@ -60,54 +60,47 @@ bool LimbsManager::spawn_legs() {
 
         m_legs.emplace_back(leg);
 
-        update_clusters();
+        cluster_limbs();
         return true;
     }
     fprintf(stderr, "Failed to spawn leg");
     return false;
 }
 
-//everytime a limb is spawned or a limb collided with a player, we need to update the clusters
-void LimbsManager::update_clusters() {
-    cluster_limbs();
-    update_limb_targets();
-
-}
-
 void LimbsManager::cluster_limbs() {
-    std::vector<Point> points;
-    for (int i = 0; i < m_arms.size(); ++i) {
-        std::vector<float> values = {m_arms[i].get_position().x, m_arms[i].get_position().x};
-        Point p(i, values);
-        points.emplace_back(p);
-    }
+    if ((m_arms.size() + m_legs.size()) > 1) {
+        std::vector<Point> points;
+        for (int i = 0; i < m_arms.size(); ++i) {
+            std::vector<float> values = {m_arms[i].get_position().x, m_arms[i].get_position().x};
+            Point p(i, values);
+            points.emplace_back(p);
+        }
 
-    for (int i = 0; i < m_legs.size(); ++i) {
-        std::vector<float> values = {m_legs[i].get_position().x, m_legs[i].get_position().x};
-        Point p(i*m_arms.size(), values);
-        points.emplace_back(p);
-    }
+        for (int j = 0; j < m_legs.size(); ++j) {
+            std::vector<float> values = {m_legs[j].get_position().x, m_legs[j].get_position().x};
+            Point p(j * m_arms.size(), values);
+            points.emplace_back(p);
+        }
 
-    KMeans::KMeans clusterize(points.size()/4, points.size(), points.size()*2, MAX_ITERATIONS);
-    clusterize.run(points);
+        KMeans THE_CLUSTERIZER((int) (points.size() + 3) / 4, (int) points.size(), 2, MAX_ITERATIONS);
+        THE_CLUSTERIZER.run(points);
 
-    for (auto cluster : clusterize.getClusters()) {
-        for (auto point : cluster.getPoints()) {
-            int id = point.getID();
-            if (id >= m_arms.size()) {
-                m_legs[id/m_arms.size()].move({cluster.getCentralValue(0), cluster.getCentralValue(1)});
-            }
-            else {
-                m_arms[id].move({cluster.getCentralValue(0), cluster.getCentralValue(1)});
+        for (auto cluster : THE_CLUSTERIZER.getClusters()) {
+            float cluster_x = cluster.getCentralValue(0);
+            float cluster_y = cluster.getCentralValue(1);
+
+            for (auto point : cluster.getPoints()) {
+                int id = point.getID();
+                if (id >= m_arms.size()) {
+                    m_legs[id / m_arms.size()].move({cluster_x, cluster_x});
+                } else {
+                    m_arms[id].move({cluster_x, cluster_y});
+                }
             }
         }
     }
 }
 
-
-void LimbsManager::update_limb_targets() {
-    //iterate through all clusters, find its centroids, update targets of each limb
-}
 
 //check if players collide with any limbs
 //returns 1 if an arm collides with player 1
@@ -124,10 +117,10 @@ int LimbsManager::check_collision_with_players(Player1 *m_player1, Player2 *m_pl
             m_player1->increase_speed();
             leg_collided = 1;
         }
-//        if (m_player2->collides_with(*itL)) {
-//            m_player2->increase_speed();
-//            leg_collided = 1;
-//        }
+        if (m_player2->collides_with(*itL)) {
+            m_player2->increase_speed();
+            leg_collided = 1;
+        }
 
         if (leg_collided != 0) {
             //erase.push_back(armcount);
@@ -136,7 +129,6 @@ int LimbsManager::check_collision_with_players(Player1 *m_player1, Player2 *m_pl
         } else {
             ++itL;
         }
-
     }
 
 
@@ -160,7 +152,7 @@ int LimbsManager::check_collision_with_players(Player1 *m_player1, Player2 *m_pl
         }
 
         if (collided != 0) {
-            update_clusters();
+            cluster_limbs();
             //erase.push_back(armcount);
             itA = m_arms.erase(itA);
             itA->destroy();
@@ -171,11 +163,6 @@ int LimbsManager::check_collision_with_players(Player1 *m_player1, Player2 *m_pl
     }
     return collided;
 }
-
-//check if any limbs collided, and if yes, combine them into one
-void LimbsManager::checkLimbCollisions() {}
-//if collide, delete rest keep 1, update 1's value respectively
-
 
 size_t LimbsManager::get_arms_size() {
     return m_arms.size();
@@ -195,5 +182,3 @@ void LimbsManager::destroy() {
     m_arms.clear();
     m_legs.clear();
 }
-
-

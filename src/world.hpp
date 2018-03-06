@@ -106,8 +106,6 @@ private:
     Zombie m_zombie;
     Antidote m_antidote;
 
-    std::vector<Arms> m_arms;
-    std::vector<Legs> m_legs;
     std::vector<Freeze> m_freeze;
     std::vector<Water> m_water;
 
