@@ -358,8 +358,12 @@ void World::computePaths(float ms) {
             vec2 dir;
             dir.x = limb.getCurrentTarget().x - limb.get_position().x;
             dir.y = limb.getCurrentTarget().y - limb.get_position().y;
-            limb.move(scale(step, normalize(dir)));
 
+            auto jump = scale(step, normalize(dir));
+
+            printf("move: %f, %f\n", jump.x, jump.y);
+
+            limb.move(jump);
             limb.setLastPath(limb.getCurrentPath());
             limb.setLastTarget(target);
         }
@@ -446,7 +450,6 @@ void World::check_add_tools(vec2 screen) {
             if ((int) index != 100) {
                 itf = m_freeze.erase(itf);//m_freeze.begin()+freezecount);
                 collect_freeze(*itf, collided, index);
-                //fprintf(stderr, "freeze count %d \n", freezecount);
 
             } else
                 ++itf;

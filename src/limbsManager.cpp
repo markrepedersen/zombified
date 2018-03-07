@@ -31,6 +31,7 @@ bool LimbsManager::spawn_arms() {
                           ((rand() % (int) m_screen.y) * ViewHelper::getRatio())});
 
         m_arms.emplace_back(arm);
+        limbs.emplace_back(arm);
 
         return cluster_limbs();
     }
@@ -48,6 +49,7 @@ bool LimbsManager::spawn_legs() {
                           ((rand() % (int) m_screen.y) * ViewHelper::getRatio())});
 
         m_legs.emplace_back(leg);
+        limbs.emplace_back(leg);
 
         return cluster_limbs();
     }
@@ -56,17 +58,11 @@ bool LimbsManager::spawn_legs() {
 }
 
 bool LimbsManager::cluster_limbs() {
-    if ((m_arms.size() + m_legs.size()) > 1) {
+    if (limbs.size() > 1) {
         std::vector<Point> points;
-        for (int i = 0; i < m_arms.size(); ++i) {
-            std::vector<float> values = {m_arms[i].get_position().x, m_arms[i].get_position().x};
+        for (int i = 0; i < limbs.size(); ++i) {
+            std::vector<float> values = {limbs[i].get_position().x, limbs[i].get_position().y};
             Point p(i, values);
-            points.emplace_back(p);
-        }
-
-        for (int j = 0; j < m_legs.size(); ++j) {
-            std::vector<float> values = {m_legs[j].get_position().x, m_legs[j].get_position().x};
-            Point p((int) (j * m_arms.size()), values);
             points.emplace_back(p);
         }
 
@@ -74,16 +70,12 @@ bool LimbsManager::cluster_limbs() {
         THE_CLUSTERIZER.run(points);
 
         for (auto cluster : THE_CLUSTERIZER.getClusters()) {
-            auto cluster_x = (float) cluster.getCentralValue(0);
-            auto cluster_y = (float) cluster.getCentralValue(1);
+            auto cluster_x = (int) cluster.getCentralValue(0) % (int) m_screen.x;
+            auto cluster_y = (int) cluster.getCentralValue(1) % (int) m_screen.y;
 
             for (auto point : cluster.getPoints()) {
                 int id = point.getID();
-                if (id >= m_arms.size()) {
-                    m_legs[id / m_arms.size()].setCurrentTarget({cluster_x, cluster_y});
-                } else {
-                    m_arms[id].setCurrentTarget({cluster_x, cluster_y});
-                }
+                limbs[id].setCurrentTarget({static_cast<float>(cluster_x), static_cast<float>(cluster_y)});
             }
         }
     }
@@ -97,9 +89,8 @@ bool LimbsManager::cluster_limbs() {
 //returns 3 if both players collides with an arm
 int LimbsManager::check_collision_with_players(Player1 *m_player1, Player2 *m_player2) {
 
-    std::vector<Legs>::iterator itL;
     int leg_collided = 0;
-    for (itL = m_legs.begin(); itL != m_legs.end();) {
+    for (auto itL = m_legs.begin(); itL != m_legs.end();) {
         leg_collided = 0;
         if (m_player1->collides_with(*itL)) {
 
@@ -114,6 +105,7 @@ int LimbsManager::check_collision_with_players(Player1 *m_player1, Player2 *m_pl
         if (leg_collided != 0) {
             //erase.push_back(armcount);
             itL = m_legs.erase(itL);
+            limbs.erase(itL);
             itL->destroy();
         } else {
             ++itL;
@@ -121,10 +113,9 @@ int LimbsManager::check_collision_with_players(Player1 *m_player1, Player2 *m_pl
     }
 
 
-    std::vector<Arms>::iterator itA;
     int collided = 0;
 
-    for (itA = m_arms.begin(); itA != m_arms.end();) {
+    for (auto itA = m_arms.begin(); itA != m_arms.end();) {
         if (m_player1->collides_with(*itA)) {
             if (collided == 0) {
                 collided = 1;
@@ -144,6 +135,7 @@ int LimbsManager::check_collision_with_players(Player1 *m_player1, Player2 *m_pl
             cluster_limbs();
             //erase.push_back(armcount);
             itA = m_arms.erase(itA);
+            limbs.erase(itA);
             itA->destroy();
         } else {
             ++itA;
