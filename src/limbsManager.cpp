@@ -6,17 +6,32 @@
 
 #define MAX_ITERATIONS 100
 
-// initialize a limbsManager
-bool LimbsManager::init(vec2 screen) {
-    m_screen = screen;
-    return true;
+LimbsManager* LimbsManager::limbsManagerInstance = 0;
+
+LimbsManager* LimbsManager::getInstance(vec2 screen) {
+    if (limbsManagerInstance == 0)
+    {
+        limbsManagerInstance = new LimbsManager();
+        limbsManagerInstance->m_screen = screen;
+    }
+
+    return limbsManagerInstance;
 }
+
+LimbsManager::LimbsManager()
+{}
+
+// // initialize a limbsManager
+// bool LimbsManager::init(vec2 screen) {
+//     m_screen = screen;
+//     return true;
+// }
 
 // Renders the existing limbs
 void LimbsManager::draw(const mat3 &projection_2D) {
-    for (auto &arms : m_arms)
+    for (auto &arms : limbsManagerInstance->m_arms)
         arms.draw(projection_2D);
-    for (auto &legs : m_legs)
+    for (auto &legs : limbsManagerInstance->m_legs)
         legs.draw(projection_2D);
 }
 
@@ -27,11 +42,11 @@ bool LimbsManager::spawn_arms() {
     Arms arm;
     if (arm.init()) {
         // Setting random initial position
-        arm.set_position({((rand() % (int) m_screen.x) * ViewHelper::getRatio()),
-                          ((rand() % (int) m_screen.y) * ViewHelper::getRatio())});
+        arm.set_position({((rand() % (int) limbsManagerInstance->m_screen.x) * ViewHelper::getRatio()),
+                          ((rand() % (int) limbsManagerInstance->m_screen.y) * ViewHelper::getRatio())});
 
-        m_arms.emplace_back(arm);
-        limbs.emplace_back(arm);
+        limbsManagerInstance->m_arms.emplace_back(arm);
+        limbsManagerInstance->limbs.emplace_back(arm);
 
         return cluster_limbs();
     }
@@ -45,11 +60,11 @@ bool LimbsManager::spawn_legs() {
     srand((unsigned) time(0));
     if (leg.init()) {
         // Setting random initial position
-        leg.set_position({((rand() % (int) m_screen.x) * ViewHelper::getRatio()),
-                          ((rand() % (int) m_screen.y) * ViewHelper::getRatio())});
+        leg.set_position({((rand() % (int) limbsManagerInstance->m_screen.x) * ViewHelper::getRatio()),
+                          ((rand() % (int) limbsManagerInstance->m_screen.y) * ViewHelper::getRatio())});
 
-        m_legs.emplace_back(leg);
-        limbs.emplace_back(leg);
+        limbsManagerInstance->m_legs.emplace_back(leg);
+        limbsManagerInstance->limbs.emplace_back(leg);
 
         return cluster_limbs();
     }
@@ -58,10 +73,11 @@ bool LimbsManager::spawn_legs() {
 }
 
 bool LimbsManager::cluster_limbs() {
-    if (limbs.size() > 1) {
+    if (limbsManagerInstance->limbs.size() > 1) {
         std::vector<Point> points;
-        for (int i = 0; i < limbs.size(); ++i) {
-            std::vector<float> values = {limbs[i].get_position().x, limbs[i].get_position().y};
+        for (int i = 0; i < limbsManagerInstance->limbs.size(); ++i) {
+            std::vector<float> values = {limbsManagerInstance->limbs[i].get_position().x,
+                                            limbsManagerInstance->limbs[i].get_position().y};
             Point p(i, values);
             points.emplace_back(p);
         }
@@ -75,7 +91,7 @@ bool LimbsManager::cluster_limbs() {
 
             for (auto point : cluster.getPoints()) {
                 int id = point.getID();
-                limbs[id].setCurrentTarget({static_cast<float>(cluster_x), static_cast<float>(cluster_y)});
+                limbsManagerInstance->limbs[id].setCurrentTarget({static_cast<float>(cluster_x), static_cast<float>(cluster_y)});
             }
         }
     }
@@ -90,7 +106,7 @@ bool LimbsManager::cluster_limbs() {
 int LimbsManager::check_collision_with_players(Player1 *m_player1, Player2 *m_player2) {
 
     int leg_collided = 0;
-    for (auto itL = m_legs.begin(); itL != m_legs.end();) {
+    for (auto itL = limbsManagerInstance->m_legs.begin(); itL != limbsManagerInstance->m_legs.end();) {
         leg_collided = 0;
         if (m_player1->collides_with(*itL)) {
 
@@ -104,8 +120,8 @@ int LimbsManager::check_collision_with_players(Player1 *m_player1, Player2 *m_pl
 
         if (leg_collided != 0) {
             //erase.push_back(armcount);
-            itL = m_legs.erase(itL);
-            limbs.erase(itL);
+            itL = limbsManagerInstance->m_legs.erase(itL);
+            limbsManagerInstance->limbs.erase(itL);
             itL->destroy();
         } else {
             ++itL;
@@ -115,7 +131,7 @@ int LimbsManager::check_collision_with_players(Player1 *m_player1, Player2 *m_pl
 
     int collided = 0;
 
-    for (auto itA = m_arms.begin(); itA != m_arms.end();) {
+    for (auto itA = limbsManagerInstance->m_arms.begin(); itA != limbsManagerInstance->m_arms.end();) {
         if (m_player1->collides_with(*itA)) {
             if (collided == 0) {
                 collided = 1;
@@ -134,8 +150,8 @@ int LimbsManager::check_collision_with_players(Player1 *m_player1, Player2 *m_pl
         if (collided != 0) {
             cluster_limbs();
             //erase.push_back(armcount);
-            itA = m_arms.erase(itA);
-            limbs.erase(itA);
+            itA = limbsManagerInstance->m_arms.erase(itA);
+            limbsManagerInstance->limbs.erase(itA);
             itA->destroy();
         } else {
             ++itA;
@@ -146,20 +162,32 @@ int LimbsManager::check_collision_with_players(Player1 *m_player1, Player2 *m_pl
 }
 
 size_t LimbsManager::get_arms_size() {
-    return m_arms.size();
+    return limbsManagerInstance->m_arms.size();
 }
 
 size_t LimbsManager::get_legs_size() {
-    return m_legs.size();
+    return limbsManagerInstance->m_legs.size();
+}
+
+std::vector<Arms>* LimbsManager::getArms() {
+        return &(limbsManagerInstance->m_arms);
+}
+
+std::vector<Legs>* LimbsManager::getLegs() {
+        return &(limbsManagerInstance->m_legs);
+}
+
+std::vector<Limb>* LimbsManager::getLimbs() {
+        return &(limbsManagerInstance->limbs);
 }
 
 
-void LimbsManager::destroy() {
-    for (auto &arm : m_arms)
-        arm.destroy();
-    for (auto &leg : m_legs)
-        leg.destroy();
+// void LimbsManager::destroy() {
+//     for (auto &arm : m_arms)
+//         arm.destroy();
+//     for (auto &leg : m_legs)
+//         leg.destroy();
 
-    m_arms.clear();
-    m_legs.clear();
-}
+//     m_arms.clear();
+//     m_legs.clear();
+// }

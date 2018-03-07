@@ -89,7 +89,7 @@ private:
 	// Game entities
     Worldtexture m_worldtexture;
     ToolboxManager m_toolboxManager;
-    LimbsManager m_limbsManager;
+    // LimbsManager m_limbsManager;
     Player1 m_player1;
     Player2 m_player2;
     Zombie m_zombie;

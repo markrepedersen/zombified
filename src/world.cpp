@@ -82,7 +82,7 @@ bool World::init(vec2 screen) {
 void World::destroy() {
     m_worldtexture.destroy();
     m_toolboxManager.destroy();
-    m_limbsManager.destroy();
+    // m_limbsManager.destroy();
     m_player1.destroy();
     m_player2.destroy();
     m_zombie.destroy();
@@ -125,8 +125,9 @@ bool World::update(float elapsed_ms) {
             check_freeze_used = 0;
             m_worldtexture.init(screen);
             m_toolboxManager.init({screen.x, screen.y});
-            m_limbsManager.init({screen.x, screen.y});
             m_player1.init(screen) && m_player2.init(screen) && m_antidote.init(screen);
+
+            LimbsManager::getInstance({screen.x, screen.y});
         }
     }
 
@@ -211,7 +212,7 @@ void World::draw() {
         m_worldtexture.draw(projection_2D);
         m_toolboxManager.draw(projection_2D);
         m_antidote.draw(projection_2D);
-        m_limbsManager.draw(projection_2D);
+        LimbsManager::draw(projection_2D);
         //TODO: Drawing entities
         for (auto &freeze : m_freeze)
             freeze.draw(projection_2D);
@@ -332,11 +333,15 @@ bool World::spawn_water() {
 }
 
 void World::computePaths(float ms) {
-    for (auto &limb : m_limbsManager.getLimbs()) {
+    for (auto &limb : LimbsManager::getLimbs()) {
         JPS::PathVector path;
         vec2 target = limb.getCurrentTarget();
 
         if (limb.getLastTarget() != target || limb.getLastTarget() == (vec2) {0, 0}) {
+            
+        std::cout<< target.x;
+        
+        std::cout<< target.y << std::endl;
             JPS::findPath(path,
                           *mapGrid,
                           (unsigned) limb.get_position().x,
@@ -379,16 +384,16 @@ bool World::random_spawn(float elapsed_ms, vec2 screen) {
     int randNum = rand() % (1000);
 
     if (randNum % 13 == 0) {
-        if (m_limbsManager.get_arms_size() <= MAX_ARMS && m_next_arm_spawn < 0.f) {
-            if (!(m_limbsManager.spawn_arms()))
+        if (LimbsManager::get_arms_size() <= MAX_ARMS && m_next_arm_spawn < 0.f) {
+            if (!(LimbsManager::spawn_arms()))
                 return false;
             m_next_arm_spawn = (ARM_DELAY_MS / 2) + rand() % (1000);
         }
     }
 
     if (randNum % 19 == 0) {
-        if (m_limbsManager.get_legs_size() <= MAX_LEGS && m_next_leg_spawn < 0.f) {
-            if (!(m_limbsManager.spawn_legs()))
+        if (LimbsManager::get_legs_size() <= MAX_LEGS && m_next_leg_spawn < 0.f) {
+            if (!(LimbsManager::spawn_legs()))
                 return false;
             m_next_leg_spawn = (LEG_DELAY_MS / 2) + rand() % (1000);
         }
@@ -470,7 +475,7 @@ void World::check_add_tools(vec2 screen) {
     }
 
     std::vector<int> erase;
-    collided = m_limbsManager.check_collision_with_players(&m_player1, &m_player2);
+    collided = LimbsManager::check_collision_with_players(&m_player1, &m_player2);
     if (collided != 0) {
         if (collided <= 2) {
             m_toolboxManager.addSlot(collided);
