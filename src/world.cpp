@@ -333,15 +333,18 @@ bool World::spawn_water() {
 }
 
 void World::computePaths(float ms) {
-    for (auto &limb : LimbsManager::getLimbs()) {
+    std::vector<Limb>* limbs = LimbsManager::getLimbs();
+
+    for (auto limb : *LimbsManager::getLimbs()) {
         JPS::PathVector path;
         vec2 target = limb.getCurrentTarget();
 
         if (limb.getLastTarget() != target || limb.getLastTarget() == (vec2) {0, 0}) {
             
-        std::cout<< target.x;
-        
-        std::cout<< target.y << std::endl;
+        // std::cout << "new limb" << std::endl;
+        // std::cout<< limb.get_position().x << std::endl;
+        // std::cout<< target.x <<std::endl;
+        // std::cout<< limb.getCurrentPath().size();
             JPS::findPath(path,
                           *mapGrid,
                           (unsigned) limb.get_position().x,
@@ -349,8 +352,8 @@ void World::computePaths(float ms) {
                           (unsigned) target.x,
                           (unsigned) target.y,
                           1);
-            limb.setCurrentPath(path);
-        } else limb.setCurrentPath(limb.getLastPath());
+            (&limb)->setCurrentPath(path);
+        } else (&limb)->setCurrentPath(limb.getLastPath());
         if (!limb.getCurrentPath().empty()) {
             vec2 nextNode, curNode;
             curNode = nextNode = {std::powf(limb.get_position().x, 2), std::powf(limb.get_position().y, 2)};
@@ -369,8 +372,9 @@ void World::computePaths(float ms) {
             printf("move: %f, %f\n", jump.x, jump.y);
 
             limb.move(jump);
-            limb.setLastPath(limb.getCurrentPath());
-            limb.setLastTarget(target);
+            (&limb)->setLastPath(limb.getCurrentPath());
+            (&limb)->setLastTarget(target);
+            std::cout<< limb.getCurrentPath().size() <<std::endl;
         }
     }
 }
