@@ -60,7 +60,7 @@ bool Legs::init()
     m_scale.x = -0.25f * ViewHelper::getRatio();
     m_scale.y = 0.25f * ViewHelper::getRatio();
     m_is_alive = true * ViewHelper::getRatio();
-    m_position = { 100.f * ViewHelper::getRatio(), 650.f * ViewHelper::getRatio()};
+    position = { 100.f * ViewHelper::getRatio(), 650.f * ViewHelper::getRatio()};
     
     return true;
 }
@@ -70,7 +70,7 @@ void Legs::draw(const mat3& projection)
     // Transformation code, see Rendering and Transformation in the template specification for more info
     // Incrementally updates transformation matrix, thus ORDER IS IMPORTANT
     transform_begin();
-    transform_translate(m_position);
+    transform_translate(position);
     transform_scale(m_scale);
     transform_end();
     
@@ -113,16 +113,6 @@ void Legs::draw(const mat3& projection)
     glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_SHORT, nullptr);
 }
 
-vec2 Legs::get_position()const
-{
-    return m_position;
-}
-
-void Legs::set_position(vec2 position)
-{
-    m_position = position;
-}
-
 bool Legs::is_alive()const
 {
     return m_is_alive;
@@ -143,8 +133,4 @@ vec2 Legs::get_bounding_box()const
 {
     // fabs is to avoid negative scale due to the facing direction
     return { std::fabs(m_scale.x) * legs_texture.width, std::fabs(m_scale.y) * legs_texture.height };
-}
-
-void Legs::move(vec2 pos) {
-    m_position += pos;
 }

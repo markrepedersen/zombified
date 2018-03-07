@@ -26,48 +26,36 @@ bool LimbsManager::spawn_arms() {
 
     Arms arm;
     if (arm.init()) {
-        arm.setCurrentTarget({100, 300});
-        arm.setLastTarget(arm.getCurrentTarget());
-
         // Setting random initial position
         arm.set_position({((rand() % (int) m_screen.x) * ViewHelper::getRatio()),
                           ((rand() % (int) m_screen.y) * ViewHelper::getRatio())});
 
         m_arms.emplace_back(arm);
 
-        cluster_limbs();
-        return true;
+        return cluster_limbs();
     }
     fprintf(stderr, "Failed to spawn arm");
     return false;
-} // arm init, keep track of list, set position as random
-// arm.setCurrentTarget({0,0});
-// arm.setLastTarget(arm.getCurrentTarget());
-// m_arms.emplace_back(arm);
-// return true;
+}
 
 //spawn new leg in random
 bool LimbsManager::spawn_legs() {
     Legs leg;
     srand((unsigned) time(0));
     if (leg.init()) {
-        leg.setCurrentTarget({100, 300});
-        leg.setLastTarget(leg.getCurrentTarget());
-
         // Setting random initial position
         leg.set_position({((rand() % (int) m_screen.x) * ViewHelper::getRatio()),
                           ((rand() % (int) m_screen.y) * ViewHelper::getRatio())});
 
         m_legs.emplace_back(leg);
 
-        cluster_limbs();
-        return true;
+        return cluster_limbs();
     }
     fprintf(stderr, "Failed to spawn leg");
     return false;
 }
 
-void LimbsManager::cluster_limbs() {
+bool LimbsManager::cluster_limbs() {
     if ((m_arms.size() + m_legs.size()) > 1) {
         std::vector<Point> points;
         for (int i = 0; i < m_arms.size(); ++i) {
@@ -78,7 +66,7 @@ void LimbsManager::cluster_limbs() {
 
         for (int j = 0; j < m_legs.size(); ++j) {
             std::vector<float> values = {m_legs[j].get_position().x, m_legs[j].get_position().x};
-            Point p(j * m_arms.size(), values);
+            Point p((int) (j * m_arms.size()), values);
             points.emplace_back(p);
         }
 
@@ -86,19 +74,20 @@ void LimbsManager::cluster_limbs() {
         THE_CLUSTERIZER.run(points);
 
         for (auto cluster : THE_CLUSTERIZER.getClusters()) {
-            float cluster_x = cluster.getCentralValue(0);
-            float cluster_y = cluster.getCentralValue(1);
+            auto cluster_x = (float) cluster.getCentralValue(0);
+            auto cluster_y = (float) cluster.getCentralValue(1);
 
             for (auto point : cluster.getPoints()) {
                 int id = point.getID();
                 if (id >= m_arms.size()) {
-                    m_legs[id / m_arms.size()].move({cluster_x, cluster_x});
+                    m_legs[id / m_arms.size()].setCurrentTarget({cluster_x, cluster_y});
                 } else {
-                    m_arms[id].move({cluster_x, cluster_y});
+                    m_arms[id].setCurrentTarget({cluster_x, cluster_y});
                 }
             }
         }
     }
+    return true;
 }
 
 

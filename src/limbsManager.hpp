@@ -25,7 +25,7 @@ public:
     bool spawn_legs();
 
     //find most optimal clusters of leg clusters and arm clusters to make a common enemy zombie
-    void cluster_limbs();
+    bool cluster_limbs();
    
     //check if players collide with any limbs
     int check_collision_with_players(Player1 *p1, Player2 *p2);
@@ -42,11 +42,15 @@ public:
         return m_legs;
     }
 
+    std::vector<Limb> getLimbs() {
+        return limbs;
+    }
+
     void destroy();
-    
     
 private:
     vec2 m_screen;
     std::vector<Arms> m_arms;
     std::vector<Legs> m_legs;
+    std::vector<Limb> limbs;
 };

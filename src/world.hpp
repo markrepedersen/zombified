@@ -56,25 +56,14 @@ public:
     void use_tool_1(int tool_number);
     void use_tool_2(int tool_number);
     
-    //start button
-    //bool buttonclicked();
-
 private:
-	// Generates a new turtle
-	bool spawn_arms();
-	bool spawn_legs();
     bool spawn_freeze();
     bool spawn_water();
     
     void shift_1();
     void shift_2();
 
-	// Generates a new fish
-	//bool spawn_fish();
-
-	// !!! INPUT CALLBACK FUNCTIONS
 	void on_key(GLFWwindow*, int key, int, int action, int mod);
-	//void on_mouse_move(GLFWwindow* window, double xpos, double ypos);
     void on_mouse_move(GLFWwindow* window, int button, int action, int mod);
     
     void collect_freeze(Freeze freeze, int player, float index);
@@ -121,9 +110,9 @@ private:
     float m_next_spawn;
 
     int check_freeze_used;
-	
+
 	std::default_random_engine m_rng;
 	std::uniform_real_distribution<float> m_dist; // default 0..1c
-    
+
     Button m_button;
 };

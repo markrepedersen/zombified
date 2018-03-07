@@ -232,19 +232,15 @@ void World::draw() {
         m_player2.draw(projection_2D);
     }
 
-    // Presenting
     glfwSwapBuffers(m_window);
 }
 
-// Should the game be over ?
 bool World::is_over() const {
     return glfwWindowShouldClose(m_window);
 }
 
 // On key callback
 void World::on_key(GLFWwindow *, int key, int, int action, int mod) {
-
-    // player1 actions
     if (check_freeze_used != 1) {
         if (action == GLFW_PRESS &&
             (key == GLFW_KEY_UP || key == GLFW_KEY_LEFT || key == GLFW_KEY_DOWN || key == GLFW_KEY_RIGHT))
@@ -257,14 +253,12 @@ void World::on_key(GLFWwindow *, int key, int, int action, int mod) {
     }
     if (check_freeze_used == 1) //player is frozen
     {
-        //fprintf(stderr, "frozen");
         m_player1.set_key(GLFW_KEY_UP, false);
         m_player1.set_key(GLFW_KEY_LEFT, false);
         m_player1.set_key(GLFW_KEY_DOWN, false);
         m_player1.set_key(GLFW_KEY_RIGHT, false);
         if ((int) difftime(time(0), freezeTime) >= 5) {
             check_freeze_used = 0;
-            //fprintf(stderr, "start");
         }
     }
 
@@ -305,8 +299,7 @@ void World::on_key(GLFWwindow *, int key, int, int action, int mod) {
 }
 
 void World::on_mouse_move(GLFWwindow *window, int button, int action, int mod) {
-    // TODO: check that the part clicked is the button
-    //      will do when figure out how things are scaled properly ***
+    // TODO: check that the part clicked is the button - will do when figure out how things are scaled properly ***
     double xpos, ypos;
     glfwGetCursorPos(window, &xpos, &ypos);
     if (action == GLFW_PRESS && button == GLFW_MOUSE_BUTTON_1) {
@@ -339,45 +332,40 @@ bool World::spawn_water() {
 }
 
 void World::computePaths(float ms) {
-    vec2 pos1 = {m_player1.get_position().x, m_player1.get_position().y};
-    vec2 pos2 = {m_player2.get_position().x, m_player2.get_position().y};
-    for (auto &arm : m_limbsManager.getArms()) {
+    for (auto &limb : m_limbsManager.getLimbs()) {
         JPS::PathVector path;
-        arm.setCurrentTarget(distance(pos1, arm.get_position()) > distance(pos2, arm.get_position()) ? pos2 : pos1);
-        vec2 target = arm.getCurrentTarget();
+        vec2 target = limb.getCurrentTarget();
 
-        if (arm.getLastTarget() != target || arm.getLastTarget() == (vec2) {0, 0}) {
+        if (limb.getLastTarget() != target || limb.getLastTarget() == (vec2) {0, 0}) {
             JPS::findPath(path,
                           *mapGrid,
-                          (unsigned) arm.get_position().x,
-                          (unsigned) arm.get_position().y,
+                          (unsigned) limb.get_position().x,
+                          (unsigned) limb.get_position().y,
                           (unsigned) target.x,
                           (unsigned) target.y,
                           1);
-            arm.setCurrentPath(path);
-        } else arm.setCurrentPath(arm.getLastPath());
-        if (!arm.getCurrentPath().empty()) {
+            limb.setCurrentPath(path);
+        } else limb.setCurrentPath(limb.getLastPath());
+        if (!limb.getCurrentPath().empty()) {
             vec2 nextNode, curNode;
-            curNode = nextNode = {std::powf(arm.get_position().x, 2), std::powf(arm.get_position().y, 2)};
+            curNode = nextNode = {std::powf(limb.get_position().x, 2), std::powf(limb.get_position().y, 2)};
 
-            for (int i = 0; i < arm.getCurrentPath().size() && curNode <= nextNode; ++i) {
-                nextNode = {static_cast<float>(arm.getCurrentPath()[i].x),
-                            static_cast<float>(arm.getCurrentPath()[i].y)};
+            for (int i = 0; i < limb.getCurrentPath().size() && curNode <= nextNode; ++i) {
+                nextNode = {static_cast<float>(limb.getCurrentPath()[i].x),
+                            static_cast<float>(limb.getCurrentPath()[i].y)};
             }
             float step = 20 * (ms / 1000);
             vec2 dir;
-            dir.x = arm.getCurrentTarget().x - arm.get_position().x;
-            dir.y = arm.getCurrentTarget().y - arm.get_position().y;
-            arm.move(scale(step, normalize(dir)));
+            dir.x = limb.getCurrentTarget().x - limb.get_position().x;
+            dir.y = limb.getCurrentTarget().y - limb.get_position().y;
+            limb.move(scale(step, normalize(dir)));
 
-            arm.setLastPath(arm.getCurrentPath());
-            arm.setLastTarget(target);
+            limb.setLastPath(limb.getCurrentPath());
+            limb.setLastTarget(target);
         }
     }
 }
 
-//TODO: should make sure they spawn a certain distance away from each other and not on top of each other
-//  check collision with wall
 bool World::random_spawn(float elapsed_ms, vec2 screen) {
     m_next_arm_spawn -= elapsed_ms;
     m_next_leg_spawn -= elapsed_ms;

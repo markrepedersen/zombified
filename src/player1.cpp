@@ -9,13 +9,10 @@ int currFrame = 0;
 auto startTime = std::chrono::high_resolution_clock::now();
 int frameTime = 100;
 
-bool Player1::init(vec2 screen)
-{
+bool Player1::init(vec2 screen) {
     // Load shared texture
-    if (!player1_texture.is_valid())
-    {
-        if (!player1_texture.load_from_file(p1_textures_path("p1.png")))
-        {
+    if (!player1_texture.is_valid()) {
+        if (!player1_texture.load_from_file(p1_textures_path("p1.png"))) {
             //fprintf(stderr, "Failed to load player1 texture!");
             return false;
         }
@@ -74,13 +71,12 @@ bool Player1::init(vec2 screen)
 
     // m_position = {screen.x - 1150.f, screen.y - 450.f};
 
-    m_position = { (screen.x * ViewHelper::getRatio())/5, (screen.y * ViewHelper::getRatio())/2 };
-    
+    m_position = {(screen.x * ViewHelper::getRatio()) / 5, (screen.y * ViewHelper::getRatio()) / 2};
+
     return true;
 }
 
-void Player1::draw(const mat3 &projection)
-{
+void Player1::draw(const mat3 &projection) {
     // Transformation code, see Rendering and Transformation in the template specification for more info
     // Incrementally updates transformation matrix, thus ORDER IS IMPORTANT
     transform_begin();
@@ -111,88 +107,81 @@ void Player1::draw(const mat3 &projection)
     GLint in_texcoord_loc = glGetAttribLocation(effect.program, "in_texcoord");
     glEnableVertexAttribArray(in_position_loc);
     glEnableVertexAttribArray(in_texcoord_loc);
-    glVertexAttribPointer(in_position_loc, 3, GL_FLOAT, GL_FALSE, sizeof(TexturedVertex), (void *)0);
-    glVertexAttribPointer(in_texcoord_loc, 2, GL_FLOAT, GL_FALSE, sizeof(TexturedVertex), (void *)sizeof(vec3));
+    glVertexAttribPointer(in_position_loc, 3, GL_FLOAT, GL_FALSE, sizeof(TexturedVertex), (void *) 0);
+    glVertexAttribPointer(in_texcoord_loc, 2, GL_FLOAT, GL_FALSE, sizeof(TexturedVertex), (void *) sizeof(vec3));
 
     // Enabling and binding texture to slot 0
     glActiveTexture(GL_TEXTURE0);
     glBindTexture(GL_TEXTURE_2D, player1_texture.id);
 
     // Setting uniform values to the currently bound program
-    glUniformMatrix3fv(transform_uloc, 1, GL_FALSE, (float *)&transform);
+    glUniformMatrix3fv(transform_uloc, 1, GL_FALSE, (float *) &transform);
     float color[] = {1.f, 1.f, 1.f};
     glUniform3fv(color_uloc, 1, color);
-    glUniformMatrix3fv(projection_uloc, 1, GL_FALSE, (float *)&projection);
+    glUniformMatrix3fv(projection_uloc, 1, GL_FALSE, (float *) &projection);
 
     // Drawing!
     glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_SHORT, nullptr);
 }
 
-void Player1::set_key(int key, bool pressed)
-{
-    if (pressed)
-    {
+void Player1::set_key(int key, bool pressed) {
+    if (pressed) {
         m_keys.push_front(key);
-        
+
         // for (auto v : m_keys) {
         //     std::cout << v << " ";
         // }
-        
+
         // std::cout << "\n";
     }
     if (!pressed)
         m_keys.remove(key);
-        
-        // for (auto v : m_keys) {
-        //     std::cout << v << " ";
-        // }
-        
-        // std::cout << "\n";
+
+    // for (auto v : m_keys) {
+    //     std::cout << v << " ";
+    // }
+
+    // std::cout << "\n";
 }
 
-vec2 Player1::get_position() const
-{
+vec2 Player1::get_position() const {
     return m_position;
 }
 
-bool Player1::is_alive() const
-{
+bool Player1::is_alive() const {
     return m_is_alive;
 }
 
-void Player1::update(float ms)
-{
+void Player1::update(float ms) {
     const float PLAYER_SPEED = 600.f;
     float step = PLAYER_SPEED * (ms / 1000);
 
-    if (m_keys.front() == GLFW_KEY_UP)
-        {move({0, -step});
-        animate();}
-    if (m_keys.front() == GLFW_KEY_LEFT)
-        {move({-step, 0});
-        animate();}
-    if (m_keys.front() == GLFW_KEY_DOWN)
-        {move({0, step});
-        animate();}
-    if (m_keys.front() == GLFW_KEY_RIGHT)
-    {
-        move({step, 0});
+    if (m_keys.front() == GLFW_KEY_UP) {
+        move({0, -step});
         animate();
     }
-    else
-    {
+    if (m_keys.front() == GLFW_KEY_LEFT) {
+        move({-step, 0});
+        animate();
+    }
+    if (m_keys.front() == GLFW_KEY_DOWN) {
+        move({0, step});
+        animate();
+    }
+    if (m_keys.front() == GLFW_KEY_RIGHT) {
+        move({step, 0});
+        animate();
+    } else {
         // stop_animate();
     }
 }
 
-void Player1::move(vec2 off)
-{
+void Player1::move(vec2 off) {
     m_position.x += off.x;
     m_position.y += off.y;
 }
 
-void Player1::animate()
-{
+void Player1::animate() {
     // int frameIndex = 1;
     int spriteWidth = 225;
     int spriteHeight = 365;
@@ -207,286 +196,261 @@ void Player1::animate()
     auto currTime = std::chrono::high_resolution_clock::now();
     int milliseconds = std::chrono::duration_cast<std::chrono::milliseconds>(currTime - startTime).count();
 
-    if (milliseconds > frameTime)
-    {
-        if (m_keys.front() == GLFW_KEY_UP)
-        {
-            switch (currFrame)
-            {
-            case 0:
-            {
-                TexturedVertex vertices[4];
+    if (milliseconds > frameTime) {
+        if (m_keys.front() == GLFW_KEY_UP) {
+            switch (currFrame) {
+                case 0: {
+                    TexturedVertex vertices[4];
 
-                vertices[0].position = {-wr, +hr, -0.02f};
-                vertices[0].texcoord = {1/5.f, 1.f};
-                vertices[1].position = {+wr, +hr, -0.02f};
-                vertices[1].texcoord = {0.f, 1.f};
-                vertices[2].position = {+wr, -hr, -0.02f};
-                vertices[2].texcoord = {0.f, 2 / 3.f};
-                vertices[3].position = {-wr, -hr, -0.02f};
-                vertices[3].texcoord = {1 / 5.f, 2 / 3.f};
+                    vertices[0].position = {-wr, +hr, -0.02f};
+                    vertices[0].texcoord = {1 / 5.f, 1.f};
+                    vertices[1].position = {+wr, +hr, -0.02f};
+                    vertices[1].texcoord = {0.f, 1.f};
+                    vertices[2].position = {+wr, -hr, -0.02f};
+                    vertices[2].texcoord = {0.f, 2 / 3.f};
+                    vertices[3].position = {-wr, -hr, -0.02f};
+                    vertices[3].texcoord = {1 / 5.f, 2 / 3.f};
 
-                glBindBuffer(GL_ARRAY_BUFFER, mesh.vbo);
-                glBufferSubData(GL_ARRAY_BUFFER, 0, sizeof(TexturedVertex) * 4, vertices);
+                    glBindBuffer(GL_ARRAY_BUFFER, mesh.vbo);
+                    glBufferSubData(GL_ARRAY_BUFFER, 0, sizeof(TexturedVertex) * 4, vertices);
 
-                currFrame = 1;
-                startTime = currTime;
-                break;
+                    currFrame = 1;
+                    startTime = currTime;
+                    break;
+                }
+                case 1: {
+                    TexturedVertex vertices[4];
+
+                    vertices[0].position = {-wr, +hr, -0.02f};
+                    vertices[0].texcoord = {2 / 5.f, 1.f};
+                    vertices[1].position = {+wr, +hr, -0.02f};
+                    vertices[1].texcoord = {1 / 5.f, 1.f};
+                    vertices[2].position = {+wr, -hr, -0.02f};
+                    vertices[2].texcoord = {1 / 5.f, 2 / 3.f};
+                    vertices[3].position = {-wr, -hr, -0.02f};
+                    vertices[3].texcoord = {2 / 5.f, 2 / 3.f};
+
+                    glBindBuffer(GL_ARRAY_BUFFER, mesh.vbo);
+                    glBufferSubData(GL_ARRAY_BUFFER, 0, sizeof(TexturedVertex) * 4, vertices);
+
+                    currFrame = 0;
+                    startTime = currTime;
+                    break;
+                }
+                case 2: {
+                    TexturedVertex vertices[4];
+
+                    vertices[0].position = {-wr, +hr, -0.02f};
+                    vertices[0].texcoord = {1 / 5.f, 1.f};
+                    vertices[1].position = {+wr, +hr, -0.02f};
+                    vertices[1].texcoord = {0.f, 1.f};
+                    vertices[2].position = {+wr, -hr, -0.02f};
+                    vertices[2].texcoord = {0.f, 2 / 3.f};
+                    vertices[3].position = {-wr, -hr, -0.02f};
+                    vertices[3].texcoord = {1 / 5.f, 2 / 3.f};
+
+                    glBindBuffer(GL_ARRAY_BUFFER, mesh.vbo);
+                    glBufferSubData(GL_ARRAY_BUFFER, 0, sizeof(TexturedVertex) * 4, vertices);
+
+                    currFrame = 1;
+                    startTime = currTime;
+                    break;
+                }
             }
-            case 1:
-            {
-                TexturedVertex vertices[4];
+        } else if (m_keys.front() == GLFW_KEY_LEFT) {
+            switch (currFrame) {
+                case 0: {
+                    TexturedVertex vertices[4];
 
-                vertices[0].position = {-wr, +hr, -0.02f};
-                vertices[0].texcoord = {2/5.f, 1.f};
-                vertices[1].position = {+wr, +hr, -0.02f};
-                vertices[1].texcoord = {1/5.f, 1.f};
-                vertices[2].position = {+wr, -hr, -0.02f};
-                vertices[2].texcoord = {1/5.f, 2/3.f};
-                vertices[3].position = {-wr, -hr, -0.02f};
-                vertices[3].texcoord = {2/ 5.f, 2 / 3.f};
+                    vertices[0].position = {-wr, +hr, -0.02f};
+                    vertices[0].texcoord = {1 / 5.f, 2 / 3.f};
+                    vertices[1].position = {+wr, +hr, -0.02f};
+                    vertices[1].texcoord = {0.f, 2 / 3.f};
+                    vertices[2].position = {+wr, -hr, -0.02f};
+                    vertices[2].texcoord = {0.f, 1 / 3.f};
+                    vertices[3].position = {-wr, -hr, -0.02f};
+                    vertices[3].texcoord = {1 / 5.f, 1 / 3.f};
 
-                glBindBuffer(GL_ARRAY_BUFFER, mesh.vbo);
-                glBufferSubData(GL_ARRAY_BUFFER, 0, sizeof(TexturedVertex) * 4, vertices);
+                    glBindBuffer(GL_ARRAY_BUFFER, mesh.vbo);
+                    glBufferSubData(GL_ARRAY_BUFFER, 0, sizeof(TexturedVertex) * 4, vertices);
 
-                currFrame = 0;
-                startTime = currTime;
-                break;
+                    currFrame = 1;
+                    startTime = currTime;
+                    break;
+                }
+                case 1: {
+                    TexturedVertex vertices[4];
+
+                    vertices[0].position = {-wr, +hr, -0.02f};
+                    vertices[0].texcoord = {2 / 5.f, 2 / 3.f};
+                    vertices[1].position = {wr, +hr, -0.02f};
+                    vertices[1].texcoord = {1 / 5.f, 2 / 3.f};
+                    vertices[2].position = {+wr, -hr, -0.02f};
+                    vertices[2].texcoord = {1 / 5.f, 1 / 3.f};
+                    vertices[3].position = {-wr, -hr, -0.02f};
+                    vertices[3].texcoord = {2 / 5.f, 1 / 3.f};
+
+                    glBindBuffer(GL_ARRAY_BUFFER, mesh.vbo);
+                    glBufferSubData(GL_ARRAY_BUFFER, 0, sizeof(TexturedVertex) * 4, vertices);
+
+                    currFrame = 2;
+                    startTime = currTime;
+                    break;
+                }
+                case 2: {
+                    TexturedVertex vertices[4];
+
+                    vertices[0].position = {-wr, +hr, -0.02f};
+                    vertices[0].texcoord = {3 / 5.f, 2 / 3.f};
+                    vertices[1].position = {wr, +hr, -0.02f};
+                    vertices[1].texcoord = {2 / 5.f, 2 / 3.f};
+                    vertices[2].position = {+wr, -hr, -0.02f};
+                    vertices[2].texcoord = {2 / 5.f, 1 / 3.f};
+                    vertices[3].position = {-wr, -hr, -0.02f};
+                    vertices[3].texcoord = {3 / 5.f, 1 / 3.f};
+
+                    glBindBuffer(GL_ARRAY_BUFFER, mesh.vbo);
+                    glBufferSubData(GL_ARRAY_BUFFER, 0, sizeof(TexturedVertex) * 4, vertices);
+
+                    currFrame = 0;
+                    startTime = currTime;
+                    break;
+                }
             }
-            case 2:
-            {
-                TexturedVertex vertices[4];
+        } else if (m_keys.front() == GLFW_KEY_DOWN) {
+            switch (currFrame) {
+                case 0: {
+                    TexturedVertex vertices[4];
 
-                vertices[0].position = {-wr, +hr, -0.02f};
-                vertices[0].texcoord = {1/5.f, 1.f};
-                vertices[1].position = {+wr, +hr, -0.02f};
-                vertices[1].texcoord = {0.f, 1.f};
-                vertices[2].position = {+wr, -hr, -0.02f};
-                vertices[2].texcoord = {0.f, 2 / 3.f};
-                vertices[3].position = {-wr, -hr, -0.02f};
-                vertices[3].texcoord = {1 / 5.f, 2 / 3.f};
+                    vertices[0].position = {-wr, +hr, -0.02f};
+                    vertices[0].texcoord = {3 / 5.f, 1 / 3.f};
+                    vertices[1].position = {wr, +hr, -0.02f};
+                    vertices[1].texcoord = {2 / 5.f, 1 / 3.f};
+                    vertices[2].position = {+wr, -hr, -0.02f};
+                    vertices[2].texcoord = {2 / 5.f, 0 / 3.f};
+                    vertices[3].position = {-wr, -hr, -0.02f};
+                    vertices[3].texcoord = {3 / 5.f, 0 / 3.f};
 
-                glBindBuffer(GL_ARRAY_BUFFER, mesh.vbo);
-                glBufferSubData(GL_ARRAY_BUFFER, 0, sizeof(TexturedVertex) * 4, vertices);
+                    glBindBuffer(GL_ARRAY_BUFFER, mesh.vbo);
+                    glBufferSubData(GL_ARRAY_BUFFER, 0, sizeof(TexturedVertex) * 4, vertices);
 
-                currFrame = 1;
-                startTime = currTime;
-                break;
+                    currFrame = 1;
+                    startTime = currTime;
+                    break;
+                }
+                case 1: {
+                    TexturedVertex vertices[4];
+
+                    vertices[0].position = {-wr, +hr, -0.02f};
+                    vertices[0].texcoord = {4 / 5.f, 1 / 3.f};
+                    vertices[1].position = {wr, +hr, -0.02f};
+                    vertices[1].texcoord = {3 / 5.f, 1 / 3.f};
+                    vertices[2].position = {+wr, -hr, -0.02f};
+                    vertices[2].texcoord = {3 / 5.f, 0 / 3.f};
+                    vertices[3].position = {-wr, -hr, -0.02f};
+                    vertices[3].texcoord = {4 / 5.f, 0 / 3.f};
+
+                    glBindBuffer(GL_ARRAY_BUFFER, mesh.vbo);
+                    glBufferSubData(GL_ARRAY_BUFFER, 0, sizeof(TexturedVertex) * 4, vertices);
+
+                    currFrame = 0;
+                    startTime = currTime;
+                    break;
+                }
+                case 2: {
+                    TexturedVertex vertices[4];
+
+                    vertices[0].position = {-wr, +hr, -0.02f};
+                    vertices[0].texcoord = {3 / 5.f, 1 / 3.f};
+                    vertices[1].position = {wr, +hr, -0.02f};
+                    vertices[1].texcoord = {2 / 5.f, 1 / 3.f};
+                    vertices[2].position = {+wr, -hr, -0.02f};
+                    vertices[2].texcoord = {2 / 5.f, 0 / 3.f};
+                    vertices[3].position = {-wr, -hr, -0.02f};
+                    vertices[3].texcoord = {3 / 5.f, 0 / 3.f};
+
+                    glBindBuffer(GL_ARRAY_BUFFER, mesh.vbo);
+                    glBufferSubData(GL_ARRAY_BUFFER, 0, sizeof(TexturedVertex) * 4, vertices);
+
+                    currFrame = 1;
+                    startTime = currTime;
+                    break;
+                }
             }
-            }
-        }
-        else if (m_keys.front() == GLFW_KEY_LEFT)
-        {
-            switch (currFrame)
-            {
-            case 0:
-            {
-                TexturedVertex vertices[4];
+        } else if (m_keys.front() == GLFW_KEY_RIGHT) {
+            switch (currFrame) {
+                case 0: {
+                    TexturedVertex vertices[4];
 
-                vertices[0].position = {-wr, +hr, -0.02f};
-                vertices[0].texcoord = {1/5.f, 2 / 3.f};
-                vertices[1].position = {+wr, +hr, -0.02f};
-                vertices[1].texcoord = {0.f, 2 / 3.f};
-                vertices[2].position = {+wr, -hr, -0.02f};
-                vertices[2].texcoord = {0.f, 1 / 3.f};
-                vertices[3].position = {-wr, -hr, -0.02f};
-                vertices[3].texcoord = {1 / 5.f, 1 / 3.f};
+                    vertices[0].position = {-wr, +hr, -0.02f};
+                    vertices[0].texcoord = {4 / 5.f, 2 / 3.f};
+                    vertices[1].position = {+wr, +hr, -0.02f};
+                    vertices[1].texcoord = {3 / 5.f, 2 / 3.f};
+                    vertices[2].position = {+wr, -hr, -0.02f};
+                    vertices[2].texcoord = {3 / 5.f, 1 / 3.f};
+                    vertices[3].position = {-wr, -hr, -0.02f};
+                    vertices[3].texcoord = {4 / 5.f, 1 / 3.f};
 
-                glBindBuffer(GL_ARRAY_BUFFER, mesh.vbo);
-                glBufferSubData(GL_ARRAY_BUFFER, 0, sizeof(TexturedVertex) * 4, vertices);
+                    glBindBuffer(GL_ARRAY_BUFFER, mesh.vbo);
+                    glBufferSubData(GL_ARRAY_BUFFER, 0, sizeof(TexturedVertex) * 4, vertices);
 
-                currFrame = 1;
-                startTime = currTime;
-                break;
-            }
-            case 1:
-            {
-                TexturedVertex vertices[4];
+                    currFrame = 1;
+                    startTime = currTime;
+                    break;
+                }
+                case 1: {
+                    TexturedVertex vertices[4];
 
-                vertices[0].position = {-wr, +hr, -0.02f};
-                vertices[0].texcoord = {2/5.f, 2 / 3.f};
-                vertices[1].position = {wr, +hr, -0.02f};
-                vertices[1].texcoord = {1/5.f, 2 / 3.f};
-                vertices[2].position = {+wr, -hr, -0.02f};
-                vertices[2].texcoord = {1/5.f, 1 / 3.f};
-                vertices[3].position = {-wr, -hr, -0.02f};
-                vertices[3].texcoord = {2/5.f, 1 / 3.f};
+                    vertices[0].position = {-wr, +hr, -0.02f};
+                    vertices[0].texcoord = {5 / 5.f, 2 / 3.f};
+                    vertices[1].position = {wr, +hr, -0.02f};
+                    vertices[1].texcoord = {4 / 5.f, 2 / 3.f};
+                    vertices[2].position = {+wr, -hr, -0.02f};
+                    vertices[2].texcoord = {4 / 5.f, 1 / 3.f};
+                    vertices[3].position = {-wr, -hr, -0.02f};
+                    vertices[3].texcoord = {5 / 5.f, 1 / 3.f};
 
-                glBindBuffer(GL_ARRAY_BUFFER, mesh.vbo);
-                glBufferSubData(GL_ARRAY_BUFFER, 0, sizeof(TexturedVertex) * 4, vertices);
+                    glBindBuffer(GL_ARRAY_BUFFER, mesh.vbo);
+                    glBufferSubData(GL_ARRAY_BUFFER, 0, sizeof(TexturedVertex) * 4, vertices);
 
-                currFrame = 2;
-                startTime = currTime;
-                break;
-            }
-            case 2:
-            {
-                TexturedVertex vertices[4];
+                    currFrame = 2;
+                    startTime = currTime;
+                    break;
+                }
+                case 2: {
+                    TexturedVertex vertices[4];
 
-                vertices[0].position = {-wr, +hr, -0.02f};
-                vertices[0].texcoord = {3 / 5.f, 2 / 3.f};
-                vertices[1].position = {wr, +hr, -0.02f};
-                vertices[1].texcoord = {2 / 5.f, 2 / 3.f};
-                vertices[2].position = {+wr, -hr, -0.02f};
-                vertices[2].texcoord = {2 / 5.f, 1/3.f};
-                vertices[3].position = {-wr, -hr, -0.02f};
-                vertices[3].texcoord = {3 / 5.f, 1/3.f};
+                    vertices[0].position = {-wr, +hr, -0.02f};
+                    vertices[0].texcoord = {5 / 5.f, 1 / 3.f};
+                    vertices[1].position = {wr, +hr, -0.02f};
+                    vertices[1].texcoord = {4 / 5.f, 1 / 3.f};
+                    vertices[2].position = {+wr, -hr, -0.02f};
+                    vertices[2].texcoord = {4 / 5.f, 0.f};
+                    vertices[3].position = {-wr, -hr, -0.02f};
+                    vertices[3].texcoord = {5 / 5.f, 0.f};
 
-                glBindBuffer(GL_ARRAY_BUFFER, mesh.vbo);
-                glBufferSubData(GL_ARRAY_BUFFER, 0, sizeof(TexturedVertex) * 4, vertices);
+                    glBindBuffer(GL_ARRAY_BUFFER, mesh.vbo);
+                    glBufferSubData(GL_ARRAY_BUFFER, 0, sizeof(TexturedVertex) * 4, vertices);
 
-                currFrame = 0;
-                startTime = currTime;
-                break;
-            }
-            }
-        }
-        else if (m_keys.front() == GLFW_KEY_DOWN)
-        {
-            switch (currFrame)
-            {
-            case 0:
-            {
-                TexturedVertex vertices[4];
-
-                vertices[0].position = {-wr, +hr, -0.02f};
-                vertices[0].texcoord = {3 / 5.f, 1 / 3.f};
-                vertices[1].position = {wr, +hr, -0.02f};
-                vertices[1].texcoord = {2 / 5.f, 1 / 3.f};
-                vertices[2].position = {+wr, -hr, -0.02f};
-                vertices[2].texcoord = {2 / 5.f, 0/3.f};
-                vertices[3].position = {-wr, -hr, -0.02f};
-                vertices[3].texcoord = {3 / 5.f, 0/3.f};
-
-                glBindBuffer(GL_ARRAY_BUFFER, mesh.vbo);
-                glBufferSubData(GL_ARRAY_BUFFER, 0, sizeof(TexturedVertex) * 4, vertices);
-
-                currFrame = 1;
-                startTime = currTime;
-                break;
-            }
-            case 1:
-            {
-                TexturedVertex vertices[4];
-
-                vertices[0].position = {-wr, +hr, -0.02f};
-                vertices[0].texcoord = {4 / 5.f, 1 / 3.f};
-                vertices[1].position = {wr, +hr, -0.02f};
-                vertices[1].texcoord = {3 / 5.f, 1 / 3.f};
-                vertices[2].position = {+wr, -hr, -0.02f};
-                vertices[2].texcoord = {3 / 5.f, 0/3.f};
-                vertices[3].position = {-wr, -hr, -0.02f};
-                vertices[3].texcoord = {4 / 5.f, 0/3.f};
-
-                glBindBuffer(GL_ARRAY_BUFFER, mesh.vbo);
-                glBufferSubData(GL_ARRAY_BUFFER, 0, sizeof(TexturedVertex) * 4, vertices);
-
-                currFrame = 0;
-                startTime = currTime;
-                break;
-            }
-            case 2:
-            {
-                TexturedVertex vertices[4];
-
-                vertices[0].position = {-wr, +hr, -0.02f};
-                vertices[0].texcoord = {3 / 5.f, 1 / 3.f};
-                vertices[1].position = {wr, +hr, -0.02f};
-                vertices[1].texcoord = {2 / 5.f, 1 / 3.f};
-                vertices[2].position = {+wr, -hr, -0.02f};
-                vertices[2].texcoord = {2 / 5.f, 0/3.f};
-                vertices[3].position = {-wr, -hr, -0.02f};
-                vertices[3].texcoord = {3 / 5.f, 0/3.f};
-
-                glBindBuffer(GL_ARRAY_BUFFER, mesh.vbo);
-                glBufferSubData(GL_ARRAY_BUFFER, 0, sizeof(TexturedVertex) * 4, vertices);
-
-                currFrame = 1;
-                startTime = currTime;
-                break;
-            }
-            }
-        }
-        else if (m_keys.front() == GLFW_KEY_RIGHT)
-        {
-            switch (currFrame)
-            {
-            case 0:
-            {
-                TexturedVertex vertices[4];
-
-                vertices[0].position = {-wr, +hr, -0.02f};
-                vertices[0].texcoord = {4 / 5.f, 2 / 3.f};
-                vertices[1].position = {+wr, +hr, -0.02f};
-                vertices[1].texcoord = {3 / 5.f, 2 / 3.f};
-                vertices[2].position = {+wr, -hr, -0.02f};
-                vertices[2].texcoord = {3 / 5.f, 1 / 3.f};
-                vertices[3].position = {-wr, -hr, -0.02f};
-                vertices[3].texcoord = {4 / 5.f, 1 / 3.f};
-
-                glBindBuffer(GL_ARRAY_BUFFER, mesh.vbo);
-                glBufferSubData(GL_ARRAY_BUFFER, 0, sizeof(TexturedVertex) * 4, vertices);
-
-                currFrame = 1;
-                startTime = currTime;
-                break;
-            }
-            case 1:
-            {
-                TexturedVertex vertices[4];
-
-                vertices[0].position = {-wr, +hr, -0.02f};
-                vertices[0].texcoord = {5 / 5.f, 2 / 3.f};
-                vertices[1].position = {wr, +hr, -0.02f};
-                vertices[1].texcoord = {4 / 5.f, 2 / 3.f};
-                vertices[2].position = {+wr, -hr, -0.02f};
-                vertices[2].texcoord = {4 / 5.f, 1 / 3.f};
-                vertices[3].position = {-wr, -hr, -0.02f};
-                vertices[3].texcoord = {5 / 5.f, 1 / 3.f};
-
-                glBindBuffer(GL_ARRAY_BUFFER, mesh.vbo);
-                glBufferSubData(GL_ARRAY_BUFFER, 0, sizeof(TexturedVertex) * 4, vertices);
-
-                currFrame = 2;
-                startTime = currTime;
-                break;
-            }
-            case 2:
-            {
-                TexturedVertex vertices[4];
-
-                vertices[0].position = {-wr, +hr, -0.02f};
-                vertices[0].texcoord = {5 / 5.f, 1 / 3.f};
-                vertices[1].position = {wr, +hr, -0.02f};
-                vertices[1].texcoord = {4 / 5.f, 1 / 3.f};
-                vertices[2].position = {+wr, -hr, -0.02f};
-                vertices[2].texcoord = {4 / 5.f, 0.f};
-                vertices[3].position = {-wr, -hr, -0.02f};
-                vertices[3].texcoord = {5 / 5.f, 0.f};
-
-                glBindBuffer(GL_ARRAY_BUFFER, mesh.vbo);
-                glBufferSubData(GL_ARRAY_BUFFER, 0, sizeof(TexturedVertex) * 4, vertices);
-
-                currFrame = 0;
-                startTime = currTime;
-                break;
-            }
+                    currFrame = 0;
+                    startTime = currTime;
+                    break;
+                }
             }
         }
     }
 }
 
-void Player1::increase_speed(){
-    m_speed = fmin(m_speed + 1, 4);
+void Player1::increase_speed() {
+    m_speed = std::min(m_speed + 1, 4);
 }
 
-void Player1::decrease_speed(){
-    m_speed = fmax(m_speed - 1, 1);
+void Player1::decrease_speed() {
+    m_speed = std::min(m_speed - 1, 1);
 }
 
 // Simple bounding box collision check,
-bool Player1::collides_with(const Freeze& freeze)
-{
+bool Player1::collides_with(const Freeze &freeze) {
     float dx = m_position.x - freeze.get_position().x;
     float dy = m_position.y - freeze.get_position().y;
     float d_sq = dx * dx + dy * dy;
@@ -494,13 +458,11 @@ bool Player1::collides_with(const Freeze& freeze)
     float my_r = std::max(m_scale.x, m_scale.y);
     float r = std::max(other_r, my_r);
     r *= 0.6f;
-    if (d_sq < r * r)
-        return true;
-    return false;
+    return d_sq < r * r;
+
 }
 
-bool Player1::collides_with(const Water& water)
-{
+bool Player1::collides_with(const Water &water) {
     float dx = m_position.x - water.get_position().x;
     float dy = m_position.y - water.get_position().y;
     float d_sq = dx * dx + dy * dy;
@@ -508,13 +470,11 @@ bool Player1::collides_with(const Water& water)
     float my_r = std::max(m_scale.x, m_scale.y);
     float r = std::max(other_r, my_r);
     r *= 0.6f;
-    if (d_sq < r * r)
-        return true;
-    return false;
+    return d_sq < r * r;
+
 }
 
-bool Player1::collides_with(const Arms& arm)
-{
+bool Player1::collides_with(const Arms &arm) {
     float dx = m_position.x - arm.get_position().x;
     float dy = m_position.y - arm.get_position().y;
     float d_sq = dx * dx + dy * dy;
@@ -522,13 +482,10 @@ bool Player1::collides_with(const Arms& arm)
     float my_r = std::max(m_scale.x, m_scale.y);
     float r = std::max(other_r, my_r);
     r *= 0.6f;
-    if (d_sq < r * r)
-        return true;
-    return false;
+    return d_sq < r * r;
 }
 
-bool Player1::collides_with(const Legs& leg)
-{
+bool Player1::collides_with(const Legs &leg) {
     float dx = m_position.x - leg.get_position().x;
     float dy = m_position.y - leg.get_position().y;
     float d_sq = dx * dx + dy * dy;
@@ -536,13 +493,10 @@ bool Player1::collides_with(const Legs& leg)
     float my_r = std::max(m_scale.x, m_scale.y);
     float r = std::max(other_r, my_r);
     r *= 0.6f;
-    if (d_sq < r * r)
-        return true;
-    return false;
+    return d_sq < r * r;
 }
 
-bool Player1::collides_with(const Antidote& antidote)
-{
+bool Player1::collides_with(const Antidote &antidote) {
     float dx = m_position.x - antidote.get_position().x;
     float dy = m_position.y - antidote.get_position().y;
     float d_sq = dx * dx + dy * dy;
@@ -550,17 +504,15 @@ bool Player1::collides_with(const Antidote& antidote)
     float my_r = std::max(m_scale.x, m_scale.y);
     float r = std::max(other_r, my_r);
     r *= 0.6f;
-    if (d_sq < r * r)
-        return true;
-    return false;
+    return d_sq < r * r;
+
 }
 
-void Player1::destroy()
-{
+void Player1::destroy() {
     glDeleteBuffers(1, &mesh.vbo);
     glDeleteBuffers(1, &mesh.ibo);
     glDeleteBuffers(1, &mesh.vao);
-    
+
     glDeleteShader(effect.vertex);
     glDeleteShader(effect.fragment);
     glDeleteShader(effect.program);
