@@ -70,8 +70,8 @@ bool LimbsManager::cluster_limbs() {
         THE_CLUSTERIZER.run(points);
 
         for (auto cluster : THE_CLUSTERIZER.getClusters()) {
-            auto cluster_x = (int) cluster.getCentralValue(0) % (int) m_screen.x;
-            auto cluster_y = (int) cluster.getCentralValue(1) % (int) m_screen.y;
+            auto cluster_x = (int) cluster.getCentralValue(0) % (int) 1280;
+            auto cluster_y = (int) cluster.getCentralValue(1) % (int) 720;
 
             for (auto point : cluster.getPoints()) {
                 int id = point.getID();

@@ -382,11 +382,6 @@ bool World::random_spawn(float elapsed_ms, vec2 screen) {
         if (m_limbsManager.get_arms_size() <= MAX_ARMS && m_next_arm_spawn < 0.f) {
             if (!(m_limbsManager.spawn_arms()))
                 return false;
-            Arms &new_arm = m_limbsManager.getArms().back();
-
-            new_arm.set_position({(float) ((rand() % (int) screen.x)),
-                                  (float) ((rand() % (int) screen.y))});
-
             m_next_arm_spawn = (ARM_DELAY_MS / 2) + rand() % (1000);
         }
     }
@@ -395,12 +390,6 @@ bool World::random_spawn(float elapsed_ms, vec2 screen) {
         if (m_limbsManager.get_legs_size() <= MAX_LEGS && m_next_leg_spawn < 0.f) {
             if (!(m_limbsManager.spawn_legs()))
                 return false;
-
-            Legs &new_leg = m_limbsManager.getLegs().back();
-
-            new_leg.set_position({(float) ((rand() % (int) screen.x)),
-                                  (float) ((rand() % (int) screen.y))});
-
             m_next_leg_spawn = (LEG_DELAY_MS / 2) + rand() % (1000);
         }
     }
