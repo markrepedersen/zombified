@@ -69,7 +69,7 @@ private:
     void collect_freeze(Freeze freeze, int player, float index);
     void collect_water(Water water, int player, float index);
 
-	void computePaths(float ms);
+	// void computePaths(float ms);
     
 private:
 	// Window handle

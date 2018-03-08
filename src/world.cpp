@@ -141,7 +141,7 @@ bool World::update(float elapsed_ms) {
 
         // Next milestone this will be handled by the collision
         check_add_tools(screen);
-        computePaths(elapsed_ms);
+        m_limbsManager.computePaths(elapsed_ms, *mapGrid);
 
         return true;
     }
@@ -331,44 +331,54 @@ bool World::spawn_water() {
     return false;
 }
 
-void World::computePaths(float ms) {
-    for (auto &limb : m_limbsManager.getLimbs()) {
-        JPS::PathVector path;
-        vec2 target = limb.getCurrentTarget();
+// void World::computePaths(float ms) {
 
-        if (limb.getLastTarget() != target || limb.getLastTarget() == (vec2) {0, 0}) {
-            JPS::findPath(path,
-                          *mapGrid,
-                          (unsigned) limb.get_position().x,
-                          (unsigned) limb.get_position().y,
-                          (unsigned) target.x,
-                          (unsigned) target.y,
-                          1);
-            limb.setCurrentPath(path);
-        } else limb.setCurrentPath(limb.getLastPath());
-        if (!limb.getCurrentPath().empty()) {
-            vec2 nextNode, curNode;
-            curNode = nextNode = {std::powf(limb.get_position().x, 2), std::powf(limb.get_position().y, 2)};
+// int j = 0;
+//     for (auto &limb : m_limbsManager.getLimbs()) {
+//         JPS::PathVector path;
+//         vec2 target = limb.getCurrentTarget();
+        
+//         // std::cout<< "this one limb" << limb.get_position().x <<std::endl;
 
-            for (int i = 0; i < limb.getCurrentPath().size() && curNode <= nextNode; ++i) {
-                nextNode = {static_cast<float>(limb.getCurrentPath()[i].x),
-                            static_cast<float>(limb.getCurrentPath()[i].y)};
-            }
-            float step = 20 * (ms / 1000);
-            vec2 dir;
-            dir.x = limb.getCurrentTarget().x - limb.get_position().x;
-            dir.y = limb.getCurrentTarget().y - limb.get_position().y;
+//         if (limb.getLastTarget() != target || limb.getLastTarget() == (vec2) {0, 0}) {
+//             JPS::findPath(path,
+//                           *mapGrid,
+//                           (unsigned) limb.get_position().x,
+//                           (unsigned) limb.get_position().y,
+//                           (unsigned) target.x,
+//                           (unsigned) target.y,
+//                           1);  
+//             limb.setCurrentPath(path);
+//         } else limb.setCurrentPath(limb.getLastPath());
+//         if (!limb.getCurrentPath().empty()) {
+//             vec2 nextNode, curNode;
+//             curNode = nextNode = {std::powf(limb.get_position().x, 2), std::powf(limb.get_position().y, 2)};
 
-            auto jump = scale(step, normalize(dir));
+//             for (int i = 0; i < limb.getCurrentPath().size() && curNode <= nextNode; ++i) {
+//                 nextNode = {static_cast<float>(limb.getCurrentPath()[i].x),
+//                             static_cast<float>(limb.getCurrentPath()[i].y)};
+//             }
+//             float step = 200 * (ms / 1000);
+//             vec2 dir;
+//             dir.x = limb.getCurrentTarget().x - limb.get_position().x;
+//             dir.y = limb.getCurrentTarget().y - limb.get_position().y;
 
-            printf("move: %f, %f\n", jump.x, jump.y);
+//             auto jump = scale(step, normalize(dir));
 
-            limb.move(jump);
-            limb.setLastPath(limb.getCurrentPath());
-            limb.setLastTarget(target);
-        }
-    }
-}
+//             // printf("move: %f, %f\n", jump.x, jump.y);
+
+//             limb.move(jump);
+//             limb.setLastPath(limb.getCurrentPath());
+//             limb.setLastTarget(target);
+//             std::cout << j << std::endl;
+//             if (j == 4) {
+//             // printf("move: %f, %f\n", jump.x, jump.y);
+//             // std::cout << "this one limb" << j << limb.get_position().x <<std::endl;
+//             }
+//         }
+//         j++;
+//     }
+// }
 
 bool World::random_spawn(float elapsed_ms, vec2 screen) {
     m_next_arm_spawn -= elapsed_ms;

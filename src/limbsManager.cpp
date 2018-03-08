@@ -15,9 +15,27 @@ bool LimbsManager::init(vec2 screen) {
 // Renders the existing limbs
 void LimbsManager::draw(const mat3 &projection_2D) {
     for (auto &arms : m_arms)
+    {
+        // std::cout<<arms.get_position().x <<std::endl;
         arms.draw(projection_2D);
+    }
     for (auto &legs : m_legs)
+    {
+        // std::cout<<legs.get_position().x <<std::endl;
         legs.draw(projection_2D);
+    }
+
+
+//    for (auto limb : limbs)
+//     {
+//         if (typeid(&limb) == typeid(Arms)) {
+//             Arms* arm = dynamic_cast<Arms*>(&limb);
+//             arm->draw(projection_2D);
+//         } else {
+//             Legs* leg = dynamic_cast<Legs*>(&limb);
+//             leg->draw(projection_2D);
+//         }
+//     }
 }
 
 //spawn new arm in random
@@ -106,6 +124,7 @@ int LimbsManager::check_collision_with_players(Player1 *m_player1, Player2 *m_pl
             //erase.push_back(armcount);
             itL = m_legs.erase(itL);
             limbs.erase(itL);
+            
             itL->destroy();
         } else {
             ++itL;
@@ -152,6 +171,96 @@ size_t LimbsManager::get_arms_size() {
 size_t LimbsManager::get_legs_size() {
     return m_legs.size();
 }
+
+
+void LimbsManager::computePaths(float ms, MapGrid const mapGrid) {
+
+    for (int k = 0 ; k < limbs.size() ; k++) {
+        // JPS::PathVector path;
+        // vec2 target = limb.getCurrentTarget();
+        
+        // // std::cout<< "this one limb" << limb.get_position().x <<std::endl;
+
+        // if (limb.getLastTarget() != target || limb.getLastTarget() == (vec2) {0, 0}) {
+        //     JPS::findPath(path,
+        //                   mapGrid,
+        //                   (unsigned) limb.get_position().x,
+        //                   (unsigned) limb.get_position().y,
+        //                   (unsigned) target.x,
+        //                   (unsigned) target.y,
+        //                   1);  
+        //     limb.setCurrentPath(path);
+        //     std::cout << "hello2" << std::endl;
+        // } else limb.setCurrentPath(limb.getLastPath());
+        // if (!limb.getCurrentPath().empty()) {
+        //     vec2 nextNode, curNode;
+        //     curNode = nextNode = {std::powf(limb.get_position().x, 2), std::powf(limb.get_position().y, 2)};
+
+        //     for (int i = 0; i < limb.getCurrentPath().size() && curNode <= nextNode; ++i) {
+        //         nextNode = {static_cast<float>(limb.getCurrentPath()[i].x),
+        //                     static_cast<float>(limb.getCurrentPath()[i].y)};
+        //     }
+        //     float step = 200 * (ms / 1000);
+        //     vec2 dir;
+        //     dir.x = limb.getCurrentTarget().x - limb.get_position().x;
+        //     dir.y = limb.getCurrentTarget().y - limb.get_position().y;
+
+        //     auto jump = scale(step, normalize(dir));
+
+        //     // printf("move: %f, %f\n", jump.x, jump.y);
+
+        //     limb.move(jump);
+        //     limb.setLastPath(limb.getCurrentPath());
+        //     limb.setLastTarget(target);
+        //     std::cout << j << std::endl;
+        //     if (j == 4) {
+        //     printf("move: %f, %f\n", jump.x, jump.y);
+        //     std::cout << "this one limb" << j << limb.get_position().x <<std::endl;
+        //     }
+        // }
+
+        JPS::PathVector path;
+        vec2 target = limbs[k].getCurrentTarget();
+        
+        // std::cout<< "this one limb" << limb.get_position().x <<std::endl;
+// std::cout << k << "123" << limbs[k].get_position().x << std::endl;
+        if (limbs[k].getLastTarget() != target || limbs[k].getLastTarget() == (vec2) {0, 0}) {
+            JPS::findPath(path,
+                          mapGrid,
+                          (unsigned) limbs[k].get_position().x,
+                          (unsigned) limbs[k].get_position().y,
+                          (unsigned) target.x,
+                          (unsigned) target.y,
+                          1);  
+            limbs[k].setCurrentPath(path);
+        } else limbs[k].setCurrentPath(limbs[k].getLastPath());
+        if (!limbs[k].getCurrentPath().empty()) {
+            vec2 nextNode, curNode;
+            curNode = nextNode = {std::powf(limbs[k].get_position().x, 2), std::powf(limbs[k].get_position().y, 2)};
+
+            for (int i = 0; i < limbs[k].getCurrentPath().size() && curNode <= nextNode; ++i) {
+                nextNode = {static_cast<float>(limbs[k].getCurrentPath()[i].x),
+                            static_cast<float>(limbs[k].getCurrentPath()[i].y)};
+            }
+            float step = 200 * (ms / 1000);
+            vec2 dir;
+            dir.x = limbs[k].getCurrentTarget().x - limbs[k].get_position().x;
+            dir.y = limbs[k].getCurrentTarget().y - limbs[k].get_position().y;
+
+            auto jump = scale(step, normalize(dir));
+
+            // printf("move: %f, %f\n", jump.x, jump.y);
+
+            limbs[k].move(jump);
+            limbs[k].setLastPath(limbs[k].getCurrentPath());
+            limbs[k].setLastTarget(target);
+            std::cout << k << std::endl;
+            printf("move: %f, %f\n", jump.x, jump.y);
+            std::cout << "this one limb" << limbs[k].get_position().x <<std::endl;
+        }
+    }
+}
+
 
 
 void LimbsManager::destroy() {

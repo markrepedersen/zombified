@@ -46,7 +46,7 @@ vec2 Limb::get_position()const {
 void Limb::set_position(vec2 position) {
     this->position = position;
 }
-
+ 
 void Limb::move(vec2 pos) {
-    position += pos;
+    this->position += pos;
 }

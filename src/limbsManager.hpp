@@ -6,6 +6,8 @@
 #include "legs.hpp"
 #include "player1.hpp"
 #include "player2.hpp"
+#include "MapGrid.h"
+#include "JPS.h"
 #include <map>
 
 class LimbsManager
@@ -45,6 +47,8 @@ public:
     std::vector<Limb> getLimbs() {
         return limbs;
     }
+
+    void computePaths (float ms, MapGrid const mapGrid);
 
     void destroy();
     
