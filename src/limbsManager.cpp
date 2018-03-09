@@ -25,9 +25,13 @@ void LimbsManager::draw(const mat3 &projection_2D) {
     //     legs.draw(projection_2D);
     // }
 
+    // std::cout << "draw" << std::endl;
+    // int i = 0;
     for (auto &limb : limbs)
     {
+        // std::cout << i << " " <<  limb.getCurrentPath().size() << std::endl;
         limb.draw(projection_2D);
+        // i++;
     }
 
 
@@ -119,6 +123,8 @@ bool LimbsManager::cluster_limbs() {
         KMeans THE_CLUSTERIZER((int) (points.size() + 3) / 4, (int) points.size(), 2, MAX_ITERATIONS);
         THE_CLUSTERIZER.run(points);
 
+        std::cout << "clustering limbs" << std::endl;
+
         for (auto cluster : THE_CLUSTERIZER.getClusters()) {
             auto cluster_x = (int) cluster.getCentralValue(0) % (int) 1280;
             auto cluster_y = (int) cluster.getCentralValue(1) % (int) 720;
@@ -126,6 +132,8 @@ bool LimbsManager::cluster_limbs() {
             for (auto point : cluster.getPoints()) {
                 int id = point.getID();
                 limbs[id].setCurrentTarget({static_cast<float>(cluster_x), static_cast<float>(cluster_y)});
+                // std::cout << id << " " << cluster_x << " " << cluster_y << std::endl;
+
             }
         }
     }
@@ -259,7 +267,7 @@ int LimbsManager::get_legs_size() {
 
 
 void LimbsManager::computePaths(float ms, MapGrid const mapGrid) {
-
+std::cout << "computePaths" << std::endl;
     for (int k = 0 ; k < limbs.size() ; k++) {
         // JPS::PathVector path;
         // vec2 target = limb.getCurrentTarget();
@@ -306,11 +314,30 @@ void LimbsManager::computePaths(float ms, MapGrid const mapGrid) {
 
         JPS::PathVector path;
         vec2 target = limbs[k].getCurrentTarget();
+        std::cout << "the k is: " << k << std::endl;
+        std::cout << "the target is: " << target.x << std::endl;
         
         // std::cout<< "this one limb" << limb.get_position().x <<std::endl;
 // std::cout << k << "123" << limbs[k].get_position().x << std::endl;
         if (limbs[k].getLastTarget() != target || limbs[k].getLastTarget() == (vec2) {0, 0}) {
+            std::cout << "case 1: new target or last target empty" << std::endl;
             JPS::findPath(path,
+                          mapGrid,
+                          (unsigned) limbs[k].get_position().x,
+                          (unsigned) limbs[k].get_position().y,
+                          (unsigned) target.x,
+                          (unsigned) target.y,
+                          1);
+            limbs[k].setCurrentPath(path);
+
+            std::cout << "size of current path is: " << limbs[k].getCurrentPath().size() << std::endl;
+        } else {
+            std::cout << "case2: no new target" << std::endl;
+            std::cout << "size of last path is: " << limbs[k].getLastPath().size() << std::endl;
+            if (!limbs[k].getLastPath().empty()) {            
+                limbs[k].setCurrentPath(limbs[k].getLastPath());
+            } else {
+                JPS::findPath(path,
                           mapGrid,
                           (unsigned) limbs[k].get_position().x,
                           (unsigned) limbs[k].get_position().y,
@@ -318,8 +345,11 @@ void LimbsManager::computePaths(float ms, MapGrid const mapGrid) {
                           (unsigned) target.y,
                           1);  
             limbs[k].setCurrentPath(path);
-        } else limbs[k].setCurrentPath(limbs[k].getLastPath());
+            }
+        }
+
         if (!limbs[k].getCurrentPath().empty()) {
+            std::cout << "current path is not empty" << std::endl;
             vec2 nextNode, curNode;
             curNode = nextNode = {std::powf(limbs[k].get_position().x, 2), std::powf(limbs[k].get_position().y, 2)};
 
@@ -339,9 +369,9 @@ void LimbsManager::computePaths(float ms, MapGrid const mapGrid) {
             limbs[k].move(jump);
             limbs[k].setLastPath(limbs[k].getCurrentPath());
             limbs[k].setLastTarget(target);
-            // std::cout << k << std::endl;
-            // printf("move: %f, %f\n", jump.x, jump.y);
-            // std::cout << "this one limb" << limbs[k].get_position().x <<std::endl;
+            std::cout << k << std::endl;
+            printf("move: %f, %f\n", jump.x, jump.y);
+            std::cout << "this one limb" << limbs[k].get_position().x <<std::endl;
         }
     }
 }

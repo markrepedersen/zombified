@@ -142,6 +142,7 @@ bool World::update(float elapsed_ms) {
         // Next milestone this will be handled by the collision
         check_add_tools(screen);
         m_limbsManager.computePaths(elapsed_ms, *mapGrid);
+        
 
         return true;
     }

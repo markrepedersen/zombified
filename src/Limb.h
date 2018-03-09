@@ -11,7 +11,8 @@
 
 class Limb : public Renderable {
 
-    static Texture limb_texture;
+static Texture leg_texture;
+static Texture arm_texture;
 
 public:
     bool init(std::string type);

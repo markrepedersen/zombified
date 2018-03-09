@@ -5,32 +5,41 @@
 #include "Limb.h"
 #include <iostream>
 
-Texture Limb::limb_texture;
+
+Texture Limb::leg_texture;
+Texture Limb::arm_texture;
+
 
 bool Limb::init(std::string inputtype) {
         // Load shared texture
-    if (!limb_texture.is_valid())
-    {
         type = inputtype;
-        std::cout << type <<std::endl;
+
+        float wr;
+        float hr;
+
         if(type == "arm") {
-        if (!limb_texture.load_from_file(tools_textures_path("zombie arm.png")))
-        {
-            fprintf(stderr, "Failed to load arms texture!");
-            return false;
-        }
+            if(!arm_texture.is_valid()) {
+                if (!arm_texture.load_from_file(tools_textures_path("zombie arm.png")))
+                {
+                    fprintf(stderr, "Failed to load arms texture!");
+                    return false; 
+                }
+            }
+            wr = arm_texture.width * 0.5f;
+            hr = arm_texture.height * 0.5f;
         } else {
-            if (!limb_texture.load_from_file(tools_textures_path("zombie leg.png")))
-        {
-            fprintf(stderr, "Failed to load leg texture!");
-            return false;
-        }
-        }
-    }
+            if (!leg_texture.load_from_file(tools_textures_path("zombie leg.png")))
+            {
+                fprintf(stderr, "Failed to load leg texture!");
+                return false;
+            }
+            wr = leg_texture.width * 0.5f;
+            hr = leg_texture.height * 0.5f;
+        } 
     
-    // The position corresponds to the center of the texture
-    float wr = limb_texture.width * 0.5f;
-    float hr = limb_texture.height * 0.5f;
+    // // The position corresponds to the center of the texture
+    // float wr = limb_texture.width * 0.5f;
+    // float hr = limb_texture.height * 0.5f;
     
     TexturedVertex vertices[4];
     vertices[0].position = { -wr, +hr, -0.02f };
@@ -112,7 +121,11 @@ void Limb::draw(const mat3& projection)
     
     // Enabling and binding texture to slot 0
     glActiveTexture(GL_TEXTURE0);
-    glBindTexture(GL_TEXTURE_2D, limb_texture.id);
+    if (type == "arm") {
+        glBindTexture(GL_TEXTURE_2D, arm_texture.id);
+    } else {
+        glBindTexture(GL_TEXTURE_2D, leg_texture.id);
+    }
     
     // Setting uniform values to the currently bound program
     glUniformMatrix3fv(transform_uloc, 1, GL_FALSE, (float*)&transform);
@@ -137,7 +150,11 @@ void Limb::destroy()
 
 vec2 Limb::get_bounding_box()const {
      // fabs is to avoid negative scale due to the facing direction
-    return { std::fabs(m_scale.x) * limb_texture.width, std::fabs(m_scale.y) * limb_texture.height };
+     if (type == "arm") {
+        return { std::fabs(m_scale.x) * arm_texture.width, std::fabs(m_scale.y) * arm_texture.height };
+     } else {
+        return { std::fabs(m_scale.x) * leg_texture.width, std::fabs(m_scale.y) * leg_texture.height };
+     }
 }
     
 std::string Limb::getLimbType() {
