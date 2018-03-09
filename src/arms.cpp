@@ -57,6 +57,7 @@ bool Arms::init()
         return false;
     
     // Setting initial values
+    mass = 0.15;
     m_scale.x = -0.25f * ViewHelper::getRatio();
     m_scale.y = 0.25f * ViewHelper::getRatio();;
     m_is_alive = true;
@@ -121,6 +122,11 @@ vec2 Arms::get_position()const
 void Arms::set_position(vec2 position)
 {
     m_position = position;
+}
+
+float Arms::get_mass() const
+{
+    return mass;
 }
 
 bool Arms::is_alive()const

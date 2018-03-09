@@ -7,9 +7,9 @@
 #include <tuple>
 #include <unistd.h>
 
-class Freeze : public Renderable
+class Missile : public Renderable
 {
-    static Texture freeze_texture;
+    static Texture missile_texture;
 public:
     // Creates all the associated render resources and default transform
     bool init();
@@ -23,8 +23,6 @@ public:
     
     void set_scale(vec2 scale);
     
-    float get_mass()const;
-    
     // True if the salmon is alive
     bool is_alive()const;
     
@@ -32,18 +30,12 @@ public:
     
     vec2 get_bounding_box()const;
     
-    bool collides_with(const Freeze& freeze);
+    bool collides_with(const Missile& missile);
     
-    int use_freeze(int useOnPlayer);
-
 private:
     bool m_is_alive; // True if the salmon is alive
     vec2 m_position; // Window coordinates
+	float m_rotation;
     vec2 m_scale; // 1.f in each dimension. 1.f is as big as the associated texture
-    
-    //int = player 1 or 2
-    int frozen;
-    float mass;
-    
-
+	size_t m_num_indices; // passed to glDrawElements
 };

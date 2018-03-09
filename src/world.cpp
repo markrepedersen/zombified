@@ -17,6 +17,9 @@ namespace
 const size_t MAX_ARMS = 3;
 const size_t MAX_LEGS = 3;
 const size_t MAX_FREEZE = 2;
+const size_t MAX_MISSILE = 4;
+const size_t MAX_ARMOUR = 4;
+const size_t MAX_BOMB = 4;
 const size_t MAX_WATER = 2;
 const size_t ARM_DELAY_MS = 1000;
 const size_t LEG_DELAY_MS = 1000;
@@ -157,23 +160,38 @@ void World::destroy()
         freeze.destroy();
     for (auto& water : m_water)
         water.destroy();
+    for (auto& missile : m_missile)
+        missile.destroy();
+    for (auto& armour : m_armour)
+        armour.destroy();
+    for (auto& bomb : m_bomb)
+        bomb.destroy();
     for (auto &freeze_collected : m_freeze_collected_1)
         freeze_collected.destroy();
     for (auto &water_collected : m_water_collected_1)
         water_collected.destroy();
+    for (auto &legs_collected : m_legs_collected_1)
+        legs_collected.destroy();
     for (auto &freeze_collected : m_freeze_collected_2)
         freeze_collected.destroy();
     for (auto &water_collected : m_water_collected_2)
         water_collected.destroy();
+    for (auto &legs_collected : m_legs_collected_2)
+        legs_collected.destroy();
     
     m_legs.clear();
     m_arms.clear();
     m_freeze.clear();
     m_water.clear();
+    m_missile.clear();
+    m_armour.clear();
+    m_bomb.clear();
     m_freeze_collected_1.clear();
     m_freeze_collected_2.clear();
     m_water_collected_1.clear();
     m_water_collected_2.clear();
+    m_legs_collected_1.clear();
+    m_legs_collected_2.clear();
 
     //glfwDestroyWindow(m_window);
 }
@@ -330,6 +348,12 @@ void World::draw()
             freeze.draw(projection_2D);
         for (auto &water : m_water)
             water.draw(projection_2D);
+        for(auto &missile : m_missile)
+            missile.draw(projection_2D);
+        for(auto &armour : m_armour)
+            armour.draw(projection_2D);
+        for(auto &bomb : m_bomb)
+            bomb.draw(projection_2D);
         
         for (auto &water_collected : m_water_collected_1)
             water_collected.draw(projection_2D);
@@ -340,6 +364,23 @@ void World::draw()
             freeze_collected.draw(projection_2D);
         for (auto &freeze_collected : m_freeze_collected_2)
             freeze_collected.draw(projection_2D);
+        for(auto &missile_collected : m_missile_collected_1)
+            missile_collected.draw(projection_2D);
+        for(auto &missile_collected : m_missile_collected_2)
+            missile_collected.draw(projection_2D);
+        for(auto &bomb_collected : m_bomb_collected_1)
+            bomb_collected.draw(projection_2D);
+        for(auto &bomb_collected : m_bomb_collected_2)
+            bomb_collected.draw(projection_2D);
+        for(auto &armour_collected : m_armour_collected_1)
+            armour_collected.draw(projection_2D);
+        for(auto &armour_collected : m_armour_collected_2)
+            armour_collected.draw(projection_2D);
+        
+        for (auto &leg_collected : m_legs_collected_1)
+            leg_collected.draw(projection_2D);
+        for (auto &leg_collected : m_legs_collected_2)
+            leg_collected.draw(projection_2D);
         
         m_player1.draw(projection_2D);
         m_player2.draw(projection_2D);
@@ -503,6 +544,42 @@ bool World::spawn_freeze()
     return false;
 }
 
+bool World::spawn_missile()
+{
+    Missile missile;
+    if (missile.init())
+    {
+        m_missile.emplace_back(missile);
+        return true;
+    }
+    fprintf(stderr, "Failed to spawn missile");
+    return false;
+}
+
+bool World::spawn_armour()
+{
+    Armour armour;
+    if (armour.init())
+    {
+        m_armour.emplace_back(armour);
+        return true;
+    }
+    fprintf(stderr, "Failed to spawn armour");
+    return false;
+}
+
+bool World::spawn_bomb()
+{
+    Bomb bomb;
+    if (bomb.init())
+    {
+        m_bomb.emplace_back(bomb);
+        return true;
+    }
+    fprintf(stderr, "Failed to spawn bomb");
+    return false;
+}
+
 bool World::spawn_water()
 {
     Water water;
@@ -582,7 +659,7 @@ bool World::random_spawn(float elapsed_ms, vec2 screen)
         }
     }
     
-    if (randNum % 13 == 0)
+    if (randNum % 11 == 0)
     {
         if (m_legs.size() <= MAX_LEGS && m_next_leg_spawn < 0.f)
         {
@@ -611,6 +688,51 @@ bool World::random_spawn(float elapsed_ms, vec2 screen)
             m_next_spawn = (DELAY_MS / 2) + rand() % (1000);
         }
     }
+    if (randNum % 3 == 0)
+    {
+        if (m_missile.size() <= MAX_MISSILE && m_next_spawn < 0.f)
+        {
+            if (!spawn_missile())
+                return false;
+            
+            Missile &new_missile = m_missile.back();
+            new_missile.set_position({(float)((rand() % (int)screen.x)),
+                (float)((rand() % (int)screen.y))});
+            
+            m_next_spawn = (DELAY_MS / 2) + rand() % (1000);
+        }
+    }
+
+    if (randNum % 11 == 0)
+    {
+        if (m_armour.size() <= MAX_ARMOUR && m_next_spawn < 0.f)
+        {
+            if (!spawn_armour())
+                return false;
+            
+            Armour &new_armour = m_armour.back();
+            new_armour.set_position({(float)((rand() % (int)screen.x)),
+                (float)((rand() % (int)screen.y))});
+            
+            m_next_spawn = (DELAY_MS / 2) + rand() % (1000);
+        }
+    }
+
+        if (randNum % 17 == 0)
+    {
+        if (m_bomb.size() <= MAX_BOMB && m_next_spawn < 0.f)
+        {
+            if (!spawn_bomb())
+                return false;
+            
+            Bomb &new_bomb = m_bomb.back();
+            new_bomb.set_position({(float)((rand() % (int)screen.x)),
+                (float)((rand() % (int)screen.y))});
+            
+            m_next_spawn = (DELAY_MS / 2) + rand() % (1000);
+        }
+    }
+    
     if (randNum % 9 == 0)
     {
         if (m_water.size() <= MAX_WATER && m_next_spawn < 0.f)
@@ -652,6 +774,16 @@ void World::check_add_tools(vec2 screen)
                 itf = m_freeze.erase(itf);//m_freeze.begin()+freezecount);
                 collect_freeze(*itf, collided, index);
                 //fprintf(stderr, "freeze count %d \n", freezecount);
+                if(collided == 1)
+                {
+                    m_player1.set_mass(m_player1.get_mass()+itf->get_mass());
+                    //fprintf(stderr, "massp1 added: %f\n", m_player1.get_mass());
+                }
+                if (collided == 2)
+                {
+                    m_player2.set_mass(m_player2.get_mass()+itf->get_mass());
+                    //fprintf(stderr, "massp2 added: %f\n", m_player2.get_mass());
+                }
                 
             }
             else
@@ -684,6 +816,16 @@ void World::check_add_tools(vec2 screen)
                 itw = m_water.erase(itw);//m_water.begin()+watercount);
                 collect_water(*itw, collided, index);
                 //fprintf(stderr, "water count %d \n", watercount);
+                if(collided == 1)
+                {
+                    m_player1.set_mass(m_player1.get_mass()+itw->get_mass());
+                    //fprintf(stderr, "massp1 added: %f\n", m_player1.get_mass());
+                }
+                if (collided == 2)
+                {
+                    m_player2.set_mass(m_player2.get_mass()+itw->get_mass());
+                    //fprintf(stderr, "massp2 added: %f\n", m_player2.get_mass());
+                }
             }
             else
                 //fprintf(stderr, "stuck");
@@ -692,6 +834,49 @@ void World::check_add_tools(vec2 screen)
         else
             ++itw;
         //watercount++;
+        collided = 0;
+    }
+
+//=================check for leg collision
+    std::vector<Legs>::iterator itl;
+    for (itl = m_legs.begin(); itl != m_legs.end();)
+    {
+        if (m_player1.collides_with(*itl)) //arm))
+            collided = 1;
+        if (m_player2.collides_with(*itl)) //arm))
+            collided = 2;
+        
+        
+        if (collided != 0)
+        {
+            float index = (float)m_toolboxManager.addItem(4, collided);
+            if ((int)index != 100)
+            {
+                itl = m_legs.erase(itl);//m_water.begin()+watercount);
+                collect_legs(*itl, collided, index);
+                if(collided == 1)
+                {
+                    m_player1.increase_speed_legs(m_player1.get_speed()+20);
+                    m_player1.set_mass(itl->get_mass()+m_player1.get_mass());
+                    //fprintf(stderr, "massp1 added: %f\n", m_player1.get_mass());
+                }
+                if (collided == 2)
+                {
+                    m_player2.increase_speed_legs(m_player2.get_speed()+20);
+                    m_player2.set_mass(m_player2.get_mass()+itl->get_mass());
+                    //fprintf(stderr, "massp2 added: %f\n", m_player2.get_mass());
+                }
+                //fprintf(stderr, "legp1 added: %f\n", m_player1.get_speed());
+                //fprintf(stderr, "legp2 added: %f\n", m_player2.get_speed());
+            }
+            
+            else
+                ++itl;
+            
+        }
+        else
+            ++itl;
+        // armcount++;
         collided = 0;
     }
     
@@ -729,38 +914,8 @@ void World::check_add_tools(vec2 screen)
         collided = 0;
     }
     
-//=================check for leg collision
-    //std::vector<int> erase;
-    std::vector<Legs>::iterator itl;
-    for (itl = m_legs.begin(); itl != m_legs.end();)
-    {
-        if (m_player1.collides_with(*itl)) //arm))
-            collided = 1;
-        if (m_player2.collides_with(*itl)) //arm))
-            collided = 2;
-        
-        
-        if (collided != 0)
-        {
-            itl = m_legs.erase(itl);
-            itl->destroy();
-            
-            if(collided == 1)
-                m_player1.increase_speed_legs(m_player1.get_speed()+20);
-            else if (collided == 2)
-                m_player2.increase_speed_legs(m_player2.get_speed()+20);
-            
-            else
-                ++itl;
-            
-        }
-        else
-            ++itl;
-        // armcount++;
-        collided = 0;
-    }
-    
 //=================check for antidote collision
+    
     if (m_player1.collides_with(m_antidote))
         collided = 1;
     if (m_player2.collides_with(m_antidote))
@@ -872,6 +1027,24 @@ void World::collect_water(Water water, int player, float index)
     }
 }
 
+void World::collect_legs(Legs leg, int player, float index)
+{
+    if (player == 1)
+    {
+        m_legs_collected_1.emplace_back(leg);
+        Legs &new_leg = m_legs_collected_1.back();
+        new_leg.set_position(m_toolboxManager.new_tool_position(index, player));
+        //new_leg.set_scale({-0.25f * ViewHelper::getRatio(), 0.25f * ViewHelper::getRatio()});
+    }
+    if (player == 2)
+    {
+        m_legs_collected_2.emplace_back(leg);
+        Legs &new_leg = m_legs_collected_2.back();
+        new_leg.set_position(m_toolboxManager.new_tool_position(index, player));
+        //new_leg.set_scale({-0.25f * ViewHelper::getRatio(), 0.25f * ViewHelper::getRatio()});
+    }
+}
+
 
 // =========== USE TOOLS and SHIFT the ones unused ===================
 void World::use_tool_1(int tool_number)
@@ -880,11 +1053,15 @@ void World::use_tool_1(int tool_number)
     {
         immobilize = m_freeze_collected_1.front().use_freeze(2);
         freezeTime = time(0);
+        m_player1.set_mass(m_player1.get_mass()-m_freeze_collected_1.begin()->get_mass());
+        //fprintf(stderr, "massp1 decreased: %f\n", m_player1.get_mass());
         m_freeze_collected_1.erase(m_freeze_collected_1.begin());
         m_toolboxManager.decreaseSlot(1);
+       
     }
     if (tool_number == 2)
     {
+        m_player1.set_mass(m_player1.get_mass()-m_water_collected_1.begin()->get_mass());
         m_water_collected_1.erase(m_water_collected_1.begin());
         m_toolboxManager.decreaseSlot(1);
     }
@@ -902,6 +1079,15 @@ void World::use_tool_1(int tool_number)
             m_antidote.set_scale({-0.08f * ViewHelper::getRatio(), 0.08f * ViewHelper::getRatio()});
         }
     }
+    if (tool_number == 4)
+    {
+        m_player1.set_mass(m_player1.get_mass()-m_legs_collected_1.begin()->get_mass());
+        m_legs_collected_1.erase(m_legs_collected_1.begin());
+        m_toolboxManager.decreaseSlot(1);
+        m_player1.increase_speed_legs(m_player1.get_speed()-20);
+        //fprintf(stderr, "legp1 deleted: %f\n", m_player1.get_speed());
+    }
+    
     shift_1();
 }
 
@@ -911,6 +1097,7 @@ void World::shift_1()
     std::vector<int>::iterator it;
     int freezecount = 0;
     int watercount = 0;
+    int legcount = 0;
     float index = 0.f;
     for (it = list.begin(); it != list.end(); ++it)
     {
@@ -930,6 +1117,12 @@ void World::shift_1()
         {
             m_antidote.set_position(m_toolboxManager.new_tool_position(index, 1));
         }
+        if (*it == 4)
+        {
+            Legs& legs = m_legs_collected_1.at(legcount);
+            legs.set_position(m_toolboxManager.new_tool_position(index, 1));
+            legcount++;
+        }
         index++;
     }
 }
@@ -940,11 +1133,15 @@ void World::use_tool_2(int tool_number)
     {
         immobilize = m_freeze_collected_1.front().use_freeze(1);
         freezeTime = time(0);
+        m_player2.set_mass(m_player2.get_mass()-m_freeze_collected_2.begin()->get_mass());
+        //fprintf(stderr, "massp1 decreased: %f\n", m_player1.get_mass());
         m_freeze_collected_2.erase(m_freeze_collected_2.begin());
         m_toolboxManager.decreaseSlot(2);
     }
     if (tool_number == 2)
     {
+        m_player2.set_mass(m_player2.get_mass()-m_water_collected_2.begin()->get_mass());
+        //fprintf(stderr, "massp1 decreased: %f\n", m_player1.get_mass());
         m_water_collected_2.erase(m_water_collected_2.begin());
         m_toolboxManager.decreaseSlot(2);
     }
@@ -962,6 +1159,15 @@ void World::use_tool_2(int tool_number)
             m_antidote.set_scale({-0.08f * ViewHelper::getRatio(), 0.08f * ViewHelper::getRatio()});
         }
     }
+    if (tool_number == 4)
+    {
+        m_player2.set_mass(m_player2.get_mass()-m_legs_collected_2.begin()->get_mass());
+        //fprintf(stderr, "massp1 decreased: %f\n", m_player1.get_mass());
+        m_legs_collected_2.erase(m_legs_collected_2.begin());
+        m_toolboxManager.decreaseSlot(2);
+        m_player2.increase_speed_legs(m_player2.get_speed()-20);
+        //fprintf(stderr, "legp2 delete: %f\n", m_player2.get_speed());
+    }
     shift_2();
     
 }
@@ -972,6 +1178,7 @@ void World::shift_2()
     std::vector<int>::iterator it;
     int freezecount = 0;
     int watercount = 0;
+    int legcount = 0;
     float index = 0.f;
     for (it = list.begin(); it != list.end(); ++it)
     {
@@ -990,6 +1197,12 @@ void World::shift_2()
         if (*it == 3)
         {
             m_antidote.set_position(m_toolboxManager.new_tool_position(index, 2));
+        }
+        if (*it == 4)
+        {
+            Legs& legs = m_legs_collected_2.at(legcount);
+            legs.set_position(m_toolboxManager.new_tool_position(index, 2));
+            legcount++;
         }
         index++;
     }

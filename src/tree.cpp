@@ -123,11 +123,12 @@ float Tree::get_force(float mass, float speed, vec2 objPosition)
     //fprintf(stderr, "distance %f\n", dist);
     if (dist < blastRadius)
     {
-        if (dist < 40.f)
-            dist = 40.f;
+        //if (dist < 40.f)
+        //    dist = 40.f;
         //fprintf(stderr, "distance %f\n", dist);
         //fprintf(stderr, "speed %f\n", speed);
         force = ((speed*speed)/(dist*mass));//+400;
+        //fprintf(stderr, "speed %f\n", speed);
         //if (force > 950.0)
         //    force = 950;
     }
