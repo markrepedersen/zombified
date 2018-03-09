@@ -9,6 +9,7 @@
 #include "arms.hpp"
 #include "legs.hpp"
 #include "antidote.hpp"
+#include "Limb.h"
 
 class Player1 : public Renderable
 {
@@ -39,8 +40,9 @@ public:
     
     bool collides_with(const Freeze& freeze);
     bool collides_with(const Water& water);
-    bool collides_with(const Arms& arm);
-    bool collides_with(const Legs& leg);
+    // bool collides_with(const Arms& arm);
+    // bool collides_with(const Legs& leg);
+    bool collides_with(const Limb& limb);
     bool collides_with(const Antidote& antidote);
     
     void destroy();

@@ -474,22 +474,33 @@ bool Player1::collides_with(const Water &water) {
 
 }
 
-bool Player1::collides_with(const Arms &arm) {
-    float dx = m_position.x - arm.get_position().x;
-    float dy = m_position.y - arm.get_position().y;
-    float d_sq = dx * dx + dy * dy;
-    float other_r = std::max(arm.get_bounding_box().x, arm.get_bounding_box().y);
-    float my_r = std::max(m_scale.x, m_scale.y);
-    float r = std::max(other_r, my_r);
-    r *= 0.6f;
-    return d_sq < r * r;
-}
+// bool Player1::collides_with(const Arms &arm) {
+//     float dx = m_position.x - arm.get_position().x;
+//     float dy = m_position.y - arm.get_position().y;
+//     float d_sq = dx * dx + dy * dy;
+//     float other_r = std::max(arm.get_bounding_box().x, arm.get_bounding_box().y);
+//     float my_r = std::max(m_scale.x, m_scale.y);
+//     float r = std::max(other_r, my_r);
+//     r *= 0.6f;
+//     return d_sq < r * r;
+// }
 
-bool Player1::collides_with(const Legs &leg) {
-    float dx = m_position.x - leg.get_position().x;
-    float dy = m_position.y - leg.get_position().y;
+// bool Player1::collides_with(const Legs &leg) {
+//     float dx = m_position.x - leg.get_position().x;
+//     float dy = m_position.y - leg.get_position().y;
+//     float d_sq = dx * dx + dy * dy;
+//     float other_r = std::max(leg.get_bounding_box().x, leg.get_bounding_box().y);
+//     float my_r = std::max(m_scale.x, m_scale.y);
+//     float r = std::max(other_r, my_r);
+//     r *= 0.6f;
+//     return d_sq < r * r;
+// }
+
+bool Player1::collides_with(const Limb &limb) {
+    float dx = m_position.x - limb.get_position().x;
+    float dy = m_position.y - limb.get_position().y;
     float d_sq = dx * dx + dy * dy;
-    float other_r = std::max(leg.get_bounding_box().x, leg.get_bounding_box().y);
+    float other_r = std::max(limb.get_bounding_box().x, limb.get_bounding_box().y);
     float my_r = std::max(m_scale.x, m_scale.y);
     float r = std::max(other_r, my_r);
     r *= 0.6f;

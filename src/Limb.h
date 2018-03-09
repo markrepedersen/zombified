@@ -6,10 +6,22 @@
 #define ZOMBIE_LIMB_H
 
 #include "JPS.h"
+#include "viewHelper.hpp"
 #include "common.hpp"
 
-class Limb {
+class Limb : public Renderable {
+
+    static Texture limb_texture;
+
 public:
+    bool init(std::string type);
+
+    void draw(const mat3& projection)override;
+
+    void destroy();
+
+    vec2 get_bounding_box()const;
+    
     void setLastPath(JPS::PathVector path);
 
     void setCurrentPath(JPS::PathVector path);
@@ -31,12 +43,16 @@ public:
     void set_position(vec2 position);
 
     void move(vec2 pos);
+
+    std::string getLimbType();
 protected:
     vec2 cur_target;
     vec2 last_target;
     JPS::PathVector lastPath;
     JPS::PathVector currentPath;
     vec2 position;
+    vec2 m_scale;
+    std::string type;
 };
 
 #endif //ZOMBIE_LIMB_H

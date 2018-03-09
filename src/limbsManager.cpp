@@ -14,15 +14,20 @@ bool LimbsManager::init(vec2 screen) {
 
 // Renders the existing limbs
 void LimbsManager::draw(const mat3 &projection_2D) {
-    for (auto &arms : m_arms)
+    // for (auto &arms : m_arms)
+    // {
+    //     // std::cout<<arms.get_position().x <<std::endl;
+    //     arms.draw(projection_2D);
+    // }
+    // for (auto &legs : m_legs)
+    // {
+    //     // std::cout<<legs.get_position().x <<std::endl;
+    //     legs.draw(projection_2D);
+    // }
+
+    for (auto &limb : limbs)
     {
-        // std::cout<<arms.get_position().x <<std::endl;
-        arms.draw(projection_2D);
-    }
-    for (auto &legs : m_legs)
-    {
-        // std::cout<<legs.get_position().x <<std::endl;
-        legs.draw(projection_2D);
+        limb.draw(projection_2D);
     }
 
 
@@ -42,35 +47,62 @@ void LimbsManager::draw(const mat3 &projection_2D) {
 bool LimbsManager::spawn_arms() {
     srand((unsigned) time(0));
 
-    Arms arm;
-    if (arm.init()) {
+    // Arms arm;
+    // if (arm.init()) {
+    //     // Setting random initial position
+    //     arm.set_position({((rand() % (int) m_screen.x) * ViewHelper::getRatio()),
+    //                       ((rand() % (int) m_screen.y) * ViewHelper::getRatio())});
+
+    //     m_arms.emplace_back(arm);
+    //     limbs.emplace_back(arm);
+
+    //     return cluster_limbs();
+    // }
+    Limb arm;
+    if (arm.init("arm")) {
         // Setting random initial position
         arm.set_position({((rand() % (int) m_screen.x) * ViewHelper::getRatio()),
                           ((rand() % (int) m_screen.y) * ViewHelper::getRatio())});
 
-        m_arms.emplace_back(arm);
+        m_arms_total++;
         limbs.emplace_back(arm);
 
         return cluster_limbs();
     }
+
     fprintf(stderr, "Failed to spawn arm");
     return false;
 }
 
 //spawn new leg in random
 bool LimbsManager::spawn_legs() {
-    Legs leg;
+    // Legs leg;
+    // srand((unsigned) time(0));
+    // if (leg.init()) {
+    //     // Setting random initial position
+    //     leg.set_position({((rand() % (int) m_screen.x) * ViewHelper::getRatio()),
+    //                       ((rand() % (int) m_screen.y) * ViewHelper::getRatio())});
+
+    //     m_legs.emplace_back(leg);
+    //     limbs.emplace_back(leg);
+
+    //     return cluster_limbs();
+    // }
+
+        Limb leg;
     srand((unsigned) time(0));
-    if (leg.init()) {
+    if (leg.init("leg")) {
         // Setting random initial position
         leg.set_position({((rand() % (int) m_screen.x) * ViewHelper::getRatio()),
                           ((rand() % (int) m_screen.y) * ViewHelper::getRatio())});
 
-        m_legs.emplace_back(leg);
+        m_legs_total++;
         limbs.emplace_back(leg);
 
         return cluster_limbs();
     }
+
+
     fprintf(stderr, "Failed to spawn leg");
     return false;
 }
@@ -107,69 +139,122 @@ bool LimbsManager::cluster_limbs() {
 //returns 3 if both players collides with an arm
 int LimbsManager::check_collision_with_players(Player1 *m_player1, Player2 *m_player2) {
 
-    int leg_collided = 0;
-    for (auto itL = m_legs.begin(); itL != m_legs.end();) {
-        leg_collided = 0;
-        if (m_player1->collides_with(*itL)) {
+    // int leg_collided = 0;
+    // for (auto itL = m_legs.begin(); itL != m_legs.end();) {
+    //     leg_collided = 0;
+    //     if (m_player1->collides_with(*itL)) {
 
-            m_player1->increase_speed();
-            leg_collided = 1;
-        }
-        if (m_player2->collides_with(*itL)) {
-            m_player2->increase_speed();
-            leg_collided = 1;
-        }
+    //         m_player1->increase_speed();
+    //         leg_collided = 1;
+    //     }
+    //     if (m_player2->collides_with(*itL)) {
+    //         m_player2->increase_speed();
+    //         leg_collided = 1;
+    //     }
 
-        if (leg_collided != 0) {
-            //erase.push_back(armcount);
-            itL = m_legs.erase(itL);
-            limbs.erase(itL);
+    //     if (leg_collided != 0) {
+    //         //erase.push_back(armcount);
+    //         itL = m_legs.erase(itL);
+    //         limbs.erase(itL);
             
-            itL->destroy();
-        } else {
-            ++itL;
-        }
-    }
+    //         itL->destroy();
+    //     } else {
+    //         ++itL;
+    //     }
+    // }
 
 
-    int collided = 0;
+    // int collided = 0;
 
-    for (auto itA = m_arms.begin(); itA != m_arms.end();) {
-        if (m_player1->collides_with(*itA)) {
-            if (collided == 0) {
-                collided = 1;
-            } else if (collided == 2) {
-                collided = 3;
+    // for (auto itA = m_arms.begin(); itA != m_arms.end();) {
+    //     if (m_player1->collides_with(*itA)) {
+    //         if (collided == 0) {
+    //             collided = 1;
+    //         } else if (collided == 2) {
+    //             collided = 3;
+    //         }
+    //     }
+    //     if (m_player2->collides_with(*itA)) {
+    //         if (collided == 0) {
+    //             collided = 2;
+    //         } else if (collided == 1) {
+    //             collided = 3;
+    //         }
+    //     }
+
+    //     if (collided != 0) {
+    //         cluster_limbs();
+    //         //erase.push_back(armcount);
+    //         itA = m_arms.erase(itA);
+    //         limbs.erase(itA);
+    //         itA->destroy();
+    //     } else {
+    //         ++itA;
+    //     }
+
+    // }
+    // return collided;
+
+    int limb_collided = 0;
+    int collided;
+    for (auto it = limbs.begin(); it != limbs.end();) {
+
+        if (m_player1->collides_with(*it)) {
+
+            if((*it).getLimbType() == "leg") {
+                m_player1->increase_speed();
+                m_legs_total--;
+            } else {
+                 if (collided == 0) {
+                    collided = 1;
+                } else if (collided == 2) {
+                     collided = 3;
+                }
+
+                m_arms_total--;
             }
+
+            limb_collided = 1;
         }
-        if (m_player2->collides_with(*itA)) {
-            if (collided == 0) {
-                collided = 2;
-            } else if (collided == 1) {
-                collided = 3;
+        if (m_player2->collides_with(*it)) {
+             if((*it).getLimbType() == "leg") {
+                m_player1->increase_speed();
+                m_legs_total--;
+            }  else {
+                 if (collided == 0) {
+                    collided = 1;
+                } else if (collided == 2) {
+                     collided = 3;
+                }
+
+                m_arms_total--;
             }
+            limb_collided = 1;
         }
 
-        if (collided != 0) {
-            cluster_limbs();
+        if (limb_collided != 0) {
             //erase.push_back(armcount);
-            itA = m_arms.erase(itA);
-            limbs.erase(itA);
-            itA->destroy();
+            it = limbs.erase(it);
+            
+            it->destroy();
         } else {
-            ++itA;
+            ++it;
         }
 
     }
+
     return collided;
+
 }
 
-size_t LimbsManager::get_arms_size() {
-    return m_arms.size();
+int LimbsManager::get_arms_size() {
+    // return m_arms.size();
+    return m_arms_total;
 }
 
-size_t LimbsManager::get_legs_size() {
-    return m_legs.size();
+int LimbsManager::get_legs_size() {
+    // return m_legs.size();
+    return m_legs_total;
 }
 
 
@@ -242,7 +327,7 @@ void LimbsManager::computePaths(float ms, MapGrid const mapGrid) {
                 nextNode = {static_cast<float>(limbs[k].getCurrentPath()[i].x),
                             static_cast<float>(limbs[k].getCurrentPath()[i].y)};
             }
-            float step = 200 * (ms / 1000);
+            float step = 20 * (ms / 1000);
             vec2 dir;
             dir.x = limbs[k].getCurrentTarget().x - limbs[k].get_position().x;
             dir.y = limbs[k].getCurrentTarget().y - limbs[k].get_position().y;
@@ -254,9 +339,9 @@ void LimbsManager::computePaths(float ms, MapGrid const mapGrid) {
             limbs[k].move(jump);
             limbs[k].setLastPath(limbs[k].getCurrentPath());
             limbs[k].setLastTarget(target);
-            std::cout << k << std::endl;
-            printf("move: %f, %f\n", jump.x, jump.y);
-            std::cout << "this one limb" << limbs[k].get_position().x <<std::endl;
+            // std::cout << k << std::endl;
+            // printf("move: %f, %f\n", jump.x, jump.y);
+            // std::cout << "this one limb" << limbs[k].get_position().x <<std::endl;
         }
     }
 }
@@ -264,11 +349,15 @@ void LimbsManager::computePaths(float ms, MapGrid const mapGrid) {
 
 
 void LimbsManager::destroy() {
-    for (auto &arm : m_arms)
-        arm.destroy();
-    for (auto &leg : m_legs)
-        leg.destroy();
+    // for (auto &arm : m_arms)
+    //     arm.destroy();
+    // for (auto &leg : m_legs)
+    //     leg.destroy();
 
-    m_arms.clear();
-    m_legs.clear();
+    // m_arms.clear();
+    // m_legs.clear();
+    for(auto &limb : limbs)
+        limb.destroy();
+
+    limbs.clear();
 }
