@@ -12,7 +12,7 @@ bool Missile::init()
 	std::vector<uint16_t> indices;
 
 	// Reads the salmon mesh from a file, which contains a list of vertices and indices
-	FILE* mesh_file = fopen(mesh_path("salmon.mesh"), "r");
+	FILE* mesh_file = fopen(mesh_path("missile.mesh"), "r");
 	if (mesh_file == nullptr)
 		return false;
 
@@ -69,13 +69,11 @@ bool Missile::init()
 		return false;
 
     // Setting initial values
-    //m_scale.x = -0.10f * ViewHelper::getRatio();
-    //m_scale.y = 0.10f * ViewHelper::getRatio();
+    m_scale.x = -5.f * ViewHelper::getRatio();
+    m_scale.y = 5.f * ViewHelper::getRatio();
     m_is_alive = true;
     m_position = { 450.f * ViewHelper::getRatio(), 450.f * ViewHelper::getRatio()};
 
-	m_scale.x = -35.f;
-	m_scale.y = 35.f;
 	m_num_indices = indices.size();
 	m_rotation = 0.f;
     
