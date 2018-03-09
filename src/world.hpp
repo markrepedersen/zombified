@@ -18,6 +18,7 @@
 #include "JPS.h"
 #include "missile.hpp"
 #include "bomb.hpp"
+#include "armour.hpp"
 #include <vector>
 
 #define SDL_MAIN_HANDLED
@@ -67,6 +68,7 @@ private:
     bool spawn_freeze();
     bool spawn_water();
     bool spawn_missile();
+    bool spawn_armour();
     bool spawn_bomb();
     
     void shift_1();
@@ -114,6 +116,7 @@ private:
     std::vector<Water> m_water;
     std::vector<Missile> m_missile;
     std::vector<Bomb> m_bomb;
+    std::vector<Armour> m_armour;
 
     std::vector<Freeze> m_freeze_collected_1;
     std::vector<Water> m_water_collected_1;
@@ -123,6 +126,8 @@ private:
     std::vector<Missile> m_missile_collected_2;
     std::vector<Bomb> m_bomb_collected_1;
     std::vector<Bomb> m_bomb_collected_2;
+    std::vector<Armour> m_armour_collected_1;
+    std::vector<Armour> m_armour_collected_2;
 
 	MapGrid *mapGrid;
 

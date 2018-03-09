@@ -18,6 +18,7 @@ const size_t MAX_ARMS = 3;
 const size_t MAX_LEGS = 3;
 const size_t MAX_FREEZE = 2;
 const size_t MAX_MISSILE = 4;
+const size_t MAX_ARMOUR = 4;
 const size_t MAX_BOMB = 4;
 const size_t MAX_WATER = 2;
 const size_t ARM_DELAY_MS = 1000;
@@ -160,6 +161,8 @@ void World::destroy()
         water.destroy();
     for (auto& missile : m_missile)
         missile.destroy();
+    for (auto& armour : m_armour)
+        armour.destroy();
     for (auto& bomb : m_bomb)
         bomb.destroy();
     for (auto &freeze_collected : m_freeze_collected_1)
@@ -176,6 +179,7 @@ void World::destroy()
     m_freeze.clear();
     m_water.clear();
     m_missile.clear();
+    m_armour.clear();
     m_bomb.clear();
     m_freeze_collected_1.clear();
     m_freeze_collected_2.clear();
@@ -334,6 +338,8 @@ void World::draw()
             water.draw(projection_2D);
         for(auto &missile : m_missile)
             missile.draw(projection_2D);
+        for(auto &armour : m_armour)
+            armour.draw(projection_2D);
         for(auto &bomb : m_bomb)
             bomb.draw(projection_2D);
         
@@ -354,6 +360,10 @@ void World::draw()
             bomb_collected.draw(projection_2D);
         for(auto &bomb_collected : m_bomb_collected_2)
             bomb_collected.draw(projection_2D);
+        for(auto &armour_collected : m_armour_collected_1)
+            armour_collected.draw(projection_2D);
+        for(auto &armour_collected : m_armour_collected_2)
+            armour_collected.draw(projection_2D);
         
         m_player1.draw(projection_2D);
         m_player2.draw(projection_2D);
@@ -523,6 +533,18 @@ bool World::spawn_missile()
     return false;
 }
 
+bool World::spawn_armour()
+{
+    Armour armour;
+    if (armour.init())
+    {
+        m_armour.emplace_back(armour);
+        return true;
+    }
+    fprintf(stderr, "Failed to spawn armour");
+    return false;
+}
+
 bool World::spawn_bomb()
 {
     Bomb bomb;
@@ -652,6 +674,21 @@ bool World::random_spawn(float elapsed_ms, vec2 screen)
             
             Missile &new_missile = m_missile.back();
             new_missile.set_position({(float)((rand() % (int)screen.x)),
+                (float)((rand() % (int)screen.y))});
+            
+            m_next_spawn = (DELAY_MS / 2) + rand() % (1000);
+        }
+    }
+
+    if (randNum % 11 == 0)
+    {
+        if (m_armour.size() <= MAX_ARMOUR && m_next_spawn < 0.f)
+        {
+            if (!spawn_armour())
+                return false;
+            
+            Armour &new_armour = m_armour.back();
+            new_armour.set_position({(float)((rand() % (int)screen.x)),
                 (float)((rand() % (int)screen.y))});
             
             m_next_spawn = (DELAY_MS / 2) + rand() % (1000);
