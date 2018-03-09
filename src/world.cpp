@@ -17,6 +17,9 @@ namespace
 const size_t MAX_ARMS = 3;
 const size_t MAX_LEGS = 3;
 const size_t MAX_FREEZE = 2;
+const size_t MAX_MISSILE = 4;
+const size_t MAX_ARMOUR = 4;
+const size_t MAX_BOMB = 4;
 const size_t MAX_WATER = 2;
 const size_t ARM_DELAY_MS = 1000;
 const size_t LEG_DELAY_MS = 1000;
@@ -157,6 +160,12 @@ void World::destroy()
         freeze.destroy();
     for (auto& water : m_water)
         water.destroy();
+    for (auto& missile : m_missile)
+        missile.destroy();
+    for (auto& armour : m_armour)
+        armour.destroy();
+    for (auto& bomb : m_bomb)
+        bomb.destroy();
     for (auto &freeze_collected : m_freeze_collected_1)
         freeze_collected.destroy();
     for (auto &water_collected : m_water_collected_1)
@@ -174,6 +183,9 @@ void World::destroy()
     m_arms.clear();
     m_freeze.clear();
     m_water.clear();
+    m_missile.clear();
+    m_armour.clear();
+    m_bomb.clear();
     m_freeze_collected_1.clear();
     m_freeze_collected_2.clear();
     m_water_collected_1.clear();
@@ -336,6 +348,12 @@ void World::draw()
             freeze.draw(projection_2D);
         for (auto &water : m_water)
             water.draw(projection_2D);
+        for(auto &missile : m_missile)
+            missile.draw(projection_2D);
+        for(auto &armour : m_armour)
+            armour.draw(projection_2D);
+        for(auto &bomb : m_bomb)
+            bomb.draw(projection_2D);
         
         for (auto &water_collected : m_water_collected_1)
             water_collected.draw(projection_2D);
@@ -346,6 +364,18 @@ void World::draw()
             freeze_collected.draw(projection_2D);
         for (auto &freeze_collected : m_freeze_collected_2)
             freeze_collected.draw(projection_2D);
+        for(auto &missile_collected : m_missile_collected_1)
+            missile_collected.draw(projection_2D);
+        for(auto &missile_collected : m_missile_collected_2)
+            missile_collected.draw(projection_2D);
+        for(auto &bomb_collected : m_bomb_collected_1)
+            bomb_collected.draw(projection_2D);
+        for(auto &bomb_collected : m_bomb_collected_2)
+            bomb_collected.draw(projection_2D);
+        for(auto &armour_collected : m_armour_collected_1)
+            armour_collected.draw(projection_2D);
+        for(auto &armour_collected : m_armour_collected_2)
+            armour_collected.draw(projection_2D);
         
         for (auto &leg_collected : m_legs_collected_1)
             leg_collected.draw(projection_2D);
@@ -514,6 +544,42 @@ bool World::spawn_freeze()
     return false;
 }
 
+bool World::spawn_missile()
+{
+    Missile missile;
+    if (missile.init())
+    {
+        m_missile.emplace_back(missile);
+        return true;
+    }
+    fprintf(stderr, "Failed to spawn missile");
+    return false;
+}
+
+bool World::spawn_armour()
+{
+    Armour armour;
+    if (armour.init())
+    {
+        m_armour.emplace_back(armour);
+        return true;
+    }
+    fprintf(stderr, "Failed to spawn armour");
+    return false;
+}
+
+bool World::spawn_bomb()
+{
+    Bomb bomb;
+    if (bomb.init())
+    {
+        m_bomb.emplace_back(bomb);
+        return true;
+    }
+    fprintf(stderr, "Failed to spawn bomb");
+    return false;
+}
+
 bool World::spawn_water()
 {
     Water water;
@@ -622,6 +688,51 @@ bool World::random_spawn(float elapsed_ms, vec2 screen)
             m_next_spawn = (DELAY_MS / 2) + rand() % (1000);
         }
     }
+    if (randNum % 3 == 0)
+    {
+        if (m_missile.size() <= MAX_MISSILE && m_next_spawn < 0.f)
+        {
+            if (!spawn_missile())
+                return false;
+            
+            Missile &new_missile = m_missile.back();
+            new_missile.set_position({(float)((rand() % (int)screen.x)),
+                (float)((rand() % (int)screen.y))});
+            
+            m_next_spawn = (DELAY_MS / 2) + rand() % (1000);
+        }
+    }
+
+    if (randNum % 11 == 0)
+    {
+        if (m_armour.size() <= MAX_ARMOUR && m_next_spawn < 0.f)
+        {
+            if (!spawn_armour())
+                return false;
+            
+            Armour &new_armour = m_armour.back();
+            new_armour.set_position({(float)((rand() % (int)screen.x)),
+                (float)((rand() % (int)screen.y))});
+            
+            m_next_spawn = (DELAY_MS / 2) + rand() % (1000);
+        }
+    }
+
+        if (randNum % 17 == 0)
+    {
+        if (m_bomb.size() <= MAX_BOMB && m_next_spawn < 0.f)
+        {
+            if (!spawn_bomb())
+                return false;
+            
+            Bomb &new_bomb = m_bomb.back();
+            new_bomb.set_position({(float)((rand() % (int)screen.x)),
+                (float)((rand() % (int)screen.y))});
+            
+            m_next_spawn = (DELAY_MS / 2) + rand() % (1000);
+        }
+    }
+    
     if (randNum % 9 == 0)
     {
         if (m_water.size() <= MAX_WATER && m_next_spawn < 0.f)
