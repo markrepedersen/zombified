@@ -593,7 +593,7 @@ bool World::random_spawn(float elapsed_ms, vec2 screen)
         }
     }
     
-    if (randNum % 2 == 0)
+    if (randNum % 11 == 0)
     {
         if (m_legs.size() <= MAX_LEGS && m_next_leg_spawn < 0.f)
         {
