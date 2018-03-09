@@ -16,6 +16,7 @@
 #include "antidote.hpp"
 #include "MapGrid.h"
 #include "JPS.h"
+#include "missile.hpp"
 #include <vector>
 
 #define SDL_MAIN_HANDLED
@@ -64,6 +65,7 @@ private:
 	bool spawn_legs();
     bool spawn_freeze();
     bool spawn_water();
+    bool spawn_missile();
     
     void shift_1();
     void shift_2();
@@ -108,11 +110,14 @@ private:
     std::vector<Legs> m_legs;
     std::vector<Freeze> m_freeze;
     std::vector<Water> m_water;
+    std::vector<Missile> m_missile;
 
     std::vector<Freeze> m_freeze_collected_1;
     std::vector<Water> m_water_collected_1;
     std::vector<Freeze> m_freeze_collected_2;
     std::vector<Water> m_water_collected_2;
+    std::vector<Missile> m_missile_collected_1;
+    std::vector<Missile> m_missile_collected_2;
 
 	MapGrid *mapGrid;
 
