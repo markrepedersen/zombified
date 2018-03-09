@@ -81,6 +81,7 @@ private:
     
     void collect_freeze(Freeze freeze, int player, float index);
     void collect_water(Water water, int player, float index);
+    void collect_legs(Legs leg, int player, float index);
 
 	void computePaths(float ms);
     
@@ -116,8 +117,10 @@ private:
 
     std::vector<Freeze> m_freeze_collected_1;
     std::vector<Water> m_water_collected_1;
+    std::vector<Legs> m_legs_collected_1;
     std::vector<Freeze> m_freeze_collected_2;
     std::vector<Water> m_water_collected_2;
+    std::vector<Legs> m_legs_collected_2;
 
 	MapGrid *mapGrid;
 

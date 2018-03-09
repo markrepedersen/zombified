@@ -57,6 +57,7 @@ bool Water::init()
         return false;
     
     // Setting initial values
+    mass = 0.15;
     m_scale.x = -0.10f * ViewHelper::getRatio();
     m_scale.y = 0.10f * ViewHelper::getRatio();
     m_is_alive = true;
@@ -126,6 +127,11 @@ vec2 Water::get_position()const
 void Water::set_scale(vec2 scale)
 {
     m_scale = scale;
+}
+
+float Water::get_mass() const
+{
+    return mass;
 }
 
 bool Water::is_alive()const

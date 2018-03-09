@@ -57,6 +57,7 @@ bool Legs::init()
         return false;
     
     // Setting initial values
+    mass = 0.15;
     m_scale.x = -0.25f * ViewHelper::getRatio();
     m_scale.y = 0.25f * ViewHelper::getRatio();
     m_is_alive = true * ViewHelper::getRatio();
@@ -121,6 +122,16 @@ vec2 Legs::get_position()const
 void Legs::set_position(vec2 position)
 {
     m_position = position;
+}
+
+void Legs::set_scale(vec2 scale)
+{
+    m_scale = scale;
+}
+
+float Legs::get_mass() const
+{
+    return mass;
 }
 
 bool Legs::is_alive()const

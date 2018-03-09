@@ -57,6 +57,7 @@ bool Freeze::init()
         return false;
 
     // Setting initial values
+    mass = 0.15;
     m_scale.x = -0.10f * ViewHelper::getRatio();
     m_scale.y = 0.10f * ViewHelper::getRatio();
     m_is_alive = true;
@@ -127,6 +128,11 @@ void Freeze::set_scale(vec2 scale)
 vec2 Freeze::get_position()const
 {
     return m_position;
+}
+
+float Freeze::get_mass() const
+{
+    return mass;
 }
 
 bool Freeze::is_alive()const

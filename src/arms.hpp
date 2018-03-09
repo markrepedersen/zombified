@@ -17,6 +17,8 @@ public:
     // Returns the current salmon position
     vec2 get_position()const;
     
+    float get_mass()const;
+    
     // Sets the new turtle position
     void set_position(vec2 position);
     
@@ -33,4 +35,5 @@ private:
     bool m_is_alive; // True if the salmon is alive
     vec2 m_position; // Window coordinates
     vec2 m_scale; // 1.f in each dimension. 1.f is as big as the associated texture
+    float mass;
 };
