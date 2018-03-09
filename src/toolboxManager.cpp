@@ -107,6 +107,7 @@ int ToolboxManager::addItem(int itemIndex, int player)
             // freeze tool = 1
             // water tool = 2
             // antidote = 3
+            // leg = 4
             if (*it == 0) {
                 *it = itemIndex;
                 return count;

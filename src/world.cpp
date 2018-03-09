@@ -148,6 +148,7 @@ void World::destroy()
     m_player1.destroy();
     m_player2.destroy();
     m_zombie.destroy();
+    m_tree.destroy();
     for (auto& legs : m_legs)
      	legs.destroy();
     for (auto& arms : m_arms)
@@ -200,14 +201,15 @@ bool World::update(float elapsed_ms)
             m_button.destroy();
             
             // initialize everything for the main game world once the button is pressed
+            explosion = false;
             m_min = 2;
             m_sec = 0;
             timeDelay = 5;
             start = time(0);
-            check_freeze_used = 0;
+            immobilize = 0;
             m_worldtexture.init(screen);
             m_toolboxManager.init({screen.x, screen.y});
-            m_player1.init(screen) && m_player2.init(screen)&& m_antidote.init(screen);
+            m_player1.init(screen) && m_player2.init(screen)&& m_antidote.init(screen) && m_tree.init(screen);
         }
     }
     
@@ -231,6 +233,9 @@ bool World::update(float elapsed_ms)
         // Next milestone this will be handled by the collision
         check_add_tools(screen);
         computePaths(elapsed_ms);
+        
+        if (explosion)
+            explode();
         
         return true;
     }
@@ -315,6 +320,7 @@ void World::draw()
         m_worldtexture.draw(projection_2D);
         m_toolboxManager.draw(projection_2D);
         m_antidote.draw(projection_2D);
+        m_tree.draw(projection_2D);
         //TODO: Drawing entities
         for (auto &arms : m_arms)
             arms.draw(projection_2D);
@@ -354,7 +360,7 @@ void World::on_key(GLFWwindow *, int key, int, int action, int mod)
 {
 
     // player1 actions
-    if (check_freeze_used != 1)
+    if (immobilize != 1 && !m_player1.get_blowback())
     {
         if (action == GLFW_PRESS && (key == GLFW_KEY_UP || key == GLFW_KEY_LEFT || key == GLFW_KEY_DOWN || key == GLFW_KEY_RIGHT))
             m_player1.set_key(key, true);
@@ -363,7 +369,7 @@ void World::on_key(GLFWwindow *, int key, int, int action, int mod)
         if (action == GLFW_PRESS && key == GLFW_KEY_RIGHT_SHIFT)
             use_tool_1(m_toolboxManager.useItem(1));
     }
-    if (check_freeze_used == 1) //player is frozen
+    if (immobilize == 1 || m_player1.get_blowback()) //player is frozen
     {
         //fprintf(stderr, "frozen");
         m_player1.set_key(GLFW_KEY_UP, false);
@@ -372,13 +378,15 @@ void World::on_key(GLFWwindow *, int key, int, int action, int mod)
         m_player1.set_key(GLFW_KEY_RIGHT, false);
         if((int)difftime( time(0), freezeTime) >= 5)
         {
-            check_freeze_used = 0;
+            immobilize = 0;
+            freezeTime = 0;
             //fprintf(stderr, "start");
         }
+
     }
     
     // player2 actions
-    if (check_freeze_used != 2)
+    if (immobilize != 2 && !m_player2.get_blowback())
     {
         if (action == GLFW_PRESS && key == GLFW_KEY_W)
             m_player2.set_key(0, true);
@@ -402,7 +410,7 @@ void World::on_key(GLFWwindow *, int key, int, int action, int mod)
             use_tool_2(m_toolboxManager.useItem(2));
 
     }
-    if (check_freeze_used == 2) //player is frozen
+    if (immobilize == 2 || m_player2.get_blowback()) //player is frozen
     {
         m_player2.set_key(0, false);
         m_player2.set_key(1, false);
@@ -410,11 +418,15 @@ void World::on_key(GLFWwindow *, int key, int, int action, int mod)
         m_player2.set_key(3, false);
         if((int)difftime( time(0), freezeTime) >= 5)
         {
-            check_freeze_used = 0;
+            immobilize = 0;
+            freezeTime = 0;
             //fprintf(stderr, "start");
         }
     }
     
+    
+    if (action == GLFW_PRESS && key == GLFW_KEY_SPACE)
+        autoExplode();
 
     //	// Resetting game
     //	if (action == GLFW_RELEASE && key == GLFW_KEY_R)
@@ -570,7 +582,7 @@ bool World::random_spawn(float elapsed_ms, vec2 screen)
         }
     }
     
-    if (randNum % 19 == 0)
+    if (randNum % 13 == 0)
     {
         if (m_legs.size() <= MAX_LEGS && m_next_leg_spawn < 0.f)
         {
@@ -685,7 +697,7 @@ void World::check_add_tools(vec2 screen)
     
 //=================check for arm collision
    // int armcount = 0;
-    std::vector<int> erase;
+   // std::vector<int> erase;
    // for (auto& arm : m_arms)
     std::vector<Arms>::iterator it;
     for (it = m_arms.begin(); it != m_arms.end();)
@@ -717,6 +729,37 @@ void World::check_add_tools(vec2 screen)
         collided = 0;
     }
     
+//=================check for leg collision
+    //std::vector<int> erase;
+    std::vector<Legs>::iterator itl;
+    for (itl = m_legs.begin(); itl != m_legs.end();)
+    {
+        if (m_player1.collides_with(*itl)) //arm))
+            collided = 1;
+        if (m_player2.collides_with(*itl)) //arm))
+            collided = 2;
+        
+        
+        if (collided != 0)
+        {
+            itl = m_legs.erase(itl);
+            itl->destroy();
+            
+            if(collided == 1)
+                m_player1.increase_speed_legs(m_player1.get_speed()+20);
+            else if (collided == 2)
+                m_player2.increase_speed_legs(m_player2.get_speed()+20);
+            
+            else
+                ++itl;
+            
+        }
+        else
+            ++itl;
+        // armcount++;
+        collided = 0;
+    }
+    
 //=================check for antidote collision
     if (m_player1.collides_with(m_antidote))
         collided = 1;
@@ -738,7 +781,57 @@ void World::check_add_tools(vec2 screen)
         collided = 0;
     }
     
+}
+
+void World::autoExplode()
+{
+
+    //explodeTime = time(0);
+    //m_player1.set_speed(PLAYER_SPEED_NORMAL);
+    //fprintf(stderr, "p1 speed %f\n", m_player1.get_speed());
+    float force_p1 = m_tree.get_force(m_player1.get_mass(),
+                                  m_player1.get_speed(),
+                                  m_player1.get_position());
     
+    float force_p2 = m_tree.get_force(m_player2.get_mass(),
+                                   m_player2.get_speed(),
+                                   m_player2.get_position());
+    //fprintf(stderr, "force1 %f\n", force_p1);
+    //fprintf(stderr, "force2 %f\n", force_p2);
+    if (force_p1 > 0)
+    {
+        m_player1.set_blowback(true);
+        m_player1.set_speed(force_p1);
+        m_player1.set_blowbackForce({(m_player1.get_position().x - m_tree.get_position().x),(m_player1.get_position().y - m_tree.get_position().y)});
+        explosion = true;
+    }
+    if (force_p2 > 0)
+    {
+        m_player2.set_blowback(true);
+        m_player2.set_speed(force_p2);
+        m_player2.set_blowbackForce({(m_player2.get_position().x - m_tree.get_position().x),(m_player2.get_position().y - m_tree.get_position().y)});
+        explosion = true;
+    }
+    
+}
+
+void World::explode()
+{
+    //fprintf(stderr, "%f", m_player1.get_speed()*0.8);
+    if(m_player1.get_blowback())
+        m_player1.set_speed(m_player1.get_speed()*0.9);
+    if (m_player2.get_blowback())
+        m_player2.set_speed(m_player2.get_speed()*0.9);
+    
+    if(m_player1.get_speed() <= 3 || m_player2.get_speed() <= 3)
+    {
+        m_player1.set_blowback(false);
+        explosion = false;
+        m_player1.set_speed(m_player1.get_speed_legs());
+        m_player2.set_blowback(false);
+        explosion = false;
+        m_player2.set_speed(m_player2.get_speed_legs());
+    }
 }
 
 // =========== COLLECT AND SET TOOLS ===================
@@ -785,7 +878,7 @@ void World::use_tool_1(int tool_number)
 {
     if (tool_number == 1)
     {
-        check_freeze_used = m_freeze_collected_1.front().use_freeze(2);
+        immobilize = m_freeze_collected_1.front().use_freeze(2);
         freezeTime = time(0);
         m_freeze_collected_1.erase(m_freeze_collected_1.begin());
         m_toolboxManager.decreaseSlot(1);
@@ -845,7 +938,7 @@ void World::use_tool_2(int tool_number)
 {
     if (tool_number == 1)
     {
-        check_freeze_used = m_freeze_collected_1.front().use_freeze(1);
+        immobilize = m_freeze_collected_1.front().use_freeze(1);
         freezeTime = time(0);
         m_freeze_collected_2.erase(m_freeze_collected_2.begin());
         m_toolboxManager.decreaseSlot(2);

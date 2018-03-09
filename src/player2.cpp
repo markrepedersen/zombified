@@ -7,6 +7,7 @@ Texture Player2::player2_texture;
 int currFrame_p2 = 0;
 auto startTime_p2 = std::chrono::high_resolution_clock::now();
 int frameTime_p2 = 100;
+const float PLAYER_SPEED = 200.f;
 
 bool Player2::init(vec2 screen)
 {
@@ -65,6 +66,12 @@ bool Player2::init(vec2 screen)
     // Loading shaders
     if (!effect.load_from_file(shader_path("textured.vs.glsl"), shader_path("textured.fs.glsl")))
         return false;
+    
+    
+    speed = PLAYER_SPEED;
+    speedlegs = PLAYER_SPEED;
+    mass = 1.0;
+    blowback = false;
     
     // Setting initial values
     m_scale.x = -0.10f * ViewHelper::getRatio();;
@@ -135,6 +142,52 @@ vec2 Player2::get_position()const
     return m_position;
 }
 
+float Player2::get_mass() const
+{
+    return mass;
+}
+
+void Player2::set_mass(float newMass)
+{
+    mass = newMass;
+}
+
+float Player2::get_speed() const
+{
+    return speed;
+}
+void Player2::set_speed(float newSpeed)
+{
+    speed = newSpeed;
+}
+
+float Player2::get_speed_legs()const
+{
+    return speedlegs;
+}
+void Player2::increase_speed_legs(float newSpeed)
+{
+    speedlegs = newSpeed;
+    set_speed(speedlegs);
+}
+
+bool Player2::get_blowback()const
+{
+    return blowback;
+}
+void Player2::set_blowback(bool newblowback)
+{
+    blowback = newblowback;
+}
+vec2 Player2::get_blowbackForce()const
+{
+    return blowbackForce;
+}
+void Player2::set_blowbackForce(vec2 newblowbackForce)
+{
+    blowbackForce = newblowbackForce;
+}
+
 bool Player2::is_alive()const
 {
     return m_is_alive;
@@ -142,8 +195,8 @@ bool Player2::is_alive()const
 
 void Player2::update(float ms)
 {
-    const float PLAYER_SPEED = 200.f;
-    float step = PLAYER_SPEED * (ms / 1000);
+    //const float PLAYER_SPEED = 200.f;
+    float step = step = speed * (ms / 1000);
 
     if (m_keys[0])
         move({0, -step});
@@ -159,6 +212,13 @@ void Player2::update(float ms)
         move({step, 0});
         animate(3);
     }
+    if (blowback)
+    {
+        float x = get_blowbackForce().x*(ms/1000)*(get_speed()/100);
+        float y = get_blowbackForce().y*(ms/1000)*(get_speed()/100);
+        move({x, y});
+    }
+    
     else
     {
         // stop_animate();
@@ -504,6 +564,20 @@ bool Player2::collides_with(const Antidote& antidote)
     float dy = m_position.y - antidote.get_position().y;
     float d_sq = dx * dx + dy * dy;
     float other_r = std::max(antidote.get_bounding_box().x, antidote.get_bounding_box().y);
+    float my_r = std::max(m_scale.x, m_scale.y);
+    float r = std::max(other_r, my_r);
+    r *= 0.6f;
+    if (d_sq < r * r)
+        return true;
+    return false;
+}
+
+bool Player2::collides_with(const Legs& leg)
+{
+    float dx = m_position.x - leg.get_position().x;
+    float dy = m_position.y - leg.get_position().y;
+    float d_sq = dx * dx + dy * dy;
+    float other_r = std::max(leg.get_bounding_box().x, leg.get_bounding_box().y);
     float my_r = std::max(m_scale.x, m_scale.y);
     float r = std::max(other_r, my_r);
     r *= 0.6f;

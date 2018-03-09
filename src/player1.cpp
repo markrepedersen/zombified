@@ -8,6 +8,7 @@ Texture Player1::player1_texture;
 int currFrame = 0;
 auto startTime = std::chrono::high_resolution_clock::now();
 int frameTime = 100;
+const float PLAYER_SPEED = 200.f;
 
 bool Player1::init(vec2 screen)
 {
@@ -73,7 +74,10 @@ bool Player1::init(vec2 screen)
     m_is_alive = true;
 
     // m_position = {screen.x - 1150.f, screen.y - 450.f};
-
+    speed = PLAYER_SPEED;
+    speedlegs = PLAYER_SPEED;
+    mass = 1.0;
+    blowback = false;
     m_position = { (screen.x * ViewHelper::getRatio())/5, (screen.y * ViewHelper::getRatio())/2 };
     
     return true;
@@ -155,15 +159,60 @@ vec2 Player1::get_position() const
     return m_position;
 }
 
+float Player1::get_mass() const
+{
+    return mass;
+}
+
+void Player1::set_mass(float newMass)
+{
+    mass = newMass;
+}
+
+float Player1::get_speed() const
+{
+    return speed;
+}
+void Player1::set_speed(float newSpeed)
+{
+    speed = newSpeed;
+}
+bool Player1::get_blowback()const
+{
+    return blowback;
+}
+void Player1::set_blowback(bool newblowback)
+{
+    blowback = newblowback;
+}
+vec2 Player1::get_blowbackForce()const
+{
+    return blowbackForce;
+}
+void Player1::set_blowbackForce(vec2 newblowbackForce)
+{
+    blowbackForce = newblowbackForce;
+}
+
 bool Player1::is_alive() const
 {
     return m_is_alive;
 }
 
+float Player1::get_speed_legs()const
+{
+    return speedlegs;
+}
+void Player1::increase_speed_legs(float newSpeed)
+{
+    speedlegs = newSpeed;
+    set_speed(speedlegs);
+}
+
 void Player1::update(float ms)
 {
-    const float PLAYER_SPEED = 200.f;
-    float step = PLAYER_SPEED * (ms / 1000);
+    //const float PLAYER_SPEED = 200.f;
+    float step = speed * (ms / 1000);//PLAYER_SPEED * (ms / 1000);
 
     if (m_keys.front() == GLFW_KEY_UP)
         {move({0, -step});
@@ -178,6 +227,21 @@ void Player1::update(float ms)
     {
         move({step, 0});
         animate();
+    }
+    if (blowback)
+    {
+        /*if (negy && !negx)
+            move({step, -step});
+        else if (!negy && negx)
+            move({-step, step});
+        else if (negy && negx)
+            move({-step, -step});
+        else*/
+        float x = get_blowbackForce().x*(ms/1000)*(get_speed()/100);
+        float y = get_blowbackForce().y*(ms/1000)*(get_speed()/100);
+        //fprintf(stderr, "negy %f\n",  y);
+        //fprintf(stderr, "negx %f\n",  x);
+        move({x, y});
     }
     else
     {
@@ -525,6 +589,34 @@ bool Player1::collides_with(const Antidote& antidote)
     float dy = m_position.y - antidote.get_position().y;
     float d_sq = dx * dx + dy * dy;
     float other_r = std::max(antidote.get_bounding_box().x, antidote.get_bounding_box().y);
+    float my_r = std::max(m_scale.x, m_scale.y);
+    float r = std::max(other_r, my_r);
+    r *= 0.6f;
+    if (d_sq < r * r)
+        return true;
+    return false;
+}
+
+bool Player1::collides_with(const Tree& tree)
+{
+    float dx = m_position.x - tree.get_position().x;
+    float dy = m_position.y - tree.get_position().y;
+    float d_sq = dx * dx + dy * dy;
+    float other_r = std::max(tree.get_bounding_box().x, tree.get_bounding_box().y);
+    float my_r = std::max(m_scale.x, m_scale.y);
+    float r = std::max(other_r, my_r);
+    r *= 0.6f;
+    if (d_sq < r * r)
+        return true;
+    return false;
+}
+
+bool Player1::collides_with(const Legs& leg)
+{
+    float dx = m_position.x - leg.get_position().x;
+    float dy = m_position.y - leg.get_position().y;
+    float d_sq = dx * dx + dy * dy;
+    float other_r = std::max(leg.get_bounding_box().x, leg.get_bounding_box().y);
     float my_r = std::max(m_scale.x, m_scale.y);
     float r = std::max(other_r, my_r);
     r *= 0.6f;

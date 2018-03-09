@@ -10,6 +10,7 @@
 #include "legs.hpp"
 #include "water.hpp"
 #include "freeze.hpp"
+#include "tree.hpp"
 #include "worldtexture.hpp"
 #include "viewHelper.hpp"
 #include "button.hpp"
@@ -57,6 +58,8 @@ public:
     
     //start button
     //bool buttonclicked();
+    void explode();
+    void autoExplode();
 
 private:
 	// Generates a new turtle
@@ -95,6 +98,7 @@ private:
     unsigned int timeDelay;
     time_t start;
     time_t freezeTime;
+    //time_t explodeTime;
 
 	// Game entities
     Worldtexture m_worldtexture;
@@ -103,6 +107,7 @@ private:
     Player2 m_player2;
     Zombie m_zombie;
     Antidote m_antidote;
+    Tree m_tree;
 
     std::vector<Arms> m_arms;
     std::vector<Legs> m_legs;
@@ -120,7 +125,8 @@ private:
     float m_next_leg_spawn;
     float m_next_spawn;
 
-    int check_freeze_used;
+    int immobilize;
+    bool explosion;
 	
 	std::default_random_engine m_rng;
 	std::uniform_real_distribution<float> m_dist; // default 0..1c

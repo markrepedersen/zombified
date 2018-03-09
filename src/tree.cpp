@@ -1,25 +1,25 @@
 // Header
-#include "legs.hpp"
+#include "tree.hpp"
 
 #include <cmath>
 
-Texture Legs::legs_texture;
+Texture Tree::tree_texture;
 
-bool Legs::init()
+bool Tree::init(vec2 screen)
 {
     // Load shared texture
-    if (!legs_texture.is_valid())
+    if (!tree_texture.is_valid())
     {
-        if (!legs_texture.load_from_file(tools_textures_path("zombie leg.png")))
+        if (!tree_texture.load_from_file(background_textures_path("tree.png")))
         {
-            fprintf(stderr, "Failed to load leg texture!");
+            fprintf(stderr, "Failed to load tree texture!");
             return false;
         }
     }
     
     // The position corresponds to the center of the texture
-    float wr = legs_texture.width * 0.5f;
-    float hr = legs_texture.height * 0.5f;
+    float wr = tree_texture.width * 0.5f;
+    float hr = tree_texture.height * 0.5f;
     
     TexturedVertex vertices[4];
     vertices[0].position = { -wr, +hr, -0.02f };
@@ -57,15 +57,16 @@ bool Legs::init()
         return false;
     
     // Setting initial values
-    m_scale.x = -0.25f * ViewHelper::getRatio();
-    m_scale.y = 0.25f * ViewHelper::getRatio();
-    m_is_alive = true * ViewHelper::getRatio();
-    m_position = { 100.f * ViewHelper::getRatio(), 650.f * ViewHelper::getRatio()};
+    m_scale.x = -0.10f * ViewHelper::getRatio();
+    m_scale.y = 0.10f * ViewHelper::getRatio();
+    m_is_alive = true;
+    m_position = { ((screen.x/2)+10) * ViewHelper::getRatio(), (10+(screen.y/2))* ViewHelper::getRatio() };
+    //explode = false;
     
     return true;
 }
 
-void Legs::draw(const mat3& projection)
+void Tree::draw(const mat3& projection)
 {
     // Transformation code, see Rendering and Transformation in the template specification for more info
     // Incrementally updates transformation matrix, thus ORDER IS IMPORTANT
@@ -101,7 +102,7 @@ void Legs::draw(const mat3& projection)
     
     // Enabling and binding texture to slot 0
     glActiveTexture(GL_TEXTURE0);
-    glBindTexture(GL_TEXTURE_2D, legs_texture.id);
+    glBindTexture(GL_TEXTURE_2D, tree_texture.id);
     
     // Setting uniform values to the currently bound program
     glUniformMatrix3fv(transform_uloc, 1, GL_FALSE, (float*)&transform);
@@ -113,22 +114,56 @@ void Legs::draw(const mat3& projection)
     glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_SHORT, nullptr);
 }
 
-vec2 Legs::get_position()const
+float Tree::get_force(float mass, float speed, vec2 objPosition)
 {
-    return m_position;
+    //float blastArea = 3.14*(200.f*200.f);
+    float blastRadius = 300.f;
+    float force = 0;
+    float dist = distance(objPosition, get_position());
+    //fprintf(stderr, "distance %f\n", dist);
+    if (dist < blastRadius)
+    {
+        if (dist < 40.f)
+            dist = 40.f;
+        //fprintf(stderr, "distance %f\n", dist);
+        //fprintf(stderr, "speed %f\n", speed);
+        force = ((speed*speed)/(dist*mass));//+400;
+        //if (force > 950.0)
+        //    force = 950;
+    }
+    return force;
+    
 }
-
-void Legs::set_position(vec2 position)
+void Tree::set_position(vec2 position)
 {
     m_position = position;
 }
 
-bool Legs::is_alive()const
+vec2 Tree::get_position()const
+{
+    return m_position;
+}
+
+void Tree::set_scale(vec2 scale)
+{
+    m_scale = scale;
+}
+
+bool Tree::is_alive()const
 {
     return m_is_alive;
 }
 
-void Legs::destroy()
+/*bool Tree::get_explode()const
+{
+    return explode;
+}
+void Tree::set_explode(bool exploded)
+{
+    explode = exploded;
+}*/
+
+void Tree::destroy()
 {
     glDeleteBuffers(1, &mesh.vbo);
     glDeleteBuffers(1, &mesh.ibo);
@@ -139,8 +174,8 @@ void Legs::destroy()
     glDeleteShader(effect.program);
 }
 
-vec2 Legs::get_bounding_box()const
+vec2 Tree::get_bounding_box()const
 {
     // fabs is to avoid negative scale due to the facing direction
-    return { std::fabs(m_scale.x) * legs_texture.width, std::fabs(m_scale.y) * legs_texture.height};
+    return { std::fabs(m_scale.x) * tree_texture.width, std::fabs(m_scale.y) * tree_texture.height };
 }
