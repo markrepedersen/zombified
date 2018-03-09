@@ -328,9 +328,9 @@ std::cout << "computePaths" << std::endl;
                           (unsigned) target.x,
                           (unsigned) target.y,
                           1);
-            limbs[k].setCurrentPath(path);
+            // limbs[k].setCurrentPath(path);
 
-            std::cout << "size of current path is: " << limbs[k].getCurrentPath().size() << std::endl;
+            // std::cout << "size of current path is: " << limbs[k].getCurrentPath().size() << std::endl;
         } else {
             std::cout << "case2: no new target" << std::endl;
             std::cout << "size of last path is: " << limbs[k].getLastPath().size() << std::endl;
@@ -344,10 +344,14 @@ std::cout << "computePaths" << std::endl;
                           (unsigned) target.x,
                           (unsigned) target.y,
                           1);  
-            limbs[k].setCurrentPath(path);
+            // limbs[k].setCurrentPath(path);
             }
         }
 
+
+            // limbs[k].setCurrentPath(path);
+            // std::cout << "size of current path is: " << limbs[k].getCurrentPath().size() << std::endl;
+            
         if (!limbs[k].getCurrentPath().empty()) {
             std::cout << "current path is not empty" << std::endl;
             vec2 nextNode, curNode;
