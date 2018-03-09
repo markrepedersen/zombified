@@ -267,6 +267,7 @@ int LimbsManager::get_legs_size() {
 
 
 void LimbsManager::computePaths(float ms, MapGrid const mapGrid) {
+
 std::cout << "computePaths" << std::endl;
     for (int k = 0 ; k < limbs.size() ; k++) {
         // JPS::PathVector path;
@@ -314,12 +315,14 @@ std::cout << "computePaths" << std::endl;
 
         JPS::PathVector path;
         vec2 target = limbs[k].getCurrentTarget();
+        printf("<<<<<<<<<<<<<<<<<<<<\n");
         std::cout << "the k is: " << k << std::endl;
-        std::cout << "the target is: " << target.x << std::endl;
+        printf("target x: %f, target y: %f\n", target.x, target.y);
         
         // std::cout<< "this one limb" << limb.get_position().x <<std::endl;
 // std::cout << k << "123" << limbs[k].get_position().x << std::endl;
-        if (limbs[k].getLastTarget() != target || limbs[k].getLastTarget() == (vec2) {0, 0}) {
+        if (limbs[k].getLastTarget() != target) {
+            // if (limbs[k].getLastTarget() == (vec2) {0, 0}) {
             std::cout << "case 1: new target or last target empty" << std::endl;
             JPS::findPath(path,
                           mapGrid,
@@ -328,24 +331,28 @@ std::cout << "computePaths" << std::endl;
                           (unsigned) target.x,
                           (unsigned) target.y,
                           1);
-            // limbs[k].setCurrentPath(path);
+            limbs[k].setCurrentPath(path);
+            // }
+            // else {
+
+            // }
 
             // std::cout << "size of current path is: " << limbs[k].getCurrentPath().size() << std::endl;
         } else {
             std::cout << "case2: no new target" << std::endl;
             std::cout << "size of last path is: " << limbs[k].getLastPath().size() << std::endl;
-            if (!limbs[k].getLastPath().empty()) {            
+            // if (!limbs[k].getLastPath().empty()) {            
                 limbs[k].setCurrentPath(limbs[k].getLastPath());
-            } else {
-                JPS::findPath(path,
-                          mapGrid,
-                          (unsigned) limbs[k].get_position().x,
-                          (unsigned) limbs[k].get_position().y,
-                          (unsigned) target.x,
-                          (unsigned) target.y,
-                          1);  
-            // limbs[k].setCurrentPath(path);
-            }
+            // } else {
+            //     JPS::findPath(path,
+            //               mapGrid,
+            //               (unsigned) limbs[k].get_position().x,
+            //               (unsigned) limbs[k].get_position().y,
+            //               (unsigned) target.x,
+            //               (unsigned) target.y,
+            //               1);  
+            // // limbs[k].setCurrentPath(path);
+            // }
         }
 
 
