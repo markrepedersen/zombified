@@ -80,7 +80,7 @@ bool Player1::init(vec2 screen)
 }
 
 void Player1::draw(const mat3 &projection)
-{
+{    
     // Transformation code, see Rendering and Transformation in the template specification for more info
     // Incrementally updates transformation matrix, thus ORDER IS IMPORTANT
     transform_begin();
