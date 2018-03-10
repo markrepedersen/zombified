@@ -331,6 +331,8 @@ std::cout << "computePaths" << std::endl;
                           (unsigned) target.x,
                           (unsigned) target.y,
                           1);
+
+                          printf("now setting up new path yay\n");
             limbs[k].setCurrentPath(path);
             // }
             // else {
