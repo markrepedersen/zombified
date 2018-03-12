@@ -75,8 +75,10 @@ vec2  normalize(vec2 v);
 vec2 scale(float, vec2);
 vec2 direction(vec2, vec2);
 float distance(vec2, vec2);
-//get some infinite direction from a point
-//check if a point intersects with a line or not
+bool onSegment(vec2, vec2, vec2);
+int orientation(vec2, vec2, vec2);
+bool intersect(vec2, vec2);
+bool isInsidePolygon(std::vector<vec2>, vec2);
 
 
 
