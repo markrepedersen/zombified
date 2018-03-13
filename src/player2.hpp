@@ -11,7 +11,7 @@
 #include "PhysicalBody.h"
 #include <Box2D.h>
 
-class Player2 : public Renderable, PhysicalBody
+class Player2 : public Renderable, public PhysicalBody
 {
     static Texture player2_texture;
 public:

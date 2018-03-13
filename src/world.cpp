@@ -164,8 +164,6 @@ bool World::update(float elapsed_ms) {
         check_add_tools(screen);
         m_limbsManager.computePaths(elapsed_ms, *mapGrid);
         return true;
-
-        m_player2.getBody()->ApplyForce()
     }
     return true;
 }
