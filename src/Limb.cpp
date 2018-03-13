@@ -77,11 +77,9 @@ bool Limb::init(std::string inputtype) {
         return false;
     
     // Setting initial values
-    m_scale.x = -0.25f * ViewHelper::getRatio();
-    m_scale.y = 0.25f * ViewHelper::getRatio();;
+    m_scale.x = -0.12f * ViewHelper::getRatio();
+    m_scale.y = 0.12f * ViewHelper::getRatio();;
 
-    position = { 50.f * ViewHelper::getRatio(), 650.f *ViewHelper::getRatio()};
-    
     return true;
 }
 

@@ -38,26 +38,18 @@ public:
     // size_t get_legs_size();
     int get_legs_size();
 
-    // std::vector<Arms> getArms() {
-    //     return m_arms;
-    // }
-
-    // std::vector<Legs> getLegs() {
-    //     return m_legs;
-    // }
-
     std::vector<Limb> getLimbs() {
         return limbs;
     }
 
     void computePaths (float ms, MapGrid const mapGrid);
 
+    void processCollisions(vec2);
+
     void destroy();
     
 private:
     vec2 m_screen;
-    // std::vector<Arms> m_arms;
-    // std::vector<Legs> m_legs;
     std::vector<Limb> limbs;
     int m_arms_total;
     int m_legs_total;

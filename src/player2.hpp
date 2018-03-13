@@ -4,12 +4,14 @@
 #include "viewHelper.hpp"
 #include "arms.hpp"
 #include "legs.hpp"
-#include "freeze.hpp"
+#include "Ice.hpp"
 #include "water.hpp"
 #include "antidote.hpp"
 #include "Limb.h"
+#include "PhysicalBody.h"
+#include <Box2D.h>
 
-class Player2 : public Renderable
+class Player2 : public Renderable, PhysicalBody
 {
     static Texture player2_texture;
 public:
@@ -38,7 +40,7 @@ public:
      void increase_speed();
     void decrease_speed();
     
-    bool collides_with(const Freeze& freeze);
+    bool collides_with(const Ice& freeze);
     bool collides_with(const Water& water);
     // bool collides_with(const Arms& arm);
     // bool collides_with(const Legs& leg);
@@ -46,11 +48,14 @@ public:
     bool collides_with(const Antidote& antidote);
     
     void destroy();
+
+    void addPlayerToWorld(b2World *world);
+
+    void addFixturesToBody();
 private:
     bool m_is_alive; // True if the salmon is alive
     vec2 m_position; // Window coordinates
     vec2 m_scale; // 1.f in each dimension. 1.f is as big as the associated texture
     int m_speed;
-
-    bool m_keys[4]; 
+    bool m_keys[4];
 };

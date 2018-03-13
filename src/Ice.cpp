@@ -1,16 +1,16 @@
 // Header
-#include "freeze.hpp"
+#include "Ice.hpp"
 
 #include <cmath>
 
-Texture Freeze::freeze_texture;
+Texture Ice::ice_texture;
 
-bool Freeze::init()
+bool Ice::init()
 {
     // Load shared texture
-    if (!freeze_texture.is_valid())
+    if (!ice_texture.is_valid())
     {
-        if (!freeze_texture.load_from_file(tools_textures_path("freeze.png")))
+        if (!ice_texture.load_from_file(tools_textures_path("freeze.png")))
         {
             fprintf(stderr, "Failed to load freeze texture!");
             return false;
@@ -18,8 +18,8 @@ bool Freeze::init()
     }
     
     // The position corresponds to the center of the texture
-    float wr = freeze_texture.width * 0.5f;
-    float hr = freeze_texture.height * 0.5f;
+    float wr = ice_texture.width * 0.5f;
+    float hr = ice_texture.height * 0.5f;
     
     TexturedVertex vertices[4];
     vertices[0].position = { -wr, +hr, -0.02f };
@@ -66,7 +66,7 @@ bool Freeze::init()
     return true;
 }
 
-void Freeze::draw(const mat3& projection)
+void Ice::draw(const mat3& projection)
 {
     // Transformation code, see Rendering and Transformation in the template specification for more info
     // Incrementally updates transformation matrix, thus ORDER IS IMPORTANT
@@ -102,7 +102,7 @@ void Freeze::draw(const mat3& projection)
     
     // Enabling and binding texture to slot 0
     glActiveTexture(GL_TEXTURE0);
-    glBindTexture(GL_TEXTURE_2D, freeze_texture.id);
+    glBindTexture(GL_TEXTURE_2D, ice_texture.id);
     
     // Setting uniform values to the currently bound program
     glUniformMatrix3fv(transform_uloc, 1, GL_FALSE, (float*)&transform);
@@ -114,27 +114,27 @@ void Freeze::draw(const mat3& projection)
     glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_SHORT, nullptr);
 }
 
-void Freeze::set_position(vec2 position)
+void Ice::set_position(vec2 position)
 {
     m_position = position;
 }
 
-void Freeze::set_scale(vec2 scale)
+void Ice::set_scale(vec2 scale)
 {
     m_scale = scale;
 }
 
-vec2 Freeze::get_position()const
+vec2 Ice::get_position()const
 {
     return m_position;
 }
 
-bool Freeze::is_alive()const
+bool Ice::is_alive()const
 {
     return m_is_alive;
 }
 
-void Freeze::destroy()
+void Ice::destroy()
 {
     glDeleteBuffers(1, &mesh.vbo);
     glDeleteBuffers(1, &mesh.ibo);
@@ -145,13 +145,13 @@ void Freeze::destroy()
     glDeleteShader(effect.program);
 }
 
-vec2 Freeze::get_bounding_box()const
+vec2 Ice::get_bounding_box()const
 {
     // fabs is to avoid negative scale due to the facing direction
-    return { std::fabs(m_scale.x) * freeze_texture.width, std::fabs(m_scale.y) * freeze_texture.height };
+    return { std::fabs(m_scale.x) * ice_texture.width, std::fabs(m_scale.y) * ice_texture.height };
 }
 
-bool Freeze::collides_with(const Freeze& freeze)
+bool Ice::collides_with(const Ice& freeze)
 {
     float dx = m_position.x - freeze.get_position().x;
     float dy = m_position.y - freeze.get_position().y;
@@ -165,14 +165,7 @@ bool Freeze::collides_with(const Freeze& freeze)
     return false;
 }
 
-int Freeze::use_freeze(int useOnPlayer)
+int Ice::use_freeze(int useOnPlayer)
 {
     return useOnPlayer;
-
-    
-   // while((int)difftime( time(0), start) != 5)
-        //fprintf(stderr, "over");
-    
-    //return true;
 }
-

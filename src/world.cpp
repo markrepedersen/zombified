@@ -55,7 +55,7 @@ bool World::init(vec2 screen) {
     glfwMakeContextCurrent(m_window);
     glfwSwapInterval(1); // vsync
 
-    gl3w_init();
+    gl3wInit();
 
     glfwSetWindowUserPointer(m_window, this);
     auto key_redirect = [](GLFWwindow *wnd, int _0, int _1, int _2, int _3) {
@@ -68,14 +68,33 @@ bool World::init(vec2 screen) {
     glfwSetKeyCallback(m_window, key_redirect);
     glfwSetMouseButtonCallback(m_window, mouse_button_callback);
 
-    mapGrid = new MapGrid((unsigned) screen.x, (unsigned) screen.y);
-
     //set game screen to resolution ratio
     ViewHelper::getInstance(m_window);
+
+    /*!
+     * Mark's playground so I remember where I put this stuff
+     */
+    auto tileX = (unsigned) (screen.x * ViewHelper::getRatio() / 100);
+    auto tileY = (unsigned) (screen.y * ViewHelper::getRatio() / 100);
+    mapGrid = new MapGrid(tileX, tileY);
+    this->createPhysics();
+
+    /*!
+     * End of Mark's playground
+     */
 
     game_started = false;
     game_over = false;
     return m_button.init();
+}
+
+void World::createPhysics() {
+    const float kPixelsPerMeter = 32.0f;
+    const float kGravity = -kPixelsPerMeter / 0.7f;
+    world = new b2World(b2Vec2(0.0f, kGravity));
+    world->SetAllowSleeping(true);
+    world->SetContinuousPhysics(true);
+    world->SetContactListener(this);
 }
 
 // Releases all the associated resources
@@ -127,6 +146,8 @@ bool World::update(float elapsed_ms) {
             m_toolboxManager.init({screen.x, screen.y});
             m_limbsManager.init({screen.x, screen.y});
             m_player1.init(screen) && m_player2.init(screen) && m_antidote.init(screen);
+            m_player2.addPlayerToWorld(world);
+            m_player2.addFixturesToBody();
         }
     }
 
@@ -142,9 +163,9 @@ bool World::update(float elapsed_ms) {
         // Next milestone this will be handled by the collision
         check_add_tools(screen);
         m_limbsManager.computePaths(elapsed_ms, *mapGrid);
-        
-
         return true;
+
+        m_player2.getBody()->ApplyForce()
     }
     return true;
 }
@@ -213,11 +234,7 @@ void World::draw() {
         m_toolboxManager.draw(projection_2D);
         m_antidote.draw(projection_2D);
         m_limbsManager.draw(projection_2D);
-        //TODO: Drawing entities
-        for (auto &freeze : m_freeze)
-            freeze.draw(projection_2D);
-        for (auto &water : m_water)
-            water.draw(projection_2D);
+        toolManager.draw_tools(projection_2D);
 
         for (auto &water_collected : m_water_collected_1)
             water_collected.draw(projection_2D);
@@ -300,7 +317,6 @@ void World::on_key(GLFWwindow *, int key, int, int action, int mod) {
 }
 
 void World::on_mouse_move(GLFWwindow *window, int button, int action, int mod) {
-    // TODO: check that the part clicked is the button - will do when figure out how things are scaled properly ***
     double xpos, ypos;
     glfwGetCursorPos(window, &xpos, &ypos);
     if (action == GLFW_PRESS && button == GLFW_MOUSE_BUTTON_1) {
@@ -313,7 +329,7 @@ void World::on_mouse_move(GLFWwindow *window, int button, int action, int mod) {
 }
 
 bool World::spawn_freeze() {
-    Freeze freeze;
+    Ice freeze;
     if (freeze.init()) {
         m_freeze.emplace_back(freeze);
         return true;
@@ -331,55 +347,6 @@ bool World::spawn_water() {
     fprintf(stderr, "Failed to spawn arm");
     return false;
 }
-
-// void World::computePaths(float ms) {
-
-// int j = 0;
-//     for (auto &limb : m_limbsManager.getLimbs()) {
-//         JPS::PathVector path;
-//         vec2 target = limb.getCurrentTarget();
-        
-//         // std::cout<< "this one limb" << limb.get_position().x <<std::endl;
-
-//         if (limb.getLastTarget() != target || limb.getLastTarget() == (vec2) {0, 0}) {
-//             JPS::findPath(path,
-//                           *mapGrid,
-//                           (unsigned) limb.get_position().x,
-//                           (unsigned) limb.get_position().y,
-//                           (unsigned) target.x,
-//                           (unsigned) target.y,
-//                           1);  
-//             limb.setCurrentPath(path);
-//         } else limb.setCurrentPath(limb.getLastPath());
-//         if (!limb.getCurrentPath().empty()) {
-//             vec2 nextNode, curNode;
-//             curNode = nextNode = {std::powf(limb.get_position().x, 2), std::powf(limb.get_position().y, 2)};
-
-//             for (int i = 0; i < limb.getCurrentPath().size() && curNode <= nextNode; ++i) {
-//                 nextNode = {static_cast<float>(limb.getCurrentPath()[i].x),
-//                             static_cast<float>(limb.getCurrentPath()[i].y)};
-//             }
-//             float step = 200 * (ms / 1000);
-//             vec2 dir;
-//             dir.x = limb.getCurrentTarget().x - limb.get_position().x;
-//             dir.y = limb.getCurrentTarget().y - limb.get_position().y;
-
-//             auto jump = scale(step, normalize(dir));
-
-//             // printf("move: %f, %f\n", jump.x, jump.y);
-
-//             limb.move(jump);
-//             limb.setLastPath(limb.getCurrentPath());
-//             limb.setLastTarget(target);
-//             std::cout << j << std::endl;
-//             if (j == 4) {
-//             // printf("move: %f, %f\n", jump.x, jump.y);
-//             // std::cout << "this one limb" << j << limb.get_position().x <<std::endl;
-//             }
-//         }
-//         j++;
-//     }
-// }
 
 bool World::random_spawn(float elapsed_ms, vec2 screen) {
     m_next_arm_spawn -= elapsed_ms;
@@ -409,7 +376,7 @@ bool World::random_spawn(float elapsed_ms, vec2 screen) {
             if (!spawn_freeze())
                 return false;
 
-            Freeze &new_freeze = m_freeze.back();
+            Ice &new_freeze = m_freeze.back();
             new_freeze.set_position({(float) ((rand() % (int) screen.x)),
                                      (float) ((rand() % (int) screen.y))});
 
@@ -437,7 +404,7 @@ void World::check_add_tools(vec2 screen) {
 
 //=================check for water freeze
     //  int freezecount = 0;
-    std::vector<Freeze>::iterator itf;
+    std::vector<Ice>::iterator itf;
     for (itf = m_freeze.begin(); itf != m_freeze.end();) {
         if (m_player1.collides_with(*itf))
             collided = 1;
@@ -445,7 +412,6 @@ void World::check_add_tools(vec2 screen) {
             collided = 2;
 
         if (collided != 0) {
-            //fprintf(stderr, "collided");
             float index = (float) m_toolboxManager.addItem(1, collided);
             if ((int) index != 100) {
                 itf = m_freeze.erase(itf);//m_freeze.begin()+freezecount);
@@ -517,16 +483,16 @@ void World::check_add_tools(vec2 screen) {
 }
 
 // =========== COLLECT AND SET TOOLS ===================
-void World::collect_freeze(Freeze freeze, int player, float index) {
+void World::collect_freeze(Ice freeze, int player, float index) {
     if (player == 1) {
         m_freeze_collected_1.emplace_back(freeze);
-        Freeze &new_freeze = m_freeze_collected_1.back();
+        Ice &new_freeze = m_freeze_collected_1.back();
         new_freeze.set_position(m_toolboxManager.new_tool_position(index, player));
         new_freeze.set_scale({-0.08f * ViewHelper::getRatio(), 0.08f * ViewHelper::getRatio()});
     }
     if (player == 2) {
         m_freeze_collected_2.emplace_back(freeze);
-        Freeze &new_freeze = m_freeze_collected_2.back();
+        Ice &new_freeze = m_freeze_collected_2.back();
         new_freeze.set_position(m_toolboxManager.new_tool_position(index, player));
         new_freeze.set_scale({-0.08f * ViewHelper::getRatio(), 0.08f * ViewHelper::getRatio()});
     }
@@ -584,7 +550,7 @@ void World::shift_1() {
     float index = 0.f;
     for (it = list.begin(); it != list.end(); ++it) {
         if (*it == 1) {
-            Freeze &freeze = m_freeze_collected_1.at(freezecount);
+            Ice &freeze = m_freeze_collected_1.at(freezecount);
             freeze.set_position(m_toolboxManager.new_tool_position(index, 1));
             freezecount++;
         }
@@ -635,7 +601,7 @@ void World::shift_2() {
     float index = 0.f;
     for (it = list.begin(); it != list.end(); ++it) {
         if (*it == 1) {
-            Freeze &freeze = m_freeze_collected_2.at(freezecount);
+            Ice &freeze = m_freeze_collected_2.at(freezecount);
             freeze.set_position(m_toolboxManager.new_tool_position(index, 2));
             freezecount++;
         }

@@ -7,28 +7,28 @@
 #include "player1.hpp"
 #include "player2.hpp"
 #include "zombie.hpp"
-#include "arms.hpp"
-#include "legs.hpp"
 #include "water.hpp"
-#include "freeze.hpp"
+#include "Ice.hpp"
 #include "worldtexture.hpp"
 #include "viewHelper.hpp"
 #include "button.hpp"
 #include "antidote.hpp"
 #include "MapGrid.h"
 #include "JPS.h"
+#include "ToolManager.h"
 #include <vector>
-
-#define SDL_MAIN_HANDLED
+#include <Box2D.h>
 #include <SDL/SDL.h>
 #include <SDL/SDL_mixer.h>
 #include <time.h>
 #include <random>
 #include <unordered_set>
 
-// Container for all our entities and game logic. Individual rendering / update is 
+#define SDL_MAIN_HANDLED
+
+// Container for all our entities and game logic. Individual rendering / update is
 // deferred to the relative update() methods
-class World
+class World : b2ContactListener
 {
 public:
 	World();
@@ -48,71 +48,78 @@ public:
 
 	// Should the game be over ?
 	bool is_over()const;
-    
-    void timer_update();
-    void check_add_tools(vec2 screen);
-    bool random_spawn(float elapsed_ms, vec2 screen);
-    
-    void use_tool_1(int tool_number);
-    void use_tool_2(int tool_number);
-    
+
+	void timer_update();
+	void check_add_tools(vec2 screen);
+	bool random_spawn(float elapsed_ms, vec2 screen);
+
+	void use_tool_1(int tool_number);
+	void use_tool_2(int tool_number);
+
 private:
-    bool spawn_freeze();
-    bool spawn_water();
-    
-    void shift_1();
-    void shift_2();
+	bool spawn_freeze();
+	bool spawn_water();
+
+	void shift_1();
+	void shift_2();
+
+	void createPhysics();
 
 	void on_key(GLFWwindow*, int key, int, int action, int mod);
-    void on_mouse_move(GLFWwindow* window, int button, int action, int mod);
-    
-    void collect_freeze(Freeze freeze, int player, float index);
-    void collect_water(Water water, int player, float index);
+	void on_mouse_move(GLFWwindow* window, int button, int action, int mod);
 
-	// void computePaths(float ms);
-    
+	void collect_freeze(Ice freeze, int player, float index);
+	void collect_water(Water water, int player, float index);
+
+	void add_to_broadphase(int w, int h, float posx, float posy, void*);
+
 private:
 	// Window handle
 	GLFWwindow* m_window;
-    
-    // true if the start button was pressed to start the main game world
-    bool game_started;
-    bool game_over;
+
+	// true if the start button was pressed to start the main game world
+	bool game_started;
+	bool game_over;
 
 	// Number of fish eaten by the salmon, displayed in the window title
 	unsigned int m_min;
-    unsigned int m_sec;
-    unsigned int timeDelay;
-    time_t start;
-    time_t freezeTime;
+	unsigned int m_sec;
+	unsigned int timeDelay;
+	time_t start;
+	time_t freezeTime;
 
 	// Game entities
-    Worldtexture m_worldtexture;
-    ToolboxManager m_toolboxManager;
-    LimbsManager m_limbsManager;
-    Player1 m_player1;
-    Player2 m_player2;
-    Zombie m_zombie;
-    Antidote m_antidote;
+	Worldtexture m_worldtexture;
+	ToolboxManager m_toolboxManager;
+	ToolManager toolManager;
+	LimbsManager m_limbsManager;
+	Player1 m_player1;
+	Player2 m_player2;
+	Zombie m_zombie;
+	Antidote m_antidote;
 
-    std::vector<Freeze> m_freeze;
-    std::vector<Water> m_water;
+	std::vector<Ice> m_freeze;
+	std::vector<Water> m_water;
 
-    std::vector<Freeze> m_freeze_collected_1;
-    std::vector<Water> m_water_collected_1;
-    std::vector<Freeze> m_freeze_collected_2;
-    std::vector<Water> m_water_collected_2;
+	std::vector<Ice> m_freeze_collected_1;
+	std::vector<Water> m_water_collected_1;
+	std::vector<Ice> m_freeze_collected_2;
+	std::vector<Water> m_water_collected_2;
+
+
 
 	MapGrid *mapGrid;
+	b2World *world;
+
 
 	float m_next_arm_spawn;
-    float m_next_leg_spawn;
-    float m_next_spawn;
+	float m_next_leg_spawn;
+	float m_next_spawn;
 
-    int check_freeze_used;
+	int check_freeze_used;
 
 	std::default_random_engine m_rng;
 	std::uniform_real_distribution<float> m_dist; // default 0..1c
 
-    Button m_button;
+	Button m_button;
 };

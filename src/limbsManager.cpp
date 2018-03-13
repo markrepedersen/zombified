@@ -14,13 +14,8 @@ bool LimbsManager::init(vec2 screen) {
 
 // Renders the existing limbs
 void LimbsManager::draw(const mat3 &projection_2D) {
-    // std::cout << "draw" << std::endl;
-    // int i = 0;
-    for (auto &limb : limbs)
-    {
-        // std::cout << i << " " <<  limb.getCurrentPath().size() << std::endl;
+    for (auto &limb : limbs) {
         limb.draw(projection_2D);
-        // i++;
     }
 }
 
@@ -47,7 +42,7 @@ bool LimbsManager::spawn_arms() {
 //spawn new leg in random
 bool LimbsManager::spawn_legs() {
 
-        Limb leg;
+    Limb leg;
     srand((unsigned) time(0));
     if (leg.init("leg")) {
         // Setting random initial position
@@ -59,9 +54,6 @@ bool LimbsManager::spawn_legs() {
 
         return cluster_limbs();
     }
-
-
-    fprintf(stderr, "Failed to spawn leg");
     return false;
 }
 
@@ -77,17 +69,13 @@ bool LimbsManager::cluster_limbs() {
         KMeans THE_CLUSTERIZER((int) (points.size() + 3) / 4, (int) points.size(), 2, MAX_ITERATIONS);
         THE_CLUSTERIZER.run(points);
 
-        std::cout << "clustering limbs" << std::endl;
-
         for (auto cluster : THE_CLUSTERIZER.getClusters()) {
-            auto cluster_x = (int) cluster.getCentralValue(0) % (int) 1280;
-            auto cluster_y = (int) cluster.getCentralValue(1) % (int) 720;
+            auto cluster_x = (int) cluster.getCentralValue(0);
+            auto cluster_y = (int) cluster.getCentralValue(1);
 
             for (auto point : cluster.getPoints()) {
                 int id = point.getID();
                 limbs[id].setCurrentTarget({static_cast<float>(cluster_x), static_cast<float>(cluster_y)});
-                // std::cout << id << " " << cluster_x << " " << cluster_y << std::endl;
-
             }
         }
     }
@@ -100,21 +88,20 @@ bool LimbsManager::cluster_limbs() {
 //returns 2 if an arm collides with player 2
 //returns 3 if both players collides with an arm
 int LimbsManager::check_collision_with_players(Player1 *m_player1, Player2 *m_player2) {
-
-    int limb_collided = 0;
+int limb_collided = 0;
     int collided;
     for (auto it = limbs.begin(); it != limbs.end();) {
 
         if (m_player1->collides_with(*it)) {
 
-            if((*it).getLimbType() == "leg") {
+            if ((*it).getLimbType() == "leg") {
                 m_player1->increase_speed();
                 m_legs_total--;
             } else {
-                 if (collided == 0) {
+                if (collided == 0) {
                     collided = 1;
                 } else if (collided == 2) {
-                     collided = 3;
+                    collided = 3;
                 }
 
                 m_arms_total--;
@@ -123,14 +110,14 @@ int LimbsManager::check_collision_with_players(Player1 *m_player1, Player2 *m_pl
             limb_collided = 1;
         }
         if (m_player2->collides_with(*it)) {
-             if((*it).getLimbType() == "leg") {
+            if ((*it).getLimbType() == "leg") {
                 m_player1->increase_speed();
                 m_legs_total--;
-            }  else {
-                 if (collided == 0) {
+            } else {
+                if (collided == 0) {
                     collided = 1;
                 } else if (collided == 2) {
-                     collided = 3;
+                    collided = 3;
                 }
 
                 m_arms_total--;
@@ -141,7 +128,7 @@ int LimbsManager::check_collision_with_players(Player1 *m_player1, Player2 *m_pl
         if (limb_collided != 0) {
             //erase.push_back(armcount);
             it = limbs.erase(it);
-            
+
             it->destroy();
         } else {
             ++it;
@@ -154,6 +141,7 @@ int LimbsManager::check_collision_with_players(Player1 *m_player1, Player2 *m_pl
 }
 
 int LimbsManager::get_arms_size() {
+    // return m_arms.size();
     return m_arms_total;
 }
 
@@ -163,91 +151,48 @@ int LimbsManager::get_legs_size() {
 
 
 void LimbsManager::computePaths(float ms, MapGrid const mapGrid) {
-
-std::cout << "computePaths" << std::endl;
-    for (int k = 0 ; k < limbs.size() ; k++) {
-
+    if (limbs.size() <= 1) return;
+    for (auto &limb : limbs) {
         JPS::PathVector path;
-        vec2 target = limbs[k].getCurrentTarget();
-        printf("<<<<<<<<<<<<<<<<<<<<\n");
-        std::cout << "the k is: " << k << std::endl;
-        printf("target x: %f, target y: %f\n", target.x, target.y);
-        
-        // std::cout<< "this one limb" << limb.get_position().x <<std::endl;
-// std::cout << k << "123" << limbs[k].get_position().x << std::endl;
-        if (limbs[k].getLastTarget() != target) {
-            // if (limbs[k].getLastTarget() == (vec2) {0, 0}) {
-            std::cout << "case 1: new target or last target empty" << std::endl;
-            JPS::findPath(path,
-                          mapGrid,
-                          (unsigned) limbs[k].get_position().x,
-                          (unsigned) limbs[k].get_position().y,
-                          (unsigned) target.x,
-                          (unsigned) target.y,
-                          1);
+        vec2 target = limb.getCurrentTarget();
 
-                          printf("now setting up new path yay\n");
-            limbs[k].setCurrentPath(path);
-            // }
-            // else {
-
-            // }
-
-            // std::cout << "size of current path is: " << limbs[k].getCurrentPath().size() << std::endl;
-        } else {
-            std::cout << "case2: no new target" << std::endl;
-            std::cout << "size of last path is: " << limbs[k].getLastPath().size() << std::endl;
-            // if (!limbs[k].getLastPath().empty()) {            
-                limbs[k].setCurrentPath(limbs[k].getLastPath());
-            // } else {
-            //     JPS::findPath(path,
-            //               mapGrid,
-            //               (unsigned) limbs[k].get_position().x,
-            //               (unsigned) limbs[k].get_position().y,
-            //               (unsigned) target.x,
-            //               (unsigned) target.y,
-            //               1);  
-            // // limbs[k].setCurrentPath(path);
-            // }
-        }
-
-
-            // limbs[k].setCurrentPath(path);
-            // std::cout << "size of current path is: " << limbs[k].getCurrentPath().size() << std::endl;
-            
-        if (!limbs[k].getCurrentPath().empty()) {
-            std::cout << "current path is not empty" << std::endl;
+        if (limb.getLastTarget() != target || limb.getLastTarget() == (vec2) {0, 0}) {
+            auto srcX = (unsigned) (limb.get_position().x / 100);
+            auto srcY = (unsigned) (limb.get_position().y / 100);
+            auto dstX = (unsigned) (target.x / 100);
+            auto dstY = (unsigned) (target.y / 100);
+            JPS::findPath(path, mapGrid, srcX, srcY, dstX, dstY, 1);
+            limb.setCurrentPath(path);
+        } else limb.setCurrentPath(limb.getLastPath());
+        if (!limb.getCurrentPath().empty()) {
             vec2 nextNode, curNode;
-            curNode = nextNode = {std::powf(limbs[k].get_position().x, 2), std::powf(limbs[k].get_position().y, 2)};
+            curNode = nextNode = {std::powf(limb.get_position().x, 2), std::powf(limb.get_position().y, 2)};
 
-            for (int i = 0; i < limbs[k].getCurrentPath().size() && curNode <= nextNode; ++i) {
-                nextNode = {static_cast<float>(limbs[k].getCurrentPath()[i].x),
-                            static_cast<float>(limbs[k].getCurrentPath()[i].y)};
+            for (int i = 0; i < limb.getCurrentPath().size() && curNode <= nextNode; ++i) {
+                nextNode = {static_cast<float>(limb.getCurrentPath()[i].x),
+                            static_cast<float>(limb.getCurrentPath()[i].y)};
             }
-            float step = 20 * (ms / 1000);
+            float step = 50 * (ms / 1000);
             vec2 dir;
-            dir.x = limbs[k].getCurrentTarget().x - limbs[k].get_position().x;
-            dir.y = limbs[k].getCurrentTarget().y - limbs[k].get_position().y;
+            dir.x = nextNode.x*100 - limb.get_position().x;
+            dir.y = nextNode.y*100 - limb.get_position().y;
 
-            auto jump = scale(step, normalize(dir));
+            auto next_pos = scale(step, normalize(dir));
 
-            // printf("move: %f, %f\n", jump.x, jump.y);
-
-            limbs[k].move(jump);
-            limbs[k].setLastPath(limbs[k].getCurrentPath());
-            limbs[k].setLastTarget(target);
-            std::cout << k << std::endl;
-            printf("move: %f, %f\n", jump.x, jump.y);
-            std::cout << "this one limb" << limbs[k].get_position().x <<std::endl;
+            limb.move(next_pos);
+            limb.setLastPath(limb.getCurrentPath());
+            limb.setLastTarget(target);
         }
     }
 }
-
-
 
 void LimbsManager::destroy() {
     for(auto &limb : limbs)
         limb.destroy();
 
     limbs.clear();
+}
+
+void LimbsManager::processCollisions(vec2 pos) {
+
 }

@@ -7,9 +7,9 @@
 #include <tuple>
 #include <unistd.h>
 
-class Freeze : public Renderable
+class Ice : public Renderable
 {
-    static Texture freeze_texture;
+    static Texture ice_texture;
 public:
     // Creates all the associated render resources and default transform
     bool init();
@@ -30,7 +30,7 @@ public:
     
     vec2 get_bounding_box()const;
     
-    bool collides_with(const Freeze& freeze);
+    bool collides_with(const Ice& freeze);
     
     int use_freeze(int useOnPlayer);
 

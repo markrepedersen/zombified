@@ -12,10 +12,10 @@ test: build
 	./$(BIN)
 
 %.o: src/%.cpp
-	clang++ -c $(CXXFLAGS) -o $@ $<
+	clang++ -c $(CXXFLAGS) -g -o $@ $<
 
 $(BIN): $(OBJ)
-	clang++ -o $@ $(OBJ) $(LIB)
+	clang++ -g -o $@ $(OBJ) $(LIB)
 
 clean:
 	- rm -f $(BIN) $(OBJ)

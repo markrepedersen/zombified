@@ -536,7 +536,6 @@ namespace JPS {
 
         template<typename GRID>
         bool Searcher<GRID>::findPath(PathVector &path, Position start, Position end, unsigned step) {
-            printf("running findpath");
             Result res = findPathInit(start, end);
 
             // If this is true, the resulting path is empty (findPathFinish() would fail, so this needs to be checked before)
@@ -550,11 +549,9 @@ namespace JPS {
                         break; // the switch
 
                     case FOUND_PATH:
-                        {printf("path is now of size... %lu \n", path.size());
-                        return findPathFinish(path, step);}
+                        return findPathFinish(path, step);
 
                     case NO_PATH:
-                         printf("no path! path is now of size... %lu \n", path.size());
                     default:
                         return false;
                 }

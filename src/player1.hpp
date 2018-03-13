@@ -4,7 +4,7 @@
 #include "viewHelper.hpp"
 #include <list>
 #include <iostream>
-#include "freeze.hpp"
+#include "Ice.hpp"
 #include "water.hpp"
 #include "arms.hpp"
 #include "legs.hpp"
@@ -38,7 +38,7 @@ public:
     void increase_speed();
     void decrease_speed();
     
-    bool collides_with(const Freeze& freeze);
+    bool collides_with(const Ice& freeze);
     bool collides_with(const Water& water);
     // bool collides_with(const Arms& arm);
     // bool collides_with(const Legs& leg);

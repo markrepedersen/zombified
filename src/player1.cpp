@@ -1,5 +1,6 @@
 // Header
 #include "player1.hpp"
+#include <Box2D.h>
 
 #include <cmath>
 #include <iostream>
@@ -450,7 +451,7 @@ void Player1::decrease_speed() {
 }
 
 // Simple bounding box collision check,
-bool Player1::collides_with(const Freeze &freeze) {
+bool Player1::collides_with(const Ice &freeze) {
     float dx = m_position.x - freeze.get_position().x;
     float dy = m_position.y - freeze.get_position().y;
     float d_sq = dx * dx + dy * dy;

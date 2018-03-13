@@ -3,7 +3,7 @@
 #include "common.hpp"
 #include "viewHelper.hpp"
 #include "toolboxSlot.hpp"
-#include "freeze.hpp"
+#include "Ice.hpp"
 #include "antidote.hpp"
 #include <list>
 #include <vector>
