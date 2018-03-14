@@ -1,5 +1,6 @@
 // Header
 #include "world.hpp"
+#include "Physics.h"
 
 // stlib
 #include <sstream>
@@ -77,8 +78,6 @@ bool World::init(vec2 screen) {
     auto tileX = (unsigned) (screen.x * ViewHelper::getRatio() / 100);
     auto tileY = (unsigned) (screen.y * ViewHelper::getRatio() / 100);
     mapGrid = new MapGrid(tileX, tileY);
-    this->createPhysics();
-
     /*!
      * End of Mark's playground
      */
@@ -86,15 +85,6 @@ bool World::init(vec2 screen) {
     game_started = false;
     game_over = false;
     return m_button.init();
-}
-
-void World::createPhysics() {
-    const float kPixelsPerMeter = 32.0f;
-    const float kGravity = -kPixelsPerMeter / 0.7f;
-    world = new b2World(b2Vec2(0.0f, kGravity));
-    world->SetAllowSleeping(true);
-    world->SetContinuousPhysics(true);
-    world->SetContactListener(this);
 }
 
 // Releases all the associated resources
@@ -146,8 +136,6 @@ bool World::update(float elapsed_ms) {
             m_toolboxManager.init({screen.x, screen.y});
             m_limbsManager.init({screen.x, screen.y});
             m_player1.init(screen) && m_player2.init(screen) && m_antidote.init(screen);
-            m_player2.addPlayerToWorld(world);
-            m_player2.addFixturesToBody();
         }
     }
 

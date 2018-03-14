@@ -33,11 +33,9 @@ public:
 
     void set_key(int key, bool pressed);
 
-    void start_animate(int direction);
-
     void animate(int direction);
 
-     void increase_speed();
+    void increase_speed();
     void decrease_speed();
     
     bool collides_with(const Ice& freeze);
@@ -49,12 +47,12 @@ public:
     
     void destroy();
 
-    void addPlayerToWorld(b2World *world);
+    bool contactAtBottom();
+    bool contactAtLeft();
+    bool contactAtRight();
 
-    void addFixturesToBody();
 private:
     bool m_is_alive; // True if the salmon is alive
-    vec2 m_position; // Window coordinates
     vec2 m_scale; // 1.f in each dimension. 1.f is as big as the associated texture
     int m_speed;
     bool m_keys[4];

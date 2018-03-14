@@ -17,16 +17,29 @@ enum
 };
 
 class PhysicalBody {
-public:
-    b2Body *getBody();
-protected:
-    b2Body* body;
-    void addBodyToWorld(b2World *world);
-    void createFixture(b2Shape* shape);
-    void addRectangularFixtureToBody(float width, float height);
+private:
+    void createFixtures();
+    b2Fixture *createFixture(b2Shape* shape);
+    b2Fixture *addRectangularFixtureToBody(float width, float height);
+    b2Fixture *addAngledRectangularFixtureToBody(float width, float height, b2Vec2 centre, float angle);
     void addCircularFixtureToBody(float radius);
-    vec2 position;
-    static const int pixelsPerMeter = 100;
+protected:
+    void addBodyToWorld();
+    b2Body *getBody() {
+        return body;
+    };
+
+
+    float bodyWidth;
+    float bodyHeight;
+    vec2 m_position;
+    b2Body* body;
+    b2Fixture* bodyFixture;
+    b2Fixture *headFixture;
+    b2Fixture* legFixture;
+    b2Fixture* leftFixture;
+    b2Fixture* rightFixture;
+    const float pixelsPerMeter =  32.0f;
 };
 
 

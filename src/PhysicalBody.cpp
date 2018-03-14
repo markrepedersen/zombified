@@ -3,14 +3,16 @@
 //
 
 #include "PhysicalBody.h"
+#include "Physics.h"
 
-void PhysicalBody::addBodyToWorld(b2World *world) {
+void PhysicalBody::addBodyToWorld() {
     b2BodyDef bodyDef;
     bodyDef.type = b2_dynamicBody;
-    bodyDef.position.Set(position.x / pixelsPerMeter, position.y / pixelsPerMeter);
-    bodyDef.userData = this;
+    bodyDef.position.Set(m_position.x / pixelsPerMeter, m_position.y / pixelsPerMeter);
     bodyDef.fixedRotation = true;
-    this->body = world->CreateBody(&bodyDef);
+    this->body = Physics::Get()->CreateBody(&bodyDef);
+    this->body->SetBullet(true);
+    createFixtures();
 }
 
 void PhysicalBody::addCircularFixtureToBody(float radius)
@@ -20,14 +22,21 @@ void PhysicalBody::addCircularFixtureToBody(float radius)
     this->createFixture(&shape);
 }
 
-void PhysicalBody::addRectangularFixtureToBody(float width, float height)
+b2Fixture *PhysicalBody::addRectangularFixtureToBody(float width, float height)
 {
     b2PolygonShape shape;
     shape.SetAsBox(width, height);
-    this->createFixture(&shape);
+    return this->createFixture(&shape);
 }
 
-void PhysicalBody::createFixture(b2Shape* shape)
+b2Fixture *PhysicalBody::addAngledRectangularFixtureToBody(float width, float height, b2Vec2 centre, float angle)
+{
+    b2PolygonShape shape;
+    shape.SetAsBox(width, height, centre, angle);
+    return this->createFixture(&shape);
+}
+
+b2Fixture *PhysicalBody::createFixture(b2Shape* shape)
 {
     // note that friction, etc. can be modified later by looping
     // over the body's fixtures and calling fixture->SetFriction()
@@ -38,9 +47,15 @@ void PhysicalBody::createFixture(b2Shape* shape)
     fixtureDef.restitution = 0.1f;
     fixtureDef.filter.categoryBits = kFilterCategorySolidObject;
     fixtureDef.filter.maskBits = 0xffff;
-    this->body->CreateFixture(&fixtureDef);
+    return this->body->CreateFixture(&fixtureDef);
 }
 
-b2Body *PhysicalBody::getBody() {
-    return body;
+void PhysicalBody::createFixtures() {
+    b2PolygonShape bodyBox;
+    bodyBox.SetAsBox(bodyWidth/2, bodyHeight/2);
+
+    bodyFixture = addRectangularFixtureToBody(bodyWidth/2, bodyHeight/2);
+    legFixture = addRectangularFixtureToBody(bodyWidth/2-2, bodyHeight/2 - 10);
+    rightFixture = addAngledRectangularFixtureToBody(bodyWidth/6, bodyHeight/2 - 1, b2Vec2(bodyWidth/2, 0), 0);
+    leftFixture = addAngledRectangularFixtureToBody(bodyWidth/6, bodyHeight/2 - 1, b2Vec2(-bodyWidth/2, 0), 0);
 }

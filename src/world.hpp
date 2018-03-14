@@ -63,8 +63,6 @@ private:
 	void shift_1();
 	void shift_2();
 
-	void createPhysics();
-
 	void on_key(GLFWwindow*, int key, int, int action, int mod);
 	void on_mouse_move(GLFWwindow* window, int button, int action, int mod);
 
