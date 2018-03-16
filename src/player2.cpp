@@ -4,7 +4,7 @@
 #include <cmath>
 
 Texture Player2::player2_texture;
-int currFrame_p2 = 0;
+int currFrame_p2 = 1;
 auto startTime_p2 = std::chrono::high_resolution_clock::now();
 int frameTime_p2 = 100;
 const float PLAYER_SPEED = 200.f;

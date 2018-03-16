@@ -187,7 +187,7 @@ void Missile::draw(const mat3& projection)
 
 void Armour::set_position(vec2 position)
 {
-	std::cout << "Armour created" << "\n";
+	// std::cout << "Armour created" << "\n";
 
     m_position = position;
 }

@@ -185,7 +185,7 @@ void Missile::draw(const mat3& projection)
 
 void Missile::set_position(vec2 position)
 {
-	std::cout << "Missile created" << "\n";
+	// std::cout << "Missile created" << "\n";
 
     m_position = position;
 }
