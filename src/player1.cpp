@@ -10,6 +10,8 @@ int curr_frame = 0;
 // frame to draw and previous frame in sprite
 int sprite_frame_index = 0;
 // sprite information
+int spriteWidth = 225;
+int spriteHeight = 365;
 int num_rows = 3;
 int num_cols = 5;
 int up_frames [2] = {10, 11};
@@ -27,22 +29,16 @@ bool Player1::init(vec2 screen)
     // Load shared texture
     if (!player1_texture.is_valid())
     {
-        if (!player1_texture.load_from_file(p1_textures_path("p1_num.png")))
+        if (!player1_texture.load_from_file(p1_textures_path("p1.png")))
         {
             //fprintf(stderr, "Failed to load player1 texture!");
             return false;
         }
     }
 
-    int spriteWidth = 225;
-    int spriteHeight = 365;
-
     // The position corresponds to the center of the texture
     float wr = spriteWidth * 0.5f;
     float hr = spriteHeight * 0.5f;
-
-    // float wr = player1_texture.width * 0.5f;
-    // float hr = player1_texture.height * 0.5f;
 
     TexturedVertex vertices[4];
 	vertices[0].position = { -wr, +hr, -0.02f };
@@ -53,18 +49,6 @@ bool Player1::init(vec2 screen)
 	vertices[2].texcoord = { 0.f, 0.f };
 	vertices[3].position = { -wr, -hr, -0.02f };
 	vertices[3].texcoord = { 1/5.f, 0.f };
-
-    /*
-    TexturedVertex vertices[4];
-    vertices[0].position = {-wr, +hr, -0.02f};
-    vertices[0].texcoord = {2 / 5.f, 3 / 3.f};
-    vertices[1].position = {+wr, +hr, -0.02f};
-    vertices[1].texcoord = {1 / 5.f, 3 / 3.f};
-    vertices[2].position = {+wr, -hr, -0.02f};
-    vertices[2].texcoord = {1/ 5.f, 2 / 3.f};
-    vertices[3].position = {-wr, -hr, -0.02f};
-    vertices[3].texcoord = {2 / 5.f, 2 / 3.f};
-    */
 
     // counterclockwise as it's the default opengl front winding direction
 	uint16_t indices[] = { 0, 3, 1, 1, 3, 2 };
@@ -92,8 +76,8 @@ bool Player1::init(vec2 screen)
         return false;
 
     // Setting initial values
-    m_scale.x = -0.5f * ViewHelper::getRatio();
-    m_scale.y = 0.5f * ViewHelper::getRatio();
+    m_scale.x = -0.2f * ViewHelper::getRatio();
+    m_scale.y = 0.2f * ViewHelper::getRatio();
     m_is_alive = true;
 
     // m_position = {screen.x - 1150.f, screen.y - 450.f};
