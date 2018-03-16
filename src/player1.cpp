@@ -10,8 +10,10 @@ auto startTime = std::chrono::high_resolution_clock::now();
 int frameTime = 100;
 const float PLAYER_SPEED = 200.f;
 
-bool Player1::init(vec2 screen)
+bool Player1::init(vec2 screen, std::vector<vec2> mapCollisionPoints)
 {
+    //set mapCollisionPoints as the same on with world
+    m_mapCollisionPoints = mapCollisionPoints;
     // Load shared texture
     if (!player1_texture.is_valid())
     {
@@ -215,19 +217,43 @@ void Player1::update(float ms)
     float step = speed * (ms / 1000);//PLAYER_SPEED * (ms / 1000);
 
     if (m_keys.front() == GLFW_KEY_UP)
-        {move({0, -step});
-        animate();}
+        {
+            if (isInsidePolygon(m_mapCollisionPoints, {m_position.x+0, m_position.y-step}))
+            {
+                move({0, -step});
+
+                animate(); 
+            }
+            
+        }
     if (m_keys.front() == GLFW_KEY_LEFT)
-        {move({-step, 0});
-        animate();}
+        {
+            if (isInsidePolygon(m_mapCollisionPoints, {m_position.x-step, m_position.y + 0}))
+            {
+                move({-step, 0});
+                animate();
+            }
+            
+        }
     if (m_keys.front() == GLFW_KEY_DOWN)
-        {move({0, step});
-        animate();}
+        {
+            if (isInsidePolygon(m_mapCollisionPoints, {m_position.x + 0, m_position.y + step}))
+            {
+                move({0, step});
+                animate();
+            }
+            
+        }
     if (m_keys.front() == GLFW_KEY_RIGHT)
     {
-        move({step, 0});
-        animate();
-    }
+            if (isInsidePolygon(m_mapCollisionPoints, {m_position.x + step, m_position.y + 0}))
+            {
+                move({step, 0});
+
+            animate();
+            }
+            
+        }
     if (blowback)
     {
         /*if (negy && !negx)
@@ -241,6 +267,7 @@ void Player1::update(float ms)
         float y = get_blowbackForce().y*(ms/1000)*(get_speed()/100);
         //fprintf(stderr, "negy %f\n",  y);
         //fprintf(stderr, "negx %f\n",  x);
+        
         move({x, y});
     }
     else

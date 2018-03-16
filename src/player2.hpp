@@ -16,7 +16,7 @@ class Player2 : public Renderable
     static Texture player2_texture;
 public:
     // Creates all the associated render resources and default transform
-    bool init(vec2 screen);
+    bool init(vec2 screen, std::vector<vec2> mapCollisionPoints);
     
     // Renders the salmon
     void draw(const mat3& projection)override;
@@ -68,6 +68,7 @@ private:
     float speedlegs;
     bool blowback;
     vec2 blowbackForce;
+    std::vector<vec2> m_mapCollisionPoints;
 
     bool m_keys[4];
 };

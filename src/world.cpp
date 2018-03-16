@@ -238,7 +238,7 @@ bool World::update(float elapsed_ms)
             //t2_bomb.init();
             //t2_bomb.set_position({500.f, 500.f});
             useBomb = false;
-            m_player1.init(screen) && m_player2.init(screen)&& m_antidote.init(screen);
+            m_player1.init(screen, mapCollisionPoints) && m_player2.init(screen, mapCollisionPoints)&& m_antidote.init(screen);
         }
     }
     
