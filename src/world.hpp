@@ -55,6 +55,7 @@ public:
     void timer_update();
     void check_add_tools(vec2 screen);
     bool random_spawn(float elapsed_ms, vec2 screen);
+    void populateMapCollisionPoints();
     
     void use_tool_1(int tool_number);
     void use_tool_2(int tool_number);
@@ -149,6 +150,8 @@ private:
 
 
 	MapGrid *mapGrid;
+
+    std::vector<vec2> mapCollisionPoints;
 
 	float m_next_arm_spawn;
     float m_next_leg_spawn;
