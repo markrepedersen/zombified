@@ -63,6 +63,9 @@ public:
     //bool buttonclicked();
     void explode();
     void autoExplode();
+    void use_bomb(float ms);
+    //void init_use_bomb(float ms);
+    bool useBomb;
 
 private:
 	// Generates a new turtle
@@ -88,6 +91,9 @@ private:
     void collect_freeze(Freeze freeze, int player, float index);
     void collect_water(Water water, int player, float index);
     void collect_legs(Legs leg, int player, float index);
+    void collect_bomb(Bomb bomb, int player, float index);
+    void collect_missile(Missile missile, int player, float index);
+    void collect_armour(Armour armour, int player, float index);
 
 	void computePaths(float ms);
     
@@ -115,6 +121,8 @@ private:
     Zombie m_zombie;
     Antidote m_antidote;
     Tree m_tree;
+    Bomb t_bomb;
+    Bomb t2_bomb;
 
     std::vector<Arms> m_arms;
     std::vector<Legs> m_legs;
@@ -136,6 +144,8 @@ private:
     std::vector<Bomb> m_bomb_collected_2;
     std::vector<Armour> m_armour_collected_1;
     std::vector<Armour> m_armour_collected_2;
+    
+    std::vector<Bomb> used_bombs;
 
 
 	MapGrid *mapGrid;

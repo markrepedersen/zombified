@@ -597,12 +597,12 @@ bool Player1::collides_with(const Antidote& antidote)
     return false;
 }
 
-bool Player1::collides_with(const Tree& tree)
+bool Player1::collides_with(const Legs& leg)
 {
-    float dx = m_position.x - tree.get_position().x;
-    float dy = m_position.y - tree.get_position().y;
+    float dx = m_position.x - leg.get_position().x;
+    float dy = m_position.y - leg.get_position().y;
     float d_sq = dx * dx + dy * dy;
-    float other_r = std::max(tree.get_bounding_box().x, tree.get_bounding_box().y);
+    float other_r = std::max(leg.get_bounding_box().x, leg.get_bounding_box().y);
     float my_r = std::max(m_scale.x, m_scale.y);
     float r = std::max(other_r, my_r);
     r *= 0.6f;
@@ -611,12 +611,39 @@ bool Player1::collides_with(const Tree& tree)
     return false;
 }
 
-bool Player1::collides_with(const Legs& leg)
+bool Player1::collides_with(const Bomb& bomb)
 {
-    float dx = m_position.x - leg.get_position().x;
-    float dy = m_position.y - leg.get_position().y;
+    float dx = m_position.x - bomb.get_position().x;
+    float dy = m_position.y - bomb.get_position().y;
     float d_sq = dx * dx + dy * dy;
-    float other_r = std::max(leg.get_bounding_box().x, leg.get_bounding_box().y);
+    float other_r = std::max(bomb.get_bounding_box().x, bomb.get_bounding_box().y);
+    float my_r = std::max(m_scale.x, m_scale.y);
+    float r = std::max(other_r, my_r);
+    r *= 0.6f;
+    if (d_sq < r * r)
+        return true;
+    return false;
+}
+
+bool Player1::collides_with(const Armour& armour)
+{
+    float dx = m_position.x - armour.get_position().x;
+    float dy = m_position.y - armour.get_position().y;
+    float d_sq = dx * dx + dy * dy;
+    float other_r = std::max(armour.get_bounding_box().x, armour.get_bounding_box().y);
+    float my_r = std::max(m_scale.x, m_scale.y);
+    float r = std::max(other_r, my_r);
+    r *= 0.6f;
+    if (d_sq < r * r)
+        return true;
+    return false;
+}
+bool Player1::collides_with(const Missile& missile)
+{
+    float dx = m_position.x - missile.get_position().x;
+    float dy = m_position.y - missile.get_position().y;
+    float d_sq = dx * dx + dy * dy;
+    float other_r = std::max(missile.get_bounding_box().x, missile.get_bounding_box().y);
     float my_r = std::max(m_scale.x, m_scale.y);
     float r = std::max(other_r, my_r);
     r *= 0.6f;

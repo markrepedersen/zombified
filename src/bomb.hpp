@@ -6,6 +6,7 @@
 #include <vector>
 #include <tuple>
 #include <unistd.h>
+//#include <math.h>
 
 class Bomb : public Renderable
 {
@@ -23,6 +24,11 @@ public:
     
     void set_scale(vec2 scale);
     
+    vec2 get_speed()const;
+    void set_speed(vec2 newSpeed);
+    
+    float get_mass()const;
+    
     // True if the salmon is alive
     bool is_alive()const;
     
@@ -30,7 +36,14 @@ public:
     
     vec2 get_bounding_box()const;
     
+    float get_force(float mass, float speed, vec2 objPosition);
+    
     bool collides_with(const Bomb& bomb);
+    
+    void move(vec2);
+    
+    void checkBoundaryCollision(float width, float height, float ms);
+    void checkCollision(Bomb other, float ms);
     
 private:
     bool m_is_alive; // True if the salmon is alive
@@ -38,4 +51,6 @@ private:
 	float m_rotation;
     vec2 m_scale; // 1.f in each dimension. 1.f is as big as the associated texture
 	size_t m_num_indices; // passed to glDrawElements
+    vec2 speed;
+    float mass;
 };

@@ -7,6 +7,9 @@
 #include "freeze.hpp"
 #include "water.hpp"
 #include "antidote.hpp"
+#include "bomb.hpp"
+#include "armour.hpp"
+#include "missile.hpp"
 
 class Player2 : public Renderable
 {
@@ -50,6 +53,9 @@ public:
     bool collides_with(const Arms& arm);
     bool collides_with(const Legs& legs);
     bool collides_with(const Antidote& antidote);
+    bool collides_with(const Bomb& bomb);
+    bool collides_with(const Armour& armour);
+    bool collides_with(const Missile& missile);
     
     void destroy();
 private:

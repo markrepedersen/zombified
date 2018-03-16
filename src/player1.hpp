@@ -10,6 +10,9 @@
 #include "legs.hpp"
 #include "antidote.hpp"
 #include "tree.hpp"
+#include "bomb.hpp"
+#include "armour.hpp"
+#include "missile.hpp"
 
 class Player1 : public Renderable
 {
@@ -50,7 +53,9 @@ public:
     bool collides_with(const Arms& arm);
     bool collides_with(const Legs& leg);
     bool collides_with(const Antidote& antidote);
-    bool collides_with(const Tree& tree);
+    bool collides_with(const Bomb& bomb);
+    bool collides_with(const Armour& armour);
+    bool collides_with(const Missile& missile);
     
     void destroy();
     

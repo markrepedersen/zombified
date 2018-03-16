@@ -2,6 +2,7 @@
 
 // stlib
 #include <fstream> // stdout, stderr..
+#include <vector>
 
 // glfw
 #define NOMINMAX
