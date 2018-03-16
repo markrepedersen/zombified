@@ -6,21 +6,21 @@
 
 Texture Player1::player1_texture;
 // current frame in animation
-int curr_frame = 0;
+int curr_frame_p1 = 0;
 // frame to draw and previous frame in sprite
-int sprite_frame_index = 0;
+int sprite_frame_index_p1 = 0;
 // sprite information
-int spriteWidth = 225;
-int spriteHeight = 365;
-int num_rows = 3;
-int num_cols = 5;
-int up_frames [2] = {10, 11};
-int left_frames [3] = {5, 6, 7};
-int down_frames [2] = {2, 3};
-int right_frames [3] = {8, 9, 4};
+int sprite_width_p1 = 225;
+int sprite_height_p1 = 365;
+int num_rows_p1 = 3;
+int num_cols_p1 = 5;
+int up_frames_p1 [2] = {10, 11};
+int left_frames_p1 [3] = {5, 6, 7};
+int down_frames_p1 [2] = {2, 3};
+int right_frames_p1 [3] = {8, 9, 4};
 
-int frame_time = 100;
-auto start_time = std::chrono::high_resolution_clock::now();
+int frame_time_p1 = 100;
+auto start_time_p1 = std::chrono::high_resolution_clock::now();
 
 const float PLAYER_SPEED = 200.f;
 
@@ -37,8 +37,8 @@ bool Player1::init(vec2 screen)
     }
 
     // The position corresponds to the center of the texture
-    float wr = spriteWidth * 0.5f;
-    float hr = spriteHeight * 0.5f;
+    float wr = sprite_width_p1 * 0.5f;
+    float hr = sprite_height_p1 * 0.5f;
 
     TexturedVertex vertices[4];
 	vertices[0].position = { -wr, +hr, -0.02f };
@@ -145,9 +145,9 @@ void Player1::draw(const mat3 &projection)
     glUniform3f(vertexColorLocation, 0.0f, greenValue, 0.0f);
     
     // Specify uniform variables
-    glUniform1iv(sprite_frame_index_uloc, 1, &sprite_frame_index);
-    glUniform1iv(num_rows_uloc, 1, &num_rows);
-    glUniform1iv(num_cols_uloc, 1, &num_cols);
+    glUniform1iv(sprite_frame_index_uloc, 1, &sprite_frame_index_p1);
+    glUniform1iv(num_rows_uloc, 1, &num_rows_p1);
+    glUniform1iv(num_cols_uloc, 1, &num_cols_p1);
 
     // Drawing!
     glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_SHORT, nullptr);
@@ -285,44 +285,44 @@ void Player1::move(vec2 off)
 void Player1::animate()
 {
     auto curr_time = std::chrono::high_resolution_clock::now();
-    int milliseconds = std::chrono::duration_cast<std::chrono::milliseconds>(curr_time - start_time).count();
+    int milliseconds = std::chrono::duration_cast<std::chrono::milliseconds>(curr_time - start_time_p1).count();
 
-    if (milliseconds > frame_time)
+    if (milliseconds > frame_time_p1)
     {
         if (m_keys.front() == GLFW_KEY_UP)
         {
-            curr_frame = (curr_frame + 1) % 2;
-            sprite_frame_index = up_frames[curr_frame];
+            curr_frame_p1 = (curr_frame_p1 + 1) % 2;
+            sprite_frame_index_p1 = up_frames_p1[curr_frame_p1];
 
-            start_time = curr_time;
+            start_time_p1 = curr_time;
 
             // Debugging
-	        // int row = sprite_frame_index / 5;
-	        // int col = sprite_frame_index - row * 5;
+	        // int row = sprite_frame_index_p1 / 5;
+	        // int col = sprite_frame_index_p1 - row * 5;
 	        // float tex_x = col / 5.0;
 	        // float tex_y = row / 3.0;
-            // std::cout << "Index: " << sprite_frame_index << ", diff_tex_x: " << tex_x << ", diff_tex_y: " << tex_y << "\n";
+            // std::cout << "Index: " << sprite_frame_index_p1 << ", diff_tex_x: " << tex_x << ", diff_tex_y: " << tex_y << "\n";
         }
         else if (m_keys.front() == GLFW_KEY_LEFT)
         {
-            curr_frame = (curr_frame + 1) % 3;
-            sprite_frame_index = left_frames[curr_frame];
+            curr_frame_p1 = (curr_frame_p1 + 1) % 3;
+            sprite_frame_index_p1 = left_frames_p1[curr_frame_p1];
 
-            start_time = curr_time;
+            start_time_p1 = curr_time;
         }
         else if (m_keys.front() == GLFW_KEY_DOWN)
         {
-            curr_frame = (curr_frame + 1) % 2;
-            sprite_frame_index = down_frames[curr_frame];
+            curr_frame_p1 = (curr_frame_p1 + 1) % 2;
+            sprite_frame_index_p1 = down_frames_p1[curr_frame_p1];
 
-            start_time = curr_time;
+            start_time_p1 = curr_time;
         }
         else if (m_keys.front() == GLFW_KEY_RIGHT)
         {
-            curr_frame = (curr_frame + 1) % 3;
-            sprite_frame_index = right_frames[curr_frame];
+            curr_frame_p1 = (curr_frame_p1 + 1) % 3;
+            sprite_frame_index_p1 = right_frames_p1[curr_frame_p1];
 
-            start_time = curr_time;
+            start_time_p1 = curr_time;
         }
     }
 }
