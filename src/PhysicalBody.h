@@ -29,7 +29,6 @@ protected:
         return body;
     };
 
-
     float bodyWidth;
     float bodyHeight;
     vec2 m_position;

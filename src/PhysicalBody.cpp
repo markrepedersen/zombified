@@ -38,8 +38,6 @@ b2Fixture *PhysicalBody::addAngledRectangularFixtureToBody(float width, float he
 
 b2Fixture *PhysicalBody::createFixture(b2Shape* shape)
 {
-    // note that friction, etc. can be modified later by looping
-    // over the body's fixtures and calling fixture->SetFriction()
     b2FixtureDef fixtureDef;
     fixtureDef.shape = shape;
     fixtureDef.density = 1.0f;

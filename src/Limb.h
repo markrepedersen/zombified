@@ -46,6 +46,10 @@ public:
     void move(vec2 pos);
 
     std::string getLimbType();
+
+    bool isInitialized() {return initialized;}
+
+    void setInitialized(bool flag) {this->initialized = flag;}
 protected:
     vec2 cur_target;
     vec2 last_target;
@@ -54,6 +58,7 @@ protected:
     vec2 position;
     vec2 m_scale;
     std::string type;
+    bool initialized = false;
 };
 
 #endif //ZOMBIE_LIMB_H

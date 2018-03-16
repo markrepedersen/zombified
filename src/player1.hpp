@@ -10,6 +10,7 @@
 #include "legs.hpp"
 #include "antidote.hpp"
 #include "Limb.h"
+#include "PhysicalBody.h"
 
 class Player1 : public Renderable
 {

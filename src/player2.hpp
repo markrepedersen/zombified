@@ -11,7 +11,7 @@
 #include "PhysicalBody.h"
 #include <Box2D.h>
 
-class Player2 : public Renderable, public PhysicalBody
+class Player2 : public Renderable
 {
     static Texture player2_texture;
 public:
@@ -47,13 +47,10 @@ public:
     
     void destroy();
 
-    bool contactAtBottom();
-    bool contactAtLeft();
-    bool contactAtRight();
-
 private:
     bool m_is_alive; // True if the salmon is alive
     vec2 m_scale; // 1.f in each dimension. 1.f is as big as the associated texture
     int m_speed;
+    vec2 m_position;
     bool m_keys[4];
 };

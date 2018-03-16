@@ -75,8 +75,8 @@ bool World::init(vec2 screen) {
     /*!
      * Mark's playground so I remember where I put this stuff
      */
-    auto tileX = (unsigned) (screen.x * ViewHelper::getRatio() / 100);
-    auto tileY = (unsigned) (screen.y * ViewHelper::getRatio() / 100);
+    auto tileX = (unsigned) (screen.x * ViewHelper::getRatio()/100);
+    auto tileY = (unsigned) (screen.y * ViewHelper::getRatio()/100);
     mapGrid = new MapGrid(tileX, tileY);
     /*!
      * End of Mark's playground

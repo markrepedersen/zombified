@@ -2,8 +2,6 @@
 #include "limbsManager.hpp"
 #include "KMeans.h"
 
-#include <cmath>
-
 #define MAX_ITERATIONS 100
 
 // initialize a limbsManager
@@ -156,19 +154,20 @@ void LimbsManager::computePaths(float ms, MapGrid const mapGrid) {
         JPS::PathVector path;
         vec2 target = limb.getCurrentTarget();
 
-        if (limb.getLastTarget() != target || limb.getLastTarget() == (vec2) {0, 0}) {
-            auto srcX = (unsigned) (limb.get_position().x / 100);
-            auto srcY = (unsigned) (limb.get_position().y / 100);
-            auto dstX = (unsigned) (target.x / 100);
-            auto dstY = (unsigned) (target.y / 100);
+        if (limb.getLastTarget() != target || !limb.isInitialized()) {
+            auto srcX = (unsigned) (limb.get_position().x/100);
+            auto srcY = (unsigned) (limb.get_position().y/100);
+            auto dstX = (unsigned) (target.x/100);
+            auto dstY = (unsigned) (target.y/100);
             JPS::findPath(path, mapGrid, srcX, srcY, dstX, dstY, 1);
             limb.setCurrentPath(path);
+            limb.setInitialized(true);
         } else limb.setCurrentPath(limb.getLastPath());
         if (!limb.getCurrentPath().empty()) {
             vec2 nextNode, curNode;
-            curNode = nextNode = {std::powf(limb.get_position().x, 2), std::powf(limb.get_position().y, 2)};
+            curNode = nextNode = {limb.get_position().x, limb.get_position().y};
 
-            for (int i = 0; i < limb.getCurrentPath().size() && curNode <= nextNode; ++i) {
+            for (int i = 0; i < limb.getCurrentPath().size() && getDistance(curNode, nextNode) < 10; ++i) {
                 nextNode = {static_cast<float>(limb.getCurrentPath()[i].x),
                             static_cast<float>(limb.getCurrentPath()[i].y)};
             }

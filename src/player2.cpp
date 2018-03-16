@@ -67,12 +67,7 @@ bool Player2::init(vec2 screen) {
     m_scale.x = -0.10f * ViewHelper::getRatio();;
     m_scale.y = 0.10f * ViewHelper::getRatio();;
     m_is_alive = true;
-    vec2 pos = {(screen.x - (screen.x / 5)) * ViewHelper::getRatio(), (screen.y / 2) * ViewHelper::getRatio()};
-    m_position = pos;
-
-    bodyWidth = player2_texture.width;
-    bodyHeight = player2_texture.height;
-    addBodyToWorld();
+    m_position = {(screen.x - (screen.x / 5)) * ViewHelper::getRatio(), (screen.y / 2) * ViewHelper::getRatio()};
 
     return true;
 }
@@ -494,43 +489,4 @@ void Player2::destroy() {
     glDeleteShader(effect.vertex);
     glDeleteShader(effect.fragment);
     glDeleteShader(effect.program);
-}
-
-bool Player2::contactAtBottom() {
-    for(b2ContactEdge* ce = body->GetContactList(); ce; ce = ce->next)
-    {
-        b2Contact* c = ce->contact;
-        if(c->IsTouching() && (c->GetFixtureA() == legFixture || c->GetFixtureB() == legFixture))
-        {
-            return true;
-        }
-    }
-
-    return false;
-}
-
-bool Player2::contactAtLeft() {
-    for(b2ContactEdge* ce = body->GetContactList(); ce; ce = ce->next)
-    {
-        b2Contact* c = ce->contact;
-        if(c->IsTouching() && (c->GetFixtureA() == leftFixture || c->GetFixtureB() == leftFixture))
-        {
-            return true;
-        }
-    }
-
-    return false;
-}
-
-bool Player2::contactAtRight() {
-    for(b2ContactEdge* ce = body->GetContactList(); ce; ce = ce->next)
-    {
-        b2Contact* c = ce->contact;
-        if (c->IsTouching() && (c->GetFixtureA() == rightFixture || c->GetFixtureB() == rightFixture))
-        {
-            return true;
-        }
-    }
-
-    return false;
 }
