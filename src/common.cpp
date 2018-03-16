@@ -6,6 +6,7 @@
 // stlib
 #include <vector>
 #include <sstream>
+#include <iostream>
 
 void gl_flush_errors()
 {
@@ -175,6 +176,23 @@ bool isInsidePolygon(std::vector<vec2> poly, vec2 point) {
 	return (intersectionCount % 2 == 1);
 }
 
+
+vec2 getRandomPointInMap(std::vector<vec2> mapCollisionPoints, vec2 screen) {
+
+  srand((unsigned)time(0));
+
+	vec2 randomPoint = {(float)((rand() % (int)screen.x)),
+						(float)((rand() % (int)screen.y))};
+						
+	while(!isInsidePolygon(mapCollisionPoints, randomPoint)) {
+		randomPoint = {(float)((rand() % (int)screen.x)),
+		        (float)((rand() % (int)screen.y))};
+
+	}
+
+	return randomPoint;
+
+}
 
 
 Texture::Texture()

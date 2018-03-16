@@ -125,9 +125,12 @@ bool World::init(vec2 screen)
 
     //fprintf(stderr, "Loaded music");
     mapGrid = new MapGrid((unsigned) screen.x, (unsigned) screen.y);
-
+    
       //set game screen to resolution ratio
     ViewHelper* vh = ViewHelper::getInstance(m_window);
+
+    populateMapCollisionPoints();
+    
 
     game_started = false;
     game_over = false;
@@ -650,8 +653,10 @@ bool World::random_spawn(float elapsed_ms, vec2 screen)
             Arms &new_arm = m_arms.back();
             
             // Setting random initial position
-            new_arm.set_position({(float)((rand() % (int)screen.x)),
-                (float)((rand() % (int)screen.y))});
+            // new_arm.set_position({(float)((rand() % (int)screen.x)),
+            //     (float)((rand() % (int)screen.y))});
+
+            new_arm.set_position(getRandomPointInMap(mapCollisionPoints, screen));
             
             // Next spawn
             //srand((unsigned)time(0));
@@ -668,8 +673,10 @@ bool World::random_spawn(float elapsed_ms, vec2 screen)
             
             Legs &new_leg = m_legs.back();
             
-            new_leg.set_position({(float)((rand() % (int)screen.x)),
-                (float)((rand() % (int)screen.y))});
+            // new_leg.set_position({(float)((rand() % (int)screen.x)),
+            //     (float)((rand() % (int)screen.y))});
+
+            new_leg.set_position(getRandomPointInMap(mapCollisionPoints, screen));
             
             m_next_leg_spawn = (LEG_DELAY_MS / 2) + rand() % (1000);
         }
@@ -682,8 +689,11 @@ bool World::random_spawn(float elapsed_ms, vec2 screen)
                 return false;
             
             Freeze &new_freeze = m_freeze.back();
-            new_freeze.set_position({(float)((rand() % (int)screen.x)),
-                (float)((rand() % (int)screen.y))});
+            // new_freeze.set_position({(float)((rand() % (int)screen.x)),
+            //     (float)((rand() % (int)screen.y))});
+
+            
+            new_freeze.set_position(getRandomPointInMap(mapCollisionPoints, screen));
             
             m_next_spawn = (DELAY_MS / 2) + rand() % (1000);
         }
@@ -698,6 +708,9 @@ bool World::random_spawn(float elapsed_ms, vec2 screen)
             Missile &new_missile = m_missile.back();
             new_missile.set_position({(float)((rand() % (int)screen.x)),
                 (float)((rand() % (int)screen.y))});
+
+                
+            new_missile.set_position(getRandomPointInMap(mapCollisionPoints, screen));
             
             m_next_spawn = (DELAY_MS / 2) + rand() % (1000);
         }
@@ -711,8 +724,11 @@ bool World::random_spawn(float elapsed_ms, vec2 screen)
                 return false;
             
             Armour &new_armour = m_armour.back();
-            new_armour.set_position({(float)((rand() % (int)screen.x)),
-                (float)((rand() % (int)screen.y))});
+            // new_armour.set_position({(float)((rand() % (int)screen.x)),
+            //     (float)((rand() % (int)screen.y))});
+
+            
+            new_armour.set_position(getRandomPointInMap(mapCollisionPoints, screen));
             
             m_next_spawn = (DELAY_MS / 2) + rand() % (1000);
         }
@@ -726,8 +742,10 @@ bool World::random_spawn(float elapsed_ms, vec2 screen)
                 return false;
             
             Bomb &new_bomb = m_bomb.back();
-            new_bomb.set_position({(float)((rand() % (int)screen.x)),
-                (float)((rand() % (int)screen.y))});
+            // new_bomb.set_position({(float)((rand() % (int)screen.x)),
+            //     (float)((rand() % (int)screen.y))});
+            
+            new_bomb.set_position(getRandomPointInMap(mapCollisionPoints, screen));
             
             m_next_spawn = (DELAY_MS / 2) + rand() % (1000);
         }
@@ -1206,6 +1224,60 @@ void World::shift_2()
         }
         index++;
     }
+}
+
+void World::populateMapCollisionPoints()
+{
+    mapCollisionPoints.push_back({204 * ViewHelper::getRatio() , 103 * ViewHelper::getRatio() });
+    mapCollisionPoints.push_back({274 * ViewHelper::getRatio() ,85 * ViewHelper::getRatio() });
+    mapCollisionPoints.push_back({401 * ViewHelper::getRatio() ,81 * ViewHelper::getRatio() });
+    mapCollisionPoints.push_back({375 * ViewHelper::getRatio() ,62 * ViewHelper::getRatio() });
+        mapCollisionPoints.push_back({460 * ViewHelper::getRatio() ,46 * ViewHelper::getRatio() });
+    mapCollisionPoints.push_back({572 * ViewHelper::getRatio() ,48 * ViewHelper::getRatio() });
+    mapCollisionPoints.push_back({634 * ViewHelper::getRatio() ,67 * ViewHelper::getRatio() });
+    mapCollisionPoints.push_back({728 * ViewHelper::getRatio() ,61 * ViewHelper::getRatio() });
+        mapCollisionPoints.push_back({805 * ViewHelper::getRatio() ,48 * ViewHelper::getRatio() });
+    mapCollisionPoints.push_back({901 * ViewHelper::getRatio() ,55 * ViewHelper::getRatio() });
+    mapCollisionPoints.push_back({948 * ViewHelper::getRatio() ,54 * ViewHelper::getRatio() });
+    mapCollisionPoints.push_back({983 * ViewHelper::getRatio() ,72 * ViewHelper::getRatio() });
+        mapCollisionPoints.push_back({1046 * ViewHelper::getRatio() ,133 * ViewHelper::getRatio() });
+    mapCollisionPoints.push_back({1068 * ViewHelper::getRatio() ,170 * ViewHelper::getRatio() });
+    mapCollisionPoints.push_back({1018 * ViewHelper::getRatio() ,192 * ViewHelper::getRatio() });
+    mapCollisionPoints.push_back({1010 * ViewHelper::getRatio() ,246 * ViewHelper::getRatio() });
+        mapCollisionPoints.push_back({1054 * ViewHelper::getRatio() ,272 * ViewHelper::getRatio() });
+    mapCollisionPoints.push_back({969 * ViewHelper::getRatio() ,274 * ViewHelper::getRatio() });
+    mapCollisionPoints.push_back({958 * ViewHelper::getRatio() ,251 * ViewHelper::getRatio() });
+    mapCollisionPoints.push_back({1004 * ViewHelper::getRatio() ,227 * ViewHelper::getRatio() });
+        mapCollisionPoints.push_back({991 * ViewHelper::getRatio() ,227 * ViewHelper::getRatio() });
+    mapCollisionPoints.push_back({1008 * ViewHelper::getRatio() ,188 * ViewHelper::getRatio() });
+    mapCollisionPoints.push_back({1026 * ViewHelper::getRatio() ,216 * ViewHelper::getRatio() });
+    mapCollisionPoints.push_back({1115 * ViewHelper::getRatio() ,213 * ViewHelper::getRatio() });
+        mapCollisionPoints.push_back({1164 * ViewHelper::getRatio() ,256 * ViewHelper::getRatio() });
+    mapCollisionPoints.push_back({1195 * ViewHelper::getRatio() ,291 * ViewHelper::getRatio() });
+    mapCollisionPoints.push_back({1243 * ViewHelper::getRatio() ,312 * ViewHelper::getRatio() });
+    mapCollisionPoints.push_back({1203 * ViewHelper::getRatio() ,321 * ViewHelper::getRatio() });
+        mapCollisionPoints.push_back({1195 * ViewHelper::getRatio() ,305 * ViewHelper::getRatio() });
+    mapCollisionPoints.push_back({1125 * ViewHelper::getRatio() ,302 * ViewHelper::getRatio() });
+    mapCollisionPoints.push_back({1045 * ViewHelper::getRatio() ,323 * ViewHelper::getRatio() });
+    mapCollisionPoints.push_back({964 * ViewHelper::getRatio() ,349 * ViewHelper::getRatio() });
+        mapCollisionPoints.push_back({981 * ViewHelper::getRatio() ,419 * ViewHelper::getRatio() });
+    mapCollisionPoints.push_back({1103 * ViewHelper::getRatio() ,474 * ViewHelper::getRatio() });
+    mapCollisionPoints.push_back({1130 * ViewHelper::getRatio() ,535 * ViewHelper::getRatio() });
+    mapCollisionPoints.push_back({997 * ViewHelper::getRatio() ,530 * ViewHelper::getRatio() });
+        mapCollisionPoints.push_back({982 * ViewHelper::getRatio() ,548 * ViewHelper::getRatio() });
+    mapCollisionPoints.push_back({841 * ViewHelper::getRatio() ,618 * ViewHelper::getRatio() });
+    mapCollisionPoints.push_back({732 * ViewHelper::getRatio() ,511 * ViewHelper::getRatio() });
+    mapCollisionPoints.push_back({603 * ViewHelper::getRatio() ,434 * ViewHelper::getRatio() });
+        mapCollisionPoints.push_back({305 * ViewHelper::getRatio() ,446 * ViewHelper::getRatio() });
+    mapCollisionPoints.push_back({285 * ViewHelper::getRatio() ,394 * ViewHelper::getRatio() });
+    mapCollisionPoints.push_back({255 * ViewHelper::getRatio() ,367 * ViewHelper::getRatio() });
+    mapCollisionPoints.push_back({232 * ViewHelper::getRatio() ,319 * ViewHelper::getRatio() });    mapCollisionPoints.push_back({204 * ViewHelper::getRatio() ,66 * ViewHelper::getRatio() });
+    mapCollisionPoints.push_back({173 * ViewHelper::getRatio() ,251 * ViewHelper::getRatio() });
+    mapCollisionPoints.push_back({136 * ViewHelper::getRatio() ,319 * ViewHelper::getRatio() });
+    mapCollisionPoints.push_back({173 * ViewHelper::getRatio() ,251 * ViewHelper::getRatio() });
+    mapCollisionPoints.push_back({203 * ViewHelper::getRatio() ,241 * ViewHelper::getRatio() });
+    mapCollisionPoints.push_back({164 * ViewHelper::getRatio() ,167 * ViewHelper::getRatio() });
+
 }
 
 
