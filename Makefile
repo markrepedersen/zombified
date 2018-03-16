@@ -5,7 +5,7 @@ BIN=main
 OBJ=$(BIN).o common.o legs.o arms.o water.o freeze.o player1.o player2.o toolboxSlot.o toolboxManager.o world.o button.o worldtexture.o viewHelper.o antidote.o MapGrid.o zombie.o KMeans.o limbsManager.o Limb.o
 
 default: build
-	
+
 build: $(BIN)
 
 test: build

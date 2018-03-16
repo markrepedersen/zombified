@@ -2,10 +2,14 @@
 
 #include "common.hpp"
 #include "viewHelper.hpp"
+#include "toolboxManager.hpp"
+#include <vector>
+#include <tuple>
+#include <unistd.h>
 
-class Water : public Renderable
+class Armour : public Renderable
 {
-    static Texture water_texture;
+    static Texture armour_texture;
 public:
     // Creates all the associated render resources and default transform
     bool init();
@@ -28,9 +32,13 @@ public:
     
     vec2 get_bounding_box()const;
     
+    bool collides_with(const Armour& armour);
+    
 private:
     bool m_is_alive; // True if the salmon is alive
     vec2 m_position; // Window coordinates
+	float m_rotation;
     vec2 m_scale; // 1.f in each dimension. 1.f is as big as the associated texture
+	size_t m_num_indices; // passed to glDrawElements
     float mass;
 };

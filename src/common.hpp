@@ -2,6 +2,7 @@
 
 // stlib
 #include <fstream> // stdout, stderr..
+#include <vector>
 
 // glfw
 #define NOMINMAX
@@ -80,6 +81,13 @@ float getDistancePointToLine(vec2 a, vec2 b, vec2 c); //line ab to point c
 vec2 subtractVectors(vec2 a, vec2 b);
 vec2 sumVectors(vec2 a, vec2 b);
 vec2 multiplyScalarVector(float a, vec2 b);
+bool onSegment(vec2, vec2, vec2);
+int orientation(vec2, vec2, vec2);
+bool intersect(vec2, vec2);
+bool isInsidePolygon(std::vector<vec2>, vec2);
+vec2 getRandomPointInMap(std::vector<vec2> mapCollisionPoints, vec2 screen);
+
+
 
 // OpenGL utilities
 // cleans error buffer

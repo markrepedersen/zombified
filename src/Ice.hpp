@@ -23,6 +23,8 @@ public:
     
     void set_scale(vec2 scale);
     
+    float get_mass()const;
+    
     // True if the salmon is alive
     bool is_alive()const;
     
@@ -41,6 +43,7 @@ private:
     
     //int = player 1 or 2
     int frozen;
+    float mass;
     
 
 };

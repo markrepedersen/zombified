@@ -57,6 +57,7 @@ bool Ice::init()
         return false;
 
     // Setting initial values
+    mass = 0.15;
     m_scale.x = -0.10f * ViewHelper::getRatio();
     m_scale.y = 0.10f * ViewHelper::getRatio();
     m_is_alive = true;
@@ -130,6 +131,12 @@ vec2 Ice::get_position()const
 }
 
 bool Ice::is_alive()const
+float Freeze::get_mass() const
+{
+    return mass;
+}
+
+bool Freeze::is_alive()const
 {
     return m_is_alive;
 }

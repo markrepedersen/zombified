@@ -9,6 +9,7 @@
 #include "zombie.hpp"
 #include "water.hpp"
 #include "Ice.hpp"
+#include "tree.hpp"
 #include "worldtexture.hpp"
 #include "viewHelper.hpp"
 #include "button.hpp"
@@ -16,6 +17,9 @@
 #include "MapGrid.h"
 #include "JPS.h"
 #include "ToolManager.h"
+#include "missile.hpp"
+#include "bomb.hpp"
+#include "armour.hpp"
 #include <vector>
 #include <Box2D.h>
 #include <SDL/SDL.h>
@@ -48,6 +52,22 @@ public:
 
 	// Should the game be over ?
 	bool is_over()const;
+    
+    void timer_update();
+    void check_add_tools(vec2 screen);
+    bool random_spawn(float elapsed_ms, vec2 screen);
+    void populateMapCollisionPoints();
+
+    void use_tool_1(int tool_number);
+    void use_tool_2(int tool_number);
+
+    //start button
+    //bool buttonclicked();
+    void explode();
+    void autoExplode();
+    void use_bomb(float ms);
+    //void init_use_bomb(float ms);
+    bool useBomb;
 
 	void timer_update();
 	void check_add_tools(vec2 screen);
@@ -57,6 +77,17 @@ public:
 	void use_tool_2(int tool_number);
 
 private:
+	// Generates a new turtle
+	bool spawn_arms();
+	bool spawn_legs();
+    bool spawn_freeze();
+    bool spawn_water();
+    bool spawn_missile();
+    bool spawn_armour();
+    bool spawn_bomb();
+
+    void shift_1();
+    void shift_2();
 	bool spawn_freeze();
 	bool spawn_water();
 
@@ -68,6 +99,13 @@ private:
 
 	void collect_freeze(Ice freeze, int player, float index);
 	void collect_water(Water water, int player, float index);
+	//void on_mouse_move(GLFWwindow* window, double xpos, double ypos);
+    void on_mouse_move(GLFWwindow* window, int button, int action, int mod);
+
+    void collect_legs(Legs leg, int player, float index);
+    void collect_bomb(Bomb bomb, int player, float index);
+    void collect_missile(Missile missile, int player, float index);
+    void collect_armour(Armour armour, int player, float index);
 
 	void add_to_broadphase(int w, int h, float posx, float posy, void*);
 
@@ -96,13 +134,33 @@ private:
 	Zombie m_zombie;
 	Antidote m_antidote;
 
-	std::vector<Ice> m_freeze;
-	std::vector<Water> m_water;
+    Tree m_tree;
+    Bomb t_bomb;
+    Bomb t2_bomb;
 
-	std::vector<Ice> m_freeze_collected_1;
-	std::vector<Water> m_water_collected_1;
-	std::vector<Ice> m_freeze_collected_2;
-	std::vector<Water> m_water_collected_2;
+    std::vector<Arms> m_arms;
+    std::vector<Legs> m_legs;
+    std::vector<Ice> m_freeze;
+    std::vector<Water> m_water;
+    std::vector<Missile> m_missile;
+    std::vector<Bomb> m_bomb;
+    std::vector<Armour> m_armour;
+
+    std::vector<Ice> m_freeze_collected_1;
+    std::vector<Water> m_water_collected_1;
+    std::vector<Legs> m_legs_collected_1;
+    std::vector<Ice> m_freeze_collected_2;
+    std::vector<Water> m_water_collected_2;
+    std::vector<Legs> m_legs_collected_2;
+    std::vector<Missile> m_missile_collected_1;
+    std::vector<Missile> m_missile_collected_2;
+    std::vector<Bomb> m_bomb_collected_1;
+    std::vector<Bomb> m_bomb_collected_2;
+    std::vector<Armour> m_armour_collected_1;
+    std::vector<Armour> m_armour_collected_2;
+
+    std::vector<Bomb> used_bombs;
+
 
 
 
@@ -110,11 +168,16 @@ private:
 	b2World *world;
 
 
+    std::vector<vec2> mapCollisionPoints;
+
 	float m_next_arm_spawn;
 	float m_next_leg_spawn;
 	float m_next_spawn;
 
 	int check_freeze_used;
+
+    int immobilize;
+    bool explosion;
 
 	std::default_random_engine m_rng;
 	std::uniform_real_distribution<float> m_dist; // default 0..1c

@@ -55,13 +55,14 @@
 //     // Loading shaders
 //     if (!effect.load_from_file(shader_path("textured.vs.glsl"), shader_path("textured.fs.glsl")))
 //         return false;
-    
+    // Setting initial values
+
 //     // Setting initial values
 //     m_scale.x = -0.25f * ViewHelper::getRatio();
 //     m_scale.y = 0.25f * ViewHelper::getRatio();;
 //     m_is_alive = true;
 //     position = { 50.f * ViewHelper::getRatio(), 650.f *ViewHelper::getRatio()};
-    
+
 //     return true;
 // }
 
@@ -108,29 +109,7 @@
 //     float color[] = { 1.f, 1.f, 1.f };
 //     glUniform3fv(color_uloc, 1, color);
 //     glUniformMatrix3fv(projection_uloc, 1, GL_FALSE, (float*)&projection);
-    
+
 //     // Drawing!
 //     glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_SHORT, nullptr);
-// }
-
-// bool Arms::is_alive()const
-// {
-//     return m_is_alive;
-// }
-
-// void Arms::destroy()
-// {
-//     glDeleteBuffers(1, &mesh.vbo);
-//     glDeleteBuffers(1, &mesh.ibo);
-//     glDeleteBuffers(1, &mesh.vao);
-    
-//     glDeleteShader(effect.vertex);
-//     glDeleteShader(effect.fragment);
-//     glDeleteShader(effect.program);
-// }
-
-// vec2 Arms::get_bounding_box()const
-// {
-//     // fabs is to avoid negative scale due to the facing direction
-//     return { std::fabs(m_scale.x) * arms_texture.width, std::fabs(m_scale.y) * arms_texture.height };
 // }
