@@ -139,7 +139,6 @@ vec2 Player2::get_position() const {
     return m_position;
 }
 
-bool Player2::is_alive() const {
 float Player2::get_mass() const
 {
     return mass;
@@ -162,11 +161,6 @@ void Player2::set_speed(float newSpeed)
 float Player2::get_speed_legs()const
 {
     return speedlegs;
-}
-void Player2::increase_speed_legs(float newSpeed)
-{
-    speedlegs = newSpeed;
-    set_speed(speedlegs);
 }
 
 bool Player2::get_blowback()const
@@ -191,9 +185,6 @@ bool Player2::is_alive()const
     return m_is_alive;
 }
 
-void Player2::update(float ms) {
-    const float PLAYER_SPEED = 500.f;
-    float step = PLAYER_SPEED * (ms / 1000);
 void Player2::update(float ms)
 {
     //const float PLAYER_SPEED = 200.f;
@@ -494,14 +485,6 @@ void Player2::animate(int direction)
     }
 }
 
-
-void Player2::increase_speed() {
-    m_speed = fmin(m_speed + 1, 4);
-}
-
-void Player2::decrease_speed() {
-    m_speed = fmax(m_speed - 1, 1);
-}
 
 // Simple bounding box collision check,
 bool Player2::collides_with(const Ice &freeze) {

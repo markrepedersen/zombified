@@ -130,13 +130,12 @@ vec2 Ice::get_position()const
     return m_position;
 }
 
-bool Ice::is_alive()const
-float Freeze::get_mass() const
+float Ice::get_mass() const
 {
     return mass;
 }
 
-bool Freeze::is_alive()const
+bool Ice::is_alive()const
 {
     return m_is_alive;
 }

@@ -37,7 +37,9 @@ public:
     float get_speed()const;
     void set_speed(float newSpeed);
     float get_speed_legs()const;
-    void increase_speed_legs(float newSpeed);
+    inline void increase_speed_legs(float newSpeed) {
+        speed += newSpeed;
+    }
     bool get_blowback()const;
     void set_blowback(bool newblowback);
     vec2 get_blowbackForce()const;
@@ -52,6 +54,8 @@ public:
 
     void increase_speed();
     void decrease_speed();
+
+    bool collides_with(const Limb& limb);
 
     bool collides_with(const Ice& freeze);
     bool collides_with(const Water& water);
@@ -69,7 +73,6 @@ private:
     vec2 m_scale; // 1.f in each dimension. 1.f is as big as the associated texture
     int m_speed;
     vec2 m_position;
-    bool m_keys[4];
 
     float mass;
     float speed;

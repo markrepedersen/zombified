@@ -26,7 +26,6 @@
 #include <SDL/SDL_mixer.h>
 #include <time.h>
 #include <random>
-#include <unordered_set>
 
 #define SDL_MAIN_HANDLED
 
@@ -69,17 +68,7 @@ public:
     //void init_use_bomb(float ms);
     bool useBomb;
 
-	void timer_update();
-	void check_add_tools(vec2 screen);
-	bool random_spawn(float elapsed_ms, vec2 screen);
-
-	void use_tool_1(int tool_number);
-	void use_tool_2(int tool_number);
-
 private:
-	// Generates a new turtle
-	bool spawn_arms();
-	bool spawn_legs();
     bool spawn_freeze();
     bool spawn_water();
     bool spawn_missile();
@@ -88,19 +77,12 @@ private:
 
     void shift_1();
     void shift_2();
-	bool spawn_freeze();
-	bool spawn_water();
-
-	void shift_1();
-	void shift_2();
 
 	void on_key(GLFWwindow*, int key, int, int action, int mod);
 	void on_mouse_move(GLFWwindow* window, int button, int action, int mod);
 
 	void collect_freeze(Ice freeze, int player, float index);
 	void collect_water(Water water, int player, float index);
-	//void on_mouse_move(GLFWwindow* window, double xpos, double ypos);
-    void on_mouse_move(GLFWwindow* window, int button, int action, int mod);
 
     void collect_legs(Legs leg, int player, float index);
     void collect_bomb(Bomb bomb, int player, float index);
@@ -161,12 +143,7 @@ private:
 
     std::vector<Bomb> used_bombs;
 
-
-
-
 	MapGrid *mapGrid;
-	b2World *world;
-
 
     std::vector<vec2> mapCollisionPoints;
 

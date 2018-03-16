@@ -86,14 +86,14 @@ bool LimbsManager::cluster_limbs() {
 //returns 2 if an arm collides with player 2
 //returns 3 if both players collides with an arm
 int LimbsManager::check_collision_with_players(Player1 *m_player1, Player2 *m_player2) {
-int limb_collided = 0;
+    int limb_collided = 0;
     int collided;
     for (auto it = limbs.begin(); it != limbs.end();) {
 
         if (m_player1->collides_with(*it)) {
 
             if ((*it).getLimbType() == "leg") {
-                m_player1->increase_speed();
+                m_player1->increase_speed_legs(10);
                 m_legs_total--;
             } else {
                 if (collided == 0) {
@@ -109,7 +109,7 @@ int limb_collided = 0;
         }
         if (m_player2->collides_with(*it)) {
             if ((*it).getLimbType() == "leg") {
-                m_player1->increase_speed();
+                m_player2->increase_speed_legs(10);
                 m_legs_total--;
             } else {
                 if (collided == 0) {
@@ -155,10 +155,10 @@ void LimbsManager::computePaths(float ms, MapGrid const mapGrid) {
         vec2 target = limb.getCurrentTarget();
 
         if (limb.getLastTarget() != target || !limb.isInitialized()) {
-            auto srcX = (unsigned) (limb.get_position().x/100);
-            auto srcY = (unsigned) (limb.get_position().y/100);
-            auto dstX = (unsigned) (target.x/100);
-            auto dstY = (unsigned) (target.y/100);
+            auto srcX = (unsigned) (limb.get_position().x / 100);
+            auto srcY = (unsigned) (limb.get_position().y / 100);
+            auto dstX = (unsigned) (target.x / 100);
+            auto dstY = (unsigned) (target.y / 100);
             JPS::findPath(path, mapGrid, srcX, srcY, dstX, dstY, 1);
             limb.setCurrentPath(path);
             limb.setInitialized(true);
@@ -173,8 +173,8 @@ void LimbsManager::computePaths(float ms, MapGrid const mapGrid) {
             }
             float step = 50 * (ms / 1000);
             vec2 dir;
-            dir.x = nextNode.x*100 - limb.get_position().x;
-            dir.y = nextNode.y*100 - limb.get_position().y;
+            dir.x = nextNode.x * 100 - limb.get_position().x;
+            dir.y = nextNode.y * 100 - limb.get_position().y;
 
             auto next_pos = scale(step, normalize(dir));
 
@@ -186,7 +186,7 @@ void LimbsManager::computePaths(float ms, MapGrid const mapGrid) {
 }
 
 void LimbsManager::destroy() {
-    for(auto &limb : limbs)
+    for (auto &limb : limbs)
         limb.destroy();
 
     limbs.clear();

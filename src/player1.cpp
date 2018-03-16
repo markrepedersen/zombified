@@ -159,6 +159,8 @@ vec2 Player1::get_position() const
 }
 
 bool Player1::is_alive() const {
+    return m_is_alive;
+}
 float Player1::get_mass() const
 {
     return mass;
@@ -194,14 +196,6 @@ void Player1::set_blowbackForce(vec2 newblowbackForce)
     blowbackForce = newblowbackForce;
 }
 
-bool Player1::is_alive() const
-{
-    return m_is_alive;
-}
-
-void Player1::update(float ms) {
-    const float PLAYER_SPEED = 600.f;
-    float step = PLAYER_SPEED * (ms / 1000);
 float Player1::get_speed_legs()const
 {
     return speedlegs;
@@ -212,9 +206,7 @@ void Player1::increase_speed_legs(float newSpeed)
     set_speed(speedlegs);
 }
 
-void Player1::update(float ms)
-{
-    //const float PLAYER_SPEED = 200.f;
+void Player1::update(float ms) {
     float step = speed * (ms / 1000);//PLAYER_SPEED * (ms / 1000);
 
     if (m_keys.front() == GLFW_KEY_UP)
@@ -561,10 +553,10 @@ bool Player1::collides_with(const Water &water) {
 
 }
 
-bool Player1::collides_with(const Arms& arm)
+bool Player1::collides_with(const Limb& limb)
 {
-    float dx = m_position.x - arm.get_position().x;
-    float dy = m_position.y - arm.get_position().y;
+    float dx = m_position.x - limb.get_position().x;
+    float dy = m_position.y - limb.get_position().y;
     float d_sq = dx * dx + dy * dy;
     float other_r = std::max(limb.get_bounding_box().x, limb.get_bounding_box().y);
     float my_r = std::max(m_scale.x, m_scale.y);

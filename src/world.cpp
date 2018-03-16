@@ -7,16 +7,16 @@
 
 namespace {
 //insert constants such as max_zombies,
-const size_t MAX_ARMS = 3;
-const size_t MAX_LEGS = 3;
-const size_t MAX_FREEZE = 1;
-const size_t MAX_MISSILE = 1;
-const size_t MAX_ARMOUR = 1;
-const size_t MAX_BOMB = 1;
-const size_t MAX_WATER = 1;
-const size_t ARM_DELAY_MS = 1000;
-const size_t LEG_DELAY_MS = 1000;
-const size_t DELAY_MS = 1000;
+    const size_t MAX_ARMS = 3;
+    const size_t MAX_LEGS = 3;
+    const size_t MAX_FREEZE = 1;
+    const size_t MAX_MISSILE = 1;
+    const size_t MAX_ARMOUR = 1;
+    const size_t MAX_BOMB = 1;
+    const size_t MAX_WATER = 1;
+    const size_t ARM_DELAY_MS = 1000;
+    const size_t LEG_DELAY_MS = 1000;
+    const size_t DELAY_MS = 1000;
 
     namespace {
         void glfw_err_cb(int error, const char *desc) {
@@ -78,8 +78,8 @@ bool World::init(vec2 screen) {
     /*!
      * Mark's playground so I remember where I put this stuff
      */
-    auto tileX = (unsigned) (screen.x * ViewHelper::getRatio()/100);
-    auto tileY = (unsigned) (screen.y * ViewHelper::getRatio()/100);
+    auto tileX = (unsigned) (screen.x * ViewHelper::getRatio() / 100);
+    auto tileY = (unsigned) (screen.y * ViewHelper::getRatio() / 100);
     mapGrid = new MapGrid(tileX, tileY);
     /*!
      * End of Mark's playground
@@ -101,41 +101,28 @@ void World::destroy() {
     m_player1.destroy();
     m_player2.destroy();
     m_zombie.destroy();
-    for (auto &freeze : m_freeze)
     m_tree.destroy();
-    for (auto& legs : m_legs)
-     	legs.destroy();
-    for (auto& arms : m_arms)
-     	arms.destroy();
-    for (auto& freeze : m_freeze)
+    for (auto &freeze : m_freeze)
         freeze.destroy();
     for (auto &water : m_water)
         water.destroy();
-    for (auto& missile : m_missile)
+    for (auto &missile : m_missile)
         missile.destroy();
-    for (auto& armour : m_armour)
+    for (auto &armour : m_armour)
         armour.destroy();
-    for (auto& bomb : m_bomb)
+    for (auto &bomb : m_bomb)
         bomb.destroy();
     for (auto &freeze_collected : m_freeze_collected_1)
         freeze_collected.destroy();
     for (auto &water_collected : m_water_collected_1)
         water_collected.destroy();
-    for (auto &legs_collected : m_legs_collected_1)
-        legs_collected.destroy();
     for (auto &freeze_collected : m_freeze_collected_2)
         freeze_collected.destroy();
     for (auto &water_collected : m_water_collected_2)
         water_collected.destroy();
-
-    for (auto &legs_collected : m_legs_collected_2)
-        legs_collected.destroy();
-
-    for (auto& bomb_used : used_bombs)
+    for (auto &bomb_used : used_bombs)
         bomb_used.destroy();
 
-    m_legs.clear();
-    m_arms.clear();
     m_freeze.clear();
     m_water.clear();
     m_missile.clear();
@@ -145,10 +132,6 @@ void World::destroy() {
     m_freeze_collected_2.clear();
     m_water_collected_1.clear();
     m_water_collected_2.clear();
-    m_legs_collected_1.clear();
-    m_legs_collected_2.clear();
-
-    //glfwDestroyWindow(m_window);
 }
 
 // Update our game world
@@ -179,7 +162,7 @@ bool World::update(float elapsed_ms) {
             //t2_bomb.init();
             //t2_bomb.set_position({500.f, 500.f});
             useBomb = false;
-            m_player1.init(screen) && m_player2.init(screen)&& m_antidote.init(screen);
+            m_player1.init(screen) && m_player2.init(screen) && m_antidote.init(screen);
         }
     }
 
@@ -274,19 +257,19 @@ void World::draw() {
         toolManager.draw_tools(projection_2D);
 
         //TODO: Drawing entities
-        for (auto &arms : m_arms)
-            arms.draw(projection_2D);
-        for (auto &legs : m_legs)
-            legs.draw(projection_2D);
+//        for (auto &arms : m_arms)
+//            arms.draw(projection_2D);
+//        for (auto &legs : m_legs)
+//            legs.draw(projection_2D);
         for (auto &freeze : m_freeze)
             freeze.draw(projection_2D);
         for (auto &water : m_water)
             water.draw(projection_2D);
-        for(auto &missile : m_missile)
+        for (auto &missile : m_missile)
             missile.draw(projection_2D);
-        for(auto &armour : m_armour)
+        for (auto &armour : m_armour)
             armour.draw(projection_2D);
-        for(auto &bomb : m_bomb)
+        for (auto &bomb : m_bomb)
             bomb.draw(projection_2D);
 
         for (auto &water_collected : m_water_collected_1)
@@ -299,17 +282,17 @@ void World::draw() {
         for (auto &freeze_collected : m_freeze_collected_2)
             freeze_collected.draw(projection_2D);
 
-        for(auto &missile_collected : m_missile_collected_1)
+        for (auto &missile_collected : m_missile_collected_1)
             missile_collected.draw(projection_2D);
-        for(auto &missile_collected : m_missile_collected_2)
+        for (auto &missile_collected : m_missile_collected_2)
             missile_collected.draw(projection_2D);
-        for(auto &bomb_collected : m_bomb_collected_1)
+        for (auto &bomb_collected : m_bomb_collected_1)
             bomb_collected.draw(projection_2D);
-        for(auto &bomb_collected : m_bomb_collected_2)
+        for (auto &bomb_collected : m_bomb_collected_2)
             bomb_collected.draw(projection_2D);
-        for(auto &armour_collected : m_armour_collected_1)
+        for (auto &armour_collected : m_armour_collected_1)
             armour_collected.draw(projection_2D);
-        for(auto &armour_collected : m_armour_collected_2)
+        for (auto &armour_collected : m_armour_collected_2)
             armour_collected.draw(projection_2D);
 
         for (auto &leg_collected : m_legs_collected_1)
@@ -318,7 +301,7 @@ void World::draw() {
             leg_collected.draw(projection_2D);
 
 
-        for(auto &bomb_used : used_bombs)
+        for (auto &bomb_used : used_bombs)
             bomb_used.draw(projection_2D);
 
         m_player1.draw(projection_2D);
@@ -333,15 +316,15 @@ bool World::is_over() const {
 }
 
 // On key callback
-void World::on_key(GLFWwindow *, int key, int, int action, int mod)
-{
+void World::on_key(GLFWwindow *, int key, int, int action, int mod) {
 
     // player1 actions
-    if (immobilize != 1 && !m_player1.get_blowback())
-    {
-        if (action == GLFW_PRESS && (key == GLFW_KEY_UP || key == GLFW_KEY_LEFT || key == GLFW_KEY_DOWN || key == GLFW_KEY_RIGHT))
+    if (immobilize != 1 && !m_player1.get_blowback()) {
+        if (action == GLFW_PRESS &&
+            (key == GLFW_KEY_UP || key == GLFW_KEY_LEFT || key == GLFW_KEY_DOWN || key == GLFW_KEY_RIGHT))
             m_player1.set_key(key, true);
-        if (action == GLFW_RELEASE && (key == GLFW_KEY_UP || key == GLFW_KEY_LEFT || key == GLFW_KEY_DOWN || key == GLFW_KEY_RIGHT))
+        if (action == GLFW_RELEASE &&
+            (key == GLFW_KEY_UP || key == GLFW_KEY_LEFT || key == GLFW_KEY_DOWN || key == GLFW_KEY_RIGHT))
             m_player1.set_key(key, false);
         if (action == GLFW_PRESS && key == GLFW_KEY_RIGHT_SHIFT)
             use_tool_1(m_toolboxManager.useItem(1));
@@ -353,8 +336,7 @@ void World::on_key(GLFWwindow *, int key, int, int action, int mod)
         m_player1.set_key(GLFW_KEY_LEFT, false);
         m_player1.set_key(GLFW_KEY_DOWN, false);
         m_player1.set_key(GLFW_KEY_RIGHT, false);
-        if((int)difftime( time(0), freezeTime) >= 5)
-        {
+        if ((int) difftime(time(0), freezeTime) >= 5) {
             immobilize = 0;
             freezeTime = 0;
             //fprintf(stderr, "start");
@@ -363,8 +345,7 @@ void World::on_key(GLFWwindow *, int key, int, int action, int mod)
     }
 
     // player2 actions
-    if (immobilize != 2 && !m_player2.get_blowback())
-    {
+    if (immobilize != 2 && !m_player2.get_blowback()) {
         if (action == GLFW_PRESS && key == GLFW_KEY_W)
             m_player2.set_key(0, true);
         if (action == GLFW_PRESS && key == GLFW_KEY_A)
@@ -393,8 +374,7 @@ void World::on_key(GLFWwindow *, int key, int, int action, int mod)
         m_player2.set_key(1, false);
         m_player2.set_key(2, false);
         m_player2.set_key(3, false);
-        if((int)difftime( time(0), freezeTime) >= 5)
-        {
+        if ((int) difftime(time(0), freezeTime) >= 5) {
             immobilize = 0;
             freezeTime = 0;
             //fprintf(stderr, "start");
@@ -425,11 +405,9 @@ bool World::spawn_freeze() {
     return false;
 }
 
-bool World::spawn_missile()
-{
+bool World::spawn_missile() {
     Missile missile;
-    if (missile.init())
-    {
+    if (missile.init()) {
         m_missile.emplace_back(missile);
         return true;
     }
@@ -437,11 +415,9 @@ bool World::spawn_missile()
     return false;
 }
 
-bool World::spawn_armour()
-{
+bool World::spawn_armour() {
     Armour armour;
-    if (armour.init())
-    {
+    if (armour.init()) {
         m_armour.emplace_back(armour);
         return true;
     }
@@ -449,11 +425,9 @@ bool World::spawn_armour()
     return false;
 }
 
-bool World::spawn_bomb()
-{
+bool World::spawn_bomb() {
     Bomb bomb;
-    if (bomb.init())
-    {
+    if (bomb.init()) {
         m_bomb.emplace_back(bomb);
         return true;
     }
@@ -521,334 +495,185 @@ bool World::random_spawn(float elapsed_ms, vec2 screen) {
 }
 
 //==== ADD ITEMS TO TOOLBOX =====
-void World::check_add_tools(vec2 screen)
-{
+void World::check_add_tools(vec2 screen) {
+//TODO: check add tools with limbs
 
     int collided = 0;
 
-//=================check for freeze collision
-    //  int freezecount = 0;
     std::vector<Ice>::iterator itf;
-    for (itf = m_freeze.begin(); itf != m_freeze.end();)
-    {
+    for (itf = m_freeze.begin(); itf != m_freeze.end();) {
         if (m_player1.collides_with(*itf))
             collided = 1;
         if (m_player2.collides_with(*itf))
             collided = 2;
 
-        if (collided != 0)
-        {
-            //fprintf(stderr, "collided");
-            float index = (float)m_toolboxManager.addItem(1, collided);
-            if ((int)index != 100)
-            {
+        if (collided != 0) {
+            float index = (float) m_toolboxManager.addItem(1, collided);
+            if ((int) index != 100) {
                 itf = m_freeze.erase(itf);//m_freeze.begin()+freezecount);
                 collect_freeze(*itf, collided, index);
-                //fprintf(stderr, "freeze count %d \n", freezecount);
-                if(collided == 1)
-                {
-                    m_player1.set_mass(m_player1.get_mass()+itf->get_mass());
-                    //fprintf(stderr, "massp1 added: %f\n", m_player1.get_mass());
+                if (collided == 1) {
+                    m_player1.set_mass(m_player1.get_mass() + itf->get_mass());
                 }
-                if (collided == 2)
-                {
-                    m_player2.set_mass(m_player2.get_mass()+itf->get_mass());
-                    //fprintf(stderr, "massp2 added: %f\n", m_player2.get_mass());
+                if (collided == 2) {
+                    m_player2.set_mass(m_player2.get_mass() + itf->get_mass());
                 }
 
-            }
-            else
+            } else
                 ++itf;
 
-        }
-        else
+        } else
             ++itf;
-        // freezecount++;
         collided = 0;
     }
 
-//=================check for water collision
-    // int watercount = 0;
-    //for (auto& water : m_water)
     std::vector<Water>::iterator itw;
-    for (itw = m_water.begin(); itw != m_water.end();)
-    {
+    for (itw = m_water.begin(); itw != m_water.end();) {
         if (m_player1.collides_with(*itw))//water))
             collided = 1;
         if (m_player2.collides_with(*itw))//water))
             collided = 2;
 
-        if (collided != 0)
-        {
-            //fprintf(stderr, "collided");
-            float index = (float)m_toolboxManager.addItem(2, collided);
-            if ((int)index != 100)
-            {
-                itw = m_water.erase(itw);//m_water.begin()+watercount);
+        if (collided != 0) {
+            float index = (float) m_toolboxManager.addItem(2, collided);
+            if ((int) index != 100) {
+                itw = m_water.erase(itw);
                 collect_water(*itw, collided, index);
-                //fprintf(stderr, "water count %d \n", watercount);
-                if(collided == 1)
-                {
-                    m_player1.set_mass(m_player1.get_mass()+itw->get_mass());
-                    //fprintf(stderr, "massp1 added: %f\n", m_player1.get_mass());
+                if (collided == 1) {
+                    m_player1.set_mass(m_player1.get_mass() + itw->get_mass());
                 }
-                if (collided == 2)
-                {
-                    m_player2.set_mass(m_player2.get_mass()+itw->get_mass());
-                    //fprintf(stderr, "massp2 added: %f\n", m_player2.get_mass());
+                if (collided == 2) {
+                    m_player2.set_mass(m_player2.get_mass() + itw->get_mass());
                 }
-            }
-            else
-                //fprintf(stderr, "stuck");
+            } else
                 ++itw;
-        }
-        else
+        } else
             ++itw;
-        //watercount++;
         collided = 0;
     }
-
-//=================check for bomb collision
     std::vector<Bomb>::iterator itb;
-    for (itb = m_bomb.begin(); itb != m_bomb.end();)
-    {
+    for (itb = m_bomb.begin(); itb != m_bomb.end();) {
         if (m_player1.collides_with(*itb))
             collided = 1;
         if (m_player2.collides_with(*itb))
             collided = 2;
 
-        if (collided != 0)
-        {
-            //fprintf(stderr, "collided");
-            float index = (float)m_toolboxManager.addItem(5, collided);
-            if ((int)index != 100)
-            {
-                itb = m_bomb.erase(itb);//m_water.begin()+watercount);
+        if (collided != 0) {
+            float index = (float) m_toolboxManager.addItem(5, collided);
+            if ((int) index != 100) {
+                itb = m_bomb.erase(itb);
                 collect_bomb(*itb, collided, index);
-                //fprintf(stderr, "water count %d \n", watercount);
-                if(collided == 1)
-                {
-                    m_player1.set_mass(m_player1.get_mass()+itb->get_mass());
-                    //fprintf(stderr, "massp1 added: %f\n", m_player1.get_mass());
+                if (collided == 1) {
+                    m_player1.set_mass(m_player1.get_mass() + itb->get_mass());
                 }
-                if (collided == 2)
-                {
-                    m_player2.set_mass(m_player2.get_mass()+itb->get_mass());
-                    //fprintf(stderr, "massp2 added: %f\n", m_player2.get_mass());
+                if (collided == 2) {
+                    m_player2.set_mass(m_player2.get_mass() + itb->get_mass());
                 }
-            }
-            else
+            } else
                 ++itb;
-        }
-        else
+        } else
             ++itb;
         collided = 0;
     }
 
-//=================check for missile collision
     std::vector<Missile>::iterator itm;
-    for (itm = m_missile.begin(); itm != m_missile.end();)
-    {
+    for (itm = m_missile.begin(); itm != m_missile.end();) {
         if (m_player1.collides_with(*itm))
             collided = 1;
         if (m_player2.collides_with(*itm))
             collided = 2;
 
-        if (collided != 0)
-        {
-            //fprintf(stderr, "collided");
-            float index = (float)m_toolboxManager.addItem(6, collided);
-            if ((int)index != 100)
-            {
-                itm = m_missile.erase(itm);//m_water.begin()+watercount);
+        if (collided != 0) {
+            float index = (float) m_toolboxManager.addItem(6, collided);
+            if ((int) index != 100) {
+                itm = m_missile.erase(itm);
                 collect_missile(*itm, collided, index);
-                //fprintf(stderr, "water count %d \n", watercount);
-                if(collided == 1)
-                {
-                    m_player1.set_mass(m_player1.get_mass()+itm->get_mass());
-                    //fprintf(stderr, "massp1 added: %f\n", m_player1.get_mass());
+                if (collided == 1) {
+                    m_player1.set_mass(m_player1.get_mass() + itm->get_mass());
                 }
-                if (collided == 2)
-                {
-                    m_player2.set_mass(m_player2.get_mass()+itm->get_mass());
-                    //fprintf(stderr, "massp2 added: %f\n", m_player2.get_mass());
+                if (collided == 2) {
+                    m_player2.set_mass(m_player2.get_mass() + itm->get_mass());
                 }
-            }
-            else
+            } else
                 ++itm;
-        }
-        else
+        } else
             ++itm;
         collided = 0;
     }
 
 //=================check for armour collision
     std::vector<Armour>::iterator ita;
-    for (ita = m_armour.begin(); ita != m_armour.end();)
-    {
+    for (ita = m_armour.begin(); ita != m_armour.end();) {
         if (m_player1.collides_with(*ita))
             collided = 1;
         if (m_player2.collides_with(*ita))
             collided = 2;
 
-        if (collided != 0)
-        {
-            //fprintf(stderr, "collided");
-            float index = (float)m_toolboxManager.addItem(7, collided);
-            if ((int)index != 100)
-            {
+        if (collided != 0) {
+            float index = (float) m_toolboxManager.addItem(7, collided);
+            if ((int) index != 100) {
                 ita = m_armour.erase(ita);//m_water.begin()+watercount);
                 collect_armour(*ita, collided, index);
-                //fprintf(stderr, "water count %d \n", watercount);
-                if(collided == 1)
-                {
-                    m_player1.set_mass(m_player1.get_mass()+ita->get_mass());
-                    //fprintf(stderr, "massp1 added: %f\n", m_player1.get_mass());
+                if (collided == 1) {
+                    m_player1.set_mass(m_player1.get_mass() + ita->get_mass());
                 }
-                if (collided == 2)
-                {
-                    m_player2.set_mass(m_player2.get_mass()+ita->get_mass());
-                    //fprintf(stderr, "massp2 added: %f\n", m_player2.get_mass());
+                if (collided == 2) {
+                    m_player2.set_mass(m_player2.get_mass() + ita->get_mass());
                 }
-            }
-            else
+            } else
                 ++ita;
-        }
-        else
+        } else
             ++ita;
         collided = 0;
     }
-
-//=================check for leg collision
-    std::vector<Legs>::iterator itl;
-    for (itl = m_legs.begin(); itl != m_legs.end();)
-    {
-        if (m_player1.collides_with(*itl)) //arm))
-            collided = 1;
-        if (m_player2.collides_with(*itl)) //arm))
-            collided = 2;
-
-
-        if (collided != 0)
-        {
-            float index = (float)m_toolboxManager.addItem(4, collided);
-            if ((int)index != 100)
-            {
-                itl = m_legs.erase(itl);//m_water.begin()+watercount);
-                collect_legs(*itl, collided, index);
-                if(collided == 1)
-                {
-                    m_player1.increase_speed_legs(m_player1.get_speed()+20);
-                    m_player1.set_mass(itl->get_mass()+m_player1.get_mass());
-                    //fprintf(stderr, "massp1 added: %f\n", m_player1.get_mass());
-                }
-                if (collided == 2)
-                {
-                    m_player2.increase_speed_legs(m_player2.get_speed()+20);
-                    m_player2.set_mass(m_player2.get_mass()+itl->get_mass());
-                    //fprintf(stderr, "massp2 added: %f\n", m_player2.get_mass());
-                }
-                //fprintf(stderr, "legp1 added: %f\n", m_player1.get_speed());
-                //fprintf(stderr, "legp2 added: %f\n", m_player2.get_speed());
-            }
-
-            else
-                ++itl;
-
-        }
-        else
-            ++itl;
-        // armcount++;
-        collided = 0;
-    }
-
-//=================check for arm collision
-    // int armcount = 0;
-    // std::vector<int> erase;
-    // for (auto& arm : m_arms)
-    std::vector<Arms>::iterator it;
-    for (it = m_arms.begin(); it != m_arms.end();)
-    {
-        if (m_player1.collides_with(*it)) //arm))
-            collided = 1;
-        if (m_player2.collides_with(*it)) //arm))
-            collided = 2;
-
-
-        if (collided != 0)
-        {
-            //fprintf(stderr, "collided");
-            if(m_toolboxManager.addSlot(collided))
-            {
-                //erase.push_back(armcount);
-                it = m_arms.erase(it);
-                it->destroy();
-                //fprintf(stderr, "arm count %d \n", armcount);
-
-            }
-            else
-                ++it;
-
-        }
-        else
-            ++it;
-        // armcount++;
-        collided = 0;
-    }
-
-//=================check for antidote collision
 
     if (m_player1.collides_with(m_antidote))
         collided = 1;
     if (m_player2.collides_with(m_antidote))
         collided = 2;
-    if (collided != 0 && m_antidote.belongs_to == 0)
-    {
-        float index = (float)m_toolboxManager.addItem(3, collided);
-        if ((int)index != 100)
-        {
+    if (collided != 0 && m_antidote.belongs_to == 0) {
+        float index = (float) m_toolboxManager.addItem(3, collided);
+        if ((int) index != 100) {
             if (collided == 1)
                 m_antidote.belongs_to = 1;
             if (collided == 2)
                 m_antidote.belongs_to = 2;
             m_antidote.set_position(m_toolboxManager.new_tool_position(index, collided));
             m_antidote.set_scale({-0.08f * ViewHelper::getRatio(), 0.08f * ViewHelper::getRatio()});
-            //fprintf(stderr, "antidote belongs to %d \n", m_antidote.belongs_to);
         }
-        collided = 0;
     }
 
-
-
+    collided = m_limbsManager.check_collision_with_players(&m_player1, &m_player2);
+    if (collided != 0) {
+        if (collided <= 2) {
+            m_toolboxManager.addSlot(collided);
+        } else {
+            m_toolboxManager.addSlot(1);
+            m_toolboxManager.addSlot(2);
+        }
+    }
 }
 
-void World::autoExplode()
-{
-
-    //explodeTime = time(0);
-    //m_player1.set_speed(PLAYER_SPEED_NORMAL);
-    //fprintf(stderr, "p1 speed %f\n", m_player1.get_speed());
+void World::autoExplode() {
     float force_p1 = used_bombs.front().get_force(m_player1.get_mass(),
-                                  m_player1.get_speed(),
-                                  m_player1.get_position());
+                                                  m_player1.get_speed(),
+                                                  m_player1.get_position());
 
     float force_p2 = used_bombs.front().get_force(m_player2.get_mass(),
-                                   m_player2.get_speed(),
-                                   m_player2.get_position());
-    //fprintf(stderr, "force1 %f\n", force_p1);
-    //fprintf(stderr, "force2 %f\n", force_p2);
-    if (force_p1 > 0)
-    {
+                                                  m_player2.get_speed(),
+                                                  m_player2.get_position());
+    if (force_p1 > 0) {
         m_player1.set_blowback(true);
         m_player1.set_speed(force_p1);
-        m_player1.set_blowbackForce({(m_player1.get_position().x - used_bombs.front().get_position().x),(m_player1.get_position().y - used_bombs.front().get_position().y)});
+        m_player1.set_blowbackForce({(m_player1.get_position().x - used_bombs.front().get_position().x),
+                                     (m_player1.get_position().y - used_bombs.front().get_position().y)});
         explosion = true;
     }
-    if (force_p2 > 0)
-    {
+    if (force_p2 > 0) {
         m_player2.set_blowback(true);
         m_player2.set_speed(force_p2);
-        m_player2.set_blowbackForce({(m_player2.get_position().x - used_bombs.front().get_position().x),(m_player2.get_position().y - used_bombs.front().get_position().y)});
+        m_player2.set_blowbackForce({(m_player2.get_position().x - used_bombs.front().get_position().x),
+                                     (m_player2.get_position().y - used_bombs.front().get_position().y)});
         explosion = true;
     }
 
@@ -856,16 +681,13 @@ void World::autoExplode()
 
 }
 
-void World::explode()
-{
-    //fprintf(stderr, "%f", m_player1.get_speed()*0.8);
-    if(m_player1.get_blowback())
-        m_player1.set_speed(m_player1.get_speed()*0.9);
+void World::explode() {
+    if (m_player1.get_blowback())
+        m_player1.set_speed(m_player1.get_speed() * 0.9);
     if (m_player2.get_blowback())
-        m_player2.set_speed(m_player2.get_speed()*0.9);
+        m_player2.set_speed(m_player2.get_speed() * 0.9);
 
-    if(m_player1.get_speed() <= 3 || m_player2.get_speed() <= 3)
-    {
+    if (m_player1.get_speed() <= 3 || m_player2.get_speed() <= 3) {
         m_player1.set_blowback(false);
         explosion = false;
         m_player1.set_speed(m_player1.get_speed_legs());
@@ -875,37 +697,22 @@ void World::explode()
     }
 }
 
-void World::use_bomb(float ms)
-{
-    //t_bomb.move({t_bomb.get_speed().x *(ms/1000), t_bomb.get_speed().y *(ms/1000)});
-    //t_bomb.checkBoundaryCollision(1100, 550, ms);   //600, 600, ms);//1100, 550, ms);
-
-    //t2_bomb.move({t2_bomb.get_speed().x *(ms/1000), t2_bomb.get_speed().y *(ms/1000)});
-    //t2_bomb.checkBoundaryCollision(1100, 550, ms);   //600, 600, ms);//1100, 550, ms);
-
-    //t_bomb.checkCollision(t2_bomb, ms);
-        //for (auto& bomb_used : used_bombs)
+void World::use_bomb(float ms) {
     std::vector<Bomb>::iterator itbomb;
     std::vector<Bomb>::iterator checkbomb;
-    for (itbomb = used_bombs.begin(); itbomb != used_bombs.end();)
-    {
-        itbomb->set_speed({itbomb->get_speed().x*(0.997f), itbomb->get_speed().y*(0.997f)});
+    for (itbomb = used_bombs.begin(); itbomb != used_bombs.end();) {
+        itbomb->set_speed({itbomb->get_speed().x * (0.997f), itbomb->get_speed().y * (0.997f)});
 
-        if(std::fabs(itbomb->get_speed().x) <= 10 && std::fabs(itbomb->get_speed().y) <= 10)
-        {
+        if (std::fabs(itbomb->get_speed().x) <= 10 && std::fabs(itbomb->get_speed().y) <= 10) {
             itbomb->set_speed({0.f, 0.f});
             autoExplode();
-        }
-        else
-        {
-            itbomb->move({itbomb->get_speed().x * (ms/1000),
-                itbomb->get_speed().y * (ms/1000)});
-            itbomb->checkBoundaryCollision(1100,500,ms);
+        } else {
+            itbomb->move({itbomb->get_speed().x * (ms / 1000),
+                          itbomb->get_speed().y * (ms / 1000)});
+            itbomb->checkBoundaryCollision(1100, 500, ms);
 
-            for (checkbomb = used_bombs.begin(); checkbomb != used_bombs.end()-1; ++checkbomb)
-            {
-                if (checkbomb != itbomb)
-                {
+            for (checkbomb = used_bombs.begin(); checkbomb != used_bombs.end() - 1; ++checkbomb) {
+                if (checkbomb != itbomb) {
                     if (itbomb->collides_with(*checkbomb))
                         itbomb->checkCollision(*checkbomb, ms);
                 }
@@ -917,9 +724,6 @@ void World::use_bomb(float ms)
     }
 
 }
-
-
-
 // =========== COLLECT AND SET TOOLS ===================
 void World::collect_freeze(Ice freeze, int player, float index) {
     if (player == 1) {
@@ -952,17 +756,14 @@ void World::collect_water(Water water, int player, float index) {
     }
 }
 
-void World::collect_bomb(Bomb bomb, int player, float index)
-{
-    if (player == 1)
-    {
+void World::collect_bomb(Bomb bomb, int player, float index) {
+    if (player == 1) {
         m_bomb_collected_1.emplace_back(bomb);
         Bomb &new_bomb = m_bomb_collected_1.back();
         new_bomb.set_position(m_toolboxManager.new_tool_position(index, player));
         //new_bomb.set_scale({-0.08f * ViewHelper::getRatio(), 0.08f * ViewHelper::getRatio()});
     }
-    if (player == 2)
-    {
+    if (player == 2) {
         m_bomb_collected_2.emplace_back(bomb);
         Bomb &new_bomb = m_bomb_collected_2.back();
         new_bomb.set_position(m_toolboxManager.new_tool_position(index, player));
@@ -970,17 +771,14 @@ void World::collect_bomb(Bomb bomb, int player, float index)
     }
 }
 
-void World::collect_armour(Armour armour, int player, float index)
-{
-    if (player == 1)
-    {
+void World::collect_armour(Armour armour, int player, float index) {
+    if (player == 1) {
         m_armour_collected_1.emplace_back(armour);
         Armour &new_armour = m_armour_collected_1.back();
         new_armour.set_position(m_toolboxManager.new_tool_position(index, player));
         new_armour.set_scale({-8.5f * ViewHelper::getRatio(), 8.5f * ViewHelper::getRatio()});
     }
-    if (player == 2)
-    {
+    if (player == 2) {
         m_armour_collected_2.emplace_back(armour);
         Armour &new_armour = m_armour_collected_2.back();
         new_armour.set_position(m_toolboxManager.new_tool_position(index, player));
@@ -988,17 +786,14 @@ void World::collect_armour(Armour armour, int player, float index)
     }
 }
 
-void World::collect_missile(Missile missile, int player, float index)
-{
-    if (player == 1)
-    {
+void World::collect_missile(Missile missile, int player, float index) {
+    if (player == 1) {
         m_missile_collected_1.emplace_back(missile);
         Missile &new_missile = m_missile_collected_1.back();
         new_missile.set_position(m_toolboxManager.new_tool_position(index, player));
         new_missile.set_scale({-3.5f * ViewHelper::getRatio(), 3.5f * ViewHelper::getRatio()});
     }
-    if (player == 2)
-    {
+    if (player == 2) {
         m_missile_collected_2.emplace_back(missile);
         Missile &new_missile = m_missile_collected_2.back();
         new_missile.set_position(m_toolboxManager.new_tool_position(index, player));
@@ -1006,17 +801,14 @@ void World::collect_missile(Missile missile, int player, float index)
     }
 }
 
-void World::collect_legs(Legs leg, int player, float index)
-{
-    if (player == 1)
-    {
+void World::collect_legs(Legs leg, int player, float index) {
+    if (player == 1) {
         m_legs_collected_1.emplace_back(leg);
         Legs &new_leg = m_legs_collected_1.back();
         new_leg.set_position(m_toolboxManager.new_tool_position(index, player));
         //new_leg.set_scale({-0.25f * ViewHelper::getRatio(), 0.25f * ViewHelper::getRatio()});
     }
-    if (player == 2)
-    {
+    if (player == 2) {
         m_legs_collected_2.emplace_back(leg);
         Legs &new_leg = m_legs_collected_2.back();
         new_leg.set_position(m_toolboxManager.new_tool_position(index, player));
@@ -1025,68 +817,59 @@ void World::collect_legs(Legs leg, int player, float index)
 }
 
 
-void World::use_tool_1(int tool_number)
-{
-    if (tool_number == 1)
-    {
+void World::use_tool_1(int tool_number) {
+    if (tool_number == 1) {
         immobilize = m_freeze_collected_1.front().use_freeze(2);
         freezeTime = time(0);
-        m_player1.set_mass(m_player1.get_mass()-m_freeze_collected_1.begin()->get_mass());
+        m_player1.set_mass(m_player1.get_mass() - m_freeze_collected_1.begin()->get_mass());
         //fprintf(stderr, "massp1 decreased: %f\n", m_player1.get_mass());
         m_freeze_collected_1.erase(m_freeze_collected_1.begin());
         m_toolboxManager.decreaseSlot(1);
 
     }
-    if (tool_number == 2)
-    {
-        m_player1.set_mass(m_player1.get_mass()-m_water_collected_1.begin()->get_mass());
+    if (tool_number == 2) {
+        m_player1.set_mass(m_player1.get_mass() - m_water_collected_1.begin()->get_mass());
         m_water_collected_1.erase(m_water_collected_1.begin());
         m_toolboxManager.decreaseSlot(1);
     }
 
     //antidote is the first tool, move it to the back
-    if (tool_number == 3)
-    {
+    if (tool_number == 3) {
         m_toolboxManager.decreaseSlot(1);
         m_toolboxManager.addSlot(1);
 
-        float index = (float)m_toolboxManager.addItem(3, 1);
-        if ((int)index != 100)
-        {
+        float index = (float) m_toolboxManager.addItem(3, 1);
+        if ((int) index != 100) {
             m_antidote.set_position(m_toolboxManager.new_tool_position(index, 1));
             m_antidote.set_scale({-0.08f * ViewHelper::getRatio(), 0.08f * ViewHelper::getRatio()});
         }
     }
-    if (tool_number == 4)
-    {
-        m_player1.set_mass(m_player1.get_mass()-m_legs_collected_1.begin()->get_mass());
+    if (tool_number == 4) {
+        m_player1.set_mass(m_player1.get_mass() - m_legs_collected_1.begin()->get_mass());
         m_legs_collected_1.erase(m_legs_collected_1.begin());
         m_toolboxManager.decreaseSlot(1);
-        m_player1.increase_speed_legs(m_player1.get_speed()-20);
+        m_player1.increase_speed_legs(m_player1.get_speed() - 20);
         //fprintf(stderr, "legp1 deleted: %f\n", m_player1.get_speed());
     }
-    if (tool_number == 5)
-    {
+    if (tool_number == 5) {
         used_bombs.emplace_back(m_bomb_collected_1.front());
         Bomb &use_bomb = used_bombs.back();
         m_bomb_collected_1.erase(m_bomb_collected_1.begin());
 
-        m_player1.set_mass(m_player1.get_mass()- use_bomb.get_mass());
+        m_player1.set_mass(m_player1.get_mass() - use_bomb.get_mass());
         use_bomb.set_position(m_player1.get_position());
         useBomb = true;
         use_bomb.set_speed({200, 100});
 
         m_toolboxManager.decreaseSlot(1);
     }
-    if (tool_number == 6)
-    {
-        m_player1.set_mass(m_player1.get_mass()-m_missile_collected_1.begin()->get_mass());
+    if (tool_number == 6) {
+        m_player1.set_mass(m_player1.get_mass() - m_missile_collected_1.begin()->get_mass());
         m_missile_collected_1.erase(m_missile_collected_1.begin());
         m_toolboxManager.decreaseSlot(1);
     }
-    if (tool_number == 7)
-    {
-        m_player1.set_mass(m_player1.get_mass()-m_armour_collected_1.begin()->get_mass());
+    if (tool_number == 7) {
+        m_player1.set_mass(m_player1.get_mass() - m_armour_collected_1.begin()->get_mass());
         m_armour_collected_1.erase(m_armour_collected_1.begin());
         m_toolboxManager.decreaseSlot(1);
     }
@@ -1118,27 +901,23 @@ void World::shift_1() {
         if (*it == 3) {
             m_antidote.set_position(m_toolboxManager.new_tool_position(index, 1));
         }
-        if (*it == 4)
-        {
-            Legs& legs = m_legs_collected_1.at(legcount);
+        if (*it == 4) {
+            Legs &legs = m_legs_collected_1.at(legcount);
             legs.set_position(m_toolboxManager.new_tool_position(index, 1));
             legcount++;
         }
-        if (*it == 5)
-        {
-            Bomb& bomb = m_bomb_collected_1.at(bombcount);
+        if (*it == 5) {
+            Bomb &bomb = m_bomb_collected_1.at(bombcount);
             bomb.set_position(m_toolboxManager.new_tool_position(index, 1));
             bombcount++;
         }
-        if (*it == 6)
-        {
-            Missile& missile = m_missile_collected_1.at(missilecount);
+        if (*it == 6) {
+            Missile &missile = m_missile_collected_1.at(missilecount);
             missile.set_position(m_toolboxManager.new_tool_position(index, 1));
             missilecount++;
         }
-        if (*it == 7)
-        {
-            Armour& armour = m_armour_collected_1.at(armourcount);
+        if (*it == 7) {
+            Armour &armour = m_armour_collected_1.at(armourcount);
             armour.set_position(m_toolboxManager.new_tool_position(index, 1));
             armourcount++;
         }
@@ -1146,69 +925,60 @@ void World::shift_1() {
     }
 }
 
-void World::use_tool_2(int tool_number)
-{
-    if (tool_number == 1)
-    {
+void World::use_tool_2(int tool_number) {
+    if (tool_number == 1) {
         immobilize = m_freeze_collected_1.front().use_freeze(1);
         freezeTime = time(0);
-        m_player2.set_mass(m_player2.get_mass()-m_freeze_collected_2.begin()->get_mass());
+        m_player2.set_mass(m_player2.get_mass() - m_freeze_collected_2.begin()->get_mass());
         //fprintf(stderr, "massp1 decreased: %f\n", m_player1.get_mass());
         m_freeze_collected_2.erase(m_freeze_collected_2.begin());
         m_toolboxManager.decreaseSlot(2);
     }
-    if (tool_number == 2)
-    {
-        m_player2.set_mass(m_player2.get_mass()-m_water_collected_2.begin()->get_mass());
+    if (tool_number == 2) {
+        m_player2.set_mass(m_player2.get_mass() - m_water_collected_2.begin()->get_mass());
         //fprintf(stderr, "massp1 decreased: %f\n", m_player1.get_mass());
         m_water_collected_2.erase(m_water_collected_2.begin());
         m_toolboxManager.decreaseSlot(2);
     }
 
     //antidote is the first tool, move it to the back
-    if (tool_number == 3)
-    {
+    if (tool_number == 3) {
         m_toolboxManager.decreaseSlot(2);
         m_toolboxManager.addSlot(2);
 
-        float index = (float)m_toolboxManager.addItem(3, 2);
-        if ((int)index != 100)
-        {
+        float index = (float) m_toolboxManager.addItem(3, 2);
+        if ((int) index != 100) {
             m_antidote.set_position(m_toolboxManager.new_tool_position(index, 2));
             m_antidote.set_scale({-0.08f * ViewHelper::getRatio(), 0.08f * ViewHelper::getRatio()});
         }
     }
-    if (tool_number == 4)
-    {
-        m_player2.set_mass(m_player2.get_mass()-m_legs_collected_2.begin()->get_mass());
+    if (tool_number == 4) {
+        m_player2.set_mass(m_player2.get_mass() - m_legs_collected_2.begin()->get_mass());
         //fprintf(stderr, "massp1 decreased: %f\n", m_player1.get_mass());
         m_legs_collected_2.erase(m_legs_collected_2.begin());
         m_toolboxManager.decreaseSlot(2);
-        m_player2.increase_speed_legs(m_player2.get_speed()-20);
+        m_player2.increase_speed_legs(m_player2.get_speed() - 20);
         //fprintf(stderr, "legp2 delete: %f\n", m_player2.get_speed());
     }
-    if (tool_number == 5)
-    {
+    if (tool_number == 5) {
         used_bombs.emplace_back(m_bomb_collected_2.front());
         Bomb &use_bomb = used_bombs.back();
         m_bomb_collected_2.erase(m_bomb_collected_2.begin());
 
-        m_player2.set_mass(m_player2.get_mass()- use_bomb.get_mass());
+        m_player2.set_mass(m_player2.get_mass() - use_bomb.get_mass());
         use_bomb.set_position(m_player2.get_position());
         useBomb = true;
         use_bomb.set_speed({200, 100});
 
         m_toolboxManager.decreaseSlot(2);
     }
-    if (tool_number == 6)
-    {
-        m_player2.set_mass(m_player2.get_mass()-m_missile_collected_2.begin()->get_mass());
+    if (tool_number == 6) {
+        m_player2.set_mass(m_player2.get_mass() - m_missile_collected_2.begin()->get_mass());
         m_missile_collected_2.erase(m_missile_collected_2.begin());
         m_toolboxManager.decreaseSlot(2);
     }
-    if (tool_number == 7)
-    {
-        m_player2.set_mass(m_player2.get_mass()-m_armour_collected_2.begin()->get_mass());
+    if (tool_number == 7) {
+        m_player2.set_mass(m_player2.get_mass() - m_armour_collected_2.begin()->get_mass());
         m_armour_collected_2.erase(m_armour_collected_2.begin());
         m_toolboxManager.decreaseSlot(2);
     }
@@ -1240,27 +1010,23 @@ void World::shift_2() {
         if (*it == 3) {
             m_antidote.set_position(m_toolboxManager.new_tool_position(index, 2));
         }
-        if (*it == 4)
-        {
-            Legs& legs = m_legs_collected_2.at(legcount);
+        if (*it == 4) {
+            Legs &legs = m_legs_collected_2.at(legcount);
             legs.set_position(m_toolboxManager.new_tool_position(index, 2));
             legcount++;
         }
-        if (*it == 5)
-        {
-            Bomb& bomb = m_bomb_collected_2.at(bombcount);
+        if (*it == 5) {
+            Bomb &bomb = m_bomb_collected_2.at(bombcount);
             bomb.set_position(m_toolboxManager.new_tool_position(index, 2));
             bombcount++;
         }
-        if (*it == 6)
-        {
-            Missile& missile = m_missile_collected_2.at(missilecount);
+        if (*it == 6) {
+            Missile &missile = m_missile_collected_2.at(missilecount);
             missile.set_position(m_toolboxManager.new_tool_position(index, 2));
             missilecount++;
         }
-        if (*it == 7)
-        {
-            Armour& armour = m_armour_collected_2.at(armourcount);
+        if (*it == 7) {
+            Armour &armour = m_armour_collected_2.at(armourcount);
             armour.set_position(m_toolboxManager.new_tool_position(index, 2));
             armourcount++;
         }
@@ -1268,57 +1034,57 @@ void World::shift_2() {
     }
 }
 
-void World::populateMapCollisionPoints()
-{
-    mapCollisionPoints.push_back({204 * ViewHelper::getRatio() , 103 * ViewHelper::getRatio() });
-    mapCollisionPoints.push_back({274 * ViewHelper::getRatio() ,85 * ViewHelper::getRatio() });
-    mapCollisionPoints.push_back({401 * ViewHelper::getRatio() ,81 * ViewHelper::getRatio() });
-    mapCollisionPoints.push_back({375 * ViewHelper::getRatio() ,62 * ViewHelper::getRatio() });
-        mapCollisionPoints.push_back({460 * ViewHelper::getRatio() ,46 * ViewHelper::getRatio() });
-    mapCollisionPoints.push_back({572 * ViewHelper::getRatio() ,48 * ViewHelper::getRatio() });
-    mapCollisionPoints.push_back({634 * ViewHelper::getRatio() ,67 * ViewHelper::getRatio() });
-    mapCollisionPoints.push_back({728 * ViewHelper::getRatio() ,61 * ViewHelper::getRatio() });
-        mapCollisionPoints.push_back({805 * ViewHelper::getRatio() ,48 * ViewHelper::getRatio() });
-    mapCollisionPoints.push_back({901 * ViewHelper::getRatio() ,55 * ViewHelper::getRatio() });
-    mapCollisionPoints.push_back({948 * ViewHelper::getRatio() ,54 * ViewHelper::getRatio() });
-    mapCollisionPoints.push_back({983 * ViewHelper::getRatio() ,72 * ViewHelper::getRatio() });
-        mapCollisionPoints.push_back({1046 * ViewHelper::getRatio() ,133 * ViewHelper::getRatio() });
-    mapCollisionPoints.push_back({1068 * ViewHelper::getRatio() ,170 * ViewHelper::getRatio() });
-    mapCollisionPoints.push_back({1018 * ViewHelper::getRatio() ,192 * ViewHelper::getRatio() });
-    mapCollisionPoints.push_back({1010 * ViewHelper::getRatio() ,246 * ViewHelper::getRatio() });
-        mapCollisionPoints.push_back({1054 * ViewHelper::getRatio() ,272 * ViewHelper::getRatio() });
-    mapCollisionPoints.push_back({969 * ViewHelper::getRatio() ,274 * ViewHelper::getRatio() });
-    mapCollisionPoints.push_back({958 * ViewHelper::getRatio() ,251 * ViewHelper::getRatio() });
-    mapCollisionPoints.push_back({1004 * ViewHelper::getRatio() ,227 * ViewHelper::getRatio() });
-        mapCollisionPoints.push_back({991 * ViewHelper::getRatio() ,227 * ViewHelper::getRatio() });
-    mapCollisionPoints.push_back({1008 * ViewHelper::getRatio() ,188 * ViewHelper::getRatio() });
-    mapCollisionPoints.push_back({1026 * ViewHelper::getRatio() ,216 * ViewHelper::getRatio() });
-    mapCollisionPoints.push_back({1115 * ViewHelper::getRatio() ,213 * ViewHelper::getRatio() });
-        mapCollisionPoints.push_back({1164 * ViewHelper::getRatio() ,256 * ViewHelper::getRatio() });
-    mapCollisionPoints.push_back({1195 * ViewHelper::getRatio() ,291 * ViewHelper::getRatio() });
-    mapCollisionPoints.push_back({1243 * ViewHelper::getRatio() ,312 * ViewHelper::getRatio() });
-    mapCollisionPoints.push_back({1203 * ViewHelper::getRatio() ,321 * ViewHelper::getRatio() });
-        mapCollisionPoints.push_back({1195 * ViewHelper::getRatio() ,305 * ViewHelper::getRatio() });
-    mapCollisionPoints.push_back({1125 * ViewHelper::getRatio() ,302 * ViewHelper::getRatio() });
-    mapCollisionPoints.push_back({1045 * ViewHelper::getRatio() ,323 * ViewHelper::getRatio() });
-    mapCollisionPoints.push_back({964 * ViewHelper::getRatio() ,349 * ViewHelper::getRatio() });
-        mapCollisionPoints.push_back({981 * ViewHelper::getRatio() ,419 * ViewHelper::getRatio() });
-    mapCollisionPoints.push_back({1103 * ViewHelper::getRatio() ,474 * ViewHelper::getRatio() });
-    mapCollisionPoints.push_back({1130 * ViewHelper::getRatio() ,535 * ViewHelper::getRatio() });
-    mapCollisionPoints.push_back({997 * ViewHelper::getRatio() ,530 * ViewHelper::getRatio() });
-        mapCollisionPoints.push_back({982 * ViewHelper::getRatio() ,548 * ViewHelper::getRatio() });
-    mapCollisionPoints.push_back({841 * ViewHelper::getRatio() ,618 * ViewHelper::getRatio() });
-    mapCollisionPoints.push_back({732 * ViewHelper::getRatio() ,511 * ViewHelper::getRatio() });
-    mapCollisionPoints.push_back({603 * ViewHelper::getRatio() ,434 * ViewHelper::getRatio() });
-        mapCollisionPoints.push_back({305 * ViewHelper::getRatio() ,446 * ViewHelper::getRatio() });
-    mapCollisionPoints.push_back({285 * ViewHelper::getRatio() ,394 * ViewHelper::getRatio() });
-    mapCollisionPoints.push_back({255 * ViewHelper::getRatio() ,367 * ViewHelper::getRatio() });
-    mapCollisionPoints.push_back({232 * ViewHelper::getRatio() ,319 * ViewHelper::getRatio() });    mapCollisionPoints.push_back({204 * ViewHelper::getRatio() ,66 * ViewHelper::getRatio() });
-    mapCollisionPoints.push_back({173 * ViewHelper::getRatio() ,251 * ViewHelper::getRatio() });
-    mapCollisionPoints.push_back({136 * ViewHelper::getRatio() ,319 * ViewHelper::getRatio() });
-    mapCollisionPoints.push_back({173 * ViewHelper::getRatio() ,251 * ViewHelper::getRatio() });
-    mapCollisionPoints.push_back({203 * ViewHelper::getRatio() ,241 * ViewHelper::getRatio() });
-    mapCollisionPoints.push_back({164 * ViewHelper::getRatio() ,167 * ViewHelper::getRatio() });
+void World::populateMapCollisionPoints() {
+    mapCollisionPoints.push_back({204 * ViewHelper::getRatio(), 103 * ViewHelper::getRatio()});
+    mapCollisionPoints.push_back({274 * ViewHelper::getRatio(), 85 * ViewHelper::getRatio()});
+    mapCollisionPoints.push_back({401 * ViewHelper::getRatio(), 81 * ViewHelper::getRatio()});
+    mapCollisionPoints.push_back({375 * ViewHelper::getRatio(), 62 * ViewHelper::getRatio()});
+    mapCollisionPoints.push_back({460 * ViewHelper::getRatio(), 46 * ViewHelper::getRatio()});
+    mapCollisionPoints.push_back({572 * ViewHelper::getRatio(), 48 * ViewHelper::getRatio()});
+    mapCollisionPoints.push_back({634 * ViewHelper::getRatio(), 67 * ViewHelper::getRatio()});
+    mapCollisionPoints.push_back({728 * ViewHelper::getRatio(), 61 * ViewHelper::getRatio()});
+    mapCollisionPoints.push_back({805 * ViewHelper::getRatio(), 48 * ViewHelper::getRatio()});
+    mapCollisionPoints.push_back({901 * ViewHelper::getRatio(), 55 * ViewHelper::getRatio()});
+    mapCollisionPoints.push_back({948 * ViewHelper::getRatio(), 54 * ViewHelper::getRatio()});
+    mapCollisionPoints.push_back({983 * ViewHelper::getRatio(), 72 * ViewHelper::getRatio()});
+    mapCollisionPoints.push_back({1046 * ViewHelper::getRatio(), 133 * ViewHelper::getRatio()});
+    mapCollisionPoints.push_back({1068 * ViewHelper::getRatio(), 170 * ViewHelper::getRatio()});
+    mapCollisionPoints.push_back({1018 * ViewHelper::getRatio(), 192 * ViewHelper::getRatio()});
+    mapCollisionPoints.push_back({1010 * ViewHelper::getRatio(), 246 * ViewHelper::getRatio()});
+    mapCollisionPoints.push_back({1054 * ViewHelper::getRatio(), 272 * ViewHelper::getRatio()});
+    mapCollisionPoints.push_back({969 * ViewHelper::getRatio(), 274 * ViewHelper::getRatio()});
+    mapCollisionPoints.push_back({958 * ViewHelper::getRatio(), 251 * ViewHelper::getRatio()});
+    mapCollisionPoints.push_back({1004 * ViewHelper::getRatio(), 227 * ViewHelper::getRatio()});
+    mapCollisionPoints.push_back({991 * ViewHelper::getRatio(), 227 * ViewHelper::getRatio()});
+    mapCollisionPoints.push_back({1008 * ViewHelper::getRatio(), 188 * ViewHelper::getRatio()});
+    mapCollisionPoints.push_back({1026 * ViewHelper::getRatio(), 216 * ViewHelper::getRatio()});
+    mapCollisionPoints.push_back({1115 * ViewHelper::getRatio(), 213 * ViewHelper::getRatio()});
+    mapCollisionPoints.push_back({1164 * ViewHelper::getRatio(), 256 * ViewHelper::getRatio()});
+    mapCollisionPoints.push_back({1195 * ViewHelper::getRatio(), 291 * ViewHelper::getRatio()});
+    mapCollisionPoints.push_back({1243 * ViewHelper::getRatio(), 312 * ViewHelper::getRatio()});
+    mapCollisionPoints.push_back({1203 * ViewHelper::getRatio(), 321 * ViewHelper::getRatio()});
+    mapCollisionPoints.push_back({1195 * ViewHelper::getRatio(), 305 * ViewHelper::getRatio()});
+    mapCollisionPoints.push_back({1125 * ViewHelper::getRatio(), 302 * ViewHelper::getRatio()});
+    mapCollisionPoints.push_back({1045 * ViewHelper::getRatio(), 323 * ViewHelper::getRatio()});
+    mapCollisionPoints.push_back({964 * ViewHelper::getRatio(), 349 * ViewHelper::getRatio()});
+    mapCollisionPoints.push_back({981 * ViewHelper::getRatio(), 419 * ViewHelper::getRatio()});
+    mapCollisionPoints.push_back({1103 * ViewHelper::getRatio(), 474 * ViewHelper::getRatio()});
+    mapCollisionPoints.push_back({1130 * ViewHelper::getRatio(), 535 * ViewHelper::getRatio()});
+    mapCollisionPoints.push_back({997 * ViewHelper::getRatio(), 530 * ViewHelper::getRatio()});
+    mapCollisionPoints.push_back({982 * ViewHelper::getRatio(), 548 * ViewHelper::getRatio()});
+    mapCollisionPoints.push_back({841 * ViewHelper::getRatio(), 618 * ViewHelper::getRatio()});
+    mapCollisionPoints.push_back({732 * ViewHelper::getRatio(), 511 * ViewHelper::getRatio()});
+    mapCollisionPoints.push_back({603 * ViewHelper::getRatio(), 434 * ViewHelper::getRatio()});
+    mapCollisionPoints.push_back({305 * ViewHelper::getRatio(), 446 * ViewHelper::getRatio()});
+    mapCollisionPoints.push_back({285 * ViewHelper::getRatio(), 394 * ViewHelper::getRatio()});
+    mapCollisionPoints.push_back({255 * ViewHelper::getRatio(), 367 * ViewHelper::getRatio()});
+    mapCollisionPoints.push_back({232 * ViewHelper::getRatio(), 319 * ViewHelper::getRatio()});
+    mapCollisionPoints.push_back({204 * ViewHelper::getRatio(), 66 * ViewHelper::getRatio()});
+    mapCollisionPoints.push_back({173 * ViewHelper::getRatio(), 251 * ViewHelper::getRatio()});
+    mapCollisionPoints.push_back({136 * ViewHelper::getRatio(), 319 * ViewHelper::getRatio()});
+    mapCollisionPoints.push_back({173 * ViewHelper::getRatio(), 251 * ViewHelper::getRatio()});
+    mapCollisionPoints.push_back({203 * ViewHelper::getRatio(), 241 * ViewHelper::getRatio()});
+    mapCollisionPoints.push_back({164 * ViewHelper::getRatio(), 167 * ViewHelper::getRatio()});
 
 }
 

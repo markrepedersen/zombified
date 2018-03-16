@@ -4,7 +4,7 @@
 #include "viewHelper.hpp"
 #include "Limb.h"
 
-class Arms : public Renderable, public Limb
+class Arms : public Limb
 {
     static Texture arms_texture;
 public:

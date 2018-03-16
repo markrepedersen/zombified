@@ -50,10 +50,8 @@ public:
 
     void animate();
 
-    void increase_speed();
-    void decrease_speed();
-
     bool collides_with(const Ice& freeze);
+    bool collides_with(const Limb& limb);
     bool collides_with(const Water& water);
     bool collides_with(const Arms& arm);
     bool collides_with(const Legs& leg);
