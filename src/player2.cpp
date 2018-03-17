@@ -189,12 +189,6 @@ float Player2::get_speed_legs()const
 {
     return speedlegs;
 }
-void Player2::increase_speed_legs(float newSpeed)
-{
-    speedlegs = newSpeed;
-    set_speed(speedlegs);
-}
-
 bool Player2::get_blowback()const
 {
     return blowback;
