@@ -84,7 +84,6 @@ private:
 	void collect_freeze(Ice freeze, int player, float index);
 	void collect_water(Water water, int player, float index);
 
-    void collect_legs(Legs leg, int player, float index);
     void collect_bomb(Bomb bomb, int player, float index);
     void collect_missile(Missile missile, int player, float index);
     void collect_armour(Armour armour, int player, float index);
@@ -120,8 +119,6 @@ private:
     Bomb t_bomb;
     Bomb t2_bomb;
 
-    std::vector<Arms> m_arms;
-    std::vector<Legs> m_legs;
     std::vector<Ice> m_freeze;
     std::vector<Water> m_water;
     std::vector<Missile> m_missile;
@@ -130,10 +127,8 @@ private:
 
     std::vector<Ice> m_freeze_collected_1;
     std::vector<Water> m_water_collected_1;
-    std::vector<Legs> m_legs_collected_1;
     std::vector<Ice> m_freeze_collected_2;
     std::vector<Water> m_water_collected_2;
-    std::vector<Legs> m_legs_collected_2;
     std::vector<Missile> m_missile_collected_1;
     std::vector<Missile> m_missile_collected_2;
     std::vector<Bomb> m_bomb_collected_1;
@@ -150,8 +145,6 @@ private:
 	float m_next_arm_spawn;
 	float m_next_leg_spawn;
 	float m_next_spawn;
-
-	int check_freeze_used;
 
     int immobilize;
     bool explosion;

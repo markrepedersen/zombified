@@ -2,8 +2,6 @@
 
 #include "common.hpp"
 #include "viewHelper.hpp"
-#include "arms.hpp"
-#include "legs.hpp"
 #include "player1.hpp"
 #include "player2.hpp"
 #include "MapGrid.h"
@@ -15,7 +13,7 @@ class LimbsManager
 
 public:
     // initialize a limbsManager
-    bool init(vec2 screen);
+    bool init(vec2 screen, const std::vector<vec2> &mapCollisionPoints);
     
     // Renders the existing limbs
     void draw(const mat3& projection);
@@ -42,15 +40,16 @@ public:
         return limbs;
     }
 
-    void computePaths (float ms, MapGrid const mapGrid);
-
-    void processCollisions(vec2);
+    void computePaths(float ms, const MapGrid &mapGrid);
 
     void destroy();
+
+    vec2 getRandomPointInMap();
     
 private:
     vec2 m_screen;
     std::vector<Limb> limbs;
     int m_arms_total;
     int m_legs_total;
+    std::vector<vec2> randomPoints;
 };

@@ -5,7 +5,8 @@
 #define MAX_ITERATIONS 100
 
 // initialize a limbsManager
-bool LimbsManager::init(vec2 screen) {
+bool LimbsManager::init(vec2 screen, const std::vector<vec2> &mapCollisionPoints) {
+    randomPoints = mapCollisionPoints;
     m_screen = screen;
     return true;
 }
@@ -17,35 +18,42 @@ void LimbsManager::draw(const mat3 &projection_2D) {
     }
 }
 
+vec2 LimbsManager::getRandomPointInMap() {
+
+    srand((unsigned)time(0));
+
+    vec2 randomPoint = {(float)((rand() % (int)m_screen.x)),
+                        (float)((rand() % (int)m_screen.y))};
+
+    while(!isInsidePolygon(randomPoints, randomPoint)) {
+        randomPoint = {(float)((rand() % (int)m_screen.x)),
+                       (float)((rand() % (int)m_screen.y))};
+
+    }
+
+    return randomPoint;
+
+}
+
 //spawn new arm in random
 bool LimbsManager::spawn_arms() {
-    srand((unsigned) time(0));
-
     Limb arm;
     if (arm.init("arm")) {
-        // Setting random initial position
-        arm.set_position({((rand() % (int) m_screen.x) * ViewHelper::getRatio()),
-                          ((rand() % (int) m_screen.y) * ViewHelper::getRatio())});
-
+        arm.set_position(getRandomPointInMap());
         m_arms_total++;
         limbs.emplace_back(arm);
 
         return cluster_limbs();
     }
 
-    fprintf(stderr, "Failed to spawn arm");
     return false;
 }
 
 //spawn new leg in random
 bool LimbsManager::spawn_legs() {
-
     Limb leg;
-    srand((unsigned) time(0));
     if (leg.init("leg")) {
-        // Setting random initial position
-        leg.set_position({((rand() % (int) m_screen.x) * ViewHelper::getRatio()),
-                          ((rand() % (int) m_screen.y) * ViewHelper::getRatio())});
+        leg.set_position(getRandomPointInMap());
 
         m_legs_total++;
         limbs.emplace_back(leg);
@@ -86,9 +94,10 @@ bool LimbsManager::cluster_limbs() {
 //returns 2 if an arm collides with player 2
 //returns 3 if both players collides with an arm
 int LimbsManager::check_collision_with_players(Player1 *m_player1, Player2 *m_player2) {
-    int limb_collided = 0;
-    int collided;
+//    printf("Checking Collision: #Limbs %d\n", limbs.size());
+    int collided = 0;
     for (auto it = limbs.begin(); it != limbs.end();) {
+         int limb_collided = 0;
 
         if (m_player1->collides_with(*it)) {
 
@@ -124,16 +133,13 @@ int LimbsManager::check_collision_with_players(Player1 *m_player1, Player2 *m_pl
         }
 
         if (limb_collided != 0) {
-            //erase.push_back(armcount);
-            it = limbs.erase(it);
-
             it->destroy();
+            it = limbs.erase(it);
         } else {
             ++it;
         }
 
     }
-
     return collided;
 
 }
@@ -148,7 +154,7 @@ int LimbsManager::get_legs_size() {
 }
 
 
-void LimbsManager::computePaths(float ms, MapGrid const mapGrid) {
+void LimbsManager::computePaths(float ms, const MapGrid &mapGrid) {
     if (limbs.size() <= 1) return;
     for (auto &limb : limbs) {
         JPS::PathVector path;
@@ -190,8 +196,4 @@ void LimbsManager::destroy() {
         limb.destroy();
 
     limbs.clear();
-}
-
-void LimbsManager::processCollisions(vec2 pos) {
-
 }

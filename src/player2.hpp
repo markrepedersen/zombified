@@ -2,10 +2,7 @@
 
 #include "common.hpp"
 #include "viewHelper.hpp"
-#include "arms.hpp"
-#include "legs.hpp"
 #include "Ice.hpp"
-#include "legs.hpp"
 #include "water.hpp"
 #include "antidote.hpp"
 #include "Limb.h"
@@ -20,7 +17,7 @@ class Player2 : public Renderable
     static Texture player2_texture;
 public:
     // Creates all the associated render resources and default transform
-    bool init(vec2 screen);
+    bool init(vec2 screen, std::vector<vec2> mapCollisionPoints);
     
     // Renders the salmon
     void draw(const mat3& projection)override;
@@ -59,8 +56,6 @@ public:
 
     bool collides_with(const Ice& freeze);
     bool collides_with(const Water& water);
-    bool collides_with(const Arms& arm);
-    bool collides_with(const Legs& legs);
     bool collides_with(const Antidote& antidote);
     bool collides_with(const Bomb& bomb);
     bool collides_with(const Armour& armour);
@@ -79,6 +74,7 @@ private:
     float speedlegs;
     bool blowback;
     vec2 blowbackForce;
+    std::vector<vec2> m_mapCollisionPoints;
 
     bool m_keys[4];
 };

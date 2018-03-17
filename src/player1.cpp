@@ -1,6 +1,5 @@
 // Header
 #include "player1.hpp"
-#include <Box2D.h>
 
 #include <cmath>
 #include <iostream>
@@ -11,7 +10,10 @@ auto startTime = std::chrono::high_resolution_clock::now();
 int frameTime = 100;
 const float PLAYER_SPEED = 200.f;
 
-bool Player1::init(vec2 screen) {
+bool Player1::init(vec2 screen, std::vector<vec2> mapCollisionPoints)
+{
+    //set mapCollisionPoints as the same on with world
+    m_mapCollisionPoints = mapCollisionPoints;
     // Load shared texture
     if (!player1_texture.is_valid()) {
         if (!player1_texture.load_from_file(p1_textures_path("p1.png"))) {
@@ -76,8 +78,6 @@ bool Player1::init(vec2 screen) {
     speedlegs = PLAYER_SPEED;
     mass = 1.0;
     blowback = false;
-    m_position = { (screen.x * ViewHelper::getRatio())/5, (screen.y * ViewHelper::getRatio())/2 };
-    
 
     m_position = {(screen.x * ViewHelper::getRatio()) / 5, (screen.y * ViewHelper::getRatio()) / 2};
 
@@ -158,9 +158,6 @@ vec2 Player1::get_position() const
     return m_position;
 }
 
-bool Player1::is_alive() const {
-    return m_is_alive;
-}
 float Player1::get_mass() const
 {
     return mass;
@@ -210,19 +207,43 @@ void Player1::update(float ms) {
     float step = speed * (ms / 1000);//PLAYER_SPEED * (ms / 1000);
 
     if (m_keys.front() == GLFW_KEY_UP)
-        {move({0, -step});
-        animate();}
+        {
+            if (isInsidePolygon(m_mapCollisionPoints, {m_position.x+0, m_position.y-step}))
+            {
+                move({0, -step});
+
+                animate();
+            }
+
+        }
     if (m_keys.front() == GLFW_KEY_LEFT)
-        {move({-step, 0});
-        animate();}
+        {
+            if (isInsidePolygon(m_mapCollisionPoints, {m_position.x-step, m_position.y + 0}))
+            {
+                move({-step, 0});
+                animate();
+            }
+
+        }
     if (m_keys.front() == GLFW_KEY_DOWN)
-        {move({0, step});
-        animate();}
+        {
+            if (isInsidePolygon(m_mapCollisionPoints, {m_position.x + 0, m_position.y + step}))
+            {
+                move({0, step});
+                animate();
+            }
+
+        }
     if (m_keys.front() == GLFW_KEY_RIGHT)
     {
-        move({step, 0});
-        animate();
-    }
+            if (isInsidePolygon(m_mapCollisionPoints, {m_position.x + step, m_position.y + 0}))
+            {
+                move({step, 0});
+
+            animate();
+            }
+
+        }
     if (blowback)
     {
         /*if (negy && !negx)
@@ -236,6 +257,7 @@ void Player1::update(float ms) {
         float y = get_blowbackForce().y*(ms/1000)*(get_speed()/100);
         //fprintf(stderr, "negy %f\n",  y);
         //fprintf(stderr, "negx %f\n",  x);
+
         move({x, y});
     }
     else
@@ -577,19 +599,6 @@ bool Player1::collides_with(const Antidote &antidote) {
 
 }
 
-bool Player1::collides_with(const Legs& leg)
-{
-    float dx = m_position.x - leg.get_position().x;
-    float dy = m_position.y - leg.get_position().y;
-    float d_sq = dx * dx + dy * dy;
-    float other_r = std::max(leg.get_bounding_box().x, leg.get_bounding_box().y);
-    float my_r = std::max(m_scale.x, m_scale.y);
-    float r = std::max(other_r, my_r);
-    r *= 0.6f;
-    if (d_sq < r * r)
-        return true;
-    return false;
-}
 
 bool Player1::collides_with(const Bomb& bomb)
 {

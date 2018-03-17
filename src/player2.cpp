@@ -9,7 +9,12 @@ auto startTime_p2 = std::chrono::high_resolution_clock::now();
 int frameTime_p2 = 100;
 const float PLAYER_SPEED = 200.f;
 
-bool Player2::init(vec2 screen) {
+bool Player2::init(vec2 screen, std::vector<vec2> mapCollisionPoints)
+{
+
+    //set mapCollisionPoints as the same on with world
+    m_mapCollisionPoints = mapCollisionPoints;
+
     // Load shared texture
     if (!player2_texture.is_valid()) {
         if (!player2_texture.load_from_file(p2_textures_path("p2.png"))) {
@@ -190,6 +195,7 @@ void Player2::update(float ms)
     //const float PLAYER_SPEED = 200.f;
     float step = step = speed * (ms / 1000);
 
+
     if (m_keys[0])
         move({0, -step});
         animate(0);
@@ -203,8 +209,50 @@ void Player2::update(float ms)
     {
         move({step, 0});
         animate(3);
-    } else {
     }
+
+    // if (m_keys[0])
+    // {
+    //         if (isInsidePolygon(m_mapCollisionPoints, {m_position.x+0, m_position.y-step}))
+    //         {
+    //             move({0, -step});
+
+    //             animate(0);
+    //         }
+
+    //     }
+    // if (m_keys[1])
+    // {
+    //         if (isInsidePolygon(m_mapCollisionPoints, {m_position.x-step, m_position.y+0}))
+    //         {
+    //             move({-step, 0});
+
+    //             animate(2);
+    //         }
+
+    //     }
+    // if (m_keys[2])
+    // {
+    //         if (isInsidePolygon(m_mapCollisionPoints, {m_position.x+0, m_position.y+step}))
+    //         {
+    //             move({0, step});
+
+    //             animate(2);
+    //         }
+
+    //     }
+    // if (m_keys[3])
+    // {
+    //         if (isInsidePolygon(m_mapCollisionPoints, {m_position.x+step, m_position.y+0}))
+    //         {
+    //             move({step, 0});
+
+    //             animate(3);
+    //         }
+
+    //     }
+
+
     if (blowback)
     {
         float x = get_blowbackForce().x*(ms/1000)*(get_speed()/100);
@@ -529,20 +577,6 @@ bool Player2::collides_with(const Antidote &antidote) {
     float dy = m_position.y - antidote.get_position().y;
     float d_sq = dx * dx + dy * dy;
     float other_r = std::max(antidote.get_bounding_box().x, antidote.get_bounding_box().y);
-    float my_r = std::max(m_scale.x, m_scale.y);
-    float r = std::max(other_r, my_r);
-    r *= 0.6f;
-    if (d_sq < r * r)
-        return true;
-    return false;
-}
-
-bool Player2::collides_with(const Legs& leg)
-{
-    float dx = m_position.x - leg.get_position().x;
-    float dy = m_position.y - leg.get_position().y;
-    float d_sq = dx * dx + dy * dy;
-    float other_r = std::max(leg.get_bounding_box().x, leg.get_bounding_box().y);
     float my_r = std::max(m_scale.x, m_scale.y);
     float r = std::max(other_r, my_r);
     r *= 0.6f;

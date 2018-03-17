@@ -6,8 +6,6 @@
 #include <iostream>
 #include "Ice.hpp"
 #include "water.hpp"
-#include "arms.hpp"
-#include "legs.hpp"
 #include "antidote.hpp"
 #include "Limb.h"
 #include "PhysicalBody.h"
@@ -21,7 +19,7 @@ class Player1 : public Renderable
     static Texture player1_texture;
 public:
     // Creates all the associated render resources and default transform
-    bool init(vec2 screen);
+    bool init(vec2 screen, std::vector<vec2> mapCollisionPoints);
     
     // Renders the salmon
     void draw(const mat3& projection)override;
@@ -53,8 +51,6 @@ public:
     bool collides_with(const Ice& freeze);
     bool collides_with(const Limb& limb);
     bool collides_with(const Water& water);
-    bool collides_with(const Arms& arm);
-    bool collides_with(const Legs& leg);
     bool collides_with(const Antidote& antidote);
     bool collides_with(const Bomb& bomb);
     bool collides_with(const Armour& armour);
@@ -76,6 +72,7 @@ private:
     bool blowback;
     vec2 blowbackForce;
     float speedlegs;
+    std::vector<vec2> m_mapCollisionPoints;
 
     std::list<int> m_keys;
 };
