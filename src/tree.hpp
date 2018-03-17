@@ -2,6 +2,7 @@
 
 #include "common.hpp"
 #include "viewHelper.hpp"
+#include "bomb.hpp"
 
 class Tree : public Renderable
 {
