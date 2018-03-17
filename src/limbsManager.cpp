@@ -93,53 +93,101 @@ bool LimbsManager::cluster_limbs() {
 //returns 1 if an arm collides with player 1
 //returns 2 if an arm collides with player 2
 //returns 3 if both players collides with an arm
-int LimbsManager::check_collision_with_players(Player1 *m_player1, Player2 *m_player2) {
+int LimbsManager::check_collision_with_players(Player1 *m_player1, Player2 *m_player2, ToolboxManager *m_toolboxmanager) {
 //    printf("Checking Collision: #Limbs %d\n", limbs.size());
     int collided = 0;
     for (auto it = limbs.begin(); it != limbs.end();) {
          int limb_collided = 0;
-
-        if (m_player1->collides_with(*it)) {
-
+        
+        if (m_player1->collides_with(*it))
+            collided = 1;
+        if (m_player2->collides_with(*it))
+            collided = 2;
+        
+        if (collided != 0)
+        {
             if ((*it).getLimbType() == "leg") {
-                m_player1->increase_speed_legs(10);
-                m_legs_total--;
-            } else {
-                if (collided == 0) {
-                    collided = 1;
-                } else if (collided == 2) {
-                    collided = 3;
-                }
-
-                m_arms_total--;
+                //float index = (float)m_toolboxmanager->addItem(4, collided);
+                //if ((int)index != 100)
+                //{
+                    it->destroy();
+                    it = limbs.erase(it);
+                    m_legs_total--;
+                    if(collided == 1)
+                    {
+                        m_player1->increase_speed_legs(10);
+                        //m_player1->set_mass(it->get_mass()+m_player1->get_mass());
+                        collided = 0;
+                        //fprintf(stderr, "massp1 added: %f\n", m_player1.get_mass());
+                    }
+                    if (collided == 2)
+                    {
+                        m_player2->increase_speed_legs(10);
+                       // m_player2->set_mass(it->get_mass()+m_player2->get_mass());
+                        collided = 0;
+                        //fprintf(stderr, "massp2 added: %f\n", m_player2.get_mass());
+                    }
+                //}
+                //else
+                //    ++it;
+                
             }
-
-            limb_collided = 1;
-        }
-        if (m_player2->collides_with(*it)) {
-            if ((*it).getLimbType() == "leg") {
-                m_player2->increase_speed_legs(10);
-                m_legs_total--;
-            } else {
-                if (collided == 0) {
-                    collided = 1;
-                } else if (collided == 2) {
-                    collided = 3;
+        
+            if ((*it).getLimbType() == "arm") {
+                if(m_toolboxmanager->addSlot(collided))
+                {
+                    //erase.push_back(armcount);
+                    it->destroy();
+                    it = limbs.erase(it);
+                    m_arms_total--;
                 }
-
-                m_arms_total--;
+                else
+                    ++it;
             }
-            limb_collided = 1;
         }
-
-        if (limb_collided != 0) {
-            it->destroy();
-            it = limbs.erase(it);
-        } else {
+        else
             ++it;
-        }
-
     }
+
+//        if (m_player1->collides_with(*it)) {
+//
+//            if ((*it).getLimbType() == "leg") {
+//                m_player1->increase_speed_legs(10);
+//                m_legs_total--;
+//            } else {
+//                if (collided == 0) {
+//                    collided = 1;
+//                } else if (collided == 2) {
+//                    collided = 3;
+//                }
+//
+//                m_arms_total--;
+//            }
+//
+//            limb_collided = 1;
+//        }
+//        if (m_player2->collides_with(*it)) {
+//            if ((*it).getLimbType() == "leg") {
+//                m_player2->increase_speed_legs(10);
+//                m_legs_total--;
+//            } else {
+//                if (collided == 0) {
+//                    collided = 2;
+//                } else if (collided == 2) {
+//                    collided = 3;
+//                }
+//
+//                m_arms_total--;
+//            }
+//            limb_collided = 1;
+//        }
+//
+//        if (limb_collided != 0) {
+//            it->destroy();
+//            it = limbs.erase(it);
+//        } else {
+//            ++it;
+//        }
     return collided;
 
 }

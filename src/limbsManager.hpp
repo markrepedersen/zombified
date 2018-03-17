@@ -4,6 +4,7 @@
 #include "viewHelper.hpp"
 #include "player1.hpp"
 #include "player2.hpp"
+#include "toolboxManager.hpp"
 #include "MapGrid.h"
 #include "JPS.h"
 #include <map>
@@ -28,7 +29,7 @@ public:
     bool cluster_limbs();
    
     //check if players collide with any limbs
-    int check_collision_with_players(Player1 *p1, Player2 *p2);
+    int check_collision_with_players(Player1 *p1, Player2 *p2, ToolboxManager *tb);
 
     // size_t get_arms_size();
     int get_arms_size();

@@ -220,7 +220,7 @@ float Player1::get_speed_legs()const
 }
 void Player1::increase_speed_legs(float newSpeed)
 {
-    speedlegs = newSpeed;
+    speedlegs += newSpeed;
     set_speed(speedlegs);
 }
 

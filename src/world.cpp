@@ -488,8 +488,11 @@ bool World::random_spawn(float elapsed_ms, vec2 screen) {
     return true;
 }
 
+// =========== CHECK IF NEED TO ADD TOOLS ===================
+
 void World::check_add_tools(vec2 screen) {
 
+//=================check for ice collision
     int collided = 0;
     std::vector<Ice>::iterator itf;
     for (itf = m_freeze.begin(); itf != m_freeze.end();) {
@@ -518,6 +521,7 @@ void World::check_add_tools(vec2 screen) {
         collided = 0;
     }
 
+//=================check for water collision
     std::vector<Water>::iterator itw;
     for (itw = m_water.begin(); itw != m_water.end();) {
         if (m_player1.collides_with(*itw))//water))
@@ -542,6 +546,8 @@ void World::check_add_tools(vec2 screen) {
             ++itw;
         collided = 0;
     }
+    
+//=================check for bomb collision
     std::vector<Bomb>::iterator itb;
     for (itb = m_bomb.begin(); itb != m_bomb.end();) {
         if (m_player1.collides_with(*itb))
@@ -566,7 +572,8 @@ void World::check_add_tools(vec2 screen) {
             ++itb;
         collided = 0;
     }
-
+    
+//=================check for MISSILE collision
     std::vector<Missile>::iterator itm;
     for (itm = m_missile.begin(); itm != m_missile.end();) {
         if (m_player1.collides_with(*itm))
@@ -618,6 +625,7 @@ void World::check_add_tools(vec2 screen) {
         collided = 0;
     }
 
+//=================check for antidote collision
     if (m_player1.collides_with(m_antidote))
         collided = 1;
     if (m_player2.collides_with(m_antidote))
@@ -634,17 +642,20 @@ void World::check_add_tools(vec2 screen) {
         }
     }
 
-    collided = m_limbsManager.check_collision_with_players(&m_player1, &m_player2);
-    if (collided != 0) {
-        if (collided <= 2) {
-            m_toolboxManager.addSlot(collided);
-        } else {
-            m_toolboxManager.addSlot(1);
-            m_toolboxManager.addSlot(2);
-        }
-    }
+//=================check for limbs collision
+    collided = m_limbsManager.check_collision_with_players(&m_player1, &m_player2, &m_toolboxManager);
+//    if (collided != 0) {
+//        if (collided <= 2) {
+//            m_toolboxManager.addSlot(collided);
+//        }
+//        else {
+//            m_toolboxManager.addSlot(1);
+//            m_toolboxManager.addSlot(2);
+//        }
+//    }
 }
 
+// =========== EXPLODING LOGIC ===================
 void World::autoExplode() {
     float force_p1 = used_bombs.front().get_force(m_player1.get_mass(),
                                                   m_player1.get_speed(),

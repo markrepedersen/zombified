@@ -4,7 +4,6 @@ project(zombie)
 set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR}/cmake ${CMAKE_MODULE_PATH})
 
-include_directories(${TMXPARSER_INCLUDE_DIR})
 include_directories(${OPENGL_INCLUDE_DIR})
 include_directories(${GLFW_INCLUDE_DIRS})
 include_directories(ext/gl3w)
@@ -14,7 +13,6 @@ include_directories(ext/stb_image)
 include_directories(ext/Box2D)
 include_directories(${ZLIB_INCLUDE_DIRS})
 
-find_package(tmxparser)
 find_package(SDL)
 find_package(SDL_mixer)
 find_package(OpenGL REQUIRED)
@@ -35,7 +33,6 @@ add_executable(zombie ${SRC} ${DATA} ${SHADERS} ${EXT} ${HEADERS} ${HPPHEADERS} 
 
 target_link_libraries(zombie
         pthread
-        ${TMXPARSER_LIBRARY}
         ${TINYXML2_LIBRARIES}
         ${COCOA_LIBRARY}
         ${OPENGL_LIBRARIES}
