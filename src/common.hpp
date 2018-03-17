@@ -15,8 +15,8 @@
   #define data_path "../data"
   #define shader_path(name) "../shaders/" name
 #else
-  #define data_path "data"
-  #define shader_path(name) "shaders/" name
+#define data_path "data"
+#define shader_path(name) "shaders/" name
 #endif
 #define textures_path(name) data_path "/textures/" name
 #define p1_textures_path(name) data_path "/textures/p1/" name

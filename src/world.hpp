@@ -31,7 +31,7 @@
 
 // Container for all our entities and game logic. Individual rendering / update is
 // deferred to the relative update() methods
-class World : b2ContactListener
+class World
 {
 public:
 	World();

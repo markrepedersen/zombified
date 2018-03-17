@@ -94,8 +94,6 @@ bool Player2::init(vec2 screen, std::vector<vec2> mapCollisionPoints)
 
 void Player2::draw(const mat3& projection)
 {
-    // Transformation code, see Rendering and Transformation in the template specification for more info
-    // Incrementally updates transformation matrix, thus ORDER IS IMPORTANT
     transform_begin();
     transform_translate(m_position);
     transform_scale(m_scale);
@@ -260,15 +258,7 @@ void Player2::animate(int direction)
         {
             curr_frame_p2 = (curr_frame_p2 + 1) % 2;
             sprite_frame_index_p2 = up_frames_p2[curr_frame_p2];
-
             start_time_p2 = curr_time;
-
-            // Debugging
-	        // int row = sprite_frame_index_p2 / 5;
-	        // int col = sprite_frame_index_p2 - row * 5;
-	        // float tex_x = col / 5.0;
-	        // float tex_y = row / 3.0;
-            // std::cout << "Index: " << sprite_frame_index_p2 << ", diff_tex_x: " << tex_x << ", diff_tex_y: " << tex_y << "\n";
         }
         else if (m_keys[1])
         {
