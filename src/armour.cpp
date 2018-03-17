@@ -74,7 +74,7 @@ bool Armour::init()
     m_scale.y = 12.f * ViewHelper::getRatio();
     m_is_alive = true;
     m_position = { 450.f * ViewHelper::getRatio(), 450.f * ViewHelper::getRatio()};
-
+    mass = 0.15f;
 	m_num_indices = indices.size();
 	m_rotation = M_PI;
     
@@ -187,8 +187,6 @@ void Missile::draw(const mat3& projection)
 
 void Armour::set_position(vec2 position)
 {
-	// std::cout << "Armour created" << "\n";
-
     m_position = position;
 }
 
@@ -200,6 +198,11 @@ void Armour::set_scale(vec2 scale)
 vec2 Armour::get_position()const
 {
     return m_position;
+}
+
+float Armour::get_mass() const
+{
+    return mass;
 }
 
 bool Armour::is_alive()const
@@ -222,8 +225,10 @@ void Armour::destroy()
 
 vec2 Armour::get_bounding_box()const
 {
+    float armourwidth = 5.f;
+    float armourheight = 6.f;
     // fabs is to avoid negative scale due to the facing direction
-    return { std::fabs(m_scale.x) * armour_texture.width, std::fabs(m_scale.y) * armour_texture.height };
+    return { std::fabs(m_scale.x) * armourwidth, std::fabs(m_scale.y) * armourheight };
 }
 
 bool Armour::collides_with(const Armour& armour)

@@ -14,5 +14,11 @@ MapGrid::MapGrid(unsigned w, unsigned h) : width(w), height(h) {
 }
 
 bool MapGrid::operator()(unsigned x, unsigned y) const {
+
+   // if (x < width && y < height && x > 0 && y > 0) return true;
+    // else if()
+    //check how many times point collides with list of lines
+
+
     return x < width && y < height;
 }

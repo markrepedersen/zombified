@@ -76,6 +76,7 @@ bool Missile::init()
 
 	m_num_indices = indices.size();
 	m_rotation = 0.f;
+    mass = 0.15f;
     
     return true;
 }
@@ -185,7 +186,7 @@ void Missile::draw(const mat3& projection)
 
 void Missile::set_position(vec2 position)
 {
-	// std::cout << "Missile created" << "\n";
+	//std::cout << "Missile created" << "\n";
 
     m_position = position;
 }
@@ -198,6 +199,11 @@ void Missile::set_scale(vec2 scale)
 vec2 Missile::get_position()const
 {
     return m_position;
+}
+
+float Missile::get_mass() const
+{
+    return mass;
 }
 
 bool Missile::is_alive()const
@@ -220,8 +226,10 @@ void Missile::destroy()
 
 vec2 Missile::get_bounding_box()const
 {
+    float missilewidth = 2.f;
+    float missileheight = 8.f;
     // fabs is to avoid negative scale due to the facing direction
-    return { std::fabs(m_scale.x) * missile_texture.width, std::fabs(m_scale.y) * missile_texture.height };
+    return { std::fabs(m_scale.x) * missilewidth, std::fabs(m_scale.y) * missileheight };
 }
 
 bool Missile::collides_with(const Missile& missile)

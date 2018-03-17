@@ -76,6 +76,8 @@ bool Bomb::init()
 
 	m_num_indices = indices.size();
 	m_rotation = 3.f;
+    speed = {0.f, 0.f};
+    mass = 0.15;
     
     return true;
 }
@@ -201,6 +203,11 @@ vec2 Bomb::get_position()const
     return m_position;
 }
 
+float Bomb::get_mass() const
+{
+    return mass;
+}
+
 bool Bomb::is_alive()const
 {
     return m_is_alive;
@@ -222,7 +229,8 @@ void Bomb::destroy()
 vec2 Bomb::get_bounding_box()const
 {
     // fabs is to avoid negative scale due to the facing direction
-    return { std::fabs(m_scale.x) * bomb_texture.width, std::fabs(m_scale.y) * bomb_texture.height };
+    float bombradius = 5.f;
+    return { std::fabs(m_scale.x) * bombradius, std::fabs(m_scale.y) * bombradius};
 }
 
 bool Bomb::collides_with(const Bomb& bomb)
@@ -238,4 +246,131 @@ bool Bomb::collides_with(const Bomb& bomb)
         return true;
     return false;
 }
+
+void Bomb::move(vec2 pos) {
+    m_position += pos;
+}
+
+void Bomb::checkBoundaryCollision(float width, float height, float ms) {
+    
+    float radius = (bomb_texture.width/2);
+    
+    if (m_position.x > width-radius)
+    {
+        m_position.x = width-radius;
+        speed.x *= -1;
+        move({speed.x *(ms/1000), speed.y*(ms/1000)});
+    }
+    else if (m_position.x < 200-radius)
+    {
+        m_position.x = 200-radius;
+        speed.x *= -1;
+        move({speed.x *(ms/1000), speed.y*(ms/1000)});
+    }
+    else if (m_position.y > height-radius)
+    {
+        m_position.y = height-radius;
+        speed.y *= -1;
+        move({speed.x *(ms/1000), speed.y*(ms/1000)});
+    }
+    else if (m_position.y < 70-radius)
+    {
+        m_position.y = 70-radius;
+        speed.y *= -1;
+        move({speed.x *(ms/1000), speed.y*(ms/1000)});
+    }
+}
+
+vec2 Bomb::get_speed() const
+{
+    return speed;
+}
+void Bomb::set_speed(vec2 newSpeed)
+{
+    speed = newSpeed;
+}
+
+float Bomb::get_force(float mass1, float speed, vec2 objPosition)
+{
+    //float blastArea = 3.14*(200.f*200.f);
+    float blastRadius = 200.f;
+    float force = 0;
+    float dist = distance(objPosition, get_position());
+    //fprintf(stderr, "distance %f\n", dist);
+    if (dist < blastRadius)
+    {
+        //if (dist < 40.f)
+        //    dist = 40.f;
+        //fprintf(stderr, "distance %f\n", dist);
+        //fprintf(stderr, "speed %f\n", speed);
+        force = ((speed*speed)/(dist*mass1));//+400;
+        //fprintf(stderr, "speed %f\n", speed);
+        //if (force > 950.0)
+        //    force = 950;
+    }
+    return force;
+    
+}
+
+void Bomb::checkCollision(Bomb other, float ms) {
+    
+    // Get distances between the balls components
+    float diffY = other.get_position().y - m_position.y; //m_position.y - other.get_position().y;
+    float diffX = other.get_position().x - m_position.x; //m_position.x - other.get_position().x;
+    vec2 distanceVect = {diffX, diffY};
+    
+    // Calculate magnitude of the vector separating the balls
+    float fDistance = sqrt(distanceVect.x*distanceVect.x
+                                 + distanceVect.y*distanceVect.y);
+    
+    // Minimum distance before they are touching
+    float minDistance = 32.5f;//bomb_texture.width;
+    //fprintf(stderr, "min distance: %f \n", minDistance);
+    //fprintf(stderr, "distvect: %f \n", distanceVectMag);
+    
+    if (fDistance < minDistance) {
+        //fprintf(stderr, "collided \n");
+        //float radius = 32.f/2;
+        float dt = (ms/1000);
+        float mass1 = 0.15;
+        float mass2 = 0.15;
+        // Normal
+        //vec2 normal = normalize({other.get_position().x - m_position.x,
+        //    other.get_position().y - m_position.y});
+        float nx = diffX/fDistance; //(other.get_position().x - m_position.x) / fDistance;
+        float ny = diffY/fDistance; //(other.get_position().y - m_position.y) / fDistance;
+
+        //float nx = normal.x;
+        //float ny = normal.y;
+        // Tangent
+        float tx = -ny;
+        float ty = nx;
+        
+        // Dot Product Tangent
+        float dpTan1 = speed.x * tx + speed.y * ty;
+        float dpTan2 = other.get_speed().x * tx + other.get_speed().y * ty;
+        
+        // Dot Product Normal
+        float dpNorm1 = speed.x * nx + speed.y * ny;
+        float dpNorm2 = other.get_speed().x * nx + other.get_speed().y * ny;
+        
+        // Conservation of momentum in 1D
+        float m1 = (dpNorm1 * (mass1 - mass2) + 2.0f * mass2 * dpNorm2) / (mass1 + mass2);
+        float m2 = (dpNorm2 * (mass2 - mass1) + 2.0f * mass1 * dpNorm1) / (mass1 + mass2);
+        
+        set_speed({tx * dpTan1 + nx * m1, ty * dpTan1 + ny * m1});
+        other.set_speed({tx * dpTan2 + nx * m2, ty * dpTan2 + ny * m2});
+        
+        move({speed.x*dt, speed.y*dt});
+        other.move({other.get_speed().x*dt, other.get_speed().y*dt});
+        
+        //fprintf(stderr, "b1x %f \n", speed.x);
+        //fprintf(stderr, "b1y %f \n", speed.y);
+        //fprintf(stderr, "b2x %f \n", other.get_speed().x);
+        //fprintf(stderr, "b2y %f \n", other.get_speed().y);
+        
+        
+    }
+}
+
 

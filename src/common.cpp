@@ -6,6 +6,7 @@
 // stlib
 #include <vector>
 #include <sstream>
+#include <iostream>
 
 void gl_flush_errors()
 {
@@ -102,6 +103,97 @@ float distance(vec2 v1, vec2 v2) {
 vec2 direction(vec2 v1, vec2 v2) {
 	return {v2.x - v1.x, v2.y - v1.y};
 }
+
+//returns true if point r lies on line pq after checking
+//that they are collinear
+bool onSegment(vec2 p, vec2 q, vec2 r) {
+		if (r.x <= fmax(p.x, q.x) && r.x >= fmin(p.x, q.x) &&
+		r.y <= fmax(p.y, q.y) && r.y >= fmin(p.y, q.y)) {
+			return true;
+		}
+		return false;
+}
+
+//returns orientation of ordered triplet (a, b, c)
+//returns 0 -> a, b, and c are collinear
+//returns 1 -> clockwise
+//returns 2 -> counter-clockwise
+int orientation(vec2 a, vec2 b, vec2 c) {
+	
+	int value = (b.y - a.y) * (c.x - b.x) -
+				(b.x - a.x) * (c.y - b.y);
+	
+	if (value == 0) return 0;
+	return (value > 0)? 1 : 2;
+}
+
+bool intersect(vec2 p1, vec2 q1, vec2 p2, vec2 q2) {
+
+	//four orientations of all line segment
+	int o1 = orientation (p1, q1, p2);
+	int o2 = orientation (p1, q1, q2);
+	int o3 = orientation (p2, q2, p1);
+	int o4 = orientation (p2, q2, q1);
+
+	if (o1 != o2 && o3 != o4) return true;
+
+	if (o1 == 0 && onSegment(p1, p2, q1)) return true;
+	if (o2 == 0 && onSegment(p1, q2, q1)) return true;
+	if (o3 == 0 && onSegment(p2, p1, q2)) return true;
+	if (o4 == 0 && onSegment(p2, q1, q2)) return true;
+
+	return false;
+
+}
+
+//return true if point point is inside the polygon represented by poly
+//screen to know what size to set the extreme point as?
+bool isInsidePolygon(std::vector<vec2> poly, vec2 point) {
+	
+	//base case where vector of points doesn't make a polygon
+	//assume that the first vector on the list is connected to
+	//the last vector using a line
+	if (poly.size() < 2 ) return false;
+
+	vec2 extreme = (10000, point.y);
+
+	int intersectionCount = 0;
+
+	for (int i = 0 ; i < poly.size() ; i++) {
+		vec2 poly1 = poly[i];
+		vec2 poly2 = ((i >= poly.size() - 1)? poly[0] : poly[i+1]);
+		
+		if (intersect(poly1, poly2, point, extreme))
+		{
+			if (orientation(poly1, point, poly2) == 0) {
+				return onSegment(poly1, point, poly2);
+			}
+
+			intersectionCount++;
+		}
+	}
+
+	return (intersectionCount % 2 == 1);
+}
+
+
+vec2 getRandomPointInMap(std::vector<vec2> mapCollisionPoints, vec2 screen) {
+
+  srand((unsigned)time(0));
+
+	vec2 randomPoint = {(float)((rand() % (int)screen.x)),
+						(float)((rand() % (int)screen.y))};
+						
+	while(!isInsidePolygon(mapCollisionPoints, randomPoint)) {
+		randomPoint = {(float)((rand() % (int)screen.x)),
+		        (float)((rand() % (int)screen.y))};
+
+	}
+
+	return randomPoint;
+
+}
+
 
 Texture::Texture()
 {
