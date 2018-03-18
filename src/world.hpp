@@ -105,6 +105,8 @@ private:
 	unsigned int timeDelay;
 	time_t start;
 	time_t freezeTime;
+    time_t armourTime_p1;
+    time_t armourTime_p2;
 
 	// Game entities
 	Worldtexture m_worldtexture;
@@ -148,6 +150,10 @@ private:
 	float m_next_spawn;
 
     int immobilize;
+    bool armourInUse_p1;
+    bool armourInUse_p2;
+    bool droptool_p1;
+    bool droptool_p2;
     bool explosion;
 
 	std::default_random_engine m_rng;

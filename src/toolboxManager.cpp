@@ -136,13 +136,19 @@ int ToolboxManager::addItem(int itemIndex, int player)
 
 int ToolboxManager::useItem(int player)
 {
-    int item_number;
+    int item_number = 0;
     
-    if (player == 1)
-        item_number = m_listOfSlotsPlayer1.front();
+    if (!m_listOfSlotsPlayer1.empty())
+    {
+        if (player == 1)
+            item_number = m_listOfSlotsPlayer1.front();
+    }
 
-    if (player == 2)
-        item_number = m_listOfSlotsPlayer2.front();
+    if (!m_listOfSlotsPlayer2.empty())
+    {
+        if (player == 2)
+            item_number = m_listOfSlotsPlayer2.front();
+    }
     
     return item_number;
 }
