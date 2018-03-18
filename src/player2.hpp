@@ -46,6 +46,7 @@ public:
     bool is_alive()const;
 
     void set_key(int key, bool pressed);
+    vec2 get_shootDirection();
 
     void animate(int direction);
 
@@ -77,4 +78,5 @@ private:
     std::vector<vec2> m_mapCollisionPoints;
 
     bool m_keys[4];
+    vec2 shootdirection;
 };

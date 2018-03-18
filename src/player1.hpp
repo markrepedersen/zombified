@@ -45,6 +45,7 @@ public:
     bool is_alive()const;
 
     void set_key(int direction, bool pressed);
+    vec2 get_shootDirection();
 
     void animate();
 
@@ -74,5 +75,6 @@ private:
     float speedlegs;
     std::vector<vec2> m_mapCollisionPoints;
 
-    std::list<int> m_keys;
+    bool m_keys[4];
+    vec2 shootdirection;
 };

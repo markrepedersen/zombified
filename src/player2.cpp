@@ -77,7 +77,7 @@ bool Player2::init(vec2 screen, std::vector<vec2> mapCollisionPoints)
     if (!effect.load_from_file(shader_path("player.vs.glsl"), shader_path("player.fs.glsl")))
         return false;
 
-
+    shootdirection = { 0.f, 3.f };
     speed = PLAYER_SPEED;
     speedlegs = PLAYER_SPEED;
     mass = 1.0;
@@ -155,9 +155,19 @@ void Player2::draw(const mat3& projection)
 
 void Player2::set_key(int key, bool pressed) {
     if (pressed)
+    {
         m_keys[key] = true;
+        if (key == 0 || key == 2) //up and down
+            shootdirection = { shootdirection.x, (float)key };
+        if (key == 1 || key == 3) //left and right
+            shootdirection = { (float)key, shootdirection.y };
+    }
     if (!pressed)
         m_keys[key] = false;
+}
+
+vec2 Player2::get_shootDirection() {
+    return shootdirection;
 }
 
 vec2 Player2::get_position() const {

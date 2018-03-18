@@ -275,12 +275,30 @@ void World::on_key(GLFWwindow *, int key, int, int action, int mod) {
 
     // player1 actions
     if (immobilize != 1 && !m_player1.get_blowback()) {
-        if (action == GLFW_PRESS &&
-            (key == GLFW_KEY_UP || key == GLFW_KEY_LEFT || key == GLFW_KEY_DOWN || key == GLFW_KEY_RIGHT))
-            m_player1.set_key(key, true);
-        if (action == GLFW_RELEASE &&
-            (key == GLFW_KEY_UP || key == GLFW_KEY_LEFT || key == GLFW_KEY_DOWN || key == GLFW_KEY_RIGHT))
-            m_player1.set_key(key, false);
+//        if (action == GLFW_PRESS &&
+//            (key == GLFW_KEY_UP || key == GLFW_KEY_LEFT || key == GLFW_KEY_DOWN || key == GLFW_KEY_RIGHT))
+//            m_player1.set_key(key, true);
+//        if (action == GLFW_RELEASE &&
+//            (key == GLFW_KEY_UP || key == GLFW_KEY_LEFT || key == GLFW_KEY_DOWN || key == GLFW_KEY_RIGHT))
+//            m_player1.set_key(key, false);
+    
+        if (action == GLFW_PRESS && key == GLFW_KEY_UP)
+            m_player1.set_key(0, true);
+        if (action == GLFW_PRESS && key == GLFW_KEY_LEFT)
+            m_player1.set_key(1, true);
+        if (action == GLFW_PRESS && key == GLFW_KEY_DOWN)
+            m_player1.set_key(2, true);
+        if (action == GLFW_PRESS && key == GLFW_KEY_RIGHT)
+            m_player1.set_key(3, true);
+        if (action == GLFW_RELEASE && key == GLFW_KEY_UP)
+            m_player1.set_key(0, false);
+        if (action == GLFW_RELEASE && key == GLFW_KEY_LEFT)
+            m_player1.set_key(1, false);
+        if (action == GLFW_RELEASE && key == GLFW_KEY_DOWN)
+            m_player1.set_key(2, false);
+        if (action == GLFW_RELEASE && key == GLFW_KEY_RIGHT)
+            m_player1.set_key(3, false);
+        
         if (action == GLFW_PRESS && key == GLFW_KEY_RIGHT_SHIFT)
             use_tool_1(m_toolboxManager.useItem(1));
     }
@@ -459,7 +477,7 @@ bool World::random_spawn(float elapsed_ms, vec2 screen) {
         }
     }
 
-    if (randNum % 17 == 0) {
+    if (randNum % 1 == 0) {
         if (m_bomb.size() <= MAX_BOMB && m_next_spawn < 0.f) {
             if (!spawn_bomb())
                 return false;
@@ -829,12 +847,13 @@ void World::use_tool_1(int tool_number) {
             m_antidote.set_scale({-0.08f * ViewHelper::getRatio(), 0.08f * ViewHelper::getRatio()});
         }
     }
-//    if (tool_number == 4) {
+    if (tool_number == 4) {
 //        m_player1.set_mass(m_player1.get_mass() - m_legs_collected_1.begin()->get_mass());
 //        m_legs_collected_1.erase(m_legs_collected_1.begin());
-//        m_toolboxManager.decreaseSlot(1);
-//        m_player1.increase_speed_legs(m_player1.get_speed() - 20);
-//    }
+        m_limbsManager.decreaseCollectedLegs(1);
+        m_toolboxManager.decreaseSlot(1);
+        m_player1.increase_speed_legs(- 10);
+    }
     if (tool_number == 5) {
         used_bombs.emplace_back(m_bomb_collected_1.front());
         Bomb &use_bomb = used_bombs.back();
@@ -843,7 +862,22 @@ void World::use_tool_1(int tool_number) {
         m_player1.set_mass(m_player1.get_mass() - use_bomb.get_mass());
         use_bomb.set_position(m_player1.get_position());
         useBomb = true;
-        use_bomb.set_speed({200, 100});
+        
+        float xspeed = 0.f;
+        float yspeed = 0.f;
+        vec2 shootdirection = m_player1.get_shootDirection();
+        if (shootdirection.y == 0) //up
+            yspeed = -100.f;
+        if (shootdirection.x == 1) //left
+            xspeed = -200.f;
+        if (shootdirection.y == 2) //down
+            yspeed = 100.f;
+        if (shootdirection.x == 3) //right
+            xspeed = 200.f;
+        
+        use_bomb.set_speed({xspeed, yspeed});
+        
+        //use_bomb.set_speed({200, 100});
 
         m_toolboxManager.decreaseSlot(1);
     }
@@ -885,11 +919,10 @@ void World::shift_1() {
         if (*it == 3) {
             m_antidote.set_position(m_toolboxManager.new_tool_position(index, 1));
         }
-//        if (*it == 4) {
-//            Legs &legs = m_legs_collected_1.at(legcount);
-//            legs.set_position(m_toolboxManager.new_tool_position(index, 1));
-//            legcount++;
-//        }
+        if (*it == 4) {
+            m_limbsManager.shiftCollectedLegs(1, &m_toolboxManager, index, legcount);
+            legcount++;
+        }
         if (*it == 5) {
             Bomb &bomb = m_bomb_collected_1.at(bombcount);
             bomb.set_position(m_toolboxManager.new_tool_position(index, 1));
@@ -933,12 +966,11 @@ void World::use_tool_2(int tool_number) {
             m_antidote.set_scale({-0.08f * ViewHelper::getRatio(), 0.08f * ViewHelper::getRatio()});
         }
     }
-//    if (tool_number == 4) {
-//        m_player2.set_mass(m_player2.get_mass() - m_legs_collected_2.begin()->get_mass());
-//        m_legs_collected_2.erase(m_legs_collected_2.begin());
-//        m_toolboxManager.decreaseSlot(2);
-//        m_player2.increase_speed_legs(m_player2.get_speed() - 20);
-//    }
+    if (tool_number == 4) {
+        m_limbsManager.decreaseCollectedLegs(2);
+        m_toolboxManager.decreaseSlot(2);
+        m_player2.increase_speed_legs(- 10);
+    }
     if (tool_number == 5) {
         used_bombs.emplace_back(m_bomb_collected_2.front());
         Bomb &use_bomb = used_bombs.back();
@@ -947,7 +979,20 @@ void World::use_tool_2(int tool_number) {
         m_player2.set_mass(m_player2.get_mass() - use_bomb.get_mass());
         use_bomb.set_position(m_player2.get_position());
         useBomb = true;
-        use_bomb.set_speed({200, 100});
+        
+        float xspeed = 0.f;
+        float yspeed = 0.f;
+        vec2 shootdirection = m_player2.get_shootDirection();
+        if (shootdirection.y == 0) //up
+            yspeed = -100.f;
+        if (shootdirection.x == 1) //left
+            xspeed = -200.f;
+        if (shootdirection.y == 2) //down
+            yspeed = 100.f;
+        if (shootdirection.x == 3) //right
+            xspeed = 200.f;
+
+        use_bomb.set_speed({xspeed, yspeed});
 
         m_toolboxManager.decreaseSlot(2);
     }
@@ -989,11 +1034,10 @@ void World::shift_2() {
         if (*it == 3) {
             m_antidote.set_position(m_toolboxManager.new_tool_position(index, 2));
         }
-//        if (*it == 4) {
-//            Legs &legs = m_legs_collected_2.at(legcount);
-//            legs.set_position(m_toolboxManager.new_tool_position(index, 2));
-//            legcount++;
-//        }
+        if (*it == 4) {
+            m_limbsManager.shiftCollectedLegs(2, &m_toolboxManager, index, legcount);
+            legcount++;
+        }
         if (*it == 5) {
             Bomb &bomb = m_bomb_collected_2.at(bombcount);
             bomb.set_position(m_toolboxManager.new_tool_position(index, 2));

@@ -81,6 +81,7 @@ bool Player1::init(vec2 screen, std::vector<vec2> mapCollisionPoints)
     m_is_alive = true;
 
     // m_position = {screen.x - 1150.f, screen.y - 450.f};
+    shootdirection = { 0.f, 3.f };
     speed = PLAYER_SPEED;
     speedlegs = PLAYER_SPEED;
     mass = 1.0;
@@ -155,23 +156,28 @@ void Player1::draw(const mat3 &projection)
 }
 
 void Player1::set_key(int key, bool pressed) {
-    if (pressed) {
-        m_keys.push_front(key);
-
-        // for (auto v : m_keys) {
-        //     std::cout << v << " ";
-        // }
-
-        // std::cout << "\n";
+    if (pressed)
+    {
+        m_keys[key] = true;
+        if (key == 0 || key == 2) //up and down
+            shootdirection = { shootdirection.x, (float)key };
+        if (key == 1 || key == 3) //left and right
+            shootdirection = { (float)key, shootdirection.y };
     }
+
     if (!pressed)
-        m_keys.remove(key);
+        //m_keys.remove(key);
+         m_keys[key] = false;
         
         // for (auto v : m_keys) {
         //     std::cout << v << " ";
         // }
         
         // std::cout << "\n";
+}
+
+vec2 Player1::get_shootDirection() {
+    return shootdirection;
 }
 
 vec2 Player1::get_position() const
@@ -227,7 +233,7 @@ void Player1::increase_speed_legs(float newSpeed)
 void Player1::update(float ms) {
     float step = speed * (ms / 1000);//PLAYER_SPEED * (ms / 1000);
 
-    if (m_keys.front() == GLFW_KEY_UP)
+    if (m_keys[0])//m_keys.front() == GLFW_KEY_UP)
         {
             if (isInsidePolygon(m_mapCollisionPoints, {m_position.x+0, m_position.y-step}))
             {
@@ -237,7 +243,7 @@ void Player1::update(float ms) {
             }
 
         }
-    if (m_keys.front() == GLFW_KEY_LEFT)
+    if (m_keys[1])//m_keys.front() == GLFW_KEY_LEFT)
         {
             if (isInsidePolygon(m_mapCollisionPoints, {m_position.x-step, m_position.y + 0}))
             {
@@ -246,7 +252,7 @@ void Player1::update(float ms) {
             }
 
         }
-    if (m_keys.front() == GLFW_KEY_DOWN)
+    if (m_keys[2])//m_keys.front() == GLFW_KEY_DOWN)
         {
             if (isInsidePolygon(m_mapCollisionPoints, {m_position.x + 0, m_position.y + step}))
             {
@@ -255,13 +261,12 @@ void Player1::update(float ms) {
             }
 
         }
-    if (m_keys.front() == GLFW_KEY_RIGHT)
+    if (m_keys[3]) //m_keys.front() == GLFW_KEY_RIGHT)
     {
             if (isInsidePolygon(m_mapCollisionPoints, {m_position.x + step, m_position.y + 0}))
             {
                 move({step, 0});
-
-            animate();
+                animate();
             }
 
         }
@@ -290,27 +295,27 @@ void Player1::animate()
 
     if (milliseconds > frame_time_p1)
     {
-        if (m_keys.front() == GLFW_KEY_UP)
+        if (m_keys[0])//m_keys.front() == GLFW_KEY_UP)
         {
             curr_frame_p1 = (curr_frame_p1 + 1) % 2;
             sprite_frame_index_p1 = up_frames_p1[curr_frame_p1];
             start_time_p1 = curr_time;
         }
-        else if (m_keys.front() == GLFW_KEY_LEFT)
+        else if (m_keys[1]) //m_keys.front() == GLFW_KEY_LEFT)
         {
             curr_frame_p1 = (curr_frame_p1 + 1) % 3;
             sprite_frame_index_p1 = left_frames_p1[curr_frame_p1];
 
             start_time_p1 = curr_time;
         }
-        else if (m_keys.front() == GLFW_KEY_DOWN)
+        else if (m_keys[2]) //m_keys.front() == GLFW_KEY_DOWN)
         {
             curr_frame_p1 = (curr_frame_p1 + 1) % 2;
             sprite_frame_index_p1 = down_frames_p1[curr_frame_p1];
 
             start_time_p1 = curr_time;
         }
-        else if (m_keys.front() == GLFW_KEY_RIGHT)
+        else if (m_keys[3])//m_keys.front() == GLFW_KEY_RIGHT)
         {
             curr_frame_p1 = (curr_frame_p1 + 1) % 3;
             sprite_frame_index_p1 = right_frames_p1[curr_frame_p1];

@@ -40,6 +40,11 @@ public:
     std::vector<Limb> getLimbs() {
         return limbs;
     }
+    
+    std::vector<Limb> getCollectedLegs(int player);
+    void decreaseCollectedLegs(int player);
+    
+    void shiftCollectedLegs(int player, ToolboxManager *m_toolboxManager, float index, int legcount);
 
     void computePaths(float ms, const MapGrid &mapGrid);
 
@@ -53,4 +58,7 @@ private:
     int m_arms_total;
     int m_legs_total;
     std::vector<vec2> randomPoints;
+    
+    std::vector<Limb> collectedLegs_p1;
+    std::vector<Limb> collectedLegs_p2;
 };

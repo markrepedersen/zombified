@@ -4,6 +4,7 @@
 #include "common.hpp"
 #include "toolboxManager.hpp"
 #include "limbsManager.hpp"
+#include "Limb.h"
 #include "player1.hpp"
 #include "player2.hpp"
 #include "zombie.hpp"

@@ -16,6 +16,12 @@ void LimbsManager::draw(const mat3 &projection_2D) {
     for (auto &limb : limbs) {
         limb.draw(projection_2D);
     }
+    for (auto &collectedLegs1 : collectedLegs_p1) {
+        collectedLegs1.draw(projection_2D);
+    }
+    for (auto &collectedLegs2 : collectedLegs_p2) {
+        collectedLegs2.draw(projection_2D);
+    }
 }
 
 vec2 LimbsManager::getRandomPointInMap() {
@@ -88,6 +94,37 @@ bool LimbsManager::cluster_limbs() {
     return true;
 }
 
+std::vector<Limb> LimbsManager::getCollectedLegs(int player) {
+    if (player == 1)
+        return collectedLegs_p1;
+    else
+        return collectedLegs_p2;
+}
+
+void LimbsManager::decreaseCollectedLegs(int player) {
+    if (player == 1)
+    {
+        collectedLegs_p1.begin()->destroy();
+        collectedLegs_p1.erase(collectedLegs_p1.begin());
+    }
+    if (player == 2)
+    {
+        collectedLegs_p2.begin()->destroy();
+        collectedLegs_p2.erase(collectedLegs_p2.begin());
+    }
+}
+
+void LimbsManager::shiftCollectedLegs(int player, ToolboxManager *m_toolboxManager, float index, int legcount) {
+    if (player == 1)
+    {
+        Limb &legs = collectedLegs_p1.at(legcount);
+        legs.set_position(m_toolboxManager->new_tool_position(index, 1));
+    }
+    if (player == 2) {
+        Limb &legs = collectedLegs_p2.at(legcount);
+        legs.set_position(m_toolboxManager->new_tool_position(index, 2));
+    }
+}
 
 //check if players collide with any limbs
 //returns 1 if an arm collides with player 1
@@ -107,16 +144,17 @@ int LimbsManager::check_collision_with_players(Player1 *m_player1, Player2 *m_pl
         if (collided != 0)
         {
             if ((*it).getLimbType() == "leg") {
-                //float index = (float)m_toolboxmanager->addItem(4, collided);
-                //if ((int)index != 100)
-                //{
-                    it->destroy();
-                    it = limbs.erase(it);
-                    m_legs_total--;
+                float index = (float)m_toolboxmanager->addItem(4, collided);
+                if ((int)index != 100)
+                {
+                    //it->destroy();
                     if(collided == 1)
                     {
                         m_player1->increase_speed_legs(10);
                         //m_player1->set_mass(it->get_mass()+m_player1->get_mass());
+                        collectedLegs_p1.emplace_back(*it);
+                        Limb &new_leg = collectedLegs_p1.back();
+                        new_leg.set_position(m_toolboxmanager->new_tool_position(index, collided));
                         collided = 0;
                         //fprintf(stderr, "massp1 added: %f\n", m_player1.get_mass());
                     }
@@ -124,12 +162,17 @@ int LimbsManager::check_collision_with_players(Player1 *m_player1, Player2 *m_pl
                     {
                         m_player2->increase_speed_legs(10);
                        // m_player2->set_mass(it->get_mass()+m_player2->get_mass());
+                        collectedLegs_p2.emplace_back(*it);
+                        Limb &new_leg = collectedLegs_p2.back();
+                        new_leg.set_position(m_toolboxmanager->new_tool_position(index, collided));
                         collided = 0;
                         //fprintf(stderr, "massp2 added: %f\n", m_player2.get_mass());
                     }
-                //}
-                //else
-                //    ++it;
+                    it = limbs.erase(it);
+                    m_legs_total--;
+                }
+                else
+                    ++it;
                 
             }
         
