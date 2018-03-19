@@ -84,6 +84,7 @@ bool Player1::init(vec2 screen, std::vector<vec2> mapCollisionPoints)
     shootdirection = { 0.f, 3.f };
     speed = PLAYER_SPEED;
     speedlegs = PLAYER_SPEED;
+    originalSpeed = PLAYER_SPEED;
     mass = 1.0;
     blowback = false;
 
@@ -228,6 +229,15 @@ void Player1::increase_speed_legs(float newSpeed)
 {
     speedlegs += newSpeed;
     set_speed(speedlegs);
+}
+
+float Player1::get_originalspeed() const
+{
+    return originalSpeed;
+}
+void Player1::set_originalspeed(float newSpeed)
+{
+    originalSpeed = newSpeed;
 }
 
 void Player1::update(float ms) {
@@ -408,6 +418,20 @@ bool Player1::collides_with(const Missile& missile)
     float dy = m_position.y - missile.get_position().y;
     float d_sq = dx * dx + dy * dy;
     float other_r = std::max(missile.get_bounding_box().x, missile.get_bounding_box().y);
+    float my_r = std::max(m_scale.x, m_scale.y);
+    float r = std::max(other_r, my_r);
+    r *= 0.6f;
+    if (d_sq < r * r)
+        return true;
+    return false;
+}
+
+bool Player1::collides_with(const Mud& mud)
+{
+    float dx = m_position.x - mud.get_position().x;
+    float dy = m_position.y - mud.get_position().y;
+    float d_sq = dx * dx + dy * dy;
+    float other_r = std::max(mud.get_bounding_box().x, mud.get_bounding_box().y);
     float my_r = std::max(m_scale.x, m_scale.y);
     float r = std::max(other_r, my_r);
     r *= 0.6f;

@@ -13,6 +13,7 @@
 #include "bomb.hpp"
 #include "armour.hpp"
 #include "missile.hpp"
+#include "mud.hpp"
 
 class Player1 : public Renderable
 {
@@ -40,6 +41,9 @@ public:
     void set_blowback(bool newblowback);
     vec2 get_blowbackForce()const;
     void set_blowbackForce(vec2 newblowbackForce);
+    
+    float get_originalspeed()const;
+    void set_originalspeed(float newSpeed);
 
     // True if the salmon is alive
     bool is_alive()const;
@@ -56,6 +60,7 @@ public:
     bool collides_with(const Bomb& bomb);
     bool collides_with(const Armour& armour);
     bool collides_with(const Missile& missile);
+    bool collides_with(const Mud& mud);
 
     void destroy();
 
@@ -70,6 +75,7 @@ private:
 
     float mass;
     float speed;
+    float originalSpeed;
     bool blowback;
     vec2 blowbackForce;
     float speedlegs;

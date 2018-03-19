@@ -9,6 +9,7 @@
 #include "player2.hpp"
 #include "zombie.hpp"
 #include "water.hpp"
+#include "mud.hpp"
 #include "Ice.hpp"
 #include "tree.hpp"
 #include "worldtexture.hpp"
@@ -122,6 +123,8 @@ private:
     Bomb t_bomb;
     Bomb t2_bomb;
 
+    //Mud mud;
+    
     std::vector<Ice> m_freeze;
     std::vector<Water> m_water;
     std::vector<Missile> m_missile;
@@ -138,6 +141,8 @@ private:
     std::vector<Bomb> m_bomb_collected_2;
     std::vector<Armour> m_armour_collected_1;
     std::vector<Armour> m_armour_collected_2;
+    
+    std::vector<Mud> m_mud_collected;
 
     std::vector<Bomb> used_bombs;
 

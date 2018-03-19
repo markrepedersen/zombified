@@ -102,6 +102,8 @@ void World::destroy() {
         water_collected.destroy();
     for (auto &bomb_used : used_bombs)
         bomb_used.destroy();
+    for (auto &mud_collected : m_mud_collected)
+        mud_collected.destroy();
     m_freeze.clear();
     m_water.clear();
     m_missile.clear();
@@ -111,6 +113,8 @@ void World::destroy() {
     m_freeze_collected_2.clear();
     m_water_collected_1.clear();
     m_water_collected_2.clear();
+    used_bombs.clear();
+    m_mud_collected.clear();
 }
 
 bool World::update(float elapsed_ms) {
@@ -135,6 +139,9 @@ bool World::update(float elapsed_ms) {
             m_worldtexture.init(screen);
             m_toolboxManager.init({screen.x, screen.y});
             useBomb = false;
+            
+            //mud.init();
+            
             m_player1.init(screen, mapCollisionPoints) && m_player2.init(screen, mapCollisionPoints) &&
             m_antidote.init(screen);
         }
@@ -269,9 +276,12 @@ void World::draw() {
             armour_collected.draw(projection_2D);
         for (auto &bomb_used : used_bombs)
             bomb_used.draw(projection_2D);
+        for (auto &mud_collected : m_mud_collected)
+            mud_collected.draw(projection_2D);
 
         m_player1.draw(projection_2D);
         m_player2.draw(projection_2D);
+        //mud.draw(projection_2D);
     }
 
     // Presenting
@@ -458,7 +468,7 @@ bool World::random_spawn(float elapsed_ms, vec2 screen) {
             m_next_spawn = (DELAY_MS / 2) + rand() % (1000);
         }
     }
-    if (randNum % 3 == 0) {
+    if (randNum % 21 == 0) {
         if (m_missile.size() <= MAX_MISSILE && m_next_spawn < 0.f) {
             if (!spawn_missile())
                 return false;
@@ -490,7 +500,7 @@ bool World::random_spawn(float elapsed_ms, vec2 screen) {
         }
     }
 
-    if (randNum % 1 == 0) {
+    if (randNum % 3 == 0) {
         if (m_bomb.size() <= MAX_BOMB && m_next_spawn < 0.f) {
             if (!spawn_bomb())
                 return false;
@@ -559,7 +569,7 @@ void World::check_add_tools(vec2 screen) {
             collided = 1;
         if (m_player2.collides_with(*itw))//water))
             collided = 2;
-
+        
         if (collided != 0) {
             float index = (float) m_toolboxManager.addItem(2, collided);
             if ((int) index != 100) {
@@ -576,6 +586,45 @@ void World::check_add_tools(vec2 screen) {
         } else
             ++itw;
         collided = 0;
+    }
+
+
+//=================check for mud collision
+    std::vector<Mud>::iterator itmud;
+    int collided1 = false;
+    int collided2 = false;
+    for (itmud = m_mud_collected.begin(); itmud != m_mud_collected.end(); ++itmud) {
+        if (m_player1.collides_with(*itmud))
+            collided1 = true;
+        if (m_player2.collides_with(*itmud))
+            collided2 = true;
+        
+        if (collided1) {
+            if (!itmud->is_affected(1))
+            {
+                m_player1.set_originalspeed(m_player1.get_speed());
+                m_player1.set_speed(m_player1.get_speed()*m_player1.get_mass()-100.f);
+                itmud->set_affected(1, true);
+            }
+        }
+        if (collided2) {
+            if (!itmud->is_affected(2))
+            {
+                m_player2.set_originalspeed(m_player2.get_speed());
+                m_player2.set_speed(m_player2.get_speed()*m_player2.get_mass()-100.f);
+                itmud->set_affected(2, true);
+            }
+        }
+        if (!collided1) {
+            m_player1.set_speed(m_player1.get_originalspeed());
+            itmud->set_affected(1, false);
+        }
+        if (!collided2) {
+            m_player2.set_speed(m_player2.get_originalspeed());
+            itmud->set_affected(2, false);
+        }
+        collided1 = false;
+        collided2 = false;
     }
     
 //=================check for bomb collision
@@ -661,6 +710,7 @@ void World::check_add_tools(vec2 screen) {
         collided = 1;
     if (m_player2.collides_with(m_antidote))
         collided = 2;
+    
     if (collided != 0 && m_antidote.belongs_to == 0) {
         float index = (float) m_toolboxManager.addItem(3, collided);
         if ((int) index != 100) {
@@ -684,93 +734,6 @@ void World::check_add_tools(vec2 screen) {
 //            m_toolboxManager.addSlot(2);
 //        }
 //    }
-}
-
-// =========== EXPLODING LOGIC ===================
-void World::autoExplode() {
-    float force_p1 = 0;
-    float force_p2 = 0;
-    if (!armourInUse_p1)
-    {
-        force_p1 = used_bombs.front().get_force(m_player1.get_mass(),
-                                                      m_player1.get_speed(),
-                                                      m_player1.get_position());
-        droptool_p1 = true;
-        use_tool_1(m_toolboxManager.useItem(1));
-    }
-    
-    if (!armourInUse_p2)
-    {
-        force_p2 = used_bombs.front().get_force(m_player2.get_mass(),
-                                                      m_player2.get_speed(),
-                                                      m_player2.get_position());
-        droptool_p2 = true;
-        use_tool_2(m_toolboxManager.useItem(2));
-    }
-    if (force_p1 > 0) {
-        m_player1.set_blowback(true);
-        m_player1.set_speed(force_p1);
-        m_player1.set_blowbackForce({(m_player1.get_position().x - used_bombs.front().get_position().x),
-                                     (m_player1.get_position().y - used_bombs.front().get_position().y)});
-        explosion = true;
-    }
-    if (force_p2 > 0) {
-        m_player2.set_blowback(true);
-        m_player2.set_speed(force_p2);
-        m_player2.set_blowbackForce({(m_player2.get_position().x - used_bombs.front().get_position().x),
-                                     (m_player2.get_position().y - used_bombs.front().get_position().y)});
-        explosion = true;
-    }
-
-    used_bombs.erase(used_bombs.begin());
-
-}
-
-void World::explode() {
-    if (m_player1.get_blowback())
-        m_player1.set_speed(m_player1.get_speed() * 0.9);
-    if (m_player2.get_blowback())
-        m_player2.set_speed(m_player2.get_speed() * 0.9);
-
-    if (m_player1.get_speed() <= 3 || m_player2.get_speed() <= 3) {
-        m_player1.set_blowback(false);
-        explosion = false;
-        m_player1.set_speed(m_player1.get_speed_legs());
-        m_player2.set_blowback(false);
-        explosion = false;
-        m_player2.set_speed(m_player2.get_speed_legs());
-    }
-}
-
-void World::use_bomb(float ms) {
-    std::vector<Bomb>::iterator itbomb;
-    std::vector<Bomb>::iterator checkbomb;
-    for (itbomb = used_bombs.begin(); itbomb != used_bombs.end();) {
-        itbomb->set_speed({itbomb->get_speed().x * (0.997f), itbomb->get_speed().y * (0.997f)});
-
-        if (std::fabs(itbomb->get_speed().x) <= 20 && std::fabs(itbomb->get_speed().y) <= 20)
-        {
-            itbomb->set_speed({0.f, 0.f});
-            autoExplode();
-        }
-        else
-        {
-            itbomb->move({itbomb->get_speed().x * (ms / 1000),
-                          itbomb->get_speed().y * (ms / 1000)});
-            itbomb->checkBoundaryCollision(1100, 500, ms);
-
-            for (checkbomb = used_bombs.begin(); checkbomb != used_bombs.end() - 1; ++checkbomb) {
-                if (checkbomb != itbomb) {
-                    if (itbomb->collides_with(*checkbomb))
-                        itbomb->checkCollision(*checkbomb, ms);
-                }
-            }
-
-            ++itbomb;
-        }
-
-    }
-
 }
 
 // =========== COLLECT AND SET TOOLS ===================
@@ -862,8 +825,14 @@ void World::use_tool_1(int tool_number) {
 
     }
     if (tool_number == 2) {
-        //if (!droptool_p1)
-            //tool functionality goes here
+        if (!droptool_p1)
+        {
+            Mud mud;
+            if (mud.init()) {
+                mud.set_position(m_player1.get_position());
+                m_mud_collected.emplace_back(mud);
+            }
+        }
         m_player1.set_mass(m_player1.get_mass() - m_water_collected_1.begin()->get_mass());
         m_water_collected_1.erase(m_water_collected_1.begin());
         m_toolboxManager.decreaseSlot(1);
@@ -1007,8 +976,14 @@ void World::use_tool_2(int tool_number) {
         m_toolboxManager.decreaseSlot(2);
     }
     if (tool_number == 2) {
-        //if (!droptool_p2)
-            //tool functionality goes here
+        if (!droptool_p2)
+        {
+            Mud mud;
+            if (mud.init()) {
+                mud.set_position(m_player2.get_position());
+                m_mud_collected.emplace_back(mud);
+            }
+        }
         m_player2.set_mass(m_player2.get_mass() - m_water_collected_2.begin()->get_mass());
         m_water_collected_2.erase(m_water_collected_2.begin());
         m_toolboxManager.decreaseSlot(2);
@@ -1135,6 +1110,93 @@ void World::shift_2() {
         }
         index++;
     }
+}
+
+// =========== EXPLODING LOGIC ===================
+void World::autoExplode() {
+    float force_p1 = 0;
+    float force_p2 = 0;
+    if (!armourInUse_p1)
+    {
+        force_p1 = used_bombs.front().get_force(m_player1.get_mass(),
+                                                m_player1.get_speed(),
+                                                m_player1.get_position());
+        droptool_p1 = true;
+        use_tool_1(m_toolboxManager.useItem(1));
+    }
+    
+    if (!armourInUse_p2)
+    {
+        force_p2 = used_bombs.front().get_force(m_player2.get_mass(),
+                                                m_player2.get_speed(),
+                                                m_player2.get_position());
+        droptool_p2 = true;
+        use_tool_2(m_toolboxManager.useItem(2));
+    }
+    if (force_p1 > 0) {
+        m_player1.set_blowback(true);
+        m_player1.set_speed(force_p1);
+        m_player1.set_blowbackForce({(m_player1.get_position().x - used_bombs.front().get_position().x),
+            (m_player1.get_position().y - used_bombs.front().get_position().y)});
+        explosion = true;
+    }
+    if (force_p2 > 0) {
+        m_player2.set_blowback(true);
+        m_player2.set_speed(force_p2);
+        m_player2.set_blowbackForce({(m_player2.get_position().x - used_bombs.front().get_position().x),
+            (m_player2.get_position().y - used_bombs.front().get_position().y)});
+        explosion = true;
+    }
+    
+    used_bombs.erase(used_bombs.begin());
+    
+}
+
+void World::explode() {
+    if (m_player1.get_blowback())
+        m_player1.set_speed(m_player1.get_speed() * 0.9);
+    if (m_player2.get_blowback())
+        m_player2.set_speed(m_player2.get_speed() * 0.9);
+    
+    if (m_player1.get_speed() <= 3 || m_player2.get_speed() <= 3) {
+        m_player1.set_blowback(false);
+        explosion = false;
+        m_player1.set_speed(m_player1.get_speed_legs());
+        m_player2.set_blowback(false);
+        explosion = false;
+        m_player2.set_speed(m_player2.get_speed_legs());
+    }
+}
+
+void World::use_bomb(float ms) {
+    std::vector<Bomb>::iterator itbomb;
+    std::vector<Bomb>::iterator checkbomb;
+    for (itbomb = used_bombs.begin(); itbomb != used_bombs.end();) {
+        itbomb->set_speed({itbomb->get_speed().x * (0.997f), itbomb->get_speed().y * (0.997f)});
+        
+        if (std::fabs(itbomb->get_speed().x) <= 20 && std::fabs(itbomb->get_speed().y) <= 20)
+        {
+            itbomb->set_speed({0.f, 0.f});
+            autoExplode();
+        }
+        else
+        {
+            itbomb->move({itbomb->get_speed().x * (ms / 1000),
+                itbomb->get_speed().y * (ms / 1000)});
+            itbomb->checkBoundaryCollision(1100, 500, ms);
+            
+            for (checkbomb = used_bombs.begin(); checkbomb != used_bombs.end() - 1; ++checkbomb) {
+                if (checkbomb != itbomb) {
+                    if (itbomb->collides_with(*checkbomb))
+                        itbomb->checkCollision(*checkbomb, ms);
+                }
+            }
+            
+            ++itbomb;
+        }
+        
+    }
+    
 }
 
 void World::populateMapCollisionPoints() {
