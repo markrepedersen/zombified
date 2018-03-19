@@ -47,6 +47,7 @@ public:
     void destroy();
     //bool max_slots_filled1;
     //bool max_slots_filled2;
+    int antidotePos = 0;
 
 private:
     vec2 m_screen; //screen size

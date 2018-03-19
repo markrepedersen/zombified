@@ -285,6 +285,12 @@ void LimbsManager::computePaths(float ms, const MapGrid &mapGrid) {
 void LimbsManager::destroy() {
     for (auto &limb : limbs)
         limb.destroy();
+    for (auto &limb1 : collectedLegs_p1)
+        limb1.destroy();
+    for (auto &limb2 : collectedLegs_p2)
+        limb2.destroy();
 
     limbs.clear();
+    collectedLegs_p1.clear();
+    collectedLegs_p1.clear();
 }

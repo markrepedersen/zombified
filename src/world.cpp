@@ -100,10 +100,26 @@ void World::destroy() {
         freeze_collected.destroy();
     for (auto &water_collected : m_water_collected_2)
         water_collected.destroy();
+    
+    for (auto &missile_collected : m_missile_collected_1)
+        missile_collected.destroy();
+    for (auto &missile_collected : m_missile_collected_2)
+        missile_collected.destroy();
+    for (auto &bomb_collected : m_bomb_collected_1)
+        bomb_collected.destroy();
+    for (auto &bomb_collected : m_bomb_collected_2)
+        bomb_collected.destroy();
+    for (auto &armour_collected : m_armour_collected_1)
+        armour_collected.destroy();
+    for (auto &armour_collected : m_armour_collected_2)
+        armour_collected.destroy();
+
+    
     for (auto &bomb_used : used_bombs)
         bomb_used.destroy();
     for (auto &mud_collected : m_mud_collected)
         mud_collected.destroy();
+    
     m_freeze.clear();
     m_water.clear();
     m_missile.clear();
@@ -113,6 +129,12 @@ void World::destroy() {
     m_freeze_collected_2.clear();
     m_water_collected_1.clear();
     m_water_collected_2.clear();
+    m_missile_collected_1.clear();
+    m_missile_collected_2.clear();
+    m_bomb_collected_1.clear();
+    m_bomb_collected_2.clear();
+    m_armour_collected_1.clear();
+    m_armour_collected_2.clear();
     used_bombs.clear();
     m_mud_collected.clear();
 }
@@ -813,6 +835,13 @@ void World::collect_missile(Missile missile, int player, float index) {
 
 
 void World::use_tool_1(int tool_number) {
+    int dropAntidote = false;
+    if (droptool_p1 && m_antidote.belongs_to == 1)
+    {
+        tool_number = 3;
+        dropAntidote = true;
+    }
+    
     if (tool_number == 1) {
         if (!armourInUse_p2 && !droptool_p1)
         {
@@ -853,8 +882,14 @@ void World::use_tool_1(int tool_number) {
         }
         else
         {
+            std::vector<int> list = m_toolboxManager.getListOfSlot_1();
+            for (int i=0; i<list.size(); i++)
+            {
+                if (list.at(i) == 3)
+                    m_toolboxManager.antidotePos = i;
+            }
             m_toolboxManager.decreaseSlot(1);
-            m_antidote.set_position({m_player1.get_position().x, m_player1.get_position().y});
+            m_antidote.set_position(m_player1.get_position());
             m_antidote.set_scale({-0.10f * ViewHelper::getRatio(), 0.10f * ViewHelper::getRatio()});
             m_antidote.belongs_to = 0;
         }
@@ -914,10 +949,10 @@ void World::use_tool_1(int tool_number) {
         m_toolboxManager.decreaseSlot(1);
     }
     droptool_p1 = false;
-    shift_1();
+    shift_1(dropAntidote);
 }
 
-void World::shift_1() {
+void World::shift_1(bool droppedAntidote) {
     std::vector<int> list = m_toolboxManager.getListOfSlot_1();
     std::vector<int>::iterator it;
     int freezecount = 0;
@@ -926,45 +961,81 @@ void World::shift_1() {
     int bombcount = 0;
     int armourcount = 0;
     int missilecount = 0;
+    int antidotePos = 0;
     float index = 0.f;
-    for (it = list.begin(); it != list.end(); ++it) {
+    for (it = list.begin(); it != list.end();++it) {
+        
+        if (m_toolboxManager.antidotePos == antidotePos && droppedAntidote)
+        {
+            droppedAntidote = false;
+            m_toolboxManager.antidotePos = 0;
+        }
         if (*it == 1) {
-            Ice &freeze = m_freeze_collected_1.at(freezecount);
-            freeze.set_position(m_toolboxManager.new_tool_position(index, 1));
+            if (!droppedAntidote)
+            {
+                Ice &freeze = m_freeze_collected_1.at(freezecount);
+                freeze.set_position(m_toolboxManager.new_tool_position(index, 1));
+            }
             freezecount++;
         }
         if (*it == 2) {
-            Water &water = m_water_collected_1.at(watercount);
-            water.set_position(m_toolboxManager.new_tool_position(index, 1));
+            if (!droppedAntidote)
+            {
+                Water &water = m_water_collected_1.at(watercount);
+                water.set_position(m_toolboxManager.new_tool_position(index, 1));
+            }
             watercount++;
         }
         if (*it == 3) {
-            m_antidote.set_position(m_toolboxManager.new_tool_position(index, 1));
+            if (!droppedAntidote)
+            {
+                m_antidote.set_position(m_toolboxManager.new_tool_position(index, 1));
+            }
         }
         if (*it == 4) {
-            m_limbsManager.shiftCollectedLegs(1, &m_toolboxManager, index, legcount);
+            if (!droppedAntidote)
+            {
+                m_limbsManager.shiftCollectedLegs(1, &m_toolboxManager, index, legcount);
+            }
             legcount++;
         }
         if (*it == 5) {
-            Bomb &bomb = m_bomb_collected_1.at(bombcount);
-            bomb.set_position(m_toolboxManager.new_tool_position(index, 1));
+            if (!droppedAntidote)
+            {
+                Bomb &bomb = m_bomb_collected_1.at(bombcount);
+                bomb.set_position(m_toolboxManager.new_tool_position(index, 1));
+            }
             bombcount++;
         }
         if (*it == 6) {
-            Missile &missile = m_missile_collected_1.at(missilecount);
-            missile.set_position(m_toolboxManager.new_tool_position(index, 1));
+            if (!droppedAntidote)
+            {
+                Missile &missile = m_missile_collected_1.at(missilecount);
+                missile.set_position(m_toolboxManager.new_tool_position(index, 1));
+            }
             missilecount++;
         }
         if (*it == 7) {
-            Armour &armour = m_armour_collected_1.at(armourcount);
-            armour.set_position(m_toolboxManager.new_tool_position(index, 1));
+            if (!droppedAntidote)
+            {
+                Armour &armour = m_armour_collected_1.at(armourcount);
+                armour.set_position(m_toolboxManager.new_tool_position(index, 1));
+            }
             armourcount++;
         }
         index++;
+        antidotePos++;
     }
 }
 
 void World::use_tool_2(int tool_number) {
+    int dropAntidote = false;
+    if (droptool_p2 && m_antidote.belongs_to == 2)
+    {
+        tool_number = 3;
+        dropAntidote = true;
+    }
+    
     if (tool_number == 1) {
         if (!armourInUse_p1 && !droptool_p2)
         {
@@ -1003,8 +1074,14 @@ void World::use_tool_2(int tool_number) {
         }
         else
         {
+            std::vector<int> list = m_toolboxManager.getListOfSlot_2();
+            for (int i=0; i<list.size(); i++)
+            {
+                if (list.at(i) == 3)
+                    m_toolboxManager.antidotePos = i;
+            }
             m_toolboxManager.decreaseSlot(2);
-            m_antidote.set_position({m_player2.get_position().x, m_player2.get_position().y});
+            m_antidote.set_position(m_player2.get_position());
             m_antidote.set_scale({-0.10f * ViewHelper::getRatio(), 0.10f * ViewHelper::getRatio()});
             m_antidote.belongs_to = 0;
         }
@@ -1061,11 +1138,11 @@ void World::use_tool_2(int tool_number) {
         m_toolboxManager.decreaseSlot(2);
     }
     droptool_p2 = false;
-    shift_2();
+    shift_2(dropAntidote);
 
 }
 
-void World::shift_2() {
+void World::shift_2(bool droppedAntidote) {
     std::vector<int> list = m_toolboxManager.getListOfSlot_2();
     std::vector<int>::iterator it;
     int freezecount = 0;
@@ -1074,41 +1151,70 @@ void World::shift_2() {
     int bombcount = 0;
     int armourcount = 0;
     int missilecount = 0;
+    int antidotePos = 0;
     float index = 0.f;
     for (it = list.begin(); it != list.end(); ++it) {
+        if (m_toolboxManager.antidotePos == antidotePos && droppedAntidote)
+        {
+            droppedAntidote = false;
+            m_toolboxManager.antidotePos = 0;
+        }
+        
         if (*it == 1) {
-            Ice &freeze = m_freeze_collected_2.at(freezecount);
-            freeze.set_position(m_toolboxManager.new_tool_position(index, 2));
+            if (!droppedAntidote)
+            {
+                Ice &freeze = m_freeze_collected_2.at(freezecount);
+                freeze.set_position(m_toolboxManager.new_tool_position(index, 2));
+            }
             freezecount++;
         }
         if (*it == 2) {
-            Water &water = m_water_collected_2.at(watercount);
-            water.set_position(m_toolboxManager.new_tool_position(index, 2));
+            if (!droppedAntidote)
+            {
+                Water &water = m_water_collected_2.at(watercount);
+                water.set_position(m_toolboxManager.new_tool_position(index, 2));
+            }
             watercount++;
         }
         if (*it == 3) {
-            m_antidote.set_position(m_toolboxManager.new_tool_position(index, 2));
+            if (!droppedAntidote)
+            {
+                m_antidote.set_position(m_toolboxManager.new_tool_position(index, 2));
+            }
         }
         if (*it == 4) {
-            m_limbsManager.shiftCollectedLegs(2, &m_toolboxManager, index, legcount);
+            if (!droppedAntidote)
+            {
+                m_limbsManager.shiftCollectedLegs(2, &m_toolboxManager, index, legcount);
+            }
             legcount++;
         }
         if (*it == 5) {
-            Bomb &bomb = m_bomb_collected_2.at(bombcount);
-            bomb.set_position(m_toolboxManager.new_tool_position(index, 2));
+            if (!droppedAntidote)
+            {
+                Bomb &bomb = m_bomb_collected_2.at(bombcount);
+                bomb.set_position(m_toolboxManager.new_tool_position(index, 2));
+            }
             bombcount++;
         }
         if (*it == 6) {
-            Missile &missile = m_missile_collected_2.at(missilecount);
-            missile.set_position(m_toolboxManager.new_tool_position(index, 2));
+            if (!droppedAntidote)
+            {
+                Missile &missile = m_missile_collected_2.at(missilecount);
+                missile.set_position(m_toolboxManager.new_tool_position(index, 2));
+            }
             missilecount++;
         }
         if (*it == 7) {
-            Armour &armour = m_armour_collected_2.at(armourcount);
-            armour.set_position(m_toolboxManager.new_tool_position(index, 2));
+            if (!droppedAntidote)
+            {
+                Armour &armour = m_armour_collected_2.at(armourcount);
+                armour.set_position(m_toolboxManager.new_tool_position(index, 2));
+            }
             armourcount++;
         }
         index++;
+        antidotePos++;
     }
 }
 
@@ -1174,7 +1280,7 @@ void World::use_bomb(float ms) {
     for (itbomb = used_bombs.begin(); itbomb != used_bombs.end();) {
         itbomb->set_speed({itbomb->get_speed().x * (0.997f), itbomb->get_speed().y * (0.997f)});
         
-        if (std::fabs(itbomb->get_speed().x) <= 20 && std::fabs(itbomb->get_speed().y) <= 20)
+        if (std::fabs(itbomb->get_speed().x) <= 50 && std::fabs(itbomb->get_speed().y) <= 50)
         {
             itbomb->set_speed({0.f, 0.f});
             autoExplode();

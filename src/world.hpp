@@ -77,8 +77,8 @@ private:
     bool spawn_armour();
     bool spawn_bomb();
 
-    void shift_1();
-    void shift_2();
+    void shift_1(bool droppedAntidote);
+    void shift_2(bool droppedAntidote);
 
 	void on_key(GLFWwindow*, int key, int, int action, int mod);
 	void on_mouse_move(GLFWwindow* window, int button, int action, int mod);

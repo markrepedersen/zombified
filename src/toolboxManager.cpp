@@ -89,10 +89,10 @@ bool ToolboxManager::addSlot(int player)
 void ToolboxManager::decreaseSlot(int player)
 {
     if (player == 1)
-        m_listOfSlotsPlayer1.erase(m_listOfSlotsPlayer1.begin());
+        m_listOfSlotsPlayer1.erase(m_listOfSlotsPlayer1.begin()+antidotePos);
     
     if (player == 2)
-        m_listOfSlotsPlayer2.erase(m_listOfSlotsPlayer2.begin());
+        m_listOfSlotsPlayer2.erase(m_listOfSlotsPlayer2.begin()+antidotePos);
 }
 
 int ToolboxManager::addItem(int itemIndex, int player)
