@@ -243,56 +243,44 @@ void Player1::set_originalspeed(float newSpeed)
 
 void Player1::update(float ms) {
     float step = speed * (ms / 1000);//PLAYER_SPEED * (ms / 1000);
+    float xStep = 0.f;
+    float yStep = 0.f;
 
+    
     if (m_keys[0])//m_keys.front() == GLFW_KEY_UP)
         {
-            if (isInsidePolygon(m_mapCollisionPoints, {m_position.x, m_position.y-step-(sprite_height_p1 * 0.5f)}))
-            {
-                move({0, -step});
-
-                animate();
-            }
-
+            yStep -= step;
         }
     if (m_keys[1])//m_keys.front() == GLFW_KEY_LEFT)
         {
-            if (isInsidePolygon(m_mapCollisionPoints, {m_position.x-step-(sprite_width_p1 * 0.5f), m_position.y}))
-            {
-                move({-step, 0});
-                animate();
-            }
-
+            xStep -= step;
         }
     if (m_keys[2])//m_keys.front() == GLFW_KEY_DOWN)
         {
-            if (isInsidePolygon(m_mapCollisionPoints, {m_position.x, m_position.y + step + (sprite_height_p1 * 0.5f)}))
-            {
-                move({0, step});
-                animate();
-            }
-
+            yStep += step;
         }
     if (m_keys[3]) //m_keys.front() == GLFW_KEY_RIGHT)
     {
-            if (isInsidePolygon(m_mapCollisionPoints, {m_position.x + step + (sprite_width_p1 * 0.5f), m_position.y}))
-            {
-                
-                move({step, 0});
-                animate();
-            }
-
+        xStep += step;
         }
     if (blowback)
     {
         float x = get_blowbackForce().x*(ms/1000)*(get_speed()/100);
         float y = get_blowbackForce().y*(ms/1000)*(get_speed()/100);
-        move({x, y});
+        xStep += x;
+        yStep += y;
+    }
+    // else
+    // {
+    //     // stop_animate();
+    // }
 
-    }
-    else
+    if (isInsidePolygon(m_mapCollisionPoints, {m_position.x + xStep, m_position.y + yStep}))
     {
-        // stop_animate();
+        move({xStep, yStep});
+        animate();
     }
+
 }
 
 void Player1::move(vec2 off) {

@@ -52,7 +52,7 @@ public:
     void set_key(int key, bool pressed);
     vec2 get_shootDirection();
 
-    void animate(int direction);
+    void animate();
 
     void increase_speed();
     void decrease_speed();

@@ -149,7 +149,6 @@ bool intersect(vec2 p1, vec2 q1, vec2 p2, vec2 q2) {
 }
 
 //return true if point point is inside the polygon represented by poly
-//screen to know what size to set the extreme point as?
 bool isInsidePolygon(std::vector<vec2> poly, vec2 point) {
 
 	//base case where vector of points doesn't make a polygon

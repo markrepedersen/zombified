@@ -234,32 +234,35 @@ void Player2::update(float ms)
 {
     //const float PLAYER_SPEED = 200.f;
     float step = step = speed * (ms / 1000);
-
+    float xStep = 0.f;
+    float yStep = 0.f;
 
     if (m_keys[0])
-        move({0, -step});
-        animate(0);
+        yStep -= step;
     if (m_keys[1])
-        move({-step, 0});
-        animate(2);
+        xStep -= step;
     if (m_keys[2])
-        move({0, step});
-        animate(2);
+        yStep += step;
     if (m_keys[3])
     {
-        move({step, 0});
-        animate(3);
+        xStep += step;
     }
     if (blowback)
     {
         float x = get_blowbackForce().x*(ms/1000)*(get_speed()/100);
         float y = get_blowbackForce().y*(ms/1000)*(get_speed()/100);
-        move({x, y});
+        xStep += x;
+        yStep += y;
     }
     
-    else
+    // else
+    // {
+    //     // stop_animate();
+    // }
+    if (isInsidePolygon(m_mapCollisionPoints, {m_position.x + xStep, m_position.y + yStep}))
     {
-        // stop_animate();
+        move({xStep, yStep});
+        animate();
     }
 }
 
@@ -268,7 +271,7 @@ void Player2::move(vec2 off)
 	m_position.x += off.x; m_position.y += off.y;
 }
 
-void Player2::animate(int direction)
+void Player2::animate()
 {
     auto curr_time = std::chrono::high_resolution_clock::now();
     int milliseconds = std::chrono::duration_cast<std::chrono::milliseconds>(curr_time - start_time_p2).count();
