@@ -87,6 +87,7 @@ bool Player1::init(vec2 screen, std::vector<vec2> mapCollisionPoints)
     originalSpeed = PLAYER_SPEED;
     mass = 1.0;
     blowback = false;
+    affectedByMud = false;
 
     m_position = {(screen.x * ViewHelper::getRatio()) / 5, (screen.y * ViewHelper::getRatio()) / 2};
 

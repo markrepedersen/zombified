@@ -66,6 +66,7 @@ public:
 
     //float negy;
     //float negx;
+    bool affectedByMud;
 
 private:
     bool m_is_alive; // True if the salmon is alive

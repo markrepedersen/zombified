@@ -292,5 +292,5 @@ void LimbsManager::destroy() {
 
     limbs.clear();
     collectedLegs_p1.clear();
-    collectedLegs_p1.clear();
+    collectedLegs_p2.clear();
 }

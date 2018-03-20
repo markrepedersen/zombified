@@ -2,6 +2,7 @@
 
 #include "common.hpp"
 #include "viewHelper.hpp"
+#include <time.h>
 
 class Mud : public Renderable
 {
@@ -25,6 +26,8 @@ public:
     
     bool is_affected(int player)const;
     void set_affected(int player, bool affected);
+    
+    time_t mudTime;
     
 private:
     vec2 m_position; // Window coordinates
