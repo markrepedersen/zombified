@@ -6,7 +6,7 @@
 
 namespace
 {
-    const size_t MAX_TOOLSLOTS = 4;
+    const size_t MAX_TOOLSLOTS = 8;
 }
 
 bool ToolboxManager::init(vec2 screen)
@@ -31,7 +31,8 @@ void ToolboxManager::draw(const mat3& projection)
     //m_toolbox.draw(projection)
     float initialOffset = 0.f;
     float offset = (m_screen.x /65);
-    float index = 0.f;
+    float indexTop = 0.f;
+    float indexBottom = 0.f;
     
     std::vector<int>::iterator it;
     for (it = m_listOfSlotsPlayer1.begin(); it != m_listOfSlotsPlayer1.end(); ++it) {
@@ -40,13 +41,21 @@ void ToolboxManager::draw(const mat3& projection)
         ToolboxSlot tb;
         // std::cout << offset<< std::endl;;
         // std::cout<< index;
-        tb.init(initialOffset, offset, index, 580.f, *it);
+        if (indexTop > 3.f)
+        {
+            tb.init(initialOffset, offset, indexBottom, 660.f, *it);
+            indexBottom++;
+        }
+        else
+        {
+            tb.init(initialOffset, offset, indexTop, 580.f, *it); //580.f
+            indexTop++;
+        }
         tb.draw(projection);
-        //
-        index++;
     }
     
-    index = 0.f;
+    indexTop = 0.f;
+    indexBottom = 0.f;
     for (it = m_listOfSlotsPlayer2.begin(); it != m_listOfSlotsPlayer2.end(); ++it) {
         
         initialOffset = m_screen.x/1.32;
@@ -54,10 +63,17 @@ void ToolboxManager::draw(const mat3& projection)
         ToolboxSlot tb;
         // std::cout << offset<< std::endl;;
         // std::cout<< index;
-        tb.init(initialOffset, offset, index, 580.f, *it);
+        if (indexTop > 3.f)
+        {
+            tb.init(initialOffset, offset, indexBottom, 660.f, *it);
+            indexBottom++;
+        }
+        else
+        {
+            tb.init(initialOffset, offset, indexTop, 580.f, *it); //580.f
+            indexTop++;
+        }
         tb.draw(projection);
-        //
-        index++;
     }
 
 }
@@ -163,8 +179,17 @@ vec2 ToolboxManager::new_tool_position(float index, int player)
     if (player ==2)
         initialOffset =  (m_screen.x/1.32);
     
-    return {(initialOffset + (offset * index ))* ViewHelper::getRatio(),
-        580.f* ViewHelper::getRatio()};
+    //fprintf(stderr, "index before %f \n", index);
+    if (index > 3.f)
+    {
+        index -= 4.f;
+        //fprintf(stderr, "index after %f \n", index);
+        return {(initialOffset + (offset * index ))* ViewHelper::getRatio(),
+            660.f* ViewHelper::getRatio()};
+    }
+    else
+        return {(initialOffset + (offset * index ))* ViewHelper::getRatio(),
+            580.f* ViewHelper::getRatio()};
 }
 
 void ToolboxManager::move_antidoteback(int player)

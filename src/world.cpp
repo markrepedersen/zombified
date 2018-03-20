@@ -613,8 +613,21 @@ void World::check_add_tools(vec2 screen) {
 
 //=================check for mud collision
     std::vector<Mud>::iterator itmud;
+    std::vector<Mud>::iterator itmudcheck;
     int collided1 = false;
     int collided2 = false;
+    
+    for (itmudcheck = m_mud_collected.begin(); itmudcheck != m_mud_collected.end();) {
+        if ((int) difftime(time(0), itmudcheck->mudTime) >= 15)
+        {
+            m_player1.set_speed(m_player1.get_originalspeed());
+            m_player2.set_speed(m_player2.get_originalspeed());
+            itmudcheck->destroy();
+            itmudcheck = m_mud_collected.erase(itmudcheck);
+        }
+        else
+            ++itmudcheck;
+    }
     for (itmud = m_mud_collected.begin(); itmud != m_mud_collected.end(); ++itmud) {
         if (m_player1.collides_with(*itmud))
             collided1 = true;
@@ -622,29 +635,70 @@ void World::check_add_tools(vec2 screen) {
             collided2 = true;
         
         if (collided1) {
-            if (!itmud->is_affected(1))
+            bool beingaffected = false;
+            for (auto& mud_collected : m_mud_collected)
+            {
+                if (mud_collected.is_affected(1))
+                    beingaffected = true;
+            }
+            if (!beingaffected)
             {
                 m_player1.set_originalspeed(m_player1.get_speed());
-                m_player1.set_speed(m_player1.get_speed()*m_player1.get_mass()-100.f);
+                //fprintf(stderr, "player1 speed %f \n", m_player1.get_speed());
+                m_player1.set_speed(m_player1.get_speed()-(100.f*m_player1.get_mass()));
+                if (m_player1.get_speed() <= 0.f)
+                    m_player1.set_speed(10.f);
+                //fprintf(stderr, "player1 speed affected %f \n", m_player1.get_speed());
                 itmud->set_affected(1, true);
             }
         }
         if (collided2) {
-            if (!itmud->is_affected(2))
+            bool beingaffected = false;
+            for (auto& mud_collected : m_mud_collected)
+            {
+                if (mud_collected.is_affected(2))
+                    beingaffected = true;
+            }
+            if (!beingaffected)
             {
                 m_player2.set_originalspeed(m_player2.get_speed());
-                m_player2.set_speed(m_player2.get_speed()*m_player2.get_mass()-100.f);
+                //fprintf(stderr, "player2 speed %f \n", m_player2.get_speed());
+                m_player2.set_speed(m_player2.get_speed()-(100.f*m_player2.get_mass()));
+                if (m_player2.get_speed() <= 0.f)
+                    m_player2.set_speed(10.f);
+                //fprintf(stderr, "player2 speed affected %f \n", m_player2.get_speed());
                 itmud->set_affected(2, true);
             }
         }
+        
         if (!collided1) {
-            m_player1.set_speed(m_player1.get_originalspeed());
             itmud->set_affected(1, false);
+            bool beingaffected = false;
+            for (auto& mud_collected : m_mud_collected)
+            {
+                if (mud_collected.is_affected(1))
+                    beingaffected = true;
+            }
+            if (!beingaffected)
+                m_player1.set_speed(m_player1.get_originalspeed());
         }
         if (!collided2) {
-            m_player2.set_speed(m_player2.get_originalspeed());
             itmud->set_affected(2, false);
+            bool beingaffected = false;
+            for (auto& mud_collected : m_mud_collected)
+            {
+                if (mud_collected.is_affected(2))
+                    beingaffected = true;
+            }
+            if (!beingaffected)
+                m_player2.set_speed(m_player2.get_originalspeed());
         }
+        
+        if (armourInUse_p1)
+            m_player1.set_speed(m_player1.get_originalspeed());
+        if (armourInUse_p2)
+            m_player2.set_speed(m_player2.get_originalspeed());
+        
         collided1 = false;
         collided2 = false;
     }
@@ -860,6 +914,7 @@ void World::use_tool_1(int tool_number) {
             if (mud.init()) {
                 mud.set_position(m_player1.get_position());
                 m_mud_collected.emplace_back(mud);
+                m_mud_collected.back().mudTime = time(0);
             }
         }
         m_player1.set_mass(m_player1.get_mass() - m_water_collected_1.begin()->get_mass());
@@ -1053,6 +1108,7 @@ void World::use_tool_2(int tool_number) {
             if (mud.init()) {
                 mud.set_position(m_player2.get_position());
                 m_mud_collected.emplace_back(mud);
+                m_mud_collected.back().mudTime = time(0);
             }
         }
         m_player2.set_mass(m_player2.get_mass() - m_water_collected_2.begin()->get_mass());

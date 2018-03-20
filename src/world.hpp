@@ -120,8 +120,6 @@ private:
 	Antidote m_antidote;
 
     Tree m_tree;
-    Bomb t_bomb;
-    Bomb t2_bomb;
 
     //Mud mud;
     
