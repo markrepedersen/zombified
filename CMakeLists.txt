@@ -19,7 +19,7 @@ find_package(OpenGL REQUIRED)
 find_package(PkgConfig REQUIRED)
 find_package(TinyXML2)
 find_package(ZLIB)
-pkg_search_module(GLFW REQUIRED glfw3)
+find_package(GLFW REQUIRED glfw3)
 find_library(CoreFoundation corefoundation)
 
 file(GLOB_RECURSE DATA ${CMAKE_SOURCE_DIR}/data/*.wav ${CMAKE_SOURCE_DIR}/data/*.png ${CMAKE_SOURCE_DIR}/data/*.mesh ${CMAKE_SOURCE_DIR}/data/*.bmp)
