@@ -246,7 +246,7 @@ void Player1::update(float ms) {
 
     if (m_keys[0])//m_keys.front() == GLFW_KEY_UP)
         {
-            if (isInsidePolygon(m_mapCollisionPoints, {m_position.x+0, m_position.y-step}))
+            if (isInsidePolygon(m_mapCollisionPoints, {m_position.x, m_position.y-step-(sprite_height_p1 * 0.5f)}))
             {
                 move({0, -step});
 
@@ -256,7 +256,7 @@ void Player1::update(float ms) {
         }
     if (m_keys[1])//m_keys.front() == GLFW_KEY_LEFT)
         {
-            if (isInsidePolygon(m_mapCollisionPoints, {m_position.x-step, m_position.y + 0}))
+            if (isInsidePolygon(m_mapCollisionPoints, {m_position.x-step-(sprite_width_p1 * 0.5f), m_position.y}))
             {
                 move({-step, 0});
                 animate();
@@ -265,7 +265,7 @@ void Player1::update(float ms) {
         }
     if (m_keys[2])//m_keys.front() == GLFW_KEY_DOWN)
         {
-            if (isInsidePolygon(m_mapCollisionPoints, {m_position.x + 0, m_position.y + step}))
+            if (isInsidePolygon(m_mapCollisionPoints, {m_position.x, m_position.y + step + (sprite_height_p1 * 0.5f)}))
             {
                 move({0, step});
                 animate();
@@ -274,8 +274,9 @@ void Player1::update(float ms) {
         }
     if (m_keys[3]) //m_keys.front() == GLFW_KEY_RIGHT)
     {
-            if (isInsidePolygon(m_mapCollisionPoints, {m_position.x + step, m_position.y + 0}))
+            if (isInsidePolygon(m_mapCollisionPoints, {m_position.x + step + (sprite_width_p1 * 0.5f), m_position.y}))
             {
+                
                 move({step, 0});
                 animate();
             }
