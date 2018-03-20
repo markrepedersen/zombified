@@ -173,7 +173,7 @@ bool World::update(float elapsed_ms) {
         m_player1.update(elapsed_ms);
         m_player2.update(elapsed_ms);
 
-        random_spawn(elapsed_ms, screen);
+        random_spawn(elapsed_ms, {screen.x * ViewHelper::getRatio(), screen.y * ViewHelper::getRatio()});
         m_limbsManager.computePaths(elapsed_ms, *mapGrid);
 
         if ((int) difftime(time(0), start) == timeDelay)

@@ -49,15 +49,13 @@ public:
     void computePaths(float ms, const MapGrid &mapGrid);
 
     void destroy();
-
-    vec2 getRandomPointInMap();
     
 private:
     vec2 m_screen;
     std::vector<Limb> limbs;
     int m_arms_total;
     int m_legs_total;
-    std::vector<vec2> randomPoints;
+    std::vector<vec2> m_mapCollisionPoints;
     
     std::vector<Limb> collectedLegs_p1;
     std::vector<Limb> collectedLegs_p2;

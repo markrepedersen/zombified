@@ -6,7 +6,7 @@
 
 // initialize a limbsManager
 bool LimbsManager::init(vec2 screen, const std::vector<vec2> &mapCollisionPoints) {
-    randomPoints = mapCollisionPoints;
+    m_mapCollisionPoints = mapCollisionPoints;
     m_screen = screen;
     return true;
 }
@@ -24,28 +24,29 @@ void LimbsManager::draw(const mat3 &projection_2D) {
     }
 }
 
-vec2 LimbsManager::getRandomPointInMap() {
+// vec2 LimbsManager::getRandomPointInMap() {
 
-    srand((unsigned)time(0));
+//     srand((unsigned)time(0));
 
-    vec2 randomPoint = {(float)((rand() % (int)m_screen.x)),
-                        (float)((rand() % (int)m_screen.y))};
+//     vec2 randomPoint = {(float)((rand() % (int)m_screen.x)),
+//                         (float)((rand() % (int)m_screen.y))};
 
-    while(!isInsidePolygon(randomPoints, randomPoint)) {
-        randomPoint = {(float)((rand() % (int)m_screen.x)),
-                       (float)((rand() % (int)m_screen.y))};
+//     while(!isInsidePolygon(randomPoints, randomPoint)) {
+//         randomPoint = {(float)((rand() % (int)m_screen.x)),
+//                        (float)((rand() % (int)m_screen.y))};
 
-    }
+//     }
 
-    return randomPoint;
+//     return randomPoint;
 
-}
+// }
 
 //spawn new arm in random
 bool LimbsManager::spawn_arms() {
     Limb arm;
     if (arm.init("arm")) {
-        arm.set_position(getRandomPointInMap());
+        arm.set_position(getRandomPointInMap(m_mapCollisionPoints,
+                                            {m_screen.x * ViewHelper::getRatio(), m_screen.y * ViewHelper::getRatio()}));
         m_arms_total++;
         limbs.emplace_back(arm);
 
@@ -59,7 +60,8 @@ bool LimbsManager::spawn_arms() {
 bool LimbsManager::spawn_legs() {
     Limb leg;
     if (leg.init("leg")) {
-        leg.set_position(getRandomPointInMap());
+        leg.set_position(getRandomPointInMap(m_mapCollisionPoints,
+                                            {m_screen.x * ViewHelper::getRatio(), m_screen.y * ViewHelper::getRatio()}));
 
         m_legs_total++;
         limbs.emplace_back(leg);
