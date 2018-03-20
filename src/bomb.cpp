@@ -254,6 +254,10 @@ void Bomb::move(vec2 pos) {
 void Bomb::checkBoundaryCollision(float width, float height, float ms) {
     
     float radius = (bomb_texture.width/2);
+    if (m_rotation > 18.f)
+        m_rotation = 0.f;
+    else
+        m_rotation += speed.x *(0.001);
     
     if (m_position.x > width-radius)
     {
