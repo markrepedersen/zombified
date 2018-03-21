@@ -16,12 +16,14 @@ int sprite_frame_index_limb = 0;
 // sprite information
 int sprite_width_arm = 522;
 int sprite_height_arm = 242;
+int sprite_width_leg = 410;
+int sprite_height_leg = 240;
 int num_rows_limb = 1;
 int num_cols_limb = 5;
 int frames_arm [5] = {0, 1, 2, 3, 4};
 // animation timing
 int frame_time_limb = 100;
-auto start_time_limb= std::chrono::high_resolution_clock::now();
+auto start_time_limb = std::chrono::high_resolution_clock::now();
 
 bool Limb::init(std::string inputtype) {
         // Load shared texture
@@ -41,16 +43,16 @@ bool Limb::init(std::string inputtype) {
             wr = sprite_width_arm * 0.5f;
             hr = sprite_height_arm * 0.5f;
         } else {
-            if (!leg_texture.load_from_file(tools_textures_path("zombie leg.png")))
+            if (!leg_texture.load_from_file(tools_textures_path("leg_sprite.png")))
             {
                 fprintf(stderr, "Failed to load leg texture!");
                 return false;
             }
-            wr = leg_texture.width * 0.5f;
-            hr = leg_texture.height * 0.5f;
+            wr = sprite_width_leg * 0.5f;
+            hr = sprite_width_leg * 0.5f;
         } 
     
-    // // The position corresponds to the center of the texture
+    // The position corresponds to the center of the texture
     // float wr = limb_texture.width * 0.5f;
     // float hr = limb_texture.height * 0.5f;
     
