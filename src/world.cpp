@@ -1359,8 +1359,8 @@ void World::autoExplode() {
         force_p1 = used_bombs.front().get_force(m_player1.get_mass(),
                                                 m_player1.get_speed(),
                                                 m_player1.get_position());
-        droptool_p1 = true;
-        use_tool_1(m_toolboxManager.useItem(1));
+        //droptool_p1 = true;
+        //use_tool_1(m_toolboxManager.useItem(1));
     }
     
     if (!armourInUse_p2)
@@ -1368,8 +1368,8 @@ void World::autoExplode() {
         force_p2 = used_bombs.front().get_force(m_player2.get_mass(),
                                                 m_player2.get_speed(),
                                                 m_player2.get_position());
-        droptool_p2 = true;
-        use_tool_2(m_toolboxManager.useItem(2));
+        //droptool_p2 = true;
+        //use_tool_2(m_toolboxManager.useItem(2));
     }
     if (force_p1 > 0) {
         m_player1.set_blowback(true);
@@ -1377,6 +1377,8 @@ void World::autoExplode() {
         m_player1.set_blowbackForce({(m_player1.get_position().x - used_bombs.front().get_position().x),
             (m_player1.get_position().y - used_bombs.front().get_position().y)});
         explosion = true;
+        droptool_p1 = true;
+        use_tool_1(m_toolboxManager.useItem(1));
     }
     if (force_p2 > 0) {
         m_player2.set_blowback(true);
@@ -1384,6 +1386,8 @@ void World::autoExplode() {
         m_player2.set_blowbackForce({(m_player2.get_position().x - used_bombs.front().get_position().x),
             (m_player2.get_position().y - used_bombs.front().get_position().y)});
         explosion = true;
+        droptool_p2 = true;
+        use_tool_2(m_toolboxManager.useItem(2));
     }
     
     used_bombs.erase(used_bombs.begin());

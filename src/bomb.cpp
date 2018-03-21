@@ -336,34 +336,30 @@ void Bomb::checkCollision(Bomb other, float ms) {
         //fprintf(stderr, "collided \n");
         //float radius = 32.f/2;
         float dt = (ms/1000);
-        float mass1 = 0.15;
-        float mass2 = 0.15;
-        // Normal
-        //vec2 normal = normalize({other.get_position().x - m_position.x,
-        //    other.get_position().y - m_position.y});
-        float nx = diffX/fDistance; //(other.get_position().x - m_position.x) / fDistance;
-        float ny = diffY/fDistance; //(other.get_position().y - m_position.y) / fDistance;
-
-        //float nx = normal.x;
-        //float ny = normal.y;
+        float mass1 = 1.f;//0.15;
+        float mass2 = 1.f;//0.15;        // Normal
+        vec2 normal = normalize({other.get_position().x - m_position.x, other.get_position().y - m_position.y});
+        //float nx = diffX/fDistance; //(other.get_position().x - m_position.x) / fDistance;
+        //float ny = diffY/fDistance; //(other.get_position().y - m_position.y) / fDistance;
+        
         // Tangent
-        float tx = -ny;
-        float ty = nx;
+        float tx = -normal.y;
+        float ty = normal.x;
         
         // Dot Product Tangent
-        float dpTan1 = speed.x * tx + speed.y * ty;
-        float dpTan2 = other.get_speed().x * tx + other.get_speed().y * ty;
+        float dpTan1 = dot(speed, {tx, ty});
+        float dpTan2 = dot(other.get_speed(), {tx, ty});
         
         // Dot Product Normal
-        float dpNorm1 = speed.x * nx + speed.y * ny;
-        float dpNorm2 = other.get_speed().x * nx + other.get_speed().y * ny;
+        float dpNorm1 = dot(speed, normal);
+        float dpNorm2 = dot(other.get_speed(), normal);
         
-        // Conservation of momentum in 1D
+        // Conservation of momentum
         float m1 = (dpNorm1 * (mass1 - mass2) + 2.0f * mass2 * dpNorm2) / (mass1 + mass2);
         float m2 = (dpNorm2 * (mass2 - mass1) + 2.0f * mass1 * dpNorm1) / (mass1 + mass2);
         
-        set_speed({tx * dpTan1 + nx * m1, ty * dpTan1 + ny * m1});
-        other.set_speed({tx * dpTan2 + nx * m2, ty * dpTan2 + ny * m2});
+        set_speed({tx * dpTan1 + normal.x * m1, ty * dpTan1 + normal.y * m1});
+        other.set_speed({tx * dpTan2 + normal.x * m2, ty * dpTan2 + normal.y * m2});
         
         move({speed.x*dt, speed.y*dt});
         other.move({other.get_speed().x*dt, other.get_speed().y*dt});
