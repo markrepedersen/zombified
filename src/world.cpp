@@ -195,6 +195,21 @@ bool World::update(float elapsed_ms) {
             armourInUse_p2 = false;
             armourTime_p2 = 0;
         }
+        
+        // check how many times the player has been hit
+        // if player was hit 5 times, drops items
+        if (m_player1.numberofHits == 5)
+        {
+            droptool_p1 = true;
+            use_tool_1(m_toolboxManager.useItem(1));
+            m_player1.numberofHits = 0;
+        }
+        if (m_player2.numberofHits == 5)
+        {
+            droptool_p2 = true;
+            use_tool_2(m_toolboxManager.useItem(2));
+            m_player2.numberofHits = 0;
+        }
 
         return true;
     }
@@ -345,7 +360,29 @@ void World::on_key(GLFWwindow *, int key, int, int action, int mod) {
             m_player1.set_key(3, false);
         
         if (action == GLFW_PRESS && key == GLFW_KEY_RIGHT_SHIFT)
-            use_tool_1(m_toolboxManager.useItem(1));
+        {
+            // if the player has no tools/no slots attack the other player by collided and pressing attack
+            if (m_player1.collides_with(m_player2))
+            {
+                bool hasTools = false;
+                for (auto &tools : m_toolboxManager.getListOfSlot_1())
+                {
+                    if (tools != 0)
+                    {
+                        hasTools = true;
+                        break;
+                    }
+                }
+                if (!hasTools)
+                    m_player2.numberofHits++; // needs to hit the player 5 times in order for p2 to drop item
+                else
+                    use_tool_1(m_toolboxManager.useItem(1));
+            }
+            else
+                use_tool_1(m_toolboxManager.useItem(1));
+            
+            //fprintf(stderr, "player2 number of hits: %d \n", m_player2.numberofHits);
+        }
     }
     if (immobilize == 1 || m_player1.get_blowback()) //player is frozen
     {
@@ -383,7 +420,29 @@ void World::on_key(GLFWwindow *, int key, int, int action, int mod) {
 
         // use tools
         if (action == GLFW_PRESS && key == GLFW_KEY_Q)
-            use_tool_2(m_toolboxManager.useItem(2));
+        {
+            // if the player has no tools/no slots attack the other player by collided and pressing attack
+            if (m_player1.collides_with(m_player2))
+            {
+                bool hasTools = false;
+                for (auto &tools : m_toolboxManager.getListOfSlot_2())
+                {
+                    if (tools != 0)
+                    {
+                        hasTools = true;
+                        break;
+                    }
+                }
+                if (!hasTools)
+                    m_player1.numberofHits++; // needs to hit the player 5 times in order for p1 to drop item
+                else
+                    use_tool_2(m_toolboxManager.useItem(2));
+            }
+            else
+                use_tool_2(m_toolboxManager.useItem(2));
+            
+            //fprintf(stderr, "player1 number of hits: %d \n", m_player1.numberofHits);
+        }
 
     }
     if (immobilize == 2 || m_player2.get_blowback()) //player is frozen
@@ -826,6 +885,7 @@ void World::check_add_tools(vec2 screen) {
 //            m_toolboxManager.addSlot(2);
 //        }
 //    }
+    
 }
 
 // =========== COLLECT AND SET TOOLS ===================

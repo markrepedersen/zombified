@@ -90,6 +90,8 @@ bool Player2::init(vec2 screen, std::vector<vec2> mapCollisionPoints)
     m_is_alive = true;
     m_position = { (screen.x-(screen.x/5)) * ViewHelper::getRatio(), (screen.y/2) * ViewHelper::getRatio()};
 
+    numberofHits = 0;
+    
     return true;
 }
 
@@ -412,6 +414,26 @@ bool Player2::collides_with(const Mud& mud)
     if (d_sq < r * r)
         return true;
     return false;
+}
+
+//bool Player2::collides_with(const Player1& player1)
+//{
+//    float dx = m_position.x - player1.get_position().x;
+//    float dy = m_position.y - player1.get_position().y;
+//    float d_sq = dx * dx + dy * dy;
+//    float other_r = std::max(player1.get_bounding_box().x, player1.get_bounding_box().y);
+//    float my_r = std::max(m_scale.x, m_scale.y);
+//    float r = std::max(other_r, my_r);
+//    r *= 0.6f;
+//    if (d_sq < r * r)
+//        return true;
+//    return false;
+//}
+
+vec2 Player2::get_bounding_box()const
+{
+    // fabs is to avoid negative scale due to the facing direction
+    return { std::fabs(m_scale.x) * player2_texture.width, std::fabs(m_scale.y) * player2_texture.height };
 }
 
 void Player2::destroy() {

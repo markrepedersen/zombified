@@ -67,7 +67,11 @@ public:
     bool collides_with(const Missile& missile);
     bool collides_with(const Mud& mud);
 
+    vec2 get_bounding_box()const;
+
     void destroy();
+    
+    int numberofHits;
 
 private:
     bool m_is_alive; // True if the salmon is alive
