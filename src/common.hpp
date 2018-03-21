@@ -85,6 +85,7 @@ bool onSegment(vec2, vec2, vec2);
 int orientation(vec2, vec2, vec2);
 bool intersect(vec2, vec2);
 bool isInsidePolygon(std::vector<vec2>, vec2);
+std::vector<vec2> getIntersectionWithPoly(std::vector<vec2> poly, vec2 point, float errorWindow);
 vec2 getRandomPointInMap(std::vector<vec2> mapCollisionPoints, vec2 screen);
 
 

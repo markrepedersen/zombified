@@ -251,38 +251,72 @@ void Bomb::move(vec2 pos) {
     m_position += pos;
 }
 
-void Bomb::checkBoundaryCollision(float width, float height, float ms) {
+void Bomb::checkBoundaryCollision(float width, float height, float ms, std::vector<vec2> mapCollisionPoints) {
     
+    //if collides with boundary, get the direction of the boundary,
+    //update new direction
+    //n = normalized normal (if we define dx=x2-x1 and dy=y2-y1, then the normals are (-dy, dx) and (dy, -dx).)
+    //d = incident vector
+    //r=d−2(d⋅n)n
+
+
     float radius = (bomb_texture.width/2);
     if (m_rotation > 18.f)
         m_rotation = 0.f;
     else
         m_rotation += speed.x *(0.001);
-    
-    if (m_position.x > width-radius)
-    {
-        m_position.x = width-radius;
-        speed.x *= -1;
+
+
+    // if intersection[0].x == -1, then the point does not intersect with any of the mapCollisionPoints
+    // else, it does, and the speed(direction) of the bomb needs to be changed)
+    std::vector<vec2> intersection = getIntersectionWithPoly(mapCollisionPoints, {m_position.x, m_position.y}, (speed.x/5) * ViewHelper::GetRatio());
+    // std::cout << m_position.x << ", " << m_position.y << std::endl;
+    if (intersection[0].x != -1) {
+
+        // std::cout << "intersection!!!!" << std::endl;
+        vec2 b = {intersection[1].x - intersection[0].x, intersection[1].y - intersection[0].y};
+        vec2 n = normalize({-b.x, b.y});
+        vec2 dn = dot(speed, n);
+        vec2 twodnn = {2 * dn.x * n.x, 2 * dn.y * n.y};
+        vec2 r = {speed.x - twodnn.x, speed.y - twodnn.y};
+        // std::cout << "old speed: " << speed.x << ", " << speed.y << std::endl;
+        speed = r;
+        // std::cout << "new speed: " << speed.x << ", " << speed.y << std::endl;
+
         move({speed.x *(ms/1000), speed.y*(ms/1000)});
+
+
+
     }
-    else if (m_position.x < 200-radius)
-    {
-        m_position.x = 200-radius;
-        speed.x *= -1;
-        move({speed.x *(ms/1000), speed.y*(ms/1000)});
-    }
-    else if (m_position.y > height-radius)
-    {
-        m_position.y = height-radius;
-        speed.y *= -1;
-        move({speed.x *(ms/1000), speed.y*(ms/1000)});
-    }
-    else if (m_position.y < 70-radius)
-    {
-        m_position.y = 70-radius;
-        speed.y *= -1;
-        move({speed.x *(ms/1000), speed.y*(ms/1000)});
-    }
+    // std::cout << "speed: " << std::endl;
+    // std::cout << speed.x << std::endl;
+    // std::cout << speed.y << std::endl;
+
+
+    // if (m_position.x > width-radius)
+    // {
+    //     // m_position.x = width-radius;
+    //     speed.x *= -0.5;
+    //     move({speed.x *(ms/1000), speed.y*(ms/1000)});
+    // }
+    // else if (m_position.x < 200-radius)
+    // {
+    //     // m_position.x = 200-radius;
+    //     speed.x *= -0.5;
+    //     move({speed.x *(ms/1000), speed.y*(ms/1000)});
+    // }
+    // else if (m_position.y > height-radius)
+    // {
+    //     // m_position.y = height-radius;
+    //     speed.y *= -0.5;
+    //     move({speed.x *(ms/1000), speed.y*(ms/1000)});
+    // }
+    // else if (m_position.y < 70-radius)
+    // {
+    //     // m_position.y = 70-radius;
+    //     speed.y *= -0.5;
+    //     move({speed.x *(ms/1000), speed.y*(ms/1000)});
+    // }
 }
 
 vec2 Bomb::get_speed() const

@@ -8,7 +8,7 @@ class Antidote : public Renderable
     static Texture antidote_texture;
 public:
     // Creates all the associated render resources and default transform
-    bool init(vec2 screen);
+    bool init(vec2 screen, std::vector<vec2> mapCollisionPoints);
     
     // Renders the salmon
     void draw(const mat3& projection)override;

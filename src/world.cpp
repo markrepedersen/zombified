@@ -165,7 +165,7 @@ bool World::update(float elapsed_ms) {
             //mud.init();
             
             m_player1.init(screen, mapCollisionPoints) && m_player2.init(screen, mapCollisionPoints) &&
-            m_antidote.init(screen);
+            m_antidote.init(screen, mapCollisionPoints);
         }
     }
 
@@ -415,10 +415,10 @@ void World::on_mouse_move(GLFWwindow *window, int button, int action, int mod) {
     } else {
         if (glfwGetMouseButton(window, GLFW_MOUSE_BUTTON_1) == GLFW_RELEASE) {
             
-            std::cout << "mapCollisionPoints.push_back({ " << xpos << "f * ViewHelper::getRatio(), " << ypos << "f * ViewHelper::getRatio()});" << std::endl;
-            // std::cout << "xpos: " << xpos << std::endl;
-            // std::cout << "ypos: " << ypos << std::endl;
-            // std::cout << "player pos: " << m_player1.get_position().x << ", " << m_player1.get_position().y << std::endl;
+            // std::cout << "mapCollisionPoints.push_back({ " << xpos << "f * ViewHelper::getRatio(), " << ypos << "f * ViewHelper::getRatio()});" << std::endl;
+            std::cout << "xpos: " << xpos << std::endl;
+            std::cout << "ypos: " << ypos << std::endl;
+            std::cout << "player pos: " << m_player1.get_position().x << ", " << m_player1.get_position().y << std::endl;
             // if (isInsidePolygon(mapCollisionPoints, {(float)xpos * ViewHelper::getRatio(), (float)ypos * ViewHelper::getRatio()})) {
             //     std::cout << "yes it's inside polygon" << std::endl;
             // } else {
@@ -512,8 +512,8 @@ bool World::random_spawn(float elapsed_ms, vec2 screen) {
                 return false;
 
             Missile &new_missile = m_missile.back();
-            new_missile.set_position({(float) ((rand() % (int) screen.x)),
-                                      (float) ((rand() % (int) screen.y))});
+            // new_missile.set_position({(float) ((rand() % (int) screen.x)),
+            //                           (float) ((rand() % (int) screen.y))});
 
 
             new_missile.set_position(getRandomPointInMap(mapCollisionPoints, screen));
@@ -558,8 +558,7 @@ bool World::random_spawn(float elapsed_ms, vec2 screen) {
             if (!spawn_water())
                 return false;
             Water &new_water = m_water.back();
-            new_water.set_position({(float) ((rand() % (int) screen.x)),
-                                    (float) ((rand() % (int) screen.y))});
+            new_water.set_position(getRandomPointInMap(mapCollisionPoints, screen));
 
             m_next_spawn = (DELAY_MS / 2) + rand() % (1000);
         }
@@ -1361,7 +1360,7 @@ void World::use_bomb(float ms) {
         {
             itbomb->move({itbomb->get_speed().x * (ms / 1000),
                 itbomb->get_speed().y * (ms / 1000)});
-            itbomb->checkBoundaryCollision(1100, 500, ms);
+            itbomb->checkBoundaryCollision(1100, 500, ms, mapCollisionPoints);
             
             for (checkbomb = used_bombs.begin(); checkbomb != used_bombs.end() - 1; ++checkbomb) {
                 if (checkbomb != itbomb) {

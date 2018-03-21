@@ -42,7 +42,7 @@ public:
     
     void move(vec2);
     
-    void checkBoundaryCollision(float width, float height, float ms);
+    void checkBoundaryCollision(float width, float height, float ms, std::vector<vec2> mapCollisionPoints);
     void checkCollision(Bomb other, float ms);
     
 private:
