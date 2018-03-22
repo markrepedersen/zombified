@@ -87,7 +87,8 @@ bool Player1::init(vec2 screen, std::vector<vec2> mapCollisionPoints)
     originalSpeed = PLAYER_SPEED;
     mass = 1.0;
     blowback = false;
-    affectedByMud = false;
+    
+    numberofHits = 0;
 
     m_position = {(screen.x * ViewHelper::getRatio()) / 5, (screen.y * ViewHelper::getRatio()) / 2};
 
@@ -422,6 +423,20 @@ bool Player1::collides_with(const Mud& mud)
     float dy = m_position.y - mud.get_position().y;
     float d_sq = dx * dx + dy * dy;
     float other_r = std::max(mud.get_bounding_box().x, mud.get_bounding_box().y);
+    float my_r = std::max(m_scale.x, m_scale.y);
+    float r = std::max(other_r, my_r);
+    r *= 0.6f;
+    if (d_sq < r * r)
+        return true;
+    return false;
+}
+
+bool Player1::collides_with(const Player2& player2)
+{
+    float dx = m_position.x - player2.get_position().x;
+    float dy = m_position.y - player2.get_position().y;
+    float d_sq = dx * dx + dy * dy;
+    float other_r = std::max(player2.get_bounding_box().x, player2.get_bounding_box().y);
     float my_r = std::max(m_scale.x, m_scale.y);
     float r = std::max(other_r, my_r);
     r *= 0.6f;
