@@ -181,12 +181,13 @@ bool isInsidePolygon(std::vector<vec2> poly, vec2 point) {
 std::vector<vec2> getIntersectionWithPoly(std::vector<vec2> poly, vec2 point, float errorWindow) {
 	std::vector<vec2> intersection;
 	vec2 extreme = {point.x + errorWindow, point.y};
+	vec2 newpoint = {point.x - errorWindow, point.y};
 
 	for (int i = 0 ; i < poly.size() ; i++) {
 		vec2 poly1 = poly[i];
 		vec2 poly2 = ((i >= poly.size() - 1)? poly[0] : poly[i+1]);
 		
-		if (intersect(poly1, poly2, point, extreme))
+		if (intersect(poly1, poly2, newpoint, extreme))
 		{
 			// std::cout << "poly1" << poly1.x << ", " << poly1.y << std::endl;
 			// std::cout << "poly2" << poly2.x << ", " << poly2.y << std::endl;

@@ -269,19 +269,32 @@ void Bomb::checkBoundaryCollision(float width, float height, float ms, std::vect
 
     // if intersection[0].x == -1, then the point does not intersect with any of the mapCollisionPoints
     // else, it does, and the speed(direction) of the bomb needs to be changed)
-    std::vector<vec2> intersection = getIntersectionWithPoly(mapCollisionPoints, {m_position.x, m_position.y}, (speed.x/5) * ViewHelper::GetRatio());
+    std::vector<vec2> intersection = getIntersectionWithPoly(mapCollisionPoints, {m_position.x, m_position.y},speed.x );
+    // (speed.x/5) * ViewHelper::getRatio()
     // std::cout << m_position.x << ", " << m_position.y << std::endl;
     if (intersection[0].x != -1) {
 
         // std::cout << "intersection!!!!" << std::endl;
         vec2 b = {intersection[1].x - intersection[0].x, intersection[1].y - intersection[0].y};
-        vec2 n = normalize({-b.x, b.y});
+        vec2 n = normalize({b.y, -b.x});
         vec2 dn = dot(speed, n);
         vec2 twodnn = {2 * dn.x * n.x, 2 * dn.y * n.y};
         vec2 r = {speed.x - twodnn.x, speed.y - twodnn.y};
-        // std::cout << "old speed: " << speed.x << ", " << speed.y << std::endl;
-        speed = r;
-        // std::cout << "new speed: " << speed.x << ", " << speed.y << std::endl;
+        
+        if (isInsidePolygon(mapCollisionPoints, m_position)) {
+            std::cout << "inside polygon!" << std::endl;
+            speed = r;
+        } else {
+            //reflect the new speed against the intersecting poly line so that it goes back inside the polygon
+            std::cout << "outside polygon!" << std::endl;
+            vec2 new_n = normalize({intersection[1].x - intersection[0].x, intersection[1].y - intersection[0].y});
+            vec2 new_dn = dot(r, new_n);
+            vec2 new_twodnn = {2 * new_dn.x * new_n.x, 2 * new_dn.y * new_n.y};
+            vec2 new_r = {r.x - new_twodnn.x, r.y - new_twodnn.y};
+
+            speed = new_r;
+        }
+
 
         move({speed.x *(ms/1000), speed.y*(ms/1000)});
 
