@@ -84,6 +84,7 @@ bool Player2::init(vec2 screen, std::vector<vec2> mapCollisionPoints)
     mass = 1.0;
     blowback = false;
     frozen = false;
+    armour_in_use = false;
 
     // Setting initial values
     m_scale.x = -0.2f * ViewHelper::getRatio();
@@ -153,6 +154,12 @@ void Player2::draw(const mat3& projection)
         blueValue = sin(6.0f*timeValue) / 2.0f + 0.8f;
     }
 
+    if (armour_in_use) {
+        redValue = fmin(sin(6.0f*timeValue) / 2.0f + 0.8f, 0.9f);
+        greenValue = 0.8f;
+        blueValue = 0.3f;
+    }
+
     glUniform3f(effect_color_uloc, redValue, greenValue, blueValue);
     
     // Specify uniform variables
@@ -175,6 +182,14 @@ void Player2::set_key(int key, bool pressed) {
     }
     if (!pressed)
         m_keys[key] = false;
+}
+
+void Player2::set_armourstate(bool newArmourState) {
+    armour_in_use = newArmourState;
+}
+
+bool Player2::get_armourstate() const {
+    return armour_in_use;
 }
 
 void Player2::set_freezestate(bool newFreezeState) {

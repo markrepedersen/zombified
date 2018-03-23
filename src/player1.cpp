@@ -89,6 +89,7 @@ bool Player1::init(vec2 screen, std::vector<vec2> mapCollisionPoints)
     blowback = false;
     affectedByMud = false;
     frozen = false;
+    armour_in_use = false;
 
     m_position = {(screen.x * ViewHelper::getRatio()) / 5, (screen.y * ViewHelper::getRatio()) / 2};
 
@@ -156,6 +157,12 @@ void Player1::draw(const mat3 &projection)
         blueValue = sin(6.0f*timeValue) / 2.0f + 0.8f;
     }
 
+    if (armour_in_use) {
+        redValue = fmin(sin(6.0f*timeValue) / 2.0f + 0.8f, 0.9f);
+        greenValue = 0.8f;
+        blueValue = 0.3f;
+    }
+
     glUniform3f(effect_color_uloc, redValue, greenValue, blueValue);
 
     // Specify uniform variables
@@ -186,6 +193,14 @@ void Player1::set_key(int key, bool pressed) {
         // }
         
         // std::cout << "\n";
+}
+
+void Player1::set_armourstate(bool newArmourState) {
+    armour_in_use = newArmourState;
+}
+
+bool Player1::get_armourstate() const {
+    return armour_in_use;
 }
 
 void Player1::set_freezestate(bool newFreezeState) {

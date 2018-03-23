@@ -189,10 +189,12 @@ bool World::update(float elapsed_ms) {
         
         if ((int) difftime(time(0), armourTime_p1) >= 5) {
             armourInUse_p1 = false;
+            m_player1.set_armourstate(false);
             armourTime_p1 = 0;
         }
         if ((int) difftime(time(0), armourTime_p2) >= 5) {
             armourInUse_p2 = false;
+            m_player2.set_armourstate(false);
             armourTime_p2 = 0;
         }
 
@@ -1011,6 +1013,7 @@ void World::use_tool_1(int tool_number) {
         if (!droptool_p1)
         {
             armourInUse_p1 = true;
+            m_player1.set_armourstate(true);
             armourTime_p1 = time(0);
         }
         m_player1.set_mass(m_player1.get_mass() - m_armour_collected_1.begin()->get_mass());
@@ -1201,6 +1204,7 @@ void World::use_tool_2(int tool_number) {
         if (!droptool_p2)
         {
             armourInUse_p2 = true;
+            m_player2.set_armourstate(true);
             armourTime_p2 = time(0);
         }
         m_player2.set_mass(m_player2.get_mass() - m_armour_collected_2.begin()->get_mass());

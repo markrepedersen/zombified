@@ -130,6 +130,10 @@ void Bomb::draw(const mat3& projection)
     float color[] = { 1.f, 1.f, 1.f };
     glUniform3fv(color_uloc, 1, color);
     glUniformMatrix3fv(projection_uloc, 1, GL_FALSE, (float*)&projection);
+
+    if (speed.x + speed.y < 100.f) {
+        
+    }
     
     // Drawing!
 	glDrawElements(GL_TRIANGLES, (GLsizei)m_num_indices, GL_UNSIGNED_SHORT, nullptr);
