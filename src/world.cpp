@@ -1462,7 +1462,7 @@ void World::use_bomb(float ms) {
         else
         {
             itbomb->move({itbomb->get_speed().x * (ms / 1000),
-                itbomb->get_speed().y * (ms / 1000)});
+                itbomb->get_speed().y * (ms / 1000)}, false);
             itbomb->checkBoundaryCollision(1100, 500, ms, mapCollisionPoints);
             
             for (checkbomb = used_bombs.begin(); checkbomb != used_bombs.end() - 1; ++checkbomb) {

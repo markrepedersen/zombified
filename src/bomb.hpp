@@ -26,6 +26,15 @@ public:
     
     vec2 get_speed()const;
     void set_speed(vec2 newSpeed);
+
+    void set_oldspeed(vec2 speed);
+
+    vec2 get_oldspeed();
+
+    void set_oldposition(vec2 position);
+    
+    vec2 get_oldposition();
+
     
     float get_mass()const;
     
@@ -40,7 +49,7 @@ public:
     
     bool collides_with(const Bomb& bomb);
     
-    void move(vec2);
+    void move(vec2, bool);
     
     void checkBoundaryCollision(float width, float height, float ms, std::vector<vec2> mapCollisionPoints);
     void checkCollision(Bomb other, float ms);
@@ -52,5 +61,7 @@ private:
     vec2 m_scale; // 1.f in each dimension. 1.f is as big as the associated texture
 	size_t m_num_indices; // passed to glDrawElements
     vec2 speed;
+    vec2 oldspeed;
+    vec2 m_oldposition;
     float mass;
 };
