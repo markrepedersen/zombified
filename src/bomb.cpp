@@ -273,6 +273,14 @@ float Bomb::get_force(float mass1, float speed, vec2 objPosition)
     
 }
 
+void Bomb::explode() {
+    Explosion m_explosion;
+
+    // m_explosion.init();
+    m_explosion.set_position(m_position);
+    m_explosion.animate();
+}
+
 void Bomb::checkCollision(Bomb other, float ms) {
     
     // Get distances between the balls components
@@ -329,8 +337,6 @@ void Bomb::checkCollision(Bomb other, float ms) {
         //fprintf(stderr, "b1y %f \n", speed.y);
         //fprintf(stderr, "b2x %f \n", other.get_speed().x);
         //fprintf(stderr, "b2y %f \n", other.get_speed().y);
-        
-        
     }
 }
 

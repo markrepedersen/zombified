@@ -92,6 +92,8 @@ void World::destroy() {
         armour.destroy();
     for (auto &bomb : m_bomb)
         bomb.destroy();
+    for (auto &explosion : m_explosion)
+        explosion.destroy();
     for (auto &freeze_collected : m_freeze_collected_1)
         freeze_collected.destroy();
     for (auto &water_collected : m_water_collected_1)
@@ -125,6 +127,7 @@ void World::destroy() {
     m_missile.clear();
     m_armour.clear();
     m_bomb.clear();
+    m_explosion.clear();
     m_freeze_collected_1.clear();
     m_freeze_collected_2.clear();
     m_water_collected_1.clear();
@@ -197,6 +200,9 @@ bool World::update(float elapsed_ms) {
             m_player2.set_armourstate(false);
             armourTime_p2 = 0;
         }
+
+        // for (auto &explosion : m_explosion)
+        //    explosion.animate();
 
         return true;
     }
@@ -302,6 +308,9 @@ void World::draw() {
             bomb_used.draw(projection_2D);
         for (auto &mud_collected : m_mud_collected)
             mud_collected.draw(projection_2D);
+
+        for (auto &explosion : m_explosion)
+            explosion.draw(projection_2D);
 
         m_player1.draw(projection_2D);
         m_player2.draw(projection_2D);
@@ -458,6 +467,15 @@ bool World::spawn_bomb() {
     Bomb bomb;
     if (bomb.init()) {
         m_bomb.emplace_back(bomb);
+        return true;
+    }
+    return false;
+}
+
+bool World::create_explosion(vec2 bomb_position) {
+    Explosion explosion;
+    if (explosion.init(bomb_position)) {
+        m_explosion.emplace_back(explosion);
         return true;
     }
     return false;
@@ -1327,9 +1345,10 @@ void World::autoExplode() {
             (m_player2.get_position().y - used_bombs.front().get_position().y)});
         explosion = true;
     }
-    
+
+    // create_explosion(used_bombs.begin()->get_position());
+    // used_bombs.begin()->explode();
     used_bombs.erase(used_bombs.begin());
-    
 }
 
 void World::explode() {

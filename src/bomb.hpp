@@ -3,6 +3,7 @@
 #include "common.hpp"
 #include "viewHelper.hpp"
 #include "toolboxManager.hpp"
+#include "explosion.hpp"
 #include <vector>
 #include <tuple>
 #include <unistd.h>
@@ -44,6 +45,8 @@ public:
     
     void checkBoundaryCollision(float width, float height, float ms);
     void checkCollision(Bomb other, float ms);
+
+    void explode();
     
 private:
     bool m_is_alive; // True if the salmon is alive
