@@ -108,6 +108,8 @@ private:
 	time_t freezeTime;
     time_t armourTime_p1;
     time_t armourTime_p2;
+    time_t droppedAntidoteTime_p1;
+    time_t droppedAntidoteTime_p2;
 
 	// Game entities
 	Worldtexture m_worldtexture;
