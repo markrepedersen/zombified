@@ -199,11 +199,11 @@ bool World::update(float elapsed_ms) {
         if (useBomb)
             use_bomb(elapsed_ms);
         
-        if ((int) difftime(time(0), armourTime_p1) >= 5) {
+        if ((int) difftime(time(0), armourTime_p1) >= 10) {
             armourInUse_p1 = false;
             armourTime_p1 = 0;
         }
-        if ((int) difftime(time(0), armourTime_p2) >= 5) {
+        if ((int) difftime(time(0), armourTime_p2) >= 10) {
             armourInUse_p2 = false;
             armourTime_p2 = 0;
         }
@@ -258,9 +258,9 @@ void World::draw() {
 
     std::stringstream title_ss;
     if (m_sec < 10)
-        title_ss << "Time remaining " << m_min << ":" << "0" << m_sec;
+        title_ss << "player1 damage count: " << m_player1.numberofHits << "          " << "Time remaining " << m_min << ":" << "0" << m_sec << "          "<< "player2 damage count: " << m_player2.numberofHits;
     else
-        title_ss << "Time remaining " << m_min << ":" << m_sec;
+        title_ss << "player1 damage count: " << m_player1.numberofHits << "          " << "Time remaining " << m_min << ":" << m_sec << "          "<< "player2 damage count: " << m_player2.numberofHits;
     glfwSetWindowTitle(m_window, title_ss.str().c_str());
 
     glViewport(0, 0, w, h);
@@ -377,22 +377,33 @@ void World::on_key(GLFWwindow *, int key, int, int action, int mod) {
             // if the player has no tools/no slots attack the other player by collided and pressing attack
             if (m_player1.collides_with(m_player2))
             {
-                bool hasTools = false;
-                for (auto &tools : m_toolboxManager.getListOfSlot_1())
-                {
-                    if (tools != 0)
-                    {
-                        hasTools = true;
-                        break;
-                    }
-                }
-                if (!hasTools)
-                    m_player2.numberofHits++; // needs to hit the player 5 times in order for p2 to drop item
+                // can punch players if freeze is used
+                if (immobilize == 2)
+                    m_player2.numberofHits++;
+                    //fprintf(stderr, "player2 number of hits: %d \n", m_player2.numberofHits);
                 else
-                    use_tool_1(m_toolboxManager.useItem(1));
+                {
+                    bool hasTools = false;
+                    for (auto &tools : m_toolboxManager.getListOfSlot_1())
+                    {
+                        if (tools != 0)
+                        {
+                            hasTools = true;
+                            break;
+                        }
+                    }
+                    // if the player has no tools then can manually attack, or else, just use a tool
+                    if (!hasTools)
+                        m_player2.numberofHits++; // needs to hit the player 5 times in order for p2 to drop item
+                    else
+                        use_tool_1(m_toolboxManager.useItem(1));
+                    
+                    //fprintf(stderr, "player2 number of hits: %d \n", m_player2.numberofHits);
+                }
             }
             else
                 use_tool_1(m_toolboxManager.useItem(1));
+                //fprintf(stderr, "usetool \n");
             
             //fprintf(stderr, "player2 number of hits: %d \n", m_player2.numberofHits);
         }
@@ -437,19 +448,24 @@ void World::on_key(GLFWwindow *, int key, int, int action, int mod) {
             // if the player has no tools/no slots attack the other player by collided and pressing attack
             if (m_player1.collides_with(m_player2))
             {
-                bool hasTools = false;
-                for (auto &tools : m_toolboxManager.getListOfSlot_2())
-                {
-                    if (tools != 0)
-                    {
-                        hasTools = true;
-                        break;
-                    }
-                }
-                if (!hasTools)
-                    m_player1.numberofHits++; // needs to hit the player 5 times in order for p1 to drop item
+                if (immobilize == 1)
+                    m_player1.numberofHits++;
                 else
-                    use_tool_2(m_toolboxManager.useItem(2));
+                {
+                    bool hasTools = false;
+                    for (auto &tools : m_toolboxManager.getListOfSlot_2())
+                    {
+                        if (tools != 0)
+                        {
+                            hasTools = true;
+                            break;
+                        }
+                    }
+                    if (!hasTools)
+                        m_player1.numberofHits++; // needs to hit the player 5 times in order for p1 to drop item
+                    else
+                        use_tool_2(m_toolboxManager.useItem(2));
+                }
             }
             else
                 use_tool_2(m_toolboxManager.useItem(2));
@@ -870,9 +886,16 @@ void World::check_add_tools(vec2 screen) {
 
 //=================check for antidote collision
     if (m_player1.collides_with(m_antidote))
-        collided = 1;
+    {
+        // 5 sec delay before players can pick up tools again
+        if ((int) difftime(time(0), droppedAntidoteTime_p1) >= 5)
+            collided = 1;
+    }
     if (m_player2.collides_with(m_antidote))
-        collided = 2;
+    {
+         if ((int) difftime(time(0), droppedAntidoteTime_p2) >= 5)
+             collided = 2;
+    }
     
     if (collided != 0 && m_antidote.belongs_to == 0) {
         float index = (float) m_toolboxManager.addItem(3, collided);
@@ -1036,6 +1059,7 @@ void World::use_tool_1(int tool_number) {
             m_antidote.set_position(m_player1.get_position());
             m_antidote.set_scale({-0.10f * ViewHelper::getRatio(), 0.10f * ViewHelper::getRatio()});
             m_antidote.belongs_to = 0;
+            droppedAntidoteTime_p1 = time(0);
         }
         
     }
@@ -1229,6 +1253,7 @@ void World::use_tool_2(int tool_number) {
             m_antidote.set_position(m_player2.get_position());
             m_antidote.set_scale({-0.10f * ViewHelper::getRatio(), 0.10f * ViewHelper::getRatio()});
             m_antidote.belongs_to = 0;
+            droppedAntidoteTime_p2 = time(0);
         }
     }
     if (tool_number == 4) {
