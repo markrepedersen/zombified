@@ -13,6 +13,7 @@
 #include "mud.hpp"
 #include "Ice.hpp"
 #include "tree.hpp"
+#include "explosion.hpp"
 #include "worldtexture.hpp"
 #include "viewHelper.hpp"
 #include "button.hpp"
@@ -94,6 +95,8 @@ private:
 
 	void add_to_broadphase(int w, int h, float posx, float posy, void*);
 
+    bool create_explosion(vec2 bomb_position);
+
 private:
 	// Window handle
 	GLFWwindow* m_window;
@@ -133,6 +136,7 @@ private:
     std::vector<Missile> m_missile;
     std::vector<Bomb> m_bomb;
     std::vector<Armour> m_armour;
+    std::vector<Explosion> m_explosion;
 
     std::vector<Ice> m_freeze_collected_1;
     std::vector<Water> m_water_collected_1;

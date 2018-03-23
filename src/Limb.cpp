@@ -9,6 +9,21 @@
 Texture Limb::leg_texture;
 Texture Limb::arm_texture;
 
+// current frame in animation
+int curr_frame_limb = 0;
+// frame to draw and previous frame in sprite
+int sprite_frame_index_limb = 0;
+// sprite information
+int sprite_width_arm = 522;
+int sprite_height_arm = 242;
+int sprite_width_leg = 410;
+int sprite_height_leg = 240;
+int num_rows_limb = 1;
+int num_cols_limb = 5;
+int frames_arm [5] = {0, 1, 2, 3, 4};
+// animation timing
+int frame_time_limb = 100;
+auto start_time_limb = std::chrono::high_resolution_clock::now();
 
 bool Limb::init(std::string inputtype) {
         // Load shared texture
@@ -19,37 +34,37 @@ bool Limb::init(std::string inputtype) {
 
         if(type == "arm") {
             if(!arm_texture.is_valid()) {
-                if (!arm_texture.load_from_file(tools_textures_path("zombie arm.png")))
+                if (!arm_texture.load_from_file(tools_textures_path("arm_sprite.png")))
                 {
                     fprintf(stderr, "Failed to load arms texture!");
                     return false; 
                 }
             }
-            wr = arm_texture.width * 0.5f;
-            hr = arm_texture.height * 0.5f;
+            wr = sprite_width_arm * 0.5f;
+            hr = sprite_height_arm * 0.5f;
         } else {
-            if (!leg_texture.load_from_file(tools_textures_path("zombie leg.png")))
+            if (!leg_texture.load_from_file(tools_textures_path("leg_sprite.png")))
             {
                 fprintf(stderr, "Failed to load leg texture!");
                 return false;
             }
-            wr = leg_texture.width * 0.5f;
-            hr = leg_texture.height * 0.5f;
+            wr = sprite_width_leg * 0.5f;
+            hr = sprite_width_leg * 0.5f;
         } 
     
-    // // The position corresponds to the center of the texture
+    // The position corresponds to the center of the texture
     // float wr = limb_texture.width * 0.5f;
     // float hr = limb_texture.height * 0.5f;
     
     TexturedVertex vertices[4];
     vertices[0].position = { -wr, +hr, -0.02f };
-    vertices[0].texcoord = { 0.f, 1.f };
+    vertices[0].texcoord = { 1/5.f, 1.f };
     vertices[1].position = { +wr, +hr, -0.02f };
-    vertices[1].texcoord = { 1.f, 1.f };
+    vertices[1].texcoord = { 0.f, 1.f };
     vertices[2].position = { +wr, -hr, -0.02f };
-    vertices[2].texcoord = { 1.f, 0.f };
+    vertices[2].texcoord = { 0.f, 0.f };
     vertices[3].position = { -wr, -hr, -0.02f };
-    vertices[3].texcoord = { 0.f, 0.f };
+    vertices[3].texcoord = { 1/5.f, 0.f };
     
     // counterclockwise as it's the default opengl front winding direction
     uint16_t indices[] = { 0, 3, 1, 1, 3, 2 };
@@ -73,7 +88,7 @@ bool Limb::init(std::string inputtype) {
         return false;
     
     // Loading shaders
-    if (!effect.load_from_file(shader_path("textured.vs.glsl"), shader_path("textured.fs.glsl")))
+    if (!effect.load_from_file(shader_path("player.vs.glsl"), shader_path("textured.fs.glsl")))
         return false;
     
     // Setting initial values
@@ -103,6 +118,10 @@ void Limb::draw(const mat3& projection)
     GLint transform_uloc = glGetUniformLocation(effect.program, "transform");
     GLint color_uloc = glGetUniformLocation(effect.program, "fcolor");
     GLint projection_uloc = glGetUniformLocation(effect.program, "projection");
+    GLint num_rows_uloc = glGetUniformLocation(effect.program, "num_rows");
+    GLint num_cols_uloc = glGetUniformLocation(effect.program, "num_cols");
+    GLint sprite_frame_index_uloc = glGetUniformLocation(effect.program, "sprite_frame_index");
+    GLint vertexColorLocation = glGetUniformLocation(effect.program, "our_color");
     
     // Setting vertices and indices
     glBindVertexArray(mesh.vao);
@@ -130,6 +149,16 @@ void Limb::draw(const mat3& projection)
     float color[] = { 1.f, 1.f, 1.f };
     glUniform3fv(color_uloc, 1, color);
     glUniformMatrix3fv(projection_uloc, 1, GL_FALSE, (float*)&projection);
+
+    // color changing
+    float timeValue = glfwGetTime();
+    float greenValue = sin(timeValue) / 2.0f + 0.5f;
+    glUniform3f(vertexColorLocation, 0.0f, greenValue, 0.0f);
+
+    // Specify uniform variables
+    glUniform1iv(sprite_frame_index_uloc, 1, &sprite_frame_index_limb);
+    glUniform1iv(num_rows_uloc, 1, &num_rows_limb);
+    glUniform1iv(num_cols_uloc, 1, &num_cols_limb);
     
     // Drawing!
     glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_SHORT, nullptr);
@@ -149,9 +178,9 @@ void Limb::destroy()
 vec2 Limb::get_bounding_box()const {
      // fabs is to avoid negative scale due to the facing direction
      if (type == "arm") {
-        return { std::fabs(m_scale.x) * arm_texture.width, std::fabs(m_scale.y) * arm_texture.height };
+        return { std::fabs(m_scale.x) * sprite_width_arm, std::fabs(m_scale.y) * sprite_height_arm };
      } else {
-        return { std::fabs(m_scale.x) * leg_texture.width, std::fabs(m_scale.y) * leg_texture.height };
+        return { std::fabs(m_scale.x) * sprite_width_leg, std::fabs(m_scale.y) * sprite_height_leg };
      }
 }
     
@@ -204,4 +233,18 @@ void Limb::set_position(vec2 position) {
  
 void Limb::move(vec2 pos) {
     this->position += pos;
+    animate();
+}
+
+void Limb::animate()
+{
+    auto curr_time = std::chrono::high_resolution_clock::now();
+    int milliseconds = std::chrono::duration_cast<std::chrono::milliseconds>(curr_time - start_time_limb).count();
+
+    if (milliseconds > frame_time_limb)
+    {
+        curr_frame_limb = (curr_frame_limb + 1) % 5;
+        sprite_frame_index_limb = frames_arm[curr_frame_limb];
+        start_time_limb = curr_time;
+    }
 }

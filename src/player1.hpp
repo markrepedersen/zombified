@@ -14,6 +14,7 @@
 #include "armour.hpp"
 #include "missile.hpp"
 #include "mud.hpp"
+#include "blood.hpp"
 #include "player2.hpp"
 
 class Player1 : public Renderable
@@ -46,6 +47,12 @@ public:
     float get_originalspeed()const;
     void set_originalspeed(float newSpeed);
 
+    void set_freezestate(bool newFreezeState);
+    bool get_freezestate()const;
+
+    void set_armourstate(bool newArmourState);
+    bool get_armourstate()const;
+
     // True if the salmon is alive
     bool is_alive()const;
 
@@ -53,6 +60,7 @@ public:
     vec2 get_shootDirection();
 
     void animate();
+    void create_blood(vec2 position);
 
     bool collides_with(const Ice& freeze);
     bool collides_with(const Limb& limb);
@@ -86,4 +94,9 @@ private:
 
     bool m_keys[4];
     vec2 shootdirection;
+
+    Blood m_blood;
+    bool frozen;
+    bool armour_in_use;
+    bool affectedByMud;
 };

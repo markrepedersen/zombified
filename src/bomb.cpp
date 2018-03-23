@@ -104,6 +104,7 @@ void Bomb::draw(const mat3& projection)
     GLint transform_uloc = glGetUniformLocation(effect.program, "transform");
     GLint color_uloc = glGetUniformLocation(effect.program, "fcolor");
     GLint projection_uloc = glGetUniformLocation(effect.program, "projection");
+    GLint flash_uloc = glGetUniformLocation(effect.program, "flash");
     
     // Setting vertices and indices
     glBindVertexArray(mesh.vao);
@@ -131,66 +132,24 @@ void Bomb::draw(const mat3& projection)
     float color[] = { 1.f, 1.f, 1.f };
     glUniform3fv(color_uloc, 1, color);
     glUniformMatrix3fv(projection_uloc, 1, GL_FALSE, (float*)&projection);
+
+    float sinValue = 0;
+    float absSpeed = std::abs(speed.x) + std::abs(speed.y);
+    bool flash = false;
+
+    if (absSpeed > 1.f && absSpeed < 125.f) {
+        sinValue = sin(2*absSpeed) / 2.0f;
+        flash = (sinValue > 0);
+    }
+
+    glUniform1i(flash_uloc, flash);
     
     // Drawing!
 	glDrawElements(GL_TRIANGLES, (GLsizei)m_num_indices, GL_UNSIGNED_SHORT, nullptr);
 }
 
-/*
-void Missile::draw(const mat3& projection)
-{
-	transform_begin();
-
-	transform_translate({ m_position });
-	transform_rotate(m_rotation);
-	transform_scale(m_scale);
-
-	transform_end();
-
-	// Setting shaders
-	glUseProgram(effect.program);
-
-	// Enabling alpha channel for textures
-	glEnable(GL_BLEND); glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-	glEnable(GL_DEPTH_TEST);
-
-	// Getting uniform locations
-	GLint transform_uloc = glGetUniformLocation(effect.program, "transform");
-	GLint color_uloc = glGetUniformLocation(effect.program, "fcolor");
-	GLint projection_uloc = glGetUniformLocation(effect.program, "projection");
-	//GLint light_up_uloc = glGetUniformLocation(effect.program, "light_up");
-
-	// Setting vertices and indices
-	glBindVertexArray(mesh.vao);
-	glBindBuffer(GL_ARRAY_BUFFER, mesh.vbo);
-	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, mesh.ibo);
-
-	// Input data location as in the vertex buffer
-	GLint in_position_loc = glGetAttribLocation(effect.program, "in_position");
-	GLint in_color_loc = glGetAttribLocation(effect.program, "in_color");
-	glEnableVertexAttribArray(in_position_loc);
-	glEnableVertexAttribArray(in_color_loc);
-	glVertexAttribPointer(in_position_loc, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex), (void*)0);
-	glVertexAttribPointer(in_color_loc, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex), (void*)sizeof(vec3));
-
-	// Setting uniform values to the currently bound program
-	glUniformMatrix3fv(transform_uloc, 1, GL_FALSE, (float*)&transform);
-
-	float color[] = { 1.f, 1.f, 1.f };
-
-	glUniform3fv(color_uloc, 1, color);
-	
-	glUniformMatrix3fv(projection_uloc, 1, GL_FALSE, (float*)&projection);
-
-	// Drawing!
-	glDrawElements(GL_TRIANGLES,(GLsizei)m_num_indices, GL_UNSIGNED_SHORT, nullptr);
-}
-*/
-
 void Bomb::set_position(vec2 position)
 {
-	// std::cout << "Bomb created" << "\n";
-
     m_position = position;
 }
 
@@ -244,8 +203,6 @@ void Bomb::destroy()
     glDeleteShader(effect.fragment);
     glDeleteShader(effect.program);
 }
-
-
 
 vec2 Bomb::get_bounding_box()const
 {
@@ -388,6 +345,14 @@ float Bomb::get_force(float mass1, float speed, vec2 objPosition)
     
 }
 
+void Bomb::explode() {
+    Explosion m_explosion;
+
+    // m_explosion.init();
+    m_explosion.set_position(m_position);
+    m_explosion.animate();
+}
+
 void Bomb::checkCollision(Bomb other, float ms) {
     
     // Get distances between the balls components
@@ -440,8 +405,6 @@ void Bomb::checkCollision(Bomb other, float ms) {
         //fprintf(stderr, "b1y %f \n", speed.y);
         //fprintf(stderr, "b2x %f \n", other.get_speed().x);
         //fprintf(stderr, "b2y %f \n", other.get_speed().y);
-        
-        
     }
 }
 

@@ -50,6 +50,9 @@ public:
     bool isInitialized() {return initialized;}
 
     void setInitialized(bool flag) {this->initialized = flag;}
+
+    void animate();
+
 protected:
     vec2 cur_target;
     vec2 last_target;

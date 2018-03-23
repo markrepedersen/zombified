@@ -87,7 +87,9 @@ bool Player1::init(vec2 screen, std::vector<vec2> mapCollisionPoints)
     originalSpeed = PLAYER_SPEED;
     mass = 1.0;
     blowback = false;
-    
+    affectedByMud = false;
+    frozen = false;
+    armour_in_use = false;
     numberofHits = 0;
 
     m_position = {(screen.x * ViewHelper::getRatio()) / 5, (screen.y * ViewHelper::getRatio()) / 2};
@@ -119,7 +121,7 @@ void Player1::draw(const mat3 &projection)
     GLint num_rows_uloc = glGetUniformLocation(effect.program, "num_rows");
     GLint num_cols_uloc = glGetUniformLocation(effect.program, "num_cols");
     GLint sprite_frame_index_uloc = glGetUniformLocation(effect.program, "sprite_frame_index");
-    GLint vertexColorLocation = glGetUniformLocation(effect.program, "our_color");
+    GLint effect_color_uloc = glGetUniformLocation(effect.program, "effect_color");
 
     // Setting vertices and indices
     glBindVertexArray(mesh.vao);
@@ -146,8 +148,23 @@ void Player1::draw(const mat3 &projection)
 
     // color changing
     float timeValue = glfwGetTime();
-    float greenValue = sin(timeValue) / 2.0f + 0.5f;
-    glUniform3f(vertexColorLocation, 0.0f, greenValue, 0.0f);
+    float redValue = 1.0f;
+    float greenValue = 1.0f;
+    float blueValue = 1.0f;
+
+    if (frozen) {
+        redValue = 0.2f;
+        greenValue = 0.2f;
+        blueValue = sin(6.0f*timeValue) / 2.0f + 0.8f;
+    }
+
+    if (armour_in_use) {
+        redValue = fmin(sin(6.0f*timeValue) / 2.0f + 0.8f, 0.9f);
+        greenValue = 0.8f;
+        blueValue = 0.3f;
+    }
+
+    glUniform3f(effect_color_uloc, redValue, greenValue, blueValue);
 
     // Specify uniform variables
     glUniform1iv(sprite_frame_index_uloc, 1, &sprite_frame_index_p1);
@@ -177,6 +194,22 @@ void Player1::set_key(int key, bool pressed) {
         // }
         
         // std::cout << "\n";
+}
+
+void Player1::set_armourstate(bool newArmourState) {
+    armour_in_use = newArmourState;
+}
+
+bool Player1::get_armourstate() const {
+    return armour_in_use;
+}
+
+void Player1::set_freezestate(bool newFreezeState) {
+    frozen = newFreezeState;
+}
+
+bool Player1::get_freezestate() const {
+    return frozen;
 }
 
 vec2 Player1::get_shootDirection() {
@@ -430,6 +463,11 @@ bool Player1::collides_with(const Mud& mud)
         return true;
     return false;
 }
+
+void Player1::create_blood(vec2 position) {
+    // sstd::cout << "Player 1: Blood created" << "\n";
+    // m_blood.init(position);
+};
 
 bool Player1::collides_with(const Player2& player2)
 {

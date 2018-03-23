@@ -83,6 +83,8 @@ bool Player2::init(vec2 screen, std::vector<vec2> mapCollisionPoints)
     originalSpeed = PLAYER_SPEED;
     mass = 1.0;
     blowback = false;
+    frozen = false;
+    armour_in_use = false;
 
     // Setting initial values
     m_scale.x = -0.2f * ViewHelper::getRatio();
@@ -117,7 +119,7 @@ void Player2::draw(const mat3& projection)
     GLint num_rows_uloc = glGetUniformLocation(effect.program, "num_rows");
     GLint num_cols_uloc = glGetUniformLocation(effect.program, "num_cols");
     GLint sprite_frame_index_uloc = glGetUniformLocation(effect.program, "sprite_frame_index");
-    GLint vertexColorLocation = glGetUniformLocation(effect.program, "our_color");
+    GLint effect_color_uloc = glGetUniformLocation(effect.program, "effect_color");
 
     // Setting vertices and indices
     glBindVertexArray(mesh.vao);
@@ -144,8 +146,23 @@ void Player2::draw(const mat3& projection)
 
     // color changing
     float timeValue = glfwGetTime();
-    float greenValue = sin(timeValue) / 2.0f + 0.5f;
-    glUniform3f(vertexColorLocation, 0.0f, greenValue, 0.0f);
+    float redValue = 1.0f;
+    float greenValue = 1.0f;
+    float blueValue = 1.0f;
+
+    if (frozen) {
+        redValue = 0.2f;
+        greenValue = 0.2f;
+        blueValue = sin(6.0f*timeValue) / 2.0f + 0.8f;
+    }
+
+    if (armour_in_use) {
+        redValue = fmin(sin(6.0f*timeValue) / 2.0f + 0.8f, 0.9f);
+        greenValue = 0.8f;
+        blueValue = 0.3f;
+    }
+
+    glUniform3f(effect_color_uloc, redValue, greenValue, blueValue);
     
     // Specify uniform variables
     glUniform1iv(sprite_frame_index_uloc, 1, &sprite_frame_index_p2);
@@ -167,6 +184,22 @@ void Player2::set_key(int key, bool pressed) {
     }
     if (!pressed)
         m_keys[key] = false;
+}
+
+void Player2::set_armourstate(bool newArmourState) {
+    armour_in_use = newArmourState;
+}
+
+bool Player2::get_armourstate() const {
+    return armour_in_use;
+}
+
+void Player2::set_freezestate(bool newFreezeState) {
+    frozen = newFreezeState;
+}
+
+bool Player2::get_freezestate() const {
+    return frozen;
 }
 
 vec2 Player2::get_shootDirection() {
@@ -433,7 +466,7 @@ bool Player2::collides_with(const Mud& mud)
 vec2 Player2::get_bounding_box()const
 {
     // fabs is to avoid negative scale due to the facing direction
-    return { std::fabs(m_scale.x) * player2_texture.width, std::fabs(m_scale.y) * player2_texture.height };
+    return { std::fabs(m_scale.x) * sprite_width_p2, std::fabs(m_scale.y) * sprite_height_p2 };
 }
 
 void Player2::destroy() {
