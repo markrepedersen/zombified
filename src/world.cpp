@@ -320,13 +320,6 @@ void World::on_key(GLFWwindow *, int key, int, int action, int mod) {
 
     // player1 actions
     if (immobilize != 1 && !m_player1.get_blowback()) {
-//        if (action == GLFW_PRESS &&
-//            (key == GLFW_KEY_UP || key == GLFW_KEY_LEFT || key == GLFW_KEY_DOWN || key == GLFW_KEY_RIGHT))
-//            m_player1.set_key(key, true);
-//        if (action == GLFW_RELEASE &&
-//            (key == GLFW_KEY_UP || key == GLFW_KEY_LEFT || key == GLFW_KEY_DOWN || key == GLFW_KEY_RIGHT))
-//            m_player1.set_key(key, false);
-    
         if (action == GLFW_PRESS && key == GLFW_KEY_UP)
             m_player1.set_key(0, true);
         if (action == GLFW_PRESS && key == GLFW_KEY_LEFT)
@@ -349,6 +342,7 @@ void World::on_key(GLFWwindow *, int key, int, int action, int mod) {
     }
     if (immobilize == 1 || m_player1.get_blowback()) //player is frozen
     {
+        m_player1.set_freezestate(true);
         //fprintf(stderr, "frozen");
         m_player1.set_key(0, false);
         m_player1.set_key(1, false);
@@ -356,6 +350,7 @@ void World::on_key(GLFWwindow *, int key, int, int action, int mod) {
         m_player1.set_key(3, false);
         if ((int) difftime(time(0), freezeTime) >= 5) {
             immobilize = 0;
+            m_player1.set_freezestate(false);
             freezeTime = 0;
             //fprintf(stderr, "start");
         }
@@ -388,11 +383,13 @@ void World::on_key(GLFWwindow *, int key, int, int action, int mod) {
     }
     if (immobilize == 2 || m_player2.get_blowback()) //player is frozen
     {
+        m_player2.set_freezestate(true);
         m_player2.set_key(0, false);
         m_player2.set_key(1, false);
         m_player2.set_key(2, false);
         m_player2.set_key(3, false);
         if ((int) difftime(time(0), freezeTime) >= 5) {
+            m_player2.set_freezestate(false);
             immobilize = 0;
             freezeTime = 0;
             //fprintf(stderr, "start");
@@ -734,6 +731,7 @@ void World::check_add_tools(vec2 screen) {
                 collect_bomb(*itb, collided, index);
                 if (collided == 1) {
                     m_player1.set_mass(m_player1.get_mass() + itb->get_mass());
+                    m_player1.create_blood(m_player1.get_position());
                 }
                 if (collided == 2) {
                     m_player2.set_mass(m_player2.get_mass() + itb->get_mass());

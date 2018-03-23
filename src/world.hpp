@@ -22,6 +22,7 @@
 #include "missile.hpp"
 #include "bomb.hpp"
 #include "armour.hpp"
+#include "blood.hpp"
 #include <vector>
 #include <Box2D.h>
 #include <SDL/SDL.h>

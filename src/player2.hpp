@@ -46,6 +46,9 @@ public:
     float get_originalspeed()const;
     void set_originalspeed(float newSpeed);
 
+    void set_freezestate(bool newFreezeState);
+    bool get_freezestate()const;
+
     // True if the salmon is alive
     bool is_alive()const;
 
@@ -85,4 +88,6 @@ private:
 
     bool m_keys[4];
     vec2 shootdirection;
+
+    bool frozen;
 };
