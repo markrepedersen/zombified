@@ -187,11 +187,11 @@ bool World::update(float elapsed_ms) {
         if (useBomb)
             use_bomb(elapsed_ms);
         
-        if ((int) difftime(time(0), armourTime_p1) >= 5) {
+        if ((int) difftime(time(0), armourTime_p1) >= 10) {
             armourInUse_p1 = false;
             armourTime_p1 = 0;
         }
-        if ((int) difftime(time(0), armourTime_p2) >= 5) {
+        if ((int) difftime(time(0), armourTime_p2) >= 10) {
             armourInUse_p2 = false;
             armourTime_p2 = 0;
         }
@@ -246,9 +246,9 @@ void World::draw() {
 
     std::stringstream title_ss;
     if (m_sec < 10)
-        title_ss << "Time remaining " << m_min << ":" << "0" << m_sec;
+        title_ss << "player1 damage count: " << m_player1.numberofHits << "          " << "Time remaining " << m_min << ":" << "0" << m_sec << "          "<< "player2 damage count: " << m_player2.numberofHits;
     else
-        title_ss << "Time remaining " << m_min << ":" << m_sec;
+        title_ss << "player1 damage count: " << m_player1.numberofHits << "          " << "Time remaining " << m_min << ":" << m_sec << "          "<< "player2 damage count: " << m_player2.numberofHits;
     glfwSetWindowTitle(m_window, title_ss.str().c_str());
 
     glViewport(0, 0, w, h);
