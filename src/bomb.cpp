@@ -276,12 +276,6 @@ void Bomb::move(vec2 pos, bool jump = false) {
 }
 
 void Bomb::checkBoundaryCollision(float width, float height, float ms, std::vector<vec2> mapCollisionPoints) {
-    
-    //if collides with boundary, get the direction of the boundary,
-    //update new direction
-    //n = normalized normal (if we define dx=x2-x1 and dy=y2-y1, then the normals are (-dy, dx) and (dy, -dx).)
-    //d = incident vector
-    //r=d−2(d⋅n)n
 
 
     float radius = (bomb_texture.width/2  * m_scale.x);
@@ -290,6 +284,12 @@ void Bomb::checkBoundaryCollision(float width, float height, float ms, std::vect
     else
         m_rotation += speed.x *(0.001);
 
+
+     //if collides with boundary, get the direction of the boundary,
+    //update new direction
+    //n = normalized normal (if we define dx=x2-x1 and dy=y2-y1, then the normals are (-dy, dx) and (dy, -dx).)
+    //d = incident vector
+    //r=d−2(d⋅n)n
 
     // if intersection[0].x == -1, then the point does not intersect with any of the mapCollisionPoints
     // else, it does, and the speed(direction) of the bomb needs to be changed)
