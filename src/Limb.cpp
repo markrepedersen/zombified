@@ -178,9 +178,9 @@ void Limb::destroy()
 vec2 Limb::get_bounding_box()const {
      // fabs is to avoid negative scale due to the facing direction
      if (type == "arm") {
-        return { std::fabs(m_scale.x) * arm_texture.width, std::fabs(m_scale.y) * arm_texture.height };
+        return { std::fabs(m_scale.x) * sprite_width_arm, std::fabs(m_scale.y) * sprite_height_arm };
      } else {
-        return { std::fabs(m_scale.x) * leg_texture.width, std::fabs(m_scale.y) * leg_texture.height };
+        return { std::fabs(m_scale.x) * sprite_width_leg, std::fabs(m_scale.y) * sprite_height_leg };
      }
 }
     
