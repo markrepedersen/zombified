@@ -3,6 +3,7 @@
 
 #include "common.hpp"
 #include "toolboxManager.hpp"
+#include "zombieManager.hpp"
 #include "limbsManager.hpp"
 #include "Limb.h"
 #include "player1.hpp"
@@ -23,7 +24,7 @@
 #include "missile.hpp"
 #include "bomb.hpp"
 #include "armour.hpp"
-#include "blood.hpp"
+#include "zombie.hpp"
 #include <vector>
 #include <Box2D.h>
 #include <SDL/SDL.h>
@@ -112,12 +113,15 @@ private:
 	time_t freezeTime;
     time_t armourTime_p1;
     time_t armourTime_p2;
+    time_t droppedAntidoteTime_p1;
+    time_t droppedAntidoteTime_p2;
 
 	// Game entities
 	Worldtexture m_worldtexture;
 	ToolboxManager m_toolboxManager;
 	ToolManager toolManager;
 	LimbsManager m_limbsManager;
+    ZombieManager m_zombieManager;
 	Player1 m_player1;
 	Player2 m_player2;
 	Zombie m_zombie;

@@ -1,6 +1,8 @@
 // Header
 #include "limbsManager.hpp"
+#include <unordered_set>
 #include "KMeans.h"
+#include <tuple>
 
 #define MAX_ITERATIONS 100
 
@@ -284,6 +286,51 @@ void LimbsManager::computePaths(float ms, const MapGrid &mapGrid) {
     }
 }
 
+//check on clusters that already meet and spawn zombies there
+std::unordered_set<vec2> LimbsManager::checkClusters() {
+    std::map<vec2, int> zombie_map;
+    std::unordered_set<vec2> zombie_set;
+
+
+    //for each limb that has found its centroid, add to zombie_map
+     for (auto it = limbs.begin(); it != limbs.end();) {
+        if (getDistance(it->get_position(),it->getCurrentTarget()) < ((m_screen.x/30) * ViewHelper::getRatio())) {
+
+            auto searchIt = zombie_map.find(it->get_position());
+
+            if(searchIt != zombie_map.end()) {
+                zombie_map[searchIt->first] = zombie_map[searchIt->first] + 1;
+            } else {
+                zombie_map[it->get_position()] = 1;
+            }
+            it++;
+        } else {
+            it++;
+        }
+     }
+
+    //for each cluster in the zombie_map that has more than 3 members, add it to zombie_set to spawn a zombie
+    for (const auto &pair : zombie_map) {
+        if(pair.second >= 2) {
+          zombie_set.insert(pair.first);
+        }
+    }
+
+    //for each limb that has its centroid position in zombie_set, delete it from our vector of limbs
+    for (auto it = limbs.begin(); it != limbs.end();) {
+        bool is_contained = (zombie_set.find(it->get_position()) != zombie_set.end());
+        if(is_contained) {
+            it->destroy();
+            it = limbs.erase(it);
+        } else {
+            it++;
+        }
+    }
+
+    return zombie_set;
+}
+
+
 void LimbsManager::destroy() {
     for (auto &limb : limbs)
         limb.destroy();
@@ -295,4 +342,9 @@ void LimbsManager::destroy() {
     limbs.clear();
     collectedLegs_p1.clear();
     collectedLegs_p2.clear();
+}
+
+bool operator<(vec2 const &a, vec2 const &b)
+{
+    return std::tie(a.x, a.y) < std::tie(b.x, b.y); //let std::tuple handle it for us
 }

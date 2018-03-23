@@ -208,38 +208,85 @@ void Bomb::move(vec2 pos) {
     m_position += pos;
 }
 
-void Bomb::checkBoundaryCollision(float width, float height, float ms) {
+void Bomb::checkBoundaryCollision(float width, float height, float ms, std::vector<vec2> mapCollisionPoints) {
     
+    //if collides with boundary, get the direction of the boundary,
+    //update new direction
+    //n = normalized normal (if we define dx=x2-x1 and dy=y2-y1, then the normals are (-dy, dx) and (dy, -dx).)
+    //d = incident vector
+    //r=d−2(d⋅n)n
+
+
     float radius = (bomb_texture.width/2);
     if (m_rotation > 18.f)
         m_rotation = 0.f;
     else
         m_rotation += speed.x *(0.001);
-    
-    if (m_position.x > width-radius)
-    {
-        m_position.x = width-radius;
-        speed.x *= -1;
+
+
+    // if intersection[0].x == -1, then the point does not intersect with any of the mapCollisionPoints
+    // else, it does, and the speed(direction) of the bomb needs to be changed)
+    std::vector<vec2> intersection = getIntersectionWithPoly(mapCollisionPoints, {m_position.x, m_position.y},speed.x );
+    // (speed.x/5) * ViewHelper::getRatio()
+    // std::cout << m_position.x << ", " << m_position.y << std::endl;
+    if (intersection[0].x != -1) {
+
+        // std::cout << "intersection!!!!" << std::endl;
+        vec2 b = {intersection[1].x - intersection[0].x, intersection[1].y - intersection[0].y};
+        vec2 n = normalize({b.y, -b.x});
+        vec2 dn = dot(speed, n);
+        vec2 twodnn = {2 * dn.x * n.x, 2 * dn.y * n.y};
+        vec2 r = {speed.x - twodnn.x, speed.y - twodnn.y};
+        
+        if (isInsidePolygon(mapCollisionPoints, m_position)) {
+            std::cout << "inside polygon!" << std::endl;
+            speed = r;
+        } else {
+            //reflect the new speed against the intersecting poly line so that it goes back inside the polygon
+            std::cout << "outside polygon!" << std::endl;
+            vec2 new_n = normalize({intersection[1].x - intersection[0].x, intersection[1].y - intersection[0].y});
+            vec2 new_dn = dot(r, new_n);
+            vec2 new_twodnn = {2 * new_dn.x * new_n.x, 2 * new_dn.y * new_n.y};
+            vec2 new_r = {r.x - new_twodnn.x, r.y - new_twodnn.y};
+
+            speed = new_r;
+        }
+
+
         move({speed.x *(ms/1000), speed.y*(ms/1000)});
+
+
+
     }
-    else if (m_position.x < 200-radius)
-    {
-        m_position.x = 200-radius;
-        speed.x *= -1;
-        move({speed.x *(ms/1000), speed.y*(ms/1000)});
-    }
-    else if (m_position.y > height-radius)
-    {
-        m_position.y = height-radius;
-        speed.y *= -1;
-        move({speed.x *(ms/1000), speed.y*(ms/1000)});
-    }
-    else if (m_position.y < 70-radius)
-    {
-        m_position.y = 70-radius;
-        speed.y *= -1;
-        move({speed.x *(ms/1000), speed.y*(ms/1000)});
-    }
+    // std::cout << "speed: " << std::endl;
+    // std::cout << speed.x << std::endl;
+    // std::cout << speed.y << std::endl;
+
+
+    // if (m_position.x > width-radius)
+    // {
+    //     // m_position.x = width-radius;
+    //     speed.x *= -0.5;
+    //     move({speed.x *(ms/1000), speed.y*(ms/1000)});
+    // }
+    // else if (m_position.x < 200-radius)
+    // {
+    //     // m_position.x = 200-radius;
+    //     speed.x *= -0.5;
+    //     move({speed.x *(ms/1000), speed.y*(ms/1000)});
+    // }
+    // else if (m_position.y > height-radius)
+    // {
+    //     // m_position.y = height-radius;
+    //     speed.y *= -0.5;
+    //     move({speed.x *(ms/1000), speed.y*(ms/1000)});
+    // }
+    // else if (m_position.y < 70-radius)
+    // {
+    //     // m_position.y = 70-radius;
+    //     speed.y *= -0.5;
+    //     move({speed.x *(ms/1000), speed.y*(ms/1000)});
+    // }
 }
 
 vec2 Bomb::get_speed() const
@@ -301,34 +348,30 @@ void Bomb::checkCollision(Bomb other, float ms) {
         //fprintf(stderr, "collided \n");
         //float radius = 32.f/2;
         float dt = (ms/1000);
-        float mass1 = 0.15;
-        float mass2 = 0.15;
-        // Normal
-        //vec2 normal = normalize({other.get_position().x - m_position.x,
-        //    other.get_position().y - m_position.y});
-        float nx = diffX/fDistance; //(other.get_position().x - m_position.x) / fDistance;
-        float ny = diffY/fDistance; //(other.get_position().y - m_position.y) / fDistance;
-
-        //float nx = normal.x;
-        //float ny = normal.y;
+        float mass1 = 1.f;//0.15;
+        float mass2 = 1.f;//0.15;        // Normal
+        vec2 normal = normalize({other.get_position().x - m_position.x, other.get_position().y - m_position.y});
+        //float nx = diffX/fDistance; //(other.get_position().x - m_position.x) / fDistance;
+        //float ny = diffY/fDistance; //(other.get_position().y - m_position.y) / fDistance;
+        
         // Tangent
-        float tx = -ny;
-        float ty = nx;
+        float tx = -normal.y;
+        float ty = normal.x;
         
         // Dot Product Tangent
-        float dpTan1 = speed.x * tx + speed.y * ty;
-        float dpTan2 = other.get_speed().x * tx + other.get_speed().y * ty;
+        float dpTan1 = dot(speed, {tx, ty});
+        float dpTan2 = dot(other.get_speed(), {tx, ty});
         
         // Dot Product Normal
-        float dpNorm1 = speed.x * nx + speed.y * ny;
-        float dpNorm2 = other.get_speed().x * nx + other.get_speed().y * ny;
+        float dpNorm1 = dot(speed, normal);
+        float dpNorm2 = dot(other.get_speed(), normal);
         
-        // Conservation of momentum in 1D
+        // Conservation of momentum
         float m1 = (dpNorm1 * (mass1 - mass2) + 2.0f * mass2 * dpNorm2) / (mass1 + mass2);
         float m2 = (dpNorm2 * (mass2 - mass1) + 2.0f * mass1 * dpNorm1) / (mass1 + mass2);
         
-        set_speed({tx * dpTan1 + nx * m1, ty * dpTan1 + ny * m1});
-        other.set_speed({tx * dpTan2 + nx * m2, ty * dpTan2 + ny * m2});
+        set_speed({tx * dpTan1 + normal.x * m1, ty * dpTan1 + normal.y * m1});
+        other.set_speed({tx * dpTan2 + normal.x * m2, ty * dpTan2 + normal.y * m2});
         
         move({speed.x*dt, speed.y*dt});
         other.move({other.get_speed().x*dt, other.get_speed().y*dt});

@@ -5,7 +5,7 @@
 
 Texture Antidote::antidote_texture;
 
-bool Antidote::init(vec2 screen)
+bool Antidote::init(vec2 screen, std::vector<vec2> mapCollisionPoints)
 {
     // Load shared texture
     if (!antidote_texture.is_valid())
@@ -62,7 +62,7 @@ bool Antidote::init(vec2 screen)
     m_is_alive = true;
     
     srand((unsigned)time(0));
-    m_position = {screen.x/2 * ViewHelper::getRatio(), (float)((rand() % (int)screen.y))};
+    m_position = {screen.x/2 * ViewHelper::getRatio(), (getRandomPointInMap(mapCollisionPoints, screen)).y};
     
     belongs_to = 0;
     return true;

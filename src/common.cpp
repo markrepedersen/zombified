@@ -177,6 +177,41 @@ bool isInsidePolygon(std::vector<vec2> poly, vec2 point) {
 	return (intersectionCount % 2 == 1);
 }
 
+//get rough intersection (if point is close to poly borders)
+std::vector<vec2> getIntersectionWithPoly(std::vector<vec2> poly, vec2 point, float errorWindow) {
+	std::vector<vec2> intersection;
+	vec2 extreme = {point.x + errorWindow, point.y};
+	vec2 newpoint = {point.x - errorWindow, point.y};
+
+	for (int i = 0 ; i < poly.size() ; i++) {
+		vec2 poly1 = poly[i];
+		vec2 poly2 = ((i >= poly.size() - 1)? poly[0] : poly[i+1]);
+		
+		if (intersect(poly1, poly2, newpoint, extreme))
+		{
+			// std::cout << "poly1" << poly1.x << ", " << poly1.y << std::endl;
+			// std::cout << "poly2" << poly2.x << ", " << poly2.y << std::endl;
+			// std::cout << "POINT" << point.x << ", " << point.y << std::endl;
+			// std::cout << "EXTREME" << extreme.x << ", " << extreme.y << std::endl;
+
+			// if (orientation(poly1, point, poly2) == 0) {
+			// 	if (onSegment(poly1, point, poly2)) {
+			// 		std::cout << "intersection!!!" << std::endl;
+			// 		intersection.push_back(poly1);
+			// 		intersection.push_back(poly2);
+			// 		return intersection;
+			// 	}
+			// }
+			// std::cout << "intersection!!!" << std::endl;
+			intersection.push_back(poly1);
+			intersection.push_back(poly2);
+			return intersection;
+		}
+	}
+
+	intersection.push_back({-1,-1});
+	return intersection;
+}
 
 vec2 getRandomPointInMap(std::vector<vec2> mapCollisionPoints, vec2 screen) {
 

@@ -90,6 +90,7 @@ bool Player1::init(vec2 screen, std::vector<vec2> mapCollisionPoints)
     affectedByMud = false;
     frozen = false;
     armour_in_use = false;
+    numberofHits = 0;
 
     m_position = {(screen.x * ViewHelper::getRatio()) / 5, (screen.y * ViewHelper::getRatio()) / 2};
 
@@ -467,6 +468,20 @@ void Player1::create_blood(vec2 position) {
     // sstd::cout << "Player 1: Blood created" << "\n";
     // m_blood.init(position);
 };
+
+bool Player1::collides_with(const Player2& player2)
+{
+    float dx = m_position.x - player2.get_position().x;
+    float dy = m_position.y - player2.get_position().y;
+    float d_sq = dx * dx + dy * dy;
+    float other_r = std::max(player2.get_bounding_box().x, player2.get_bounding_box().y);
+    float my_r = std::max(m_scale.x, m_scale.y);
+    float r = std::max(other_r, my_r);
+    r *= 0.6f;
+    if (d_sq < r * r)
+        return true;
+    return false;
+}
 
 void Player1::destroy() {
     glDeleteBuffers(1, &mesh.vbo);

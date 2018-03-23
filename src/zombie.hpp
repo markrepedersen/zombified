@@ -1,6 +1,7 @@
 #pragma once
 
 #include "common.hpp"
+#include "JPS.h"
 #include "viewHelper.hpp"
 
 class Zombie : public Renderable
@@ -19,15 +20,39 @@ public:
     
     void set_scale(vec2 scale);
     
-    // True if the salmon is alive
-    bool is_alive()const;
-    
     void destroy();
     
     vec2 get_bounding_box()const;
-    
-private:
-    bool m_is_alive; // True if the salmon is alive
-    vec2 m_position; // Window coordinates
-    vec2 m_scale; // 1.f in each dimension. 1.f is as big as the associated texture
+
+    void setLastPath(JPS::PathVector path);
+
+    void setCurrentPath(JPS::PathVector path);
+
+    void setCurrentTarget(vec2 target);
+
+    void setLastTarget(vec2 target);
+
+    vec2 getCurrentTarget()const;
+
+    vec2 getLastTarget()const;
+
+    JPS::PathVector getCurrentPath()const;
+
+    JPS::PathVector getLastPath()const;
+
+    void move(vec2 pos);
+
+    bool isInitialized() {return initialized;}
+
+    void setInitialized(bool flag) {this->initialized = flag;}
+
+protected:
+    vec2 cur_target;
+    vec2 last_target;
+    JPS::PathVector lastPath;
+    JPS::PathVector currentPath;
+    vec2 m_position;
+    vec2 m_scale;
+    bool initialized = false;
+
 };

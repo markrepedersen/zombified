@@ -1,11 +1,12 @@
 #include "world.hpp"
 #include <sstream>
+#include <unordered_set>
 
 namespace {
-    const size_t MAX_ARMS = 3;
+    const size_t MAX_ARMS = 8;
     const size_t MAX_LEGS = 3;
     const size_t MAX_FREEZE = 1;
-    const size_t MAX_MISSILE = 1;
+    const size_t MAX_MISSILE = 0;
     const size_t MAX_ARMOUR = 1;
     const size_t MAX_BOMB = 1;
     const size_t MAX_WATER = 1;
@@ -163,12 +164,13 @@ bool World::update(float elapsed_ms) {
             droptool_p2 = false;
             m_worldtexture.init(screen);
             m_toolboxManager.init({screen.x, screen.y});
+            m_zombieManager.init({screen.x, screen.y}, mapCollisionPoints);
             useBomb = false;
             
             //mud.init();
             
             m_player1.init(screen, mapCollisionPoints) && m_player2.init(screen, mapCollisionPoints) &&
-            m_antidote.init(screen);
+            m_antidote.init(screen, mapCollisionPoints);
         }
     }
 
@@ -177,7 +179,17 @@ bool World::update(float elapsed_ms) {
         m_player2.update(elapsed_ms);
 
         random_spawn(elapsed_ms, {screen.x * ViewHelper::getRatio(), screen.y * ViewHelper::getRatio()});
+        m_zombieManager.check_targets(m_player1.get_position(), m_player2.get_position());
         m_limbsManager.computePaths(elapsed_ms, *mapGrid);
+        m_zombieManager.computeZPaths(elapsed_ms, *mapGrid);
+        std::unordered_set<vec2> new_zombie_positions = m_limbsManager.checkClusters();
+        if (!new_zombie_positions.empty()) {
+            for (const vec2 &pos : new_zombie_positions) {
+                std::cout << "new zombie!!" << pos.x << ", " << pos.y << std::endl;
+                m_zombieManager.spawn_zombie(pos, m_player1.get_position(), m_player2.get_position());
+            }
+        }
+        //TODO: compute paths for zombies
 
         if ((int) difftime(time(0), start) == timeDelay)
             timer_update();
@@ -190,15 +202,30 @@ bool World::update(float elapsed_ms) {
         if (useBomb)
             use_bomb(elapsed_ms);
         
-        if ((int) difftime(time(0), armourTime_p1) >= 5) {
+        if ((int) difftime(time(0), armourTime_p1) >= 10) {
             armourInUse_p1 = false;
             m_player1.set_armourstate(false);
             armourTime_p1 = 0;
         }
-        if ((int) difftime(time(0), armourTime_p2) >= 5) {
+        if ((int) difftime(time(0), armourTime_p2) >= 10) {
             armourInUse_p2 = false;
             m_player2.set_armourstate(false);
             armourTime_p2 = 0;
+        }
+        
+        // check how many times the player has been hit
+        // if player was hit 5 times, drops items
+        if (m_player1.numberofHits == 5)
+        {
+            droptool_p1 = true;
+            use_tool_1(m_toolboxManager.useItem(1));
+            m_player1.numberofHits = 0;
+        }
+        if (m_player2.numberofHits == 5)
+        {
+            droptool_p2 = true;
+            use_tool_2(m_toolboxManager.useItem(2));
+            m_player2.numberofHits = 0;
         }
 
         // for (auto &explosion : m_explosion)
@@ -239,9 +266,9 @@ void World::draw() {
 
     std::stringstream title_ss;
     if (m_sec < 10)
-        title_ss << "Time remaining " << m_min << ":" << "0" << m_sec;
+        title_ss << "player1 damage count: " << m_player1.numberofHits << "          " << "Time remaining " << m_min << ":" << "0" << m_sec << "          "<< "player2 damage count: " << m_player2.numberofHits;
     else
-        title_ss << "Time remaining " << m_min << ":" << m_sec;
+        title_ss << "player1 damage count: " << m_player1.numberofHits << "          " << "Time remaining " << m_min << ":" << m_sec << "          "<< "player2 damage count: " << m_player2.numberofHits;
     glfwSetWindowTitle(m_window, title_ss.str().c_str());
 
     glViewport(0, 0, w, h);
@@ -272,6 +299,7 @@ void World::draw() {
         m_toolboxManager.draw(projection_2D);
         m_antidote.draw(projection_2D);
         m_limbsManager.draw(projection_2D);
+        m_zombieManager.draw(projection_2D);
         for (auto &freeze : m_freeze)
             freeze.draw(projection_2D);
         for (auto &water : m_water)
@@ -349,7 +377,40 @@ void World::on_key(GLFWwindow *, int key, int, int action, int mod) {
             m_player1.set_key(3, false);
         
         if (action == GLFW_PRESS && key == GLFW_KEY_RIGHT_SHIFT)
-            use_tool_1(m_toolboxManager.useItem(1));
+        {
+            // if the player has no tools/no slots attack the other player by collided and pressing attack
+            if (m_player1.collides_with(m_player2))
+            {
+                // can punch players if freeze is used
+                if (immobilize == 2)
+                    m_player2.numberofHits++;
+                    //fprintf(stderr, "player2 number of hits: %d \n", m_player2.numberofHits);
+                else
+                {
+                    bool hasTools = false;
+                    for (auto &tools : m_toolboxManager.getListOfSlot_1())
+                    {
+                        if (tools != 0)
+                        {
+                            hasTools = true;
+                            break;
+                        }
+                    }
+                    // if the player has no tools then can manually attack, or else, just use a tool
+                    if (!hasTools)
+                        m_player2.numberofHits++; // needs to hit the player 5 times in order for p2 to drop item
+                    else
+                        use_tool_1(m_toolboxManager.useItem(1));
+                    
+                    //fprintf(stderr, "player2 number of hits: %d \n", m_player2.numberofHits);
+                }
+            }
+            else
+                use_tool_1(m_toolboxManager.useItem(1));
+                //fprintf(stderr, "usetool \n");
+            
+            //fprintf(stderr, "player2 number of hits: %d \n", m_player2.numberofHits);
+        }
     }
     if (immobilize == 1 || m_player1.get_blowback()) //player is frozen
     {
@@ -389,7 +450,34 @@ void World::on_key(GLFWwindow *, int key, int, int action, int mod) {
 
         // use tools
         if (action == GLFW_PRESS && key == GLFW_KEY_Q)
-            use_tool_2(m_toolboxManager.useItem(2));
+        {
+            // if the player has no tools/no slots attack the other player by collided and pressing attack
+            if (m_player1.collides_with(m_player2))
+            {
+                if (immobilize == 1)
+                    m_player1.numberofHits++;
+                else
+                {
+                    bool hasTools = false;
+                    for (auto &tools : m_toolboxManager.getListOfSlot_2())
+                    {
+                        if (tools != 0)
+                        {
+                            hasTools = true;
+                            break;
+                        }
+                    }
+                    if (!hasTools)
+                        m_player1.numberofHits++; // needs to hit the player 5 times in order for p1 to drop item
+                    else
+                        use_tool_2(m_toolboxManager.useItem(2));
+                }
+            }
+            else
+                use_tool_2(m_toolboxManager.useItem(2));
+            
+            //fprintf(stderr, "player1 number of hits: %d \n", m_player1.numberofHits);
+        }
 
     }
     if (immobilize == 2 || m_player2.get_blowback()) //player is frozen
@@ -423,10 +511,10 @@ void World::on_mouse_move(GLFWwindow *window, int button, int action, int mod) {
     } else {
         if (glfwGetMouseButton(window, GLFW_MOUSE_BUTTON_1) == GLFW_RELEASE) {
             
-            std::cout << "mapCollisionPoints.push_back({ " << xpos << "f * ViewHelper::getRatio(), " << ypos << "f * ViewHelper::getRatio()});" << std::endl;
-            // std::cout << "xpos: " << xpos << std::endl;
-            // std::cout << "ypos: " << ypos << std::endl;
-            // std::cout << "player pos: " << m_player1.get_position().x << ", " << m_player1.get_position().y << std::endl;
+            // std::cout << "mapCollisionPoints.push_back({ " << xpos << "f * ViewHelper::getRatio(), " << ypos << "f * ViewHelper::getRatio()});" << std::endl;
+            std::cout << "xpos: " << xpos << std::endl;
+            std::cout << "ypos: " << ypos << std::endl;
+            std::cout << "player pos: " << m_player1.get_position().x << ", " << m_player1.get_position().y << std::endl;
             // if (isInsidePolygon(mapCollisionPoints, {(float)xpos * ViewHelper::getRatio(), (float)ypos * ViewHelper::getRatio()})) {
             //     std::cout << "yes it's inside polygon" << std::endl;
             // } else {
@@ -523,14 +611,14 @@ bool World::random_spawn(float elapsed_ms, vec2 screen) {
             m_next_spawn = (DELAY_MS / 2) + rand() % (1000);
         }
     }
-    if (randNum % 21 == 0) {
-        if (m_missile.size() <= MAX_MISSILE && m_next_spawn < 0.f) {
+    if (randNum % 23 == 0) {
+        if (m_missile.size() < MAX_MISSILE && m_next_spawn < 0.f) {
             if (!spawn_missile())
                 return false;
 
             Missile &new_missile = m_missile.back();
-            new_missile.set_position({(float) ((rand() % (int) screen.x)),
-                                      (float) ((rand() % (int) screen.y))});
+            // new_missile.set_position({(float) ((rand() % (int) screen.x)),
+            //                           (float) ((rand() % (int) screen.y))});
 
 
             new_missile.set_position(getRandomPointInMap(mapCollisionPoints, screen));
@@ -575,8 +663,7 @@ bool World::random_spawn(float elapsed_ms, vec2 screen) {
             if (!spawn_water())
                 return false;
             Water &new_water = m_water.back();
-            new_water.set_position({(float) ((rand() % (int) screen.x)),
-                                    (float) ((rand() % (int) screen.y))});
+            new_water.set_position(getRandomPointInMap(mapCollisionPoints, screen));
 
             m_next_spawn = (DELAY_MS / 2) + rand() % (1000);
         }
@@ -817,9 +904,16 @@ void World::check_add_tools(vec2 screen) {
 
 //=================check for antidote collision
     if (m_player1.collides_with(m_antidote))
-        collided = 1;
+    {
+        // 5 sec delay before players can pick up tools again
+        if ((int) difftime(time(0), droppedAntidoteTime_p1) >= 5)
+            collided = 1;
+    }
     if (m_player2.collides_with(m_antidote))
-        collided = 2;
+    {
+         if ((int) difftime(time(0), droppedAntidoteTime_p2) >= 5)
+             collided = 2;
+    }
     
     if (collided != 0 && m_antidote.belongs_to == 0) {
         float index = (float) m_toolboxManager.addItem(3, collided);
@@ -844,6 +938,8 @@ void World::check_add_tools(vec2 screen) {
 //            m_toolboxManager.addSlot(2);
 //        }
 //    }
+    
+    //TODO check collision with zombies
 }
 
 // =========== COLLECT AND SET TOOLS ===================
@@ -981,6 +1077,7 @@ void World::use_tool_1(int tool_number) {
             m_antidote.set_position(m_player1.get_position());
             m_antidote.set_scale({-0.10f * ViewHelper::getRatio(), 0.10f * ViewHelper::getRatio()});
             m_antidote.belongs_to = 0;
+            droppedAntidoteTime_p1 = time(0);
         }
         
     }
@@ -1175,6 +1272,7 @@ void World::use_tool_2(int tool_number) {
             m_antidote.set_position(m_player2.get_position());
             m_antidote.set_scale({-0.10f * ViewHelper::getRatio(), 0.10f * ViewHelper::getRatio()});
             m_antidote.belongs_to = 0;
+            droppedAntidoteTime_p2 = time(0);
         }
     }
     if (tool_number == 4) {
@@ -1319,8 +1417,8 @@ void World::autoExplode() {
         force_p1 = used_bombs.front().get_force(m_player1.get_mass(),
                                                 m_player1.get_speed(),
                                                 m_player1.get_position());
-        droptool_p1 = true;
-        use_tool_1(m_toolboxManager.useItem(1));
+        //droptool_p1 = true;
+        //use_tool_1(m_toolboxManager.useItem(1));
     }
     
     if (!armourInUse_p2)
@@ -1328,8 +1426,8 @@ void World::autoExplode() {
         force_p2 = used_bombs.front().get_force(m_player2.get_mass(),
                                                 m_player2.get_speed(),
                                                 m_player2.get_position());
-        droptool_p2 = true;
-        use_tool_2(m_toolboxManager.useItem(2));
+        //droptool_p2 = true;
+        //use_tool_2(m_toolboxManager.useItem(2));
     }
     if (force_p1 > 0) {
         m_player1.set_blowback(true);
@@ -1337,6 +1435,8 @@ void World::autoExplode() {
         m_player1.set_blowbackForce({(m_player1.get_position().x - used_bombs.front().get_position().x),
             (m_player1.get_position().y - used_bombs.front().get_position().y)});
         explosion = true;
+        droptool_p1 = true;
+        use_tool_1(m_toolboxManager.useItem(1));
     }
     if (force_p2 > 0) {
         m_player2.set_blowback(true);
@@ -1344,6 +1444,8 @@ void World::autoExplode() {
         m_player2.set_blowbackForce({(m_player2.get_position().x - used_bombs.front().get_position().x),
             (m_player2.get_position().y - used_bombs.front().get_position().y)});
         explosion = true;
+        droptool_p2 = true;
+        use_tool_2(m_toolboxManager.useItem(2));
     }
 
     // create_explosion(used_bombs.begin()->get_position());
@@ -1382,7 +1484,7 @@ void World::use_bomb(float ms) {
         {
             itbomb->move({itbomb->get_speed().x * (ms / 1000),
                 itbomb->get_speed().y * (ms / 1000)});
-            itbomb->checkBoundaryCollision(1100, 500, ms);
+            itbomb->checkBoundaryCollision(1100, 500, ms, mapCollisionPoints);
             
             for (checkbomb = used_bombs.begin(); checkbomb != used_bombs.end() - 1; ++checkbomb) {
                 if (checkbomb != itbomb) {
