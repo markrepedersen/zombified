@@ -464,7 +464,7 @@ bool Player1::collides_with(const Mud& mud)
 }
 
 void Player1::create_blood(vec2 position) {
-    std::cout << "Player 1: Blood created" << "\n";
+    // sstd::cout << "Player 1: Blood created" << "\n";
     // m_blood.init(position);
 };
 
