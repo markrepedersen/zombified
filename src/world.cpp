@@ -1,8 +1,9 @@
 #include "world.hpp"
 #include <sstream>
+#include <unordered_set>
 
 namespace {
-    const size_t MAX_ARMS = 3;
+    const size_t MAX_ARMS = 8;
     const size_t MAX_LEGS = 3;
     const size_t MAX_FREEZE = 1;
     const size_t MAX_MISSILE = 1;
@@ -160,6 +161,7 @@ bool World::update(float elapsed_ms) {
             droptool_p2 = false;
             m_worldtexture.init(screen);
             m_toolboxManager.init({screen.x, screen.y});
+            m_zombieManager.init({screen.x, screen.y}, mapCollisionPoints);
             useBomb = false;
             
             //mud.init();
@@ -175,6 +177,15 @@ bool World::update(float elapsed_ms) {
 
         random_spawn(elapsed_ms, {screen.x * ViewHelper::getRatio(), screen.y * ViewHelper::getRatio()});
         m_limbsManager.computePaths(elapsed_ms, *mapGrid);
+        m_zombieManager.computeZPaths(elapsed_ms, *mapGrid);
+        std::unordered_set<vec2> new_zombie_positions = m_limbsManager.checkClusters();
+        if (!new_zombie_positions.empty()) {
+            for (const vec2 &pos : new_zombie_positions) {
+                std::cout << "new zombie!!" << pos.x << ", " << pos.y << std::endl;
+                m_zombieManager.spawn_zombie(pos, m_player1.get_position(), m_player2.get_position());
+            }
+        }
+        //TODO: compute paths for zombies
 
         if ((int) difftime(time(0), start) == timeDelay)
             timer_update();
@@ -279,6 +290,7 @@ void World::draw() {
         m_toolboxManager.draw(projection_2D);
         m_antidote.draw(projection_2D);
         m_limbsManager.draw(projection_2D);
+        m_zombieManager.draw(projection_2D);
         for (auto &freeze : m_freeze)
             freeze.draw(projection_2D);
         for (auto &water : m_water)
@@ -885,6 +897,7 @@ void World::check_add_tools(vec2 screen) {
 //        }
 //    }
     
+    //TODO check collision with zombies
 }
 
 // =========== COLLECT AND SET TOOLS ===================

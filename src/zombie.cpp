@@ -59,7 +59,7 @@ bool Zombie::init()
     // Setting initial values
     m_scale.x = -0.23f * ViewHelper::getRatio();
     m_scale.y = 0.23f * ViewHelper::getRatio();
-    m_is_alive = true;
+
     m_position = { 350.f * ViewHelper::getRatio(), 450.f* ViewHelper::getRatio() };
     
     return true;
@@ -113,24 +113,9 @@ void Zombie::draw(const mat3& projection)
     glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_SHORT, nullptr);
 }
 
-void Zombie::set_position(vec2 position)
-{
-    m_position = position;
-}
-
-vec2 Zombie::get_position()const
-{
-    return m_position;
-}
-
 void Zombie::set_scale(vec2 scale)
 {
     m_scale = scale;
-}
-
-bool Zombie::is_alive()const
-{
-    return m_is_alive;
 }
 
 void Zombie::destroy()
@@ -148,4 +133,51 @@ vec2 Zombie::get_bounding_box()const
 {
     // fabs is to avoid negative scale due to the facing direction
     return { std::fabs(m_scale.x) * zombie_texture.width, std::fabs(m_scale.y) * zombie_texture.height };
+}
+
+void Zombie::setLastPath(JPS::PathVector path) {
+    this->lastPath = path;
+}
+
+void Zombie::setCurrentPath(JPS::PathVector path) {
+    this->currentPath = path;
+}
+
+void Zombie::setCurrentTarget(vec2 target) {
+    if(this->cur_target != 0) {
+        this->last_target = this->cur_target;
+    }
+    this->cur_target = target;
+}
+
+void Zombie::setLastTarget(vec2 target) {
+    this->last_target = target;
+}
+
+vec2 Zombie::getCurrentTarget()const {
+    return cur_target;
+}
+
+vec2 Zombie::getLastTarget()const {
+    return last_target;
+}
+
+JPS::PathVector Zombie::getCurrentPath()const {
+    return currentPath;
+}
+
+JPS::PathVector Zombie::getLastPath()const {
+    return lastPath;
+}
+
+vec2 Zombie::get_position()const {
+    return m_position;
+}
+
+void Zombie::set_position(vec2 position) {
+    this->m_position = position;
+}
+ 
+void Zombie::move(vec2 pos) {
+    this->m_position += pos;
 }
