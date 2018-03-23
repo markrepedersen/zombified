@@ -176,6 +176,7 @@ bool World::update(float elapsed_ms) {
         m_player2.update(elapsed_ms);
 
         random_spawn(elapsed_ms, {screen.x * ViewHelper::getRatio(), screen.y * ViewHelper::getRatio()});
+        m_zombieManager.check_targets(m_player1.get_position(), m_player2.get_position());
         m_limbsManager.computePaths(elapsed_ms, *mapGrid);
         m_zombieManager.computeZPaths(elapsed_ms, *mapGrid);
         std::unordered_set<vec2> new_zombie_positions = m_limbsManager.checkClusters();

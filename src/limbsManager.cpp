@@ -294,7 +294,8 @@ std::unordered_set<vec2> LimbsManager::checkClusters() {
 
     //for each limb that has found its centroid, add to zombie_map
      for (auto it = limbs.begin(); it != limbs.end();) {
-        if (it->get_position() == it->getCurrentTarget()) {
+        if (getDistance(it->get_position(),it->getCurrentTarget()) < ((m_screen.x/30) * ViewHelper::getRatio())) {
+
             auto searchIt = zombie_map.find(it->get_position());
 
             if(searchIt != zombie_map.end()) {

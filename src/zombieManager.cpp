@@ -34,8 +34,15 @@ bool ZombieManager::init(vec2 screen, const std::vector<vec2> &mapCollisionPoint
     }
 
     //updating targets of zombies if necessary
-    void ZombieManager::check_targets() {
+    void ZombieManager::check_targets(vec2 player1_pos, vec2 player2_pos) {
 
+        for (auto &zombie : zombies) {
+            if (getDistance(zombie.get_position(), player1_pos) > getDistance(zombie.get_position(), player2_pos)) {
+                    zombie.setCurrentTarget({static_cast<float>(player2_pos.x), static_cast<float>(player2_pos.y)});
+                } else {
+                    zombie.setCurrentTarget({static_cast<float>(player1_pos.x), static_cast<float>(player1_pos.y)});
+                }
+        }
     }
 
     void ZombieManager::computeZPaths(float ms, const MapGrid &mapGrid) {

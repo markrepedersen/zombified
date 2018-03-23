@@ -23,7 +23,7 @@ public:
    //spawn new zombie where clusters meet
     bool spawn_zombie(vec2 zombie_pos, vec2 player1_pos, vec2 player2_pos);
 
-    void check_targets();
+    void check_targets(vec2 player1_pos, vec2 player2_pos);
 
     //check if players collide with any zombies
     //make sure to apply timeout
