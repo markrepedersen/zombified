@@ -288,25 +288,25 @@ void Bomb::checkBoundaryCollision(float width, float height, float ms, std::vect
     float widthNew = width * ViewHelper::getRatio();
     float heightNew = height * ViewHelper::getRatio();
 
-    if (m_position.x > widthNew-radius)
+    if (m_position.x > widthNew-(widthNew/10)-radius)
     {
         // m_position.x = width-radius;
         speed.x *= -1;
         move({speed.x *(ms/1000), speed.y*(ms/1000)});
     }
-    else if (m_position.x < radius)
+    else if (m_position.x < radius + (widthNew/10))
     {
         // m_position.x = 200-radius;
         speed.x *= -1;
         move({speed.x *(ms/1000), speed.y*(ms/1000)});
     }
-    else if (m_position.y > heightNew-radius)
+    else if (m_position.y > heightNew-(heightNew/15)-radius)
     {
         // m_position.y = height-radius;
         speed.y *= -1;
         move({speed.x *(ms/1000), speed.y*(ms/1000)});
     }
-    else if (m_position.y < radius)
+    else if (m_position.y < radius + (heightNew/10))
     {
         // m_position.y = 70-radius;
         speed.y *= -1;
