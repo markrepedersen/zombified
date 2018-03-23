@@ -284,7 +284,7 @@ void Bomb::checkBoundaryCollision(float width, float height, float ms, std::vect
     //r=d−2(d⋅n)n
 
 
-    float radius = (bomb_texture.width/2);
+    float radius = (bomb_texture.width/2  * m_scale.x);
     if (m_rotation > 18.f)
         m_rotation = 0.f;
     else
@@ -293,67 +293,68 @@ void Bomb::checkBoundaryCollision(float width, float height, float ms, std::vect
 
     // if intersection[0].x == -1, then the point does not intersect with any of the mapCollisionPoints
     // else, it does, and the speed(direction) of the bomb needs to be changed)
-    std::vector<vec2> intersection = getIntersectionWithPoly(mapCollisionPoints, {m_position.x, m_position.y}, m_oldposition );
-    // (speed.x/5) * ViewHelper::getRatio()
-    // std::cout << m_position.x << ", " << m_position.y << std::endl;
-    if (intersection[0].x != -1) {
+                        // std::vector<vec2> intersection = getIntersectionWithPoly(mapCollisionPoints, {m_position.x, m_position.y}, m_oldposition );
+                        // // (speed.x/5) * ViewHelper::getRatio()
+                        // // std::cout << m_position.x << ", " << m_position.y << std::endl;
+                        // if (intersection[0].x != -1) {
 
-        // std::cout << "intersection!!!!" << std::endl;
-        vec2 b = {intersection[1].x - intersection[0].x, intersection[1].y - intersection[0].y};
-        vec2 n = normalize({b.y, -b.x});
-        vec2 dn = dot(oldspeed, n);
-        vec2 twodnn = {2 * dn.x * n.x, 2 * dn.y * n.y};
-        vec2 r = {oldspeed.x - twodnn.x, oldspeed.y - twodnn.y};
-        
-        // if (isInsidePolygon(mapCollisionPoints, m_position)) {
-        //     std::cout << "inside polygon!" << std::endl;
-        //     speed = r;
-        // } else {
-        //     //reflect the new speed against the intersecting poly line so that it goes back inside the polygon
-        //     std::cout << "outside polygon!" << std::endl;
-        //     vec2 new_n = normalize({intersection[1].x - intersection[0].x, intersection[1].y - intersection[0].y});
-        //     vec2 new_dn = dot(r, new_n);
-        //     vec2 new_twodnn = {2 * new_dn.x * new_n.x, 2 * new_dn.y * new_n.y};
-        //     vec2 new_r = {r.x - new_twodnn.x, r.y - new_twodnn.y};
+                        //     // std::cout << "intersection!!!!" << std::endl;
+                        //     vec2 b = {intersection[1].x - intersection[0].x, intersection[1].y - intersection[0].y};
+                        //     vec2 n = normalize({b.y, -b.x});
+                        //     vec2 dn = dot(oldspeed, n);
+                        //     vec2 twodnn = {2 * dn.x * n.x, 2 * dn.y * n.y};
+                        //     vec2 r = {oldspeed.x - twodnn.x, oldspeed.y - twodnn.y};
+                            
+                        //     // if (isInsidePolygon(mapCollisionPoints, m_position)) {
+                        //     //     std::cout << "inside polygon!" << std::endl;
+                        //     //     speed = r;
+                        //     // } else {
+                        //     //     //reflect the new speed against the intersecting poly line so that it goes back inside the polygon
+                        //     //     std::cout << "outside polygon!" << std::endl;
+                        //     //     vec2 new_n = normalize({intersection[1].x - intersection[0].x, intersection[1].y - intersection[0].y});
+                        //     //     vec2 new_dn = dot(r, new_n);
+                        //     //     vec2 new_twodnn = {2 * new_dn.x * new_n.x, 2 * new_dn.y * new_n.y};
+                        //     //     vec2 new_r = {r.x - new_twodnn.x, r.y - new_twodnn.y};
 
-        //     speed = new_r;
-        // }
+                        //     //     speed = new_r;
+                        //     // }
 
-        oldspeed = speed;
-        speed = r;
+                        //     oldspeed = speed;
+                        //     speed = r;
 
-        move({speed.x *(ms/1000), speed.y*(ms/1000)}, true);
+                        //     move({speed.x *(ms/1000), speed.y*(ms/1000)}, true);
 
+                        // }
+
+
+
+    float widthNew = width * ViewHelper::getRatio();
+    float heightNew = height * ViewHelper::getRatio();
+
+    if (m_position.x > widthNew-radius)
+    {
+        // m_position.x = width-radius;
+        speed.x *= -1;
+        move({speed.x *(ms/1000), speed.y*(ms/1000)});
     }
-    // std::cout << "speed: " << std::endl;
-    // std::cout << speed.x << std::endl;
-    // std::cout << speed.y << std::endl;
-
-
-    // if (m_position.x > width-radius)
-    // {
-    //     // m_position.x = width-radius;
-    //     speed.x *= -0.5;
-    //     move({speed.x *(ms/1000), speed.y*(ms/1000)});
-    // }
-    // else if (m_position.x < 200-radius)
-    // {
-    //     // m_position.x = 200-radius;
-    //     speed.x *= -0.5;
-    //     move({speed.x *(ms/1000), speed.y*(ms/1000)});
-    // }
-    // else if (m_position.y > height-radius)
-    // {
-    //     // m_position.y = height-radius;
-    //     speed.y *= -0.5;
-    //     move({speed.x *(ms/1000), speed.y*(ms/1000)});
-    // }
-    // else if (m_position.y < 70-radius)
-    // {
-    //     // m_position.y = 70-radius;
-    //     speed.y *= -0.5;
-    //     move({speed.x *(ms/1000), speed.y*(ms/1000)});
-    // }
+    else if (m_position.x < radius)
+    {
+        // m_position.x = 200-radius;
+        speed.x *= -1;
+        move({speed.x *(ms/1000), speed.y*(ms/1000)});
+    }
+    else if (m_position.y > heightNew-radius)
+    {
+        // m_position.y = height-radius;
+        speed.y *= -1;
+        move({speed.x *(ms/1000), speed.y*(ms/1000)});
+    }
+    else if (m_position.y < radius)
+    {
+        // m_position.y = 70-radius;
+        speed.y *= -1;
+        move({speed.x *(ms/1000), speed.y*(ms/1000)});
+    }
 }
 
 vec2 Bomb::get_speed() const

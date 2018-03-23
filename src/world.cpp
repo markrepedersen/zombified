@@ -1451,6 +1451,10 @@ void World::explode() {
 void World::use_bomb(float ms) {
     std::vector<Bomb>::iterator itbomb;
     std::vector<Bomb>::iterator checkbomb;
+
+    int width, height;
+    glfwGetWindowSize(m_window, &width, &height);
+
     for (itbomb = used_bombs.begin(); itbomb != used_bombs.end();) {
         itbomb->set_speed({itbomb->get_speed().x * (0.997f), itbomb->get_speed().y * (0.997f)});
         
@@ -1463,7 +1467,7 @@ void World::use_bomb(float ms) {
         {
             itbomb->move({itbomb->get_speed().x * (ms / 1000),
                 itbomb->get_speed().y * (ms / 1000)}, false);
-            itbomb->checkBoundaryCollision(1100, 500, ms, mapCollisionPoints);
+            itbomb->checkBoundaryCollision(width, height, ms, mapCollisionPoints);
             
             for (checkbomb = used_bombs.begin(); checkbomb != used_bombs.end() - 1; ++checkbomb) {
                 if (checkbomb != itbomb) {
