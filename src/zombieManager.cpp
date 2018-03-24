@@ -22,10 +22,10 @@ bool ZombieManager::init(vec2 screen, const std::vector<vec2> &mapCollisionPoint
 
                 if (getDistance(zombie_pos, player1_pos) > getDistance(zombie_pos, player2_pos)) {
                     zombie.setCurrentTarget({static_cast<float>(player2_pos.x), static_cast<float>(player2_pos.y)});
-                    std::cout << "current target is player 2" << std::endl;
+                    //std::cout << "current target is player 2" << std::endl;
                 } else {
                     zombie.setCurrentTarget({static_cast<float>(player1_pos.x), static_cast<float>(player1_pos.y)});
-                    std::cout << "current target is player 1" << std::endl;
+                    //std::cout << "current target is player 1" << std::endl;
                 }
                 zombies.emplace_back(zombie);
                 return true;

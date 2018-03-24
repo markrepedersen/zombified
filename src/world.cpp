@@ -153,7 +153,7 @@ bool World::update(float elapsed_ms) {
             m_button.destroy();
 
             explosion = false;
-            m_min = 2;
+            m_min = 1;
             m_sec = 0;
             timeDelay = 5;
             start = time(0);
@@ -185,7 +185,7 @@ bool World::update(float elapsed_ms) {
         std::unordered_set<vec2> new_zombie_positions = m_limbsManager.checkClusters();
         if (!new_zombie_positions.empty()) {
             for (const vec2 &pos : new_zombie_positions) {
-                std::cout << "new zombie!!" << pos.x << ", " << pos.y << std::endl;
+                //std::cout << "new zombie!!" << pos.x << ", " << pos.y << std::endl;
                 m_zombieManager.spawn_zombie(pos, m_player1.get_position(), m_player2.get_position());
             }
         }
@@ -215,13 +215,13 @@ bool World::update(float elapsed_ms) {
         
         // check how many times the player has been hit
         // if player was hit 5 times, drops items
-        if (m_player1.numberofHits == 5)
+        if (m_player1.numberofHits >= 5)
         {
             droptool_p1 = true;
             use_tool_1(m_toolboxManager.useItem(1));
             m_player1.numberofHits = 0;
         }
-        if (m_player2.numberofHits == 5)
+        if (m_player2.numberofHits >= 5)
         {
             droptool_p2 = true;
             use_tool_2(m_toolboxManager.useItem(2));
