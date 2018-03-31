@@ -26,11 +26,12 @@
 #include "armour.hpp"
 #include "zombie.hpp"
 #include <vector>
-#include <Box2D.h>
 #include <SDL/SDL.h>
 #include <SDL/SDL_mixer.h>
 #include <time.h>
 #include <random>
+#include <tmxparser/Tmx.h>
+#include <algorithm>
 
 #define SDL_MAIN_HANDLED
 
@@ -93,11 +94,13 @@ private:
     void collect_missile(Missile missile, int player, float index);
     void collect_armour(Armour armour, int player, float index);
 
-	void add_to_broadphase(int w, int h, float posx, float posy, void*);
+	void parseWorld();
 
     bool create_explosion(vec2 bomb_position);
 
 private:
+	void entityDrawOrder(mat3 projection_2D);
+
 	// Window handle
 	GLFWwindow* m_window;
 
@@ -172,4 +175,6 @@ private:
 	std::uniform_real_distribution<float> m_dist; // default 0..1c
 
 	Button m_button;
+
+	int xScreen, yScreen;
 };

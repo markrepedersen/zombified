@@ -8,7 +8,6 @@
 #include "water.hpp"
 #include "antidote.hpp"
 #include "Limb.h"
-#include "PhysicalBody.h"
 #include "tree.hpp"
 #include "bomb.hpp"
 #include "armour.hpp"
@@ -63,7 +62,7 @@ public:
     void create_blood(vec2 position);
 
     bool collides_with(const Ice& freeze);
-    bool collides_with(const Limb& limb);
+    bool collides_with(Limb& limb);
     bool collides_with(const Water& water);
     bool collides_with(const Antidote& antidote);
     bool collides_with(const Bomb& bomb);
@@ -80,7 +79,6 @@ public:
 
 private:
     bool m_is_alive; // True if the salmon is alive
-    vec2 m_position; // Window coordinates
     vec2 m_scale; // 1.f in each dimension. 1.f is as big as the associated texture
     int m_speed;
 

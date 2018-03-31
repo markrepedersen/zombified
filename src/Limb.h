@@ -31,15 +31,15 @@ public:
 
     void setLastTarget(vec2 target);
 
-    vec2 getCurrentTarget()const;
+    vec2 &getCurrentTarget();
 
-    vec2 getLastTarget()const;
+    vec2 &getLastTarget();
 
-    JPS::PathVector getCurrentPath()const;
+    JPS::PathVector &getCurrentPath();
 
-    JPS::PathVector getLastPath()const;
+    JPS::PathVector &getLastPath();
 
-    vec2 get_position()const;
+    vec2 &get_position();
 
     void set_position(vec2 position);
 

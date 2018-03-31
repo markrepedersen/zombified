@@ -6,7 +6,6 @@
 #include "water.hpp"
 #include "antidote.hpp"
 #include "Limb.h"
-#include "PhysicalBody.h"
 #include <Box2D.h>
 #include "bomb.hpp"
 #include "armour.hpp"
@@ -63,7 +62,7 @@ public:
     void increase_speed();
     void decrease_speed();
 
-    bool collides_with(const Limb& limb);
+    bool collides_with(Limb& limb);
 
     bool collides_with(const Ice& freeze);
     bool collides_with(const Water& water);
@@ -83,7 +82,6 @@ private:
     bool m_is_alive; // True if the salmon is alive
     vec2 m_scale; // 1.f in each dimension. 1.f is as big as the associated texture
     int m_speed;
-    vec2 m_position;
 
     float mass;
     float speed;

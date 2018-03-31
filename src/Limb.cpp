@@ -103,7 +103,7 @@ void Limb::draw(const mat3& projection)
      // Transformation code, see Rendering and Transformation in the template specification for more info
     // Incrementally updates transformation matrix, thus ORDER IS IMPORTANT
     transform_begin();
-    transform_translate(position);
+    transform_translate(m_position);
     transform_scale(m_scale);
     transform_end();
     
@@ -207,32 +207,32 @@ void Limb::setLastTarget(vec2 target) {
     this->last_target = target;
 }
 
-vec2 Limb::getCurrentTarget()const {
+vec2 &Limb::getCurrentTarget() {
     return cur_target;
 }
 
-vec2 Limb::getLastTarget()const {
+vec2 &Limb::getLastTarget() {
     return last_target;
 }
 
-JPS::PathVector Limb::getCurrentPath()const {
+JPS::PathVector &Limb::getCurrentPath() {
     return currentPath;
 }
 
-JPS::PathVector Limb::getLastPath()const {
+JPS::PathVector &Limb::getLastPath() {
     return lastPath;
 }
 
-vec2 Limb::get_position()const {
-    return position;
+vec2 &Limb::get_position() {
+    return m_position;
 }
 
 void Limb::set_position(vec2 position) {
-    this->position = position;
+    this->m_position = position;
 }
  
 void Limb::move(vec2 pos) {
-    this->position += pos;
+    this->m_position += pos;
     animate();
 }
 

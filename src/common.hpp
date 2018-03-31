@@ -154,6 +154,7 @@ struct Renderable
 	Mesh mesh;
 	Effect effect;
 	mat3 transform;
+	vec2 m_position;
 
 	// projection contains the orthographic projection matrix. As every Renderable::draw()
 	// renders itself it needs it to correctly bind it to its shader.

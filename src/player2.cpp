@@ -371,7 +371,7 @@ bool Player2::collides_with(const Water &water) {
     return false;
 }
 
-bool Player2::collides_with(const Limb &limb) {
+bool Player2::collides_with(Limb &limb) {
     float dx = m_position.x - limb.get_position().x;
     float dy = m_position.y - limb.get_position().y;
     float d_sq = dx * dx + dy * dy;
