@@ -98,7 +98,9 @@ private:
     bool create_explosion(vec2 bomb_position);
 
 private:
-	// Window handle
+    void entityDrawOrder(mat3 projection_2D);
+
+        // Window handle
 	GLFWwindow* m_window;
 
 	// true if the start button was pressed to start the main game world

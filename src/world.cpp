@@ -2,6 +2,8 @@
 #include <sstream>
 #include <unordered_set>
 
+using namespace std;
+
 namespace {
     const size_t MAX_ARMS = 8;
     const size_t MAX_LEGS = 3;
@@ -266,9 +268,11 @@ void World::draw() {
 
     std::stringstream title_ss;
     if (m_sec < 10)
-        title_ss << "player1 damage count: " << m_player1.numberofHits << "          " << "Time remaining " << m_min << ":" << "0" << m_sec << "          "<< "player2 damage count: " << m_player2.numberofHits;
+        title_ss << "player1 damage count: " << m_player1.numberofHits << "          " << "Time remaining " << m_min
+                 << ":" << "0" << m_sec << "          " << "player2 damage count: " << m_player2.numberofHits;
     else
-        title_ss << "player1 damage count: " << m_player1.numberofHits << "          " << "Time remaining " << m_min << ":" << m_sec << "          "<< "player2 damage count: " << m_player2.numberofHits;
+        title_ss << "player1 damage count: " << m_player1.numberofHits << "          " << "Time remaining " << m_min
+                 << ":" << m_sec << "          " << "player2 damage count: " << m_player2.numberofHits;
     glfwSetWindowTitle(m_window, title_ss.str().c_str());
 
     glViewport(0, 0, w, h);
@@ -283,9 +287,9 @@ void World::draw() {
     float tx = -(right + left) / (right - left);
     float ty = -(top + bottom) / (top - bottom);
 
-    mat3 projection_2D{{sx, 0.f, 0.f},
-                       {0.f, sy, 0.f},
-                       {tx, ty,  1.f}};
+    mat3 projection_2D{{sx,  0.f, 0.f},
+                       {0.f, sy,  0.f},
+                       {tx,  ty,  1.f}};
 
     if (!game_started) {
         const float clear_color[3] = {0.3f, 0.3f, 0.8f};
@@ -297,57 +301,69 @@ void World::draw() {
     } else {
         m_worldtexture.draw(projection_2D);
         m_toolboxManager.draw(projection_2D);
-        m_antidote.draw(projection_2D);
         m_limbsManager.draw(projection_2D);
         m_zombieManager.draw(projection_2D);
-        for (auto &freeze : m_freeze)
-            freeze.draw(projection_2D);
-        for (auto &water : m_water)
-            water.draw(projection_2D);
-        for (auto &missile : m_missile)
-            missile.draw(projection_2D);
-        for (auto &armour : m_armour)
-            armour.draw(projection_2D);
-        for (auto &bomb : m_bomb)
-            bomb.draw(projection_2D);
-
-        for (auto &water_collected : m_water_collected_1)
-            water_collected.draw(projection_2D);
-        for (auto &water_collected : m_water_collected_2)
-            water_collected.draw(projection_2D);
-
-        for (auto &freeze_collected : m_freeze_collected_1)
-            freeze_collected.draw(projection_2D);
-        for (auto &freeze_collected : m_freeze_collected_2)
-            freeze_collected.draw(projection_2D);
-        for (auto &missile_collected : m_missile_collected_1)
-            missile_collected.draw(projection_2D);
-        for (auto &missile_collected : m_missile_collected_2)
-            missile_collected.draw(projection_2D);
-        for (auto &bomb_collected : m_bomb_collected_1)
-            bomb_collected.draw(projection_2D);
-        for (auto &bomb_collected : m_bomb_collected_2)
-            bomb_collected.draw(projection_2D);
-        for (auto &armour_collected : m_armour_collected_1)
-            armour_collected.draw(projection_2D);
-        for (auto &armour_collected : m_armour_collected_2)
-            armour_collected.draw(projection_2D);
-        for (auto &bomb_used : used_bombs)
-            bomb_used.draw(projection_2D);
-        for (auto &mud_collected : m_mud_collected)
-            mud_collected.draw(projection_2D);
-
-        for (auto &explosion : m_explosion)
-            explosion.draw(projection_2D);
-
-        m_player1.draw(projection_2D);
-        m_player2.draw(projection_2D);
-        //mud.draw(projection_2D);
+        entityDrawOrder(projection_2D);
     }
 
     // Presenting
     glfwSwapBuffers(m_window);
 }
+
+void World::entityDrawOrder(mat3 projection_2D) {
+    vector<Renderable*> drawOrderVector;
+
+    drawOrderVector.reserve(
+            m_freeze.size() +
+            m_water.size() +
+            m_missile.size() +
+            m_armour.size() +
+            m_bomb.size() +
+            used_bombs.size() +
+            m_explosion.size() +
+            m_water_collected_1.size() +
+            m_water_collected_2.size() +
+            m_freeze_collected_1.size() +
+            m_freeze_collected_2.size() +
+            m_missile_collected_1.size() +
+            m_missile_collected_2.size() +
+            m_bomb_collected_1.size() +
+            m_bomb_collected_2.size() +
+            m_armour_collected_1.size() +
+            m_armour_collected_2.size() +
+            m_mud_collected.size() + 3);
+
+    transform(m_freeze.begin(), m_freeze.end(), std::back_inserter(drawOrderVector), [](Ice entity) { return &entity;});
+    transform(m_water.begin(), m_water.end(), std::back_inserter(drawOrderVector), [](Water entity) { return &entity;});
+    transform(m_missile.begin(), m_missile.end(), std::back_inserter(drawOrderVector), [](Missile entity) { return &entity;});
+    transform(m_armour.begin(), m_armour.end(), std::back_inserter(drawOrderVector), [](Armour entity) { return &entity;});
+    transform(m_bomb.begin(), m_bomb.end(), std::back_inserter(drawOrderVector), [](Bomb entity) { return &entity;});
+    transform(used_bombs.begin(), used_bombs.end(), std::back_inserter(drawOrderVector), [](Bomb entity) { return &entity;});
+    transform(m_explosion.begin(), m_explosion.end(), std::back_inserter(drawOrderVector), [](Explosion entity) { return &entity;});
+    transform(m_water_collected_1.begin(), m_water_collected_1.end(), std::back_inserter(drawOrderVector), [](Water entity) { return &entity;});
+    transform(m_water_collected_2.begin(), m_water_collected_2.end(), std::back_inserter(drawOrderVector), [](Water entity) { return &entity;});
+    transform(m_freeze_collected_1.begin(), m_freeze_collected_1.end(), std::back_inserter(drawOrderVector), [](Ice entity) { return &entity;});
+    transform(m_freeze_collected_2.begin(), m_freeze_collected_2.end(), std::back_inserter(drawOrderVector), [](Ice entity) { return &entity;});
+    transform(m_missile_collected_1.begin(), m_missile_collected_1.end(), std::back_inserter(drawOrderVector), [](Missile entity) { return &entity;});
+    transform(m_missile_collected_2.begin(), m_missile_collected_2.end(), std::back_inserter(drawOrderVector), [](Missile entity) { return &entity;});
+    transform(m_bomb_collected_1.begin(), m_bomb_collected_1.end(), std::back_inserter(drawOrderVector), [](Bomb entity) { return &entity;});
+    transform(m_bomb_collected_2.begin(), m_bomb_collected_2.end(), std::back_inserter(drawOrderVector), [](Bomb entity) { return &entity;});
+    transform(m_armour_collected_1.begin(), m_armour_collected_1.end(), std::back_inserter(drawOrderVector), [](Armour entity) { return &entity;});
+    transform(m_armour_collected_2.begin(), m_armour_collected_2.end(), std::back_inserter(drawOrderVector), [](Armour entity) { return &entity;});
+    transform(m_mud_collected.begin(), m_mud_collected.end(), std::back_inserter(drawOrderVector), [](Mud entity) { return &entity;});
+    drawOrderVector.push_back(&m_player1);
+    drawOrderVector.push_back(&m_player2);
+    drawOrderVector.push_back(&m_antidote);
+
+    sort(drawOrderVector.begin(), drawOrderVector.end(), [](Renderable *lhs, Renderable *rhs) {
+        return lhs->m_position.y < rhs->m_position.y;
+    });
+
+    for_each(drawOrderVector.begin(), drawOrderVector.end(), [projection_2D](Renderable *entity) {
+        entity->draw(projection_2D);
+    });
+}
+
 
 // Should the game be over ?
 bool World::is_over() const {
