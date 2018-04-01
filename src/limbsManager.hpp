@@ -10,6 +10,7 @@
 #include "JPS.h"
 #include <unordered_set>
 #include <map>
+#include <algorithm>
 
 class LimbsManager
 {
@@ -23,6 +24,10 @@ public:
 
    //spawn new arm in random
     bool spawn_arms();
+
+    unsigned long getLimbCount();
+
+    void transformLimbs(std::vector<Renderable*> &container);
 
     //spawn new leg in random
     bool spawn_legs();

@@ -1,8 +1,6 @@
 // Header
 #include "limbsManager.hpp"
-#include <unordered_set>
 #include "KMeans.h"
-#include <tuple>
 
 #define MAX_ITERATIONS 100
 
@@ -26,29 +24,21 @@ void LimbsManager::draw(const mat3 &projection_2D) {
     }
 }
 
-// vec2 LimbsManager::getRandomPointInMap() {
+unsigned long LimbsManager::getLimbCount() {
+    return limbs.size();
+}
 
-//     srand((unsigned)time(0));
-
-//     vec2 randomPoint = {(float)((rand() % (int)m_screen.x)),
-//                         (float)((rand() % (int)m_screen.y))};
-
-//     while(!isInsidePolygon(randomPoints, randomPoint)) {
-//         randomPoint = {(float)((rand() % (int)m_screen.x)),
-//                        (float)((rand() % (int)m_screen.y))};
-
-//     }
-
-//     return randomPoint;
-
-// }
+void LimbsManager::transformLimbs(std::vector<Renderable*> &container) {
+    std::transform(limbs.begin(), limbs.end(), std::back_inserter(container), [](Limb& entity) { return &entity;});
+}
 
 //spawn new arm in random
 bool LimbsManager::spawn_arms() {
     Limb arm;
     if (arm.init("arm")) {
         arm.set_position(getRandomPointInMap(m_mapCollisionPoints,
-                                            {m_screen.x * ViewHelper::getRatio(), m_screen.y * ViewHelper::getRatio()}));
+                                             {m_screen.x * ViewHelper::getRatio(),
+                                              m_screen.y * ViewHelper::getRatio()}));
         m_arms_total++;
         limbs.emplace_back(arm);
 
