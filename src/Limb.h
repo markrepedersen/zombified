@@ -58,7 +58,7 @@ protected:
     vec2 last_target;
     JPS::PathVector lastPath;
     JPS::PathVector currentPath;
-    vec2 position;
+    vec2 m_position;
     vec2 m_scale;
     std::string type;
     bool initialized = false;

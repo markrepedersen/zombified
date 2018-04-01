@@ -2,6 +2,8 @@
 #include <sstream>
 #include <unordered_set>
 
+using namespace std;
+
 namespace {
     const size_t MAX_ARMS = 8;
     const size_t MAX_LEGS = 3;
@@ -93,6 +95,8 @@ void World::destroy() {
         armour.destroy();
     for (auto &bomb : m_bomb)
         bomb.destroy();
+    for (auto &explosion : m_explosion)
+        explosion.destroy();
     for (auto &freeze_collected : m_freeze_collected_1)
         freeze_collected.destroy();
     for (auto &water_collected : m_water_collected_1)
@@ -126,6 +130,7 @@ void World::destroy() {
     m_missile.clear();
     m_armour.clear();
     m_bomb.clear();
+    m_explosion.clear();
     m_freeze_collected_1.clear();
     m_freeze_collected_2.clear();
     m_water_collected_1.clear();
@@ -150,7 +155,7 @@ bool World::update(float elapsed_ms) {
             m_button.destroy();
 
             explosion = false;
-            m_min = 2;
+            m_min = 1;
             m_sec = 0;
             timeDelay = 5;
             start = time(0);
@@ -182,7 +187,7 @@ bool World::update(float elapsed_ms) {
         std::unordered_set<vec2> new_zombie_positions = m_limbsManager.checkClusters();
         if (!new_zombie_positions.empty()) {
             for (const vec2 &pos : new_zombie_positions) {
-                std::cout << "new zombie!!" << pos.x << ", " << pos.y << std::endl;
+                //std::cout << "new zombie!!" << pos.x << ", " << pos.y << std::endl;
                 m_zombieManager.spawn_zombie(pos, m_player1.get_position(), m_player2.get_position());
             }
         }
@@ -201,27 +206,32 @@ bool World::update(float elapsed_ms) {
         
         if ((int) difftime(time(0), armourTime_p1) >= 10) {
             armourInUse_p1 = false;
+            m_player1.set_armourstate(false);
             armourTime_p1 = 0;
         }
         if ((int) difftime(time(0), armourTime_p2) >= 10) {
             armourInUse_p2 = false;
+            m_player2.set_armourstate(false);
             armourTime_p2 = 0;
         }
         
         // check how many times the player has been hit
         // if player was hit 5 times, drops items
-        if (m_player1.numberofHits == 5)
+        if (m_player1.numberofHits >= 5)
         {
             droptool_p1 = true;
             use_tool_1(m_toolboxManager.useItem(1));
             m_player1.numberofHits = 0;
         }
-        if (m_player2.numberofHits == 5)
+        if (m_player2.numberofHits >= 5)
         {
             droptool_p2 = true;
             use_tool_2(m_toolboxManager.useItem(2));
             m_player2.numberofHits = 0;
         }
+
+        // for (auto &explosion : m_explosion)
+        //    explosion.animate();
 
         return true;
     }
@@ -258,9 +268,11 @@ void World::draw() {
 
     std::stringstream title_ss;
     if (m_sec < 10)
-        title_ss << "player1 damage count: " << m_player1.numberofHits << "          " << "Time remaining " << m_min << ":" << "0" << m_sec << "          "<< "player2 damage count: " << m_player2.numberofHits;
+        title_ss << "player1 damage count: " << m_player1.numberofHits << "          " << "Time remaining " << m_min
+                 << ":" << "0" << m_sec << "          " << "player2 damage count: " << m_player2.numberofHits;
     else
-        title_ss << "player1 damage count: " << m_player1.numberofHits << "          " << "Time remaining " << m_min << ":" << m_sec << "          "<< "player2 damage count: " << m_player2.numberofHits;
+        title_ss << "player1 damage count: " << m_player1.numberofHits << "          " << "Time remaining " << m_min
+                 << ":" << m_sec << "          " << "player2 damage count: " << m_player2.numberofHits;
     glfwSetWindowTitle(m_window, title_ss.str().c_str());
 
     glViewport(0, 0, w, h);
@@ -275,9 +287,9 @@ void World::draw() {
     float tx = -(right + left) / (right - left);
     float ty = -(top + bottom) / (top - bottom);
 
-    mat3 projection_2D{{sx, 0.f, 0.f},
-                       {0.f, sy, 0.f},
-                       {tx, ty,  1.f}};
+    mat3 projection_2D{{sx,  0.f, 0.f},
+                       {0.f, sy,  0.f},
+                       {tx,  ty,  1.f}};
 
     if (!game_started) {
         const float clear_color[3] = {0.3f, 0.3f, 0.8f};
@@ -292,51 +304,67 @@ void World::draw() {
         m_antidote.draw(projection_2D);
         m_limbsManager.draw(projection_2D);
         m_zombieManager.draw(projection_2D);
-        for (auto &freeze : m_freeze)
-            freeze.draw(projection_2D);
-        for (auto &water : m_water)
-            water.draw(projection_2D);
-        for (auto &missile : m_missile)
-            missile.draw(projection_2D);
-        for (auto &armour : m_armour)
-            armour.draw(projection_2D);
-        for (auto &bomb : m_bomb)
-            bomb.draw(projection_2D);
-
-        for (auto &water_collected : m_water_collected_1)
-            water_collected.draw(projection_2D);
-        for (auto &water_collected : m_water_collected_2)
-            water_collected.draw(projection_2D);
-
-        for (auto &freeze_collected : m_freeze_collected_1)
-            freeze_collected.draw(projection_2D);
-        for (auto &freeze_collected : m_freeze_collected_2)
-            freeze_collected.draw(projection_2D);
-        for (auto &missile_collected : m_missile_collected_1)
-            missile_collected.draw(projection_2D);
-        for (auto &missile_collected : m_missile_collected_2)
-            missile_collected.draw(projection_2D);
-        for (auto &bomb_collected : m_bomb_collected_1)
-            bomb_collected.draw(projection_2D);
-        for (auto &bomb_collected : m_bomb_collected_2)
-            bomb_collected.draw(projection_2D);
-        for (auto &armour_collected : m_armour_collected_1)
-            armour_collected.draw(projection_2D);
-        for (auto &armour_collected : m_armour_collected_2)
-            armour_collected.draw(projection_2D);
-        for (auto &bomb_used : used_bombs)
-            bomb_used.draw(projection_2D);
-        for (auto &mud_collected : m_mud_collected)
-            mud_collected.draw(projection_2D);
-
-        m_player1.draw(projection_2D);
-        m_player2.draw(projection_2D);
-        //mud.draw(projection_2D);
+        entityDrawOrder(projection_2D);
     }
 
     // Presenting
     glfwSwapBuffers(m_window);
 }
+
+void World::entityDrawOrder(mat3 projection_2D) {
+    vector<Renderable*> drawOrderVector;
+
+    drawOrderVector.reserve(
+            m_freeze.size() +
+            m_water.size() +
+            m_missile.size() +
+            m_armour.size() +
+            m_bomb.size() +
+            used_bombs.size() +
+            m_explosion.size() +
+            m_water_collected_1.size() +
+            m_water_collected_2.size() +
+            m_freeze_collected_1.size() +
+            m_freeze_collected_2.size() +
+            m_missile_collected_1.size() +
+            m_missile_collected_2.size() +
+            m_bomb_collected_1.size() +
+            m_bomb_collected_2.size() +
+            m_armour_collected_1.size() +
+            m_armour_collected_2.size() +
+            m_mud_collected.size() + 3);
+
+    transform(m_freeze.begin(), m_freeze.end(), std::back_inserter(drawOrderVector), [](Ice entity) { return &entity;});
+    transform(m_water.begin(), m_water.end(), std::back_inserter(drawOrderVector), [](Water entity) { return &entity;});
+    transform(m_missile.begin(), m_missile.end(), std::back_inserter(drawOrderVector), [](Missile entity) { return &entity;});
+    transform(m_armour.begin(), m_armour.end(), std::back_inserter(drawOrderVector), [](Armour entity) { return &entity;});
+    transform(m_bomb.begin(), m_bomb.end(), std::back_inserter(drawOrderVector), [](Bomb entity) { return &entity;});
+    transform(used_bombs.begin(), used_bombs.end(), std::back_inserter(drawOrderVector), [](Bomb entity) { return &entity;});
+    transform(m_explosion.begin(), m_explosion.end(), std::back_inserter(drawOrderVector), [](Explosion entity) { return &entity;});
+    transform(m_water_collected_1.begin(), m_water_collected_1.end(), std::back_inserter(drawOrderVector), [](Water entity) { return &entity;});
+    transform(m_water_collected_2.begin(), m_water_collected_2.end(), std::back_inserter(drawOrderVector), [](Water entity) { return &entity;});
+    transform(m_freeze_collected_1.begin(), m_freeze_collected_1.end(), std::back_inserter(drawOrderVector), [](Ice entity) { return &entity;});
+    transform(m_freeze_collected_2.begin(), m_freeze_collected_2.end(), std::back_inserter(drawOrderVector), [](Ice entity) { return &entity;});
+    transform(m_missile_collected_1.begin(), m_missile_collected_1.end(), std::back_inserter(drawOrderVector), [](Missile entity) { return &entity;});
+    transform(m_missile_collected_2.begin(), m_missile_collected_2.end(), std::back_inserter(drawOrderVector), [](Missile entity) { return &entity;});
+    transform(m_bomb_collected_1.begin(), m_bomb_collected_1.end(), std::back_inserter(drawOrderVector), [](Bomb entity) { return &entity;});
+    transform(m_bomb_collected_2.begin(), m_bomb_collected_2.end(), std::back_inserter(drawOrderVector), [](Bomb entity) { return &entity;});
+    transform(m_armour_collected_1.begin(), m_armour_collected_1.end(), std::back_inserter(drawOrderVector), [](Armour entity) { return &entity;});
+    transform(m_armour_collected_2.begin(), m_armour_collected_2.end(), std::back_inserter(drawOrderVector), [](Armour entity) { return &entity;});
+    transform(m_mud_collected.begin(), m_mud_collected.end(), std::back_inserter(drawOrderVector), [](Mud entity) { return &entity;});
+    drawOrderVector.push_back(&m_player1);
+    drawOrderVector.push_back(&m_player2);
+    drawOrderVector.push_back(&m_antidote);
+
+    sort(drawOrderVector.begin(), drawOrderVector.end(), [](Renderable *lhs, Renderable *rhs) {
+        return lhs->m_position.y < rhs->m_position.y;
+    });
+
+    for_each(drawOrderVector.begin(), drawOrderVector.end(), [projection_2D](Renderable *entity) {
+        entity->draw(projection_2D);
+    });
+}
+
 
 // Should the game be over ?
 bool World::is_over() const {
@@ -348,13 +376,6 @@ void World::on_key(GLFWwindow *, int key, int, int action, int mod) {
 
     // player1 actions
     if (immobilize != 1 && !m_player1.get_blowback()) {
-//        if (action == GLFW_PRESS &&
-//            (key == GLFW_KEY_UP || key == GLFW_KEY_LEFT || key == GLFW_KEY_DOWN || key == GLFW_KEY_RIGHT))
-//            m_player1.set_key(key, true);
-//        if (action == GLFW_RELEASE &&
-//            (key == GLFW_KEY_UP || key == GLFW_KEY_LEFT || key == GLFW_KEY_DOWN || key == GLFW_KEY_RIGHT))
-//            m_player1.set_key(key, false);
-    
         if (action == GLFW_PRESS && key == GLFW_KEY_UP)
             m_player1.set_key(0, true);
         if (action == GLFW_PRESS && key == GLFW_KEY_LEFT)
@@ -410,6 +431,7 @@ void World::on_key(GLFWwindow *, int key, int, int action, int mod) {
     }
     if (immobilize == 1 || m_player1.get_blowback()) //player is frozen
     {
+        m_player1.set_freezestate(true);
         //fprintf(stderr, "frozen");
         m_player1.set_key(0, false);
         m_player1.set_key(1, false);
@@ -417,6 +439,7 @@ void World::on_key(GLFWwindow *, int key, int, int action, int mod) {
         m_player1.set_key(3, false);
         if ((int) difftime(time(0), freezeTime) >= 5) {
             immobilize = 0;
+            m_player1.set_freezestate(false);
             freezeTime = 0;
             //fprintf(stderr, "start");
         }
@@ -476,11 +499,13 @@ void World::on_key(GLFWwindow *, int key, int, int action, int mod) {
     }
     if (immobilize == 2 || m_player2.get_blowback()) //player is frozen
     {
+        m_player2.set_freezestate(true);
         m_player2.set_key(0, false);
         m_player2.set_key(1, false);
         m_player2.set_key(2, false);
         m_player2.set_key(3, false);
         if ((int) difftime(time(0), freezeTime) >= 5) {
+            m_player2.set_freezestate(false);
             immobilize = 0;
             freezeTime = 0;
             //fprintf(stderr, "start");
@@ -552,6 +577,15 @@ bool World::spawn_bomb() {
     return false;
 }
 
+bool World::create_explosion(vec2 bomb_position) {
+    Explosion explosion;
+    if (explosion.init(bomb_position)) {
+        m_explosion.emplace_back(explosion);
+        return true;
+    }
+    return false;
+}
+
 bool World::spawn_water() {
     Water water;
     if (water.init()) {
@@ -594,8 +628,8 @@ bool World::random_spawn(float elapsed_ms, vec2 screen) {
             m_next_spawn = (DELAY_MS / 2) + rand() % (1000);
         }
     }
-    if (randNum % 21 == 0) {
-        if (m_missile.size() <= MAX_MISSILE && m_next_spawn < 0.f) {
+    if (randNum % 23 == 0) {
+        if (m_missile.size() < MAX_MISSILE && m_next_spawn < 0.f) {
             if (!spawn_missile())
                 return false;
 
@@ -821,6 +855,7 @@ void World::check_add_tools(vec2 screen) {
                 collect_bomb(*itb, collided, index);
                 if (collided == 1) {
                     m_player1.set_mass(m_player1.get_mass() + itb->get_mass());
+                    m_player1.create_blood(m_player1.get_position());
                 }
                 if (collided == 2) {
                     m_player2.set_mass(m_player2.get_mass() + itb->get_mass());
@@ -1110,6 +1145,7 @@ void World::use_tool_1(int tool_number) {
         if (!droptool_p1)
         {
             armourInUse_p1 = true;
+            m_player1.set_armourstate(true);
             armourTime_p1 = time(0);
         }
         m_player1.set_mass(m_player1.get_mass() - m_armour_collected_1.begin()->get_mass());
@@ -1301,6 +1337,7 @@ void World::use_tool_2(int tool_number) {
         if (!droptool_p2)
         {
             armourInUse_p2 = true;
+            m_player2.set_armourstate(true);
             armourTime_p2 = time(0);
         }
         m_player2.set_mass(m_player2.get_mass() - m_armour_collected_2.begin()->get_mass());
@@ -1427,9 +1464,10 @@ void World::autoExplode() {
         droptool_p2 = true;
         use_tool_2(m_toolboxManager.useItem(2));
     }
-    
+
+    // create_explosion(used_bombs.begin()->get_position());
+    // used_bombs.begin()->explode();
     used_bombs.erase(used_bombs.begin());
-    
 }
 
 void World::explode() {
