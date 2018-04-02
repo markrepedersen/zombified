@@ -281,17 +281,17 @@ std::unordered_set<vec2> LimbsManager::checkClusters() {
     std::map<vec2, int> zombie_map;
     std::unordered_set<vec2> zombie_set;
 
-
     //for each limb that has found its centroid, add to zombie_map
      for (auto it = limbs.begin(); it != limbs.end();) {
         if (getDistance(it->get_position(),it->getCurrentTarget()) < ((m_screen.x/30) * ViewHelper::getRatio())) {
 
-            auto searchIt = zombie_map.find(it->get_position());
+            auto searchIt = zombie_map.find(it->getCurrentTarget());
+
 
             if(searchIt != zombie_map.end()) {
                 zombie_map[searchIt->first] = zombie_map[searchIt->first] + 1;
             } else {
-                zombie_map[it->get_position()] = 1;
+                zombie_map[it->getCurrentTarget()] = 1;
             }
             it++;
         } else {
@@ -299,7 +299,7 @@ std::unordered_set<vec2> LimbsManager::checkClusters() {
         }
      }
 
-    //for each cluster in the zombie_map that has more than 3 members, add it to zombie_set to spawn a zombie
+    //for each cluster in the zombie_map that has more than 2 members, add it to zombie_set to spawn a zombie
     for (const auto &pair : zombie_map) {
         if(pair.second >= 2) {
           zombie_set.insert(pair.first);
@@ -308,7 +308,7 @@ std::unordered_set<vec2> LimbsManager::checkClusters() {
 
     //for each limb that has its centroid position in zombie_set, delete it from our vector of limbs
     for (auto it = limbs.begin(); it != limbs.end();) {
-        bool is_contained = (zombie_set.find(it->get_position()) != zombie_set.end());
+        bool is_contained = (zombie_set.find(it->getCurrentTarget()) != zombie_set.end());
         if(is_contained) {
             it->destroy();
             it = limbs.erase(it);
