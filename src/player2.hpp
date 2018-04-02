@@ -75,7 +75,7 @@ public:
 
     vec2 get_bounding_box()const;
 
-    vec2 getBoundingBoxForFeet()const;
+    bool isBoundingBoxForFeetInsidePolygon(float, float);
 
     void destroy();
     

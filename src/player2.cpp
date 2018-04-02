@@ -10,30 +10,27 @@ int sprite_frame_index_p2 = 0;
 // sprite information
 int sprite_width_p2 = 225;
 int sprite_height_p2 = 361;
-int lowerBodyHeight = 100;
+int lowerBodyHeight = 50;
 int num_rows_p2 = 3;
 int num_cols_p2 = 5;
-int up_frames_p2 [2] = {10, 11};
-int left_frames_p2 [3] = {5, 6, 7};
-int down_frames_p2 [2] = {2, 3};
-int right_frames_p2 [3] = {8, 9, 4};
+int up_frames_p2[2] = {10, 11};
+int left_frames_p2[3] = {5, 6, 7};
+int down_frames_p2[2] = {2, 3};
+int right_frames_p2[3] = {8, 9, 4};
 // animation timing
 int frame_time_p2 = 100;
 auto start_time_p2 = std::chrono::high_resolution_clock::now();
 
 const float PLAYER_SPEED = 200.f;
 
-bool Player2::init(vec2 screen, std::vector<vec2> mapCollisionPoints)
-{
+bool Player2::init(vec2 screen, std::vector<vec2> mapCollisionPoints) {
 
     //set mapCollisionPoints as the same on with world
     m_mapCollisionPoints = mapCollisionPoints;
 
     // Load shared texture
-    if (!player2_texture.is_valid())
-    {
-        if (!player2_texture.load_from_file(p2_textures_path("p2.png")))
-        {
+    if (!player2_texture.is_valid()) {
+        if (!player2_texture.load_from_file(p2_textures_path("p2.png"))) {
             //fprintf(stderr, "Failed to load player2 texture!");
             return false;
         }
@@ -44,17 +41,17 @@ bool Player2::init(vec2 screen, std::vector<vec2> mapCollisionPoints)
     float hr = sprite_height_p2 * 0.5f;
 
     TexturedVertex vertices[4];
-    vertices[0].position = { -wr, +hr, -0.02f };
-    vertices[0].texcoord = { 1/5.f, 1/3.f };
-    vertices[1].position = { +wr, +hr, -0.02f };
-    vertices[1].texcoord = { 0.f, 1/3.f };
-    vertices[2].position = { +wr, -hr, -0.02f };
-    vertices[2].texcoord = { 0.f, 0.f };
-    vertices[3].position = { -wr, -hr, -0.02f };
-    vertices[3].texcoord = { 1/5.f, 0.f };
+    vertices[0].position = {-wr, +hr, -0.02f};
+    vertices[0].texcoord = {1 / 5.f, 1 / 3.f};
+    vertices[1].position = {+wr, +hr, -0.02f};
+    vertices[1].texcoord = {0.f, 1 / 3.f};
+    vertices[2].position = {+wr, -hr, -0.02f};
+    vertices[2].texcoord = {0.f, 0.f};
+    vertices[3].position = {-wr, -hr, -0.02f};
+    vertices[3].texcoord = {1 / 5.f, 0.f};
 
     // counterclockwise as it's the default opengl front winding direction
-    uint16_t indices[] = { 0, 3, 1, 1, 3, 2 };
+    uint16_t indices[] = {0, 3, 1, 1, 3, 2};
 
     // Clearing errors
     gl_flush_errors();
@@ -78,7 +75,7 @@ bool Player2::init(vec2 screen, std::vector<vec2> mapCollisionPoints)
     if (!effect.load_from_file(shader_path("player.vs.glsl"), shader_path("player.fs.glsl")))
         return false;
 
-    shootdirection = { 0.f, 3.f };
+    shootdirection = {0.f, 3.f};
     speed = PLAYER_SPEED;
     speedlegs = PLAYER_SPEED;
     originalSpeed = PLAYER_SPEED;
@@ -91,15 +88,14 @@ bool Player2::init(vec2 screen, std::vector<vec2> mapCollisionPoints)
     m_scale.x = -0.2f * ViewHelper::getRatio();
     m_scale.y = 0.2f * ViewHelper::getRatio();
     m_is_alive = true;
-    m_position = { (screen.x-(screen.x/5)) * ViewHelper::getRatio(), (screen.y/2) * ViewHelper::getRatio()};
+    m_position = {(screen.x - (screen.x / 5)) * ViewHelper::getRatio(), (screen.y / 2) * ViewHelper::getRatio()};
 
     numberofHits = 0;
-    
+
     return true;
 }
 
-void Player2::draw(const mat3& projection)
-{
+void Player2::draw(const mat3 &projection) {
     transform_begin();
     transform_translate(m_position);
     transform_scale(m_scale);
@@ -132,18 +128,18 @@ void Player2::draw(const mat3& projection)
     GLint in_texcoord_loc = glGetAttribLocation(effect.program, "in_texcoord");
     glEnableVertexAttribArray(in_position_loc);
     glEnableVertexAttribArray(in_texcoord_loc);
-    glVertexAttribPointer(in_position_loc, 3, GL_FLOAT, GL_FALSE, sizeof(TexturedVertex), (void *)0);
-    glVertexAttribPointer(in_texcoord_loc, 2, GL_FLOAT, GL_FALSE, sizeof(TexturedVertex), (void *)sizeof(vec3));
+    glVertexAttribPointer(in_position_loc, 3, GL_FLOAT, GL_FALSE, sizeof(TexturedVertex), (void *) 0);
+    glVertexAttribPointer(in_texcoord_loc, 2, GL_FLOAT, GL_FALSE, sizeof(TexturedVertex), (void *) sizeof(vec3));
 
     // Enabling and binding texture to slot 0
     glActiveTexture(GL_TEXTURE0);
     glBindTexture(GL_TEXTURE_2D, player2_texture.id);
 
     // Setting uniform values to the currently bound program
-    glUniformMatrix3fv(transform_uloc, 1, GL_FALSE, (float *)&transform);
+    glUniformMatrix3fv(transform_uloc, 1, GL_FALSE, (float *) &transform);
     float color[] = {1.f, 1.f, 1.f};
     glUniform3fv(color_uloc, 1, color);
-    glUniformMatrix3fv(projection_uloc, 1, GL_FALSE, (float *)&projection);
+    glUniformMatrix3fv(projection_uloc, 1, GL_FALSE, (float *) &projection);
 
     // color changing
     float timeValue = glfwGetTime();
@@ -154,17 +150,17 @@ void Player2::draw(const mat3& projection)
     if (frozen) {
         redValue = 0.2f;
         greenValue = 0.2f;
-        blueValue = sin(6.0f*timeValue) / 2.0f + 0.8f;
+        blueValue = sin(6.0f * timeValue) / 2.0f + 0.8f;
     }
 
     if (armour_in_use) {
-        redValue = fmin(sin(6.0f*timeValue) / 2.0f + 0.8f, 0.9f);
+        redValue = fmin(sin(6.0f * timeValue) / 2.0f + 0.8f, 0.9f);
         greenValue = 0.8f;
         blueValue = 0.3f;
     }
 
     glUniform3f(effect_color_uloc, redValue, greenValue, blueValue);
-    
+
     // Specify uniform variables
     glUniform1iv(sprite_frame_index_uloc, 1, &sprite_frame_index_p2);
     glUniform1iv(num_rows_uloc, 1, &num_rows_p2);
@@ -175,13 +171,12 @@ void Player2::draw(const mat3& projection)
 }
 
 void Player2::set_key(int key, bool pressed) {
-    if (pressed)
-    {
+    if (pressed) {
         m_keys[key] = true;
         if (key == 0 || key == 2) //up and down
-            shootdirection = { shootdirection.x, (float)key };
+            shootdirection = {shootdirection.x, (float) key};
         if (key == 1 || key == 3) //left and right
-            shootdirection = { (float)key, shootdirection.y };
+            shootdirection = {(float) key, shootdirection.y};
     }
     if (!pressed)
         m_keys[key] = false;
@@ -211,131 +206,108 @@ vec2 Player2::get_position() const {
     return m_position;
 }
 
-float Player2::get_mass() const
-{
+float Player2::get_mass() const {
     return mass;
 }
 
-void Player2::set_mass(float newMass)
-{
+void Player2::set_mass(float newMass) {
     mass = newMass;
 }
 
-float Player2::get_speed() const
-{
+float Player2::get_speed() const {
     return speed;
 }
-void Player2::set_speed(float newSpeed)
-{
+
+void Player2::set_speed(float newSpeed) {
     speed = newSpeed;
 }
 
-float Player2::get_speed_legs()const
-{
+float Player2::get_speed_legs() const {
     return speedlegs;
 }
 
-float Player2::get_originalspeed() const
-{
+float Player2::get_originalspeed() const {
     return originalSpeed;
 }
-void Player2::set_originalspeed(float newSpeed)
-{
+
+void Player2::set_originalspeed(float newSpeed) {
     originalSpeed = newSpeed;
 }
 
-bool Player2::get_blowback()const
-{
+bool Player2::get_blowback() const {
     return blowback;
 }
-void Player2::set_blowback(bool newblowback)
-{
+
+void Player2::set_blowback(bool newblowback) {
     blowback = newblowback;
 }
-vec2 Player2::get_blowbackForce()const
-{
+
+vec2 Player2::get_blowbackForce() const {
     return blowbackForce;
 }
-void Player2::set_blowbackForce(vec2 newblowbackForce)
-{
+
+void Player2::set_blowbackForce(vec2 newblowbackForce) {
     blowbackForce = newblowbackForce;
 }
 
-bool Player2::is_alive()const
-{
+bool Player2::is_alive() const {
     return m_is_alive;
 }
 
-void Player2::update(float ms)
-{
+void Player2::update(float ms) {
     //const float PLAYER_SPEED = 200.f;
     float step = step = speed * (ms / 1000);
-    float xStep = 0.f;
-    float yStep = 0.f;
+    float dx = 0.f;
+    float dy = 0.f;
 
     if (m_keys[0])
-        yStep -= step;
+        dy -= step;
     if (m_keys[1])
-        xStep -= step;
+        dx -= step;
     if (m_keys[2])
-        yStep += step;
-    if (m_keys[3])
-    {
-        xStep += step;
+        dy += step;
+    if (m_keys[3]) {
+        dx += step;
     }
-    if (blowback)
-    {
-        float x = get_blowbackForce().x*(ms/1000)*(get_speed()/100);
-        float y = get_blowbackForce().y*(ms/1000)*(get_speed()/100);
-        xStep += x;
-        yStep += y;
+    if (blowback) {
+        float x = get_blowbackForce().x * (ms / 1000) * (get_speed() / 100);
+        float y = get_blowbackForce().y * (ms / 1000) * (get_speed() / 100);
+        dx += x;
+        dy += y;
     }
-    
-    // else
-    // {
-    //     // stop_animate();
-    // }
-    if (isInsidePolygon(m_mapCollisionPoints, {m_position.x + xStep, m_position.y + yStep}))
-    {
-        move({xStep, yStep});
+
+//    if (isInsidePolygon(m_mapCollisionPoints, {m_position.x + xStep, m_position.y + yStep})) {
+    if (isBoundingBoxForFeetInsidePolygon(dx, dy)) {
+        move({dx, dy});
         animate();
     }
 }
 
-void Player2::move(vec2 off)
-{
-	m_position.x += off.x; m_position.y += off.y;
+void Player2::move(vec2 off) {
+    m_position.x += off.x;
+    m_position.y += off.y;
 }
 
-void Player2::animate()
-{
+void Player2::animate() {
     auto curr_time = std::chrono::high_resolution_clock::now();
     int milliseconds = std::chrono::duration_cast<std::chrono::milliseconds>(curr_time - start_time_p2).count();
 
-    if (milliseconds > frame_time_p2)
-    {
-        if (m_keys[0])
-        {
+    if (milliseconds > frame_time_p2) {
+        if (m_keys[0]) {
             curr_frame_p2 = (curr_frame_p2 + 1) % 2;
             sprite_frame_index_p2 = up_frames_p2[curr_frame_p2];
             start_time_p2 = curr_time;
-        }
-        else if (m_keys[1])
-        {
+        } else if (m_keys[1]) {
             curr_frame_p2 = (curr_frame_p2 + 1) % 3;
             sprite_frame_index_p2 = left_frames_p2[curr_frame_p2];
 
             start_time_p2 = curr_time;
-        }
-        else if (m_keys[2])
-        {
+        } else if (m_keys[2]) {
             curr_frame_p2 = (curr_frame_p2 + 1) % 2;
             sprite_frame_index_p2 = down_frames_p2[curr_frame_p2];
 
             start_time_p2 = curr_time;
-        }
-        else if (m_keys[3])
-        {
+        } else if (m_keys[3]) {
             curr_frame_p2 = (curr_frame_p2 + 1) % 3;
             sprite_frame_index_p2 = right_frames_p2[curr_frame_p2];
 
@@ -396,8 +368,7 @@ bool Player2::collides_with(const Antidote &antidote) {
     return false;
 }
 
-bool Player2::collides_with(const Bomb& bomb)
-{
+bool Player2::collides_with(const Bomb &bomb) {
     float dx = m_position.x - bomb.get_position().x;
     float dy = m_position.y - bomb.get_position().y;
     float d_sq = dx * dx + dy * dy;
@@ -409,8 +380,8 @@ bool Player2::collides_with(const Bomb& bomb)
         return true;
     return false;
 }
-bool Player2::collides_with(const Armour& armour)
-{
+
+bool Player2::collides_with(const Armour &armour) {
     float dx = m_position.x - armour.get_position().x;
     float dy = m_position.y - armour.get_position().y;
     float d_sq = dx * dx + dy * dy;
@@ -422,8 +393,8 @@ bool Player2::collides_with(const Armour& armour)
         return true;
     return false;
 }
-bool Player2::collides_with(const Missile& missile)
-{
+
+bool Player2::collides_with(const Missile &missile) {
     float dx = m_position.x - missile.get_position().x;
     float dy = m_position.y - missile.get_position().y;
     float d_sq = dx * dx + dy * dy;
@@ -436,8 +407,7 @@ bool Player2::collides_with(const Missile& missile)
     return false;
 }
 
-bool Player2::collides_with(const Mud& mud)
-{
+bool Player2::collides_with(const Mud &mud) {
     float dx = m_position.x - mud.get_position().x;
     float dy = m_position.y - mud.get_position().y;
     float d_sq = dx * dx + dy * dy;
@@ -464,15 +434,28 @@ bool Player2::collides_with(const Mud& mud)
 //    return false;
 //}
 
-vec2 Player2::get_bounding_box()const
-{
+vec2 Player2::get_bounding_box() const {
     // fabs is to avoid negative scale due to the facing direction
-    return { std::fabs(m_scale.x) * sprite_width_p2, std::fabs(m_scale.y) * sprite_height_p2 };
+    return {std::fabs(m_scale.x) * sprite_width_p2, std::fabs(m_scale.y) * sprite_height_p2};
 }
 
-vec2 Player2::getBoundingBoxForFeet() const {
-    //fake height
-    return { std::fabs(m_scale.x) * sprite_width_p2, std::fabs(m_scale.y) * lowerBodyHeight};
+bool Player2::isBoundingBoxForFeetInsidePolygon(float dx, float dy) {
+    //these numbers make no sense.. it should be divided by 2......
+    // apparently as D -> inf, it becomes more accurate
+    int D = 1000;
+    int halfX = sprite_width_p2 / D;
+    int halfY = sprite_height_p2 / D;
+
+    vec2 bottomPosition = {m_position.x + dx, m_position.y - halfY + dy};
+    vec2 topLeft = {bottomPosition.x - halfX, bottomPosition.y + halfY};
+    vec2 topRight = {bottomPosition.x + halfX, bottomPosition.y + halfY};
+    vec2 bottomLeft = {bottomPosition.x - halfX, bottomPosition.y - halfY};
+    vec2 bottomRight = {bottomPosition.x + halfX, bottomPosition.y - halfY};
+
+    return isInsidePolygon(m_mapCollisionPoints, topLeft) &&
+           isInsidePolygon(m_mapCollisionPoints, topRight) &&
+           isInsidePolygon(m_mapCollisionPoints, bottomLeft) &&
+           isInsidePolygon(m_mapCollisionPoints, bottomRight);
 }
 
 void Player2::destroy() {
