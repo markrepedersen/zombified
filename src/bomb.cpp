@@ -247,8 +247,7 @@ void Bomb::checkBoundaryCollision(float width, float height, float ms, std::vect
 
 
 
-     //if collides with boundary, get the direction of the boundary,
-    //update new direction
+    //if collides with boundary, get reflection vector
     //n = normalized normal (if we define dx=x2-x1 and dy=y2-y1, then the normals are (-dy, dx) and (dy, -dx).)
     //d = incident vector
     //r=d−2(d⋅n)n
@@ -256,8 +255,6 @@ void Bomb::checkBoundaryCollision(float width, float height, float ms, std::vect
     // if intersection[0].x == -1, then the point does not intersect with any of the mapCollisionPoints
     // else, it does, and the speed(direction) of the bomb needs to be changed)
     std::vector<vec2> intersection = getIntersectionWithPoly(mapCollisionPoints, {m_position.x, m_position.y}, m_oldposition );
-                        // // (speed.x/5) * ViewHelper::getRatio()
-                        // // std::cout << m_position.x << ", " << m_position.y << std::endl;
     if (intersection[0].x != -1) {
 
                             vec2 b = {intersection[1].x - intersection[0].x, intersection[1].y - intersection[0].y};

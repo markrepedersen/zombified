@@ -10,6 +10,7 @@ int sprite_frame_index_p2 = 0;
 // sprite information
 int sprite_width_p2 = 225;
 int sprite_height_p2 = 361;
+int lowerBodyHeight = 100;
 int num_rows_p2 = 3;
 int num_cols_p2 = 5;
 int up_frames_p2 [2] = {10, 11};
@@ -467,6 +468,11 @@ vec2 Player2::get_bounding_box()const
 {
     // fabs is to avoid negative scale due to the facing direction
     return { std::fabs(m_scale.x) * sprite_width_p2, std::fabs(m_scale.y) * sprite_height_p2 };
+}
+
+vec2 Player2::getBoundingBoxForFeet() const {
+    //fake height
+    return { std::fabs(m_scale.x) * sprite_width_p2, std::fabs(m_scale.y) * lowerBodyHeight};
 }
 
 void Player2::destroy() {
