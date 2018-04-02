@@ -10,7 +10,7 @@ namespace {
     const size_t MAX_FREEZE = 1;
     const size_t MAX_MISSILE = 0;
     const size_t MAX_ARMOUR = 1;
-    const size_t MAX_BOMB = 1;
+    const size_t MAX_BOMB = 3;
     const size_t MAX_WATER = 1;
     const size_t ARM_DELAY_MS = 1000;
     const size_t LEG_DELAY_MS = 1000;
