@@ -70,8 +70,12 @@ public:
     void explode();
     void autoExplode();
     void use_bomb(float ms);
+    void use_missile(float ms);
+    void autoExplodeMissile();
+
     //void init_use_bomb(float ms);
     bool useBomb;
+    bool useMissile;
 
 private:
     bool spawn_freeze();
@@ -154,6 +158,7 @@ private:
     std::vector<Mud> m_mud_collected;
 
     std::vector<Bomb> used_bombs;
+    std::vector<Missile> used_missiles;
 
 	MapGrid *mapGrid;
 

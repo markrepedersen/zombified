@@ -7,8 +7,8 @@ using namespace std;
 namespace {
     const size_t MAX_ARMS = 8;
     const size_t MAX_LEGS = 3;
-    const size_t MAX_FREEZE = 1;
-    const size_t MAX_MISSILE = 0;
+    const size_t MAX_FREEZE = 5;
+    const size_t MAX_MISSILE = 2;
     const size_t MAX_ARMOUR = 1;
     const size_t MAX_BOMB = 3;
     const size_t MAX_WATER = 1;
@@ -168,6 +168,7 @@ bool World::update(float elapsed_ms) {
             m_toolboxManager.init({screen.x, screen.y});
             m_zombieManager.init({screen.x, screen.y}, mapCollisionPoints);
             useBomb = false;
+            useMissile = false;
 
             //mud.init();
 
@@ -203,7 +204,10 @@ bool World::update(float elapsed_ms) {
 
         if (useBomb)
             use_bomb(elapsed_ms);
-
+        
+        if (useMissile)
+            use_missile(elapsed_ms);
+        
         if ((int) difftime(time(0), armourTime_p1) >= 10) {
             armourInUse_p1 = false;
             m_player1.set_armourstate(false);
@@ -229,7 +233,7 @@ bool World::update(float elapsed_ms) {
         }
 
         // for (auto &explosion : m_explosion)
-        //    explosion.animate();
+        //    explosion.animate()
 
         return true;
     }
@@ -319,6 +323,7 @@ void World::entityDrawOrder(mat3 projection_2D) {
             m_water.size() +
             m_missile.size() +
             m_armour.size() +
+            used_missiles.size() +
             m_bomb.size() +
             used_bombs.size() +
             m_explosion.size() +
@@ -342,6 +347,8 @@ void World::entityDrawOrder(mat3 projection_2D) {
     transform(m_water.begin(), m_water.end(), std::back_inserter(drawOrderVector),
               [](Water& entity) { return &entity; });
     transform(m_missile.begin(), m_missile.end(), std::back_inserter(drawOrderVector),
+              [](Missile& entity) { return &entity; });
+    transform(used_missiles.begin(), used_missiles.end(), std::back_inserter(drawOrderVector),
               [](Missile& entity) { return &entity; });
     transform(m_armour.begin(), m_armour.end(), std::back_inserter(drawOrderVector),
               [](Armour& entity) { return &entity; });
@@ -641,8 +648,8 @@ bool World::random_spawn(float elapsed_ms, vec2 screen) {
             m_next_spawn = (DELAY_MS / 2) + rand() % (1000);
         }
     }
-    if (randNum % 23 == 0) {
-        if (m_missile.size() < MAX_MISSILE && m_next_spawn < 0.f) {
+    if (randNum % 2 ==0){//23 == 0) {
+        if (m_missile.size() <= MAX_MISSILE && m_next_spawn < 0.f) {
             if (!spawn_missile())
                 return false;
 
@@ -872,7 +879,7 @@ void World::check_add_tools(vec2 screen) {
         collided = 0;
     }
 
-//=================check for MISSILE collision
+//=================check for missile collision
     std::vector<Missile>::iterator itm;
     for (itm = m_missile.begin(); itm != m_missile.end();) {
         if (m_player1.collides_with(*itm))
@@ -1130,8 +1137,27 @@ void World::use_tool_1(int tool_number) {
         m_toolboxManager.decreaseSlot(1);
     }
     if (tool_number == 6) {
-        //if (!armourInUse_p2 && !droptool_p1)
-        //tool functionality goes here
+        if (!droptool_p1)
+        {
+            used_missiles.emplace_back(m_missile_collected_1.front());
+            Missile &use_missile = used_missiles.back();
+            use_missile.set_position(m_player1.get_position());
+            useMissile = true;
+            use_missile.useMissileOnPlayer = 2;
+            use_missile.onPlayerPos = m_player2.get_position();
+            
+            vec2 missileDir = direction(use_missile.get_position(),m_player2.get_position());
+            
+            float angle = atan2(missileDir.x, missileDir.y);
+            
+            use_missile.set_rotation(angle);
+            //float x = (m_player2.get_position().x- use_missile.get_position().x);
+            //std::fabs(( m_player2.get_position().x - use_missile.get_position().x));
+            //float y = (m_player2.get_position().y - use_missile.get_position().y);
+            //std::fabs((m_player2.get_position().y - use_missile.get_position().y));
+            
+            use_missile.set_speed(missileDir);
+        }
         m_player1.set_mass(m_player1.get_mass() - m_missile_collected_1.begin()->get_mass());
         m_missile_collected_1.erase(m_missile_collected_1.begin());
         m_toolboxManager.decreaseSlot(1);
@@ -1305,8 +1331,21 @@ void World::use_tool_2(int tool_number) {
         m_toolboxManager.decreaseSlot(2);
     }
     if (tool_number == 6) {
-        //if (!armourInUse_p1 && !droptool_p2)
-        //tool functionality goes here
+        if (!droptool_p2)
+        {
+            used_missiles.emplace_back(m_missile_collected_2.front());
+            Missile &use_missile = used_missiles.back();
+            use_missile.set_position(m_player2.get_position());
+            useMissile = true;
+            use_missile.useMissileOnPlayer = 1;
+            use_missile.onPlayerPos = m_player1.get_position();
+            
+            vec2 missileDir = direction(use_missile.get_position(),m_player1.get_position());
+            float angle = atan2(missileDir.x, missileDir.y);
+            
+            use_missile.set_rotation(angle);
+            use_missile.set_speed(missileDir);
+        }
         m_player2.set_mass(m_player2.get_mass() - m_missile_collected_2.begin()->get_mass());
         m_missile_collected_2.erase(m_missile_collected_2.begin());
         m_toolboxManager.decreaseSlot(2);
@@ -1484,6 +1523,68 @@ void World::use_bomb(float ms) {
     }
 
 }
+
+void World::use_missile(float ms) {
+    std::vector<Missile>::iterator itmissile;
+    //std::vector<Missile>::iterator checkmissile;
+    
+    int width, height;
+    glfwGetWindowSize(m_window, &width, &height);
+    
+    for (itmissile = used_missiles.begin(); itmissile != used_missiles.end();) {
+        /*if ((itmissile->useMissileOnPlayer == 1 && m_player1.collides_with(*itmissile))||
+            (itmissile->useMissileOnPlayer == 2 && m_player2.collides_with(*itmissile)))*/
+        if (itmissile->checkPoint())
+            autoExplodeMissile();
+        else {
+            itmissile->move({itmissile->get_speed().x * (ms / 1000),
+                itmissile->get_speed().y * (ms / 1000)});
+            /*if (itmissile->checkboundary())
+                used_missiles.erase(itmissile);
+            else*/
+                ++itmissile;
+        }
+    }
+    
+}
+
+
+void World::autoExplodeMissile() {
+    float force_p1 = 0;
+    float force_p2 = 0;
+    if (!armourInUse_p1) {
+        force_p1 = used_missiles.front().get_force(m_player1.get_mass(),
+                                                m_player1.get_speed(),
+                                                m_player1.get_position());
+    }
+    
+    if (!armourInUse_p2) {
+        force_p2 = used_missiles.front().get_force(m_player2.get_mass(),
+                                                m_player2.get_speed(),
+                                                m_player2.get_position());
+    }
+    if (force_p1 > 0) {
+        m_player1.set_blowback(true);
+        m_player1.set_speed(force_p1);
+        m_player1.set_blowbackForce({(m_player1.get_position().x - used_missiles.front().get_position().x),
+            (m_player1.get_position().y - used_missiles.front().get_position().y)});
+        explosion = true;
+        droptool_p1 = true;
+        use_tool_1(m_toolboxManager.useItem(1));
+    }
+    if (force_p2 > 0) {
+        m_player2.set_blowback(true);
+        m_player2.set_speed(force_p2);
+        m_player2.set_blowbackForce({(m_player2.get_position().x - used_missiles.front().get_position().x),
+            (m_player2.get_position().y - used_missiles.front().get_position().y)});
+        explosion = true;
+        droptool_p2 = true;
+        use_tool_2(m_toolboxManager.useItem(2));
+    }
+
+    used_missiles.erase(used_missiles.begin());
+}
+
 
 void World::populateMapCollisionPoints() {
 
