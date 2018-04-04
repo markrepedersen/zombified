@@ -205,20 +205,7 @@ std::vector<vec2> getIntersectionWithPoly(std::vector<vec2> poly, vec2 point, ve
 
         if (intersect(poly1, poly2, point, oldpoint) ||
             ((orientation(poly1, point, poly2) == 0) && onSegment(poly1, point, poly2))) {
-            // std::cout << "poly1" << poly1.x << ", " << poly1.y << std::endl;
-            // std::cout << "poly2" << poly2.x << ", " << poly2.y << std::endl;
-            // std::cout << "POINT" << point.x << ", " << point.y << std::endl;
-            // std::cout << "EXTREME" << extreme.x << ", " << extreme.y << std::endl;
-
-            // if (orientation(poly1, point, poly2) == 0) {
-            // 	if (onSegment(poly1, point, poly2)) {
-            // 		std::cout << "intersection!!!" << std::endl;
-            // 		intersection.push_back(poly1);
-            // 		intersection.push_back(poly2);
-            // 		return intersection;
-            // 	}
-            // }
-            // std::cout << "intersection!!!" << std::endl;
+            
             intersection.push_back(poly1);
             intersection.push_back(poly2);
             return intersection;

@@ -352,7 +352,8 @@ void World::entityDrawOrder(mat3 projection_2D) {
               [](Missile& entity) { return &entity; });
     transform(m_armour.begin(), m_armour.end(), std::back_inserter(drawOrderVector),
               [](Armour& entity) { return &entity; });
-    transform(m_bomb.begin(), m_bomb.end(), std::back_inserter(drawOrderVector), [](Bomb entity) { return &entity; });
+    transform(m_bomb.begin(), m_bomb.end(), std::back_inserter(drawOrderVector),
+                [](Bomb& entity) { return &entity; });
     transform(used_bombs.begin(), used_bombs.end(), std::back_inserter(drawOrderVector),
               [](Bomb& entity) { return &entity; });
     transform(m_explosion.begin(), m_explosion.end(), std::back_inserter(drawOrderVector),
@@ -552,11 +553,11 @@ void World::on_mouse_move(GLFWwindow *window, int button, int action, int mod) {
             std::cout << "ypos: " << ypos << std::endl;
             std::cout << "player pos: " << m_player1.get_position().x << ", " << m_player1.get_position().y
                       << std::endl;
-            // if (isInsidePolygon(mapCollisionPoints, {(float)xpos * ViewHelper::getRatio(), (float)ypos * ViewHelper::getRatio()})) {
-            //     std::cout << "yes it's inside polygon" << std::endl;
-            // } else {
-            //     std::cout << "nope, it's outside the polygon" << std::endl;
-            // }
+            if (isInsidePolygon(mapCollisionPoints, {(float)xpos * ViewHelper::getRatio(), (float)ypos * ViewHelper::getRatio()})) {
+                std::cout << "yes it's inside polygon" << std::endl;
+            } else {
+                std::cout << "nope, it's outside the polygon" << std::endl;
+            }
         }
     }
 }
