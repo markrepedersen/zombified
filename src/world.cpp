@@ -406,97 +406,32 @@ bool World::is_over() const {
 // On key callback
 void World::on_key(GLFWwindow *, int key, int, int action, int mod) {
 
-    // player1 actions
-    if (immobilize != 1 && !m_player1.get_blowback()) {
+    // player2 actions
+    if (immobilize != 2 && !m_player2.get_blowback()) {
         if (action == GLFW_PRESS && key == GLFW_KEY_UP)
-            m_player1.set_key(0, true);
+            m_player2.set_key(0, true);
         if (action == GLFW_PRESS && key == GLFW_KEY_LEFT)
-            m_player1.set_key(1, true);
+            m_player2.set_key(1, true);
         if (action == GLFW_PRESS && key == GLFW_KEY_DOWN)
-            m_player1.set_key(2, true);
+            m_player2.set_key(2, true);
         if (action == GLFW_PRESS && key == GLFW_KEY_RIGHT)
-            m_player1.set_key(3, true);
+            m_player2.set_key(3, true);
         if (action == GLFW_RELEASE && key == GLFW_KEY_UP)
-            m_player1.set_key(0, false);
+            m_player2.set_key(0, false);
         if (action == GLFW_RELEASE && key == GLFW_KEY_LEFT)
-            m_player1.set_key(1, false);
+            m_player2.set_key(1, false);
         if (action == GLFW_RELEASE && key == GLFW_KEY_DOWN)
-            m_player1.set_key(2, false);
+            m_player2.set_key(2, false);
         if (action == GLFW_RELEASE && key == GLFW_KEY_RIGHT)
-            m_player1.set_key(3, false);
+            m_player2.set_key(3, false);
 
         if (action == GLFW_PRESS && key == GLFW_KEY_RIGHT_SHIFT) {
             // if the player has no tools/no slots attack the other player by collided and pressing attack
             if (m_player1.collides_with(m_player2)) {
                 // can punch players if freeze is used
-                if (immobilize == 2)
-                    m_player2.numberofHits++;
-                    //fprintf(stderr, "player2 number of hits: %d \n", m_player2.numberofHits);
-                else {
-                    bool hasTools = false;
-                    for (auto &tools : m_toolboxManager.getListOfSlot_1()) {
-                        if (tools != 0) {
-                            hasTools = true;
-                            break;
-                        }
-                    }
-                    // if the player has no tools then can manually attack, or else, just use a tool
-                    if (!hasTools)
-                        m_player2.numberofHits++; // needs to hit the player 5 times in order for p2 to drop item
-                    else
-                        use_tool_1(m_toolboxManager.useItem(1));
-
-                    //fprintf(stderr, "player2 number of hits: %d \n", m_player2.numberofHits);
-                }
-            } else
-                use_tool_1(m_toolboxManager.useItem(1));
-            //fprintf(stderr, "usetool \n");
-
-            //fprintf(stderr, "player2 number of hits: %d \n", m_player2.numberofHits);
-        }
-    }
-    if (immobilize == 1 || m_player1.get_blowback()) //player is frozen
-    {
-        m_player1.set_freezestate(true);
-        //fprintf(stderr, "frozen");
-        m_player1.set_key(0, false);
-        m_player1.set_key(1, false);
-        m_player1.set_key(2, false);
-        m_player1.set_key(3, false);
-        if ((int) difftime(time(0), freezeTime) >= 5) {
-            immobilize = 0;
-            m_player1.set_freezestate(false);
-            freezeTime = 0;
-            //fprintf(stderr, "start");
-        }
-
-    }
-
-    // player2 actions
-    if (immobilize != 2 && !m_player2.get_blowback()) {
-        if (action == GLFW_PRESS && key == GLFW_KEY_W)
-            m_player2.set_key(0, true);
-        if (action == GLFW_PRESS && key == GLFW_KEY_A)
-            m_player2.set_key(1, true);
-        if (action == GLFW_PRESS && key == GLFW_KEY_S)
-            m_player2.set_key(2, true);
-        if (action == GLFW_PRESS && key == GLFW_KEY_D)
-            m_player2.set_key(3, true);
-        if (action == GLFW_RELEASE && key == GLFW_KEY_W)
-            m_player2.set_key(0, false);
-        if (action == GLFW_RELEASE && key == GLFW_KEY_A)
-            m_player2.set_key(1, false);
-        if (action == GLFW_RELEASE && key == GLFW_KEY_S)
-            m_player2.set_key(2, false);
-        if (action == GLFW_RELEASE && key == GLFW_KEY_D)
-            m_player2.set_key(3, false);
-
-        // use tools
-        if (action == GLFW_PRESS && key == GLFW_KEY_Q) {
-            // if the player has no tools/no slots attack the other player by collided and pressing attack
-            if (m_player1.collides_with(m_player2)) {
                 if (immobilize == 1)
                     m_player1.numberofHits++;
+                    //fprintf(stderr, "player2 number of hits: %d \n", m_player2.numberofHits);
                 else {
                     bool hasTools = false;
                     for (auto &tools : m_toolboxManager.getListOfSlot_2()) {
@@ -505,27 +440,92 @@ void World::on_key(GLFWwindow *, int key, int, int action, int mod) {
                             break;
                         }
                     }
+                    // if the player has no tools then can manually attack, or else, just use a tool
                     if (!hasTools)
-                        m_player1.numberofHits++; // needs to hit the player 5 times in order for p1 to drop item
+                        m_player1.numberofHits++; // needs to hit the player 5 times in order for p2 to drop item
                     else
                         use_tool_2(m_toolboxManager.useItem(2));
+
+                    //fprintf(stderr, "player2 number of hits: %d \n", m_player2.numberofHits);
                 }
             } else
                 use_tool_2(m_toolboxManager.useItem(2));
+            //fprintf(stderr, "usetool \n");
 
-            //fprintf(stderr, "player1 number of hits: %d \n", m_player1.numberofHits);
+            //fprintf(stderr, "player2 number of hits: %d \n", m_player2.numberofHits);
         }
-
     }
     if (immobilize == 2 || m_player2.get_blowback()) //player is frozen
     {
         m_player2.set_freezestate(true);
+        //fprintf(stderr, "frozen");
         m_player2.set_key(0, false);
         m_player2.set_key(1, false);
         m_player2.set_key(2, false);
         m_player2.set_key(3, false);
         if ((int) difftime(time(0), freezeTime) >= 5) {
+            immobilize = 0;
             m_player2.set_freezestate(false);
+            freezeTime = 0;
+            //fprintf(stderr, "start");
+        }
+
+    }
+
+    // player1 actions
+    if (immobilize != 1 && !m_player1.get_blowback()) {
+        if (action == GLFW_PRESS && key == GLFW_KEY_W)
+            m_player1.set_key(0, true);
+        if (action == GLFW_PRESS && key == GLFW_KEY_A)
+            m_player1.set_key(1, true);
+        if (action == GLFW_PRESS && key == GLFW_KEY_S)
+            m_player1.set_key(2, true);
+        if (action == GLFW_PRESS && key == GLFW_KEY_D)
+            m_player1.set_key(3, true);
+        if (action == GLFW_RELEASE && key == GLFW_KEY_W)
+            m_player1.set_key(0, false);
+        if (action == GLFW_RELEASE && key == GLFW_KEY_A)
+            m_player1.set_key(1, false);
+        if (action == GLFW_RELEASE && key == GLFW_KEY_S)
+            m_player1.set_key(2, false);
+        if (action == GLFW_RELEASE && key == GLFW_KEY_D)
+            m_player1.set_key(3, false);
+
+        // use tools
+        if (action == GLFW_PRESS && key == GLFW_KEY_Q) {
+            // if the player has no tools/no slots attack the other player by collided and pressing attack
+            if (m_player1.collides_with(m_player2)) {
+                if (immobilize == 2)
+                    m_player2.numberofHits++;
+                else {
+                    bool hasTools = false;
+                    for (auto &tools : m_toolboxManager.getListOfSlot_1()) {
+                        if (tools != 0) {
+                            hasTools = true;
+                            break;
+                        }
+                    }
+                    if (!hasTools)
+                        m_player2.numberofHits++; // needs to hit the player 5 times in order for p1 to drop item
+                    else
+                        use_tool_1(m_toolboxManager.useItem(1));
+                }
+            } else
+                use_tool_1(m_toolboxManager.useItem(1));
+
+            //fprintf(stderr, "player1 number of hits: %d \n", m_player1.numberofHits);
+        }
+
+    }
+    if (immobilize == 1 || m_player1.get_blowback()) //player is frozen
+    {
+        m_player1.set_freezestate(true);
+        m_player1.set_key(0, false);
+        m_player1.set_key(1, false);
+        m_player1.set_key(2, false);
+        m_player1.set_key(3, false);
+        if ((int) difftime(time(0), freezeTime) >= 5) {
+            m_player1.set_freezestate(false);
             immobilize = 0;
             freezeTime = 0;
             //fprintf(stderr, "start");
