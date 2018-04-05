@@ -72,6 +72,7 @@ public:
     bool collides_with(const Mud& mud);
     bool collides_with(const Player2& player2);
 
+    vec2 get_bounding_box() const;
     void destroy();
 
     //float negy;

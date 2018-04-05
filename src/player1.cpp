@@ -483,6 +483,10 @@ bool Player1::collides_with(const Player2& player2)
     return false;
 }
 
+vec2 Player1::get_bounding_box() const{
+    return {std::fabs(m_scale.x) * player1_texture.width, std::fabs(m_scale.y) * player1_texture.height};
+}
+
 void Player1::destroy() {
     glDeleteBuffers(1, &mesh.vbo);
     glDeleteBuffers(1, &mesh.ibo);

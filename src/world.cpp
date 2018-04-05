@@ -182,7 +182,11 @@ bool World::update(float elapsed_ms) {
         m_player2.update(elapsed_ms);
 
         random_spawn(elapsed_ms, {screen.x * ViewHelper::getRatio(), screen.y * ViewHelper::getRatio()});
-        m_zombieManager.check_targets(m_player1.get_position(), m_player2.get_position());
+        vec2 player_hits_from_zombies = m_zombieManager.update_zombies(elapsed_ms, m_player1.get_position(), m_player2.get_position());
+        
+        if(!armourInUse_p1) {m_player1.numberofHits += player_hits_from_zombies.x;}
+        if(!armourInUse_p2) {m_player2.numberofHits += player_hits_from_zombies.y;}
+       
         m_limbsManager.computePaths(elapsed_ms, *mapGrid);
         m_zombieManager.computeZPaths(elapsed_ms, *mapGrid);
         std::unordered_set<vec2> new_zombie_positions = m_limbsManager.checkClusters();
@@ -449,10 +453,11 @@ void World::on_key(GLFWwindow *, int key, int, int action, int mod) {
                     //fprintf(stderr, "player2 number of hits: %d \n", m_player2.numberofHits);
                 }
             } else
+            {
                 use_tool_2(m_toolboxManager.useItem(2));
-            //fprintf(stderr, "usetool \n");
+            }
 
-            //fprintf(stderr, "player2 number of hits: %d \n", m_player2.numberofHits);
+            m_zombieManager.attack_zombies(m_player2.get_position(), m_player2.get_bounding_box());
         }
     }
     if (immobilize == 2 || m_player2.get_blowback()) //player is frozen
@@ -511,7 +516,11 @@ void World::on_key(GLFWwindow *, int key, int, int action, int mod) {
                         use_tool_1(m_toolboxManager.useItem(1));
                 }
             } else
+            {
                 use_tool_1(m_toolboxManager.useItem(1));
+            }
+
+            m_zombieManager.attack_zombies(m_player1.get_position(), m_player1.get_bounding_box());
 
             //fprintf(stderr, "player1 number of hits: %d \n", m_player1.numberofHits);
         }

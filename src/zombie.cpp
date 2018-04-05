@@ -7,6 +7,7 @@ Texture Zombie::zombie_texture;
 
 bool Zombie::init()
 {
+    attack_timeout = 0.f;
     // Load shared texture
     if (!zombie_texture.is_valid())
     {
@@ -154,6 +155,10 @@ void Zombie::setLastTarget(vec2 target) {
     this->last_target = target;
 }
 
+void Zombie::setAttackTimeout(float timeout) {
+    this->attack_timeout = timeout;
+}
+
 vec2 Zombie::getCurrentTarget()const {
     return cur_target;
 }
@@ -172,6 +177,10 @@ JPS::PathVector Zombie::getLastPath()const {
 
 vec2 Zombie::get_position()const {
     return m_position;
+}
+
+float Zombie::getAttackTimeout() {
+    return attack_timeout;
 }
 
 void Zombie::set_position(vec2 position) {
