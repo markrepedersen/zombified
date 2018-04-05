@@ -231,6 +231,25 @@ bool World::update(float elapsed_ms) {
             use_tool_2(m_toolboxManager.useItem(2));
             m_player2.numberofHits = 0;
         }
+        
+        if (m_limbsManager.getCollectedLegs(1) > 0){
+            if ((int) difftime(time(0), leg_times_1) >= 10){
+                //fprintf(stderr, "remove leg1 \n");
+                m_limbsManager.decreaseCollectedLegs(1);
+                m_player2.increase_speed_legs(-10);
+                leg_times_1 = time(0);
+            }
+        }
+        
+        if (m_limbsManager.getCollectedLegs(2) > 0){
+            if ((int) difftime(time(0), leg_times_2) >= 10){
+                //fprintf(stderr, "remove leg2 \n");
+                m_limbsManager.decreaseCollectedLegs(2);
+                m_player2.increase_speed_legs(-10);
+                leg_times_2 = time(0);
+            }
+        }
+
 
         // for (auto &explosion : m_explosion)
         //    explosion.animate()
@@ -270,11 +289,17 @@ void World::draw() {
 
     std::stringstream title_ss;
     if (m_sec < 10)
-        title_ss << "player1 damage count: " << m_player1.numberofHits << "          " << "Time remaining " << m_min
-                 << ":" << "0" << m_sec << "          " << "player2 damage count: " << m_player2.numberofHits;
+        title_ss << "player1 numberoflegs: " << m_limbsManager.getCollectedLegs(1) << "          "
+        << "player1 damage count: " << m_player1.numberofHits << "          "
+        << "Time remaining " << m_min << ":" << "0" << m_sec << "          "
+        << "player2 damage count: " << m_player2.numberofHits << "          "
+        << "player2 numberoflegs: " << m_limbsManager.getCollectedLegs(2);
     else
-        title_ss << "player1 damage count: " << m_player1.numberofHits << "          " << "Time remaining " << m_min
-                 << ":" << m_sec << "          " << "player2 damage count: " << m_player2.numberofHits;
+        title_ss << "player1 numberoflegs: " << m_limbsManager.getCollectedLegs(1) << "          "
+        << "player1 damage count: " << m_player1.numberofHits << "          "
+        << "Time remaining " << m_min << ":" << m_sec << "          "
+        << "player2 damage count: " << m_player2.numberofHits << "          "
+        << "player2 numberoflegs: " << m_limbsManager.getCollectedLegs(2);
     glfwSetWindowTitle(m_window, title_ss.str().c_str());
 
     glViewport(0, 0, w, h);
@@ -632,7 +657,7 @@ bool World::random_spawn(float elapsed_ms, vec2 screen) {
         }
     }
 
-    if (randNum % 19 == 0) {
+    if (randNum % 5 == 0) {
         if (m_limbsManager.get_legs_size() <= MAX_LEGS && m_next_leg_spawn < 0.f) {
             if (!(m_limbsManager.spawn_legs()))
                 return false;
@@ -956,7 +981,19 @@ void World::check_add_tools(vec2 screen) {
     }
 
 //=================check for limbs collision
-    collided = m_limbsManager.check_collision_with_players(&m_player1, &m_player2, &m_toolboxManager);
+    string checklegs;
+    checklegs = m_limbsManager.check_collision_with_players(&m_player1, &m_player2, &m_toolboxManager);
+    
+    if (checklegs == "1leg"){
+        if (m_limbsManager.getCollectedLegs(1) == 1)
+            leg_times_1 = time(0);
+        //fprintf(stderr, "1leg");
+    }
+    if (checklegs == "2leg"){
+        if (m_limbsManager.getCollectedLegs(2) == 1)
+            leg_times_2 = time(0);
+        //fprintf(stderr, "2leg");
+    }
 //    if (collided != 0) {
 //        if (collided <= 2) {
 //            m_toolboxManager.addSlot(collided);
@@ -1102,13 +1139,13 @@ void World::use_tool_1(int tool_number) {
         }
 
     }
-    if (tool_number == 4) {
+/*    if (tool_number == 4) {
 //        m_player1.set_mass(m_player1.get_mass() - m_legs_collected_1.begin()->get_mass());
 //        m_legs_collected_1.erase(m_legs_collected_1.begin());
         m_limbsManager.decreaseCollectedLegs(1);
         m_toolboxManager.decreaseSlot(1);
         m_player1.increase_speed_legs(-10);
-    }
+    }*/
     if (tool_number == 5) {
         if (!droptool_p1) {
             used_bombs.emplace_back(m_bomb_collected_1.front());
@@ -1183,7 +1220,7 @@ void World::shift_1(bool droppedAntidote) {
     std::vector<int>::iterator it;
     int freezecount = 0;
     int watercount = 0;
-    int legcount = 0;
+    //int legcount = 0;
     int bombcount = 0;
     int armourcount = 0;
     int missilecount = 0;
@@ -1214,12 +1251,12 @@ void World::shift_1(bool droppedAntidote) {
                 m_antidote.set_position(m_toolboxManager.new_tool_position(index, 1));
             }
         }
-        if (*it == 4) {
+        /*if (*it == 4) {
             if (!droppedAntidote) {
                 m_limbsManager.shiftCollectedLegs(1, &m_toolboxManager, index, legcount);
             }
             legcount++;
-        }
+        }*/
         if (*it == 5) {
             if (!droppedAntidote) {
                 Bomb &bomb = m_bomb_collected_1.at(bombcount);
@@ -1299,11 +1336,11 @@ void World::use_tool_2(int tool_number) {
             droppedAntidoteTime_p2 = time(0);
         }
     }
-    if (tool_number == 4) {
+    /*if (tool_number == 4) {
         m_limbsManager.decreaseCollectedLegs(2);
         m_toolboxManager.decreaseSlot(2);
         m_player2.increase_speed_legs(-10);
-    }
+    }*/
     if (tool_number == 5) {
         if (!droptool_p2) {
             used_bombs.emplace_back(m_bomb_collected_2.front());
@@ -1404,12 +1441,12 @@ void World::shift_2(bool droppedAntidote) {
                 m_antidote.set_position(m_toolboxManager.new_tool_position(index, 2));
             }
         }
-        if (*it == 4) {
+        /*if (*it == 4) {
             if (!droppedAntidote) {
                 m_limbsManager.shiftCollectedLegs(2, &m_toolboxManager, index, legcount);
             }
             legcount++;
-        }
+        }*/
         if (*it == 5) {
             if (!droppedAntidote) {
                 Bomb &bomb = m_bomb_collected_2.at(bombcount);
@@ -1437,6 +1474,7 @@ void World::shift_2(bool droppedAntidote) {
 }
 
 // =========== EXPLODING LOGIC ===================
+
 void World::use_bomb(float ms) {
     std::vector<Bomb>::iterator itbomb;
     std::vector<Bomb>::iterator checkbomb;

@@ -121,6 +121,8 @@ private:
     time_t armourTime_p2;
     time_t droppedAntidoteTime_p1;
     time_t droppedAntidoteTime_p2;
+    time_t leg_times_1;
+    time_t leg_times_2;
 
 	// Game entities
 	Worldtexture m_worldtexture;
