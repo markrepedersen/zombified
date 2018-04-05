@@ -969,6 +969,7 @@ void World::check_add_tools(vec2 screen) {
     }
 
     if (collided != 0 && m_antidote.belongs_to == 0) {
+        //fprintf(stderr, "collided \n");
         float index = (float) m_toolboxManager.addItem(3, collided);
         if ((int) index != 100) {
             if (collided == 1)
@@ -1136,6 +1137,7 @@ void World::use_tool_1(int tool_number) {
             m_antidote.set_scale({-0.10f * ViewHelper::getRatio(), 0.10f * ViewHelper::getRatio()});
             m_antidote.belongs_to = 0;
             droppedAntidoteTime_p1 = time(0);
+            //fprintf(stderr, "dropped antidote 1: %d \n", m_antidote.belongs_to);
         }
 
     }
@@ -1334,6 +1336,7 @@ void World::use_tool_2(int tool_number) {
             m_antidote.set_scale({-0.10f * ViewHelper::getRatio(), 0.10f * ViewHelper::getRatio()});
             m_antidote.belongs_to = 0;
             droppedAntidoteTime_p2 = time(0);
+            //fprintf(stderr, "dropped antidote 2: %d \n", m_antidote.belongs_to);
         }
     }
     /*if (tool_number == 4) {
@@ -1601,6 +1604,7 @@ void World::use_missile(float ms) {
     for (itmissile = used_missiles.begin(); itmissile != used_missiles.end();) {
         /*if ((itmissile->useMissileOnPlayer == 1 && m_player1.collides_with(*itmissile))||
             (itmissile->useMissileOnPlayer == 2 && m_player2.collides_with(*itmissile)))*/
+        //fprintf(stderr,"# of missiles: %lu", used_missiles.size());
         if (itmissile->checkPoint())
             autoExplodeMissile(*itmissile, count);
         else {
@@ -1650,12 +1654,15 @@ void World::autoExplodeMissile(Missile missile, int position) {
         use_tool_2(m_toolboxManager.useItem(2));
     }
 
+    //fprintf(stderr,"# of missiles: %lu \n", used_missiles.size());
+    //fprintf(stderr,"missile to remove: %d \n", position);
     std::vector<Missile>::iterator itmissile = used_missiles.begin();
     for (int i = 0; i <= position; ++i) {
         if (i == position) {
             used_missiles.erase(itmissile);
         }
-        ++itmissile;
+        else
+            ++itmissile;
     }
 }
 
