@@ -491,14 +491,18 @@ void World::on_key(GLFWwindow *, int key, int, int action, int mod) {
                     //fprintf(stderr, "left\n");
                     is_punchingleft_p2 = true;
                     gloveLeft_p2.set_position({m_player2.get_position().x-30.f, m_player2.get_position().y+15.f});
+                    if (m_player1.collides_with(gloveLeft_p2) && !armourInUse_p1)
+                        m_player1.numberofHits++;
                 }
                 else if ((m_player2.lastkey == 0) || (m_player2.lastkey == 3)) { //down and right
                     //fprintf(stderr, "right\n");
                     is_punchingright_p2 = true;
                     gloveRight_p2.set_position({m_player2.get_position().x+30.f, m_player2.get_position().y+15.f});
+                    if (m_player1.collides_with(gloveRight_p2) && !armourInUse_p1)
+                        m_player1.numberofHits++;
                 }
                 
-                m_player1.numberofHits++;
+                //m_player1.numberofHits++;
             }
             else {
                 bool hasTools = false;
@@ -514,14 +518,14 @@ void World::on_key(GLFWwindow *, int key, int, int action, int mod) {
                         //fprintf(stderr, "left\n");
                         is_punchingleft_p2 = true;
                         gloveLeft_p2.set_position({m_player2.get_position().x-30.f, m_player2.get_position().y+15.f});
-                        if (m_player1.collides_with(gloveLeft_p2))
+                        if (m_player1.collides_with(gloveLeft_p2) && !armourInUse_p1)
                             m_player1.numberofHits++;
                     }
                     else if ((m_player2.lastkey == 0) || (m_player2.lastkey == 3)) { //down and right
                         //fprintf(stderr, "right\n");
                         is_punchingright_p2 = true;
                         gloveRight_p2.set_position({m_player2.get_position().x+30.f, m_player2.get_position().y+15.f});
-                        if (m_player1.collides_with(gloveRight_p2))
+                        if (m_player1.collides_with(gloveRight_p2) && !armourInUse_p1)
                             m_player1.numberofHits++;
                     }
                     
@@ -582,14 +586,14 @@ void World::on_key(GLFWwindow *, int key, int, int action, int mod) {
                     //fprintf(stderr, "left p1\n");
                     is_punchingleft_p1 = true;
                     gloveLeft_p1.set_position({m_player1.get_position().x-30.f, m_player1.get_position().y+15.f});
-                    if (m_player2.collides_with(gloveLeft_p1))
+                    if (m_player2.collides_with(gloveLeft_p1) && !armourInUse_p2)
                         m_player2.numberofHits++;
                 }
                 else if ((m_player1.lastkey == 0) || (m_player1.lastkey == 3)) { //down and right
                     //fprintf(stderr, "right\n");
                     is_punchingright_p1 = true;
                     gloveRight_p1.set_position({m_player1.get_position().x+30.f, m_player1.get_position().y+15.f});
-                    if (m_player2.collides_with(gloveRight_p1))
+                    if (m_player2.collides_with(gloveRight_p1) && !armourInUse_p2)
                         m_player2.numberofHits++;
                 }
             }
@@ -609,18 +613,18 @@ void World::on_key(GLFWwindow *, int key, int, int action, int mod) {
                             //fprintf(stderr, "left\n");
                             is_punchingleft_p1 = true;
                             gloveLeft_p1.set_position({m_player1.get_position().x-30.f, m_player1.get_position().y+15.f});
-                            if (m_player2.collides_with(gloveLeft_p1))
+                            if (m_player2.collides_with(gloveLeft_p1) && !armourInUse_p2)
                                 m_player2.numberofHits++;
                         }
                         else if ((m_player1.lastkey == 0) || (m_player1.lastkey == 3)) { //down and right
                             //fprintf(stderr, "right\n");
                             is_punchingright_p1 = true;
                             gloveRight_p1.set_position({m_player1.get_position().x+30.f, m_player1.get_position().y+15.f});
-                            if (m_player2.collides_with(gloveRight_p1))
+                            if (m_player2.collides_with(gloveRight_p1) && !armourInUse_p2)
                                 m_player2.numberofHits++;
                         }
                         
-                        m_player2.numberofHits++; // needs to hit the player 5 times in order for p1 to drop item
+                       // m_player2.numberofHits++; // needs to hit the player 5 times in order for p1 to drop item
                     //}
                 }
                 else
