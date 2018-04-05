@@ -68,10 +68,10 @@ public:
     //start button
     //bool buttonclicked();
     void explode();
-    void autoExplode();
+    void autoExplode(Bomb bomb, int position);
     void use_bomb(float ms);
     void use_missile(float ms);
-    void autoExplodeMissile();
+    void autoExplodeMissile(Missile missile, int position);
 
     //void init_use_bomb(float ms);
     bool useBomb;

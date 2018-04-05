@@ -1115,6 +1115,7 @@ void World::use_tool_1(int tool_number) {
             Bomb &use_bomb = used_bombs.back();
             use_bomb.set_position(m_player1.get_position());
             useBomb = true;
+            use_bomb.bombTime = time(0);
 
             float xspeed = 0.f;
             float yspeed = 0.f;
@@ -1310,6 +1311,7 @@ void World::use_tool_2(int tool_number) {
 
             use_bomb.set_position(m_player2.get_position());
             useBomb = true;
+            use_bomb.bombTime = time(0);
 
             float xspeed = 0.f;
             float yspeed = 0.f;
@@ -1435,29 +1437,81 @@ void World::shift_2(bool droppedAntidote) {
 }
 
 // =========== EXPLODING LOGIC ===================
-void World::autoExplode() {
+void World::use_bomb(float ms) {
+    std::vector<Bomb>::iterator itbomb;
+    std::vector<Bomb>::iterator checkbomb;
+    int count = 0;
+    
+    int width, height;
+    glfwGetWindowSize(m_window, &width, &height);
+    
+    for (itbomb = used_bombs.begin(); itbomb != used_bombs.end();) {
+        itbomb->set_speed({itbomb->get_speed().x * (0.997f), itbomb->get_speed().y * (0.997f)});
+        
+    
+        if ((std::fabs(itbomb->get_speed().x) <= 50 && std::fabs(itbomb->get_speed().y) <= 50)) {
+            itbomb->set_speed({0.f, 0.f});
+            autoExplode(*itbomb, count);
+        }
+        else if (m_player1.collides_with(*itbomb)||m_player2.collides_with(*itbomb)){
+            if ((int) difftime(time(0), itbomb->bombTime) >= 1) {
+                itbomb->set_speed({0.f, 0.f});
+                autoExplode(*itbomb, count);
+            }
+            else {
+                itbomb->move({itbomb->get_speed().x * (ms / 1000),
+                    itbomb->get_speed().y * (ms / 1000)}, false);
+                itbomb->checkBoundaryCollision(width, height, ms, mapCollisionPoints);
+                
+                for (checkbomb = used_bombs.begin(); checkbomb != used_bombs.end() - 1; ++checkbomb) {
+                    if (checkbomb != itbomb) {
+                        if (itbomb->collides_with(*checkbomb))
+                            itbomb->checkCollision(*checkbomb, ms);
+                    }
+                }
+                
+                ++itbomb;
+                ++count;
+            }
+        }
+        else {
+            itbomb->move({itbomb->get_speed().x * (ms / 1000),
+                itbomb->get_speed().y * (ms / 1000)}, false);
+            itbomb->checkBoundaryCollision(width, height, ms, mapCollisionPoints);
+            
+            for (checkbomb = used_bombs.begin(); checkbomb != used_bombs.end() - 1; ++checkbomb) {
+                if (checkbomb != itbomb) {
+                    if (itbomb->collides_with(*checkbomb))
+                        itbomb->checkCollision(*checkbomb, ms);
+                }
+            }
+            
+            ++itbomb;
+            ++count;
+        }
+    }
+    
+}
+
+void World::autoExplode(Bomb bomb, int position) {
     float force_p1 = 0;
     float force_p2 = 0;
     if (!armourInUse_p1) {
-        force_p1 = used_bombs.front().get_force(m_player1.get_mass(),
+        force_p1 = bomb.get_force(m_player1.get_mass(),
                                                 m_player1.get_speed(),
                                                 m_player1.get_position());
-        //droptool_p1 = true;
-        //use_tool_1(m_toolboxManager.useItem(1));
     }
 
     if (!armourInUse_p2) {
-        force_p2 = used_bombs.front().get_force(m_player2.get_mass(),
+        force_p2 = bomb.get_force(m_player2.get_mass(),
                                                 m_player2.get_speed(),
                                                 m_player2.get_position());
-        //droptool_p2 = true;
-        //use_tool_2(m_toolboxManager.useItem(2));
     }
     if (force_p1 > 0) {
         m_player1.set_blowback(true);
         m_player1.set_speed(force_p1);
-        m_player1.set_blowbackForce({(m_player1.get_position().x - used_bombs.front().get_position().x),
-                                     (m_player1.get_position().y - used_bombs.front().get_position().y)});
+        m_player1.set_blowbackForce({(m_player1.get_position().x - bomb.get_position().x),
+                                     (m_player1.get_position().y - bomb.get_position().y)});
         explosion = true;
         droptool_p1 = true;
         use_tool_1(m_toolboxManager.useItem(1));
@@ -1465,8 +1519,8 @@ void World::autoExplode() {
     if (force_p2 > 0) {
         m_player2.set_blowback(true);
         m_player2.set_speed(force_p2);
-        m_player2.set_blowbackForce({(m_player2.get_position().x - used_bombs.front().get_position().x),
-                                     (m_player2.get_position().y - used_bombs.front().get_position().y)});
+        m_player2.set_blowbackForce({(m_player2.get_position().x - bomb.get_position().x),
+                                     (m_player2.get_position().y - bomb.get_position().y)});
         explosion = true;
         droptool_p2 = true;
         use_tool_2(m_toolboxManager.useItem(2));
@@ -1474,7 +1528,13 @@ void World::autoExplode() {
 
     // create_explosion(used_bombs.begin()->get_position());
     // used_bombs.begin()->explode();
-    used_bombs.erase(used_bombs.begin());
+    std::vector<Bomb>::iterator itbomb = used_bombs.begin();
+    for (int i = 0; i <= position; ++i) {
+        if (i == position) {
+            used_bombs.erase(itbomb);
+        }
+        ++itbomb;
+    }
 }
 
 void World::explode() {
@@ -1493,41 +1553,9 @@ void World::explode() {
     }
 }
 
-void World::use_bomb(float ms) {
-    std::vector<Bomb>::iterator itbomb;
-    std::vector<Bomb>::iterator checkbomb;
-
-    int width, height;
-    glfwGetWindowSize(m_window, &width, &height);
-
-    for (itbomb = used_bombs.begin(); itbomb != used_bombs.end();) {
-        itbomb->set_speed({itbomb->get_speed().x * (0.997f), itbomb->get_speed().y * (0.997f)});
-
-        if (std::fabs(itbomb->get_speed().x) <= 50 && std::fabs(itbomb->get_speed().y) <= 50) {
-            itbomb->set_speed({0.f, 0.f});
-            autoExplode();
-        } else {
-            itbomb->move({itbomb->get_speed().x * (ms / 1000),
-                          itbomb->get_speed().y * (ms / 1000)}, false);
-            itbomb->checkBoundaryCollision(width, height, ms, mapCollisionPoints);
-
-            for (checkbomb = used_bombs.begin(); checkbomb != used_bombs.end() - 1; ++checkbomb) {
-                if (checkbomb != itbomb) {
-                    if (itbomb->collides_with(*checkbomb))
-                        itbomb->checkCollision(*checkbomb, ms);
-                }
-            }
-
-            ++itbomb;
-        }
-
-    }
-
-}
-
 void World::use_missile(float ms) {
     std::vector<Missile>::iterator itmissile;
-    //std::vector<Missile>::iterator checkmissile;
+    int count = 0;
     
     int width, height;
     glfwGetWindowSize(m_window, &width, &height);
@@ -1536,38 +1564,39 @@ void World::use_missile(float ms) {
         /*if ((itmissile->useMissileOnPlayer == 1 && m_player1.collides_with(*itmissile))||
             (itmissile->useMissileOnPlayer == 2 && m_player2.collides_with(*itmissile)))*/
         if (itmissile->checkPoint())
-            autoExplodeMissile();
+            autoExplodeMissile(*itmissile, count);
         else {
             itmissile->move({itmissile->get_speed().x * (ms / 1000),
                 itmissile->get_speed().y * (ms / 1000)});
             /*if (itmissile->checkboundary())
                 used_missiles.erase(itmissile);
             else*/
-                ++itmissile;
+            ++itmissile;
+            ++count;
         }
     }
     
 }
 
 
-void World::autoExplodeMissile() {
+void World::autoExplodeMissile(Missile missile, int position) {
     float force_p1 = 0;
     float force_p2 = 0;
     if (!armourInUse_p1) {
-        force_p1 = used_missiles.front().get_force(m_player1.get_mass(),
+        force_p1 = missile.get_force(m_player1.get_mass(),
                                                 m_player1.get_speed(),
                                                 m_player1.get_position());
     }
     
     if (!armourInUse_p2) {
-        force_p2 = used_missiles.front().get_force(m_player2.get_mass(),
+        force_p2 = missile.get_force(m_player2.get_mass(),
                                                 m_player2.get_speed(),
                                                 m_player2.get_position());
     }
     if (force_p1 > 0) {
         m_player1.set_blowback(true);
         m_player1.set_speed(force_p1);
-        m_player1.set_blowbackForce({(m_player1.get_position().x - used_missiles.front().get_position().x),
+        m_player1.set_blowbackForce({(m_player1.get_position().x - missile.get_position().x),
             (m_player1.get_position().y - used_missiles.front().get_position().y)});
         explosion = true;
         droptool_p1 = true;
@@ -1576,14 +1605,20 @@ void World::autoExplodeMissile() {
     if (force_p2 > 0) {
         m_player2.set_blowback(true);
         m_player2.set_speed(force_p2);
-        m_player2.set_blowbackForce({(m_player2.get_position().x - used_missiles.front().get_position().x),
-            (m_player2.get_position().y - used_missiles.front().get_position().y)});
+        m_player2.set_blowbackForce({(m_player2.get_position().x - missile.get_position().x),
+            (m_player2.get_position().y - missile.get_position().y)});
         explosion = true;
         droptool_p2 = true;
         use_tool_2(m_toolboxManager.useItem(2));
     }
 
-    used_missiles.erase(used_missiles.begin());
+    std::vector<Missile>::iterator itmissile = used_missiles.begin();
+    for (int i = 0; i <= position; ++i) {
+        if (i == position) {
+            used_missiles.erase(itmissile);
+        }
+        ++itmissile;
+    }
 }
 
 
