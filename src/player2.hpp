@@ -12,6 +12,8 @@
 #include "armour.hpp"
 #include "missile.hpp"
 #include "mud.hpp"
+#include "punchleft.hpp"
+#include "punchright.hpp"
 
 class Player2 : public Renderable
 {
@@ -72,6 +74,8 @@ public:
     bool collides_with(const Armour& armour);
     bool collides_with(const Missile& missile);
     bool collides_with(const Mud& mud);
+    bool collides_with(const Punchright& punchright);
+    bool collides_with(const Punchleft& punchleft);
 
     vec2 get_bounding_box()const;
 
@@ -80,6 +84,7 @@ public:
     void destroy();
     
     int numberofHits;
+    int lastkey;
 
 private:
     bool m_is_alive; // True if the salmon is alive

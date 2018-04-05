@@ -171,6 +171,16 @@ bool World::update(float elapsed_ms) {
             useMissile = false;
 
             //mud.init();
+            
+            gloveRight_p1.init({screen.x, screen.y}, mapCollisionPoints);
+            is_punchingright_p1 = false;
+            gloveLeft_p1.init({screen.x, screen.y}, mapCollisionPoints);
+            is_punchingleft_p1 = false;
+            
+            gloveRight_p2.init({screen.x, screen.y}, mapCollisionPoints);
+            is_punchingright_p2 = false;
+            gloveLeft_p2.init({screen.x, screen.y}, mapCollisionPoints);
+            is_punchingleft_p2 = false;
 
             m_player1.init(screen, mapCollisionPoints) && m_player2.init(screen, mapCollisionPoints) &&
             m_antidote.init(screen, mapCollisionPoints);
@@ -249,6 +259,15 @@ bool World::update(float elapsed_ms) {
                 leg_times_2 = time(0);
             }
         }
+        
+        if(is_punchingleft_p2)
+            gloveLeft_p2.set_position({m_player2.get_position().x-30.f, m_player2.get_position().y+15.f});
+        if(is_punchingright_p2)
+            gloveRight_p2.set_position({m_player2.get_position().x+30.f, m_player2.get_position().y+15.f});
+        if(is_punchingleft_p1)
+            gloveLeft_p1.set_position({m_player1.get_position().x-30.f, m_player1.get_position().y+15.f});
+        if(is_punchingright_p1)
+            gloveRight_p1.set_position({m_player1.get_position().x+30.f, m_player1.get_position().y+15.f});
 
 
         // for (auto &explosion : m_explosion)
@@ -334,6 +353,16 @@ void World::draw() {
         m_limbsManager.draw(projection_2D);
         m_zombieManager.draw(projection_2D);
         entityDrawOrder(projection_2D);
+        
+        if (is_punchingleft_p1)
+            gloveLeft_p1.draw(projection_2D);
+        if (is_punchingright_p1)
+            gloveRight_p1.draw(projection_2D);
+        
+        if (is_punchingleft_p2)
+            gloveLeft_p2.draw(projection_2D);
+        if (is_punchingright_p2)
+            gloveRight_p2.draw(projection_2D);
     }
 
     // Presenting
@@ -430,7 +459,7 @@ bool World::is_over() const {
 
 // On key callback
 void World::on_key(GLFWwindow *, int key, int, int action, int mod) {
-
+    
     // player2 actions
     if (immobilize != 2 && !m_player2.get_blowback()) {
         if (action == GLFW_PRESS && key == GLFW_KEY_UP)
@@ -449,35 +478,64 @@ void World::on_key(GLFWwindow *, int key, int, int action, int mod) {
             m_player2.set_key(2, false);
         if (action == GLFW_RELEASE && key == GLFW_KEY_RIGHT)
             m_player2.set_key(3, false);
-
+        
         if (action == GLFW_PRESS && key == GLFW_KEY_RIGHT_SHIFT) {
+            
+            //vec2 punchdirection = m_player2.get_shootDirection();
             // if the player has no tools/no slots attack the other player by collided and pressing attack
-            if (m_player1.collides_with(m_player2)) {
-                // can punch players if freeze is used
-                if (immobilize == 1)
-                    m_player1.numberofHits++;
-                    //fprintf(stderr, "player2 number of hits: %d \n", m_player2.numberofHits);
-                else {
-                    bool hasTools = false;
-                    for (auto &tools : m_toolboxManager.getListOfSlot_2()) {
-                        if (tools != 0) {
-                            hasTools = true;
-                            break;
-                        }
-                    }
-                    // if the player has no tools then can manually attack, or else, just use a tool
-                    if (!hasTools)
-                        m_player1.numberofHits++; // needs to hit the player 5 times in order for p2 to drop item
-                    else
-                        use_tool_2(m_toolboxManager.useItem(2));
-
-                    //fprintf(stderr, "player2 number of hits: %d \n", m_player2.numberofHits);
+            //if (m_player1.collides_with(m_player2)) {
+            // can punch players if freeze is used
+            if (immobilize == 1){
+                //fprintf(stderr, "player2 number of hits: %d \n", m_player2.numberofHits);
+                if ((m_player2.lastkey == 2) || (m_player2.lastkey == 1)) { //up and left
+                    //fprintf(stderr, "left\n");
+                    is_punchingleft_p2 = true;
+                    gloveLeft_p2.set_position({m_player2.get_position().x-30.f, m_player2.get_position().y+15.f});
                 }
-            } else
-                use_tool_2(m_toolboxManager.useItem(2));
-            //fprintf(stderr, "usetool \n");
-
+                else if ((m_player2.lastkey == 0) || (m_player2.lastkey == 3)) { //down and right
+                    //fprintf(stderr, "right\n");
+                    is_punchingright_p2 = true;
+                    gloveRight_p2.set_position({m_player2.get_position().x+30.f, m_player2.get_position().y+15.f});
+                }
+                
+                m_player1.numberofHits++;
+            }
+            else {
+                bool hasTools = false;
+                for (auto &tools : m_toolboxManager.getListOfSlot_2()) {
+                    if (tools != 0) {
+                        hasTools = true;
+                        break;
+                    }
+                }
+                // if the player has no tools then can manually attack, or else, just use a tool
+                if (!hasTools){
+                    if ((m_player2.lastkey == 2) || (m_player2.lastkey == 1)) { //up and left
+                        //fprintf(stderr, "left\n");
+                        is_punchingleft_p2 = true;
+                        gloveLeft_p2.set_position({m_player2.get_position().x-30.f, m_player2.get_position().y+15.f});
+                        if (m_player1.collides_with(gloveLeft_p2))
+                            m_player1.numberofHits++;
+                    }
+                    else if ((m_player2.lastkey == 0) || (m_player2.lastkey == 3)) { //down and right
+                        //fprintf(stderr, "right\n");
+                        is_punchingright_p2 = true;
+                        gloveRight_p2.set_position({m_player2.get_position().x+30.f, m_player2.get_position().y+15.f});
+                        if (m_player1.collides_with(gloveRight_p2))
+                            m_player1.numberofHits++;
+                    }
+                    
+                }
+                else
+                    use_tool_2(m_toolboxManager.useItem(2));
+                
+                //fprintf(stderr, "player2 number of hits: %d \n", m_player2.numberofHits);
+            }
             //fprintf(stderr, "player2 number of hits: %d \n", m_player2.numberofHits);
+        }
+        if (action == GLFW_RELEASE && key == GLFW_KEY_RIGHT_SHIFT) {
+            is_punchingleft_p2 = false;
+            is_punchingright_p2 = false;
         }
     }
     if (immobilize == 2 || m_player2.get_blowback()) //player is frozen
@@ -494,9 +552,8 @@ void World::on_key(GLFWwindow *, int key, int, int action, int mod) {
             freezeTime = 0;
             //fprintf(stderr, "start");
         }
-
     }
-
+    
     // player1 actions
     if (immobilize != 1 && !m_player1.get_blowback()) {
         if (action == GLFW_PRESS && key == GLFW_KEY_W)
@@ -515,33 +572,71 @@ void World::on_key(GLFWwindow *, int key, int, int action, int mod) {
             m_player1.set_key(2, false);
         if (action == GLFW_RELEASE && key == GLFW_KEY_D)
             m_player1.set_key(3, false);
-
+        
         // use tools
         if (action == GLFW_PRESS && key == GLFW_KEY_Q) {
             // if the player has no tools/no slots attack the other player by collided and pressing attack
-            if (m_player1.collides_with(m_player2)) {
-                if (immobilize == 2)
-                    m_player2.numberofHits++;
-                else {
-                    bool hasTools = false;
-                    for (auto &tools : m_toolboxManager.getListOfSlot_1()) {
-                        if (tools != 0) {
-                            hasTools = true;
-                            break;
-                        }
-                    }
-                    if (!hasTools)
-                        m_player2.numberofHits++; // needs to hit the player 5 times in order for p1 to drop item
-                    else
-                        use_tool_1(m_toolboxManager.useItem(1));
+            //if (m_player1.collides_with(m_player2)) {
+            if (immobilize == 2){
+                if ((m_player1.lastkey == 2) || (m_player1.lastkey == 1)) { //up and left
+                    //fprintf(stderr, "left p1\n");
+                    is_punchingleft_p1 = true;
+                    gloveLeft_p1.set_position({m_player1.get_position().x-30.f, m_player1.get_position().y+15.f});
+                    if (m_player2.collides_with(gloveLeft_p1))
+                        m_player2.numberofHits++;
                 }
-            } else
-                use_tool_1(m_toolboxManager.useItem(1));
+                else if ((m_player1.lastkey == 0) || (m_player1.lastkey == 3)) { //down and right
+                    //fprintf(stderr, "right\n");
+                    is_punchingright_p1 = true;
+                    gloveRight_p1.set_position({m_player1.get_position().x+30.f, m_player1.get_position().y+15.f});
+                    if (m_player2.collides_with(gloveRight_p1))
+                        m_player2.numberofHits++;
+                }
+            }
+            else
+            {
+                bool hasTools = false;
+                for (auto &tools : m_toolboxManager.getListOfSlot_1()) {
+                    if (tools != 0) {
+                        hasTools = true;
+                        break;
+                    }
+                }
 
+                if (!hasTools) {
+                    //if (immobilize == 2) {
+                        if ((m_player1.lastkey == 2) || (m_player1.lastkey == 1)) { //up and left
+                            //fprintf(stderr, "left\n");
+                            is_punchingleft_p1 = true;
+                            gloveLeft_p1.set_position({m_player1.get_position().x-30.f, m_player1.get_position().y+15.f});
+                            if (m_player2.collides_with(gloveLeft_p1))
+                                m_player2.numberofHits++;
+                        }
+                        else if ((m_player1.lastkey == 0) || (m_player1.lastkey == 3)) { //down and right
+                            //fprintf(stderr, "right\n");
+                            is_punchingright_p1 = true;
+                            gloveRight_p1.set_position({m_player1.get_position().x+30.f, m_player1.get_position().y+15.f});
+                            if (m_player2.collides_with(gloveRight_p1))
+                                m_player2.numberofHits++;
+                        }
+                        
+                        m_player2.numberofHits++; // needs to hit the player 5 times in order for p1 to drop item
+                    //}
+                }
+                else
+                    use_tool_1(m_toolboxManager.useItem(1));
+            }
             //fprintf(stderr, "player1 number of hits: %d \n", m_player1.numberofHits);
+            //}
+            
         }
-
+        if (action == GLFW_RELEASE && key == GLFW_KEY_Q) {
+            is_punchingright_p1 = false;
+            is_punchingleft_p1 = false;
+        }
     }
+    
+    
     if (immobilize == 1 || m_player1.get_blowback()) //player is frozen
     {
         m_player1.set_freezestate(true);

@@ -183,6 +183,8 @@ void Player1::set_key(int key, bool pressed) {
             shootdirection = { shootdirection.x, (float)key };
         if (key == 1 || key == 3) //left and right
             shootdirection = { (float)key, shootdirection.y };
+        
+        lastkey = key;
     }
 
     if (!pressed)
@@ -475,6 +477,32 @@ bool Player1::collides_with(const Player2& player2)
     float dy = m_position.y - player2.get_position().y;
     float d_sq = dx * dx + dy * dy;
     float other_r = std::max(player2.get_bounding_box().x, player2.get_bounding_box().y);
+    float my_r = std::max(m_scale.x, m_scale.y);
+    float r = std::max(other_r, my_r);
+    r *= 0.6f;
+    if (d_sq < r * r)
+        return true;
+    return false;
+}
+
+bool Player1::collides_with(const Punchright& punchright) {
+    float dx = m_position.x - punchright.get_position().x;
+    float dy = m_position.y - punchright.get_position().y;
+    float d_sq = dx * dx + dy * dy;
+    float other_r = std::max(punchright.get_bounding_box().x, punchright.get_bounding_box().y);
+    float my_r = std::max(m_scale.x, m_scale.y);
+    float r = std::max(other_r, my_r);
+    r *= 0.6f;
+    if (d_sq < r * r)
+        return true;
+    return false;
+}
+
+bool Player1::collides_with(const Punchleft& punchleft) {
+    float dx = m_position.x - punchleft.get_position().x;
+    float dy = m_position.y - punchleft.get_position().y;
+    float d_sq = dx * dx + dy * dy;
+    float other_r = std::max(punchleft.get_bounding_box().x, punchleft.get_bounding_box().y);
     float my_r = std::max(m_scale.x, m_scale.y);
     float r = std::max(other_r, my_r);
     r *= 0.6f;
