@@ -7,10 +7,10 @@ using namespace std;
 namespace {
     const size_t MAX_ARMS = 8;
     const size_t MAX_LEGS = 3;
-    const size_t MAX_FREEZE = 5;
+    const size_t MAX_FREEZE = 2;
     const size_t MAX_MISSILE = 2;
-    const size_t MAX_ARMOUR = 1;
-    const size_t MAX_BOMB = 3;
+    const size_t MAX_ARMOUR = 2;
+    const size_t MAX_BOMB = 1;
     const size_t MAX_WATER = 1;
     const size_t ARM_DELAY_MS = 1000;
     const size_t LEG_DELAY_MS = 1000;
@@ -119,12 +119,14 @@ void World::destroy() {
         armour_collected.destroy();
     for (auto &armour_collected : m_armour_collected_2)
         armour_collected.destroy();
+    for (auto &mud_collected : m_mud_collected)
+        mud_collected.destroy();
 
 
     for (auto &bomb_used : used_bombs)
         bomb_used.destroy();
-    for (auto &mud_collected : m_mud_collected)
-        mud_collected.destroy();
+    for (auto &missiles_used : used_missiles)
+        missiles_used.destroy();
 
     m_freeze.clear();
     m_water.clear();
@@ -143,6 +145,7 @@ void World::destroy() {
     m_armour_collected_1.clear();
     m_armour_collected_2.clear();
     used_bombs.clear();
+    used_missiles.clear();
     m_mud_collected.clear();
 }
 
@@ -155,6 +158,7 @@ bool World::update(float elapsed_ms) {
             game_started = true;
             m_button.destroy();
 
+            srand((unsigned) time(0));
             explosion = false;
             m_min = 1;
             m_sec = 0;
@@ -177,12 +181,15 @@ bool World::update(float elapsed_ms) {
             m_player2.init(screen, mapCollisionPoints);
             m_antidote.init(screen, mapCollisionPoints);
             gloveRight_p1.init(screen);
-            gloveRight_p2.init(screen);
             gloveLeft_p1.init(screen);
-            gloveLeft_p2.init(screen);
             
             m_worldtexture.init(screen);
+            
             m_toolboxManager.init({screen.x, screen.y});
+            
+            gloveRight_p2.init(screen);
+            gloveLeft_p2.init(screen);
+            
             m_zombieManager.init({screen.x, screen.y}, mapCollisionPoints);
             
         }
@@ -358,26 +365,25 @@ void World::draw() {
 
         m_button.draw(projection_2D);
     } else {
-        //m_player2.draw(projection_2D);
-        //m_player1.draw(projection_2D);
+        
         //these should always be drawn first
         m_worldtexture.draw(projection_2D);
         m_toolboxManager.draw(projection_2D);
+        
+        if (is_punchingleft_p1)
+            gloveLeft_p1.draw(projection_2D);
+        if (is_punchingright_p1)
+            gloveRight_p1.draw(projection_2D);
+        
+        if (is_punchingleft_p2)
+            gloveLeft_p2.draw(projection_2D);
+        if (is_punchingright_p2)
+            gloveRight_p2.draw(projection_2D);
 
         //these are drawn in ascending order w.r.t. their y position
         m_limbsManager.draw(projection_2D);
         m_zombieManager.draw(projection_2D);
         entityDrawOrder(projection_2D);
-
-        if (is_punchingleft_p1)
-            gloveLeft_p1.draw(projection_2D);
-        if (is_punchingright_p1)
-            gloveRight_p1.draw(projection_2D);
-
-        if (is_punchingleft_p2)
-            gloveLeft_p2.draw(projection_2D);
-        if (is_punchingright_p2)
-            gloveRight_p2.draw(projection_2D);
     }
 
     // Presenting
@@ -725,14 +731,14 @@ void World::on_mouse_move(GLFWwindow *window, int button, int action, int mod) {
         if (glfwGetMouseButton(window, GLFW_MOUSE_BUTTON_1) == GLFW_RELEASE) {
 
             // std::cout << "mapCollisionPoints.push_back({ " << xpos << "f * ViewHelper::getRatio(), " << ypos << "f * ViewHelper::getRatio()});" << std::endl;
-            std::cout << "xpos: " << xpos << std::endl;
+            /*std::cout << "xpos: " << xpos << std::endl;
             std::cout << "ypos: " << ypos << std::endl;
             std::cout << "player pos: " << m_player1.get_position().x << ", " << m_player1.get_position().y
-                      << std::endl;
+                      << std::endl;*/
             if (isInsidePolygon(mapCollisionPoints, {(float)xpos * ViewHelper::getRatio(), (float)ypos * ViewHelper::getRatio()})) {
-                std::cout << "yes it's inside polygon" << std::endl;
+                //std::cout << "yes it's inside polygon" << std::endl;
             } else {
-                std::cout << "nope, it's outside the polygon" << std::endl;
+                //std::cout << "nope, it's outside the polygon" << std::endl;
             }
         }
     }
@@ -797,7 +803,7 @@ bool World::random_spawn(float elapsed_ms, vec2 screen) {
     m_next_leg_spawn -= elapsed_ms;
     m_next_spawn -= elapsed_ms;
 
-    srand((unsigned) time(0));
+    //srand((unsigned) time(0));
     int randNum = (rand() % (10)) + 1;
 
     //if (randNum % 2 == 0 || randNum % 1 == 0) {
@@ -816,7 +822,7 @@ bool World::random_spawn(float elapsed_ms, vec2 screen) {
             m_next_leg_spawn = (LEG_DELAY_MS / 2) + rand() % (1000);
         }
     }
-    if (randNum == 3) {
+    if (randNum == 7) {
         if (m_freeze.size() <= MAX_FREEZE && m_next_spawn < 0.f) {
             if (!spawn_freeze())
                 return false;
@@ -826,7 +832,7 @@ bool World::random_spawn(float elapsed_ms, vec2 screen) {
             m_next_spawn = (DELAY_MS / 2) + rand() % (1000);
         }
     }
-    if (randNum == 4){//23 == 0) {
+    if (randNum == 4) {
         if (m_missile.size() <= MAX_MISSILE && m_next_spawn < 0.f) {
             if (!spawn_missile())
                 return false;
@@ -1721,10 +1727,12 @@ void World::autoExplode(Bomb bomb, int position) {
 
     // create_explosion(used_bombs.begin()->get_position());
     // used_bombs.begin()->explode();
+    //fprintf(stderr,"# of bombs: %lu \n", used_bombs.size());
+    //fprintf(stderr,"bomb to remove: %d \n", position);
     std::vector<Bomb>::iterator itbomb = used_bombs.begin();
     for (int i = 0; i <= position; ++i) {
         if (i == position) {
-            used_bombs.erase(itbomb);
+            itbomb = used_bombs.erase(itbomb);
         }
         ++itbomb;
     }
@@ -1736,7 +1744,7 @@ void World::explode() {
     if (m_player2.get_blowback())
         m_player2.set_speed(m_player2.get_speed() * 0.9);
 
-    if (m_player1.get_speed() <= 3 || m_player2.get_speed() <= 3) {
+    if (m_player1.get_speed() <= 5 || m_player2.get_speed() <= 5) {
         m_player1.set_blowback(false);
         explosion = false;
         m_player1.set_speed(m_player1.get_speed_legs());

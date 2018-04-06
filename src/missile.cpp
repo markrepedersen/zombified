@@ -271,7 +271,7 @@ bool Missile::collides_with(const Missile& missile)
 float Missile::get_force(float mass1, float speed, vec2 objPosition)
 {
     //float blastArea = 3.14*(200.f*200.f);
-    float blastRadius = 50.f;
+    float blastRadius = 100.f;
     float force = 0;
     float dist = distance(objPosition, get_position());
     //fprintf(stderr, "distance %f\n", dist);
