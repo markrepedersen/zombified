@@ -172,6 +172,16 @@ bool World::update(float elapsed_ms) {
 
             //mud.init();
 
+            gloveRight_p1.init({screen.x, screen.y}, mapCollisionPoints);
+            is_punchingright_p1 = false;
+            gloveLeft_p1.init({screen.x, screen.y}, mapCollisionPoints);
+            is_punchingleft_p1 = false;
+
+            gloveRight_p2.init({screen.x, screen.y}, mapCollisionPoints);
+            is_punchingright_p2 = false;
+            gloveLeft_p2.init({screen.x, screen.y}, mapCollisionPoints);
+            is_punchingleft_p2 = false;
+
             m_player1.init(screen, mapCollisionPoints) && m_player2.init(screen, mapCollisionPoints) &&
             m_antidote.init(screen, mapCollisionPoints);
         }
@@ -183,10 +193,10 @@ bool World::update(float elapsed_ms) {
 
         random_spawn(elapsed_ms, {screen.x * ViewHelper::getRatio(), screen.y * ViewHelper::getRatio()});
         vec2 player_hits_from_zombies = m_zombieManager.update_zombies(elapsed_ms, m_player1.get_position(), m_player2.get_position());
-        
+
         if(!armourInUse_p1) {m_player1.numberofHits += player_hits_from_zombies.x;}
         if(!armourInUse_p2) {m_player2.numberofHits += player_hits_from_zombies.y;}
-       
+
         m_limbsManager.computePaths(elapsed_ms, *mapGrid);
         //if the freeze item is used, then zombies will stop moving
         if ((int) difftime(time(0), freezeTime) >= 5)
@@ -240,6 +250,38 @@ bool World::update(float elapsed_ms) {
             m_player2.numberofHits = 0;
         }
 
+        if (m_limbsManager.getCollectedLegs(1) > 0){
+            if ((int) difftime(time(0), leg_times_1) >= 10){
+                //fprintf(stderr, "remove leg1 \n");
+                m_limbsManager.decreaseCollectedLegs(1);
+                m_player2.increase_speed_legs(-10);
+                leg_times_1 = time(0);
+            }
+        }
+
+        if (m_limbsManager.getCollectedLegs(2) > 0){
+            if ((int) difftime(time(0), leg_times_2) >= 10){
+                //fprintf(stderr, "remove leg2 \n");
+                m_limbsManager.decreaseCollectedLegs(2);
+                m_player2.increase_speed_legs(-10);
+                leg_times_2 = time(0);
+            }
+        }
+
+        if(is_punchingleft_p2)
+            gloveLeft_p2.set_position({m_player2.get_position().x-(30.f * ViewHelper::getRatio()),
+                                        m_player2.get_position().y+(15.f * ViewHelper::getRatio())});
+        if(is_punchingright_p2)
+            gloveRight_p2.set_position({m_player2.get_position().x+(30.f * ViewHelper::getRatio()),
+                                        m_player2.get_position().y+(15.f * ViewHelper::getRatio())});
+        if(is_punchingleft_p1)
+            gloveLeft_p1.set_position({m_player1.get_position().x- (30.f * ViewHelper::getRatio()),
+                                        m_player1.get_position().y+ (15.f * ViewHelper::getRatio())});
+        if(is_punchingright_p1)
+            gloveRight_p1.set_position({m_player1.get_position().x+ (30.f * ViewHelper::getRatio()),
+                                        m_player1.get_position().y+ (15.f * ViewHelper::getRatio())});
+
+
         // for (auto &explosion : m_explosion)
         //    explosion.animate()
 
@@ -278,11 +320,17 @@ void World::draw() {
 
     std::stringstream title_ss;
     if (m_sec < 10)
-        title_ss << "player1 damage count: " << m_player1.numberofHits << "          " << "Time remaining " << m_min
-                 << ":" << "0" << m_sec << "          " << "player2 damage count: " << m_player2.numberofHits;
+        title_ss << "player1 numberoflegs: " << m_limbsManager.getCollectedLegs(1) << "          "
+        << "player1 damage count: " << m_player1.numberofHits << "          "
+        << "Time remaining " << m_min << ":" << "0" << m_sec << "          "
+        << "player2 damage count: " << m_player2.numberofHits << "          "
+        << "player2 numberoflegs: " << m_limbsManager.getCollectedLegs(2);
     else
-        title_ss << "player1 damage count: " << m_player1.numberofHits << "          " << "Time remaining " << m_min
-                 << ":" << m_sec << "          " << "player2 damage count: " << m_player2.numberofHits;
+        title_ss << "player1 numberoflegs: " << m_limbsManager.getCollectedLegs(1) << "          "
+        << "player1 damage count: " << m_player1.numberofHits << "          "
+        << "Time remaining " << m_min << ":" << m_sec << "          "
+        << "player2 damage count: " << m_player2.numberofHits << "          "
+        << "player2 numberoflegs: " << m_limbsManager.getCollectedLegs(2);
     glfwSetWindowTitle(m_window, title_ss.str().c_str());
 
     glViewport(0, 0, w, h);
@@ -317,6 +365,16 @@ void World::draw() {
         m_limbsManager.draw(projection_2D);
         m_zombieManager.draw(projection_2D);
         entityDrawOrder(projection_2D);
+
+        if (is_punchingleft_p1)
+            gloveLeft_p1.draw(projection_2D);
+        if (is_punchingright_p1)
+            gloveRight_p1.draw(projection_2D);
+
+        if (is_punchingleft_p2)
+            gloveLeft_p2.draw(projection_2D);
+        if (is_punchingright_p2)
+            gloveRight_p2.draw(projection_2D);
     }
 
     // Presenting
@@ -434,37 +492,73 @@ void World::on_key(GLFWwindow *, int key, int, int action, int mod) {
             m_player2.set_key(3, false);
 
         if (action == GLFW_PRESS && key == GLFW_KEY_RIGHT_SHIFT) {
-            // if the player has no tools/no slots attack the other player/zombie by colliding and pressing attack
-            bool hasTools = false;
-            if (m_player1.collides_with(m_player2)) {
-                // can punch players if freeze is used
-                if (immobilize == 1)
-                    m_player1.numberofHits++;
-                    //fprintf(stderr, "player2 number of hits: %d \n", m_player2.numberofHits);
-                else {
-                    
-                    for (auto &tools : m_toolboxManager.getListOfSlot_2()) {
-                        if (tools != 0 && tools != 3) {
-                            hasTools = true;
-                            break;
-                        }
-                    }
-                    // if the player has no tools then can manually attack, or else, just use a tool
-                    if (!hasTools)
-                        m_player1.numberofHits++; // needs to hit the player 5 times in order for p2 to drop item
-                    else
-                        use_tool_2(m_toolboxManager.useItem(2));
 
-                    //fprintf(stderr, "player2 number of hits: %d \n", m_player2.numberofHits);
+            //vec2 punchdirection = m_player2.get_shootDirection();
+            // if the player has no tools/no slots attack the other player by collided and pressing attack
+            //if (m_player1.collides_with(m_player2)) {
+            // can punch players if freeze is used
+            bool hasTools = false;
+
+            if (immobilize == 1){
+                //fprintf(stderr, "player2 number of hits: %d \n", m_player2.numberofHits);
+                if ((m_player2.lastkey == 2) || (m_player2.lastkey == 1)) { //up and left
+                    fprintf(stderr, "left\n");
+                    is_punchingleft_p2 = true;
+                    gloveLeft_p2.set_position({m_player2.get_position().x-(30.f * ViewHelper::getRatio()),
+                                                m_player2.get_position().y+(15.f * ViewHelper::getRatio())});
+                    if (m_player1.collides_with(gloveLeft_p2) && !armourInUse_p1)
+                        m_player1.numberofHits++;
                 }
-            } else
-            {
-                use_tool_2(m_toolboxManager.useItem(2));
+                else if ((m_player2.lastkey == 0) || (m_player2.lastkey == 3)) { //down and right
+                    fprintf(stderr, "right\n");
+                    is_punchingright_p2 = true;
+                    gloveRight_p2.set_position({m_player2.get_position().x+(30.f * ViewHelper::getRatio()),
+                                                m_player2.get_position().y+(15.f * ViewHelper::getRatio())});
+                    if (m_player1.collides_with(gloveRight_p2) && !armourInUse_p1)
+                        m_player1.numberofHits++;
+                }
+
+                //m_player1.numberofHits++;
+            }
+            else {
+                for (auto &tools : m_toolboxManager.getListOfSlot_2()) {
+                    if (tools != 0 && tools != 3) {
+                        hasTools = true;
+                        break;
+                    }
+                }
+                // if the player has no tools then can manually attack, or else, just use a tool
+                if (!hasTools) {
+                    if ((m_player2.lastkey == 2) || (m_player2.lastkey == 1)) { //up and left
+                        fprintf(stderr, "left\n");
+                        is_punchingleft_p2 = true;
+                        gloveLeft_p2.set_position(
+                                {m_player2.get_position().x - (30.f * ViewHelper::getRatio()),
+                                m_player2.get_position().y + (15.f * ViewHelper::getRatio())});
+                        if (m_player1.collides_with(gloveLeft_p2) && !armourInUse_p1)
+                            m_player1.numberofHits++;
+                    } else if ((m_player2.lastkey == 0) || (m_player2.lastkey == 3)) { //down and right
+                        fprintf(stderr, "right\n");
+                        is_punchingright_p2 = true;
+                        gloveRight_p2.set_position(
+                                {m_player2.get_position().x + (30.f * ViewHelper::getRatio()),
+                                    m_player2.get_position().y + (15.f * ViewHelper::getRatio())});
+                        if (m_player1.collides_with(gloveRight_p2) && !armourInUse_p1)
+                            m_player1.numberofHits++;
+                    }
+                } else
+                    use_tool_2(m_toolboxManager.useItem(2));
+                //fprintf(stderr, "player2 number of hits: %d \n", m_player2.numberofHits);
             }
 
             if(!hasTools){
                 m_zombieManager.attack_zombies(m_player2.get_position(), m_player2.get_bounding_box(), 2, &m_toolboxManager);
             }
+            //fprintf(stderr, "player2 number of hits: %d \n", m_player2.numberofHits);
+        }
+        if (action == GLFW_RELEASE && key == GLFW_KEY_RIGHT_SHIFT) {
+            is_punchingleft_p2 = false;
+            is_punchingright_p2 = false;
         }
     }
     if (immobilize == 2 || m_player2.get_blowback()) //player is frozen
@@ -481,7 +575,6 @@ void World::on_key(GLFWwindow *, int key, int, int action, int mod) {
             freezeTime = 0;
             //fprintf(stderr, "start");
         }
-
     }
 
     // player1 actions
@@ -509,23 +602,57 @@ void World::on_key(GLFWwindow *, int key, int, int action, int mod) {
             bool hasTools = false;
             if (m_player1.collides_with(m_player2)) {
                 if (immobilize == 2)
-                    m_player2.numberofHits++;
-                else {
-                    
-                    for (auto &tools : m_toolboxManager.getListOfSlot_1()) {
-                        if (tools != 0 && tools != 3) {
-                            hasTools = true;
-                            break;
-                        }
+                {
+                    if ((m_player1.lastkey == 2) || (m_player1.lastkey == 1)) { //up and left
+                        //fprintf(stderr, "left p1\n");
+                        is_punchingleft_p1 = true;
+                        gloveLeft_p1.set_position({m_player1.get_position().x-(30.f * ViewHelper::getRatio()),
+                                                    m_player1.get_position().y+(15.f* ViewHelper::getRatio())});
+                        if (m_player2.collides_with(gloveLeft_p1) && !armourInUse_p2)
+                            m_player2.numberofHits++;
                     }
-                    if (!hasTools)
-                        m_player2.numberofHits++; // needs to hit the player 5 times in order for p1 to drop item
-                    else
-                        use_tool_1(m_toolboxManager.useItem(1));
+                    else if ((m_player1.lastkey == 0) || (m_player1.lastkey == 3)) { //down and right
+                        //fprintf(stderr, "right\n");
+                        is_punchingright_p1 = true;
+                        gloveRight_p1.set_position({m_player1.get_position().x+(30.f * ViewHelper::getRatio()),
+                                                    m_player1.get_position().y+(15.f * ViewHelper::getRatio())});
+                        if (m_player2.collides_with(gloveRight_p1) && !armourInUse_p2)
+                            m_player2.numberofHits++;
+                    }
                 }
             } else
             {
-                use_tool_1(m_toolboxManager.useItem(1));
+                for (auto &tools : m_toolboxManager.getListOfSlot_1()) {
+                    if (tools != 0 && tools != 3) {
+                        hasTools = true;
+                        break;
+                    }
+                }
+
+                if (!hasTools) {
+                    //if (immobilize == 2) {
+                    if ((m_player1.lastkey == 2) || (m_player1.lastkey == 1)) { //up and left
+                        //fprintf(stderr, "left\n");
+                        is_punchingleft_p1 = true;
+                        gloveLeft_p1.set_position({m_player1.get_position().x-(30.f * ViewHelper::getRatio()),
+                                                    m_player1.get_position().y+(15.f * ViewHelper::getRatio())});
+                        if (m_player2.collides_with(gloveLeft_p1) && !armourInUse_p2)
+                            m_player2.numberofHits++;
+                    }
+                    else if ((m_player1.lastkey == 0) || (m_player1.lastkey == 3)) { //down and right
+                        //fprintf(stderr, "right\n");
+                        is_punchingright_p1 = true;
+                        gloveRight_p1.set_position({m_player1.get_position().x+(30.f * ViewHelper::getRatio()),
+                                                    m_player1.get_position().y+(15.f * ViewHelper::getRatio())});
+                        if (m_player2.collides_with(gloveRight_p1) && !armourInUse_p2)
+                            m_player2.numberofHits++;
+                    }
+
+                    // m_player2.numberofHits++; // needs to hit the player 5 times in order for p1 to drop item
+                    //}
+                }
+                else
+                    use_tool_1(m_toolboxManager.useItem(1));
             }
 
             if(!hasTools) {
@@ -533,9 +660,16 @@ void World::on_key(GLFWwindow *, int key, int, int action, int mod) {
             }
 
             //fprintf(stderr, "player1 number of hits: %d \n", m_player1.numberofHits);
-        }
+            //}
 
+        }
+        if (action == GLFW_RELEASE && key == GLFW_KEY_Q) {
+            is_punchingright_p1 = false;
+            is_punchingleft_p1 = false;
+        }
     }
+
+
     if (immobilize == 1 || m_player1.get_blowback()) //player is frozen
     {
         m_player1.set_freezestate(true);
@@ -963,6 +1097,7 @@ void World::check_add_tools(vec2 screen) {
     }
 
     if (collided != 0 && m_antidote.belongs_to == 0) {
+        //fprintf(stderr, "collided \n");
         float index = (float) m_toolboxManager.addItem(3, collided);
         if ((int) index != 100) {
             if (collided == 1)
@@ -975,7 +1110,19 @@ void World::check_add_tools(vec2 screen) {
     }
 
 //=================check for limbs collision
-    collided = m_limbsManager.check_collision_with_players(&m_player1, &m_player2, &m_toolboxManager);
+    string checklegs;
+    checklegs = m_limbsManager.check_collision_with_players(&m_player1, &m_player2, &m_toolboxManager);
+
+    if (checklegs == "1leg"){
+        if (m_limbsManager.getCollectedLegs(1) == 1)
+            leg_times_1 = time(0);
+        //fprintf(stderr, "1leg");
+    }
+    if (checklegs == "2leg"){
+        if (m_limbsManager.getCollectedLegs(2) == 1)
+            leg_times_2 = time(0);
+        //fprintf(stderr, "2leg");
+    }
 //    if (collided != 0) {
 //        if (collided <= 2) {
 //            m_toolboxManager.addSlot(collided);
@@ -1118,22 +1265,24 @@ void World::use_tool_1(int tool_number) {
             m_antidote.set_scale({-0.10f * ViewHelper::getRatio(), 0.10f * ViewHelper::getRatio()});
             m_antidote.belongs_to = 0;
             droppedAntidoteTime_p1 = time(0);
+            //fprintf(stderr, "dropped antidote 1: %d \n", m_antidote.belongs_to);
         }
 
     }
-    if (tool_number == 4) {
+/*    if (tool_number == 4) {
 //        m_player1.set_mass(m_player1.get_mass() - m_legs_collected_1.begin()->get_mass());
 //        m_legs_collected_1.erase(m_legs_collected_1.begin());
         m_limbsManager.decreaseCollectedLegs(1);
         m_toolboxManager.decreaseSlot(1);
         m_player1.increase_speed_legs(-10);
-    }
+    }*/
     if (tool_number == 5) {
         if (!droptool_p1) {
             used_bombs.emplace_back(m_bomb_collected_1.front());
             Bomb &use_bomb = used_bombs.back();
             use_bomb.set_position(m_player1.get_position());
             useBomb = true;
+            use_bomb.bombTime = time(0);
 
             float xspeed = 0.f;
             float yspeed = 0.f;
@@ -1201,7 +1350,7 @@ void World::shift_1(bool droppedAntidote) {
     std::vector<int>::iterator it;
     int freezecount = 0;
     int watercount = 0;
-    int legcount = 0;
+    //int legcount = 0;
     int bombcount = 0;
     int armourcount = 0;
     int missilecount = 0;
@@ -1232,12 +1381,12 @@ void World::shift_1(bool droppedAntidote) {
                 m_antidote.set_position(m_toolboxManager.new_tool_position(index, 1));
             }
         }
-        if (*it == 4) {
+        /*if (*it == 4) {
             if (!droppedAntidote) {
                 m_limbsManager.shiftCollectedLegs(1, &m_toolboxManager, index, legcount);
             }
             legcount++;
-        }
+        }*/
         if (*it == 5) {
             if (!droppedAntidote) {
                 Bomb &bomb = m_bomb_collected_1.at(bombcount);
@@ -1315,13 +1464,14 @@ void World::use_tool_2(int tool_number) {
             m_antidote.set_scale({-0.10f * ViewHelper::getRatio(), 0.10f * ViewHelper::getRatio()});
             m_antidote.belongs_to = 0;
             droppedAntidoteTime_p2 = time(0);
+            //fprintf(stderr, "dropped antidote 2: %d \n", m_antidote.belongs_to);
         }
     }
-    if (tool_number == 4) {
+    /*if (tool_number == 4) {
         m_limbsManager.decreaseCollectedLegs(2);
         m_toolboxManager.decreaseSlot(2);
         m_player2.increase_speed_legs(-10);
-    }
+    }*/
     if (tool_number == 5) {
         if (!droptool_p2) {
             used_bombs.emplace_back(m_bomb_collected_2.front());
@@ -1329,6 +1479,7 @@ void World::use_tool_2(int tool_number) {
 
             use_bomb.set_position(m_player2.get_position());
             useBomb = true;
+            use_bomb.bombTime = time(0);
 
             float xspeed = 0.f;
             float yspeed = 0.f;
@@ -1421,12 +1572,12 @@ void World::shift_2(bool droppedAntidote) {
                 m_antidote.set_position(m_toolboxManager.new_tool_position(index, 2));
             }
         }
-        if (*it == 4) {
+        /*if (*it == 4) {
             if (!droppedAntidote) {
                 m_limbsManager.shiftCollectedLegs(2, &m_toolboxManager, index, legcount);
             }
             legcount++;
-        }
+        }*/
         if (*it == 5) {
             if (!droppedAntidote) {
                 Bomb &bomb = m_bomb_collected_2.at(bombcount);
@@ -1454,29 +1605,82 @@ void World::shift_2(bool droppedAntidote) {
 }
 
 // =========== EXPLODING LOGIC ===================
-void World::autoExplode() {
+
+void World::use_bomb(float ms) {
+    std::vector<Bomb>::iterator itbomb;
+    std::vector<Bomb>::iterator checkbomb;
+    int count = 0;
+
+    int width, height;
+    glfwGetWindowSize(m_window, &width, &height);
+
+    for (itbomb = used_bombs.begin(); itbomb != used_bombs.end();) {
+        itbomb->set_speed({itbomb->get_speed().x * (0.997f), itbomb->get_speed().y * (0.997f)});
+
+
+        if ((std::fabs(itbomb->get_speed().x) <= 50 && std::fabs(itbomb->get_speed().y) <= 50)) {
+            itbomb->set_speed({0.f, 0.f});
+            autoExplode(*itbomb, count);
+        }
+        else if (m_player1.collides_with(*itbomb)||m_player2.collides_with(*itbomb)){
+            if ((int) difftime(time(0), itbomb->bombTime) >= 1) {
+                itbomb->set_speed({0.f, 0.f});
+                autoExplode(*itbomb, count);
+            }
+            else {
+                itbomb->move({itbomb->get_speed().x * (ms / 1000),
+                    itbomb->get_speed().y * (ms / 1000)}, false);
+                itbomb->checkBoundaryCollision(width, height, ms, mapCollisionPoints);
+
+                for (checkbomb = used_bombs.begin(); checkbomb != used_bombs.end() - 1; ++checkbomb) {
+                    if (checkbomb != itbomb) {
+                        if (itbomb->collides_with(*checkbomb))
+                            itbomb->checkCollision(*checkbomb, ms);
+                    }
+                }
+
+                ++itbomb;
+                ++count;
+            }
+        }
+        else {
+            itbomb->move({itbomb->get_speed().x * (ms / 1000),
+                itbomb->get_speed().y * (ms / 1000)}, false);
+            itbomb->checkBoundaryCollision(width, height, ms, mapCollisionPoints);
+
+            for (checkbomb = used_bombs.begin(); checkbomb != used_bombs.end() - 1; ++checkbomb) {
+                if (checkbomb != itbomb) {
+                    if (itbomb->collides_with(*checkbomb))
+                        itbomb->checkCollision(*checkbomb, ms);
+                }
+            }
+
+            ++itbomb;
+            ++count;
+        }
+    }
+
+}
+
+void World::autoExplode(Bomb bomb, int position) {
     float force_p1 = 0;
     float force_p2 = 0;
     if (!armourInUse_p1) {
-        force_p1 = used_bombs.front().get_force(m_player1.get_mass(),
+        force_p1 = bomb.get_force(m_player1.get_mass(),
                                                 m_player1.get_speed(),
                                                 m_player1.get_position());
-        //droptool_p1 = true;
-        //use_tool_1(m_toolboxManager.useItem(1));
     }
 
     if (!armourInUse_p2) {
-        force_p2 = used_bombs.front().get_force(m_player2.get_mass(),
+        force_p2 = bomb.get_force(m_player2.get_mass(),
                                                 m_player2.get_speed(),
                                                 m_player2.get_position());
-        //droptool_p2 = true;
-        //use_tool_2(m_toolboxManager.useItem(2));
     }
     if (force_p1 > 0) {
         m_player1.set_blowback(true);
         m_player1.set_speed(force_p1);
-        m_player1.set_blowbackForce({(m_player1.get_position().x - used_bombs.front().get_position().x),
-                                     (m_player1.get_position().y - used_bombs.front().get_position().y)});
+        m_player1.set_blowbackForce({(m_player1.get_position().x - bomb.get_position().x),
+                                     (m_player1.get_position().y - bomb.get_position().y)});
         explosion = true;
         droptool_p1 = true;
         use_tool_1(m_toolboxManager.useItem(1));
@@ -1484,8 +1688,8 @@ void World::autoExplode() {
     if (force_p2 > 0) {
         m_player2.set_blowback(true);
         m_player2.set_speed(force_p2);
-        m_player2.set_blowbackForce({(m_player2.get_position().x - used_bombs.front().get_position().x),
-                                     (m_player2.get_position().y - used_bombs.front().get_position().y)});
+        m_player2.set_blowbackForce({(m_player2.get_position().x - bomb.get_position().x),
+                                     (m_player2.get_position().y - bomb.get_position().y)});
         explosion = true;
         droptool_p2 = true;
         use_tool_2(m_toolboxManager.useItem(2));
@@ -1493,7 +1697,13 @@ void World::autoExplode() {
 
     // create_explosion(used_bombs.begin()->get_position());
     // used_bombs.begin()->explode();
-    used_bombs.erase(used_bombs.begin());
+    std::vector<Bomb>::iterator itbomb = used_bombs.begin();
+    for (int i = 0; i <= position; ++i) {
+        if (i == position) {
+            used_bombs.erase(itbomb);
+        }
+        ++itbomb;
+    }
 }
 
 void World::explode() {
@@ -1512,41 +1722,9 @@ void World::explode() {
     }
 }
 
-void World::use_bomb(float ms) {
-    std::vector<Bomb>::iterator itbomb;
-    std::vector<Bomb>::iterator checkbomb;
-
-    int width, height;
-    glfwGetWindowSize(m_window, &width, &height);
-
-    for (itbomb = used_bombs.begin(); itbomb != used_bombs.end();) {
-        itbomb->set_speed({itbomb->get_speed().x * (0.997f), itbomb->get_speed().y * (0.997f)});
-
-        if (std::fabs(itbomb->get_speed().x) <= 50 && std::fabs(itbomb->get_speed().y) <= 50) {
-            itbomb->set_speed({0.f, 0.f});
-            autoExplode();
-        } else {
-            itbomb->move({itbomb->get_speed().x * (ms / 1000),
-                          itbomb->get_speed().y * (ms / 1000)}, false);
-            itbomb->checkBoundaryCollision(width, height, ms, mapCollisionPoints);
-
-            for (checkbomb = used_bombs.begin(); checkbomb != used_bombs.end() - 1; ++checkbomb) {
-                if (checkbomb != itbomb) {
-                    if (itbomb->collides_with(*checkbomb))
-                        itbomb->checkCollision(*checkbomb, ms);
-                }
-            }
-
-            ++itbomb;
-        }
-
-    }
-
-}
-
 void World::use_missile(float ms) {
     std::vector<Missile>::iterator itmissile;
-    //std::vector<Missile>::iterator checkmissile;
+    int count = 0;
     
     int width, height;
     glfwGetWindowSize(m_window, &width, &height);
@@ -1554,39 +1732,41 @@ void World::use_missile(float ms) {
     for (itmissile = used_missiles.begin(); itmissile != used_missiles.end();) {
         /*if ((itmissile->useMissileOnPlayer == 1 && m_player1.collides_with(*itmissile))||
             (itmissile->useMissileOnPlayer == 2 && m_player2.collides_with(*itmissile)))*/
+        //fprintf(stderr,"# of missiles: %lu", used_missiles.size());
         if (itmissile->checkPoint())
-            autoExplodeMissile();
+            autoExplodeMissile(*itmissile, count);
         else {
             itmissile->move({itmissile->get_speed().x * (ms / 1000),
                 itmissile->get_speed().y * (ms / 1000)});
             /*if (itmissile->checkboundary())
                 used_missiles.erase(itmissile);
             else*/
-                ++itmissile;
+            ++itmissile;
+            ++count;
         }
     }
     
 }
 
 
-void World::autoExplodeMissile() {
+void World::autoExplodeMissile(Missile missile, int position) {
     float force_p1 = 0;
     float force_p2 = 0;
     if (!armourInUse_p1) {
-        force_p1 = used_missiles.front().get_force(m_player1.get_mass(),
+        force_p1 = missile.get_force(m_player1.get_mass(),
                                                 m_player1.get_speed(),
                                                 m_player1.get_position());
     }
     
     if (!armourInUse_p2) {
-        force_p2 = used_missiles.front().get_force(m_player2.get_mass(),
+        force_p2 = missile.get_force(m_player2.get_mass(),
                                                 m_player2.get_speed(),
                                                 m_player2.get_position());
     }
     if (force_p1 > 0) {
         m_player1.set_blowback(true);
         m_player1.set_speed(force_p1);
-        m_player1.set_blowbackForce({(m_player1.get_position().x - used_missiles.front().get_position().x),
+        m_player1.set_blowbackForce({(m_player1.get_position().x - missile.get_position().x),
             (m_player1.get_position().y - used_missiles.front().get_position().y)});
         explosion = true;
         droptool_p1 = true;
@@ -1595,14 +1775,23 @@ void World::autoExplodeMissile() {
     if (force_p2 > 0) {
         m_player2.set_blowback(true);
         m_player2.set_speed(force_p2);
-        m_player2.set_blowbackForce({(m_player2.get_position().x - used_missiles.front().get_position().x),
-            (m_player2.get_position().y - used_missiles.front().get_position().y)});
+        m_player2.set_blowbackForce({(m_player2.get_position().x - missile.get_position().x),
+            (m_player2.get_position().y - missile.get_position().y)});
         explosion = true;
         droptool_p2 = true;
         use_tool_2(m_toolboxManager.useItem(2));
     }
 
-    used_missiles.erase(used_missiles.begin());
+    //fprintf(stderr,"# of missiles: %lu \n", used_missiles.size());
+    //fprintf(stderr,"missile to remove: %d \n", position);
+    std::vector<Missile>::iterator itmissile = used_missiles.begin();
+    for (int i = 0; i <= position; ++i) {
+        if (i == position) {
+            used_missiles.erase(itmissile);
+        }
+        else
+            ++itmissile;
+    }
 }
 
 

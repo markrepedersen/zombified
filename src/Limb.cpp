@@ -248,3 +248,18 @@ void Limb::animate()
         start_time_limb = curr_time;
     }
 }
+
+void Limb::initLegTime(){
+    if (type == "leg")
+        legTime = time(0);
+}
+time_t Limb::getLegTime(){
+    if (type == "leg")
+        return legTime;
+    else {
+        fprintf(stderr, "Limb::getLegTime of arm");
+        return time(0);
+    }
+}
+
+
