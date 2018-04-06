@@ -484,7 +484,7 @@ bool Player1::collides_with(const Player2& player2)
 }
 
 vec2 Player1::get_bounding_box() const{
-    return {std::fabs(m_scale.x) * player1_texture.width, std::fabs(m_scale.y) * player1_texture.height};
+    return {std::fabs(m_scale.x) * sprite_width_p1, std::fabs(m_scale.y) * sprite_height_p1};
 }
 
 void Player1::destroy() {

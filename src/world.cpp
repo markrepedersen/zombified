@@ -188,7 +188,11 @@ bool World::update(float elapsed_ms) {
         if(!armourInUse_p2) {m_player2.numberofHits += player_hits_from_zombies.y;}
        
         m_limbsManager.computePaths(elapsed_ms, *mapGrid);
-        m_zombieManager.computeZPaths(elapsed_ms, *mapGrid);
+        //if the freeze item is used, then zombies will stop moving
+        if ((int) difftime(time(0), freezeTime) >= 5)
+        {
+            m_zombieManager.computeZPaths(elapsed_ms, *mapGrid);
+        }
         std::unordered_set<vec2> new_zombie_positions = m_limbsManager.checkClusters();
         if (!new_zombie_positions.empty()) {
             for (const vec2 &pos : new_zombie_positions) {
@@ -430,16 +434,17 @@ void World::on_key(GLFWwindow *, int key, int, int action, int mod) {
             m_player2.set_key(3, false);
 
         if (action == GLFW_PRESS && key == GLFW_KEY_RIGHT_SHIFT) {
-            // if the player has no tools/no slots attack the other player by collided and pressing attack
+            // if the player has no tools/no slots attack the other player/zombie by colliding and pressing attack
+            bool hasTools = false;
             if (m_player1.collides_with(m_player2)) {
                 // can punch players if freeze is used
                 if (immobilize == 1)
                     m_player1.numberofHits++;
                     //fprintf(stderr, "player2 number of hits: %d \n", m_player2.numberofHits);
                 else {
-                    bool hasTools = false;
+                    
                     for (auto &tools : m_toolboxManager.getListOfSlot_2()) {
-                        if (tools != 0) {
+                        if (tools != 0 && tools != 3) {
                             hasTools = true;
                             break;
                         }
@@ -457,7 +462,9 @@ void World::on_key(GLFWwindow *, int key, int, int action, int mod) {
                 use_tool_2(m_toolboxManager.useItem(2));
             }
 
-            m_zombieManager.attack_zombies(m_player2.get_position(), m_player2.get_bounding_box());
+            if(!hasTools){
+                m_zombieManager.attack_zombies(m_player2.get_position(), m_player2.get_bounding_box(), 2, &m_toolboxManager);
+            }
         }
     }
     if (immobilize == 2 || m_player2.get_blowback()) //player is frozen
@@ -498,14 +505,15 @@ void World::on_key(GLFWwindow *, int key, int, int action, int mod) {
 
         // use tools
         if (action == GLFW_PRESS && key == GLFW_KEY_Q) {
-            // if the player has no tools/no slots attack the other player by collided and pressing attack
+            // if the player has no tools/no slots attack the other player/zombie by colliding and pressing attack
+            bool hasTools = false;
             if (m_player1.collides_with(m_player2)) {
                 if (immobilize == 2)
                     m_player2.numberofHits++;
                 else {
-                    bool hasTools = false;
+                    
                     for (auto &tools : m_toolboxManager.getListOfSlot_1()) {
-                        if (tools != 0) {
+                        if (tools != 0 && tools != 3) {
                             hasTools = true;
                             break;
                         }
@@ -520,7 +528,9 @@ void World::on_key(GLFWwindow *, int key, int, int action, int mod) {
                 use_tool_1(m_toolboxManager.useItem(1));
             }
 
-            m_zombieManager.attack_zombies(m_player1.get_position(), m_player1.get_bounding_box());
+            if(!hasTools) {
+            m_zombieManager.attack_zombies(m_player1.get_position(), m_player1.get_bounding_box(), 1, &m_toolboxManager);
+            }
 
             //fprintf(stderr, "player1 number of hits: %d \n", m_player1.numberofHits);
         }
@@ -631,9 +641,9 @@ bool World::random_spawn(float elapsed_ms, vec2 screen) {
     m_next_spawn -= elapsed_ms;
 
     srand((unsigned) time(0));
-    int randNum = rand() % (1000);
+    int randNum = (rand() % (10)) + 1;
 
-    if (randNum % 7 == 0) {
+    if (randNum == 1 || randNum == 10 || randNum == 8) {
         if (m_limbsManager.get_arms_size() <= MAX_ARMS && m_next_arm_spawn < 0.f) {
             if (!(m_limbsManager.spawn_arms()))
                 return false;
@@ -641,14 +651,14 @@ bool World::random_spawn(float elapsed_ms, vec2 screen) {
         }
     }
 
-    if (randNum % 19 == 0) {
+    if (randNum == 2) {
         if (m_limbsManager.get_legs_size() <= MAX_LEGS && m_next_leg_spawn < 0.f) {
             if (!(m_limbsManager.spawn_legs()))
                 return false;
             m_next_leg_spawn = (LEG_DELAY_MS / 2) + rand() % (1000);
         }
     }
-    if (randNum % 13 == 0) {
+    if (randNum == 3) {
         if (m_freeze.size() <= MAX_FREEZE && m_next_spawn < 0.f) {
             if (!spawn_freeze())
                 return false;
@@ -658,7 +668,7 @@ bool World::random_spawn(float elapsed_ms, vec2 screen) {
             m_next_spawn = (DELAY_MS / 2) + rand() % (1000);
         }
     }
-    if (randNum % 2 ==0){//23 == 0) {
+    if (randNum == 4){//23 == 0) {
         if (m_missile.size() <= MAX_MISSILE && m_next_spawn < 0.f) {
             if (!spawn_missile())
                 return false;
@@ -674,7 +684,7 @@ bool World::random_spawn(float elapsed_ms, vec2 screen) {
         }
     }
 
-    if (randNum % 11 == 0) {
+    if (randNum == 5) {
         if (m_armour.size() <= MAX_ARMOUR && m_next_spawn < 0.f) {
             if (!spawn_armour())
                 return false;
@@ -690,7 +700,7 @@ bool World::random_spawn(float elapsed_ms, vec2 screen) {
         }
     }
 
-    if (randNum % 3 == 0) {
+    if (randNum == 6 || randNum == 9) {
         if (m_bomb.size() <= MAX_BOMB && m_next_spawn < 0.f) {
             if (!spawn_bomb())
                 return false;
@@ -705,7 +715,7 @@ bool World::random_spawn(float elapsed_ms, vec2 screen) {
         }
     }
 
-    if (randNum % 9 == 0) {
+    if (randNum == 7) {
         if (m_water.size() <= MAX_WATER && m_next_spawn < 0.f) {
             if (!spawn_water())
                 return false;

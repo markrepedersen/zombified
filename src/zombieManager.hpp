@@ -39,7 +39,7 @@ public:
 
     //when the player is attacking using hand combat it will attack at most one zombie in the vicinity
     //per punch
-    void attack_zombies(vec2 player_pos, vec2 bounding_box);
+    void attack_zombies(vec2 player_pos, vec2 bounding_box, int playerNum, ToolboxManager *m_toolboxmanager);
 
     void destroy();
     

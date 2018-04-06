@@ -168,9 +168,7 @@ int LimbsManager::check_collision_with_players(Player1 *m_player1, Player2 *m_pl
                 else
                     ++it;
                 
-            }
-        
-            if ((*it).getLimbType() == "arm") {
+            } else if ((*it).getLimbType() == "arm") {
                 if(m_toolboxmanager->addSlot(collided))
                 {
                     //erase.push_back(armcount);
@@ -186,47 +184,7 @@ int LimbsManager::check_collision_with_players(Player1 *m_player1, Player2 *m_pl
             ++it;
     }
 
-//        if (m_player1->collides_with(*it)) {
-//
-//            if ((*it).getLimbType() == "leg") {
-//                m_player1->increase_speed_legs(10);
-//                m_legs_total--;
-//            } else {
-//                if (collided == 0) {
-//                    collided = 1;
-//                } else if (collided == 2) {
-//                    collided = 3;
-//                }
-//
-//                m_arms_total--;
-//            }
-//
-//            limb_collided = 1;
-//        }
-//        if (m_player2->collides_with(*it)) {
-//            if ((*it).getLimbType() == "leg") {
-//                m_player2->increase_speed_legs(10);
-//                m_legs_total--;
-//            } else {
-//                if (collided == 0) {
-//                    collided = 2;
-//                } else if (collided == 2) {
-//                    collided = 3;
-//                }
-//
-//                m_arms_total--;
-//            }
-//            limb_collided = 1;
-//        }
-//
-//        if (limb_collided != 0) {
-//            it->destroy();
-//            it = limbs.erase(it);
-//        } else {
-//            ++it;
-//        }
     return collided;
-
 }
 
 int LimbsManager::get_arms_size() {
@@ -283,7 +241,7 @@ std::unordered_set<vec2> LimbsManager::checkClusters() {
 
     //for each limb that has found its centroid, add to zombie_map
      for (auto it = limbs.begin(); it != limbs.end();) {
-        if (getDistance(it->get_position(),it->getCurrentTarget()) < ((m_screen.x/30) * ViewHelper::getRatio())) {
+        if (getDistance(it->get_position(),it->getCurrentTarget()) < ((m_screen.x/50) * ViewHelper::getRatio())) {
 
             auto searchIt = zombie_map.find(it->getCurrentTarget());
 
