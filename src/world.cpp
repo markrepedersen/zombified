@@ -171,6 +171,9 @@ bool World::update(float elapsed_ms) {
             useMissile = false;
 
             //mud.init();
+            m_player1.init(screen, mapCollisionPoints);
+            m_player2.init(screen, mapCollisionPoints);
+            m_antidote.init(screen, mapCollisionPoints);
 
             gloveRight_p1.init({screen.x, screen.y}, mapCollisionPoints);
             is_punchingright_p1 = false;
@@ -181,9 +184,7 @@ bool World::update(float elapsed_ms) {
             is_punchingright_p2 = false;
             gloveLeft_p2.init({screen.x, screen.y}, mapCollisionPoints);
             is_punchingleft_p2 = false;
-
-            m_player1.init(screen, mapCollisionPoints) && m_player2.init(screen, mapCollisionPoints) &&
-            m_antidote.init(screen, mapCollisionPoints);
+            
         }
     }
 
@@ -357,6 +358,8 @@ void World::draw() {
 
         m_button.draw(projection_2D);
     } else {
+        //m_player2.draw(projection_2D);
+        //m_player1.draw(projection_2D);
         //these should always be drawn first
         m_worldtexture.draw(projection_2D);
         m_toolboxManager.draw(projection_2D);
@@ -366,7 +369,7 @@ void World::draw() {
         m_zombieManager.draw(projection_2D);
         entityDrawOrder(projection_2D);
 
-        if (is_punchingleft_p1)
+       /* if (is_punchingleft_p1)
             gloveLeft_p1.draw(projection_2D);
         if (is_punchingright_p1)
             gloveRight_p1.draw(projection_2D);
@@ -374,7 +377,7 @@ void World::draw() {
         if (is_punchingleft_p2)
             gloveLeft_p2.draw(projection_2D);
         if (is_punchingright_p2)
-            gloveRight_p2.draw(projection_2D);
+            gloveRight_p2.draw(projection_2D);*/
     }
 
     // Presenting
@@ -447,12 +450,22 @@ void World::entityDrawOrder(mat3 projection_2D) {
     transform(m_mud_collected.begin(), m_mud_collected.end(), std::back_inserter(drawOrderVector),
               [](Mud& entity) { return &entity; });
 
-    drawOrderVector.push_back(&m_player1);
     drawOrderVector.push_back(&m_player2);
+    drawOrderVector.push_back(&m_player1);
     drawOrderVector.push_back(&m_antidote);
 
     m_zombieManager.transformZombies(drawOrderVector);
     m_limbsManager.transformLimbs(drawOrderVector);
+    
+    if (is_punchingleft_p1)
+        drawOrderVector.push_back(&gloveLeft_p1);
+    if (is_punchingright_p1)
+        drawOrderVector.push_back(&gloveRight_p1);
+    
+    if (is_punchingleft_p2)
+        drawOrderVector.push_back(&gloveLeft_p2);
+    if (is_punchingright_p2)
+        drawOrderVector.push_back(&gloveRight_p2);
 
     sort(drawOrderVector.begin(), drawOrderVector.end(), [](Renderable *lhs, Renderable *rhs) {
         return lhs->m_position.y < rhs->m_position.y;
@@ -502,7 +515,7 @@ void World::on_key(GLFWwindow *, int key, int, int action, int mod) {
             if (immobilize == 1){
                 //fprintf(stderr, "player2 number of hits: %d \n", m_player2.numberofHits);
                 if ((m_player2.lastkey == 2) || (m_player2.lastkey == 1)) { //up and left
-                    fprintf(stderr, "left\n");
+                    //fprintf(stderr, "left\n");
                     is_punchingleft_p2 = true;
                     gloveLeft_p2.set_position({m_player2.get_position().x-(30.f * ViewHelper::getRatio()),
                                                 m_player2.get_position().y+(15.f * ViewHelper::getRatio())});
@@ -510,7 +523,7 @@ void World::on_key(GLFWwindow *, int key, int, int action, int mod) {
                         m_player1.numberofHits++;
                 }
                 else if ((m_player2.lastkey == 0) || (m_player2.lastkey == 3)) { //down and right
-                    fprintf(stderr, "right\n");
+                    //fprintf(stderr, "right\n");
                     is_punchingright_p2 = true;
                     gloveRight_p2.set_position({m_player2.get_position().x+(30.f * ViewHelper::getRatio()),
                                                 m_player2.get_position().y+(15.f * ViewHelper::getRatio())});
@@ -530,7 +543,7 @@ void World::on_key(GLFWwindow *, int key, int, int action, int mod) {
                 // if the player has no tools then can manually attack, or else, just use a tool
                 if (!hasTools) {
                     if ((m_player2.lastkey == 2) || (m_player2.lastkey == 1)) { //up and left
-                        fprintf(stderr, "left\n");
+                        //fprintf(stderr, "left\n");
                         is_punchingleft_p2 = true;
                         gloveLeft_p2.set_position(
                                 {m_player2.get_position().x - (30.f * ViewHelper::getRatio()),
@@ -538,7 +551,7 @@ void World::on_key(GLFWwindow *, int key, int, int action, int mod) {
                         if (m_player1.collides_with(gloveLeft_p2) && !armourInUse_p1)
                             m_player1.numberofHits++;
                     } else if ((m_player2.lastkey == 0) || (m_player2.lastkey == 3)) { //down and right
-                        fprintf(stderr, "right\n");
+                        //fprintf(stderr, "right\n");
                         is_punchingright_p2 = true;
                         gloveRight_p2.set_position(
                                 {m_player2.get_position().x + (30.f * ViewHelper::getRatio()),
@@ -777,7 +790,8 @@ bool World::random_spawn(float elapsed_ms, vec2 screen) {
     srand((unsigned) time(0));
     int randNum = (rand() % (10)) + 1;
 
-    if (randNum == 1 || randNum == 10 || randNum == 8) {
+    //if (randNum % 2 == 0 || randNum % 1 == 0) {
+    if (randNum == 1 || randNum == 10 || randNum == 8){
         if (m_limbsManager.get_arms_size() <= MAX_ARMS && m_next_arm_spawn < 0.f) {
             if (!(m_limbsManager.spawn_arms()))
                 return false;
@@ -1767,7 +1781,7 @@ void World::autoExplodeMissile(Missile missile, int position) {
         m_player1.set_blowback(true);
         m_player1.set_speed(force_p1);
         m_player1.set_blowbackForce({(m_player1.get_position().x - missile.get_position().x),
-            (m_player1.get_position().y - used_missiles.front().get_position().y)});
+            (m_player1.get_position().y - missile.get_position().y)});
         explosion = true;
         droptool_p1 = true;
         use_tool_1(m_toolboxManager.useItem(1));
@@ -1787,7 +1801,7 @@ void World::autoExplodeMissile(Missile missile, int position) {
     std::vector<Missile>::iterator itmissile = used_missiles.begin();
     for (int i = 0; i <= position; ++i) {
         if (i == position) {
-            used_missiles.erase(itmissile);
+            itmissile = used_missiles.erase(itmissile);
         }
         else
             ++itmissile;
