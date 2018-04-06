@@ -1637,7 +1637,7 @@ void World::use_bomb(float ms) {
             autoExplode(*itbomb, count);
         }
         else if (m_player1.collides_with(*itbomb)||m_player2.collides_with(*itbomb)){
-            if ((int) difftime(time(0), itbomb->bombTime) >= 1) {
+            if ((int) difftime(time(0), itbomb->bombTime) >= 2) {
                 itbomb->set_speed({0.f, 0.f});
                 autoExplode(*itbomb, count);
             }
