@@ -286,6 +286,11 @@ void Player2::update(float ms) {
         move({dx, dy});
         animate();
     }
+    else
+    {
+        if (blowback)
+            speed = 0.f;
+    }
 }
 
 void Player2::move(vec2 off) {

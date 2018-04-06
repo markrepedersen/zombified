@@ -316,6 +316,11 @@ void Player1::update(float ms) {
         move({xStep, yStep});
         animate();
     }
+    else
+    {
+     if (blowback)
+         speed = 0.f;
+    }
 
 }
 
