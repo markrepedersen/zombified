@@ -7,6 +7,7 @@
 #include <vector>
 #include <tuple>
 #include <unistd.h>
+#include <time.h>
 //#include <math.h>
 
 class Bomb : public Renderable
@@ -56,6 +57,8 @@ public:
     void checkCollision(Bomb other, float ms);
 
     void explode();
+    
+    time_t bombTime;
     
 private:
     bool m_is_alive; // True if the salmon is alive

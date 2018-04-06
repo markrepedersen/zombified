@@ -91,6 +91,10 @@ bool Player2::init(vec2 screen, std::vector<vec2> mapCollisionPoints) {
     m_position = {(screen.x - (screen.x / 5)) * ViewHelper::getRatio(), (screen.y / 2) * ViewHelper::getRatio()};
 
     numberofHits = 0;
+    
+   /* fprintf(stderr, "size %f, %f",
+            std::fabs(m_scale.x) * sprite_width_p2,
+            std::fabs(m_scale.y) * sprite_height_p2);*/
 
     return true;
 }
@@ -177,6 +181,7 @@ void Player2::set_key(int key, bool pressed) {
             shootdirection = {shootdirection.x, (float) key};
         if (key == 1 || key == 3) //left and right
             shootdirection = {(float) key, shootdirection.y};
+        lastkey = key;
     }
     if (!pressed)
         m_keys[key] = false;
@@ -420,19 +425,32 @@ bool Player2::collides_with(const Mud &mud) {
     return false;
 }
 
-//bool Player2::collides_with(const Player1& player1)
-//{
-//    float dx = m_position.x - player1.get_position().x;
-//    float dy = m_position.y - player1.get_position().y;
-//    float d_sq = dx * dx + dy * dy;
-//    float other_r = std::max(player1.get_bounding_box().x, player1.get_bounding_box().y);
-//    float my_r = std::max(m_scale.x, m_scale.y);
-//    float r = std::max(other_r, my_r);
-//    r *= 0.6f;
-//    if (d_sq < r * r)
-//        return true;
-//    return false;
-//}
+bool Player2::collides_with(const Punchright& punchright) {
+    float dx = m_position.x - punchright.get_position().x;
+    float dy = m_position.y - punchright.get_position().y;
+    float d_sq = dx * dx + dy * dy;
+    float other_r = std::max(punchright.get_bounding_box().x, punchright.get_bounding_box().y);
+    float my_r = std::max(m_scale.x, m_scale.y);
+    float r = std::max(other_r, my_r);
+    r *= 0.6f;
+    if (d_sq < r * r)
+        return true;
+    return false;
+}
+
+bool Player2::collides_with(const Punchleft& punchleft) {
+    float dx = m_position.x - punchleft.get_position().x;
+    float dy = m_position.y - punchleft.get_position().y;
+    float d_sq = dx * dx + dy * dy;
+    float other_r = std::max(punchleft.get_bounding_box().x, punchleft.get_bounding_box().y);
+    float my_r = std::max(m_scale.x, m_scale.y);
+    float r = std::max(other_r, my_r);
+    r *= 0.6f;
+    if (d_sq < r * r)
+        return true;
+    return false;
+}
+
 
 vec2 Player2::get_bounding_box() const {
     // fabs is to avoid negative scale due to the facing direction

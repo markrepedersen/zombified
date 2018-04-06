@@ -8,6 +8,7 @@
 #include "JPS.h"
 #include "viewHelper.hpp"
 #include "common.hpp"
+#include <time.h>
 
 class Limb : public Renderable {
 
@@ -52,6 +53,11 @@ public:
     void setInitialized(bool flag) {this->initialized = flag;}
 
     void animate();
+    
+    void initLegTime();
+    time_t getLegTime();
+    
+    time_t legTime;
 
 protected:
     vec2 cur_target;

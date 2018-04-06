@@ -73,6 +73,9 @@ bool Missile::init()
     m_scale.y = 5.f * ViewHelper::getRatio();
     m_is_alive = true;
     m_position = { 450.f * ViewHelper::getRatio(), 450.f * ViewHelper::getRatio()};
+    m_speed = {0.f, 0.f};
+    useMissileOnPlayer = 0;
+    onPlayerPos = {0.f, 0.f};
 
 	m_num_indices = indices.size();
 	m_rotation = 0.f;
@@ -88,6 +91,7 @@ void Missile::draw(const mat3& projection)
     transform_begin();
     transform_translate(m_position);
     transform_scale(m_scale);
+    transform_rotate(m_rotation);
     transform_end();
     
     // Setting shaders
@@ -206,9 +210,23 @@ float Missile::get_mass() const
     return mass;
 }
 
+void Missile::set_rotation(float radians)
+{
+    m_rotation = radians;
+}
+
 bool Missile::is_alive()const
 {
     return m_is_alive;
+}
+
+
+void Missile::set_speed(vec2 newspeed){
+    m_speed = newspeed;
+    
+}
+vec2 Missile::get_speed()const{
+    return m_speed;
 }
 
 void Missile::destroy()
@@ -232,6 +250,10 @@ vec2 Missile::get_bounding_box()const
     return { std::fabs(m_scale.x) * missilewidth, std::fabs(m_scale.y) * missileheight };
 }
 
+void Missile::move(vec2 pos) {
+    m_position += pos;
+}
+
 bool Missile::collides_with(const Missile& missile)
 {
     float dx = m_position.x - missile.get_position().x;
@@ -244,5 +266,48 @@ bool Missile::collides_with(const Missile& missile)
     if (d_sq < r * r)
         return true;
     return false;
+}
+
+float Missile::get_force(float mass1, float speed, vec2 objPosition)
+{
+    //float blastArea = 3.14*(200.f*200.f);
+    float blastRadius = 200.f;
+    float force = 0;
+    float dist = distance(objPosition, get_position());
+    //fprintf(stderr, "distance %f\n", dist);
+    if (dist < blastRadius)
+    {
+        //if (dist < 40.f)
+        //    dist = 40.f;
+        //fprintf(stderr, "distance %f\n", dist);
+        //fprintf(stderr, "speed %f\n", speed);
+        force = ((speed*speed)/(dist*mass1));//+400;
+        //fprintf(stderr, "speed %f\n", speed);
+        //if (force > 950.0)
+        //    force = 950;
+    }
+    return force;
+    
+}
+
+bool Missile::checkPoint() {
+    
+    float dx = m_position.x - onPlayerPos.x;
+    float dy = m_position.y - onPlayerPos.y;
+    float d_sq = dx * dx + dy * dy;
+    
+    float other_r = 72;
+    
+    float my_r = std::max(m_scale.x, m_scale.y);
+    float r = std::max(other_r, my_r);
+    r *= 0.6f;
+    if (d_sq < r * r)
+        return true;
+    return false;
+    
+    /*if (m_position.x > 1280 || m_position.x < 0 || m_position.y > 720 || m_position.y < 0)
+        return true;
+    return false;*/
+
 }
 

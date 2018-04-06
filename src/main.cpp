@@ -29,12 +29,12 @@ int main(int argc, char* argv[])
 		std::cin.get();
 		return EXIT_FAILURE;
 	}
-
 	auto t = Clock::now();
 
 	// variable timestep loop.. can be improved (:
 	while (!world.is_over())
 	{
+		
 		// Processes system messages, if this wasn't present the window would become unresponsive
 		glfwPollEvents();
 
@@ -46,8 +46,9 @@ int main(int argc, char* argv[])
 		world.update(elapsed_sec);
         world.draw();
 	}
-
+	
 	world.destroy();
 
+	
 	return EXIT_SUCCESS;
 }

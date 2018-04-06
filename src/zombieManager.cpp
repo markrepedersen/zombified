@@ -41,16 +41,47 @@ bool ZombieManager::spawn_zombie(vec2 zombie_pos, vec2 player1_pos, vec2 player2
     return false;
 }
 
-//updating targets of zombies if necessary
-void ZombieManager::check_targets(vec2 player1_pos, vec2 player2_pos) {
+//updating targets of zombies if necessary, as well as attack timeout time for each zombie if necessary
+//if players are within reach of zombies, return the number of attacks for each player {player1damage, player2damage}
+vec2 ZombieManager::update_zombies(float elapsed_ms, vec2 player1_pos, vec2 player2_pos) {
+    float player1damage = 0.f;
+    float player2damage = 0.f;
 
     for (auto &zombie : zombies) {
-        if (getDistance(zombie.get_position(), player1_pos) > getDistance(zombie.get_position(), player2_pos)) {
+        float distance_to_player1 = getDistance(zombie.get_position(), player1_pos);
+        float distance_to_player2 = getDistance(zombie.get_position(), player2_pos);
+        
+        if(distance_to_player1 > distance_to_player2) {
             zombie.setCurrentTarget({static_cast<float>(player2_pos.x), static_cast<float>(player2_pos.y)});
         } else {
             zombie.setCurrentTarget({static_cast<float>(player1_pos.x), static_cast<float>(player1_pos.y)});
         }
+
+        float currTimeout = zombie.getAttackTimeout();
+        if (currTimeout > 0) {
+            zombie.setAttackTimeout(currTimeout - elapsed_ms);
+        } else {
+            bool zombieAttacked = false;
+
+            if(distance_to_player1 < (m_screen.x/30 * ViewHelper::getRatio())) {
+                player1damage++;
+                zombieAttacked = true;
+            }
+
+            if(distance_to_player2 < (m_screen.x/30 * ViewHelper::getRatio())) {
+                player2damage++;
+                zombieAttacked = true;
+            }
+
+            //if this zombie attacked something this round, set timeout for 3 seconds
+            if (zombieAttacked) {
+                zombie.setAttackTimeout(1000);
+            }
+        }
     }
+    
+    // std::cout << "player1damage, player2damage: " << player1damage <<", " << player2damage <<std::endl;
+    return {player1damage, player2damage};
 }
 
 void ZombieManager::computeZPaths(float ms, const MapGrid &mapGrid) {
@@ -96,6 +127,27 @@ void ZombieManager::computeZPaths(float ms, const MapGrid &mapGrid) {
 int ZombieManager::check_collision_with_players(Player1 *p1, Player2 *p2, ToolboxManager *tb) {
     return 1;
 }
+
+void ZombieManager::attack_zombies(vec2 player_pos, vec2 player_boundingbox, int playerNum, ToolboxManager *m_toolboxmanager) {
+    
+
+    
+     for (auto it = zombies.begin(); it != zombies.end(); it++){
+        if ((std::abs(player_pos.x - it->get_position().x) * 2 <
+                (player_boundingbox.x + it->get_bounding_box().x)) &&
+            (std::abs(player_pos.y - it->get_position().y) * 2 <
+                (player_boundingbox.y + it->get_bounding_box().y)))
+                {
+                    if(m_toolboxmanager->addSlot(playerNum))
+                    {
+                        it->destroy();
+                        it = zombies.erase(it);
+                    }
+                    return;
+                }
+    }
+}
+
 
 void ZombieManager::destroy() {
     zombies.clear();

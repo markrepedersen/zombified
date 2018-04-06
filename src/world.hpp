@@ -25,6 +25,8 @@
 #include "bomb.hpp"
 #include "armour.hpp"
 #include "zombie.hpp"
+#include "punchleft.hpp"
+#include "punchright.hpp"
 #include <vector>
 #include <Box2D.h>
 #include <SDL/SDL.h>
@@ -68,10 +70,14 @@ public:
     //start button
     //bool buttonclicked();
     void explode();
-    void autoExplode();
+    void autoExplode(Bomb bomb, int position);
     void use_bomb(float ms);
+    void use_missile(float ms);
+    void autoExplodeMissile(Missile missile, int position);
+
     //void init_use_bomb(float ms);
     bool useBomb;
+    bool useMissile;
 
 private:
     bool spawn_freeze();
@@ -117,6 +123,8 @@ private:
     time_t armourTime_p2;
     time_t droppedAntidoteTime_p1;
     time_t droppedAntidoteTime_p2;
+    time_t leg_times_1;
+    time_t leg_times_2;
 
 	// Game entities
 	Worldtexture m_worldtexture;
@@ -130,6 +138,16 @@ private:
 	Antidote m_antidote;
 
     Tree m_tree;
+    
+    Punchleft gloveLeft_p1;
+    Punchright gloveRight_p1;
+    bool is_punchingleft_p1;
+    bool is_punchingright_p1;
+    
+    Punchleft gloveLeft_p2;
+    Punchright gloveRight_p2;
+    bool is_punchingleft_p2;
+    bool is_punchingright_p2;
 
     //Mud mud;
     
@@ -154,6 +172,7 @@ private:
     std::vector<Mud> m_mud_collected;
 
     std::vector<Bomb> used_bombs;
+    std::vector<Missile> used_missiles;
 
 	MapGrid *mapGrid;
 

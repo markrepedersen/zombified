@@ -28,7 +28,7 @@ public:
 
     void transformZombies(std::vector<Renderable*> &container);
 
-    void check_targets(vec2 player1_pos, vec2 player2_pos);
+    vec2 update_zombies(float ms, vec2 player1_pos, vec2 player2_pos);
 
     //check if players collide with any zombies
     //make sure to apply timeout
@@ -36,6 +36,10 @@ public:
 
     //decide which player for zombie to target
     void computeZPaths(float ms, const MapGrid &mapGrid);
+
+    //when the player is attacking using hand combat it will attack at most one zombie in the vicinity
+    //per punch
+    void attack_zombies(vec2 player_pos, vec2 bounding_box, int playerNum, ToolboxManager *m_toolboxmanager);
 
     void destroy();
     
