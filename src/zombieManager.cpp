@@ -130,9 +130,7 @@ int ZombieManager::check_collision_with_players(Player1 *p1, Player2 *p2, Toolbo
 
 void ZombieManager::attack_zombies(vec2 player_pos, vec2 player_boundingbox, int playerNum, ToolboxManager *m_toolboxmanager) {
     
-
-    
-     for (auto it = zombies.begin(); it != zombies.end(); it++){
+     for (auto it = zombies.begin(); it != zombies.end();){
         if ((std::abs(player_pos.x - it->get_position().x) * 2 <
                 (player_boundingbox.x + it->get_bounding_box().x)) &&
             (std::abs(player_pos.y - it->get_position().y) * 2 <
@@ -142,8 +140,13 @@ void ZombieManager::attack_zombies(vec2 player_pos, vec2 player_boundingbox, int
                     {
                         it->destroy();
                         it = zombies.erase(it);
+                        return;
+                    } else {
+                        it++;
                     }
-                    return;
+                }
+                else {
+                    it++;
                 }
     }
 }
