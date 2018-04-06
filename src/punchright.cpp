@@ -5,7 +5,7 @@
 
 Texture Punchright::punchright_texture;
 
-bool Punchright::init(vec2 screen, std::vector<vec2> mapCollisionPoints)
+bool Punchright::init(vec2 screen)
 {
     
             if (!punchright_texture.load_from_file(tools_textures_path("gloveright.png")))
@@ -60,7 +60,7 @@ bool Punchright::init(vec2 screen, std::vector<vec2> mapCollisionPoints)
     m_is_alive = true;
     
     srand((unsigned)time(0));
-    m_position = {screen.x/2 * ViewHelper::getRatio(), (getRandomPointInMap(mapCollisionPoints, screen)).y};
+    m_position = {screen.x/2 * ViewHelper::getRatio(), screen.y/2 * ViewHelper::getRatio()};
     
     belongs_to = 0;
     return true;

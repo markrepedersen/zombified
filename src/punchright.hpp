@@ -8,7 +8,7 @@ class Punchright : public Renderable
     static Texture punchright_texture;
 public:
     // Creates all the associated render resources and default transform
-    bool init(vec2 screen, std::vector<vec2> mapCollisionPoints);
+    bool init(vec2 screen);
     
     // Renders the salmon
     void draw(const mat3& projection)override;

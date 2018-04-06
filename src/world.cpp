@@ -165,9 +165,6 @@ bool World::update(float elapsed_ms) {
             armourInUse_p2 = false;
             droptool_p1 = false;
             droptool_p2 = false;
-            m_worldtexture.init(screen);
-            m_toolboxManager.init({screen.x, screen.y});
-            m_zombieManager.init({screen.x, screen.y}, mapCollisionPoints);
             useBomb = false;
             useMissile = false;
             is_punchingright_p1 = false;
@@ -179,10 +176,14 @@ bool World::update(float elapsed_ms) {
             m_player1.init(screen, mapCollisionPoints);
             m_player2.init(screen, mapCollisionPoints);
             m_antidote.init(screen, mapCollisionPoints);
-            gloveRight_p1.init({screen.x, screen.y}, mapCollisionPoints);
-            gloveLeft_p1.init({screen.x, screen.y}, mapCollisionPoints);
-            gloveRight_p2.init({screen.x, screen.y}, mapCollisionPoints);
-            gloveLeft_p2.init({screen.x, screen.y}, mapCollisionPoints);
+            gloveRight_p1.init(screen);
+            gloveRight_p2.init(screen);
+            gloveLeft_p1.init(screen);
+            gloveLeft_p2.init(screen);
+            
+            m_worldtexture.init(screen);
+            m_toolboxManager.init({screen.x, screen.y});
+            m_zombieManager.init({screen.x, screen.y}, mapCollisionPoints);
             
         }
     }
@@ -692,8 +693,6 @@ void World::on_key(GLFWwindow *, int key, int, int action, int mod) {
             is_punchingleft_p1 = false;
         }
     }
-
-
     if (immobilize == 1 || m_player1.get_blowback()) //player is frozen
     {
         m_player1.set_freezestate(true);
