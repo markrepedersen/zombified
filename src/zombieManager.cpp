@@ -150,6 +150,8 @@ void ZombieManager::attack_zombies(vec2 player_pos, vec2 player_boundingbox, int
 
 
 void ZombieManager::destroy() {
+    for (auto &zombiescreated : zombies)
+        zombiescreated.destroy();
     zombies.clear();
     m_mapCollisionPoints.clear();
 }

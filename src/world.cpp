@@ -85,6 +85,7 @@ void World::destroy() {
     m_zombie.destroy();
     m_tree.destroy();
     m_limbsManager.destroy();
+    m_zombieManager.destroy();
     for (auto &freeze : m_freeze)
         freeze.destroy();
     for (auto &water : m_water)
