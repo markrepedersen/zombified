@@ -372,6 +372,11 @@ void World::draw() {
         //these should always be drawn first
         m_worldtexture.draw(projection_2D);
         m_toolboxManager.draw(projection_2D);
+
+        //these are drawn in ascending order w.r.t. their y position
+        m_limbsManager.draw(projection_2D);
+        m_zombieManager.draw(projection_2D);
+        entityDrawOrder(projection_2D);
         
         if (is_punchingleft_p1)
             gloveLeft_p1.draw(projection_2D);
@@ -382,11 +387,6 @@ void World::draw() {
             gloveLeft_p2.draw(projection_2D);
         if (is_punchingright_p2)
             gloveRight_p2.draw(projection_2D);
-
-        //these are drawn in ascending order w.r.t. their y position
-        m_limbsManager.draw(projection_2D);
-        m_zombieManager.draw(projection_2D);
-        entityDrawOrder(projection_2D);
     }
 
     // Presenting
@@ -1732,12 +1732,16 @@ void World::autoExplode(Bomb bomb, int position) {
     // used_bombs.begin()->explode();
     //fprintf(stderr,"# of bombs: %lu \n", used_bombs.size());
     //fprintf(stderr,"bomb to remove: %d \n", position);
-    std::vector<Bomb>::iterator itbomb = used_bombs.begin();
-    for (int i = 0; i <= position; ++i) {
+    std::vector<Bomb>::iterator itbomb;
+    int i = 0;
+    for (itbomb = used_bombs.begin(); itbomb != used_bombs.end();) {
         if (i == position) {
             itbomb = used_bombs.erase(itbomb);
         }
-        ++itbomb;
+        else{
+            ++itbomb;
+            ++i;
+        }
     }
 }
 
@@ -1819,13 +1823,16 @@ void World::autoExplodeMissile(Missile missile, int position) {
 
     //fprintf(stderr,"# of missiles: %lu \n", used_missiles.size());
     //fprintf(stderr,"missile to remove: %d \n", position);
-    std::vector<Missile>::iterator itmissile = used_missiles.begin();
-    for (int i = 0; i <= position; ++i) {
+    std::vector<Missile>::iterator itmissile;
+    int i = 0;
+     for (itmissile = used_missiles.begin(); itmissile != used_missiles.end();) {
         if (i == position) {
             itmissile = used_missiles.erase(itmissile);
         }
-        else
+        else{
             ++itmissile;
+            ++i;
+        }
     }
 }
 
