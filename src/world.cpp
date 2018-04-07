@@ -35,6 +35,7 @@ World::~World() {
 }
 
 bool World::init(vec2 screen) {
+  
     glfwSetErrorCallback(glfw_err_cb);
     if (!glfwInit()) {
         fprintf(stderr, "Failed to initialize GLFW");
@@ -191,6 +192,8 @@ bool World::update(float elapsed_ms) {
             gloveLeft_p2.init(screen);
             
             m_zombieManager.init({screen.x, screen.y}, mapCollisionPoints);
+            m_limbsManager.set_arms_size(0);
+            m_limbsManager.set_legs_size(0);
             
         }
     }
