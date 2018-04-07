@@ -60,6 +60,7 @@ bool Zombie::init()
     // Setting initial values
     m_scale.x = -0.23f * ViewHelper::getRatio();
     m_scale.y = 0.23f * ViewHelper::getRatio();
+    mass = 1.0;
 
     m_position = { 350.f * ViewHelper::getRatio(), 450.f* ViewHelper::getRatio() };
     
@@ -159,6 +160,10 @@ void Zombie::setAttackTimeout(float timeout) {
     this->attack_timeout = timeout;
 }
 
+void Zombie::setMass(float mass) {
+    this->mass = mass;
+}
+
 vec2 Zombie::getCurrentTarget()const {
     return cur_target;
 }
@@ -181,6 +186,10 @@ vec2 Zombie::get_position()const {
 
 float Zombie::getAttackTimeout() {
     return attack_timeout;
+}
+
+float Zombie::getMass() {
+    return mass;
 }
 
 void Zombie::set_position(vec2 position) {

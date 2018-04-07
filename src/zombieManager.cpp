@@ -4,6 +4,7 @@
 bool ZombieManager::init(vec2 screen, const std::vector<vec2> &mapCollisionPoints) {
     m_mapCollisionPoints = mapCollisionPoints;
     m_screen = screen;
+    speed = 50;
     return true;
 }
 
@@ -107,7 +108,7 @@ void ZombieManager::computeZPaths(float ms, const MapGrid &mapGrid) {
                 nextNode = {static_cast<float>(zombie.getCurrentPath()[i].x),
                             static_cast<float>(zombie.getCurrentPath()[i].y)};
             }
-            float step = 50 * (ms / 1000);
+            float step = speed * (ms / 1000);
             vec2 dir;
             dir.x = nextNode.x * 100 - zombie.get_position().x;
             dir.y = nextNode.y * 100 - zombie.get_position().y;
@@ -149,6 +150,14 @@ void ZombieManager::attack_zombies(vec2 player_pos, vec2 player_boundingbox, int
                     it++;
                 }
     }
+}
+
+void ZombieManager::setSpeed(float speed) {
+    this->speed = speed;
+}
+    
+float ZombieManager::getSpeed() {
+    return speed;
 }
 
 

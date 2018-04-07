@@ -247,6 +247,13 @@ int LimbsManager::get_legs_size() {
     return m_legs_total;
 }
 
+void LimbsManager::set_arms_size(int size) {
+    m_arms_total = size;
+}
+
+void LimbsManager::set_legs_size(int size) {
+    m_legs_total = size;
+}
 
 void LimbsManager::computePaths(float ms, const MapGrid &mapGrid) {
     if (limbs.size() <= 1) return;
@@ -321,6 +328,11 @@ std::unordered_set<vec2> LimbsManager::checkClusters() {
         if(is_contained) {
             it->destroy();
             it = limbs.erase(it);
+            if(it->getLimbType() == "leg") {
+                m_legs_total--;
+            } else {
+                m_arms_total--;
+            }
         } else {
             it++;
         }

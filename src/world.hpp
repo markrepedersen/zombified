@@ -28,13 +28,17 @@
 #include "punchleft.hpp"
 #include "punchright.hpp"
 #include <vector>
-#include <Box2D.h>
-#include <SDL/SDL.h>
-#include <SDL/SDL_mixer.h>
+// #include <Box2D.h>
 #include <time.h>
 #include <random>
 
-#define SDL_MAIN_HANDLED
+// #if !defined(DISABLE_SDL)
+//  #include <SDL/SDL.h>
+ // #include <SDL/SDL_mixer.h>
+ // #define SDL_MAIN_HANDLED
+// #endif
+
+
 
 // Container for all our entities and game logic. Individual rendering / update is
 // deferred to the relative update() methods

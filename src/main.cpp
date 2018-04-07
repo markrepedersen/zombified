@@ -14,14 +14,14 @@ using Clock = std::chrono::high_resolution_clock;
 
 // Global
 //Startworld startworld;
-World world;
+
 const int width = 1280;
 const int height = 720;
 
 // Entry point
 int main(int argc, char* argv[])
 {
-
+	World world;
 	if (!world.init({ (float)width, (float)height }))
 	{
 		// Time to read the error message

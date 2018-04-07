@@ -1,0 +1,1734 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXAggregateTarget section */
+		095EE8E3CDA841C4BB9068C0 /* ALL_BUILD */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = FFFB20EA29064FB1863FF776 /* Build configuration list for PBXAggregateTarget "ALL_BUILD" */;
+			buildPhases = (
+				FCCDB92B6FD3411BB53A71CE /* CMake Rules */,
+			);
+			dependencies = (
+				E2BD42CCFA0648C9A896A5D5 /* PBXTargetDependency */,
+				9CD15A7DE38E49269847DA51 /* PBXTargetDependency */,
+			);
+			name = ALL_BUILD;
+			productName = ALL_BUILD;
+		};
+		F691AA15AFA24C298C93B0F8 /* ZERO_CHECK */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = 6C90496694594491985F071B /* Build configuration list for PBXAggregateTarget "ZERO_CHECK" */;
+			buildPhases = (
+				8213A9CA79DE4823B533E6C1 /* CMake Rules */,
+			);
+			dependencies = (
+			);
+			name = ZERO_CHECK;
+			productName = ZERO_CHECK;
+		};
+/* End PBXAggregateTarget section */
+
+/* Begin PBXBuildFile section */
+		073E0499F7E2409D96867B37 /* b2EdgeShape.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 665CCCD87DB845EE990D239C /* b2EdgeShape.cpp */; };
+		09289AB1E347459AB2129773 /* b2FrictionJoint.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FC7715D77BD24F1683655EB4 /* b2FrictionJoint.cpp */; };
+		0DC7ED95E89241379A40265E /* worldtexture.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A81244E9552144EF88571F13 /* worldtexture.cpp */; };
+		0E56202C2F394056BA123525 /* b2StackAllocator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 65A6D8EA96B147689F7C68C7 /* b2StackAllocator.cpp */; };
+		0E896AB1106E406F998FB9A6 /* armour.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 69BA014E33B84838A36E32F2 /* armour.cpp */; };
+		0F7BBEFD586F4971A840C021 /* zombieManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D96634103D6D475C8DBF35CD /* zombieManager.cpp */; };
+		130D2CF840894E0DB80FC585 /* punchleft.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D1ABFCE6DFF64528BC49DFA0 /* punchleft.cpp */; };
+		13BF0722465C43849D37660E /* b2PolygonShape.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EE5EFAF970A0452FBFD3C1C3 /* b2PolygonShape.cpp */; };
+		1D5D832CF23E4809949F6774 /* b2PrismaticJoint.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F8165195E2D94632B08E7947 /* b2PrismaticJoint.cpp */; };
+		1D9ED5CA48D44ED9AB0BF4C0 /* b2Collision.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4D9140A9A6FC4326B8ED7392 /* b2Collision.cpp */; };
+		1FE7629649544A64A0D5FE6B /* TmxTerrain.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0A8C5981CC5340D98DDD84E8 /* TmxTerrain.cpp */; };
+		24E6760791424AB592F7C939 /* TmxEllipse.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6FA4825B5E3D403FA911C711 /* TmxEllipse.cpp */; };
+		29D8640FF7A949D8A2B3E617 /* b2PulleyJoint.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D592293ABD034F33A678AA99 /* b2PulleyJoint.cpp */; };
+		2B5EF08D645045C88E24DF4A /* antidote.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B0A32C53E6A74DCFA067CEF9 /* antidote.cpp */; };
+		2CB3268B9506497083EBF4C2 /* b2ChainShape.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C54FBF49FB5E40C8AAD53E91 /* b2ChainShape.cpp */; };
+		2DC70A27D0424491896ADD66 /* b2Fixture.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4726BD4AE3EE4E6F94608BF9 /* b2Fixture.cpp */; };
+		2F90792F1DE04DB3BCB35F04 /* b2CollideEdge.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 65F491ABCDFA416D9FA1567D /* b2CollideEdge.cpp */; };
+		30C0D7F6E3A54AFD90BB3FF6 /* gl3w.c in Sources */ = {isa = PBXBuildFile; fileRef = B62C189942524F2A9D441728 /* gl3w.c */; };
+		362D9059A38545178A972216 /* b2ContactSolver.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 282D9E5B50604F24B6D68061 /* b2ContactSolver.cpp */; };
+		3837B2900FE24F769DD96B47 /* b2Timer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6991E2BC8EDE4035A211F4A5 /* b2Timer.cpp */; };
+		3AC3FFF08733459E869F4E20 /* b2EdgeAndPolygonContact.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A3428C38A4BF4C6495FD8F59 /* b2EdgeAndPolygonContact.cpp */; };
+		3F53CBE85ED349819EBA62FB /* TmxObjectGroup.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 414EEBD90E9D4749B665936E /* TmxObjectGroup.cpp */; };
+		406DE0E1D9084E9D8B1F3F7A /* player1.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A04E4C55207D4B5185722520 /* player1.cpp */; };
+		435BF834A37444B682D5D5EE /* Physics.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5524028586CF4553A6876D20 /* Physics.cpp */; };
+		490B456B107C4C829283E898 /* TmxProperty.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8BA22B6D4253468AB5495E9D /* TmxProperty.cpp */; };
+		49BFAE99FAAC471794533F77 /* b2Settings.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E4101AE23E08479880168F67 /* b2Settings.cpp */; };
+		4B76ECA8ABF24896B75F3CB3 /* explosion.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 45E80024A125413995564F0A /* explosion.cpp */; };
+		4CE59D29EBC8414EBA3BE05E /* button.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 66A2B907EF3E4D2A9C8C100C /* button.cpp */; };
+		50C842BDAEF84CD4BC0DC5E5 /* world.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4303BECB28494C10B0E38402 /* world.cpp */; };
+		53B7086A97884B7C882BB9C0 /* TmxTile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5E28251968084590975993B3 /* TmxTile.cpp */; };
+		54B979ED13554C9DBB20F6C0 /* TmxColor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7130B3813C8342C5AB4E4ED0 /* TmxColor.cpp */; };
+		5AA47FA9797F4E4BA0B0EA57 /* b2WorldCallbacks.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 99525573EB8C434F80A072D4 /* b2WorldCallbacks.cpp */; };
+		5BD370F62B2D423BBC00A531 /* viewHelper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 36B9BD7CB46E4B629FA56DEF /* viewHelper.cpp */; };
+		604DDCEDE39C4B9383FEA514 /* b2Contact.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6D20361FFFB34BA59FCB2066 /* b2Contact.cpp */; };
+		6291214D99744A90995CD06B /* b2DistanceJoint.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4647E1E10AF0404C93AEE9EF /* b2DistanceJoint.cpp */; };
+		652425D127764446881A47BB /* b2Math.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4EA27F6BED964B828CBA8B53 /* b2Math.cpp */; };
+		6535F7B9A8BB4F85A5ECD0FA /* zombie.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B9EF7FE30C94448EBFCC9EAE /* zombie.cpp */; };
+		68713E7B404648BB941E3EAD /* TmxPolygon.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2E4620CB3D04435D9288FC44 /* TmxPolygon.cpp */; };
+		69B7120B5DE84E31821F9B17 /* b2PolygonAndCircleContact.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 945D1348D6814484B4799924 /* b2PolygonAndCircleContact.cpp */; };
+		6E4D0DBAC7B54C339F73D254 /* b2DynamicTree.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CC3967480BD2438FA9DCDFD3 /* b2DynamicTree.cpp */; };
+		6EC8C04474274FAB97226EE8 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4B47D80CDE084F0B8304DDEE /* main.cpp */; };
+		6ED042639E0B4181BDB792C2 /* b2ChainAndPolygonContact.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E51527C9221743319ACFAEE7 /* b2ChainAndPolygonContact.cpp */; };
+		70DBFDE22BC24FE6B7E9E5F0 /* Limb.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2C4A2FAE54F3420E9612C27E /* Limb.cpp */; };
+		719DF06822DB458EA23697C0 /* b2TimeOfImpact.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C2FF3AB17D79410B97B716B7 /* b2TimeOfImpact.cpp */; };
+		74461D889A124FB1A6A13BE5 /* b2World.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0069AE655D5B4E908A2E317E /* b2World.cpp */; };
+		7458D8C1056E417DBF098A2A /* b2CollideCircle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 765F53EC7A3F4040B62C234A /* b2CollideCircle.cpp */; };
+		7490E412827F4A2385A4DE77 /* punchright.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8716A473EB6B47459E3A47DE /* punchright.cpp */; };
+		7A05AA65BB844A089D34091D /* toolboxManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1EACBB0BB0864697AF4A4171 /* toolboxManager.cpp */; };
+		8836CF97AAC543E484A44D60 /* b2BlockAllocator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A8414DB64740497FA573132E /* b2BlockAllocator.cpp */; };
+		899F401507B644FCA22AC439 /* TmxMap.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9003771FC5374415A88904C3 /* TmxMap.cpp */; };
+		8CF01485C0CE428F88A2ADE7 /* TmxUtil.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4D8431108E5E4A93AC8F0E42 /* TmxUtil.cpp */; };
+		8D60FD6C02E94843BE6DBEC3 /* b2Rope.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DDCA7DD9E5794089A32501ED /* b2Rope.cpp */; };
+		93571FB997384A0F83467DC2 /* MapGrid.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 16E5E37E59384519A0C11263 /* MapGrid.cpp */; };
+		93C485D4F0FD4435BD363FD2 /* miniz.c in Sources */ = {isa = PBXBuildFile; fileRef = 6387980F8B3244E7B845D9AC /* miniz.c */; };
+		977C30303AAF48F18DE1E6A1 /* b2Distance.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E13B4432A2044583BBEB4AC2 /* b2Distance.cpp */; };
+		9B4F71941FEA4F1D88A55AB2 /* b2CircleContact.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A23DEE7A4F9A47C8B61693E5 /* b2CircleContact.cpp */; };
+		9E6904C3A07B45ECBF0BF495 /* TmxTerrainArray.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4EFA5C8A034940EAB81ACEBE /* TmxTerrainArray.cpp */; };
+		9E7B696A6E3D4EADB9CE0D52 /* tree.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 13DEBC93B1A24B31859585BA /* tree.cpp */; };
+		9F6D47FE7E2F443999EB01EC /* TmxTileOffset.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A750115D2BBB42F69851218C /* TmxTileOffset.cpp */; };
+		A1DB9C33A2F04852B6E15483 /* Ice.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 312B2B6BC47846B4BF1A078E /* Ice.cpp */; };
+		A29155F976254CA6A141DC4F /* b2Body.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1FDAA14933244BCA81AF5E97 /* b2Body.cpp */; };
+		A2D5EB1F64DC4F88829A4ECD /* b2RevoluteJoint.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 883D65D460FE4CF69A3E3F7A /* b2RevoluteJoint.cpp */; };
+		A3E21661160A4BEEB2E488FA /* b2RopeJoint.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5A2D3A5ED86441478C954203 /* b2RopeJoint.cpp */; };
+		A44F29F201FD4B94BCA72E24 /* common.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AC97C7F386704D48AA658E49 /* common.cpp */; };
+		A857E9CE3CC04BF98C414203 /* b2CollidePolygon.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DEACD9E19E044D0FA80FF6D6 /* b2CollidePolygon.cpp */; };
+		A92AE48355B14C39A80D25BE /* b2PolygonContact.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 584AAD14A0F54E2193351816 /* b2PolygonContact.cpp */; };
+		A99A1A5C69B947D8839793C6 /* ToolManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F4AC60A135014FC7B19C65CC /* ToolManager.cpp */; };
+		AB0FB2A2B37849BEA11E78CF /* b2MouseJoint.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B644B004490144D2AF8FCE7B /* b2MouseJoint.cpp */; };
+		AB7D1AC69A044DF5B0B488A3 /* TmxImage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5491066E8ED7450DB995BB3A /* TmxImage.cpp */; };
+		B16D6185F6AF4453A53DD0CE /* TmxTileset.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CDAC9735845F45BA8B03865D /* TmxTileset.cpp */; };
+		B1E4E920E14C42F9906180EE /* TmxText.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1562730D54BC41B796DFA1C8 /* TmxText.cpp */; };
+		B6E12B664B594ED39DC5B6A9 /* TmxGroupLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0F54A66BC38A4B0982AC0144 /* TmxGroupLayer.cpp */; };
+		BCB00ACA1A1D4FB8ADDA80AF /* b2WheelJoint.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FD48B30C06CF43DD845ED312 /* b2WheelJoint.cpp */; };
+		BE953C6FA0A947F2B694F238 /* limbsManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 99F7CCA5023B427F8E15F1D6 /* limbsManager.cpp */; };
+		BEEEF04A7CD4430FB2BFB92F /* TmxImageLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 85B8E48FB1694F5A9EFBCC5A /* TmxImageLayer.cpp */; };
+		BF69A5D2C26E4EEF96C508DB /* TmxPropertySet.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F03175EAD03E4A6BB42983E3 /* TmxPropertySet.cpp */; };
+		C0D80993C21943C29F763F98 /* bomb.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9EA6BE2DD9434E3E93624947 /* bomb.cpp */; };
+		C1A05478751E446F88CE4321 /* CollisionManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 19B964382FAE49B586BAE1DC /* CollisionManager.cpp */; };
+		C460A09835494A86A0EDE073 /* b2Joint.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0E2FAEE8765245EA900AC53F /* b2Joint.cpp */; };
+		C610432B2901415E873A63B5 /* player2.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 927D8BA4F03A48D28AC26A55 /* player2.cpp */; };
+		C732415FCB0D4328A68BA61F /* base64.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A53F72AECE0146308450622E /* base64.cpp */; };
+		CB2E0DE794D74BBFBBD9BFD0 /* b2CircleShape.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4D47792797A644AA81F5286C /* b2CircleShape.cpp */; };
+		CF3AA466D30F48AEA46DD528 /* b2MotorJoint.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3242A52BE109404CB1999701 /* b2MotorJoint.cpp */; };
+		CFB1E153B0164BF6B84FB9E9 /* TmxLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4EE5D58B5FA14C62B720C2E0 /* TmxLayer.cpp */; };
+		D23BE287670C401E8886BB32 /* mud.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 42E600073F6D4C31A1BB44C5 /* mud.cpp */; };
+		D7671039946C4B3DA4E33C53 /* b2Island.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9B9FA951A53142A9BFA38388 /* b2Island.cpp */; };
+		DBC3F5145EEF4AEE9FCE9BB3 /* b2EdgeAndCircleContact.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4FB5D488226F48888C1DC79D /* b2EdgeAndCircleContact.cpp */; };
+		DC6EE0E7B8D7493EA22FB346 /* b2ContactManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D098F237B9DE44E2B7A67AF2 /* b2ContactManager.cpp */; };
+		DD29DA20AA9E46BDAF06A798 /* b2BroadPhase.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6244E6A154A14B7884403910 /* b2BroadPhase.cpp */; };
+		E7B1334062ED4AC982A0948C /* b2WeldJoint.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2EA63F23BD1F474FBABC5DF7 /* b2WeldJoint.cpp */; };
+		EA020965431745778FABAC57 /* b2ChainAndCircleContact.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 43EC384EDD9C493B8FF7C037 /* b2ChainAndCircleContact.cpp */; };
+		EC29667764A0474985F81030 /* missile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 35C5BEC2EB6C41CEB3D02CEB /* missile.cpp */; };
+		ECE0504DF1B945418A802C2B /* TmxObject.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 457062D4E15946DBB3D76401 /* TmxObject.cpp */; };
+		ED1A9160CAE14D14B492A9B8 /* KMeans.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5898AB9DA014EE886261107 /* KMeans.cpp */; };
+		EFF22296BADD4BD2A7B499BA /* blood.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4175AB67A49E4FDDAA3DC9FB /* blood.cpp */; };
+		F0168090D8484791A3477E7C /* b2Draw.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 031C4E2073D845D7BB1F40DC /* b2Draw.cpp */; };
+		F347CCBFF33C44F4BD0C4D24 /* TmxPolyline.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5CCEB8C17ADF488FAC0F14BA /* TmxPolyline.cpp */; };
+		F432F347B8984F04A9234E3E /* b2GearJoint.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0CB127610F924A66ABFD2F65 /* b2GearJoint.cpp */; };
+		F46926C741D344CBB1E1BBD3 /* water.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8A10E210FAFC4849B7E18E84 /* water.cpp */; };
+		F529EA655AFB419EA0430B67 /* TmxTileLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 12E53DEDD4344829B8A9BBA1 /* TmxTileLayer.cpp */; };
+		F6C7AD49DCA44730ADD06EB0 /* toolboxSlot.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9A847C18C06044B29B7FBE22 /* toolboxSlot.cpp */; };
+		FF795778013841AAB92DC4B4 /* PhysicalBody.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D0A24F7D68BB42E88721779A /* PhysicalBody.cpp */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		240C5A9D07A24EE4BFCCC4FA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 99E441D6FDD54636BF8304F6 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F691AA15AFA24C298C93B0F8;
+			remoteInfo = ZERO_CHECK;
+		};
+		4B7D14BA5A5242F4BAFE1AF6 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 99E441D6FDD54636BF8304F6 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D40A6CDA3EC44F5EA532DC5D;
+			remoteInfo = zombie;
+		};
+		DFC57861B5F04AFE9186B1AE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 99E441D6FDD54636BF8304F6 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F691AA15AFA24C298C93B0F8;
+			remoteInfo = ZERO_CHECK;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		00357B22FE57449DAA02B869 /* SDL_opengl.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = SDL_opengl.h; path = ext/sdl/include/SDL/SDL_opengl.h; sourceTree = SOURCE_ROOT; };
+		0069AE655D5B4E908A2E317E /* b2World.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = b2World.cpp; path = ext/Box2D/Dynamics/b2World.cpp; sourceTree = SOURCE_ROOT; };
+		0166FF8C1433495A8BD29776 /* begin_code.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = begin_code.h; path = ext/sdl/include/SDL/begin_code.h; sourceTree = SOURCE_ROOT; };
+		018F37AD98F74E1C979B4DF9 /* b2RevoluteJoint.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = b2RevoluteJoint.h; path = ext/Box2D/Dynamics/Joints/b2RevoluteJoint.h; sourceTree = SOURCE_ROOT; };
+		02EA8CE586B2446BB380D72F /* SDL_version.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = SDL_version.h; path = ext/sdl/include/SDL/SDL_version.h; sourceTree = SOURCE_ROOT; };
+		031C4E2073D845D7BB1F40DC /* b2Draw.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = b2Draw.cpp; path = ext/Box2D/Common/b2Draw.cpp; sourceTree = SOURCE_ROOT; };
+		0346B3E7E3584394A58F876C /* SDL_power.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = SDL_power.h; path = ext/sdl/include/SDL/SDL_power.h; sourceTree = SOURCE_ROOT; };
+		0A4FF3C240F049C987EBC086 /* limbsManager.hpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; fileEncoding = 4; name = limbsManager.hpp; path = src/limbsManager.hpp; sourceTree = SOURCE_ROOT; };
+		0A8C5981CC5340D98DDD84E8 /* TmxTerrain.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = TmxTerrain.cpp; path = src/tmxparser/TmxTerrain.cpp; sourceTree = SOURCE_ROOT; };
+		0C35EC31119D4A23AADDCCDD /* SDL_atomic.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = SDL_atomic.h; path = ext/sdl/include/SDL/SDL_atomic.h; sourceTree = SOURCE_ROOT; };
+		0CB127610F924A66ABFD2F65 /* b2GearJoint.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = b2GearJoint.cpp; path = ext/Box2D/Dynamics/Joints/b2GearJoint.cpp; sourceTree = SOURCE_ROOT; };
+		0CC8F31F8B894ABB8E4C28A9 /* TmxObject.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = TmxObject.h; path = src/tmxparser/TmxObject.h; sourceTree = SOURCE_ROOT; };
+		0E2FAEE8765245EA900AC53F /* b2Joint.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = b2Joint.cpp; path = ext/Box2D/Dynamics/Joints/b2Joint.cpp; sourceTree = SOURCE_ROOT; };
+		0F2F7A118CF24848854B89EC /* SDL_log.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = SDL_log.h; path = ext/sdl/include/SDL/SDL_log.h; sourceTree = SOURCE_ROOT; };
+		0F54A66BC38A4B0982AC0144 /* TmxGroupLayer.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = TmxGroupLayer.cpp; path = src/tmxparser/TmxGroupLayer.cpp; sourceTree = SOURCE_ROOT; };
+		0FEF16CA001B4E0EAA018879 /* SDL_shape.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = SDL_shape.h; path = ext/sdl/include/SDL/SDL_shape.h; sourceTree = SOURCE_ROOT; };
+		10FFA1C271AC4193A57D5319 /* TmxGroupLayer.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = TmxGroupLayer.h; path = src/tmxparser/TmxGroupLayer.h; sourceTree = SOURCE_ROOT; };
+		12E53DEDD4344829B8A9BBA1 /* TmxTileLayer.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = TmxTileLayer.cpp; path = src/tmxparser/TmxTileLayer.cpp; sourceTree = SOURCE_ROOT; };
+		13D0AACED1EC49E88F5937F7 /* b2FrictionJoint.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = b2FrictionJoint.h; path = ext/Box2D/Dynamics/Joints/b2FrictionJoint.h; sourceTree = SOURCE_ROOT; };
+		13DEBC93B1A24B31859585BA /* tree.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = tree.cpp; path = src/tree.cpp; sourceTree = SOURCE_ROOT; };
+		14B3387E1BFA48868F8C2135 /* b2EdgeAndCircleContact.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = b2EdgeAndCircleContact.h; path = ext/Box2D/Dynamics/Contacts/b2EdgeAndCircleContact.h; sourceTree = SOURCE_ROOT; };
+		14ED7802E25541A9928E61B4 /* b2PolygonContact.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = b2PolygonContact.h; path = ext/Box2D/Dynamics/Contacts/b2PolygonContact.h; sourceTree = SOURCE_ROOT; };
+		154B50D0D5614841A56FAE0D /* TmxLayer.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = TmxLayer.h; path = src/tmxparser/TmxLayer.h; sourceTree = SOURCE_ROOT; };
+		1562730D54BC41B796DFA1C8 /* TmxText.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = TmxText.cpp; path = src/tmxparser/TmxText.cpp; sourceTree = SOURCE_ROOT; };
+		1598C0D119B44A43AEC55ABD /* b2WheelJoint.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = b2WheelJoint.h; path = ext/Box2D/Dynamics/Joints/b2WheelJoint.h; sourceTree = SOURCE_ROOT; };
+		16E5E37E59384519A0C11263 /* MapGrid.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = MapGrid.cpp; path = src/MapGrid.cpp; sourceTree = SOURCE_ROOT; };
+		1747846C13CD43C28E9E9B7E /* SDL_opengles2_gl2ext.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = SDL_opengles2_gl2ext.h; path = ext/sdl/include/SDL/SDL_opengles2_gl2ext.h; sourceTree = SOURCE_ROOT; };
+		18E0377FFEB94F80AC4B5E64 /* b2TimeOfImpact.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = b2TimeOfImpact.h; path = ext/Box2D/Collision/b2TimeOfImpact.h; sourceTree = SOURCE_ROOT; };
+		1974E5AEFD59449E812490E6 /* b2Draw.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = b2Draw.h; path = ext/Box2D/Common/b2Draw.h; sourceTree = SOURCE_ROOT; };
+		19B964382FAE49B586BAE1DC /* CollisionManager.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = CollisionManager.cpp; path = src/CollisionManager.cpp; sourceTree = SOURCE_ROOT; };
+		1CD9F70B98E14822A006D713 /* tmxparser.pc.in */ = {isa = PBXFileReference; explicitFileType = sourcecode; fileEncoding = 4; name = tmxparser.pc.in; path = src/tmxparser/tmxparser.pc.in; sourceTree = SOURCE_ROOT; };
+		1D90C8EEF0084086947A8FDF /* b2ChainAndCircleContact.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = b2ChainAndCircleContact.h; path = ext/Box2D/Dynamics/Contacts/b2ChainAndCircleContact.h; sourceTree = SOURCE_ROOT; };
+		1E04D14BF32D41718122E7F1 /* b2DynamicTree.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = b2DynamicTree.h; path = ext/Box2D/Collision/b2DynamicTree.h; sourceTree = SOURCE_ROOT; };
+		1EACBB0BB0864697AF4A4171 /* toolboxManager.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = toolboxManager.cpp; path = src/toolboxManager.cpp; sourceTree = SOURCE_ROOT; };
+		1EE4044EF440469FAE2D5EB3 /* SDL_rwops.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = SDL_rwops.h; path = ext/sdl/include/SDL/SDL_rwops.h; sourceTree = SOURCE_ROOT; };
+		1FD301360FCA4EB4A2CFC849 /* SDL_opengles2.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = SDL_opengles2.h; path = ext/sdl/include/SDL/SDL_opengles2.h; sourceTree = SOURCE_ROOT; };
+		1FDAA14933244BCA81AF5E97 /* b2Body.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = b2Body.cpp; path = ext/Box2D/Dynamics/b2Body.cpp; sourceTree = SOURCE_ROOT; };
+		217C08A8EFF74D65A2E3E335 /* TmxProperty.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = TmxProperty.h; path = src/tmxparser/TmxProperty.h; sourceTree = SOURCE_ROOT; };
+		22572CE8FAB241D2A2A4132C /* SDL_config_pandora.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = SDL_config_pandora.h; path = ext/sdl/include/SDL/SDL_config_pandora.h; sourceTree = SOURCE_ROOT; };
+		253B635FA9444B62BAC05A68 /* SDL_types.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = SDL_types.h; path = ext/sdl/include/SDL/SDL_types.h; sourceTree = SOURCE_ROOT; };
+		25787F77084C4D7B8A76DDDB /* water.hpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; fileEncoding = 4; name = water.hpp; path = src/water.hpp; sourceTree = SOURCE_ROOT; };
+		2707BDC33A434FD59F4B90EA /* b2Fixture.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = b2Fixture.h; path = ext/Box2D/Dynamics/b2Fixture.h; sourceTree = SOURCE_ROOT; };
+		282D9E5B50604F24B6D68061 /* b2ContactSolver.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = b2ContactSolver.cpp; path = ext/Box2D/Dynamics/Contacts/b2ContactSolver.cpp; sourceTree = SOURCE_ROOT; };
+		28F30BD172BA401CA45A6B7A /* toolboxSlot.hpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; fileEncoding = 4; name = toolboxSlot.hpp; path = src/toolboxSlot.hpp; sourceTree = SOURCE_ROOT; };
+		29669AF22FDC45BCBADB0214 /* SDL_messagebox.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = SDL_messagebox.h; path = ext/sdl/include/SDL/SDL_messagebox.h; sourceTree = SOURCE_ROOT; };
+		2A9CD6BA96EB4A3792F76202 /* TmxImage.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = TmxImage.h; path = src/tmxparser/TmxImage.h; sourceTree = SOURCE_ROOT; };
+		2B57F5F86EE546079695C4F0 /* TmxImageLayer.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = TmxImageLayer.h; path = src/tmxparser/TmxImageLayer.h; sourceTree = SOURCE_ROOT; };
+		2C4A2FAE54F3420E9612C27E /* Limb.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = Limb.cpp; path = src/Limb.cpp; sourceTree = SOURCE_ROOT; };
+		2CEDEAF588AA4CE98FFB6284 /* SDL_test_crc32.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = SDL_test_crc32.h; path = ext/sdl/include/SDL/SDL_test_crc32.h; sourceTree = SOURCE_ROOT; };
+		2CFFDBC0B6E04FB2977C2442 /* b2MotorJoint.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = b2MotorJoint.h; path = ext/Box2D/Dynamics/Joints/b2MotorJoint.h; sourceTree = SOURCE_ROOT; };
+		2DF8B34D110E4FE9BEC6DA40 /* Box2D.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = Box2D.h; path = ext/Box2D/Box2D.h; sourceTree = SOURCE_ROOT; };
+		2E4620CB3D04435D9288FC44 /* TmxPolygon.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = TmxPolygon.cpp; path = src/tmxparser/TmxPolygon.cpp; sourceTree = SOURCE_ROOT; };
+		2EA63F23BD1F474FBABC5DF7 /* b2WeldJoint.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = b2WeldJoint.cpp; path = ext/Box2D/Dynamics/Joints/b2WeldJoint.cpp; sourceTree = SOURCE_ROOT; };
+		2F187D127FE24F2DB211D184 /* TmxTerrain.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = TmxTerrain.h; path = src/tmxparser/TmxTerrain.h; sourceTree = SOURCE_ROOT; };
+		2F64530CFF3D4634B44A8CA1 /* SDL_config_macosx.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = SDL_config_macosx.h; path = ext/sdl/include/SDL/SDL_config_macosx.h; sourceTree = SOURCE_ROOT; };
+		30576DFFECCF48C79D5130D8 /* glcorearb.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = glcorearb.h; path = ext/gl3w/glcorearb.h; sourceTree = SOURCE_ROOT; };
+		312B2B6BC47846B4BF1A078E /* Ice.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = Ice.cpp; path = src/Ice.cpp; sourceTree = SOURCE_ROOT; };
+		3242A52BE109404CB1999701 /* b2MotorJoint.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = b2MotorJoint.cpp; path = ext/Box2D/Dynamics/Joints/b2MotorJoint.cpp; sourceTree = SOURCE_ROOT; };
+		326F0B25E6E14D36A3F933F7 /* missile.hpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; fileEncoding = 4; name = missile.hpp; path = src/missile.hpp; sourceTree = SOURCE_ROOT; };
+		32EC11C430A24076A7C77673 /* SDL_platform.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = SDL_platform.h; path = ext/sdl/include/SDL/SDL_platform.h; sourceTree = SOURCE_ROOT; };
+		331252EB53354797B18839BF /* SDL_quit.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = SDL_quit.h; path = ext/sdl/include/SDL/SDL_quit.h; sourceTree = SOURCE_ROOT; };
+		3328150C893048C4B4F880B5 /* SDL_revision.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = SDL_revision.h; path = ext/sdl/include/SDL/SDL_revision.h; sourceTree = SOURCE_ROOT; };
+		3535715C251943F7BE77288B /* SDL_vulkan.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = SDL_vulkan.h; path = ext/sdl/include/SDL/SDL_vulkan.h; sourceTree = SOURCE_ROOT; };
+		35C5BEC2EB6C41CEB3D02CEB /* missile.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = missile.cpp; path = src/missile.cpp; sourceTree = SOURCE_ROOT; };
+		36395C7F9F0E4877845E01A3 /* SDL_copying.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = SDL_copying.h; path = ext/sdl/include/SDL/SDL_copying.h; sourceTree = SOURCE_ROOT; };
+		3696935501D04B58A8E89EC0 /* gl3w.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = gl3w.h; path = ext/gl3w/gl3w.h; sourceTree = SOURCE_ROOT; };
+		36B9BD7CB46E4B629FA56DEF /* viewHelper.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = viewHelper.cpp; path = src/viewHelper.cpp; sourceTree = SOURCE_ROOT; };
+		36C50288A1124233BFDEB819 /* b2EdgeAndPolygonContact.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = b2EdgeAndPolygonContact.h; path = ext/Box2D/Dynamics/Contacts/b2EdgeAndPolygonContact.h; sourceTree = SOURCE_ROOT; };
+		3A5C5819EC0648E3818E9E79 /* b2Math.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = b2Math.h; path = ext/Box2D/Common/b2Math.h; sourceTree = SOURCE_ROOT; };
+		3B2DA63D41C649A981406B25 /* SDL_main.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = SDL_main.h; path = ext/sdl/include/SDL/SDL_main.h; sourceTree = SOURCE_ROOT; };
+		3C5C21A66BF24121B5F56D3F /* SDL_opengles2_gl2.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = SDL_opengles2_gl2.h; path = ext/sdl/include/SDL/SDL_opengles2_gl2.h; sourceTree = SOURCE_ROOT; };
+		3D0E962B8CC74529B2035289 /* SDL_test_assert.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = SDL_test_assert.h; path = ext/sdl/include/SDL/SDL_test_assert.h; sourceTree = SOURCE_ROOT; };
+		3DE547CA40EB49AAB67D32EC /* TmxTile.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = TmxTile.h; path = src/tmxparser/TmxTile.h; sourceTree = SOURCE_ROOT; };
+		3DF2E8DF6BA849DD8922DEAE /* b2CircleShape.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = b2CircleShape.h; path = ext/Box2D/Collision/Shapes/b2CircleShape.h; sourceTree = SOURCE_ROOT; };
+		3E1767CA97CF42A5BF99AE83 /* b2ContactSolver.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = b2ContactSolver.h; path = ext/Box2D/Dynamics/Contacts/b2ContactSolver.h; sourceTree = SOURCE_ROOT; };
+		3EA719371F1E48628F115856 /* SDL_config_iphoneos.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = SDL_config_iphoneos.h; path = ext/sdl/include/SDL/SDL_config_iphoneos.h; sourceTree = SOURCE_ROOT; };
+		3EDA4E5F2B504517A5415A40 /* b2ChainAndPolygonContact.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = b2ChainAndPolygonContact.h; path = ext/Box2D/Dynamics/Contacts/b2ChainAndPolygonContact.h; sourceTree = SOURCE_ROOT; };
+		3F834FD039BC4FA39E95E997 /* SDL_render.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = SDL_render.h; path = ext/sdl/include/SDL/SDL_render.h; sourceTree = SOURCE_ROOT; };
+		3FADAF31D59A450083D31655 /* SDL_stdinc.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = SDL_stdinc.h; path = ext/sdl/include/SDL/SDL_stdinc.h; sourceTree = SOURCE_ROOT; };
+		414EEBD90E9D4749B665936E /* TmxObjectGroup.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = TmxObjectGroup.cpp; path = src/tmxparser/TmxObjectGroup.cpp; sourceTree = SOURCE_ROOT; };
+		4175AB67A49E4FDDAA3DC9FB /* blood.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = blood.cpp; path = src/blood.cpp; sourceTree = SOURCE_ROOT; };
+		421EE2BE0FE145BD9FB21BB9 /* SDL_mutex.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = SDL_mutex.h; path = ext/sdl/include/SDL/SDL_mutex.h; sourceTree = SOURCE_ROOT; };
+		42698F6EB0CF44F59C2E33A3 /* CMakeLists.txt */ = {isa = PBXFileReference; explicitFileType = sourcecode.text; fileEncoding = 4; lastKnownFileType = text; path = CMakeLists.txt; sourceTree = SOURCE_ROOT; };
+		42E600073F6D4C31A1BB44C5 /* mud.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = mud.cpp; path = src/mud.cpp; sourceTree = SOURCE_ROOT; };
+		4303BECB28494C10B0E38402 /* world.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = world.cpp; path = src/world.cpp; sourceTree = SOURCE_ROOT; };
+		43EC384EDD9C493B8FF7C037 /* b2ChainAndCircleContact.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = b2ChainAndCircleContact.cpp; path = ext/Box2D/Dynamics/Contacts/b2ChainAndCircleContact.cpp; sourceTree = SOURCE_ROOT; };
+		440FF22F80BB44BD9308C8C7 /* punchleft.hpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; fileEncoding = 4; name = punchleft.hpp; path = src/punchleft.hpp; sourceTree = SOURCE_ROOT; };
+		457062D4E15946DBB3D76401 /* TmxObject.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = TmxObject.cpp; path = src/tmxparser/TmxObject.cpp; sourceTree = SOURCE_ROOT; };
+		45E80024A125413995564F0A /* explosion.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = explosion.cpp; path = src/explosion.cpp; sourceTree = SOURCE_ROOT; };
+		463CFDEB08804B87AFB515E7 /* b2WorldCallbacks.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = b2WorldCallbacks.h; path = ext/Box2D/Dynamics/b2WorldCallbacks.h; sourceTree = SOURCE_ROOT; };
+		4647E1E10AF0404C93AEE9EF /* b2DistanceJoint.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = b2DistanceJoint.cpp; path = ext/Box2D/Dynamics/Joints/b2DistanceJoint.cpp; sourceTree = SOURCE_ROOT; };
+		46F64F8B200D4483A08E51DD /* SDL_touch.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = SDL_touch.h; path = ext/sdl/include/SDL/SDL_touch.h; sourceTree = SOURCE_ROOT; };
+		4726BD4AE3EE4E6F94608BF9 /* b2Fixture.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = b2Fixture.cpp; path = ext/Box2D/Dynamics/b2Fixture.cpp; sourceTree = SOURCE_ROOT; };
+		47D375C3B33F40D7836602BB /* b2StackAllocator.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = b2StackAllocator.h; path = ext/Box2D/Common/b2StackAllocator.h; sourceTree = SOURCE_ROOT; };
+		4802E04229F6449A8132411F /* SDL_assert.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = SDL_assert.h; path = ext/sdl/include/SDL/SDL_assert.h; sourceTree = SOURCE_ROOT; };
+		4A4B64D10E6947DB9F68EFEA /* SDL_endian.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = SDL_endian.h; path = ext/sdl/include/SDL/SDL_endian.h; sourceTree = SOURCE_ROOT; };
+		4A673B24D750491FB3DFB310 /* b2Body.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = b2Body.h; path = ext/Box2D/Dynamics/b2Body.h; sourceTree = SOURCE_ROOT; };
+		4B47D80CDE084F0B8304DDEE /* main.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = main.cpp; path = src/main.cpp; sourceTree = SOURCE_ROOT; };
+		4C5F189E91004811A44DD3C7 /* b2RopeJoint.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = b2RopeJoint.h; path = ext/Box2D/Dynamics/Joints/b2RopeJoint.h; sourceTree = SOURCE_ROOT; };
+		4D47792797A644AA81F5286C /* b2CircleShape.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = b2CircleShape.cpp; path = ext/Box2D/Collision/Shapes/b2CircleShape.cpp; sourceTree = SOURCE_ROOT; };
+		4D651DD3A2B9470892DDAA25 /* b2EdgeShape.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = b2EdgeShape.h; path = ext/Box2D/Collision/Shapes/b2EdgeShape.h; sourceTree = SOURCE_ROOT; };
+		4D8431108E5E4A93AC8F0E42 /* TmxUtil.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = TmxUtil.cpp; path = src/tmxparser/TmxUtil.cpp; sourceTree = SOURCE_ROOT; };
+		4D9140A9A6FC4326B8ED7392 /* b2Collision.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = b2Collision.cpp; path = ext/Box2D/Collision/b2Collision.cpp; sourceTree = SOURCE_ROOT; };
+		4E13BE9BD68948E58A54A8C5 /* SDL_config_minimal.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = SDL_config_minimal.h; path = ext/sdl/include/SDL/SDL_config_minimal.h; sourceTree = SOURCE_ROOT; };
+		4EA27F6BED964B828CBA8B53 /* b2Math.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = b2Math.cpp; path = ext/Box2D/Common/b2Math.cpp; sourceTree = SOURCE_ROOT; };
+		4EE5D58B5FA14C62B720C2E0 /* TmxLayer.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = TmxLayer.cpp; path = src/tmxparser/TmxLayer.cpp; sourceTree = SOURCE_ROOT; };
+		4EFA5C8A034940EAB81ACEBE /* TmxTerrainArray.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = TmxTerrainArray.cpp; path = src/tmxparser/TmxTerrainArray.cpp; sourceTree = SOURCE_ROOT; };
+		4FB5D488226F48888C1DC79D /* b2EdgeAndCircleContact.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = b2EdgeAndCircleContact.cpp; path = ext/Box2D/Dynamics/Contacts/b2EdgeAndCircleContact.cpp; sourceTree = SOURCE_ROOT; };
+		4FDC9B64BA9548A9B6F5B848 /* zombie.hpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; fileEncoding = 4; name = zombie.hpp; path = src/zombie.hpp; sourceTree = SOURCE_ROOT; };
+		50EB6C41731C4F84B2ABED24 /* b2ChainShape.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = b2ChainShape.h; path = ext/Box2D/Collision/Shapes/b2ChainShape.h; sourceTree = SOURCE_ROOT; };
+		50F8BCABFE9A46AC86364910 /* SDL_config_windows.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = SDL_config_windows.h; path = ext/sdl/include/SDL/SDL_config_windows.h; sourceTree = SOURCE_ROOT; };
+		52801962CD69491A845E8DB9 /* SDL_hints.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = SDL_hints.h; path = ext/sdl/include/SDL/SDL_hints.h; sourceTree = SOURCE_ROOT; };
+		5491066E8ED7450DB995BB3A /* TmxImage.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = TmxImage.cpp; path = src/tmxparser/TmxImage.cpp; sourceTree = SOURCE_ROOT; };
+		54BB0837CD4B476CB53044F3 /* TmxTerrainArray.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = TmxTerrainArray.h; path = src/tmxparser/TmxTerrainArray.h; sourceTree = SOURCE_ROOT; };
+		5524028586CF4553A6876D20 /* Physics.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = Physics.cpp; path = src/Physics.cpp; sourceTree = SOURCE_ROOT; };
+		55F33FC772C44DCA9FE55BCE /* SDL_gesture.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = SDL_gesture.h; path = ext/sdl/include/SDL/SDL_gesture.h; sourceTree = SOURCE_ROOT; };
+		5616F01B709A4B3BA56EA0DC /* SDL_video.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = SDL_video.h; path = ext/sdl/include/SDL/SDL_video.h; sourceTree = SOURCE_ROOT; };
+		56D88FFEF59842F7B445FEE0 /* common.hpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; fileEncoding = 4; name = common.hpp; path = src/common.hpp; sourceTree = SOURCE_ROOT; };
+		57A11D3FAFCA48569901693F /* SDL_test_common.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = SDL_test_common.h; path = ext/sdl/include/SDL/SDL_test_common.h; sourceTree = SOURCE_ROOT; };
+		584AAD14A0F54E2193351816 /* b2PolygonContact.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = b2PolygonContact.cpp; path = ext/Box2D/Dynamics/Contacts/b2PolygonContact.cpp; sourceTree = SOURCE_ROOT; };
+		58F3C9CCC5AC449B928DB49C /* glfw3native.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = glfw3native.h; path = ext/glfw/include/GLFW/glfw3native.h; sourceTree = SOURCE_ROOT; };
+		5A2D3A5ED86441478C954203 /* b2RopeJoint.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = b2RopeJoint.cpp; path = ext/Box2D/Dynamics/Joints/b2RopeJoint.cpp; sourceTree = SOURCE_ROOT; };
+		5B7AFE4B02164D3AA99FDDFF /* SDL_filesystem.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = SDL_filesystem.h; path = ext/sdl/include/SDL/SDL_filesystem.h; sourceTree = SOURCE_ROOT; };
+		5CCEB8C17ADF488FAC0F14BA /* TmxPolyline.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = TmxPolyline.cpp; path = src/tmxparser/TmxPolyline.cpp; sourceTree = SOURCE_ROOT; };
+		5E28251968084590975993B3 /* TmxTile.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = TmxTile.cpp; path = src/tmxparser/TmxTile.cpp; sourceTree = SOURCE_ROOT; };
+		5FF6E46E126D4997A8C9D9A9 /* b2GrowableStack.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = b2GrowableStack.h; path = ext/Box2D/Common/b2GrowableStack.h; sourceTree = SOURCE_ROOT; };
+		6244E6A154A14B7884403910 /* b2BroadPhase.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = b2BroadPhase.cpp; path = ext/Box2D/Collision/b2BroadPhase.cpp; sourceTree = SOURCE_ROOT; };
+		6387980F8B3244E7B845D9AC /* miniz.c */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.c; fileEncoding = 4; name = miniz.c; path = src/tmxparser/miniz.c; sourceTree = SOURCE_ROOT; };
+		64BB2378D52F49F89AEF71D5 /* ToolManager.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = ToolManager.h; path = src/ToolManager.h; sourceTree = SOURCE_ROOT; };
+		659C1548910D457A80521B47 /* SDL_pixels.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = SDL_pixels.h; path = ext/sdl/include/SDL/SDL_pixels.h; sourceTree = SOURCE_ROOT; };
+		65A6D8EA96B147689F7C68C7 /* b2StackAllocator.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = b2StackAllocator.cpp; path = ext/Box2D/Common/b2StackAllocator.cpp; sourceTree = SOURCE_ROOT; };
+		65D0118EAFB6451E841EFAAA /* SDL_audio.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = SDL_audio.h; path = ext/sdl/include/SDL/SDL_audio.h; sourceTree = SOURCE_ROOT; };
+		65F491ABCDFA416D9FA1567D /* b2CollideEdge.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = b2CollideEdge.cpp; path = ext/Box2D/Collision/b2CollideEdge.cpp; sourceTree = SOURCE_ROOT; };
+		665CCCD87DB845EE990D239C /* b2EdgeShape.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = b2EdgeShape.cpp; path = ext/Box2D/Collision/Shapes/b2EdgeShape.cpp; sourceTree = SOURCE_ROOT; };
+		669CB97CE562417990008850 /* punchright.hpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; fileEncoding = 4; name = punchright.hpp; path = src/punchright.hpp; sourceTree = SOURCE_ROOT; };
+		66A2B907EF3E4D2A9C8C100C /* button.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = button.cpp; path = src/button.cpp; sourceTree = SOURCE_ROOT; };
+		67A01E9144D3490C8D5E7472 /* base64.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = base64.h; path = src/tmxparser/base64/base64.h; sourceTree = SOURCE_ROOT; };
+		6914A788B8314EC9AA0F71A7 /* SDL_name.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = SDL_name.h; path = ext/sdl/include/SDL/SDL_name.h; sourceTree = SOURCE_ROOT; };
+		6991E2BC8EDE4035A211F4A5 /* b2Timer.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = b2Timer.cpp; path = ext/Box2D/Common/b2Timer.cpp; sourceTree = SOURCE_ROOT; };
+		69AB33868964411E83898BE7 /* SDL_config_wiz.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = SDL_config_wiz.h; path = ext/sdl/include/SDL/SDL_config_wiz.h; sourceTree = SOURCE_ROOT; };
+		69BA014E33B84838A36E32F2 /* armour.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = armour.cpp; path = src/armour.cpp; sourceTree = SOURCE_ROOT; };
+		69C5BA6C1FAE45E6A35F7AA2 /* SDL_error.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = SDL_error.h; path = ext/sdl/include/SDL/SDL_error.h; sourceTree = SOURCE_ROOT; };
+		6AE02A595A444BCC8F8E2551 /* SDL_gamecontroller.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = SDL_gamecontroller.h; path = ext/sdl/include/SDL/SDL_gamecontroller.h; sourceTree = SOURCE_ROOT; };
+		6B34798F8A22465D9EFEFEB5 /* b2Contact.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = b2Contact.h; path = ext/Box2D/Dynamics/Contacts/b2Contact.h; sourceTree = SOURCE_ROOT; };
+		6D20361FFFB34BA59FCB2066 /* b2Contact.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = b2Contact.cpp; path = ext/Box2D/Dynamics/Contacts/b2Contact.cpp; sourceTree = SOURCE_ROOT; };
+		6DC7938C9C4A4435B4AB8DE5 /* TmxUtil.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = TmxUtil.h; path = src/tmxparser/TmxUtil.h; sourceTree = SOURCE_ROOT; };
+		6EBB5B0FB95A4A0C8BD6ADD6 /* glfw3.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = glfw3.h; path = ext/glfw/include/GLFW/glfw3.h; sourceTree = SOURCE_ROOT; };
+		6EF7D928A81F4EB59EF0D10B /* b2BroadPhase.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = b2BroadPhase.h; path = ext/Box2D/Collision/b2BroadPhase.h; sourceTree = SOURCE_ROOT; };
+		6FA4825B5E3D403FA911C711 /* TmxEllipse.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = TmxEllipse.cpp; path = src/tmxparser/TmxEllipse.cpp; sourceTree = SOURCE_ROOT; };
+		7130B3813C8342C5AB4E4ED0 /* TmxColor.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = TmxColor.cpp; path = src/tmxparser/TmxColor.cpp; sourceTree = SOURCE_ROOT; };
+		75FB6BE50ACC431997DE3A83 /* SDL_test_fuzzer.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = SDL_test_fuzzer.h; path = ext/sdl/include/SDL/SDL_test_fuzzer.h; sourceTree = SOURCE_ROOT; };
+		765F53EC7A3F4040B62C234A /* b2CollideCircle.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = b2CollideCircle.cpp; path = ext/Box2D/Collision/b2CollideCircle.cpp; sourceTree = SOURCE_ROOT; };
+		79113EE6068B4ACDAA35DC49 /* b2Joint.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = b2Joint.h; path = ext/Box2D/Dynamics/Joints/b2Joint.h; sourceTree = SOURCE_ROOT; };
+		79CFF62BCFC54F37AD392EF2 /* SDL_timer.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = SDL_timer.h; path = ext/sdl/include/SDL/SDL_timer.h; sourceTree = SOURCE_ROOT; };
+		7A4BA1CAD7DE4338B31283CA /* TmxTileset.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = TmxTileset.h; path = src/tmxparser/TmxTileset.h; sourceTree = SOURCE_ROOT; };
+		7AAF986EDF784D9FA17C04D1 /* SDL_surface.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = SDL_surface.h; path = ext/sdl/include/SDL/SDL_surface.h; sourceTree = SOURCE_ROOT; };
+		7BB1C9262487447DB12DFC85 /* PhysicalBody.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = PhysicalBody.h; path = src/PhysicalBody.h; sourceTree = SOURCE_ROOT; };
+		7BBDC072B24D44D29C18F690 /* worldtexture.hpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; fileEncoding = 4; name = worldtexture.hpp; path = src/worldtexture.hpp; sourceTree = SOURCE_ROOT; };
+		7CBCA217D943487A82D92C19 /* SDL_opengles2_gl2platform.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = SDL_opengles2_gl2platform.h; path = ext/sdl/include/SDL/SDL_opengles2_gl2platform.h; sourceTree = SOURCE_ROOT; };
+		7E642BAABF674F9C84F641E6 /* b2MouseJoint.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = b2MouseJoint.h; path = ext/Box2D/Dynamics/Joints/b2MouseJoint.h; sourceTree = SOURCE_ROOT; };
+		81A38CA5B64D4B668B0E6F96 /* b2Timer.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = b2Timer.h; path = ext/Box2D/Common/b2Timer.h; sourceTree = SOURCE_ROOT; };
+		82BCA20ABB9B46A8B80C377C /* CollisionManager.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = CollisionManager.h; path = src/CollisionManager.h; sourceTree = SOURCE_ROOT; };
+		85A53790805549C8B040EFE6 /* TmxEllipse.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = TmxEllipse.h; path = src/tmxparser/TmxEllipse.h; sourceTree = SOURCE_ROOT; };
+		85B8E48FB1694F5A9EFBCC5A /* TmxImageLayer.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = TmxImageLayer.cpp; path = src/tmxparser/TmxImageLayer.cpp; sourceTree = SOURCE_ROOT; };
+		86C701B4F182434C804738D6 /* world.hpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; fileEncoding = 4; name = world.hpp; path = src/world.hpp; sourceTree = SOURCE_ROOT; };
+		8716A473EB6B47459E3A47DE /* punchright.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = punchright.cpp; path = src/punchright.cpp; sourceTree = SOURCE_ROOT; };
+		883D65D460FE4CF69A3E3F7A /* b2RevoluteJoint.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = b2RevoluteJoint.cpp; path = ext/Box2D/Dynamics/Joints/b2RevoluteJoint.cpp; sourceTree = SOURCE_ROOT; };
+		8945CE29109A40E299D06FEC /* b2WeldJoint.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = b2WeldJoint.h; path = ext/Box2D/Dynamics/Joints/b2WeldJoint.h; sourceTree = SOURCE_ROOT; };
+		89D02A2F7AA44E4598B1CFEF /* zombie */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; path = zombie; sourceTree = BUILT_PRODUCTS_DIR; };
+		8A10E210FAFC4849B7E18E84 /* water.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = water.cpp; path = src/water.cpp; sourceTree = SOURCE_ROOT; };
+		8A40044F9FCE4B3AAB197A13 /* Ice.hpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; fileEncoding = 4; name = Ice.hpp; path = src/Ice.hpp; sourceTree = SOURCE_ROOT; };
+		8B2E2ADB09FF490688874463 /* CMakeLists.txt */ = {isa = PBXFileReference; explicitFileType = sourcecode.text; fileEncoding = 4; lastKnownFileType = text; path = CMakeLists.txt; sourceTree = SOURCE_ROOT; };
+		8B54D7A9BA9B494BA8788270 /* KMeans.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = KMeans.h; path = src/KMeans.h; sourceTree = SOURCE_ROOT; };
+		8BA22B6D4253468AB5495E9D /* TmxProperty.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = TmxProperty.cpp; path = src/tmxparser/TmxProperty.cpp; sourceTree = SOURCE_ROOT; };
+		8C572FC8230E4D88B413AAE9 /* toolboxManager.hpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; fileEncoding = 4; name = toolboxManager.hpp; path = src/toolboxManager.hpp; sourceTree = SOURCE_ROOT; };
+		8F59A6645C234B8DA547FD36 /* b2CircleContact.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = b2CircleContact.h; path = ext/Box2D/Dynamics/Contacts/b2CircleContact.h; sourceTree = SOURCE_ROOT; };
+		9003771FC5374415A88904C3 /* TmxMap.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = TmxMap.cpp; path = src/tmxparser/TmxMap.cpp; sourceTree = SOURCE_ROOT; };
+		927D8BA4F03A48D28AC26A55 /* player2.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = player2.cpp; path = src/player2.cpp; sourceTree = SOURCE_ROOT; };
+		92823D292565412590CB0CD5 /* b2PolygonAndCircleContact.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = b2PolygonAndCircleContact.h; path = ext/Box2D/Dynamics/Contacts/b2PolygonAndCircleContact.h; sourceTree = SOURCE_ROOT; };
+		944A593677E24F8CAA13AD9E /* CMakeLists.txt */ = {isa = PBXFileReference; explicitFileType = sourcecode.text; fileEncoding = 4; lastKnownFileType = text; path = CMakeLists.txt; sourceTree = SOURCE_ROOT; };
+		945D1348D6814484B4799924 /* b2PolygonAndCircleContact.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = b2PolygonAndCircleContact.cpp; path = ext/Box2D/Dynamics/Contacts/b2PolygonAndCircleContact.cpp; sourceTree = SOURCE_ROOT; };
+		952BD67987E64AA99110C8F9 /* b2ContactManager.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = b2ContactManager.h; path = ext/Box2D/Dynamics/b2ContactManager.h; sourceTree = SOURCE_ROOT; };
+		96F3A297828849A687C3E0C1 /* SDL_config.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = SDL_config.h; path = ext/sdl/include/SDL/SDL_config.h; sourceTree = SOURCE_ROOT; };
+		97167D76F4D141CE8910EC0A /* SDL_rect.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = SDL_rect.h; path = ext/sdl/include/SDL/SDL_rect.h; sourceTree = SOURCE_ROOT; };
+		983A7D979B86434592DA48B6 /* b2BlockAllocator.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = b2BlockAllocator.h; path = ext/Box2D/Common/b2BlockAllocator.h; sourceTree = SOURCE_ROOT; };
+		98561E48EB4642C0A081C9B9 /* SDL_test_log.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = SDL_test_log.h; path = ext/sdl/include/SDL/SDL_test_log.h; sourceTree = SOURCE_ROOT; };
+		98565BBF74AC4FD88CAA2084 /* TmxPoint.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = TmxPoint.h; path = src/tmxparser/TmxPoint.h; sourceTree = SOURCE_ROOT; };
+		9882E38354014FF7B96BC15A /* SDL_syswm.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = SDL_syswm.h; path = ext/sdl/include/SDL/SDL_syswm.h; sourceTree = SOURCE_ROOT; };
+		993C048E03394EA3B9C8A9C4 /* b2Island.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = b2Island.h; path = ext/Box2D/Dynamics/b2Island.h; sourceTree = SOURCE_ROOT; };
+		99525573EB8C434F80A072D4 /* b2WorldCallbacks.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = b2WorldCallbacks.cpp; path = ext/Box2D/Dynamics/b2WorldCallbacks.cpp; sourceTree = SOURCE_ROOT; };
+		99C27FF88FB54E4B8ED78A2F /* SDL_blendmode.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = SDL_blendmode.h; path = ext/sdl/include/SDL/SDL_blendmode.h; sourceTree = SOURCE_ROOT; };
+		99F7CCA5023B427F8E15F1D6 /* limbsManager.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = limbsManager.cpp; path = src/limbsManager.cpp; sourceTree = SOURCE_ROOT; };
+		9A6823539EA840CD8572BFCC /* SDL_opengles2_khrplatform.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = SDL_opengles2_khrplatform.h; path = ext/sdl/include/SDL/SDL_opengles2_khrplatform.h; sourceTree = SOURCE_ROOT; };
+		9A847C18C06044B29B7FBE22 /* toolboxSlot.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = toolboxSlot.cpp; path = src/toolboxSlot.cpp; sourceTree = SOURCE_ROOT; };
+		9B1C0A8E7FCC4B2AAC996D7D /* MapGrid.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = MapGrid.h; path = src/MapGrid.h; sourceTree = SOURCE_ROOT; };
+		9B1E099DE10C4897BA3A4959 /* b2PolygonShape.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = b2PolygonShape.h; path = ext/Box2D/Collision/Shapes/b2PolygonShape.h; sourceTree = SOURCE_ROOT; };
+		9B9FA951A53142A9BFA38388 /* b2Island.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = b2Island.cpp; path = ext/Box2D/Dynamics/b2Island.cpp; sourceTree = SOURCE_ROOT; };
+		9BC3BDC7199C4F2897DA8BE1 /* SDL_opengl_glext.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = SDL_opengl_glext.h; path = ext/sdl/include/SDL/SDL_opengl_glext.h; sourceTree = SOURCE_ROOT; };
+		9EA6BE2DD9434E3E93624947 /* bomb.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = bomb.cpp; path = src/bomb.cpp; sourceTree = SOURCE_ROOT; };
+		9F94B7161D5742C384FC1374 /* SDL_test_memory.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = SDL_test_memory.h; path = ext/sdl/include/SDL/SDL_test_memory.h; sourceTree = SOURCE_ROOT; };
+		A04E4C55207D4B5185722520 /* player1.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = player1.cpp; path = src/player1.cpp; sourceTree = SOURCE_ROOT; };
+		A051B56D314D4E5192CA6A00 /* SDL_config_winrt.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = SDL_config_winrt.h; path = ext/sdl/include/SDL/SDL_config_winrt.h; sourceTree = SOURCE_ROOT; };
+		A1140340BCEA41B3BD7D17F5 /* SDL_test_compare.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = SDL_test_compare.h; path = ext/sdl/include/SDL/SDL_test_compare.h; sourceTree = SOURCE_ROOT; };
+		A1E2F61DB0A347F58605C3CA /* SDL_test_harness.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = SDL_test_harness.h; path = ext/sdl/include/SDL/SDL_test_harness.h; sourceTree = SOURCE_ROOT; };
+		A23DEE7A4F9A47C8B61693E5 /* b2CircleContact.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = b2CircleContact.cpp; path = ext/Box2D/Dynamics/Contacts/b2CircleContact.cpp; sourceTree = SOURCE_ROOT; };
+		A3320EAF3FC34D13B701D7D8 /* SDL_loadso.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = SDL_loadso.h; path = ext/sdl/include/SDL/SDL_loadso.h; sourceTree = SOURCE_ROOT; };
+		A3428C38A4BF4C6495FD8F59 /* b2EdgeAndPolygonContact.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = b2EdgeAndPolygonContact.cpp; path = ext/Box2D/Dynamics/Contacts/b2EdgeAndPolygonContact.cpp; sourceTree = SOURCE_ROOT; };
+		A4BD85A780174BDF901B602C /* SDL_mouse.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = SDL_mouse.h; path = ext/sdl/include/SDL/SDL_mouse.h; sourceTree = SOURCE_ROOT; };
+		A53F72AECE0146308450622E /* base64.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = base64.cpp; path = src/tmxparser/base64/base64.cpp; sourceTree = SOURCE_ROOT; };
+		A663BE908A2141F1B8370580 /* Physics.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = Physics.h; path = src/Physics.h; sourceTree = SOURCE_ROOT; };
+		A750115D2BBB42F69851218C /* TmxTileOffset.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = TmxTileOffset.cpp; path = src/tmxparser/TmxTileOffset.cpp; sourceTree = SOURCE_ROOT; };
+		A81244E9552144EF88571F13 /* worldtexture.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = worldtexture.cpp; path = src/worldtexture.cpp; sourceTree = SOURCE_ROOT; };
+		A8414DB64740497FA573132E /* b2BlockAllocator.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = b2BlockAllocator.cpp; path = ext/Box2D/Common/b2BlockAllocator.cpp; sourceTree = SOURCE_ROOT; };
+		A8B27FE48B1B41CB8F4B364E /* b2GearJoint.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = b2GearJoint.h; path = ext/Box2D/Dynamics/Joints/b2GearJoint.h; sourceTree = SOURCE_ROOT; };
+		A9025B60BBC346AF9E0FCA9A /* b2Distance.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = b2Distance.h; path = ext/Box2D/Collision/b2Distance.h; sourceTree = SOURCE_ROOT; };
+		AA81545C734A43A9BD912EC2 /* zombieManager.hpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; fileEncoding = 4; name = zombieManager.hpp; path = src/zombieManager.hpp; sourceTree = SOURCE_ROOT; };
+		AB2829712B1D4DB8AD683C57 /* button.hpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; fileEncoding = 4; name = button.hpp; path = src/button.hpp; sourceTree = SOURCE_ROOT; };
+		AC97C7F386704D48AA658E49 /* common.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = common.cpp; path = src/common.cpp; sourceTree = SOURCE_ROOT; };
+		AE7CF40FD51448709220FFD2 /* SDL_test_images.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = SDL_test_images.h; path = ext/sdl/include/SDL/SDL_test_images.h; sourceTree = SOURCE_ROOT; };
+		B0A32C53E6A74DCFA067CEF9 /* antidote.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = antidote.cpp; path = src/antidote.cpp; sourceTree = SOURCE_ROOT; };
+		B0A7BFA22F754A3BACBBC7D7 /* b2Settings.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = b2Settings.h; path = ext/Box2D/Common/b2Settings.h; sourceTree = SOURCE_ROOT; };
+		B2C79E23307B42488C1D75D1 /* TmxMap.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = TmxMap.h; path = src/tmxparser/TmxMap.h; sourceTree = SOURCE_ROOT; };
+		B408D48E99734941BDE46101 /* SDL_haptic.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = SDL_haptic.h; path = ext/sdl/include/SDL/SDL_haptic.h; sourceTree = SOURCE_ROOT; };
+		B48D197ACC67413FA0A06520 /* TmxPolyline.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = TmxPolyline.h; path = src/tmxparser/TmxPolyline.h; sourceTree = SOURCE_ROOT; };
+		B5898AB9DA014EE886261107 /* KMeans.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = KMeans.cpp; path = src/KMeans.cpp; sourceTree = SOURCE_ROOT; };
+		B5DDCE9A96054E1280986C13 /* SDL_egl.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = SDL_egl.h; path = ext/sdl/include/SDL/SDL_egl.h; sourceTree = SOURCE_ROOT; };
+		B62C189942524F2A9D441728 /* gl3w.c */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.c; fileEncoding = 4; name = gl3w.c; path = src/gl3w.c; sourceTree = SOURCE_ROOT; };
+		B635A9297A4F4132B63CCD5D /* TmxText.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = TmxText.h; path = src/tmxparser/TmxText.h; sourceTree = SOURCE_ROOT; };
+		B644B004490144D2AF8FCE7B /* b2MouseJoint.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = b2MouseJoint.cpp; path = ext/Box2D/Dynamics/Joints/b2MouseJoint.cpp; sourceTree = SOURCE_ROOT; };
+		B78D68EA225F424799B4A160 /* TmxPropertySet.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = TmxPropertySet.h; path = src/tmxparser/TmxPropertySet.h; sourceTree = SOURCE_ROOT; };
+		B8D9FC2CA4CA4023AF70EB25 /* SDL_system.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = SDL_system.h; path = ext/sdl/include/SDL/SDL_system.h; sourceTree = SOURCE_ROOT; };
+		B9EF7FE30C94448EBFCC9EAE /* zombie.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = zombie.cpp; path = src/zombie.cpp; sourceTree = SOURCE_ROOT; };
+		BA7F1A12AE244505B40CE1E8 /* antidote.hpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; fileEncoding = 4; name = antidote.hpp; path = src/antidote.hpp; sourceTree = SOURCE_ROOT; };
+		BAEE36D525A64C58B78F3617 /* b2TimeStep.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = b2TimeStep.h; path = ext/Box2D/Dynamics/b2TimeStep.h; sourceTree = SOURCE_ROOT; };
+		BBF1D4FFB73E4120BF3190CA /* SDL_test_random.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = SDL_test_random.h; path = ext/sdl/include/SDL/SDL_test_random.h; sourceTree = SOURCE_ROOT; };
+		BCB01B44D0164CE59CDAFB9F /* SDL.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = SDL.h; path = ext/sdl/include/SDL/SDL.h; sourceTree = SOURCE_ROOT; };
+		C0B733CC2D7D4A31BDC2B91B /* SDL_config_psp.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = SDL_config_psp.h; path = ext/sdl/include/SDL/SDL_config_psp.h; sourceTree = SOURCE_ROOT; };
+		C2FF3AB17D79410B97B716B7 /* b2TimeOfImpact.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = b2TimeOfImpact.cpp; path = ext/Box2D/Collision/b2TimeOfImpact.cpp; sourceTree = SOURCE_ROOT; };
+		C54FBF49FB5E40C8AAD53E91 /* b2ChainShape.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = b2ChainShape.cpp; path = ext/Box2D/Collision/Shapes/b2ChainShape.cpp; sourceTree = SOURCE_ROOT; };
+		C573FDEC33E54A949DC8839F /* SDL_keyboard.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = SDL_keyboard.h; path = ext/sdl/include/SDL/SDL_keyboard.h; sourceTree = SOURCE_ROOT; };
+		C5929FECEC554A278BAA7710 /* SDL_mixer.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = SDL_mixer.h; path = ext/sdl/include/SDL/SDL_mixer.h; sourceTree = SOURCE_ROOT; };
+		C9132A06E6A6482FAF70E167 /* SDL_cpuinfo.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = SDL_cpuinfo.h; path = ext/sdl/include/SDL/SDL_cpuinfo.h; sourceTree = SOURCE_ROOT; };
+		CBDA832AD8804BC182D5C65B /* bomb.hpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; fileEncoding = 4; name = bomb.hpp; path = src/bomb.hpp; sourceTree = SOURCE_ROOT; };
+		CC3967480BD2438FA9DCDFD3 /* b2DynamicTree.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = b2DynamicTree.cpp; path = ext/Box2D/Collision/b2DynamicTree.cpp; sourceTree = SOURCE_ROOT; };
+		CDAC9735845F45BA8B03865D /* TmxTileset.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = TmxTileset.cpp; path = src/tmxparser/TmxTileset.cpp; sourceTree = SOURCE_ROOT; };
+		CE275EBC9D574BABBF976C72 /* armour.hpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; fileEncoding = 4; name = armour.hpp; path = src/armour.hpp; sourceTree = SOURCE_ROOT; };
+		CEAC8813442341F2B3A4BBC3 /* viewHelper.hpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; fileEncoding = 4; name = viewHelper.hpp; path = src/viewHelper.hpp; sourceTree = SOURCE_ROOT; };
+		D098F237B9DE44E2B7A67AF2 /* b2ContactManager.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = b2ContactManager.cpp; path = ext/Box2D/Dynamics/b2ContactManager.cpp; sourceTree = SOURCE_ROOT; };
+		D0A24F7D68BB42E88721779A /* PhysicalBody.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = PhysicalBody.cpp; path = src/PhysicalBody.cpp; sourceTree = SOURCE_ROOT; };
+		D1ABFCE6DFF64528BC49DFA0 /* punchleft.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = punchleft.cpp; path = src/punchleft.cpp; sourceTree = SOURCE_ROOT; };
+		D359C76BA1F8428E9BA5157E /* player1.hpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; fileEncoding = 4; name = player1.hpp; path = src/player1.hpp; sourceTree = SOURCE_ROOT; };
+		D5482AB02FF848079E7A7B02 /* JPS.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = JPS.h; path = src/JPS.h; sourceTree = SOURCE_ROOT; };
+		D559E69438734E469F4F19AF /* explosion.hpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; fileEncoding = 4; name = explosion.hpp; path = src/explosion.hpp; sourceTree = SOURCE_ROOT; };
+		D592293ABD034F33A678AA99 /* b2PulleyJoint.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = b2PulleyJoint.cpp; path = ext/Box2D/Dynamics/Joints/b2PulleyJoint.cpp; sourceTree = SOURCE_ROOT; };
+		D5BEAFCD5EBA4C5FB82F3237 /* TmxTileLayer.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = TmxTileLayer.h; path = src/tmxparser/TmxTileLayer.h; sourceTree = SOURCE_ROOT; };
+		D76AB65D4EE942BA9AAF18DE /* SDL_bits.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = SDL_bits.h; path = ext/sdl/include/SDL/SDL_bits.h; sourceTree = SOURCE_ROOT; };
+		D8502CED22734BA3A01FA3A3 /* SDL_thread.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = SDL_thread.h; path = ext/sdl/include/SDL/SDL_thread.h; sourceTree = SOURCE_ROOT; };
+		D92D7376FA854106A33CE297 /* Tmx.h.in */ = {isa = PBXFileReference; explicitFileType = sourcecode; fileEncoding = 4; name = Tmx.h.in; path = src/tmxparser/Tmx.h.in; sourceTree = SOURCE_ROOT; };
+		D96634103D6D475C8DBF35CD /* zombieManager.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = zombieManager.cpp; path = src/zombieManager.cpp; sourceTree = SOURCE_ROOT; };
+		DBE5888BC16746FD8D8D6F12 /* b2World.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = b2World.h; path = ext/Box2D/Dynamics/b2World.h; sourceTree = SOURCE_ROOT; };
+		DC0EAC074F8C4F56ABDA77B2 /* SDL_test.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = SDL_test.h; path = ext/sdl/include/SDL/SDL_test.h; sourceTree = SOURCE_ROOT; };
+		DDBC01F706994E4990223CF3 /* blood.hpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; fileEncoding = 4; name = blood.hpp; path = src/blood.hpp; sourceTree = SOURCE_ROOT; };
+		DDCA7DD9E5794089A32501ED /* b2Rope.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = b2Rope.cpp; path = ext/Box2D/Rope/b2Rope.cpp; sourceTree = SOURCE_ROOT; };
+		DDE5766FC5664868A065F6B7 /* SDL_opengles.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = SDL_opengles.h; path = ext/sdl/include/SDL/SDL_opengles.h; sourceTree = SOURCE_ROOT; };
+		DEA6FEFF98A94592AE00897F /* SDL_scancode.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = SDL_scancode.h; path = ext/sdl/include/SDL/SDL_scancode.h; sourceTree = SOURCE_ROOT; };
+		DEACD9E19E044D0FA80FF6D6 /* b2CollidePolygon.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = b2CollidePolygon.cpp; path = ext/Box2D/Collision/b2CollidePolygon.cpp; sourceTree = SOURCE_ROOT; };
+		E13B4432A2044583BBEB4AC2 /* b2Distance.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = b2Distance.cpp; path = ext/Box2D/Collision/b2Distance.cpp; sourceTree = SOURCE_ROOT; };
+		E2105AB99613475AA4D7E08F /* Limb.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = Limb.h; path = src/Limb.h; sourceTree = SOURCE_ROOT; };
+		E210952EE67B4D6187BA98CE /* SDL_test_font.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = SDL_test_font.h; path = ext/sdl/include/SDL/SDL_test_font.h; sourceTree = SOURCE_ROOT; };
+		E29431A872CA49C09D4C1443 /* tree.hpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; fileEncoding = 4; name = tree.hpp; path = src/tree.hpp; sourceTree = SOURCE_ROOT; };
+		E4101AE23E08479880168F67 /* b2Settings.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = b2Settings.cpp; path = ext/Box2D/Common/b2Settings.cpp; sourceTree = SOURCE_ROOT; };
+		E51527C9221743319ACFAEE7 /* b2ChainAndPolygonContact.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = b2ChainAndPolygonContact.cpp; path = ext/Box2D/Dynamics/Contacts/b2ChainAndPolygonContact.cpp; sourceTree = SOURCE_ROOT; };
+		E525BC8783C145429945428B /* SDL_events.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = SDL_events.h; path = ext/sdl/include/SDL/SDL_events.h; sourceTree = SOURCE_ROOT; };
+		E5826A8AEC4847AE98F4B713 /* b2Shape.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = b2Shape.h; path = ext/Box2D/Collision/Shapes/b2Shape.h; sourceTree = SOURCE_ROOT; };
+		E59F80ACC66F4751AC86029C /* SDL_keycode.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = SDL_keycode.h; path = ext/sdl/include/SDL/SDL_keycode.h; sourceTree = SOURCE_ROOT; };
+		E6C94F0C333B4287AB008978 /* player2.hpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; fileEncoding = 4; name = player2.hpp; path = src/player2.hpp; sourceTree = SOURCE_ROOT; };
+		E85DDE4DCAFC4D9C9179962E /* b2Rope.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = b2Rope.h; path = ext/Box2D/Rope/b2Rope.h; sourceTree = SOURCE_ROOT; };
+		EBC2ECB5498E4910ADB06F4E /* stb_image.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = stb_image.h; path = ext/stb_image/stb_image.h; sourceTree = SOURCE_ROOT; };
+		ECE49A5194294081B67F139E /* b2PulleyJoint.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = b2PulleyJoint.h; path = ext/Box2D/Dynamics/Joints/b2PulleyJoint.h; sourceTree = SOURCE_ROOT; };
+		ECFAA009D4B94F8684A7E581 /* SDL_config_android.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = SDL_config_android.h; path = ext/sdl/include/SDL/SDL_config_android.h; sourceTree = SOURCE_ROOT; };
+		ED02AA6F78824BD3A99EAFD7 /* TmxPolygon.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = TmxPolygon.h; path = src/tmxparser/TmxPolygon.h; sourceTree = SOURCE_ROOT; };
+		ED699ECDA8B044199885CD4D /* close_code.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = close_code.h; path = ext/sdl/include/SDL/close_code.h; sourceTree = SOURCE_ROOT; };
+		EE5EFAF970A0452FBFD3C1C3 /* b2PolygonShape.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = b2PolygonShape.cpp; path = ext/Box2D/Collision/Shapes/b2PolygonShape.cpp; sourceTree = SOURCE_ROOT; };
+		F03175EAD03E4A6BB42983E3 /* TmxPropertySet.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = TmxPropertySet.cpp; path = src/tmxparser/TmxPropertySet.cpp; sourceTree = SOURCE_ROOT; };
+		F18C432E205E41DDAC99B3F9 /* b2DistanceJoint.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = b2DistanceJoint.h; path = ext/Box2D/Dynamics/Joints/b2DistanceJoint.h; sourceTree = SOURCE_ROOT; };
+		F30CEB5F6A6D444AAB369891 /* mud.hpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; fileEncoding = 4; name = mud.hpp; path = src/mud.hpp; sourceTree = SOURCE_ROOT; };
+		F33D44B83C5E4D9BB8C4F2E8 /* TmxColor.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = TmxColor.h; path = src/tmxparser/TmxColor.h; sourceTree = SOURCE_ROOT; };
+		F3F225575CC846B1A84CFB67 /* TmxTileOffset.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = TmxTileOffset.h; path = src/tmxparser/TmxTileOffset.h; sourceTree = SOURCE_ROOT; };
+		F4AC60A135014FC7B19C65CC /* ToolManager.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = ToolManager.cpp; path = src/ToolManager.cpp; sourceTree = SOURCE_ROOT; };
+		F8165195E2D94632B08E7947 /* b2PrismaticJoint.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = b2PrismaticJoint.cpp; path = ext/Box2D/Dynamics/Joints/b2PrismaticJoint.cpp; sourceTree = SOURCE_ROOT; };
+		F82BD12FA10F4FDFAD51C7C1 /* SDL_clipboard.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = SDL_clipboard.h; path = ext/sdl/include/SDL/SDL_clipboard.h; sourceTree = SOURCE_ROOT; };
+		F9E6D6BDA1584FC7B4597172 /* SDL_test_md5.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = SDL_test_md5.h; path = ext/sdl/include/SDL/SDL_test_md5.h; sourceTree = SOURCE_ROOT; };
+		FA461EE308AA4F0EBD4B270D /* TmxMapTile.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = TmxMapTile.h; path = src/tmxparser/TmxMapTile.h; sourceTree = SOURCE_ROOT; };
+		FA8B06DC176D46A2ABA0450B /* TmxObjectGroup.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = TmxObjectGroup.h; path = src/tmxparser/TmxObjectGroup.h; sourceTree = SOURCE_ROOT; };
+		FC7715D77BD24F1683655EB4 /* b2FrictionJoint.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = b2FrictionJoint.cpp; path = ext/Box2D/Dynamics/Joints/b2FrictionJoint.cpp; sourceTree = SOURCE_ROOT; };
+		FD48B30C06CF43DD845ED312 /* b2WheelJoint.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = b2WheelJoint.cpp; path = ext/Box2D/Dynamics/Joints/b2WheelJoint.cpp; sourceTree = SOURCE_ROOT; };
+		FE7B381DBDEF4BB6AE4891CD /* b2Collision.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = b2Collision.h; path = ext/Box2D/Collision/b2Collision.h; sourceTree = SOURCE_ROOT; };
+		FE991D4DCE344B8EAF177A06 /* b2PrismaticJoint.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = b2PrismaticJoint.h; path = ext/Box2D/Dynamics/Joints/b2PrismaticJoint.h; sourceTree = SOURCE_ROOT; };
+		FF202230824F426693373B68 /* SDL_joystick.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = SDL_joystick.h; path = ext/sdl/include/SDL/SDL_joystick.h; sourceTree = SOURCE_ROOT; };
+/* End PBXFileReference section */
+
+/* Begin PBXGroup section */
+		0A48442139114A32B5AB12CB /* zombie */ = {
+			isa = PBXGroup;
+			children = (
+				C663973E519E4A05AD171826 /* Source Files */,
+				FA027A4CD11B426CB6B5422E /* Header Files */,
+				944A593677E24F8CAA13AD9E /* CMakeLists.txt */,
+			);
+			name = zombie;
+			sourceTree = "<group>";
+		};
+		150CEE406E0D4E698A66667C /* CMake Rules */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "CMake Rules";
+			sourceTree = "<group>";
+		};
+		59FA4906730541FFA395FAB8 /* ZERO_CHECK */ = {
+			isa = PBXGroup;
+			children = (
+				E275AA3037A44F9785E47B18 /* CMake Rules */,
+				42698F6EB0CF44F59C2E33A3 /* CMakeLists.txt */,
+			);
+			name = ZERO_CHECK;
+			sourceTree = "<group>";
+		};
+		5FDEA6975FF7450A98ADC22C /* ALL_BUILD */ = {
+			isa = PBXGroup;
+			children = (
+				150CEE406E0D4E698A66667C /* CMake Rules */,
+				8B2E2ADB09FF490688874463 /* CMakeLists.txt */,
+			);
+			name = ALL_BUILD;
+			sourceTree = "<group>";
+		};
+		9938D3D5F38049128E8BF1AC /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				89D02A2F7AA44E4598B1CFEF /* zombie */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		C663973E519E4A05AD171826 /* Source Files */ = {
+			isa = PBXGroup;
+			children = (
+				C54FBF49FB5E40C8AAD53E91 /* b2ChainShape.cpp */,
+				4D47792797A644AA81F5286C /* b2CircleShape.cpp */,
+				665CCCD87DB845EE990D239C /* b2EdgeShape.cpp */,
+				EE5EFAF970A0452FBFD3C1C3 /* b2PolygonShape.cpp */,
+				6244E6A154A14B7884403910 /* b2BroadPhase.cpp */,
+				765F53EC7A3F4040B62C234A /* b2CollideCircle.cpp */,
+				65F491ABCDFA416D9FA1567D /* b2CollideEdge.cpp */,
+				DEACD9E19E044D0FA80FF6D6 /* b2CollidePolygon.cpp */,
+				4D9140A9A6FC4326B8ED7392 /* b2Collision.cpp */,
+				E13B4432A2044583BBEB4AC2 /* b2Distance.cpp */,
+				CC3967480BD2438FA9DCDFD3 /* b2DynamicTree.cpp */,
+				C2FF3AB17D79410B97B716B7 /* b2TimeOfImpact.cpp */,
+				A8414DB64740497FA573132E /* b2BlockAllocator.cpp */,
+				031C4E2073D845D7BB1F40DC /* b2Draw.cpp */,
+				4EA27F6BED964B828CBA8B53 /* b2Math.cpp */,
+				E4101AE23E08479880168F67 /* b2Settings.cpp */,
+				65A6D8EA96B147689F7C68C7 /* b2StackAllocator.cpp */,
+				6991E2BC8EDE4035A211F4A5 /* b2Timer.cpp */,
+				43EC384EDD9C493B8FF7C037 /* b2ChainAndCircleContact.cpp */,
+				E51527C9221743319ACFAEE7 /* b2ChainAndPolygonContact.cpp */,
+				A23DEE7A4F9A47C8B61693E5 /* b2CircleContact.cpp */,
+				6D20361FFFB34BA59FCB2066 /* b2Contact.cpp */,
+				282D9E5B50604F24B6D68061 /* b2ContactSolver.cpp */,
+				4FB5D488226F48888C1DC79D /* b2EdgeAndCircleContact.cpp */,
+				A3428C38A4BF4C6495FD8F59 /* b2EdgeAndPolygonContact.cpp */,
+				945D1348D6814484B4799924 /* b2PolygonAndCircleContact.cpp */,
+				584AAD14A0F54E2193351816 /* b2PolygonContact.cpp */,
+				4647E1E10AF0404C93AEE9EF /* b2DistanceJoint.cpp */,
+				FC7715D77BD24F1683655EB4 /* b2FrictionJoint.cpp */,
+				0CB127610F924A66ABFD2F65 /* b2GearJoint.cpp */,
+				0E2FAEE8765245EA900AC53F /* b2Joint.cpp */,
+				3242A52BE109404CB1999701 /* b2MotorJoint.cpp */,
+				B644B004490144D2AF8FCE7B /* b2MouseJoint.cpp */,
+				F8165195E2D94632B08E7947 /* b2PrismaticJoint.cpp */,
+				D592293ABD034F33A678AA99 /* b2PulleyJoint.cpp */,
+				883D65D460FE4CF69A3E3F7A /* b2RevoluteJoint.cpp */,
+				5A2D3A5ED86441478C954203 /* b2RopeJoint.cpp */,
+				2EA63F23BD1F474FBABC5DF7 /* b2WeldJoint.cpp */,
+				FD48B30C06CF43DD845ED312 /* b2WheelJoint.cpp */,
+				1FDAA14933244BCA81AF5E97 /* b2Body.cpp */,
+				D098F237B9DE44E2B7A67AF2 /* b2ContactManager.cpp */,
+				4726BD4AE3EE4E6F94608BF9 /* b2Fixture.cpp */,
+				9B9FA951A53142A9BFA38388 /* b2Island.cpp */,
+				0069AE655D5B4E908A2E317E /* b2World.cpp */,
+				99525573EB8C434F80A072D4 /* b2WorldCallbacks.cpp */,
+				DDCA7DD9E5794089A32501ED /* b2Rope.cpp */,
+				19B964382FAE49B586BAE1DC /* CollisionManager.cpp */,
+				312B2B6BC47846B4BF1A078E /* Ice.cpp */,
+				B5898AB9DA014EE886261107 /* KMeans.cpp */,
+				2C4A2FAE54F3420E9612C27E /* Limb.cpp */,
+				16E5E37E59384519A0C11263 /* MapGrid.cpp */,
+				D0A24F7D68BB42E88721779A /* PhysicalBody.cpp */,
+				5524028586CF4553A6876D20 /* Physics.cpp */,
+				F4AC60A135014FC7B19C65CC /* ToolManager.cpp */,
+				B0A32C53E6A74DCFA067CEF9 /* antidote.cpp */,
+				69BA014E33B84838A36E32F2 /* armour.cpp */,
+				4175AB67A49E4FDDAA3DC9FB /* blood.cpp */,
+				9EA6BE2DD9434E3E93624947 /* bomb.cpp */,
+				66A2B907EF3E4D2A9C8C100C /* button.cpp */,
+				AC97C7F386704D48AA658E49 /* common.cpp */,
+				45E80024A125413995564F0A /* explosion.cpp */,
+				B62C189942524F2A9D441728 /* gl3w.c */,
+				99F7CCA5023B427F8E15F1D6 /* limbsManager.cpp */,
+				4B47D80CDE084F0B8304DDEE /* main.cpp */,
+				35C5BEC2EB6C41CEB3D02CEB /* missile.cpp */,
+				42E600073F6D4C31A1BB44C5 /* mud.cpp */,
+				A04E4C55207D4B5185722520 /* player1.cpp */,
+				927D8BA4F03A48D28AC26A55 /* player2.cpp */,
+				D1ABFCE6DFF64528BC49DFA0 /* punchleft.cpp */,
+				8716A473EB6B47459E3A47DE /* punchright.cpp */,
+				7130B3813C8342C5AB4E4ED0 /* TmxColor.cpp */,
+				6FA4825B5E3D403FA911C711 /* TmxEllipse.cpp */,
+				0F54A66BC38A4B0982AC0144 /* TmxGroupLayer.cpp */,
+				5491066E8ED7450DB995BB3A /* TmxImage.cpp */,
+				85B8E48FB1694F5A9EFBCC5A /* TmxImageLayer.cpp */,
+				4EE5D58B5FA14C62B720C2E0 /* TmxLayer.cpp */,
+				9003771FC5374415A88904C3 /* TmxMap.cpp */,
+				457062D4E15946DBB3D76401 /* TmxObject.cpp */,
+				414EEBD90E9D4749B665936E /* TmxObjectGroup.cpp */,
+				2E4620CB3D04435D9288FC44 /* TmxPolygon.cpp */,
+				5CCEB8C17ADF488FAC0F14BA /* TmxPolyline.cpp */,
+				8BA22B6D4253468AB5495E9D /* TmxProperty.cpp */,
+				F03175EAD03E4A6BB42983E3 /* TmxPropertySet.cpp */,
+				0A8C5981CC5340D98DDD84E8 /* TmxTerrain.cpp */,
+				4EFA5C8A034940EAB81ACEBE /* TmxTerrainArray.cpp */,
+				1562730D54BC41B796DFA1C8 /* TmxText.cpp */,
+				5E28251968084590975993B3 /* TmxTile.cpp */,
+				12E53DEDD4344829B8A9BBA1 /* TmxTileLayer.cpp */,
+				A750115D2BBB42F69851218C /* TmxTileOffset.cpp */,
+				CDAC9735845F45BA8B03865D /* TmxTileset.cpp */,
+				4D8431108E5E4A93AC8F0E42 /* TmxUtil.cpp */,
+				A53F72AECE0146308450622E /* base64.cpp */,
+				6387980F8B3244E7B845D9AC /* miniz.c */,
+				1EACBB0BB0864697AF4A4171 /* toolboxManager.cpp */,
+				9A847C18C06044B29B7FBE22 /* toolboxSlot.cpp */,
+				13DEBC93B1A24B31859585BA /* tree.cpp */,
+				36B9BD7CB46E4B629FA56DEF /* viewHelper.cpp */,
+				8A10E210FAFC4849B7E18E84 /* water.cpp */,
+				4303BECB28494C10B0E38402 /* world.cpp */,
+				A81244E9552144EF88571F13 /* worldtexture.cpp */,
+				B9EF7FE30C94448EBFCC9EAE /* zombie.cpp */,
+				D96634103D6D475C8DBF35CD /* zombieManager.cpp */,
+			);
+			name = "Source Files";
+			sourceTree = "<group>";
+		};
+		E275AA3037A44F9785E47B18 /* CMake Rules */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "CMake Rules";
+			sourceTree = "<group>";
+		};
+		E53E4D5DB9C84C7386FFEA75 = {
+			isa = PBXGroup;
+			children = (
+				0A48442139114A32B5AB12CB /* zombie */,
+				5FDEA6975FF7450A98ADC22C /* ALL_BUILD */,
+				59FA4906730541FFA395FAB8 /* ZERO_CHECK */,
+				9938D3D5F38049128E8BF1AC /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		FA027A4CD11B426CB6B5422E /* Header Files */ = {
+			isa = PBXGroup;
+			children = (
+				2DF8B34D110E4FE9BEC6DA40 /* Box2D.h */,
+				50EB6C41731C4F84B2ABED24 /* b2ChainShape.h */,
+				3DF2E8DF6BA849DD8922DEAE /* b2CircleShape.h */,
+				4D651DD3A2B9470892DDAA25 /* b2EdgeShape.h */,
+				9B1E099DE10C4897BA3A4959 /* b2PolygonShape.h */,
+				E5826A8AEC4847AE98F4B713 /* b2Shape.h */,
+				6EF7D928A81F4EB59EF0D10B /* b2BroadPhase.h */,
+				FE7B381DBDEF4BB6AE4891CD /* b2Collision.h */,
+				A9025B60BBC346AF9E0FCA9A /* b2Distance.h */,
+				1E04D14BF32D41718122E7F1 /* b2DynamicTree.h */,
+				18E0377FFEB94F80AC4B5E64 /* b2TimeOfImpact.h */,
+				983A7D979B86434592DA48B6 /* b2BlockAllocator.h */,
+				1974E5AEFD59449E812490E6 /* b2Draw.h */,
+				5FF6E46E126D4997A8C9D9A9 /* b2GrowableStack.h */,
+				3A5C5819EC0648E3818E9E79 /* b2Math.h */,
+				B0A7BFA22F754A3BACBBC7D7 /* b2Settings.h */,
+				47D375C3B33F40D7836602BB /* b2StackAllocator.h */,
+				81A38CA5B64D4B668B0E6F96 /* b2Timer.h */,
+				1D90C8EEF0084086947A8FDF /* b2ChainAndCircleContact.h */,
+				3EDA4E5F2B504517A5415A40 /* b2ChainAndPolygonContact.h */,
+				8F59A6645C234B8DA547FD36 /* b2CircleContact.h */,
+				6B34798F8A22465D9EFEFEB5 /* b2Contact.h */,
+				3E1767CA97CF42A5BF99AE83 /* b2ContactSolver.h */,
+				14B3387E1BFA48868F8C2135 /* b2EdgeAndCircleContact.h */,
+				36C50288A1124233BFDEB819 /* b2EdgeAndPolygonContact.h */,
+				92823D292565412590CB0CD5 /* b2PolygonAndCircleContact.h */,
+				14ED7802E25541A9928E61B4 /* b2PolygonContact.h */,
+				F18C432E205E41DDAC99B3F9 /* b2DistanceJoint.h */,
+				13D0AACED1EC49E88F5937F7 /* b2FrictionJoint.h */,
+				A8B27FE48B1B41CB8F4B364E /* b2GearJoint.h */,
+				79113EE6068B4ACDAA35DC49 /* b2Joint.h */,
+				2CFFDBC0B6E04FB2977C2442 /* b2MotorJoint.h */,
+				7E642BAABF674F9C84F641E6 /* b2MouseJoint.h */,
+				FE991D4DCE344B8EAF177A06 /* b2PrismaticJoint.h */,
+				ECE49A5194294081B67F139E /* b2PulleyJoint.h */,
+				018F37AD98F74E1C979B4DF9 /* b2RevoluteJoint.h */,
+				4C5F189E91004811A44DD3C7 /* b2RopeJoint.h */,
+				8945CE29109A40E299D06FEC /* b2WeldJoint.h */,
+				1598C0D119B44A43AEC55ABD /* b2WheelJoint.h */,
+				4A673B24D750491FB3DFB310 /* b2Body.h */,
+				952BD67987E64AA99110C8F9 /* b2ContactManager.h */,
+				2707BDC33A434FD59F4B90EA /* b2Fixture.h */,
+				993C048E03394EA3B9C8A9C4 /* b2Island.h */,
+				BAEE36D525A64C58B78F3617 /* b2TimeStep.h */,
+				DBE5888BC16746FD8D8D6F12 /* b2World.h */,
+				463CFDEB08804B87AFB515E7 /* b2WorldCallbacks.h */,
+				E85DDE4DCAFC4D9C9179962E /* b2Rope.h */,
+				3696935501D04B58A8E89EC0 /* gl3w.h */,
+				30576DFFECCF48C79D5130D8 /* glcorearb.h */,
+				6EBB5B0FB95A4A0C8BD6ADD6 /* glfw3.h */,
+				58F3C9CCC5AC449B928DB49C /* glfw3native.h */,
+				BCB01B44D0164CE59CDAFB9F /* SDL.h */,
+				4802E04229F6449A8132411F /* SDL_assert.h */,
+				0C35EC31119D4A23AADDCCDD /* SDL_atomic.h */,
+				65D0118EAFB6451E841EFAAA /* SDL_audio.h */,
+				D76AB65D4EE942BA9AAF18DE /* SDL_bits.h */,
+				99C27FF88FB54E4B8ED78A2F /* SDL_blendmode.h */,
+				F82BD12FA10F4FDFAD51C7C1 /* SDL_clipboard.h */,
+				96F3A297828849A687C3E0C1 /* SDL_config.h */,
+				ECFAA009D4B94F8684A7E581 /* SDL_config_android.h */,
+				3EA719371F1E48628F115856 /* SDL_config_iphoneos.h */,
+				2F64530CFF3D4634B44A8CA1 /* SDL_config_macosx.h */,
+				4E13BE9BD68948E58A54A8C5 /* SDL_config_minimal.h */,
+				22572CE8FAB241D2A2A4132C /* SDL_config_pandora.h */,
+				C0B733CC2D7D4A31BDC2B91B /* SDL_config_psp.h */,
+				50F8BCABFE9A46AC86364910 /* SDL_config_windows.h */,
+				A051B56D314D4E5192CA6A00 /* SDL_config_winrt.h */,
+				69AB33868964411E83898BE7 /* SDL_config_wiz.h */,
+				36395C7F9F0E4877845E01A3 /* SDL_copying.h */,
+				C9132A06E6A6482FAF70E167 /* SDL_cpuinfo.h */,
+				B5DDCE9A96054E1280986C13 /* SDL_egl.h */,
+				4A4B64D10E6947DB9F68EFEA /* SDL_endian.h */,
+				69C5BA6C1FAE45E6A35F7AA2 /* SDL_error.h */,
+				E525BC8783C145429945428B /* SDL_events.h */,
+				5B7AFE4B02164D3AA99FDDFF /* SDL_filesystem.h */,
+				6AE02A595A444BCC8F8E2551 /* SDL_gamecontroller.h */,
+				55F33FC772C44DCA9FE55BCE /* SDL_gesture.h */,
+				B408D48E99734941BDE46101 /* SDL_haptic.h */,
+				52801962CD69491A845E8DB9 /* SDL_hints.h */,
+				FF202230824F426693373B68 /* SDL_joystick.h */,
+				C573FDEC33E54A949DC8839F /* SDL_keyboard.h */,
+				E59F80ACC66F4751AC86029C /* SDL_keycode.h */,
+				A3320EAF3FC34D13B701D7D8 /* SDL_loadso.h */,
+				0F2F7A118CF24848854B89EC /* SDL_log.h */,
+				3B2DA63D41C649A981406B25 /* SDL_main.h */,
+				29669AF22FDC45BCBADB0214 /* SDL_messagebox.h */,
+				C5929FECEC554A278BAA7710 /* SDL_mixer.h */,
+				A4BD85A780174BDF901B602C /* SDL_mouse.h */,
+				421EE2BE0FE145BD9FB21BB9 /* SDL_mutex.h */,
+				6914A788B8314EC9AA0F71A7 /* SDL_name.h */,
+				00357B22FE57449DAA02B869 /* SDL_opengl.h */,
+				9BC3BDC7199C4F2897DA8BE1 /* SDL_opengl_glext.h */,
+				DDE5766FC5664868A065F6B7 /* SDL_opengles.h */,
+				1FD301360FCA4EB4A2CFC849 /* SDL_opengles2.h */,
+				3C5C21A66BF24121B5F56D3F /* SDL_opengles2_gl2.h */,
+				1747846C13CD43C28E9E9B7E /* SDL_opengles2_gl2ext.h */,
+				7CBCA217D943487A82D92C19 /* SDL_opengles2_gl2platform.h */,
+				9A6823539EA840CD8572BFCC /* SDL_opengles2_khrplatform.h */,
+				659C1548910D457A80521B47 /* SDL_pixels.h */,
+				32EC11C430A24076A7C77673 /* SDL_platform.h */,
+				0346B3E7E3584394A58F876C /* SDL_power.h */,
+				331252EB53354797B18839BF /* SDL_quit.h */,
+				97167D76F4D141CE8910EC0A /* SDL_rect.h */,
+				3F834FD039BC4FA39E95E997 /* SDL_render.h */,
+				3328150C893048C4B4F880B5 /* SDL_revision.h */,
+				1EE4044EF440469FAE2D5EB3 /* SDL_rwops.h */,
+				DEA6FEFF98A94592AE00897F /* SDL_scancode.h */,
+				0FEF16CA001B4E0EAA018879 /* SDL_shape.h */,
+				3FADAF31D59A450083D31655 /* SDL_stdinc.h */,
+				7AAF986EDF784D9FA17C04D1 /* SDL_surface.h */,
+				B8D9FC2CA4CA4023AF70EB25 /* SDL_system.h */,
+				9882E38354014FF7B96BC15A /* SDL_syswm.h */,
+				DC0EAC074F8C4F56ABDA77B2 /* SDL_test.h */,
+				3D0E962B8CC74529B2035289 /* SDL_test_assert.h */,
+				57A11D3FAFCA48569901693F /* SDL_test_common.h */,
+				A1140340BCEA41B3BD7D17F5 /* SDL_test_compare.h */,
+				2CEDEAF588AA4CE98FFB6284 /* SDL_test_crc32.h */,
+				E210952EE67B4D6187BA98CE /* SDL_test_font.h */,
+				75FB6BE50ACC431997DE3A83 /* SDL_test_fuzzer.h */,
+				A1E2F61DB0A347F58605C3CA /* SDL_test_harness.h */,
+				AE7CF40FD51448709220FFD2 /* SDL_test_images.h */,
+				98561E48EB4642C0A081C9B9 /* SDL_test_log.h */,
+				F9E6D6BDA1584FC7B4597172 /* SDL_test_md5.h */,
+				9F94B7161D5742C384FC1374 /* SDL_test_memory.h */,
+				BBF1D4FFB73E4120BF3190CA /* SDL_test_random.h */,
+				D8502CED22734BA3A01FA3A3 /* SDL_thread.h */,
+				79CFF62BCFC54F37AD392EF2 /* SDL_timer.h */,
+				46F64F8B200D4483A08E51DD /* SDL_touch.h */,
+				253B635FA9444B62BAC05A68 /* SDL_types.h */,
+				02EA8CE586B2446BB380D72F /* SDL_version.h */,
+				5616F01B709A4B3BA56EA0DC /* SDL_video.h */,
+				3535715C251943F7BE77288B /* SDL_vulkan.h */,
+				0166FF8C1433495A8BD29776 /* begin_code.h */,
+				ED699ECDA8B044199885CD4D /* close_code.h */,
+				EBC2ECB5498E4910ADB06F4E /* stb_image.h */,
+				82BCA20ABB9B46A8B80C377C /* CollisionManager.h */,
+				8A40044F9FCE4B3AAB197A13 /* Ice.hpp */,
+				D5482AB02FF848079E7A7B02 /* JPS.h */,
+				8B54D7A9BA9B494BA8788270 /* KMeans.h */,
+				E2105AB99613475AA4D7E08F /* Limb.h */,
+				9B1C0A8E7FCC4B2AAC996D7D /* MapGrid.h */,
+				7BB1C9262487447DB12DFC85 /* PhysicalBody.h */,
+				A663BE908A2141F1B8370580 /* Physics.h */,
+				64BB2378D52F49F89AEF71D5 /* ToolManager.h */,
+				BA7F1A12AE244505B40CE1E8 /* antidote.hpp */,
+				CE275EBC9D574BABBF976C72 /* armour.hpp */,
+				DDBC01F706994E4990223CF3 /* blood.hpp */,
+				CBDA832AD8804BC182D5C65B /* bomb.hpp */,
+				AB2829712B1D4DB8AD683C57 /* button.hpp */,
+				56D88FFEF59842F7B445FEE0 /* common.hpp */,
+				D559E69438734E469F4F19AF /* explosion.hpp */,
+				0A4FF3C240F049C987EBC086 /* limbsManager.hpp */,
+				326F0B25E6E14D36A3F933F7 /* missile.hpp */,
+				F30CEB5F6A6D444AAB369891 /* mud.hpp */,
+				D359C76BA1F8428E9BA5157E /* player1.hpp */,
+				E6C94F0C333B4287AB008978 /* player2.hpp */,
+				440FF22F80BB44BD9308C8C7 /* punchleft.hpp */,
+				669CB97CE562417990008850 /* punchright.hpp */,
+				D92D7376FA854106A33CE297 /* Tmx.h.in */,
+				F33D44B83C5E4D9BB8C4F2E8 /* TmxColor.h */,
+				85A53790805549C8B040EFE6 /* TmxEllipse.h */,
+				10FFA1C271AC4193A57D5319 /* TmxGroupLayer.h */,
+				2A9CD6BA96EB4A3792F76202 /* TmxImage.h */,
+				2B57F5F86EE546079695C4F0 /* TmxImageLayer.h */,
+				154B50D0D5614841A56FAE0D /* TmxLayer.h */,
+				B2C79E23307B42488C1D75D1 /* TmxMap.h */,
+				FA461EE308AA4F0EBD4B270D /* TmxMapTile.h */,
+				0CC8F31F8B894ABB8E4C28A9 /* TmxObject.h */,
+				FA8B06DC176D46A2ABA0450B /* TmxObjectGroup.h */,
+				98565BBF74AC4FD88CAA2084 /* TmxPoint.h */,
+				ED02AA6F78824BD3A99EAFD7 /* TmxPolygon.h */,
+				B48D197ACC67413FA0A06520 /* TmxPolyline.h */,
+				217C08A8EFF74D65A2E3E335 /* TmxProperty.h */,
+				B78D68EA225F424799B4A160 /* TmxPropertySet.h */,
+				2F187D127FE24F2DB211D184 /* TmxTerrain.h */,
+				54BB0837CD4B476CB53044F3 /* TmxTerrainArray.h */,
+				B635A9297A4F4132B63CCD5D /* TmxText.h */,
+				3DE547CA40EB49AAB67D32EC /* TmxTile.h */,
+				D5BEAFCD5EBA4C5FB82F3237 /* TmxTileLayer.h */,
+				F3F225575CC846B1A84CFB67 /* TmxTileOffset.h */,
+				7A4BA1CAD7DE4338B31283CA /* TmxTileset.h */,
+				6DC7938C9C4A4435B4AB8DE5 /* TmxUtil.h */,
+				67A01E9144D3490C8D5E7472 /* base64.h */,
+				1CD9F70B98E14822A006D713 /* tmxparser.pc.in */,
+				8C572FC8230E4D88B413AAE9 /* toolboxManager.hpp */,
+				28F30BD172BA401CA45A6B7A /* toolboxSlot.hpp */,
+				E29431A872CA49C09D4C1443 /* tree.hpp */,
+				CEAC8813442341F2B3A4BBC3 /* viewHelper.hpp */,
+				25787F77084C4D7B8A76DDDB /* water.hpp */,
+				86C701B4F182434C804738D6 /* world.hpp */,
+				7BBDC072B24D44D29C18F690 /* worldtexture.hpp */,
+				4FDC9B64BA9548A9B6F5B848 /* zombie.hpp */,
+				AA81545C734A43A9BD912EC2 /* zombieManager.hpp */,
+			);
+			name = "Header Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		D40A6CDA3EC44F5EA532DC5D /* zombie */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 68A2EB35466246E4BFB3D06D /* Build configuration list for PBXNativeTarget "zombie" */;
+			buildPhases = (
+				CB2CBA1ED9E1414194E561A1 /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				ED24D1A4E61447CC86A901C1 /* PBXTargetDependency */,
+			);
+			name = zombie;
+			productName = zombie;
+			productReference = 89D02A2F7AA44E4598B1CFEF /* zombie */;
+			productType = "com.apple.product-type.tool";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		99E441D6FDD54636BF8304F6 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = YES;
+				LastUpgradeCheck = 0830;
+			};
+			buildConfigurationList = 0FFB7F000283493C98DD60C3 /* Build configuration list for PBXProject "zombie" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = E53E4D5DB9C84C7386FFEA75;
+			projectDirPath = ../;
+			projectRoot = "";
+			targets = (
+				095EE8E3CDA841C4BB9068C0 /* ALL_BUILD */,
+				F691AA15AFA24C298C93B0F8 /* ZERO_CHECK */,
+				D40A6CDA3EC44F5EA532DC5D /* zombie */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		8213A9CA79DE4823B533E6C1 /* CMake Rules */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			name = "CMake Rules";
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "make -C /Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/build_xcode -f /Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/build_xcode/CMakeScripts/ZERO_CHECK_cmakeRulesBuildPhase.make$CONFIGURATION all";
+			showEnvVarsInLog = 0;
+		};
+		FCCDB92B6FD3411BB53A71CE /* CMake Rules */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			name = "CMake Rules";
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "make -C /Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/build_xcode -f /Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/build_xcode/CMakeScripts/ALL_BUILD_cmakeRulesBuildPhase.make$CONFIGURATION all";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		CB2CBA1ED9E1414194E561A1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2CB3268B9506497083EBF4C2 /* b2ChainShape.cpp in Sources */,
+				CB2E0DE794D74BBFBBD9BFD0 /* b2CircleShape.cpp in Sources */,
+				073E0499F7E2409D96867B37 /* b2EdgeShape.cpp in Sources */,
+				13BF0722465C43849D37660E /* b2PolygonShape.cpp in Sources */,
+				DD29DA20AA9E46BDAF06A798 /* b2BroadPhase.cpp in Sources */,
+				7458D8C1056E417DBF098A2A /* b2CollideCircle.cpp in Sources */,
+				2F90792F1DE04DB3BCB35F04 /* b2CollideEdge.cpp in Sources */,
+				A857E9CE3CC04BF98C414203 /* b2CollidePolygon.cpp in Sources */,
+				1D9ED5CA48D44ED9AB0BF4C0 /* b2Collision.cpp in Sources */,
+				977C30303AAF48F18DE1E6A1 /* b2Distance.cpp in Sources */,
+				6E4D0DBAC7B54C339F73D254 /* b2DynamicTree.cpp in Sources */,
+				719DF06822DB458EA23697C0 /* b2TimeOfImpact.cpp in Sources */,
+				8836CF97AAC543E484A44D60 /* b2BlockAllocator.cpp in Sources */,
+				F0168090D8484791A3477E7C /* b2Draw.cpp in Sources */,
+				652425D127764446881A47BB /* b2Math.cpp in Sources */,
+				49BFAE99FAAC471794533F77 /* b2Settings.cpp in Sources */,
+				0E56202C2F394056BA123525 /* b2StackAllocator.cpp in Sources */,
+				3837B2900FE24F769DD96B47 /* b2Timer.cpp in Sources */,
+				EA020965431745778FABAC57 /* b2ChainAndCircleContact.cpp in Sources */,
+				6ED042639E0B4181BDB792C2 /* b2ChainAndPolygonContact.cpp in Sources */,
+				9B4F71941FEA4F1D88A55AB2 /* b2CircleContact.cpp in Sources */,
+				604DDCEDE39C4B9383FEA514 /* b2Contact.cpp in Sources */,
+				362D9059A38545178A972216 /* b2ContactSolver.cpp in Sources */,
+				DBC3F5145EEF4AEE9FCE9BB3 /* b2EdgeAndCircleContact.cpp in Sources */,
+				3AC3FFF08733459E869F4E20 /* b2EdgeAndPolygonContact.cpp in Sources */,
+				69B7120B5DE84E31821F9B17 /* b2PolygonAndCircleContact.cpp in Sources */,
+				A92AE48355B14C39A80D25BE /* b2PolygonContact.cpp in Sources */,
+				6291214D99744A90995CD06B /* b2DistanceJoint.cpp in Sources */,
+				09289AB1E347459AB2129773 /* b2FrictionJoint.cpp in Sources */,
+				F432F347B8984F04A9234E3E /* b2GearJoint.cpp in Sources */,
+				C460A09835494A86A0EDE073 /* b2Joint.cpp in Sources */,
+				CF3AA466D30F48AEA46DD528 /* b2MotorJoint.cpp in Sources */,
+				AB0FB2A2B37849BEA11E78CF /* b2MouseJoint.cpp in Sources */,
+				1D5D832CF23E4809949F6774 /* b2PrismaticJoint.cpp in Sources */,
+				29D8640FF7A949D8A2B3E617 /* b2PulleyJoint.cpp in Sources */,
+				A2D5EB1F64DC4F88829A4ECD /* b2RevoluteJoint.cpp in Sources */,
+				A3E21661160A4BEEB2E488FA /* b2RopeJoint.cpp in Sources */,
+				E7B1334062ED4AC982A0948C /* b2WeldJoint.cpp in Sources */,
+				BCB00ACA1A1D4FB8ADDA80AF /* b2WheelJoint.cpp in Sources */,
+				A29155F976254CA6A141DC4F /* b2Body.cpp in Sources */,
+				DC6EE0E7B8D7493EA22FB346 /* b2ContactManager.cpp in Sources */,
+				2DC70A27D0424491896ADD66 /* b2Fixture.cpp in Sources */,
+				D7671039946C4B3DA4E33C53 /* b2Island.cpp in Sources */,
+				74461D889A124FB1A6A13BE5 /* b2World.cpp in Sources */,
+				5AA47FA9797F4E4BA0B0EA57 /* b2WorldCallbacks.cpp in Sources */,
+				8D60FD6C02E94843BE6DBEC3 /* b2Rope.cpp in Sources */,
+				C1A05478751E446F88CE4321 /* CollisionManager.cpp in Sources */,
+				A1DB9C33A2F04852B6E15483 /* Ice.cpp in Sources */,
+				ED1A9160CAE14D14B492A9B8 /* KMeans.cpp in Sources */,
+				70DBFDE22BC24FE6B7E9E5F0 /* Limb.cpp in Sources */,
+				93571FB997384A0F83467DC2 /* MapGrid.cpp in Sources */,
+				FF795778013841AAB92DC4B4 /* PhysicalBody.cpp in Sources */,
+				435BF834A37444B682D5D5EE /* Physics.cpp in Sources */,
+				A99A1A5C69B947D8839793C6 /* ToolManager.cpp in Sources */,
+				2B5EF08D645045C88E24DF4A /* antidote.cpp in Sources */,
+				0E896AB1106E406F998FB9A6 /* armour.cpp in Sources */,
+				EFF22296BADD4BD2A7B499BA /* blood.cpp in Sources */,
+				C0D80993C21943C29F763F98 /* bomb.cpp in Sources */,
+				4CE59D29EBC8414EBA3BE05E /* button.cpp in Sources */,
+				A44F29F201FD4B94BCA72E24 /* common.cpp in Sources */,
+				4B76ECA8ABF24896B75F3CB3 /* explosion.cpp in Sources */,
+				30C0D7F6E3A54AFD90BB3FF6 /* gl3w.c in Sources */,
+				BE953C6FA0A947F2B694F238 /* limbsManager.cpp in Sources */,
+				6EC8C04474274FAB97226EE8 /* main.cpp in Sources */,
+				EC29667764A0474985F81030 /* missile.cpp in Sources */,
+				D23BE287670C401E8886BB32 /* mud.cpp in Sources */,
+				406DE0E1D9084E9D8B1F3F7A /* player1.cpp in Sources */,
+				C610432B2901415E873A63B5 /* player2.cpp in Sources */,
+				130D2CF840894E0DB80FC585 /* punchleft.cpp in Sources */,
+				7490E412827F4A2385A4DE77 /* punchright.cpp in Sources */,
+				54B979ED13554C9DBB20F6C0 /* TmxColor.cpp in Sources */,
+				24E6760791424AB592F7C939 /* TmxEllipse.cpp in Sources */,
+				B6E12B664B594ED39DC5B6A9 /* TmxGroupLayer.cpp in Sources */,
+				AB7D1AC69A044DF5B0B488A3 /* TmxImage.cpp in Sources */,
+				BEEEF04A7CD4430FB2BFB92F /* TmxImageLayer.cpp in Sources */,
+				CFB1E153B0164BF6B84FB9E9 /* TmxLayer.cpp in Sources */,
+				899F401507B644FCA22AC439 /* TmxMap.cpp in Sources */,
+				ECE0504DF1B945418A802C2B /* TmxObject.cpp in Sources */,
+				3F53CBE85ED349819EBA62FB /* TmxObjectGroup.cpp in Sources */,
+				68713E7B404648BB941E3EAD /* TmxPolygon.cpp in Sources */,
+				F347CCBFF33C44F4BD0C4D24 /* TmxPolyline.cpp in Sources */,
+				490B456B107C4C829283E898 /* TmxProperty.cpp in Sources */,
+				BF69A5D2C26E4EEF96C508DB /* TmxPropertySet.cpp in Sources */,
+				1FE7629649544A64A0D5FE6B /* TmxTerrain.cpp in Sources */,
+				9E6904C3A07B45ECBF0BF495 /* TmxTerrainArray.cpp in Sources */,
+				B1E4E920E14C42F9906180EE /* TmxText.cpp in Sources */,
+				53B7086A97884B7C882BB9C0 /* TmxTile.cpp in Sources */,
+				F529EA655AFB419EA0430B67 /* TmxTileLayer.cpp in Sources */,
+				9F6D47FE7E2F443999EB01EC /* TmxTileOffset.cpp in Sources */,
+				B16D6185F6AF4453A53DD0CE /* TmxTileset.cpp in Sources */,
+				8CF01485C0CE428F88A2ADE7 /* TmxUtil.cpp in Sources */,
+				C732415FCB0D4328A68BA61F /* base64.cpp in Sources */,
+				93C485D4F0FD4435BD363FD2 /* miniz.c in Sources */,
+				7A05AA65BB844A089D34091D /* toolboxManager.cpp in Sources */,
+				F6C7AD49DCA44730ADD06EB0 /* toolboxSlot.cpp in Sources */,
+				9E7B696A6E3D4EADB9CE0D52 /* tree.cpp in Sources */,
+				5BD370F62B2D423BBC00A531 /* viewHelper.cpp in Sources */,
+				F46926C741D344CBB1E1BBD3 /* water.cpp in Sources */,
+				50C842BDAEF84CD4BC0DC5E5 /* world.cpp in Sources */,
+				0DC7ED95E89241379A40265E /* worldtexture.cpp in Sources */,
+				6535F7B9A8BB4F85A5ECD0FA /* zombie.cpp in Sources */,
+				0F7BBEFD586F4971A840C021 /* zombieManager.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		9CD15A7DE38E49269847DA51 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F691AA15AFA24C298C93B0F8 /* ZERO_CHECK */;
+			targetProxy = DFC57861B5F04AFE9186B1AE /* PBXContainerItemProxy */;
+		};
+		E2BD42CCFA0648C9A896A5D5 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D40A6CDA3EC44F5EA532DC5D /* zombie */;
+			targetProxy = 4B7D14BA5A5242F4BAFE1AF6 /* PBXContainerItemProxy */;
+		};
+		ED24D1A4E61447CC86A901C1 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F691AA15AFA24C298C93B0F8 /* ZERO_CHECK */;
+			targetProxy = 240C5A9D07A24EE4BFCCC4FA /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		0AA0CCB50E6941F3B883BAA2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				EXECUTABLE_PREFIX = "";
+				EXECUTABLE_SUFFIX = "";
+				FRAMEWORK_SEARCH_PATHS = /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.12.sdk/System/Library/Frameworks;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 3;
+				GCC_PREPROCESSOR_DEFINITIONS = "'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'";
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				HEADER_SEARCH_PATHS = (
+					/Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/ext/gl3w,
+					/Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/ext/glfw/include,
+					/Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/ext/sdl,
+					/Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/ext/stb_image,
+					/Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/ext/Box2D,
+					/usr/local/include,
+				);
+				INSTALL_PATH = "";
+				LIBRARY_SEARCH_PATHS = "";
+				OTHER_CFLAGS = "    -DNDEBUG  ";
+				OTHER_CPLUSPLUSFLAGS = (
+					"-DNDEBUG",
+					"'-std=gnu++11'",
+				);
+				OTHER_LDFLAGS = (
+					"-Wl,-search_paths_first",
+					"-Wl,-headerpad_max_install_names",
+					"-lpthread",
+					/usr/local/lib/libtinyxml2.dylib,
+					"-framework",
+					OpenGL,
+					"-framework",
+					OpenGL,
+					/usr/local/lib/libglfw.dylib,
+					"-framework",
+					Cocoa,
+					"-framework",
+					IOKit,
+					"-framework",
+					CoreVideo,
+					/usr/local/lib/libSDLmain.a,
+					/usr/local/lib/libSDL.dylib,
+					"-framework",
+					Cocoa,
+					/usr/lib/libz.dylib,
+					"-lSDLmain",
+					"-lSDL_mixer",
+					"-ldl",
+					"-framework",
+					OpenGL,
+					"-framework",
+					CoreFoundation,
+					"-framework",
+					Cocoa,
+					"-framework",
+					IOKit,
+					"-framework",
+					CoreVideo,
+					/usr/local/lib/libSDLmain.a,
+					/usr/local/lib/libSDL.dylib,
+					/usr/lib/libz.dylib,
+					"-lSDLmain",
+					"-lSDL_mixer",
+					"-ldl",
+					"-framework",
+					OpenGL,
+					"-framework",
+					CoreFoundation,
+				);
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = zombie;
+				SECTORDER_FLAGS = "";
+				SYMROOT = /Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/build_xcode;
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = (
+					"-Wmost",
+					"-Wno-four-char-constants",
+					"-Wno-unknown-pragmas",
+					"$(inherited)",
+				);
+			};
+			name = Release;
+		};
+		1B908264CE9D4FC18B1474CC /* MinSizeRel */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.12.sdk/System/Library/Frameworks;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = "'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'";
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				HEADER_SEARCH_PATHS = (
+					/Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/ext/gl3w,
+					/Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/ext/glfw,
+					/Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/ext/sdl,
+					/Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/ext/stb_image,
+					/Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/ext/Box2D,
+					/usr/local/include,
+				);
+				INSTALL_PATH = "";
+				OTHER_LDFLAGS = " ";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = ALL_BUILD;
+				SECTORDER_FLAGS = "";
+				SYMROOT = /Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/build_xcode;
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = (
+					"-Wmost",
+					"-Wno-four-char-constants",
+					"-Wno-unknown-pragmas",
+					"$(inherited)",
+				);
+			};
+			name = MinSizeRel;
+		};
+		251CA5F5995A4C29992306F0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.12.sdk;
+				SYMROOT = /Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/build_xcode/build;
+			};
+			name = Debug;
+		};
+		2BF37D135BF742F4A8476E6F /* RelWithDebInfo */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				EXECUTABLE_PREFIX = "";
+				EXECUTABLE_SUFFIX = "";
+				FRAMEWORK_SEARCH_PATHS = /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.12.sdk/System/Library/Frameworks;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 2;
+				GCC_PREPROCESSOR_DEFINITIONS = "'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'";
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				HEADER_SEARCH_PATHS = (
+					/Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/ext/gl3w,
+					/Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/ext/glfw/include,
+					/Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/ext/sdl,
+					/Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/ext/stb_image,
+					/Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/ext/Box2D,
+					/usr/local/include,
+				);
+				INSTALL_PATH = "";
+				LIBRARY_SEARCH_PATHS = "";
+				OTHER_CFLAGS = "       -DNDEBUG  ";
+				OTHER_CPLUSPLUSFLAGS = (
+					"-DNDEBUG",
+					"'-std=gnu++11'",
+				);
+				OTHER_LDFLAGS = (
+					"-Wl,-search_paths_first",
+					"-Wl,-headerpad_max_install_names",
+					"-lpthread",
+					/usr/local/lib/libtinyxml2.dylib,
+					"-framework",
+					OpenGL,
+					"-framework",
+					OpenGL,
+					/usr/local/lib/libglfw.dylib,
+					"-framework",
+					Cocoa,
+					"-framework",
+					IOKit,
+					"-framework",
+					CoreVideo,
+					/usr/local/lib/libSDLmain.a,
+					/usr/local/lib/libSDL.dylib,
+					"-framework",
+					Cocoa,
+					/usr/lib/libz.dylib,
+					"-lSDLmain",
+					"-lSDL_mixer",
+					"-ldl",
+					"-framework",
+					OpenGL,
+					"-framework",
+					CoreFoundation,
+					"-framework",
+					Cocoa,
+					"-framework",
+					IOKit,
+					"-framework",
+					CoreVideo,
+					/usr/local/lib/libSDLmain.a,
+					/usr/local/lib/libSDL.dylib,
+					/usr/lib/libz.dylib,
+					"-lSDLmain",
+					"-lSDL_mixer",
+					"-ldl",
+					"-framework",
+					OpenGL,
+					"-framework",
+					CoreFoundation,
+				);
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = zombie;
+				SECTORDER_FLAGS = "";
+				SYMROOT = /Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/build_xcode;
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = (
+					"-Wmost",
+					"-Wno-four-char-constants",
+					"-Wno-unknown-pragmas",
+					"$(inherited)",
+				);
+			};
+			name = RelWithDebInfo;
+		};
+		3A9785F00C30459C9AD42A11 /* RelWithDebInfo */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.12.sdk/System/Library/Frameworks;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = "'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'";
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				HEADER_SEARCH_PATHS = (
+					/Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/ext/gl3w,
+					/Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/ext/glfw,
+					/Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/ext/sdl,
+					/Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/ext/stb_image,
+					/Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/ext/Box2D,
+					/usr/local/include,
+				);
+				INSTALL_PATH = "";
+				OTHER_LDFLAGS = " ";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = ALL_BUILD;
+				SECTORDER_FLAGS = "";
+				SYMROOT = /Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/build_xcode;
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = (
+					"-Wmost",
+					"-Wno-four-char-constants",
+					"-Wno-unknown-pragmas",
+					"$(inherited)",
+				);
+			};
+			name = RelWithDebInfo;
+		};
+		401DB68EA01B469DAAEEFC3E /* RelWithDebInfo */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.12.sdk/System/Library/Frameworks;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = "'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'";
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				HEADER_SEARCH_PATHS = (
+					/Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/ext/gl3w,
+					/Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/ext/glfw,
+					/Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/ext/sdl,
+					/Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/ext/stb_image,
+					/Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/ext/Box2D,
+				);
+				INSTALL_PATH = "";
+				OTHER_LDFLAGS = " ";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = ZERO_CHECK;
+				SECTORDER_FLAGS = "";
+				SYMROOT = /Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/build_xcode;
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = (
+					"-Wmost",
+					"-Wno-four-char-constants",
+					"-Wno-unknown-pragmas",
+					"$(inherited)",
+				);
+			};
+			name = RelWithDebInfo;
+		};
+		49F8CEFB1C7347CF9C1A29BF /* MinSizeRel */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				EXECUTABLE_PREFIX = "";
+				EXECUTABLE_SUFFIX = "";
+				FRAMEWORK_SEARCH_PATHS = /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.12.sdk/System/Library/Frameworks;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = s;
+				GCC_PREPROCESSOR_DEFINITIONS = "'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'";
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				HEADER_SEARCH_PATHS = (
+					/Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/ext/gl3w,
+					/Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/ext/glfw/include,
+					/Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/ext/sdl,
+					/Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/ext/stb_image,
+					/Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/ext/Box2D,
+					/usr/local/include,
+				);
+				INSTALL_PATH = "";
+				LIBRARY_SEARCH_PATHS = "";
+				OTHER_CFLAGS = "    -DNDEBUG  ";
+				OTHER_CPLUSPLUSFLAGS = (
+					"-DNDEBUG",
+					"'-std=gnu++11'",
+				);
+				OTHER_LDFLAGS = (
+					"-Wl,-search_paths_first",
+					"-Wl,-headerpad_max_install_names",
+					"-lpthread",
+					/usr/local/lib/libtinyxml2.dylib,
+					"-framework",
+					OpenGL,
+					"-framework",
+					OpenGL,
+					/usr/local/lib/libglfw.dylib,
+					"-framework",
+					Cocoa,
+					"-framework",
+					IOKit,
+					"-framework",
+					CoreVideo,
+					/usr/local/lib/libSDLmain.a,
+					/usr/local/lib/libSDL.dylib,
+					"-framework",
+					Cocoa,
+					/usr/lib/libz.dylib,
+					"-lSDLmain",
+					"-lSDL_mixer",
+					"-ldl",
+					"-framework",
+					OpenGL,
+					"-framework",
+					CoreFoundation,
+					"-framework",
+					Cocoa,
+					"-framework",
+					IOKit,
+					"-framework",
+					CoreVideo,
+					/usr/local/lib/libSDLmain.a,
+					/usr/local/lib/libSDL.dylib,
+					/usr/lib/libz.dylib,
+					"-lSDLmain",
+					"-lSDL_mixer",
+					"-ldl",
+					"-framework",
+					OpenGL,
+					"-framework",
+					CoreFoundation,
+				);
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = zombie;
+				SECTORDER_FLAGS = "";
+				SYMROOT = /Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/build_xcode;
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = (
+					"-Wmost",
+					"-Wno-four-char-constants",
+					"-Wno-unknown-pragmas",
+					"$(inherited)",
+				);
+			};
+			name = MinSizeRel;
+		};
+		530B6EE15D4F4A119DC3AD61 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.12.sdk/System/Library/Frameworks;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = "'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'";
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				HEADER_SEARCH_PATHS = (
+					/Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/ext/gl3w,
+					/Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/ext/glfw,
+					/Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/ext/sdl,
+					/Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/ext/stb_image,
+					/Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/ext/Box2D,
+				);
+				INSTALL_PATH = "";
+				OTHER_LDFLAGS = " ";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = ZERO_CHECK;
+				SECTORDER_FLAGS = "";
+				SYMROOT = /Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/build_xcode;
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = (
+					"-Wmost",
+					"-Wno-four-char-constants",
+					"-Wno-unknown-pragmas",
+					"$(inherited)",
+				);
+			};
+			name = Debug;
+		};
+		5745242505984EA6A64F30A8 /* MinSizeRel */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.12.sdk;
+				SYMROOT = /Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/build_xcode/build;
+			};
+			name = MinSizeRel;
+		};
+		6B57B8F1E4BF4EB4AF42FF7B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.12.sdk/System/Library/Frameworks;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = "'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'";
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				HEADER_SEARCH_PATHS = (
+					/Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/ext/gl3w,
+					/Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/ext/glfw,
+					/Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/ext/sdl,
+					/Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/ext/stb_image,
+					/Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/ext/Box2D,
+				);
+				INSTALL_PATH = "";
+				OTHER_LDFLAGS = " ";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = ZERO_CHECK;
+				SECTORDER_FLAGS = "";
+				SYMROOT = /Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/build_xcode;
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = (
+					"-Wmost",
+					"-Wno-four-char-constants",
+					"-Wno-unknown-pragmas",
+					"$(inherited)",
+				);
+			};
+			name = Release;
+		};
+		869B5EACA6D84DE9B8DD8462 /* MinSizeRel */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.12.sdk/System/Library/Frameworks;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = "'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'";
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				HEADER_SEARCH_PATHS = (
+					/Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/ext/gl3w,
+					/Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/ext/glfw,
+					/Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/ext/sdl,
+					/Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/ext/stb_image,
+					/Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/ext/Box2D,
+				);
+				INSTALL_PATH = "";
+				OTHER_LDFLAGS = " ";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = ZERO_CHECK;
+				SECTORDER_FLAGS = "";
+				SYMROOT = /Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/build_xcode;
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = (
+					"-Wmost",
+					"-Wno-four-char-constants",
+					"-Wno-unknown-pragmas",
+					"$(inherited)",
+				);
+			};
+			name = MinSizeRel;
+		};
+		BA0915B05C544FC48E337D14 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.12.sdk/System/Library/Frameworks;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = "'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'";
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				HEADER_SEARCH_PATHS = (
+					/Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/ext/gl3w,
+					/Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/ext/glfw,
+					/Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/ext/sdl,
+					/Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/ext/stb_image,
+					/Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/ext/Box2D,
+					/usr/local/include,
+				);
+				INSTALL_PATH = "";
+				OTHER_LDFLAGS = " ";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = ALL_BUILD;
+				SECTORDER_FLAGS = "";
+				SYMROOT = /Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/build_xcode;
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = (
+					"-Wmost",
+					"-Wno-four-char-constants",
+					"-Wno-unknown-pragmas",
+					"$(inherited)",
+				);
+			};
+			name = Debug;
+		};
+		E63E174FF98C4F439E331AD4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.12.sdk;
+				SYMROOT = /Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/build_xcode/build;
+			};
+			name = Release;
+		};
+		EB0FC1E7E339485590E04E3F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				EXECUTABLE_PREFIX = "";
+				EXECUTABLE_SUFFIX = "";
+				FRAMEWORK_SEARCH_PATHS = /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.12.sdk/System/Library/Frameworks;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = "'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'";
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				HEADER_SEARCH_PATHS = (
+					/Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/ext/gl3w,
+					/Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/ext/glfw/include,
+					/Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/ext/sdl,
+					/Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/ext/stb_image,
+					/Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/ext/Box2D,
+					/usr/local/include,
+				);
+				INSTALL_PATH = "";
+				LIBRARY_SEARCH_PATHS = "";
+				OTHER_CFLAGS = "    ";
+				OTHER_CPLUSPLUSFLAGS = "   '-std=gnu++11'  ";
+				OTHER_LDFLAGS = (
+					"-Wl,-search_paths_first",
+					"-Wl,-headerpad_max_install_names",
+					"-lpthread",
+					/usr/local/lib/libtinyxml2.dylib,
+					"-framework",
+					OpenGL,
+					"-framework",
+					OpenGL,
+					/usr/local/lib/libglfw.dylib,
+					"-framework",
+					Cocoa,
+					"-framework",
+					IOKit,
+					"-framework",
+					CoreVideo,
+					/usr/local/lib/libSDLmain.a,
+					/usr/local/lib/libSDL.dylib,
+					"-framework",
+					Cocoa,
+					/usr/lib/libz.dylib,
+					"-lSDLmain",
+					"-lSDL_mixer",
+					"-ldl",
+					"-framework",
+					OpenGL,
+					"-framework",
+					CoreFoundation,
+					"-framework",
+					Cocoa,
+					"-framework",
+					IOKit,
+					"-framework",
+					CoreVideo,
+					/usr/local/lib/libSDLmain.a,
+					/usr/local/lib/libSDL.dylib,
+					/usr/lib/libz.dylib,
+					"-lSDLmain",
+					"-lSDL_mixer",
+					"-ldl",
+					"-framework",
+					OpenGL,
+					"-framework",
+					CoreFoundation,
+				);
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = zombie;
+				SECTORDER_FLAGS = "";
+				SYMROOT = /Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/build_xcode;
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = (
+					"-Wmost",
+					"-Wno-four-char-constants",
+					"-Wno-unknown-pragmas",
+					"$(inherited)",
+				);
+			};
+			name = Debug;
+		};
+		F62F41C0AC7C4236A5833F36 /* RelWithDebInfo */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.12.sdk;
+				SYMROOT = /Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/build_xcode/build;
+			};
+			name = RelWithDebInfo;
+		};
+		FA1DBB52355D4D1F945F00BA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.12.sdk/System/Library/Frameworks;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = "'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'";
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				HEADER_SEARCH_PATHS = (
+					/Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/ext/gl3w,
+					/Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/ext/glfw,
+					/Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/ext/sdl,
+					/Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/ext/stb_image,
+					/Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/ext/Box2D,
+					/usr/local/include,
+				);
+				INSTALL_PATH = "";
+				OTHER_LDFLAGS = " ";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = ALL_BUILD;
+				SECTORDER_FLAGS = "";
+				SYMROOT = /Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/build_xcode;
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = (
+					"-Wmost",
+					"-Wno-four-char-constants",
+					"-Wno-unknown-pragmas",
+					"$(inherited)",
+				);
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		0FFB7F000283493C98DD60C3 /* Build configuration list for PBXProject "zombie" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				251CA5F5995A4C29992306F0 /* Debug */,
+				E63E174FF98C4F439E331AD4 /* Release */,
+				5745242505984EA6A64F30A8 /* MinSizeRel */,
+				F62F41C0AC7C4236A5833F36 /* RelWithDebInfo */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		68A2EB35466246E4BFB3D06D /* Build configuration list for PBXNativeTarget "zombie" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EB0FC1E7E339485590E04E3F /* Debug */,
+				0AA0CCB50E6941F3B883BAA2 /* Release */,
+				49F8CEFB1C7347CF9C1A29BF /* MinSizeRel */,
+				2BF37D135BF742F4A8476E6F /* RelWithDebInfo */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		6C90496694594491985F071B /* Build configuration list for PBXAggregateTarget "ZERO_CHECK" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				530B6EE15D4F4A119DC3AD61 /* Debug */,
+				6B57B8F1E4BF4EB4AF42FF7B /* Release */,
+				869B5EACA6D84DE9B8DD8462 /* MinSizeRel */,
+				401DB68EA01B469DAAEEFC3E /* RelWithDebInfo */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		FFFB20EA29064FB1863FF776 /* Build configuration list for PBXAggregateTarget "ALL_BUILD" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BA0915B05C544FC48E337D14 /* Debug */,
+				FA1DBB52355D4D1F945F00BA /* Release */,
+				1B908264CE9D4FC18B1474CC /* MinSizeRel */,
+				3A9785F00C30459C9AD42A11 /* RelWithDebInfo */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 99E441D6FDD54636BF8304F6 /* Project object */;
+}

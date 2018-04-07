@@ -43,8 +43,12 @@ public:
     // size_t get_arms_size();
     int get_arms_size();
 
+    void set_arms_size(int size);
+
     // size_t get_legs_size();
     int get_legs_size();
+
+    void set_legs_size(int size);
 
     std::vector<Limb> getLimbs() {
         return limbs;
