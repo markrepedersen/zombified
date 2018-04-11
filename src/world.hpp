@@ -25,6 +25,8 @@
 #include "bomb.hpp"
 #include "armour.hpp"
 #include "zombie.hpp"
+#include "punchleft.hpp"
+#include "punchright.hpp"
 #include <vector>
 #include <SDL/SDL.h>
 #include <SDL/SDL_mixer.h>
@@ -33,7 +35,13 @@
 #include <tmxparser/Tmx.h>
 #include <algorithm>
 
-#define SDL_MAIN_HANDLED
+// #if !defined(DISABLE_SDL)
+//  #include <SDL/SDL.h>
+ // #include <SDL/SDL_mixer.h>
+ // #define SDL_MAIN_HANDLED
+// #endif
+
+
 
 // Container for all our entities and game logic. Individual rendering / update is
 // deferred to the relative update() methods
@@ -69,10 +77,14 @@ public:
     //start button
     //bool buttonclicked();
     void explode();
-    void autoExplode();
+    void autoExplode(Bomb bomb, int position);
     void use_bomb(float ms);
+    void use_missile(float ms);
+    void autoExplodeMissile(Missile missile, int position);
+
     //void init_use_bomb(float ms);
     bool useBomb;
+    bool useMissile;
 
 private:
     bool spawn_freeze();
@@ -101,7 +113,7 @@ private:
 private:
 	void entityDrawOrder(mat3 projection_2D);
 
-	// Window handle
+        // Window handle
 	GLFWwindow* m_window;
 
 	// true if the start button was pressed to start the main game world
@@ -118,6 +130,8 @@ private:
     time_t armourTime_p2;
     time_t droppedAntidoteTime_p1;
     time_t droppedAntidoteTime_p2;
+    time_t leg_times_1;
+    time_t leg_times_2;
 
 	// Game entities
 	Worldtexture m_worldtexture;
@@ -131,6 +145,16 @@ private:
 	Antidote m_antidote;
 
     Tree m_tree;
+
+    Punchleft gloveLeft_p1;
+    Punchright gloveRight_p1;
+    bool is_punchingleft_p1;
+    bool is_punchingright_p1;
+
+    Punchleft gloveLeft_p2;
+    Punchright gloveRight_p2;
+    bool is_punchingleft_p2;
+    bool is_punchingright_p2;
 
     //Mud mud;
     
@@ -155,6 +179,7 @@ private:
     std::vector<Mud> m_mud_collected;
 
     std::vector<Bomb> used_bombs;
+    std::vector<Missile> used_missiles;
 
 	MapGrid *mapGrid;
 

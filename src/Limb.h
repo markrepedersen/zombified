@@ -8,6 +8,7 @@
 #include "JPS.h"
 #include "viewHelper.hpp"
 #include "common.hpp"
+#include <time.h>
 
 class Limb : public Renderable {
 
@@ -52,13 +53,18 @@ public:
     void setInitialized(bool flag) {this->initialized = flag;}
 
     void animate();
+    
+    void initLegTime();
+    time_t getLegTime();
+    
+    time_t legTime;
 
 protected:
     vec2 cur_target;
     vec2 last_target;
     JPS::PathVector lastPath;
     JPS::PathVector currentPath;
-    vec2 position;
+    vec2 m_position;
     vec2 m_scale;
     std::string type;
     bool initialized = false;

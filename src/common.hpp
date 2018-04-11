@@ -8,6 +8,9 @@
 #define NOMINMAX
 #include <gl3w.h>
 #include <GLFW/glfw3.h>
+//#include "../ext/glfw/include/GLFW/glfw3.h"
+
+#define DISABLE_SDL
 
 // Simple utility macros to avoid mistyping directory name, name has to be a string literal
 // audio_path("audio.ogg") -> data/audio/audio.ogg
