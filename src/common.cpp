@@ -144,12 +144,12 @@ bool intersect(vec2 p1, vec2 q1, vec2 p2, vec2 q2) {
  * Checks if the test point is inside polygon
  * This check is indeterminate in the case that the test point lies on top of one of the lines
  * of the polygon
- * However, on the next frame, assuming this point is kinetic, then it will be inside or outside, so
+ * However, on the next frame, assuming this point is moving, then it will be inside or outside, so
  * unless we're really concerned about accuracy, checking if on top doesn't matter
  * @param poly - the points of the polygon
  * @param point - the test point
  * @return true if inside polygon
-// */
+*/
 bool isInsidePolygon(std::vector<vec2> poly, vec2 point) {
     unsigned long j = poly.size() - 1;
     bool oddNodes = false;
@@ -165,35 +165,6 @@ bool isInsidePolygon(std::vector<vec2> poly, vec2 point) {
     }
     return oddNodes;
 }
-
-//return true if point point is inside the polygon represented by poly
-//bool isInsidePolygon(std::vector<vec2> poly, vec2 point) {
-//
-//    //base case where vector of points doesn't make a polygon
-//    //assume that the first vector on the list is connected to
-//    //the last vector using a line
-//    if (poly.size() < 2 ) return false;
-//
-//    vec2 extreme = (10000, point.y);
-//
-//    int intersectionCount = 0;
-//
-//    for (int i = 0 ; i < poly.size() ; i++) {
-//        vec2 poly1 = poly[i];
-//        vec2 poly2 = ((i >= poly.size() - 1)? poly[0] : poly[i+1]);
-//
-//        if (intersect(poly1, poly2, point, extreme))
-//        {
-//            if (orientation(poly1, point, poly2) == 0) {
-//                return onSegment(poly1, point, poly2);
-//            }
-//
-//            intersectionCount++;
-//        }
-//    }
-//
-//    return (intersectionCount % 2 == 1);
-//}
 
 //get rough intersection (if point is close to poly borders)
 std::vector<vec2> getIntersectionWithPoly(std::vector<vec2> poly, vec2 point, vec2 oldpoint) {
