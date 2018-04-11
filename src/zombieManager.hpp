@@ -41,11 +41,16 @@ public:
     //per punch
     void attack_zombies(vec2 player_pos, vec2 bounding_box, int playerNum, ToolboxManager *m_toolboxmanager);
 
+    void setSpeed(float speed);
+    
+    float getSpeed();
+
     void destroy();
     
 private:
     vec2 m_screen;
     std::vector<Zombie> zombies;
     std::vector<vec2> m_mapCollisionPoints;
+    float speed;
     
 };

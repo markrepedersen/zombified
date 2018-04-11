@@ -91,6 +91,7 @@ bool Player1::init(vec2 screen, std::vector<vec2> mapCollisionPoints)
     frozen = false;
     armour_in_use = false;
     numberofHits = 0;
+    lastkey = 0;
 
     m_position = {(screen.x * ViewHelper::getRatio()) / 5, (screen.y * ViewHelper::getRatio()) / 2};
 
@@ -315,6 +316,11 @@ void Player1::update(float ms) {
     {
         move({xStep, yStep});
         animate();
+    }
+    else
+    {
+     if (blowback)
+         speed = 0.f;
     }
 
 }

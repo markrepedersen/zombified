@@ -91,6 +91,7 @@ bool Player2::init(vec2 screen, std::vector<vec2> mapCollisionPoints) {
     m_position = {(screen.x - (screen.x / 5)) * ViewHelper::getRatio(), (screen.y / 2) * ViewHelper::getRatio()};
 
     numberofHits = 0;
+    lastkey = 2;
     
    /* fprintf(stderr, "size %f, %f",
             std::fabs(m_scale.x) * sprite_width_p2,
@@ -285,6 +286,11 @@ void Player2::update(float ms) {
     if (isBoundingBoxForFeetInsidePolygon(dx, dy)) {
         move({dx, dy});
         animate();
+    }
+    else
+    {
+        if (blowback)
+            speed = 0.f;
     }
 }
 

@@ -730,6 +730,8 @@ CMakeFiles/zombie.dir/src/CollisionManager.cpp.o
  /Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/src/mud.hpp
  /Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/src/player1.hpp
  /Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/src/player2.hpp
+ /Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/src/punchleft.hpp
+ /Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/src/punchright.hpp
  /Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/src/toolboxManager.hpp
  /Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/src/toolboxSlot.hpp
  /Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/src/tree.hpp
@@ -975,6 +977,8 @@ CMakeFiles/zombie.dir/src/limbsManager.cpp.o
  /Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/src/mud.hpp
  /Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/src/player1.hpp
  /Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/src/player2.hpp
+ /Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/src/punchleft.hpp
+ /Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/src/punchright.hpp
  /Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/src/toolboxManager.hpp
  /Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/src/toolboxSlot.hpp
  /Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/src/tree.hpp
@@ -1040,6 +1044,8 @@ CMakeFiles/zombie.dir/src/main.cpp.o
  /Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/src/mud.hpp
  /Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/src/player1.hpp
  /Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/src/player2.hpp
+ /Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/src/punchleft.hpp
+ /Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/src/punchright.hpp
  /Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/src/toolboxManager.hpp
  /Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/src/toolboxSlot.hpp
  /Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/src/tree.hpp
@@ -1122,6 +1128,8 @@ CMakeFiles/zombie.dir/src/player1.cpp.o
  /Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/src/player1.cpp
  /Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/src/player1.hpp
  /Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/src/player2.hpp
+ /Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/src/punchleft.hpp
+ /Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/src/punchright.hpp
  /Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/src/toolboxManager.hpp
  /Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/src/toolboxSlot.hpp
  /Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/src/tree.hpp
@@ -1180,10 +1188,26 @@ CMakeFiles/zombie.dir/src/player2.cpp.o
  /Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/src/mud.hpp
  /Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/src/player2.cpp
  /Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/src/player2.hpp
+ /Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/src/punchleft.hpp
+ /Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/src/punchright.hpp
  /Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/src/toolboxManager.hpp
  /Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/src/toolboxSlot.hpp
  /Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/src/viewHelper.hpp
  /Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/src/water.hpp
+CMakeFiles/zombie.dir/src/punchleft.cpp.o
+ ../ext/gl3w/gl3w.h
+ ../ext/gl3w/glcorearb.h
+ /Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/src/common.hpp
+ /Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/src/punchleft.cpp
+ /Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/src/punchleft.hpp
+ /Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/src/viewHelper.hpp
+CMakeFiles/zombie.dir/src/punchright.cpp.o
+ ../ext/gl3w/gl3w.h
+ ../ext/gl3w/glcorearb.h
+ /Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/src/common.hpp
+ /Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/src/punchright.cpp
+ /Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/src/punchright.hpp
+ /Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/src/viewHelper.hpp
 CMakeFiles/zombie.dir/src/tmxparser/TmxColor.cpp.o
  /Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/src/tmxparser/TmxColor.cpp
  /Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/src/tmxparser/TmxColor.h
@@ -1443,6 +1467,8 @@ CMakeFiles/zombie.dir/src/world.cpp.o
  /Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/src/mud.hpp
  /Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/src/player1.hpp
  /Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/src/player2.hpp
+ /Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/src/punchleft.hpp
+ /Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/src/punchright.hpp
  /Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/src/toolboxManager.hpp
  /Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/src/toolboxSlot.hpp
  /Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/src/tree.hpp
@@ -1523,6 +1549,8 @@ CMakeFiles/zombie.dir/src/zombieManager.cpp.o
  /Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/src/mud.hpp
  /Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/src/player1.hpp
  /Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/src/player2.hpp
+ /Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/src/punchleft.hpp
+ /Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/src/punchright.hpp
  /Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/src/toolboxManager.hpp
  /Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/src/toolboxSlot.hpp
  /Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/src/tree.hpp

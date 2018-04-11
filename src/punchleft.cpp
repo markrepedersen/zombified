@@ -5,7 +5,7 @@
 
 Texture Punchleft::punchleft_texture;
 
-bool Punchleft::init(vec2 screen, std::vector<vec2> mapCollisionPoints)
+bool Punchleft::init(vec2 screen)
 {
     // Load shared texture
             if (!punchleft_texture.load_from_file(tools_textures_path("gloveleft.png")))
@@ -59,7 +59,7 @@ bool Punchleft::init(vec2 screen, std::vector<vec2> mapCollisionPoints)
     m_is_alive = true;
     
     srand((unsigned)time(0));
-    m_position = {screen.x/2 * ViewHelper::getRatio(), (getRandomPointInMap(mapCollisionPoints, screen)).y};
+    m_position = {screen.x/2 * ViewHelper::getRatio(), screen.y/2 * ViewHelper::getRatio()};
     
     belongs_to = 0;
     return true;

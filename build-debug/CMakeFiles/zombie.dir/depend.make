@@ -729,6 +729,8 @@ CMakeFiles/zombie.dir/src/CollisionManager.cpp.o: ../src/missile.hpp
 CMakeFiles/zombie.dir/src/CollisionManager.cpp.o: ../src/mud.hpp
 CMakeFiles/zombie.dir/src/CollisionManager.cpp.o: ../src/player1.hpp
 CMakeFiles/zombie.dir/src/CollisionManager.cpp.o: ../src/player2.hpp
+CMakeFiles/zombie.dir/src/CollisionManager.cpp.o: ../src/punchleft.hpp
+CMakeFiles/zombie.dir/src/CollisionManager.cpp.o: ../src/punchright.hpp
 CMakeFiles/zombie.dir/src/CollisionManager.cpp.o: ../src/toolboxManager.hpp
 CMakeFiles/zombie.dir/src/CollisionManager.cpp.o: ../src/toolboxSlot.hpp
 CMakeFiles/zombie.dir/src/CollisionManager.cpp.o: ../src/tree.hpp
@@ -974,6 +976,8 @@ CMakeFiles/zombie.dir/src/limbsManager.cpp.o: ../src/missile.hpp
 CMakeFiles/zombie.dir/src/limbsManager.cpp.o: ../src/mud.hpp
 CMakeFiles/zombie.dir/src/limbsManager.cpp.o: ../src/player1.hpp
 CMakeFiles/zombie.dir/src/limbsManager.cpp.o: ../src/player2.hpp
+CMakeFiles/zombie.dir/src/limbsManager.cpp.o: ../src/punchleft.hpp
+CMakeFiles/zombie.dir/src/limbsManager.cpp.o: ../src/punchright.hpp
 CMakeFiles/zombie.dir/src/limbsManager.cpp.o: ../src/toolboxManager.hpp
 CMakeFiles/zombie.dir/src/limbsManager.cpp.o: ../src/toolboxSlot.hpp
 CMakeFiles/zombie.dir/src/limbsManager.cpp.o: ../src/tree.hpp
@@ -1039,6 +1043,8 @@ CMakeFiles/zombie.dir/src/main.cpp.o: ../src/missile.hpp
 CMakeFiles/zombie.dir/src/main.cpp.o: ../src/mud.hpp
 CMakeFiles/zombie.dir/src/main.cpp.o: ../src/player1.hpp
 CMakeFiles/zombie.dir/src/main.cpp.o: ../src/player2.hpp
+CMakeFiles/zombie.dir/src/main.cpp.o: ../src/punchleft.hpp
+CMakeFiles/zombie.dir/src/main.cpp.o: ../src/punchright.hpp
 CMakeFiles/zombie.dir/src/main.cpp.o: ../src/toolboxManager.hpp
 CMakeFiles/zombie.dir/src/main.cpp.o: ../src/toolboxSlot.hpp
 CMakeFiles/zombie.dir/src/main.cpp.o: ../src/tree.hpp
@@ -1121,6 +1127,8 @@ CMakeFiles/zombie.dir/src/player1.cpp.o: ../src/mud.hpp
 CMakeFiles/zombie.dir/src/player1.cpp.o: ../src/player1.cpp
 CMakeFiles/zombie.dir/src/player1.cpp.o: ../src/player1.hpp
 CMakeFiles/zombie.dir/src/player1.cpp.o: ../src/player2.hpp
+CMakeFiles/zombie.dir/src/player1.cpp.o: ../src/punchleft.hpp
+CMakeFiles/zombie.dir/src/player1.cpp.o: ../src/punchright.hpp
 CMakeFiles/zombie.dir/src/player1.cpp.o: ../src/toolboxManager.hpp
 CMakeFiles/zombie.dir/src/player1.cpp.o: ../src/toolboxSlot.hpp
 CMakeFiles/zombie.dir/src/player1.cpp.o: ../src/tree.hpp
@@ -1179,10 +1187,26 @@ CMakeFiles/zombie.dir/src/player2.cpp.o: ../src/missile.hpp
 CMakeFiles/zombie.dir/src/player2.cpp.o: ../src/mud.hpp
 CMakeFiles/zombie.dir/src/player2.cpp.o: ../src/player2.cpp
 CMakeFiles/zombie.dir/src/player2.cpp.o: ../src/player2.hpp
+CMakeFiles/zombie.dir/src/player2.cpp.o: ../src/punchleft.hpp
+CMakeFiles/zombie.dir/src/player2.cpp.o: ../src/punchright.hpp
 CMakeFiles/zombie.dir/src/player2.cpp.o: ../src/toolboxManager.hpp
 CMakeFiles/zombie.dir/src/player2.cpp.o: ../src/toolboxSlot.hpp
 CMakeFiles/zombie.dir/src/player2.cpp.o: ../src/viewHelper.hpp
 CMakeFiles/zombie.dir/src/player2.cpp.o: ../src/water.hpp
+
+CMakeFiles/zombie.dir/src/punchleft.cpp.o: ../ext/gl3w/gl3w.h
+CMakeFiles/zombie.dir/src/punchleft.cpp.o: ../ext/gl3w/glcorearb.h
+CMakeFiles/zombie.dir/src/punchleft.cpp.o: ../src/common.hpp
+CMakeFiles/zombie.dir/src/punchleft.cpp.o: ../src/punchleft.cpp
+CMakeFiles/zombie.dir/src/punchleft.cpp.o: ../src/punchleft.hpp
+CMakeFiles/zombie.dir/src/punchleft.cpp.o: ../src/viewHelper.hpp
+
+CMakeFiles/zombie.dir/src/punchright.cpp.o: ../ext/gl3w/gl3w.h
+CMakeFiles/zombie.dir/src/punchright.cpp.o: ../ext/gl3w/glcorearb.h
+CMakeFiles/zombie.dir/src/punchright.cpp.o: ../src/common.hpp
+CMakeFiles/zombie.dir/src/punchright.cpp.o: ../src/punchright.cpp
+CMakeFiles/zombie.dir/src/punchright.cpp.o: ../src/punchright.hpp
+CMakeFiles/zombie.dir/src/punchright.cpp.o: ../src/viewHelper.hpp
 
 CMakeFiles/zombie.dir/src/tmxparser/TmxColor.cpp.o: ../src/tmxparser/TmxColor.cpp
 CMakeFiles/zombie.dir/src/tmxparser/TmxColor.cpp.o: ../src/tmxparser/TmxColor.h
@@ -1442,6 +1466,8 @@ CMakeFiles/zombie.dir/src/world.cpp.o: ../src/missile.hpp
 CMakeFiles/zombie.dir/src/world.cpp.o: ../src/mud.hpp
 CMakeFiles/zombie.dir/src/world.cpp.o: ../src/player1.hpp
 CMakeFiles/zombie.dir/src/world.cpp.o: ../src/player2.hpp
+CMakeFiles/zombie.dir/src/world.cpp.o: ../src/punchleft.hpp
+CMakeFiles/zombie.dir/src/world.cpp.o: ../src/punchright.hpp
 CMakeFiles/zombie.dir/src/world.cpp.o: ../src/toolboxManager.hpp
 CMakeFiles/zombie.dir/src/world.cpp.o: ../src/toolboxSlot.hpp
 CMakeFiles/zombie.dir/src/world.cpp.o: ../src/tree.hpp
@@ -1522,6 +1548,8 @@ CMakeFiles/zombie.dir/src/zombieManager.cpp.o: ../src/missile.hpp
 CMakeFiles/zombie.dir/src/zombieManager.cpp.o: ../src/mud.hpp
 CMakeFiles/zombie.dir/src/zombieManager.cpp.o: ../src/player1.hpp
 CMakeFiles/zombie.dir/src/zombieManager.cpp.o: ../src/player2.hpp
+CMakeFiles/zombie.dir/src/zombieManager.cpp.o: ../src/punchleft.hpp
+CMakeFiles/zombie.dir/src/zombieManager.cpp.o: ../src/punchright.hpp
 CMakeFiles/zombie.dir/src/zombieManager.cpp.o: ../src/toolboxManager.hpp
 CMakeFiles/zombie.dir/src/zombieManager.cpp.o: ../src/toolboxSlot.hpp
 CMakeFiles/zombie.dir/src/zombieManager.cpp.o: ../src/tree.hpp

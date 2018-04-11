@@ -155,8 +155,8 @@ bool isInsidePolygon(std::vector<vec2> poly, vec2 point) {
     bool oddNodes = false;
 
     for (unsigned long i = 0; i < poly.size(); i++) {
-        if (poly[i].y < point.y && poly[j].y >= point.y
-            || poly[j].y < point.y && poly[i].y >= point.y) {
+        if (((poly[i].y < point.y) && (poly[j].y >= point.y))
+            || ((poly[j].y < point.y) && (poly[i].y >= point.y))) {
             if (poly[i].x + (point.y - poly[i].y) / (poly[j].y - poly[i].y) * (poly[j].x - poly[i].x) < point.x) {
                 oddNodes = !oddNodes;
             }

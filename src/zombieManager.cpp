@@ -4,6 +4,7 @@
 bool ZombieManager::init(vec2 screen, const std::vector<vec2> &mapCollisionPoints) {
     m_mapCollisionPoints = mapCollisionPoints;
     m_screen = screen;
+    speed = 50;
     return true;
 }
 
@@ -107,7 +108,7 @@ void ZombieManager::computeZPaths(float ms, const MapGrid &mapGrid) {
                 nextNode = {static_cast<float>(zombie.getCurrentPath()[i].x),
                             static_cast<float>(zombie.getCurrentPath()[i].y)};
             }
-            float step = 50 * (ms / 1000);
+            float step = speed * (ms / 1000);
             vec2 dir;
             dir.x = nextNode.x * 100 - zombie.get_position().x;
             dir.y = nextNode.y * 100 - zombie.get_position().y;
@@ -130,9 +131,7 @@ int ZombieManager::check_collision_with_players(Player1 *p1, Player2 *p2, Toolbo
 
 void ZombieManager::attack_zombies(vec2 player_pos, vec2 player_boundingbox, int playerNum, ToolboxManager *m_toolboxmanager) {
     
-
-    
-     for (auto it = zombies.begin(); it != zombies.end(); it++){
+     for (auto it = zombies.begin(); it != zombies.end();){
         if ((std::abs(player_pos.x - it->get_position().x) * 2 <
                 (player_boundingbox.x + it->get_bounding_box().x)) &&
             (std::abs(player_pos.y - it->get_position().y) * 2 <
@@ -142,14 +141,29 @@ void ZombieManager::attack_zombies(vec2 player_pos, vec2 player_boundingbox, int
                     {
                         it->destroy();
                         it = zombies.erase(it);
+                        return;
+                    } else {
+                        it++;
                     }
-                    return;
+                }
+                else {
+                    it++;
                 }
     }
 }
 
+void ZombieManager::setSpeed(float speed) {
+    this->speed = speed;
+}
+    
+float ZombieManager::getSpeed() {
+    return speed;
+}
+
 
 void ZombieManager::destroy() {
+    for (auto &zombiescreated : zombies)
+        zombiescreated.destroy();
     zombies.clear();
     m_mapCollisionPoints.clear();
 }

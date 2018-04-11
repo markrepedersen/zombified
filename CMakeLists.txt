@@ -21,6 +21,9 @@ find_package(TinyXML2)
 find_package(ZLIB)
 find_package(GLFW REQUIRED glfw3)
 find_library(CoreFoundation corefoundation)
+message(INFO ${TINYXML2_LIBRARIES})
+message(INFO ${TINYXML2_INCLUDE_DIR})
+
 
 file(GLOB_RECURSE cmake-build-debug/data ${CMAKE_SOURCE_DIR}/data/*.wav ${CMAKE_SOURCE_DIR}/data/*.png ${CMAKE_SOURCE_DIR}/data/*.mesh ${CMAKE_SOURCE_DIR}/data/*.bmp)
 file(GLOB_RECURSE cmake-build-debug/shaders ${CMAKE_SOURCE_DIR}/shaders/*.glsl)
@@ -30,6 +33,7 @@ file(GLOB_RECURSE cmake-build-debug/data ${CMAKE_SOURCE_DIR}/data/*.png ${CMAKE_
 file(GLOB_RECURSE cmake-build-debug/shaders ${CMAKE_SOURCE_DIR}/shaders/*.glsl)
 
 add_executable(zombie ${SRC} ${DATA} ${SHADERS} ${EXT} ${HEADERS} ${HPPHEADERS} src/gl3w.c src/ToolManager.cpp src/ToolManager.h)
+
 
 target_link_libraries(zombie
         pthread

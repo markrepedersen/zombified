@@ -86,6 +86,8 @@ set(CMAKE_DEPENDS_CHECK_CXX
   "/Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/src/mud.cpp" "/Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/build-debug/CMakeFiles/zombie.dir/src/mud.cpp.o"
   "/Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/src/player1.cpp" "/Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/build-debug/CMakeFiles/zombie.dir/src/player1.cpp.o"
   "/Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/src/player2.cpp" "/Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/build-debug/CMakeFiles/zombie.dir/src/player2.cpp.o"
+  "/Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/src/punchleft.cpp" "/Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/build-debug/CMakeFiles/zombie.dir/src/punchleft.cpp.o"
+  "/Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/src/punchright.cpp" "/Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/build-debug/CMakeFiles/zombie.dir/src/punchright.cpp.o"
   "/Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/src/tmxparser/TmxColor.cpp" "/Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/build-debug/CMakeFiles/zombie.dir/src/tmxparser/TmxColor.cpp.o"
   "/Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/src/tmxparser/TmxEllipse.cpp" "/Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/build-debug/CMakeFiles/zombie.dir/src/tmxparser/TmxEllipse.cpp.o"
   "/Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/src/tmxparser/TmxGroupLayer.cpp" "/Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/build-debug/CMakeFiles/zombie.dir/src/tmxparser/TmxGroupLayer.cpp.o"

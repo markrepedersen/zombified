@@ -34,6 +34,8 @@ public:
 
     void setAttackTimeout(float timeout);
 
+    void setMass(float mass);
+
     vec2 getCurrentTarget()const;
 
     vec2 getLastTarget()const;
@@ -43,6 +45,8 @@ public:
     JPS::PathVector getLastPath()const;
     
     float getAttackTimeout();
+
+    float getMass();
 
     void move(vec2 pos);
 
@@ -58,5 +62,6 @@ protected:
     vec2 m_scale;
     bool initialized = false;
     float attack_timeout;
+    float mass;
 
 };

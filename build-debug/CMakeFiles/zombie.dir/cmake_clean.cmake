@@ -20,6 +20,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/zombie.dir/src/mud.cpp.o"
   "CMakeFiles/zombie.dir/src/player1.cpp.o"
   "CMakeFiles/zombie.dir/src/player2.cpp.o"
+  "CMakeFiles/zombie.dir/src/punchleft.cpp.o"
+  "CMakeFiles/zombie.dir/src/punchright.cpp.o"
   "CMakeFiles/zombie.dir/src/tmxparser/TmxColor.cpp.o"
   "CMakeFiles/zombie.dir/src/tmxparser/TmxEllipse.cpp.o"
   "CMakeFiles/zombie.dir/src/tmxparser/TmxGroupLayer.cpp.o"

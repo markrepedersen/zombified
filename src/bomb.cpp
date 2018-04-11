@@ -264,7 +264,7 @@ void Bomb::checkBoundaryCollision(float width, float height, float ms, std::vect
                             vec2 twodnn = {2 * dn * n.x, 2 * dn * n.y};
                             vec2 r = {d.x - twodnn.x, d.y - twodnn.y};
 
-                            std::cout << "reflection" << r.x << ", " << r.y << std::endl;
+                            //std::cout << "reflection" << r.x << ", " << r.y << std::endl;
 
                             oldspeed = speed;
                             speed = r;

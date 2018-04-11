@@ -1959,6 +1959,60 @@ src/player2.cpp.s:
 	$(MAKE) -f CMakeFiles/zombie.dir/build.make CMakeFiles/zombie.dir/src/player2.cpp.s
 .PHONY : src/player2.cpp.s
 
+src/punchleft.o: src/punchleft.cpp.o
+
+.PHONY : src/punchleft.o
+
+# target to build an object file
+src/punchleft.cpp.o:
+	$(MAKE) -f CMakeFiles/zombie.dir/build.make CMakeFiles/zombie.dir/src/punchleft.cpp.o
+.PHONY : src/punchleft.cpp.o
+
+src/punchleft.i: src/punchleft.cpp.i
+
+.PHONY : src/punchleft.i
+
+# target to preprocess a source file
+src/punchleft.cpp.i:
+	$(MAKE) -f CMakeFiles/zombie.dir/build.make CMakeFiles/zombie.dir/src/punchleft.cpp.i
+.PHONY : src/punchleft.cpp.i
+
+src/punchleft.s: src/punchleft.cpp.s
+
+.PHONY : src/punchleft.s
+
+# target to generate assembly for a file
+src/punchleft.cpp.s:
+	$(MAKE) -f CMakeFiles/zombie.dir/build.make CMakeFiles/zombie.dir/src/punchleft.cpp.s
+.PHONY : src/punchleft.cpp.s
+
+src/punchright.o: src/punchright.cpp.o
+
+.PHONY : src/punchright.o
+
+# target to build an object file
+src/punchright.cpp.o:
+	$(MAKE) -f CMakeFiles/zombie.dir/build.make CMakeFiles/zombie.dir/src/punchright.cpp.o
+.PHONY : src/punchright.cpp.o
+
+src/punchright.i: src/punchright.cpp.i
+
+.PHONY : src/punchright.i
+
+# target to preprocess a source file
+src/punchright.cpp.i:
+	$(MAKE) -f CMakeFiles/zombie.dir/build.make CMakeFiles/zombie.dir/src/punchright.cpp.i
+.PHONY : src/punchright.cpp.i
+
+src/punchright.s: src/punchright.cpp.s
+
+.PHONY : src/punchright.s
+
+# target to generate assembly for a file
+src/punchright.cpp.s:
+	$(MAKE) -f CMakeFiles/zombie.dir/build.make CMakeFiles/zombie.dir/src/punchright.cpp.s
+.PHONY : src/punchright.cpp.s
+
 src/tmxparser/TmxColor.o: src/tmxparser/TmxColor.cpp.o
 
 .PHONY : src/tmxparser/TmxColor.o
@@ -3036,6 +3090,12 @@ help:
 	@echo "... src/player2.o"
 	@echo "... src/player2.i"
 	@echo "... src/player2.s"
+	@echo "... src/punchleft.o"
+	@echo "... src/punchleft.i"
+	@echo "... src/punchleft.s"
+	@echo "... src/punchright.o"
+	@echo "... src/punchright.i"
+	@echo "... src/punchright.s"
 	@echo "... src/tmxparser/TmxColor.o"
 	@echo "... src/tmxparser/TmxColor.i"
 	@echo "... src/tmxparser/TmxColor.s"
