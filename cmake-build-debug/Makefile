@@ -48,10 +48,10 @@ RM = /Applications/CLion.app/Contents/bin/cmake/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /Users/ppnia/Documents/Winter20172018/CPSC436D/zombified
+CMAKE_SOURCE_DIR = /Users/markpedersen/Desktop/zombified
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/cmake-build-debug
+CMAKE_BINARY_DIR = /Users/markpedersen/Desktop/zombified/cmake-build-debug
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -80,9 +80,9 @@ edit_cache/fast: edit_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/cmake-build-debug/CMakeFiles /Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/cmake-build-debug/CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/markpedersen/Desktop/zombified/cmake-build-debug/CMakeFiles /Users/markpedersen/Desktop/zombified/cmake-build-debug/CMakeFiles/progress.marks
 	$(MAKE) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/cmake-build-debug/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/markpedersen/Desktop/zombified/cmake-build-debug/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -122,1248 +122,6 @@ zombie: cmake_check_build_system
 zombie/fast:
 	$(MAKE) -f CMakeFiles/zombie.dir/build.make CMakeFiles/zombie.dir/build
 .PHONY : zombie/fast
-
-ext/Box2D/Collision/Shapes/b2ChainShape.o: ext/Box2D/Collision/Shapes/b2ChainShape.cpp.o
-
-.PHONY : ext/Box2D/Collision/Shapes/b2ChainShape.o
-
-# target to build an object file
-ext/Box2D/Collision/Shapes/b2ChainShape.cpp.o:
-	$(MAKE) -f CMakeFiles/zombie.dir/build.make CMakeFiles/zombie.dir/ext/Box2D/Collision/Shapes/b2ChainShape.cpp.o
-.PHONY : ext/Box2D/Collision/Shapes/b2ChainShape.cpp.o
-
-ext/Box2D/Collision/Shapes/b2ChainShape.i: ext/Box2D/Collision/Shapes/b2ChainShape.cpp.i
-
-.PHONY : ext/Box2D/Collision/Shapes/b2ChainShape.i
-
-# target to preprocess a source file
-ext/Box2D/Collision/Shapes/b2ChainShape.cpp.i:
-	$(MAKE) -f CMakeFiles/zombie.dir/build.make CMakeFiles/zombie.dir/ext/Box2D/Collision/Shapes/b2ChainShape.cpp.i
-.PHONY : ext/Box2D/Collision/Shapes/b2ChainShape.cpp.i
-
-ext/Box2D/Collision/Shapes/b2ChainShape.s: ext/Box2D/Collision/Shapes/b2ChainShape.cpp.s
-
-.PHONY : ext/Box2D/Collision/Shapes/b2ChainShape.s
-
-# target to generate assembly for a file
-ext/Box2D/Collision/Shapes/b2ChainShape.cpp.s:
-	$(MAKE) -f CMakeFiles/zombie.dir/build.make CMakeFiles/zombie.dir/ext/Box2D/Collision/Shapes/b2ChainShape.cpp.s
-.PHONY : ext/Box2D/Collision/Shapes/b2ChainShape.cpp.s
-
-ext/Box2D/Collision/Shapes/b2CircleShape.o: ext/Box2D/Collision/Shapes/b2CircleShape.cpp.o
-
-.PHONY : ext/Box2D/Collision/Shapes/b2CircleShape.o
-
-# target to build an object file
-ext/Box2D/Collision/Shapes/b2CircleShape.cpp.o:
-	$(MAKE) -f CMakeFiles/zombie.dir/build.make CMakeFiles/zombie.dir/ext/Box2D/Collision/Shapes/b2CircleShape.cpp.o
-.PHONY : ext/Box2D/Collision/Shapes/b2CircleShape.cpp.o
-
-ext/Box2D/Collision/Shapes/b2CircleShape.i: ext/Box2D/Collision/Shapes/b2CircleShape.cpp.i
-
-.PHONY : ext/Box2D/Collision/Shapes/b2CircleShape.i
-
-# target to preprocess a source file
-ext/Box2D/Collision/Shapes/b2CircleShape.cpp.i:
-	$(MAKE) -f CMakeFiles/zombie.dir/build.make CMakeFiles/zombie.dir/ext/Box2D/Collision/Shapes/b2CircleShape.cpp.i
-.PHONY : ext/Box2D/Collision/Shapes/b2CircleShape.cpp.i
-
-ext/Box2D/Collision/Shapes/b2CircleShape.s: ext/Box2D/Collision/Shapes/b2CircleShape.cpp.s
-
-.PHONY : ext/Box2D/Collision/Shapes/b2CircleShape.s
-
-# target to generate assembly for a file
-ext/Box2D/Collision/Shapes/b2CircleShape.cpp.s:
-	$(MAKE) -f CMakeFiles/zombie.dir/build.make CMakeFiles/zombie.dir/ext/Box2D/Collision/Shapes/b2CircleShape.cpp.s
-.PHONY : ext/Box2D/Collision/Shapes/b2CircleShape.cpp.s
-
-ext/Box2D/Collision/Shapes/b2EdgeShape.o: ext/Box2D/Collision/Shapes/b2EdgeShape.cpp.o
-
-.PHONY : ext/Box2D/Collision/Shapes/b2EdgeShape.o
-
-# target to build an object file
-ext/Box2D/Collision/Shapes/b2EdgeShape.cpp.o:
-	$(MAKE) -f CMakeFiles/zombie.dir/build.make CMakeFiles/zombie.dir/ext/Box2D/Collision/Shapes/b2EdgeShape.cpp.o
-.PHONY : ext/Box2D/Collision/Shapes/b2EdgeShape.cpp.o
-
-ext/Box2D/Collision/Shapes/b2EdgeShape.i: ext/Box2D/Collision/Shapes/b2EdgeShape.cpp.i
-
-.PHONY : ext/Box2D/Collision/Shapes/b2EdgeShape.i
-
-# target to preprocess a source file
-ext/Box2D/Collision/Shapes/b2EdgeShape.cpp.i:
-	$(MAKE) -f CMakeFiles/zombie.dir/build.make CMakeFiles/zombie.dir/ext/Box2D/Collision/Shapes/b2EdgeShape.cpp.i
-.PHONY : ext/Box2D/Collision/Shapes/b2EdgeShape.cpp.i
-
-ext/Box2D/Collision/Shapes/b2EdgeShape.s: ext/Box2D/Collision/Shapes/b2EdgeShape.cpp.s
-
-.PHONY : ext/Box2D/Collision/Shapes/b2EdgeShape.s
-
-# target to generate assembly for a file
-ext/Box2D/Collision/Shapes/b2EdgeShape.cpp.s:
-	$(MAKE) -f CMakeFiles/zombie.dir/build.make CMakeFiles/zombie.dir/ext/Box2D/Collision/Shapes/b2EdgeShape.cpp.s
-.PHONY : ext/Box2D/Collision/Shapes/b2EdgeShape.cpp.s
-
-ext/Box2D/Collision/Shapes/b2PolygonShape.o: ext/Box2D/Collision/Shapes/b2PolygonShape.cpp.o
-
-.PHONY : ext/Box2D/Collision/Shapes/b2PolygonShape.o
-
-# target to build an object file
-ext/Box2D/Collision/Shapes/b2PolygonShape.cpp.o:
-	$(MAKE) -f CMakeFiles/zombie.dir/build.make CMakeFiles/zombie.dir/ext/Box2D/Collision/Shapes/b2PolygonShape.cpp.o
-.PHONY : ext/Box2D/Collision/Shapes/b2PolygonShape.cpp.o
-
-ext/Box2D/Collision/Shapes/b2PolygonShape.i: ext/Box2D/Collision/Shapes/b2PolygonShape.cpp.i
-
-.PHONY : ext/Box2D/Collision/Shapes/b2PolygonShape.i
-
-# target to preprocess a source file
-ext/Box2D/Collision/Shapes/b2PolygonShape.cpp.i:
-	$(MAKE) -f CMakeFiles/zombie.dir/build.make CMakeFiles/zombie.dir/ext/Box2D/Collision/Shapes/b2PolygonShape.cpp.i
-.PHONY : ext/Box2D/Collision/Shapes/b2PolygonShape.cpp.i
-
-ext/Box2D/Collision/Shapes/b2PolygonShape.s: ext/Box2D/Collision/Shapes/b2PolygonShape.cpp.s
-
-.PHONY : ext/Box2D/Collision/Shapes/b2PolygonShape.s
-
-# target to generate assembly for a file
-ext/Box2D/Collision/Shapes/b2PolygonShape.cpp.s:
-	$(MAKE) -f CMakeFiles/zombie.dir/build.make CMakeFiles/zombie.dir/ext/Box2D/Collision/Shapes/b2PolygonShape.cpp.s
-.PHONY : ext/Box2D/Collision/Shapes/b2PolygonShape.cpp.s
-
-ext/Box2D/Collision/b2BroadPhase.o: ext/Box2D/Collision/b2BroadPhase.cpp.o
-
-.PHONY : ext/Box2D/Collision/b2BroadPhase.o
-
-# target to build an object file
-ext/Box2D/Collision/b2BroadPhase.cpp.o:
-	$(MAKE) -f CMakeFiles/zombie.dir/build.make CMakeFiles/zombie.dir/ext/Box2D/Collision/b2BroadPhase.cpp.o
-.PHONY : ext/Box2D/Collision/b2BroadPhase.cpp.o
-
-ext/Box2D/Collision/b2BroadPhase.i: ext/Box2D/Collision/b2BroadPhase.cpp.i
-
-.PHONY : ext/Box2D/Collision/b2BroadPhase.i
-
-# target to preprocess a source file
-ext/Box2D/Collision/b2BroadPhase.cpp.i:
-	$(MAKE) -f CMakeFiles/zombie.dir/build.make CMakeFiles/zombie.dir/ext/Box2D/Collision/b2BroadPhase.cpp.i
-.PHONY : ext/Box2D/Collision/b2BroadPhase.cpp.i
-
-ext/Box2D/Collision/b2BroadPhase.s: ext/Box2D/Collision/b2BroadPhase.cpp.s
-
-.PHONY : ext/Box2D/Collision/b2BroadPhase.s
-
-# target to generate assembly for a file
-ext/Box2D/Collision/b2BroadPhase.cpp.s:
-	$(MAKE) -f CMakeFiles/zombie.dir/build.make CMakeFiles/zombie.dir/ext/Box2D/Collision/b2BroadPhase.cpp.s
-.PHONY : ext/Box2D/Collision/b2BroadPhase.cpp.s
-
-ext/Box2D/Collision/b2CollideCircle.o: ext/Box2D/Collision/b2CollideCircle.cpp.o
-
-.PHONY : ext/Box2D/Collision/b2CollideCircle.o
-
-# target to build an object file
-ext/Box2D/Collision/b2CollideCircle.cpp.o:
-	$(MAKE) -f CMakeFiles/zombie.dir/build.make CMakeFiles/zombie.dir/ext/Box2D/Collision/b2CollideCircle.cpp.o
-.PHONY : ext/Box2D/Collision/b2CollideCircle.cpp.o
-
-ext/Box2D/Collision/b2CollideCircle.i: ext/Box2D/Collision/b2CollideCircle.cpp.i
-
-.PHONY : ext/Box2D/Collision/b2CollideCircle.i
-
-# target to preprocess a source file
-ext/Box2D/Collision/b2CollideCircle.cpp.i:
-	$(MAKE) -f CMakeFiles/zombie.dir/build.make CMakeFiles/zombie.dir/ext/Box2D/Collision/b2CollideCircle.cpp.i
-.PHONY : ext/Box2D/Collision/b2CollideCircle.cpp.i
-
-ext/Box2D/Collision/b2CollideCircle.s: ext/Box2D/Collision/b2CollideCircle.cpp.s
-
-.PHONY : ext/Box2D/Collision/b2CollideCircle.s
-
-# target to generate assembly for a file
-ext/Box2D/Collision/b2CollideCircle.cpp.s:
-	$(MAKE) -f CMakeFiles/zombie.dir/build.make CMakeFiles/zombie.dir/ext/Box2D/Collision/b2CollideCircle.cpp.s
-.PHONY : ext/Box2D/Collision/b2CollideCircle.cpp.s
-
-ext/Box2D/Collision/b2CollideEdge.o: ext/Box2D/Collision/b2CollideEdge.cpp.o
-
-.PHONY : ext/Box2D/Collision/b2CollideEdge.o
-
-# target to build an object file
-ext/Box2D/Collision/b2CollideEdge.cpp.o:
-	$(MAKE) -f CMakeFiles/zombie.dir/build.make CMakeFiles/zombie.dir/ext/Box2D/Collision/b2CollideEdge.cpp.o
-.PHONY : ext/Box2D/Collision/b2CollideEdge.cpp.o
-
-ext/Box2D/Collision/b2CollideEdge.i: ext/Box2D/Collision/b2CollideEdge.cpp.i
-
-.PHONY : ext/Box2D/Collision/b2CollideEdge.i
-
-# target to preprocess a source file
-ext/Box2D/Collision/b2CollideEdge.cpp.i:
-	$(MAKE) -f CMakeFiles/zombie.dir/build.make CMakeFiles/zombie.dir/ext/Box2D/Collision/b2CollideEdge.cpp.i
-.PHONY : ext/Box2D/Collision/b2CollideEdge.cpp.i
-
-ext/Box2D/Collision/b2CollideEdge.s: ext/Box2D/Collision/b2CollideEdge.cpp.s
-
-.PHONY : ext/Box2D/Collision/b2CollideEdge.s
-
-# target to generate assembly for a file
-ext/Box2D/Collision/b2CollideEdge.cpp.s:
-	$(MAKE) -f CMakeFiles/zombie.dir/build.make CMakeFiles/zombie.dir/ext/Box2D/Collision/b2CollideEdge.cpp.s
-.PHONY : ext/Box2D/Collision/b2CollideEdge.cpp.s
-
-ext/Box2D/Collision/b2CollidePolygon.o: ext/Box2D/Collision/b2CollidePolygon.cpp.o
-
-.PHONY : ext/Box2D/Collision/b2CollidePolygon.o
-
-# target to build an object file
-ext/Box2D/Collision/b2CollidePolygon.cpp.o:
-	$(MAKE) -f CMakeFiles/zombie.dir/build.make CMakeFiles/zombie.dir/ext/Box2D/Collision/b2CollidePolygon.cpp.o
-.PHONY : ext/Box2D/Collision/b2CollidePolygon.cpp.o
-
-ext/Box2D/Collision/b2CollidePolygon.i: ext/Box2D/Collision/b2CollidePolygon.cpp.i
-
-.PHONY : ext/Box2D/Collision/b2CollidePolygon.i
-
-# target to preprocess a source file
-ext/Box2D/Collision/b2CollidePolygon.cpp.i:
-	$(MAKE) -f CMakeFiles/zombie.dir/build.make CMakeFiles/zombie.dir/ext/Box2D/Collision/b2CollidePolygon.cpp.i
-.PHONY : ext/Box2D/Collision/b2CollidePolygon.cpp.i
-
-ext/Box2D/Collision/b2CollidePolygon.s: ext/Box2D/Collision/b2CollidePolygon.cpp.s
-
-.PHONY : ext/Box2D/Collision/b2CollidePolygon.s
-
-# target to generate assembly for a file
-ext/Box2D/Collision/b2CollidePolygon.cpp.s:
-	$(MAKE) -f CMakeFiles/zombie.dir/build.make CMakeFiles/zombie.dir/ext/Box2D/Collision/b2CollidePolygon.cpp.s
-.PHONY : ext/Box2D/Collision/b2CollidePolygon.cpp.s
-
-ext/Box2D/Collision/b2Collision.o: ext/Box2D/Collision/b2Collision.cpp.o
-
-.PHONY : ext/Box2D/Collision/b2Collision.o
-
-# target to build an object file
-ext/Box2D/Collision/b2Collision.cpp.o:
-	$(MAKE) -f CMakeFiles/zombie.dir/build.make CMakeFiles/zombie.dir/ext/Box2D/Collision/b2Collision.cpp.o
-.PHONY : ext/Box2D/Collision/b2Collision.cpp.o
-
-ext/Box2D/Collision/b2Collision.i: ext/Box2D/Collision/b2Collision.cpp.i
-
-.PHONY : ext/Box2D/Collision/b2Collision.i
-
-# target to preprocess a source file
-ext/Box2D/Collision/b2Collision.cpp.i:
-	$(MAKE) -f CMakeFiles/zombie.dir/build.make CMakeFiles/zombie.dir/ext/Box2D/Collision/b2Collision.cpp.i
-.PHONY : ext/Box2D/Collision/b2Collision.cpp.i
-
-ext/Box2D/Collision/b2Collision.s: ext/Box2D/Collision/b2Collision.cpp.s
-
-.PHONY : ext/Box2D/Collision/b2Collision.s
-
-# target to generate assembly for a file
-ext/Box2D/Collision/b2Collision.cpp.s:
-	$(MAKE) -f CMakeFiles/zombie.dir/build.make CMakeFiles/zombie.dir/ext/Box2D/Collision/b2Collision.cpp.s
-.PHONY : ext/Box2D/Collision/b2Collision.cpp.s
-
-ext/Box2D/Collision/b2Distance.o: ext/Box2D/Collision/b2Distance.cpp.o
-
-.PHONY : ext/Box2D/Collision/b2Distance.o
-
-# target to build an object file
-ext/Box2D/Collision/b2Distance.cpp.o:
-	$(MAKE) -f CMakeFiles/zombie.dir/build.make CMakeFiles/zombie.dir/ext/Box2D/Collision/b2Distance.cpp.o
-.PHONY : ext/Box2D/Collision/b2Distance.cpp.o
-
-ext/Box2D/Collision/b2Distance.i: ext/Box2D/Collision/b2Distance.cpp.i
-
-.PHONY : ext/Box2D/Collision/b2Distance.i
-
-# target to preprocess a source file
-ext/Box2D/Collision/b2Distance.cpp.i:
-	$(MAKE) -f CMakeFiles/zombie.dir/build.make CMakeFiles/zombie.dir/ext/Box2D/Collision/b2Distance.cpp.i
-.PHONY : ext/Box2D/Collision/b2Distance.cpp.i
-
-ext/Box2D/Collision/b2Distance.s: ext/Box2D/Collision/b2Distance.cpp.s
-
-.PHONY : ext/Box2D/Collision/b2Distance.s
-
-# target to generate assembly for a file
-ext/Box2D/Collision/b2Distance.cpp.s:
-	$(MAKE) -f CMakeFiles/zombie.dir/build.make CMakeFiles/zombie.dir/ext/Box2D/Collision/b2Distance.cpp.s
-.PHONY : ext/Box2D/Collision/b2Distance.cpp.s
-
-ext/Box2D/Collision/b2DynamicTree.o: ext/Box2D/Collision/b2DynamicTree.cpp.o
-
-.PHONY : ext/Box2D/Collision/b2DynamicTree.o
-
-# target to build an object file
-ext/Box2D/Collision/b2DynamicTree.cpp.o:
-	$(MAKE) -f CMakeFiles/zombie.dir/build.make CMakeFiles/zombie.dir/ext/Box2D/Collision/b2DynamicTree.cpp.o
-.PHONY : ext/Box2D/Collision/b2DynamicTree.cpp.o
-
-ext/Box2D/Collision/b2DynamicTree.i: ext/Box2D/Collision/b2DynamicTree.cpp.i
-
-.PHONY : ext/Box2D/Collision/b2DynamicTree.i
-
-# target to preprocess a source file
-ext/Box2D/Collision/b2DynamicTree.cpp.i:
-	$(MAKE) -f CMakeFiles/zombie.dir/build.make CMakeFiles/zombie.dir/ext/Box2D/Collision/b2DynamicTree.cpp.i
-.PHONY : ext/Box2D/Collision/b2DynamicTree.cpp.i
-
-ext/Box2D/Collision/b2DynamicTree.s: ext/Box2D/Collision/b2DynamicTree.cpp.s
-
-.PHONY : ext/Box2D/Collision/b2DynamicTree.s
-
-# target to generate assembly for a file
-ext/Box2D/Collision/b2DynamicTree.cpp.s:
-	$(MAKE) -f CMakeFiles/zombie.dir/build.make CMakeFiles/zombie.dir/ext/Box2D/Collision/b2DynamicTree.cpp.s
-.PHONY : ext/Box2D/Collision/b2DynamicTree.cpp.s
-
-ext/Box2D/Collision/b2TimeOfImpact.o: ext/Box2D/Collision/b2TimeOfImpact.cpp.o
-
-.PHONY : ext/Box2D/Collision/b2TimeOfImpact.o
-
-# target to build an object file
-ext/Box2D/Collision/b2TimeOfImpact.cpp.o:
-	$(MAKE) -f CMakeFiles/zombie.dir/build.make CMakeFiles/zombie.dir/ext/Box2D/Collision/b2TimeOfImpact.cpp.o
-.PHONY : ext/Box2D/Collision/b2TimeOfImpact.cpp.o
-
-ext/Box2D/Collision/b2TimeOfImpact.i: ext/Box2D/Collision/b2TimeOfImpact.cpp.i
-
-.PHONY : ext/Box2D/Collision/b2TimeOfImpact.i
-
-# target to preprocess a source file
-ext/Box2D/Collision/b2TimeOfImpact.cpp.i:
-	$(MAKE) -f CMakeFiles/zombie.dir/build.make CMakeFiles/zombie.dir/ext/Box2D/Collision/b2TimeOfImpact.cpp.i
-.PHONY : ext/Box2D/Collision/b2TimeOfImpact.cpp.i
-
-ext/Box2D/Collision/b2TimeOfImpact.s: ext/Box2D/Collision/b2TimeOfImpact.cpp.s
-
-.PHONY : ext/Box2D/Collision/b2TimeOfImpact.s
-
-# target to generate assembly for a file
-ext/Box2D/Collision/b2TimeOfImpact.cpp.s:
-	$(MAKE) -f CMakeFiles/zombie.dir/build.make CMakeFiles/zombie.dir/ext/Box2D/Collision/b2TimeOfImpact.cpp.s
-.PHONY : ext/Box2D/Collision/b2TimeOfImpact.cpp.s
-
-ext/Box2D/Common/b2BlockAllocator.o: ext/Box2D/Common/b2BlockAllocator.cpp.o
-
-.PHONY : ext/Box2D/Common/b2BlockAllocator.o
-
-# target to build an object file
-ext/Box2D/Common/b2BlockAllocator.cpp.o:
-	$(MAKE) -f CMakeFiles/zombie.dir/build.make CMakeFiles/zombie.dir/ext/Box2D/Common/b2BlockAllocator.cpp.o
-.PHONY : ext/Box2D/Common/b2BlockAllocator.cpp.o
-
-ext/Box2D/Common/b2BlockAllocator.i: ext/Box2D/Common/b2BlockAllocator.cpp.i
-
-.PHONY : ext/Box2D/Common/b2BlockAllocator.i
-
-# target to preprocess a source file
-ext/Box2D/Common/b2BlockAllocator.cpp.i:
-	$(MAKE) -f CMakeFiles/zombie.dir/build.make CMakeFiles/zombie.dir/ext/Box2D/Common/b2BlockAllocator.cpp.i
-.PHONY : ext/Box2D/Common/b2BlockAllocator.cpp.i
-
-ext/Box2D/Common/b2BlockAllocator.s: ext/Box2D/Common/b2BlockAllocator.cpp.s
-
-.PHONY : ext/Box2D/Common/b2BlockAllocator.s
-
-# target to generate assembly for a file
-ext/Box2D/Common/b2BlockAllocator.cpp.s:
-	$(MAKE) -f CMakeFiles/zombie.dir/build.make CMakeFiles/zombie.dir/ext/Box2D/Common/b2BlockAllocator.cpp.s
-.PHONY : ext/Box2D/Common/b2BlockAllocator.cpp.s
-
-ext/Box2D/Common/b2Draw.o: ext/Box2D/Common/b2Draw.cpp.o
-
-.PHONY : ext/Box2D/Common/b2Draw.o
-
-# target to build an object file
-ext/Box2D/Common/b2Draw.cpp.o:
-	$(MAKE) -f CMakeFiles/zombie.dir/build.make CMakeFiles/zombie.dir/ext/Box2D/Common/b2Draw.cpp.o
-.PHONY : ext/Box2D/Common/b2Draw.cpp.o
-
-ext/Box2D/Common/b2Draw.i: ext/Box2D/Common/b2Draw.cpp.i
-
-.PHONY : ext/Box2D/Common/b2Draw.i
-
-# target to preprocess a source file
-ext/Box2D/Common/b2Draw.cpp.i:
-	$(MAKE) -f CMakeFiles/zombie.dir/build.make CMakeFiles/zombie.dir/ext/Box2D/Common/b2Draw.cpp.i
-.PHONY : ext/Box2D/Common/b2Draw.cpp.i
-
-ext/Box2D/Common/b2Draw.s: ext/Box2D/Common/b2Draw.cpp.s
-
-.PHONY : ext/Box2D/Common/b2Draw.s
-
-# target to generate assembly for a file
-ext/Box2D/Common/b2Draw.cpp.s:
-	$(MAKE) -f CMakeFiles/zombie.dir/build.make CMakeFiles/zombie.dir/ext/Box2D/Common/b2Draw.cpp.s
-.PHONY : ext/Box2D/Common/b2Draw.cpp.s
-
-ext/Box2D/Common/b2Math.o: ext/Box2D/Common/b2Math.cpp.o
-
-.PHONY : ext/Box2D/Common/b2Math.o
-
-# target to build an object file
-ext/Box2D/Common/b2Math.cpp.o:
-	$(MAKE) -f CMakeFiles/zombie.dir/build.make CMakeFiles/zombie.dir/ext/Box2D/Common/b2Math.cpp.o
-.PHONY : ext/Box2D/Common/b2Math.cpp.o
-
-ext/Box2D/Common/b2Math.i: ext/Box2D/Common/b2Math.cpp.i
-
-.PHONY : ext/Box2D/Common/b2Math.i
-
-# target to preprocess a source file
-ext/Box2D/Common/b2Math.cpp.i:
-	$(MAKE) -f CMakeFiles/zombie.dir/build.make CMakeFiles/zombie.dir/ext/Box2D/Common/b2Math.cpp.i
-.PHONY : ext/Box2D/Common/b2Math.cpp.i
-
-ext/Box2D/Common/b2Math.s: ext/Box2D/Common/b2Math.cpp.s
-
-.PHONY : ext/Box2D/Common/b2Math.s
-
-# target to generate assembly for a file
-ext/Box2D/Common/b2Math.cpp.s:
-	$(MAKE) -f CMakeFiles/zombie.dir/build.make CMakeFiles/zombie.dir/ext/Box2D/Common/b2Math.cpp.s
-.PHONY : ext/Box2D/Common/b2Math.cpp.s
-
-ext/Box2D/Common/b2Settings.o: ext/Box2D/Common/b2Settings.cpp.o
-
-.PHONY : ext/Box2D/Common/b2Settings.o
-
-# target to build an object file
-ext/Box2D/Common/b2Settings.cpp.o:
-	$(MAKE) -f CMakeFiles/zombie.dir/build.make CMakeFiles/zombie.dir/ext/Box2D/Common/b2Settings.cpp.o
-.PHONY : ext/Box2D/Common/b2Settings.cpp.o
-
-ext/Box2D/Common/b2Settings.i: ext/Box2D/Common/b2Settings.cpp.i
-
-.PHONY : ext/Box2D/Common/b2Settings.i
-
-# target to preprocess a source file
-ext/Box2D/Common/b2Settings.cpp.i:
-	$(MAKE) -f CMakeFiles/zombie.dir/build.make CMakeFiles/zombie.dir/ext/Box2D/Common/b2Settings.cpp.i
-.PHONY : ext/Box2D/Common/b2Settings.cpp.i
-
-ext/Box2D/Common/b2Settings.s: ext/Box2D/Common/b2Settings.cpp.s
-
-.PHONY : ext/Box2D/Common/b2Settings.s
-
-# target to generate assembly for a file
-ext/Box2D/Common/b2Settings.cpp.s:
-	$(MAKE) -f CMakeFiles/zombie.dir/build.make CMakeFiles/zombie.dir/ext/Box2D/Common/b2Settings.cpp.s
-.PHONY : ext/Box2D/Common/b2Settings.cpp.s
-
-ext/Box2D/Common/b2StackAllocator.o: ext/Box2D/Common/b2StackAllocator.cpp.o
-
-.PHONY : ext/Box2D/Common/b2StackAllocator.o
-
-# target to build an object file
-ext/Box2D/Common/b2StackAllocator.cpp.o:
-	$(MAKE) -f CMakeFiles/zombie.dir/build.make CMakeFiles/zombie.dir/ext/Box2D/Common/b2StackAllocator.cpp.o
-.PHONY : ext/Box2D/Common/b2StackAllocator.cpp.o
-
-ext/Box2D/Common/b2StackAllocator.i: ext/Box2D/Common/b2StackAllocator.cpp.i
-
-.PHONY : ext/Box2D/Common/b2StackAllocator.i
-
-# target to preprocess a source file
-ext/Box2D/Common/b2StackAllocator.cpp.i:
-	$(MAKE) -f CMakeFiles/zombie.dir/build.make CMakeFiles/zombie.dir/ext/Box2D/Common/b2StackAllocator.cpp.i
-.PHONY : ext/Box2D/Common/b2StackAllocator.cpp.i
-
-ext/Box2D/Common/b2StackAllocator.s: ext/Box2D/Common/b2StackAllocator.cpp.s
-
-.PHONY : ext/Box2D/Common/b2StackAllocator.s
-
-# target to generate assembly for a file
-ext/Box2D/Common/b2StackAllocator.cpp.s:
-	$(MAKE) -f CMakeFiles/zombie.dir/build.make CMakeFiles/zombie.dir/ext/Box2D/Common/b2StackAllocator.cpp.s
-.PHONY : ext/Box2D/Common/b2StackAllocator.cpp.s
-
-ext/Box2D/Common/b2Timer.o: ext/Box2D/Common/b2Timer.cpp.o
-
-.PHONY : ext/Box2D/Common/b2Timer.o
-
-# target to build an object file
-ext/Box2D/Common/b2Timer.cpp.o:
-	$(MAKE) -f CMakeFiles/zombie.dir/build.make CMakeFiles/zombie.dir/ext/Box2D/Common/b2Timer.cpp.o
-.PHONY : ext/Box2D/Common/b2Timer.cpp.o
-
-ext/Box2D/Common/b2Timer.i: ext/Box2D/Common/b2Timer.cpp.i
-
-.PHONY : ext/Box2D/Common/b2Timer.i
-
-# target to preprocess a source file
-ext/Box2D/Common/b2Timer.cpp.i:
-	$(MAKE) -f CMakeFiles/zombie.dir/build.make CMakeFiles/zombie.dir/ext/Box2D/Common/b2Timer.cpp.i
-.PHONY : ext/Box2D/Common/b2Timer.cpp.i
-
-ext/Box2D/Common/b2Timer.s: ext/Box2D/Common/b2Timer.cpp.s
-
-.PHONY : ext/Box2D/Common/b2Timer.s
-
-# target to generate assembly for a file
-ext/Box2D/Common/b2Timer.cpp.s:
-	$(MAKE) -f CMakeFiles/zombie.dir/build.make CMakeFiles/zombie.dir/ext/Box2D/Common/b2Timer.cpp.s
-.PHONY : ext/Box2D/Common/b2Timer.cpp.s
-
-ext/Box2D/Dynamics/Contacts/b2ChainAndCircleContact.o: ext/Box2D/Dynamics/Contacts/b2ChainAndCircleContact.cpp.o
-
-.PHONY : ext/Box2D/Dynamics/Contacts/b2ChainAndCircleContact.o
-
-# target to build an object file
-ext/Box2D/Dynamics/Contacts/b2ChainAndCircleContact.cpp.o:
-	$(MAKE) -f CMakeFiles/zombie.dir/build.make CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Contacts/b2ChainAndCircleContact.cpp.o
-.PHONY : ext/Box2D/Dynamics/Contacts/b2ChainAndCircleContact.cpp.o
-
-ext/Box2D/Dynamics/Contacts/b2ChainAndCircleContact.i: ext/Box2D/Dynamics/Contacts/b2ChainAndCircleContact.cpp.i
-
-.PHONY : ext/Box2D/Dynamics/Contacts/b2ChainAndCircleContact.i
-
-# target to preprocess a source file
-ext/Box2D/Dynamics/Contacts/b2ChainAndCircleContact.cpp.i:
-	$(MAKE) -f CMakeFiles/zombie.dir/build.make CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Contacts/b2ChainAndCircleContact.cpp.i
-.PHONY : ext/Box2D/Dynamics/Contacts/b2ChainAndCircleContact.cpp.i
-
-ext/Box2D/Dynamics/Contacts/b2ChainAndCircleContact.s: ext/Box2D/Dynamics/Contacts/b2ChainAndCircleContact.cpp.s
-
-.PHONY : ext/Box2D/Dynamics/Contacts/b2ChainAndCircleContact.s
-
-# target to generate assembly for a file
-ext/Box2D/Dynamics/Contacts/b2ChainAndCircleContact.cpp.s:
-	$(MAKE) -f CMakeFiles/zombie.dir/build.make CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Contacts/b2ChainAndCircleContact.cpp.s
-.PHONY : ext/Box2D/Dynamics/Contacts/b2ChainAndCircleContact.cpp.s
-
-ext/Box2D/Dynamics/Contacts/b2ChainAndPolygonContact.o: ext/Box2D/Dynamics/Contacts/b2ChainAndPolygonContact.cpp.o
-
-.PHONY : ext/Box2D/Dynamics/Contacts/b2ChainAndPolygonContact.o
-
-# target to build an object file
-ext/Box2D/Dynamics/Contacts/b2ChainAndPolygonContact.cpp.o:
-	$(MAKE) -f CMakeFiles/zombie.dir/build.make CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Contacts/b2ChainAndPolygonContact.cpp.o
-.PHONY : ext/Box2D/Dynamics/Contacts/b2ChainAndPolygonContact.cpp.o
-
-ext/Box2D/Dynamics/Contacts/b2ChainAndPolygonContact.i: ext/Box2D/Dynamics/Contacts/b2ChainAndPolygonContact.cpp.i
-
-.PHONY : ext/Box2D/Dynamics/Contacts/b2ChainAndPolygonContact.i
-
-# target to preprocess a source file
-ext/Box2D/Dynamics/Contacts/b2ChainAndPolygonContact.cpp.i:
-	$(MAKE) -f CMakeFiles/zombie.dir/build.make CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Contacts/b2ChainAndPolygonContact.cpp.i
-.PHONY : ext/Box2D/Dynamics/Contacts/b2ChainAndPolygonContact.cpp.i
-
-ext/Box2D/Dynamics/Contacts/b2ChainAndPolygonContact.s: ext/Box2D/Dynamics/Contacts/b2ChainAndPolygonContact.cpp.s
-
-.PHONY : ext/Box2D/Dynamics/Contacts/b2ChainAndPolygonContact.s
-
-# target to generate assembly for a file
-ext/Box2D/Dynamics/Contacts/b2ChainAndPolygonContact.cpp.s:
-	$(MAKE) -f CMakeFiles/zombie.dir/build.make CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Contacts/b2ChainAndPolygonContact.cpp.s
-.PHONY : ext/Box2D/Dynamics/Contacts/b2ChainAndPolygonContact.cpp.s
-
-ext/Box2D/Dynamics/Contacts/b2CircleContact.o: ext/Box2D/Dynamics/Contacts/b2CircleContact.cpp.o
-
-.PHONY : ext/Box2D/Dynamics/Contacts/b2CircleContact.o
-
-# target to build an object file
-ext/Box2D/Dynamics/Contacts/b2CircleContact.cpp.o:
-	$(MAKE) -f CMakeFiles/zombie.dir/build.make CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Contacts/b2CircleContact.cpp.o
-.PHONY : ext/Box2D/Dynamics/Contacts/b2CircleContact.cpp.o
-
-ext/Box2D/Dynamics/Contacts/b2CircleContact.i: ext/Box2D/Dynamics/Contacts/b2CircleContact.cpp.i
-
-.PHONY : ext/Box2D/Dynamics/Contacts/b2CircleContact.i
-
-# target to preprocess a source file
-ext/Box2D/Dynamics/Contacts/b2CircleContact.cpp.i:
-	$(MAKE) -f CMakeFiles/zombie.dir/build.make CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Contacts/b2CircleContact.cpp.i
-.PHONY : ext/Box2D/Dynamics/Contacts/b2CircleContact.cpp.i
-
-ext/Box2D/Dynamics/Contacts/b2CircleContact.s: ext/Box2D/Dynamics/Contacts/b2CircleContact.cpp.s
-
-.PHONY : ext/Box2D/Dynamics/Contacts/b2CircleContact.s
-
-# target to generate assembly for a file
-ext/Box2D/Dynamics/Contacts/b2CircleContact.cpp.s:
-	$(MAKE) -f CMakeFiles/zombie.dir/build.make CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Contacts/b2CircleContact.cpp.s
-.PHONY : ext/Box2D/Dynamics/Contacts/b2CircleContact.cpp.s
-
-ext/Box2D/Dynamics/Contacts/b2Contact.o: ext/Box2D/Dynamics/Contacts/b2Contact.cpp.o
-
-.PHONY : ext/Box2D/Dynamics/Contacts/b2Contact.o
-
-# target to build an object file
-ext/Box2D/Dynamics/Contacts/b2Contact.cpp.o:
-	$(MAKE) -f CMakeFiles/zombie.dir/build.make CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Contacts/b2Contact.cpp.o
-.PHONY : ext/Box2D/Dynamics/Contacts/b2Contact.cpp.o
-
-ext/Box2D/Dynamics/Contacts/b2Contact.i: ext/Box2D/Dynamics/Contacts/b2Contact.cpp.i
-
-.PHONY : ext/Box2D/Dynamics/Contacts/b2Contact.i
-
-# target to preprocess a source file
-ext/Box2D/Dynamics/Contacts/b2Contact.cpp.i:
-	$(MAKE) -f CMakeFiles/zombie.dir/build.make CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Contacts/b2Contact.cpp.i
-.PHONY : ext/Box2D/Dynamics/Contacts/b2Contact.cpp.i
-
-ext/Box2D/Dynamics/Contacts/b2Contact.s: ext/Box2D/Dynamics/Contacts/b2Contact.cpp.s
-
-.PHONY : ext/Box2D/Dynamics/Contacts/b2Contact.s
-
-# target to generate assembly for a file
-ext/Box2D/Dynamics/Contacts/b2Contact.cpp.s:
-	$(MAKE) -f CMakeFiles/zombie.dir/build.make CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Contacts/b2Contact.cpp.s
-.PHONY : ext/Box2D/Dynamics/Contacts/b2Contact.cpp.s
-
-ext/Box2D/Dynamics/Contacts/b2ContactSolver.o: ext/Box2D/Dynamics/Contacts/b2ContactSolver.cpp.o
-
-.PHONY : ext/Box2D/Dynamics/Contacts/b2ContactSolver.o
-
-# target to build an object file
-ext/Box2D/Dynamics/Contacts/b2ContactSolver.cpp.o:
-	$(MAKE) -f CMakeFiles/zombie.dir/build.make CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Contacts/b2ContactSolver.cpp.o
-.PHONY : ext/Box2D/Dynamics/Contacts/b2ContactSolver.cpp.o
-
-ext/Box2D/Dynamics/Contacts/b2ContactSolver.i: ext/Box2D/Dynamics/Contacts/b2ContactSolver.cpp.i
-
-.PHONY : ext/Box2D/Dynamics/Contacts/b2ContactSolver.i
-
-# target to preprocess a source file
-ext/Box2D/Dynamics/Contacts/b2ContactSolver.cpp.i:
-	$(MAKE) -f CMakeFiles/zombie.dir/build.make CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Contacts/b2ContactSolver.cpp.i
-.PHONY : ext/Box2D/Dynamics/Contacts/b2ContactSolver.cpp.i
-
-ext/Box2D/Dynamics/Contacts/b2ContactSolver.s: ext/Box2D/Dynamics/Contacts/b2ContactSolver.cpp.s
-
-.PHONY : ext/Box2D/Dynamics/Contacts/b2ContactSolver.s
-
-# target to generate assembly for a file
-ext/Box2D/Dynamics/Contacts/b2ContactSolver.cpp.s:
-	$(MAKE) -f CMakeFiles/zombie.dir/build.make CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Contacts/b2ContactSolver.cpp.s
-.PHONY : ext/Box2D/Dynamics/Contacts/b2ContactSolver.cpp.s
-
-ext/Box2D/Dynamics/Contacts/b2EdgeAndCircleContact.o: ext/Box2D/Dynamics/Contacts/b2EdgeAndCircleContact.cpp.o
-
-.PHONY : ext/Box2D/Dynamics/Contacts/b2EdgeAndCircleContact.o
-
-# target to build an object file
-ext/Box2D/Dynamics/Contacts/b2EdgeAndCircleContact.cpp.o:
-	$(MAKE) -f CMakeFiles/zombie.dir/build.make CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Contacts/b2EdgeAndCircleContact.cpp.o
-.PHONY : ext/Box2D/Dynamics/Contacts/b2EdgeAndCircleContact.cpp.o
-
-ext/Box2D/Dynamics/Contacts/b2EdgeAndCircleContact.i: ext/Box2D/Dynamics/Contacts/b2EdgeAndCircleContact.cpp.i
-
-.PHONY : ext/Box2D/Dynamics/Contacts/b2EdgeAndCircleContact.i
-
-# target to preprocess a source file
-ext/Box2D/Dynamics/Contacts/b2EdgeAndCircleContact.cpp.i:
-	$(MAKE) -f CMakeFiles/zombie.dir/build.make CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Contacts/b2EdgeAndCircleContact.cpp.i
-.PHONY : ext/Box2D/Dynamics/Contacts/b2EdgeAndCircleContact.cpp.i
-
-ext/Box2D/Dynamics/Contacts/b2EdgeAndCircleContact.s: ext/Box2D/Dynamics/Contacts/b2EdgeAndCircleContact.cpp.s
-
-.PHONY : ext/Box2D/Dynamics/Contacts/b2EdgeAndCircleContact.s
-
-# target to generate assembly for a file
-ext/Box2D/Dynamics/Contacts/b2EdgeAndCircleContact.cpp.s:
-	$(MAKE) -f CMakeFiles/zombie.dir/build.make CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Contacts/b2EdgeAndCircleContact.cpp.s
-.PHONY : ext/Box2D/Dynamics/Contacts/b2EdgeAndCircleContact.cpp.s
-
-ext/Box2D/Dynamics/Contacts/b2EdgeAndPolygonContact.o: ext/Box2D/Dynamics/Contacts/b2EdgeAndPolygonContact.cpp.o
-
-.PHONY : ext/Box2D/Dynamics/Contacts/b2EdgeAndPolygonContact.o
-
-# target to build an object file
-ext/Box2D/Dynamics/Contacts/b2EdgeAndPolygonContact.cpp.o:
-	$(MAKE) -f CMakeFiles/zombie.dir/build.make CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Contacts/b2EdgeAndPolygonContact.cpp.o
-.PHONY : ext/Box2D/Dynamics/Contacts/b2EdgeAndPolygonContact.cpp.o
-
-ext/Box2D/Dynamics/Contacts/b2EdgeAndPolygonContact.i: ext/Box2D/Dynamics/Contacts/b2EdgeAndPolygonContact.cpp.i
-
-.PHONY : ext/Box2D/Dynamics/Contacts/b2EdgeAndPolygonContact.i
-
-# target to preprocess a source file
-ext/Box2D/Dynamics/Contacts/b2EdgeAndPolygonContact.cpp.i:
-	$(MAKE) -f CMakeFiles/zombie.dir/build.make CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Contacts/b2EdgeAndPolygonContact.cpp.i
-.PHONY : ext/Box2D/Dynamics/Contacts/b2EdgeAndPolygonContact.cpp.i
-
-ext/Box2D/Dynamics/Contacts/b2EdgeAndPolygonContact.s: ext/Box2D/Dynamics/Contacts/b2EdgeAndPolygonContact.cpp.s
-
-.PHONY : ext/Box2D/Dynamics/Contacts/b2EdgeAndPolygonContact.s
-
-# target to generate assembly for a file
-ext/Box2D/Dynamics/Contacts/b2EdgeAndPolygonContact.cpp.s:
-	$(MAKE) -f CMakeFiles/zombie.dir/build.make CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Contacts/b2EdgeAndPolygonContact.cpp.s
-.PHONY : ext/Box2D/Dynamics/Contacts/b2EdgeAndPolygonContact.cpp.s
-
-ext/Box2D/Dynamics/Contacts/b2PolygonAndCircleContact.o: ext/Box2D/Dynamics/Contacts/b2PolygonAndCircleContact.cpp.o
-
-.PHONY : ext/Box2D/Dynamics/Contacts/b2PolygonAndCircleContact.o
-
-# target to build an object file
-ext/Box2D/Dynamics/Contacts/b2PolygonAndCircleContact.cpp.o:
-	$(MAKE) -f CMakeFiles/zombie.dir/build.make CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Contacts/b2PolygonAndCircleContact.cpp.o
-.PHONY : ext/Box2D/Dynamics/Contacts/b2PolygonAndCircleContact.cpp.o
-
-ext/Box2D/Dynamics/Contacts/b2PolygonAndCircleContact.i: ext/Box2D/Dynamics/Contacts/b2PolygonAndCircleContact.cpp.i
-
-.PHONY : ext/Box2D/Dynamics/Contacts/b2PolygonAndCircleContact.i
-
-# target to preprocess a source file
-ext/Box2D/Dynamics/Contacts/b2PolygonAndCircleContact.cpp.i:
-	$(MAKE) -f CMakeFiles/zombie.dir/build.make CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Contacts/b2PolygonAndCircleContact.cpp.i
-.PHONY : ext/Box2D/Dynamics/Contacts/b2PolygonAndCircleContact.cpp.i
-
-ext/Box2D/Dynamics/Contacts/b2PolygonAndCircleContact.s: ext/Box2D/Dynamics/Contacts/b2PolygonAndCircleContact.cpp.s
-
-.PHONY : ext/Box2D/Dynamics/Contacts/b2PolygonAndCircleContact.s
-
-# target to generate assembly for a file
-ext/Box2D/Dynamics/Contacts/b2PolygonAndCircleContact.cpp.s:
-	$(MAKE) -f CMakeFiles/zombie.dir/build.make CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Contacts/b2PolygonAndCircleContact.cpp.s
-.PHONY : ext/Box2D/Dynamics/Contacts/b2PolygonAndCircleContact.cpp.s
-
-ext/Box2D/Dynamics/Contacts/b2PolygonContact.o: ext/Box2D/Dynamics/Contacts/b2PolygonContact.cpp.o
-
-.PHONY : ext/Box2D/Dynamics/Contacts/b2PolygonContact.o
-
-# target to build an object file
-ext/Box2D/Dynamics/Contacts/b2PolygonContact.cpp.o:
-	$(MAKE) -f CMakeFiles/zombie.dir/build.make CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Contacts/b2PolygonContact.cpp.o
-.PHONY : ext/Box2D/Dynamics/Contacts/b2PolygonContact.cpp.o
-
-ext/Box2D/Dynamics/Contacts/b2PolygonContact.i: ext/Box2D/Dynamics/Contacts/b2PolygonContact.cpp.i
-
-.PHONY : ext/Box2D/Dynamics/Contacts/b2PolygonContact.i
-
-# target to preprocess a source file
-ext/Box2D/Dynamics/Contacts/b2PolygonContact.cpp.i:
-	$(MAKE) -f CMakeFiles/zombie.dir/build.make CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Contacts/b2PolygonContact.cpp.i
-.PHONY : ext/Box2D/Dynamics/Contacts/b2PolygonContact.cpp.i
-
-ext/Box2D/Dynamics/Contacts/b2PolygonContact.s: ext/Box2D/Dynamics/Contacts/b2PolygonContact.cpp.s
-
-.PHONY : ext/Box2D/Dynamics/Contacts/b2PolygonContact.s
-
-# target to generate assembly for a file
-ext/Box2D/Dynamics/Contacts/b2PolygonContact.cpp.s:
-	$(MAKE) -f CMakeFiles/zombie.dir/build.make CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Contacts/b2PolygonContact.cpp.s
-.PHONY : ext/Box2D/Dynamics/Contacts/b2PolygonContact.cpp.s
-
-ext/Box2D/Dynamics/Joints/b2DistanceJoint.o: ext/Box2D/Dynamics/Joints/b2DistanceJoint.cpp.o
-
-.PHONY : ext/Box2D/Dynamics/Joints/b2DistanceJoint.o
-
-# target to build an object file
-ext/Box2D/Dynamics/Joints/b2DistanceJoint.cpp.o:
-	$(MAKE) -f CMakeFiles/zombie.dir/build.make CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Joints/b2DistanceJoint.cpp.o
-.PHONY : ext/Box2D/Dynamics/Joints/b2DistanceJoint.cpp.o
-
-ext/Box2D/Dynamics/Joints/b2DistanceJoint.i: ext/Box2D/Dynamics/Joints/b2DistanceJoint.cpp.i
-
-.PHONY : ext/Box2D/Dynamics/Joints/b2DistanceJoint.i
-
-# target to preprocess a source file
-ext/Box2D/Dynamics/Joints/b2DistanceJoint.cpp.i:
-	$(MAKE) -f CMakeFiles/zombie.dir/build.make CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Joints/b2DistanceJoint.cpp.i
-.PHONY : ext/Box2D/Dynamics/Joints/b2DistanceJoint.cpp.i
-
-ext/Box2D/Dynamics/Joints/b2DistanceJoint.s: ext/Box2D/Dynamics/Joints/b2DistanceJoint.cpp.s
-
-.PHONY : ext/Box2D/Dynamics/Joints/b2DistanceJoint.s
-
-# target to generate assembly for a file
-ext/Box2D/Dynamics/Joints/b2DistanceJoint.cpp.s:
-	$(MAKE) -f CMakeFiles/zombie.dir/build.make CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Joints/b2DistanceJoint.cpp.s
-.PHONY : ext/Box2D/Dynamics/Joints/b2DistanceJoint.cpp.s
-
-ext/Box2D/Dynamics/Joints/b2FrictionJoint.o: ext/Box2D/Dynamics/Joints/b2FrictionJoint.cpp.o
-
-.PHONY : ext/Box2D/Dynamics/Joints/b2FrictionJoint.o
-
-# target to build an object file
-ext/Box2D/Dynamics/Joints/b2FrictionJoint.cpp.o:
-	$(MAKE) -f CMakeFiles/zombie.dir/build.make CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Joints/b2FrictionJoint.cpp.o
-.PHONY : ext/Box2D/Dynamics/Joints/b2FrictionJoint.cpp.o
-
-ext/Box2D/Dynamics/Joints/b2FrictionJoint.i: ext/Box2D/Dynamics/Joints/b2FrictionJoint.cpp.i
-
-.PHONY : ext/Box2D/Dynamics/Joints/b2FrictionJoint.i
-
-# target to preprocess a source file
-ext/Box2D/Dynamics/Joints/b2FrictionJoint.cpp.i:
-	$(MAKE) -f CMakeFiles/zombie.dir/build.make CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Joints/b2FrictionJoint.cpp.i
-.PHONY : ext/Box2D/Dynamics/Joints/b2FrictionJoint.cpp.i
-
-ext/Box2D/Dynamics/Joints/b2FrictionJoint.s: ext/Box2D/Dynamics/Joints/b2FrictionJoint.cpp.s
-
-.PHONY : ext/Box2D/Dynamics/Joints/b2FrictionJoint.s
-
-# target to generate assembly for a file
-ext/Box2D/Dynamics/Joints/b2FrictionJoint.cpp.s:
-	$(MAKE) -f CMakeFiles/zombie.dir/build.make CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Joints/b2FrictionJoint.cpp.s
-.PHONY : ext/Box2D/Dynamics/Joints/b2FrictionJoint.cpp.s
-
-ext/Box2D/Dynamics/Joints/b2GearJoint.o: ext/Box2D/Dynamics/Joints/b2GearJoint.cpp.o
-
-.PHONY : ext/Box2D/Dynamics/Joints/b2GearJoint.o
-
-# target to build an object file
-ext/Box2D/Dynamics/Joints/b2GearJoint.cpp.o:
-	$(MAKE) -f CMakeFiles/zombie.dir/build.make CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Joints/b2GearJoint.cpp.o
-.PHONY : ext/Box2D/Dynamics/Joints/b2GearJoint.cpp.o
-
-ext/Box2D/Dynamics/Joints/b2GearJoint.i: ext/Box2D/Dynamics/Joints/b2GearJoint.cpp.i
-
-.PHONY : ext/Box2D/Dynamics/Joints/b2GearJoint.i
-
-# target to preprocess a source file
-ext/Box2D/Dynamics/Joints/b2GearJoint.cpp.i:
-	$(MAKE) -f CMakeFiles/zombie.dir/build.make CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Joints/b2GearJoint.cpp.i
-.PHONY : ext/Box2D/Dynamics/Joints/b2GearJoint.cpp.i
-
-ext/Box2D/Dynamics/Joints/b2GearJoint.s: ext/Box2D/Dynamics/Joints/b2GearJoint.cpp.s
-
-.PHONY : ext/Box2D/Dynamics/Joints/b2GearJoint.s
-
-# target to generate assembly for a file
-ext/Box2D/Dynamics/Joints/b2GearJoint.cpp.s:
-	$(MAKE) -f CMakeFiles/zombie.dir/build.make CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Joints/b2GearJoint.cpp.s
-.PHONY : ext/Box2D/Dynamics/Joints/b2GearJoint.cpp.s
-
-ext/Box2D/Dynamics/Joints/b2Joint.o: ext/Box2D/Dynamics/Joints/b2Joint.cpp.o
-
-.PHONY : ext/Box2D/Dynamics/Joints/b2Joint.o
-
-# target to build an object file
-ext/Box2D/Dynamics/Joints/b2Joint.cpp.o:
-	$(MAKE) -f CMakeFiles/zombie.dir/build.make CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Joints/b2Joint.cpp.o
-.PHONY : ext/Box2D/Dynamics/Joints/b2Joint.cpp.o
-
-ext/Box2D/Dynamics/Joints/b2Joint.i: ext/Box2D/Dynamics/Joints/b2Joint.cpp.i
-
-.PHONY : ext/Box2D/Dynamics/Joints/b2Joint.i
-
-# target to preprocess a source file
-ext/Box2D/Dynamics/Joints/b2Joint.cpp.i:
-	$(MAKE) -f CMakeFiles/zombie.dir/build.make CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Joints/b2Joint.cpp.i
-.PHONY : ext/Box2D/Dynamics/Joints/b2Joint.cpp.i
-
-ext/Box2D/Dynamics/Joints/b2Joint.s: ext/Box2D/Dynamics/Joints/b2Joint.cpp.s
-
-.PHONY : ext/Box2D/Dynamics/Joints/b2Joint.s
-
-# target to generate assembly for a file
-ext/Box2D/Dynamics/Joints/b2Joint.cpp.s:
-	$(MAKE) -f CMakeFiles/zombie.dir/build.make CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Joints/b2Joint.cpp.s
-.PHONY : ext/Box2D/Dynamics/Joints/b2Joint.cpp.s
-
-ext/Box2D/Dynamics/Joints/b2MotorJoint.o: ext/Box2D/Dynamics/Joints/b2MotorJoint.cpp.o
-
-.PHONY : ext/Box2D/Dynamics/Joints/b2MotorJoint.o
-
-# target to build an object file
-ext/Box2D/Dynamics/Joints/b2MotorJoint.cpp.o:
-	$(MAKE) -f CMakeFiles/zombie.dir/build.make CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Joints/b2MotorJoint.cpp.o
-.PHONY : ext/Box2D/Dynamics/Joints/b2MotorJoint.cpp.o
-
-ext/Box2D/Dynamics/Joints/b2MotorJoint.i: ext/Box2D/Dynamics/Joints/b2MotorJoint.cpp.i
-
-.PHONY : ext/Box2D/Dynamics/Joints/b2MotorJoint.i
-
-# target to preprocess a source file
-ext/Box2D/Dynamics/Joints/b2MotorJoint.cpp.i:
-	$(MAKE) -f CMakeFiles/zombie.dir/build.make CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Joints/b2MotorJoint.cpp.i
-.PHONY : ext/Box2D/Dynamics/Joints/b2MotorJoint.cpp.i
-
-ext/Box2D/Dynamics/Joints/b2MotorJoint.s: ext/Box2D/Dynamics/Joints/b2MotorJoint.cpp.s
-
-.PHONY : ext/Box2D/Dynamics/Joints/b2MotorJoint.s
-
-# target to generate assembly for a file
-ext/Box2D/Dynamics/Joints/b2MotorJoint.cpp.s:
-	$(MAKE) -f CMakeFiles/zombie.dir/build.make CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Joints/b2MotorJoint.cpp.s
-.PHONY : ext/Box2D/Dynamics/Joints/b2MotorJoint.cpp.s
-
-ext/Box2D/Dynamics/Joints/b2MouseJoint.o: ext/Box2D/Dynamics/Joints/b2MouseJoint.cpp.o
-
-.PHONY : ext/Box2D/Dynamics/Joints/b2MouseJoint.o
-
-# target to build an object file
-ext/Box2D/Dynamics/Joints/b2MouseJoint.cpp.o:
-	$(MAKE) -f CMakeFiles/zombie.dir/build.make CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Joints/b2MouseJoint.cpp.o
-.PHONY : ext/Box2D/Dynamics/Joints/b2MouseJoint.cpp.o
-
-ext/Box2D/Dynamics/Joints/b2MouseJoint.i: ext/Box2D/Dynamics/Joints/b2MouseJoint.cpp.i
-
-.PHONY : ext/Box2D/Dynamics/Joints/b2MouseJoint.i
-
-# target to preprocess a source file
-ext/Box2D/Dynamics/Joints/b2MouseJoint.cpp.i:
-	$(MAKE) -f CMakeFiles/zombie.dir/build.make CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Joints/b2MouseJoint.cpp.i
-.PHONY : ext/Box2D/Dynamics/Joints/b2MouseJoint.cpp.i
-
-ext/Box2D/Dynamics/Joints/b2MouseJoint.s: ext/Box2D/Dynamics/Joints/b2MouseJoint.cpp.s
-
-.PHONY : ext/Box2D/Dynamics/Joints/b2MouseJoint.s
-
-# target to generate assembly for a file
-ext/Box2D/Dynamics/Joints/b2MouseJoint.cpp.s:
-	$(MAKE) -f CMakeFiles/zombie.dir/build.make CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Joints/b2MouseJoint.cpp.s
-.PHONY : ext/Box2D/Dynamics/Joints/b2MouseJoint.cpp.s
-
-ext/Box2D/Dynamics/Joints/b2PrismaticJoint.o: ext/Box2D/Dynamics/Joints/b2PrismaticJoint.cpp.o
-
-.PHONY : ext/Box2D/Dynamics/Joints/b2PrismaticJoint.o
-
-# target to build an object file
-ext/Box2D/Dynamics/Joints/b2PrismaticJoint.cpp.o:
-	$(MAKE) -f CMakeFiles/zombie.dir/build.make CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Joints/b2PrismaticJoint.cpp.o
-.PHONY : ext/Box2D/Dynamics/Joints/b2PrismaticJoint.cpp.o
-
-ext/Box2D/Dynamics/Joints/b2PrismaticJoint.i: ext/Box2D/Dynamics/Joints/b2PrismaticJoint.cpp.i
-
-.PHONY : ext/Box2D/Dynamics/Joints/b2PrismaticJoint.i
-
-# target to preprocess a source file
-ext/Box2D/Dynamics/Joints/b2PrismaticJoint.cpp.i:
-	$(MAKE) -f CMakeFiles/zombie.dir/build.make CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Joints/b2PrismaticJoint.cpp.i
-.PHONY : ext/Box2D/Dynamics/Joints/b2PrismaticJoint.cpp.i
-
-ext/Box2D/Dynamics/Joints/b2PrismaticJoint.s: ext/Box2D/Dynamics/Joints/b2PrismaticJoint.cpp.s
-
-.PHONY : ext/Box2D/Dynamics/Joints/b2PrismaticJoint.s
-
-# target to generate assembly for a file
-ext/Box2D/Dynamics/Joints/b2PrismaticJoint.cpp.s:
-	$(MAKE) -f CMakeFiles/zombie.dir/build.make CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Joints/b2PrismaticJoint.cpp.s
-.PHONY : ext/Box2D/Dynamics/Joints/b2PrismaticJoint.cpp.s
-
-ext/Box2D/Dynamics/Joints/b2PulleyJoint.o: ext/Box2D/Dynamics/Joints/b2PulleyJoint.cpp.o
-
-.PHONY : ext/Box2D/Dynamics/Joints/b2PulleyJoint.o
-
-# target to build an object file
-ext/Box2D/Dynamics/Joints/b2PulleyJoint.cpp.o:
-	$(MAKE) -f CMakeFiles/zombie.dir/build.make CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Joints/b2PulleyJoint.cpp.o
-.PHONY : ext/Box2D/Dynamics/Joints/b2PulleyJoint.cpp.o
-
-ext/Box2D/Dynamics/Joints/b2PulleyJoint.i: ext/Box2D/Dynamics/Joints/b2PulleyJoint.cpp.i
-
-.PHONY : ext/Box2D/Dynamics/Joints/b2PulleyJoint.i
-
-# target to preprocess a source file
-ext/Box2D/Dynamics/Joints/b2PulleyJoint.cpp.i:
-	$(MAKE) -f CMakeFiles/zombie.dir/build.make CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Joints/b2PulleyJoint.cpp.i
-.PHONY : ext/Box2D/Dynamics/Joints/b2PulleyJoint.cpp.i
-
-ext/Box2D/Dynamics/Joints/b2PulleyJoint.s: ext/Box2D/Dynamics/Joints/b2PulleyJoint.cpp.s
-
-.PHONY : ext/Box2D/Dynamics/Joints/b2PulleyJoint.s
-
-# target to generate assembly for a file
-ext/Box2D/Dynamics/Joints/b2PulleyJoint.cpp.s:
-	$(MAKE) -f CMakeFiles/zombie.dir/build.make CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Joints/b2PulleyJoint.cpp.s
-.PHONY : ext/Box2D/Dynamics/Joints/b2PulleyJoint.cpp.s
-
-ext/Box2D/Dynamics/Joints/b2RevoluteJoint.o: ext/Box2D/Dynamics/Joints/b2RevoluteJoint.cpp.o
-
-.PHONY : ext/Box2D/Dynamics/Joints/b2RevoluteJoint.o
-
-# target to build an object file
-ext/Box2D/Dynamics/Joints/b2RevoluteJoint.cpp.o:
-	$(MAKE) -f CMakeFiles/zombie.dir/build.make CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Joints/b2RevoluteJoint.cpp.o
-.PHONY : ext/Box2D/Dynamics/Joints/b2RevoluteJoint.cpp.o
-
-ext/Box2D/Dynamics/Joints/b2RevoluteJoint.i: ext/Box2D/Dynamics/Joints/b2RevoluteJoint.cpp.i
-
-.PHONY : ext/Box2D/Dynamics/Joints/b2RevoluteJoint.i
-
-# target to preprocess a source file
-ext/Box2D/Dynamics/Joints/b2RevoluteJoint.cpp.i:
-	$(MAKE) -f CMakeFiles/zombie.dir/build.make CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Joints/b2RevoluteJoint.cpp.i
-.PHONY : ext/Box2D/Dynamics/Joints/b2RevoluteJoint.cpp.i
-
-ext/Box2D/Dynamics/Joints/b2RevoluteJoint.s: ext/Box2D/Dynamics/Joints/b2RevoluteJoint.cpp.s
-
-.PHONY : ext/Box2D/Dynamics/Joints/b2RevoluteJoint.s
-
-# target to generate assembly for a file
-ext/Box2D/Dynamics/Joints/b2RevoluteJoint.cpp.s:
-	$(MAKE) -f CMakeFiles/zombie.dir/build.make CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Joints/b2RevoluteJoint.cpp.s
-.PHONY : ext/Box2D/Dynamics/Joints/b2RevoluteJoint.cpp.s
-
-ext/Box2D/Dynamics/Joints/b2RopeJoint.o: ext/Box2D/Dynamics/Joints/b2RopeJoint.cpp.o
-
-.PHONY : ext/Box2D/Dynamics/Joints/b2RopeJoint.o
-
-# target to build an object file
-ext/Box2D/Dynamics/Joints/b2RopeJoint.cpp.o:
-	$(MAKE) -f CMakeFiles/zombie.dir/build.make CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Joints/b2RopeJoint.cpp.o
-.PHONY : ext/Box2D/Dynamics/Joints/b2RopeJoint.cpp.o
-
-ext/Box2D/Dynamics/Joints/b2RopeJoint.i: ext/Box2D/Dynamics/Joints/b2RopeJoint.cpp.i
-
-.PHONY : ext/Box2D/Dynamics/Joints/b2RopeJoint.i
-
-# target to preprocess a source file
-ext/Box2D/Dynamics/Joints/b2RopeJoint.cpp.i:
-	$(MAKE) -f CMakeFiles/zombie.dir/build.make CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Joints/b2RopeJoint.cpp.i
-.PHONY : ext/Box2D/Dynamics/Joints/b2RopeJoint.cpp.i
-
-ext/Box2D/Dynamics/Joints/b2RopeJoint.s: ext/Box2D/Dynamics/Joints/b2RopeJoint.cpp.s
-
-.PHONY : ext/Box2D/Dynamics/Joints/b2RopeJoint.s
-
-# target to generate assembly for a file
-ext/Box2D/Dynamics/Joints/b2RopeJoint.cpp.s:
-	$(MAKE) -f CMakeFiles/zombie.dir/build.make CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Joints/b2RopeJoint.cpp.s
-.PHONY : ext/Box2D/Dynamics/Joints/b2RopeJoint.cpp.s
-
-ext/Box2D/Dynamics/Joints/b2WeldJoint.o: ext/Box2D/Dynamics/Joints/b2WeldJoint.cpp.o
-
-.PHONY : ext/Box2D/Dynamics/Joints/b2WeldJoint.o
-
-# target to build an object file
-ext/Box2D/Dynamics/Joints/b2WeldJoint.cpp.o:
-	$(MAKE) -f CMakeFiles/zombie.dir/build.make CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Joints/b2WeldJoint.cpp.o
-.PHONY : ext/Box2D/Dynamics/Joints/b2WeldJoint.cpp.o
-
-ext/Box2D/Dynamics/Joints/b2WeldJoint.i: ext/Box2D/Dynamics/Joints/b2WeldJoint.cpp.i
-
-.PHONY : ext/Box2D/Dynamics/Joints/b2WeldJoint.i
-
-# target to preprocess a source file
-ext/Box2D/Dynamics/Joints/b2WeldJoint.cpp.i:
-	$(MAKE) -f CMakeFiles/zombie.dir/build.make CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Joints/b2WeldJoint.cpp.i
-.PHONY : ext/Box2D/Dynamics/Joints/b2WeldJoint.cpp.i
-
-ext/Box2D/Dynamics/Joints/b2WeldJoint.s: ext/Box2D/Dynamics/Joints/b2WeldJoint.cpp.s
-
-.PHONY : ext/Box2D/Dynamics/Joints/b2WeldJoint.s
-
-# target to generate assembly for a file
-ext/Box2D/Dynamics/Joints/b2WeldJoint.cpp.s:
-	$(MAKE) -f CMakeFiles/zombie.dir/build.make CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Joints/b2WeldJoint.cpp.s
-.PHONY : ext/Box2D/Dynamics/Joints/b2WeldJoint.cpp.s
-
-ext/Box2D/Dynamics/Joints/b2WheelJoint.o: ext/Box2D/Dynamics/Joints/b2WheelJoint.cpp.o
-
-.PHONY : ext/Box2D/Dynamics/Joints/b2WheelJoint.o
-
-# target to build an object file
-ext/Box2D/Dynamics/Joints/b2WheelJoint.cpp.o:
-	$(MAKE) -f CMakeFiles/zombie.dir/build.make CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Joints/b2WheelJoint.cpp.o
-.PHONY : ext/Box2D/Dynamics/Joints/b2WheelJoint.cpp.o
-
-ext/Box2D/Dynamics/Joints/b2WheelJoint.i: ext/Box2D/Dynamics/Joints/b2WheelJoint.cpp.i
-
-.PHONY : ext/Box2D/Dynamics/Joints/b2WheelJoint.i
-
-# target to preprocess a source file
-ext/Box2D/Dynamics/Joints/b2WheelJoint.cpp.i:
-	$(MAKE) -f CMakeFiles/zombie.dir/build.make CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Joints/b2WheelJoint.cpp.i
-.PHONY : ext/Box2D/Dynamics/Joints/b2WheelJoint.cpp.i
-
-ext/Box2D/Dynamics/Joints/b2WheelJoint.s: ext/Box2D/Dynamics/Joints/b2WheelJoint.cpp.s
-
-.PHONY : ext/Box2D/Dynamics/Joints/b2WheelJoint.s
-
-# target to generate assembly for a file
-ext/Box2D/Dynamics/Joints/b2WheelJoint.cpp.s:
-	$(MAKE) -f CMakeFiles/zombie.dir/build.make CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Joints/b2WheelJoint.cpp.s
-.PHONY : ext/Box2D/Dynamics/Joints/b2WheelJoint.cpp.s
-
-ext/Box2D/Dynamics/b2Body.o: ext/Box2D/Dynamics/b2Body.cpp.o
-
-.PHONY : ext/Box2D/Dynamics/b2Body.o
-
-# target to build an object file
-ext/Box2D/Dynamics/b2Body.cpp.o:
-	$(MAKE) -f CMakeFiles/zombie.dir/build.make CMakeFiles/zombie.dir/ext/Box2D/Dynamics/b2Body.cpp.o
-.PHONY : ext/Box2D/Dynamics/b2Body.cpp.o
-
-ext/Box2D/Dynamics/b2Body.i: ext/Box2D/Dynamics/b2Body.cpp.i
-
-.PHONY : ext/Box2D/Dynamics/b2Body.i
-
-# target to preprocess a source file
-ext/Box2D/Dynamics/b2Body.cpp.i:
-	$(MAKE) -f CMakeFiles/zombie.dir/build.make CMakeFiles/zombie.dir/ext/Box2D/Dynamics/b2Body.cpp.i
-.PHONY : ext/Box2D/Dynamics/b2Body.cpp.i
-
-ext/Box2D/Dynamics/b2Body.s: ext/Box2D/Dynamics/b2Body.cpp.s
-
-.PHONY : ext/Box2D/Dynamics/b2Body.s
-
-# target to generate assembly for a file
-ext/Box2D/Dynamics/b2Body.cpp.s:
-	$(MAKE) -f CMakeFiles/zombie.dir/build.make CMakeFiles/zombie.dir/ext/Box2D/Dynamics/b2Body.cpp.s
-.PHONY : ext/Box2D/Dynamics/b2Body.cpp.s
-
-ext/Box2D/Dynamics/b2ContactManager.o: ext/Box2D/Dynamics/b2ContactManager.cpp.o
-
-.PHONY : ext/Box2D/Dynamics/b2ContactManager.o
-
-# target to build an object file
-ext/Box2D/Dynamics/b2ContactManager.cpp.o:
-	$(MAKE) -f CMakeFiles/zombie.dir/build.make CMakeFiles/zombie.dir/ext/Box2D/Dynamics/b2ContactManager.cpp.o
-.PHONY : ext/Box2D/Dynamics/b2ContactManager.cpp.o
-
-ext/Box2D/Dynamics/b2ContactManager.i: ext/Box2D/Dynamics/b2ContactManager.cpp.i
-
-.PHONY : ext/Box2D/Dynamics/b2ContactManager.i
-
-# target to preprocess a source file
-ext/Box2D/Dynamics/b2ContactManager.cpp.i:
-	$(MAKE) -f CMakeFiles/zombie.dir/build.make CMakeFiles/zombie.dir/ext/Box2D/Dynamics/b2ContactManager.cpp.i
-.PHONY : ext/Box2D/Dynamics/b2ContactManager.cpp.i
-
-ext/Box2D/Dynamics/b2ContactManager.s: ext/Box2D/Dynamics/b2ContactManager.cpp.s
-
-.PHONY : ext/Box2D/Dynamics/b2ContactManager.s
-
-# target to generate assembly for a file
-ext/Box2D/Dynamics/b2ContactManager.cpp.s:
-	$(MAKE) -f CMakeFiles/zombie.dir/build.make CMakeFiles/zombie.dir/ext/Box2D/Dynamics/b2ContactManager.cpp.s
-.PHONY : ext/Box2D/Dynamics/b2ContactManager.cpp.s
-
-ext/Box2D/Dynamics/b2Fixture.o: ext/Box2D/Dynamics/b2Fixture.cpp.o
-
-.PHONY : ext/Box2D/Dynamics/b2Fixture.o
-
-# target to build an object file
-ext/Box2D/Dynamics/b2Fixture.cpp.o:
-	$(MAKE) -f CMakeFiles/zombie.dir/build.make CMakeFiles/zombie.dir/ext/Box2D/Dynamics/b2Fixture.cpp.o
-.PHONY : ext/Box2D/Dynamics/b2Fixture.cpp.o
-
-ext/Box2D/Dynamics/b2Fixture.i: ext/Box2D/Dynamics/b2Fixture.cpp.i
-
-.PHONY : ext/Box2D/Dynamics/b2Fixture.i
-
-# target to preprocess a source file
-ext/Box2D/Dynamics/b2Fixture.cpp.i:
-	$(MAKE) -f CMakeFiles/zombie.dir/build.make CMakeFiles/zombie.dir/ext/Box2D/Dynamics/b2Fixture.cpp.i
-.PHONY : ext/Box2D/Dynamics/b2Fixture.cpp.i
-
-ext/Box2D/Dynamics/b2Fixture.s: ext/Box2D/Dynamics/b2Fixture.cpp.s
-
-.PHONY : ext/Box2D/Dynamics/b2Fixture.s
-
-# target to generate assembly for a file
-ext/Box2D/Dynamics/b2Fixture.cpp.s:
-	$(MAKE) -f CMakeFiles/zombie.dir/build.make CMakeFiles/zombie.dir/ext/Box2D/Dynamics/b2Fixture.cpp.s
-.PHONY : ext/Box2D/Dynamics/b2Fixture.cpp.s
-
-ext/Box2D/Dynamics/b2Island.o: ext/Box2D/Dynamics/b2Island.cpp.o
-
-.PHONY : ext/Box2D/Dynamics/b2Island.o
-
-# target to build an object file
-ext/Box2D/Dynamics/b2Island.cpp.o:
-	$(MAKE) -f CMakeFiles/zombie.dir/build.make CMakeFiles/zombie.dir/ext/Box2D/Dynamics/b2Island.cpp.o
-.PHONY : ext/Box2D/Dynamics/b2Island.cpp.o
-
-ext/Box2D/Dynamics/b2Island.i: ext/Box2D/Dynamics/b2Island.cpp.i
-
-.PHONY : ext/Box2D/Dynamics/b2Island.i
-
-# target to preprocess a source file
-ext/Box2D/Dynamics/b2Island.cpp.i:
-	$(MAKE) -f CMakeFiles/zombie.dir/build.make CMakeFiles/zombie.dir/ext/Box2D/Dynamics/b2Island.cpp.i
-.PHONY : ext/Box2D/Dynamics/b2Island.cpp.i
-
-ext/Box2D/Dynamics/b2Island.s: ext/Box2D/Dynamics/b2Island.cpp.s
-
-.PHONY : ext/Box2D/Dynamics/b2Island.s
-
-# target to generate assembly for a file
-ext/Box2D/Dynamics/b2Island.cpp.s:
-	$(MAKE) -f CMakeFiles/zombie.dir/build.make CMakeFiles/zombie.dir/ext/Box2D/Dynamics/b2Island.cpp.s
-.PHONY : ext/Box2D/Dynamics/b2Island.cpp.s
-
-ext/Box2D/Dynamics/b2World.o: ext/Box2D/Dynamics/b2World.cpp.o
-
-.PHONY : ext/Box2D/Dynamics/b2World.o
-
-# target to build an object file
-ext/Box2D/Dynamics/b2World.cpp.o:
-	$(MAKE) -f CMakeFiles/zombie.dir/build.make CMakeFiles/zombie.dir/ext/Box2D/Dynamics/b2World.cpp.o
-.PHONY : ext/Box2D/Dynamics/b2World.cpp.o
-
-ext/Box2D/Dynamics/b2World.i: ext/Box2D/Dynamics/b2World.cpp.i
-
-.PHONY : ext/Box2D/Dynamics/b2World.i
-
-# target to preprocess a source file
-ext/Box2D/Dynamics/b2World.cpp.i:
-	$(MAKE) -f CMakeFiles/zombie.dir/build.make CMakeFiles/zombie.dir/ext/Box2D/Dynamics/b2World.cpp.i
-.PHONY : ext/Box2D/Dynamics/b2World.cpp.i
-
-ext/Box2D/Dynamics/b2World.s: ext/Box2D/Dynamics/b2World.cpp.s
-
-.PHONY : ext/Box2D/Dynamics/b2World.s
-
-# target to generate assembly for a file
-ext/Box2D/Dynamics/b2World.cpp.s:
-	$(MAKE) -f CMakeFiles/zombie.dir/build.make CMakeFiles/zombie.dir/ext/Box2D/Dynamics/b2World.cpp.s
-.PHONY : ext/Box2D/Dynamics/b2World.cpp.s
-
-ext/Box2D/Dynamics/b2WorldCallbacks.o: ext/Box2D/Dynamics/b2WorldCallbacks.cpp.o
-
-.PHONY : ext/Box2D/Dynamics/b2WorldCallbacks.o
-
-# target to build an object file
-ext/Box2D/Dynamics/b2WorldCallbacks.cpp.o:
-	$(MAKE) -f CMakeFiles/zombie.dir/build.make CMakeFiles/zombie.dir/ext/Box2D/Dynamics/b2WorldCallbacks.cpp.o
-.PHONY : ext/Box2D/Dynamics/b2WorldCallbacks.cpp.o
-
-ext/Box2D/Dynamics/b2WorldCallbacks.i: ext/Box2D/Dynamics/b2WorldCallbacks.cpp.i
-
-.PHONY : ext/Box2D/Dynamics/b2WorldCallbacks.i
-
-# target to preprocess a source file
-ext/Box2D/Dynamics/b2WorldCallbacks.cpp.i:
-	$(MAKE) -f CMakeFiles/zombie.dir/build.make CMakeFiles/zombie.dir/ext/Box2D/Dynamics/b2WorldCallbacks.cpp.i
-.PHONY : ext/Box2D/Dynamics/b2WorldCallbacks.cpp.i
-
-ext/Box2D/Dynamics/b2WorldCallbacks.s: ext/Box2D/Dynamics/b2WorldCallbacks.cpp.s
-
-.PHONY : ext/Box2D/Dynamics/b2WorldCallbacks.s
-
-# target to generate assembly for a file
-ext/Box2D/Dynamics/b2WorldCallbacks.cpp.s:
-	$(MAKE) -f CMakeFiles/zombie.dir/build.make CMakeFiles/zombie.dir/ext/Box2D/Dynamics/b2WorldCallbacks.cpp.s
-.PHONY : ext/Box2D/Dynamics/b2WorldCallbacks.cpp.s
-
-ext/Box2D/Rope/b2Rope.o: ext/Box2D/Rope/b2Rope.cpp.o
-
-.PHONY : ext/Box2D/Rope/b2Rope.o
-
-# target to build an object file
-ext/Box2D/Rope/b2Rope.cpp.o:
-	$(MAKE) -f CMakeFiles/zombie.dir/build.make CMakeFiles/zombie.dir/ext/Box2D/Rope/b2Rope.cpp.o
-.PHONY : ext/Box2D/Rope/b2Rope.cpp.o
-
-ext/Box2D/Rope/b2Rope.i: ext/Box2D/Rope/b2Rope.cpp.i
-
-.PHONY : ext/Box2D/Rope/b2Rope.i
-
-# target to preprocess a source file
-ext/Box2D/Rope/b2Rope.cpp.i:
-	$(MAKE) -f CMakeFiles/zombie.dir/build.make CMakeFiles/zombie.dir/ext/Box2D/Rope/b2Rope.cpp.i
-.PHONY : ext/Box2D/Rope/b2Rope.cpp.i
-
-ext/Box2D/Rope/b2Rope.s: ext/Box2D/Rope/b2Rope.cpp.s
-
-.PHONY : ext/Box2D/Rope/b2Rope.s
-
-# target to generate assembly for a file
-ext/Box2D/Rope/b2Rope.cpp.s:
-	$(MAKE) -f CMakeFiles/zombie.dir/build.make CMakeFiles/zombie.dir/ext/Box2D/Rope/b2Rope.cpp.s
-.PHONY : ext/Box2D/Rope/b2Rope.cpp.s
 
 src/CollisionManager.o: src/CollisionManager.cpp.o
 
@@ -1500,60 +258,6 @@ src/MapGrid.cpp.s:
 	$(MAKE) -f CMakeFiles/zombie.dir/build.make CMakeFiles/zombie.dir/src/MapGrid.cpp.s
 .PHONY : src/MapGrid.cpp.s
 
-src/PhysicalBody.o: src/PhysicalBody.cpp.o
-
-.PHONY : src/PhysicalBody.o
-
-# target to build an object file
-src/PhysicalBody.cpp.o:
-	$(MAKE) -f CMakeFiles/zombie.dir/build.make CMakeFiles/zombie.dir/src/PhysicalBody.cpp.o
-.PHONY : src/PhysicalBody.cpp.o
-
-src/PhysicalBody.i: src/PhysicalBody.cpp.i
-
-.PHONY : src/PhysicalBody.i
-
-# target to preprocess a source file
-src/PhysicalBody.cpp.i:
-	$(MAKE) -f CMakeFiles/zombie.dir/build.make CMakeFiles/zombie.dir/src/PhysicalBody.cpp.i
-.PHONY : src/PhysicalBody.cpp.i
-
-src/PhysicalBody.s: src/PhysicalBody.cpp.s
-
-.PHONY : src/PhysicalBody.s
-
-# target to generate assembly for a file
-src/PhysicalBody.cpp.s:
-	$(MAKE) -f CMakeFiles/zombie.dir/build.make CMakeFiles/zombie.dir/src/PhysicalBody.cpp.s
-.PHONY : src/PhysicalBody.cpp.s
-
-src/Physics.o: src/Physics.cpp.o
-
-.PHONY : src/Physics.o
-
-# target to build an object file
-src/Physics.cpp.o:
-	$(MAKE) -f CMakeFiles/zombie.dir/build.make CMakeFiles/zombie.dir/src/Physics.cpp.o
-.PHONY : src/Physics.cpp.o
-
-src/Physics.i: src/Physics.cpp.i
-
-.PHONY : src/Physics.i
-
-# target to preprocess a source file
-src/Physics.cpp.i:
-	$(MAKE) -f CMakeFiles/zombie.dir/build.make CMakeFiles/zombie.dir/src/Physics.cpp.i
-.PHONY : src/Physics.cpp.i
-
-src/Physics.s: src/Physics.cpp.s
-
-.PHONY : src/Physics.s
-
-# target to generate assembly for a file
-src/Physics.cpp.s:
-	$(MAKE) -f CMakeFiles/zombie.dir/build.make CMakeFiles/zombie.dir/src/Physics.cpp.s
-.PHONY : src/Physics.cpp.s
-
 src/ToolManager.o: src/ToolManager.cpp.o
 
 .PHONY : src/ToolManager.o
@@ -1635,6 +339,33 @@ src/armour.cpp.s:
 	$(MAKE) -f CMakeFiles/zombie.dir/build.make CMakeFiles/zombie.dir/src/armour.cpp.s
 .PHONY : src/armour.cpp.s
 
+src/blood.o: src/blood.cpp.o
+
+.PHONY : src/blood.o
+
+# target to build an object file
+src/blood.cpp.o:
+	$(MAKE) -f CMakeFiles/zombie.dir/build.make CMakeFiles/zombie.dir/src/blood.cpp.o
+.PHONY : src/blood.cpp.o
+
+src/blood.i: src/blood.cpp.i
+
+.PHONY : src/blood.i
+
+# target to preprocess a source file
+src/blood.cpp.i:
+	$(MAKE) -f CMakeFiles/zombie.dir/build.make CMakeFiles/zombie.dir/src/blood.cpp.i
+.PHONY : src/blood.cpp.i
+
+src/blood.s: src/blood.cpp.s
+
+.PHONY : src/blood.s
+
+# target to generate assembly for a file
+src/blood.cpp.s:
+	$(MAKE) -f CMakeFiles/zombie.dir/build.make CMakeFiles/zombie.dir/src/blood.cpp.s
+.PHONY : src/blood.cpp.s
+
 src/bomb.o: src/bomb.cpp.o
 
 .PHONY : src/bomb.o
@@ -1715,6 +446,33 @@ src/common.s: src/common.cpp.s
 src/common.cpp.s:
 	$(MAKE) -f CMakeFiles/zombie.dir/build.make CMakeFiles/zombie.dir/src/common.cpp.s
 .PHONY : src/common.cpp.s
+
+src/explosion.o: src/explosion.cpp.o
+
+.PHONY : src/explosion.o
+
+# target to build an object file
+src/explosion.cpp.o:
+	$(MAKE) -f CMakeFiles/zombie.dir/build.make CMakeFiles/zombie.dir/src/explosion.cpp.o
+.PHONY : src/explosion.cpp.o
+
+src/explosion.i: src/explosion.cpp.i
+
+.PHONY : src/explosion.i
+
+# target to preprocess a source file
+src/explosion.cpp.i:
+	$(MAKE) -f CMakeFiles/zombie.dir/build.make CMakeFiles/zombie.dir/src/explosion.cpp.i
+.PHONY : src/explosion.cpp.i
+
+src/explosion.s: src/explosion.cpp.s
+
+.PHONY : src/explosion.s
+
+# target to generate assembly for a file
+src/explosion.cpp.s:
+	$(MAKE) -f CMakeFiles/zombie.dir/build.make CMakeFiles/zombie.dir/src/explosion.cpp.s
+.PHONY : src/explosion.cpp.s
 
 src/gl3w.o: src/gl3w.c.o
 
@@ -1904,6 +662,60 @@ src/player2.s: src/player2.cpp.s
 src/player2.cpp.s:
 	$(MAKE) -f CMakeFiles/zombie.dir/build.make CMakeFiles/zombie.dir/src/player2.cpp.s
 .PHONY : src/player2.cpp.s
+
+src/terrain.o: src/terrain.cpp.o
+
+.PHONY : src/terrain.o
+
+# target to build an object file
+src/terrain.cpp.o:
+	$(MAKE) -f CMakeFiles/zombie.dir/build.make CMakeFiles/zombie.dir/src/terrain.cpp.o
+.PHONY : src/terrain.cpp.o
+
+src/terrain.i: src/terrain.cpp.i
+
+.PHONY : src/terrain.i
+
+# target to preprocess a source file
+src/terrain.cpp.i:
+	$(MAKE) -f CMakeFiles/zombie.dir/build.make CMakeFiles/zombie.dir/src/terrain.cpp.i
+.PHONY : src/terrain.cpp.i
+
+src/terrain.s: src/terrain.cpp.s
+
+.PHONY : src/terrain.s
+
+# target to generate assembly for a file
+src/terrain.cpp.s:
+	$(MAKE) -f CMakeFiles/zombie.dir/build.make CMakeFiles/zombie.dir/src/terrain.cpp.s
+.PHONY : src/terrain.cpp.s
+
+src/tilemap.o: src/tilemap.cpp.o
+
+.PHONY : src/tilemap.o
+
+# target to build an object file
+src/tilemap.cpp.o:
+	$(MAKE) -f CMakeFiles/zombie.dir/build.make CMakeFiles/zombie.dir/src/tilemap.cpp.o
+.PHONY : src/tilemap.cpp.o
+
+src/tilemap.i: src/tilemap.cpp.i
+
+.PHONY : src/tilemap.i
+
+# target to preprocess a source file
+src/tilemap.cpp.i:
+	$(MAKE) -f CMakeFiles/zombie.dir/build.make CMakeFiles/zombie.dir/src/tilemap.cpp.i
+.PHONY : src/tilemap.cpp.i
+
+src/tilemap.s: src/tilemap.cpp.s
+
+.PHONY : src/tilemap.s
+
+# target to generate assembly for a file
+src/tilemap.cpp.s:
+	$(MAKE) -f CMakeFiles/zombie.dir/build.make CMakeFiles/zombie.dir/src/tilemap.cpp.s
+.PHONY : src/tilemap.cpp.s
 
 src/tmxparser/TmxColor.o: src/tmxparser/TmxColor.cpp.o
 
@@ -2742,6 +1554,33 @@ src/zombie.cpp.s:
 	$(MAKE) -f CMakeFiles/zombie.dir/build.make CMakeFiles/zombie.dir/src/zombie.cpp.s
 .PHONY : src/zombie.cpp.s
 
+src/zombieManager.o: src/zombieManager.cpp.o
+
+.PHONY : src/zombieManager.o
+
+# target to build an object file
+src/zombieManager.cpp.o:
+	$(MAKE) -f CMakeFiles/zombie.dir/build.make CMakeFiles/zombie.dir/src/zombieManager.cpp.o
+.PHONY : src/zombieManager.cpp.o
+
+src/zombieManager.i: src/zombieManager.cpp.i
+
+.PHONY : src/zombieManager.i
+
+# target to preprocess a source file
+src/zombieManager.cpp.i:
+	$(MAKE) -f CMakeFiles/zombie.dir/build.make CMakeFiles/zombie.dir/src/zombieManager.cpp.i
+.PHONY : src/zombieManager.cpp.i
+
+src/zombieManager.s: src/zombieManager.cpp.s
+
+.PHONY : src/zombieManager.s
+
+# target to generate assembly for a file
+src/zombieManager.cpp.s:
+	$(MAKE) -f CMakeFiles/zombie.dir/build.make CMakeFiles/zombie.dir/src/zombieManager.cpp.s
+.PHONY : src/zombieManager.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -2751,144 +1590,6 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
 	@echo "... zombie"
-	@echo "... ext/Box2D/Collision/Shapes/b2ChainShape.o"
-	@echo "... ext/Box2D/Collision/Shapes/b2ChainShape.i"
-	@echo "... ext/Box2D/Collision/Shapes/b2ChainShape.s"
-	@echo "... ext/Box2D/Collision/Shapes/b2CircleShape.o"
-	@echo "... ext/Box2D/Collision/Shapes/b2CircleShape.i"
-	@echo "... ext/Box2D/Collision/Shapes/b2CircleShape.s"
-	@echo "... ext/Box2D/Collision/Shapes/b2EdgeShape.o"
-	@echo "... ext/Box2D/Collision/Shapes/b2EdgeShape.i"
-	@echo "... ext/Box2D/Collision/Shapes/b2EdgeShape.s"
-	@echo "... ext/Box2D/Collision/Shapes/b2PolygonShape.o"
-	@echo "... ext/Box2D/Collision/Shapes/b2PolygonShape.i"
-	@echo "... ext/Box2D/Collision/Shapes/b2PolygonShape.s"
-	@echo "... ext/Box2D/Collision/b2BroadPhase.o"
-	@echo "... ext/Box2D/Collision/b2BroadPhase.i"
-	@echo "... ext/Box2D/Collision/b2BroadPhase.s"
-	@echo "... ext/Box2D/Collision/b2CollideCircle.o"
-	@echo "... ext/Box2D/Collision/b2CollideCircle.i"
-	@echo "... ext/Box2D/Collision/b2CollideCircle.s"
-	@echo "... ext/Box2D/Collision/b2CollideEdge.o"
-	@echo "... ext/Box2D/Collision/b2CollideEdge.i"
-	@echo "... ext/Box2D/Collision/b2CollideEdge.s"
-	@echo "... ext/Box2D/Collision/b2CollidePolygon.o"
-	@echo "... ext/Box2D/Collision/b2CollidePolygon.i"
-	@echo "... ext/Box2D/Collision/b2CollidePolygon.s"
-	@echo "... ext/Box2D/Collision/b2Collision.o"
-	@echo "... ext/Box2D/Collision/b2Collision.i"
-	@echo "... ext/Box2D/Collision/b2Collision.s"
-	@echo "... ext/Box2D/Collision/b2Distance.o"
-	@echo "... ext/Box2D/Collision/b2Distance.i"
-	@echo "... ext/Box2D/Collision/b2Distance.s"
-	@echo "... ext/Box2D/Collision/b2DynamicTree.o"
-	@echo "... ext/Box2D/Collision/b2DynamicTree.i"
-	@echo "... ext/Box2D/Collision/b2DynamicTree.s"
-	@echo "... ext/Box2D/Collision/b2TimeOfImpact.o"
-	@echo "... ext/Box2D/Collision/b2TimeOfImpact.i"
-	@echo "... ext/Box2D/Collision/b2TimeOfImpact.s"
-	@echo "... ext/Box2D/Common/b2BlockAllocator.o"
-	@echo "... ext/Box2D/Common/b2BlockAllocator.i"
-	@echo "... ext/Box2D/Common/b2BlockAllocator.s"
-	@echo "... ext/Box2D/Common/b2Draw.o"
-	@echo "... ext/Box2D/Common/b2Draw.i"
-	@echo "... ext/Box2D/Common/b2Draw.s"
-	@echo "... ext/Box2D/Common/b2Math.o"
-	@echo "... ext/Box2D/Common/b2Math.i"
-	@echo "... ext/Box2D/Common/b2Math.s"
-	@echo "... ext/Box2D/Common/b2Settings.o"
-	@echo "... ext/Box2D/Common/b2Settings.i"
-	@echo "... ext/Box2D/Common/b2Settings.s"
-	@echo "... ext/Box2D/Common/b2StackAllocator.o"
-	@echo "... ext/Box2D/Common/b2StackAllocator.i"
-	@echo "... ext/Box2D/Common/b2StackAllocator.s"
-	@echo "... ext/Box2D/Common/b2Timer.o"
-	@echo "... ext/Box2D/Common/b2Timer.i"
-	@echo "... ext/Box2D/Common/b2Timer.s"
-	@echo "... ext/Box2D/Dynamics/Contacts/b2ChainAndCircleContact.o"
-	@echo "... ext/Box2D/Dynamics/Contacts/b2ChainAndCircleContact.i"
-	@echo "... ext/Box2D/Dynamics/Contacts/b2ChainAndCircleContact.s"
-	@echo "... ext/Box2D/Dynamics/Contacts/b2ChainAndPolygonContact.o"
-	@echo "... ext/Box2D/Dynamics/Contacts/b2ChainAndPolygonContact.i"
-	@echo "... ext/Box2D/Dynamics/Contacts/b2ChainAndPolygonContact.s"
-	@echo "... ext/Box2D/Dynamics/Contacts/b2CircleContact.o"
-	@echo "... ext/Box2D/Dynamics/Contacts/b2CircleContact.i"
-	@echo "... ext/Box2D/Dynamics/Contacts/b2CircleContact.s"
-	@echo "... ext/Box2D/Dynamics/Contacts/b2Contact.o"
-	@echo "... ext/Box2D/Dynamics/Contacts/b2Contact.i"
-	@echo "... ext/Box2D/Dynamics/Contacts/b2Contact.s"
-	@echo "... ext/Box2D/Dynamics/Contacts/b2ContactSolver.o"
-	@echo "... ext/Box2D/Dynamics/Contacts/b2ContactSolver.i"
-	@echo "... ext/Box2D/Dynamics/Contacts/b2ContactSolver.s"
-	@echo "... ext/Box2D/Dynamics/Contacts/b2EdgeAndCircleContact.o"
-	@echo "... ext/Box2D/Dynamics/Contacts/b2EdgeAndCircleContact.i"
-	@echo "... ext/Box2D/Dynamics/Contacts/b2EdgeAndCircleContact.s"
-	@echo "... ext/Box2D/Dynamics/Contacts/b2EdgeAndPolygonContact.o"
-	@echo "... ext/Box2D/Dynamics/Contacts/b2EdgeAndPolygonContact.i"
-	@echo "... ext/Box2D/Dynamics/Contacts/b2EdgeAndPolygonContact.s"
-	@echo "... ext/Box2D/Dynamics/Contacts/b2PolygonAndCircleContact.o"
-	@echo "... ext/Box2D/Dynamics/Contacts/b2PolygonAndCircleContact.i"
-	@echo "... ext/Box2D/Dynamics/Contacts/b2PolygonAndCircleContact.s"
-	@echo "... ext/Box2D/Dynamics/Contacts/b2PolygonContact.o"
-	@echo "... ext/Box2D/Dynamics/Contacts/b2PolygonContact.i"
-	@echo "... ext/Box2D/Dynamics/Contacts/b2PolygonContact.s"
-	@echo "... ext/Box2D/Dynamics/Joints/b2DistanceJoint.o"
-	@echo "... ext/Box2D/Dynamics/Joints/b2DistanceJoint.i"
-	@echo "... ext/Box2D/Dynamics/Joints/b2DistanceJoint.s"
-	@echo "... ext/Box2D/Dynamics/Joints/b2FrictionJoint.o"
-	@echo "... ext/Box2D/Dynamics/Joints/b2FrictionJoint.i"
-	@echo "... ext/Box2D/Dynamics/Joints/b2FrictionJoint.s"
-	@echo "... ext/Box2D/Dynamics/Joints/b2GearJoint.o"
-	@echo "... ext/Box2D/Dynamics/Joints/b2GearJoint.i"
-	@echo "... ext/Box2D/Dynamics/Joints/b2GearJoint.s"
-	@echo "... ext/Box2D/Dynamics/Joints/b2Joint.o"
-	@echo "... ext/Box2D/Dynamics/Joints/b2Joint.i"
-	@echo "... ext/Box2D/Dynamics/Joints/b2Joint.s"
-	@echo "... ext/Box2D/Dynamics/Joints/b2MotorJoint.o"
-	@echo "... ext/Box2D/Dynamics/Joints/b2MotorJoint.i"
-	@echo "... ext/Box2D/Dynamics/Joints/b2MotorJoint.s"
-	@echo "... ext/Box2D/Dynamics/Joints/b2MouseJoint.o"
-	@echo "... ext/Box2D/Dynamics/Joints/b2MouseJoint.i"
-	@echo "... ext/Box2D/Dynamics/Joints/b2MouseJoint.s"
-	@echo "... ext/Box2D/Dynamics/Joints/b2PrismaticJoint.o"
-	@echo "... ext/Box2D/Dynamics/Joints/b2PrismaticJoint.i"
-	@echo "... ext/Box2D/Dynamics/Joints/b2PrismaticJoint.s"
-	@echo "... ext/Box2D/Dynamics/Joints/b2PulleyJoint.o"
-	@echo "... ext/Box2D/Dynamics/Joints/b2PulleyJoint.i"
-	@echo "... ext/Box2D/Dynamics/Joints/b2PulleyJoint.s"
-	@echo "... ext/Box2D/Dynamics/Joints/b2RevoluteJoint.o"
-	@echo "... ext/Box2D/Dynamics/Joints/b2RevoluteJoint.i"
-	@echo "... ext/Box2D/Dynamics/Joints/b2RevoluteJoint.s"
-	@echo "... ext/Box2D/Dynamics/Joints/b2RopeJoint.o"
-	@echo "... ext/Box2D/Dynamics/Joints/b2RopeJoint.i"
-	@echo "... ext/Box2D/Dynamics/Joints/b2RopeJoint.s"
-	@echo "... ext/Box2D/Dynamics/Joints/b2WeldJoint.o"
-	@echo "... ext/Box2D/Dynamics/Joints/b2WeldJoint.i"
-	@echo "... ext/Box2D/Dynamics/Joints/b2WeldJoint.s"
-	@echo "... ext/Box2D/Dynamics/Joints/b2WheelJoint.o"
-	@echo "... ext/Box2D/Dynamics/Joints/b2WheelJoint.i"
-	@echo "... ext/Box2D/Dynamics/Joints/b2WheelJoint.s"
-	@echo "... ext/Box2D/Dynamics/b2Body.o"
-	@echo "... ext/Box2D/Dynamics/b2Body.i"
-	@echo "... ext/Box2D/Dynamics/b2Body.s"
-	@echo "... ext/Box2D/Dynamics/b2ContactManager.o"
-	@echo "... ext/Box2D/Dynamics/b2ContactManager.i"
-	@echo "... ext/Box2D/Dynamics/b2ContactManager.s"
-	@echo "... ext/Box2D/Dynamics/b2Fixture.o"
-	@echo "... ext/Box2D/Dynamics/b2Fixture.i"
-	@echo "... ext/Box2D/Dynamics/b2Fixture.s"
-	@echo "... ext/Box2D/Dynamics/b2Island.o"
-	@echo "... ext/Box2D/Dynamics/b2Island.i"
-	@echo "... ext/Box2D/Dynamics/b2Island.s"
-	@echo "... ext/Box2D/Dynamics/b2World.o"
-	@echo "... ext/Box2D/Dynamics/b2World.i"
-	@echo "... ext/Box2D/Dynamics/b2World.s"
-	@echo "... ext/Box2D/Dynamics/b2WorldCallbacks.o"
-	@echo "... ext/Box2D/Dynamics/b2WorldCallbacks.i"
-	@echo "... ext/Box2D/Dynamics/b2WorldCallbacks.s"
-	@echo "... ext/Box2D/Rope/b2Rope.o"
-	@echo "... ext/Box2D/Rope/b2Rope.i"
-	@echo "... ext/Box2D/Rope/b2Rope.s"
 	@echo "... src/CollisionManager.o"
 	@echo "... src/CollisionManager.i"
 	@echo "... src/CollisionManager.s"
@@ -2904,12 +1605,6 @@ help:
 	@echo "... src/MapGrid.o"
 	@echo "... src/MapGrid.i"
 	@echo "... src/MapGrid.s"
-	@echo "... src/PhysicalBody.o"
-	@echo "... src/PhysicalBody.i"
-	@echo "... src/PhysicalBody.s"
-	@echo "... src/Physics.o"
-	@echo "... src/Physics.i"
-	@echo "... src/Physics.s"
 	@echo "... src/ToolManager.o"
 	@echo "... src/ToolManager.i"
 	@echo "... src/ToolManager.s"
@@ -2919,6 +1614,9 @@ help:
 	@echo "... src/armour.o"
 	@echo "... src/armour.i"
 	@echo "... src/armour.s"
+	@echo "... src/blood.o"
+	@echo "... src/blood.i"
+	@echo "... src/blood.s"
 	@echo "... src/bomb.o"
 	@echo "... src/bomb.i"
 	@echo "... src/bomb.s"
@@ -2928,6 +1626,9 @@ help:
 	@echo "... src/common.o"
 	@echo "... src/common.i"
 	@echo "... src/common.s"
+	@echo "... src/explosion.o"
+	@echo "... src/explosion.i"
+	@echo "... src/explosion.s"
 	@echo "... src/gl3w.o"
 	@echo "... src/gl3w.i"
 	@echo "... src/gl3w.s"
@@ -2949,6 +1650,12 @@ help:
 	@echo "... src/player2.o"
 	@echo "... src/player2.i"
 	@echo "... src/player2.s"
+	@echo "... src/terrain.o"
+	@echo "... src/terrain.i"
+	@echo "... src/terrain.s"
+	@echo "... src/tilemap.o"
+	@echo "... src/tilemap.i"
+	@echo "... src/tilemap.s"
 	@echo "... src/tmxparser/TmxColor.o"
 	@echo "... src/tmxparser/TmxColor.i"
 	@echo "... src/tmxparser/TmxColor.s"
@@ -3042,6 +1749,9 @@ help:
 	@echo "... src/zombie.o"
 	@echo "... src/zombie.i"
 	@echo "... src/zombie.s"
+	@echo "... src/zombieManager.o"
+	@echo "... src/zombieManager.i"
+	@echo "... src/zombieManager.s"
 .PHONY : help
 
 

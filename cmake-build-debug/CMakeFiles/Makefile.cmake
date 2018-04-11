@@ -109,6 +109,7 @@ set(CMAKE_MAKEFILE_DEPENDS
   "CMakeFiles/3.9.6/CMakeSystem.cmake"
   "CMakeFiles/feature_tests.c"
   "CMakeFiles/feature_tests.cxx"
+  "../cmake/FindGLFW.cmake"
   "../cmake/FindTinyXML2.cmake"
   )
 

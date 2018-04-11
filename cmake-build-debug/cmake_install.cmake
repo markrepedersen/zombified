@@ -1,4 +1,4 @@
-# Install script for directory: /Users/ppnia/Documents/Winter20172018/CPSC436D/zombified
+# Install script for directory: /Users/markpedersen/Desktop/zombified
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -35,5 +35,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/Users/markpedersen/Desktop/zombified/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")
