@@ -82,6 +82,7 @@ bool World::init(vec2 screen) {
     rendered = (m_infobutton.init("info") &&
                 m_button.init("start") &&
                 m_backbutton.init("back")&&
+                key_info.init("key") &&
                 m_infopage.init("tool") &&
                 m_freezedetails.init("freeze") &&
                 m_waterdetails.init("water") &&
@@ -171,6 +172,14 @@ bool World::update(float elapsed_ms) {
     vec2 screen = {(float) w, (float) h};
     if (!game_started) {
         
+        if (game_over) {
+            if (winner == 1)
+                m_winner1.init("winner1");
+            if (winner == 2)
+                m_winner2.init("winner2");
+            game_over = false;
+        }
+        
         if (!instruction_page){
             if (m_infobutton.is_clicked()) {
                 instruction_page = true;
@@ -182,10 +191,16 @@ bool World::update(float elapsed_ms) {
                 game_started = true;
                 m_button.unclick();
                 
+                if (winner == 1)
+                    m_winner1.destroy();
+                if (winner == 2)
+                    m_winner2.destroy();
+                winner = 0;
+                
                 srand((unsigned) time(0));
                 explosion = false;
                 m_min = 0;
-                m_sec = 2;
+                m_sec = 30;
                 timeDelay = 5;
                 start = time(0);
                 immobilize = 0;
@@ -199,6 +214,9 @@ bool World::update(float elapsed_ms) {
                 is_punchingleft_p1 = false;
                 is_punchingright_p2 = false;
                 is_punchingleft_p2 = false;
+                
+                droppedAntidoteTime_p1 = time(0);
+                droppedAntidoteTime_p2 = time(0);
                 
                 bool initialized = (
                                     gloveRight_p1.init(screen)&&
@@ -336,6 +354,7 @@ void World::timer_update() {
     if (m_min == 0 && m_sec == 0) {
         game_over = true;
         fprintf(stderr, "winner is %d \n", m_antidote.belongs_to);
+        winner = m_antidote.belongs_to;
         destroy();
         game_started = false;
         m_min = 0;
@@ -375,7 +394,7 @@ void World::draw() {
 
     glViewport(0, 0, w, h);
     glDepthRange(0.00001, 10);
-    const float clear_color[3] = {0.1176f, 0.1451f, 0.1725f};
+   const float clear_color[3] = {0.1176f, 0.1451f, 0.1725f};
     glClearColor(clear_color[0], clear_color[1], clear_color[2], 1.0);
     glClearDepth(1.f);
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
@@ -395,11 +414,11 @@ void World::draw() {
                        {tx,  ty,  1.f}};
 
     if (!game_started) {
-
+        
         if (instruction_page){
-            m_infopage.draw(projection_2D);
             
             m_backbutton.draw(projection_2D);
+            m_infopage.draw(projection_2D);
             
             if (infoscreen == "freeze")
                 m_freezedetails.draw(projection_2D);
@@ -420,6 +439,12 @@ void World::draw() {
         else if (!instruction_page){
             m_button.draw(projection_2D);
             m_infobutton.draw(projection_2D);
+            key_info.draw(projection_2D);
+            
+            if (winner == 1)
+                m_winner1.draw(projection_2D);
+            if (winner == 2)
+                m_winner2.draw(projection_2D);
             
             glfwSwapBuffers(m_window);
         }
@@ -434,6 +459,10 @@ void World::draw() {
         //these are drawn in ascending order w.r.t. their y position
         m_limbsManager.draw(projection_2D);
         m_zombieManager.draw(projection_2D);
+        
+        for (auto& mud_collected: m_mud_collected)
+            mud_collected.draw(projection_2D);
+        
         entityDrawOrder(projection_2D);
         
         if (is_punchingleft_p1)
@@ -472,7 +501,7 @@ void World::entityDrawOrder(mat3 projection_2D) {
             m_bomb_collected_2.size() +
             m_armour_collected_1.size() +
             m_armour_collected_2.size() +
-            m_mud_collected.size() +
+            //m_mud_collected.size() +
             m_zombieManager.getZombieCount() +
             m_limbsManager.getLimbCount()
             + 3);
@@ -513,8 +542,8 @@ void World::entityDrawOrder(mat3 projection_2D) {
               [](Armour& entity) { return &entity; });
     transform(m_armour_collected_2.begin(), m_armour_collected_2.end(), std::back_inserter(drawOrderVector),
               [](Armour& entity) { return &entity; });
-    transform(m_mud_collected.begin(), m_mud_collected.end(), std::back_inserter(drawOrderVector),
-              [](Mud& entity) { return &entity; });
+    //transform(m_mud_collected.begin(), m_mud_collected.end(), std::back_inserter(drawOrderVector),
+    //          [](Mud& entity) { return &entity; });
 
     drawOrderVector.push_back(&m_player2);
     drawOrderVector.push_back(&m_player1);

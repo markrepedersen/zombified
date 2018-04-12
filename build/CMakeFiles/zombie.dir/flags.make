@@ -7,11 +7,11 @@ C_FLAGS =
 
 C_DEFINES = 
 
-C_INCLUDES = -I/Users/irenefang/Documents/CPSC436D/game/zombified/ext/gl3w -I/Users/irenefang/Documents/CPSC436D/game/zombified/ext/glfw -I/Users/irenefang/Documents/CPSC436D/game/zombified/ext/sdl -I/Users/irenefang/Documents/CPSC436D/game/zombified/ext/stb_image -I/Users/irenefang/Documents/CPSC436D/game/zombified/ext/Box2D 
+C_INCLUDES = -I/Users/irenefang/Documents/CPSC436D/Game/zombified/ext/gl3w -I/Users/irenefang/Documents/CPSC436D/Game/zombified/ext/glfw -I/Users/irenefang/Documents/CPSC436D/Game/zombified/ext/sdl -I/Users/irenefang/Documents/CPSC436D/Game/zombified/ext/stb_image -I/Users/irenefang/Documents/CPSC436D/Game/zombified/ext/Box2D 
 
 CXX_FLAGS =   -std=gnu++11
 
 CXX_DEFINES = 
 
-CXX_INCLUDES = -I/Users/irenefang/Documents/CPSC436D/game/zombified/ext/gl3w -I/Users/irenefang/Documents/CPSC436D/game/zombified/ext/glfw -I/Users/irenefang/Documents/CPSC436D/game/zombified/ext/sdl -I/Users/irenefang/Documents/CPSC436D/game/zombified/ext/stb_image -I/Users/irenefang/Documents/CPSC436D/game/zombified/ext/Box2D 
+CXX_INCLUDES = -I/Users/irenefang/Documents/CPSC436D/Game/zombified/ext/gl3w -I/Users/irenefang/Documents/CPSC436D/Game/zombified/ext/glfw -I/Users/irenefang/Documents/CPSC436D/Game/zombified/ext/sdl -I/Users/irenefang/Documents/CPSC436D/Game/zombified/ext/stb_image -I/Users/irenefang/Documents/CPSC436D/Game/zombified/ext/Box2D 
 

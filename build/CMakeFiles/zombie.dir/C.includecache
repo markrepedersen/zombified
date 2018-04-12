@@ -28,7 +28,7 @@ stdint.h
 inttypes.h
 -
 
-/Users/irenefang/Documents/CPSC436D/game/zombified/src/gl3w.c
+/Users/irenefang/Documents/CPSC436D/Game/zombified/src/gl3w.c
 gl3w.h
 -
 stdlib.h
@@ -40,7 +40,7 @@ dlfcn.h
 dlfcn.h
 -
 
-/Users/irenefang/Documents/CPSC436D/game/zombified/src/tmxparser/miniz.c
+/Users/irenefang/Documents/CPSC436D/Game/zombified/src/tmxparser/miniz.c
 stdlib.h
 -
 time.h

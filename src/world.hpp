@@ -213,4 +213,10 @@ private:
 	Button m_button;
     Button m_infobutton;
     Button m_backbutton;
+    
+    Info m_winner1;
+    Info m_winner2;
+    int winner;
+    
+    Info key_info;
 };

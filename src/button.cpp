@@ -108,7 +108,7 @@ void Button::draw(const mat3& projection)
 {
     // Transformation code, see Rendering and Transformation in the template specification for more info
     // Incrementally updates transformation matrix, thus ORDER IS IMPORTANT
-    if(type == "start") {
+    /*if(type == "start") {
         m_scale.x = -0.95f* ViewHelper::getRatio();
         m_scale.y = 0.95f* ViewHelper::getRatio();
     }
@@ -119,7 +119,7 @@ void Button::draw(const mat3& projection)
     else {
         m_scale.x = -0.75f* ViewHelper::getRatio();
         m_scale.y = 0.75f* ViewHelper::getRatio();
-    }
+    }*/
 
     transform_begin();
     transform_translate(m_position);

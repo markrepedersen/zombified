@@ -13,6 +13,11 @@ class Info : public Renderable
     static Texture missile_texture;
     static Texture armour_texture;
     
+    static Texture winner1_texture;
+    static Texture winner2_texture;
+    
+    static Texture key_texture;
+    
 public:
     // Creates all the associated render resources and default transform
     bool init(std::string Infotype);

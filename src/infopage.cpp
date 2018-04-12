@@ -11,6 +11,10 @@ Texture Info::bomb_texture;
 Texture Info::missile_texture;
 Texture Info::armour_texture;
 
+Texture Info::winner1_texture;
+Texture Info::winner2_texture;
+Texture Info::key_texture;
+
 bool Info::init(std::string infotype)
 {
     // Load shared texture
@@ -118,10 +122,48 @@ bool Info::init(std::string infotype)
             m_position = { 935.f* ViewHelper::getRatio(), 580.f* ViewHelper::getRatio() };
         }
     }
-    
-    // The position corresponds to the center of the texture
-    //float wr = button_texture.width * 0.5f;
-    //float hr = button_texture.height * 0.5f;
+    else if(type == "winner1") {
+        if (!winner1_texture.is_valid()) {
+            if (!winner1_texture.load_from_file(startworld_textures_path("winner1.png")))
+            {
+                fprintf(stderr, "Failed to load armour details texture!");
+                return false;
+            }
+            wr = winner1_texture.width * 0.5f;
+            hr = winner1_texture.height * 0.5f;
+            m_scale.x = -0.15f * ViewHelper::getRatio();
+            m_scale.y = 0.15f * ViewHelper::getRatio();
+            m_position = { 620.f* ViewHelper::getRatio(), 150.f* ViewHelper::getRatio() };
+        }
+    }
+    else if(type == "winner2") {
+        if (!winner2_texture.is_valid()) {
+            if (!winner2_texture.load_from_file(startworld_textures_path("winner2.png")))
+            {
+                fprintf(stderr, "Failed to load armour details texture!");
+                return false;
+            }
+            wr = winner2_texture.width * 0.5f;
+            hr = winner2_texture.height * 0.5f;
+            m_scale.x = -0.15f * ViewHelper::getRatio();
+            m_scale.y = 0.15f * ViewHelper::getRatio();
+            m_position = { 620.f* ViewHelper::getRatio(), 150.f* ViewHelper::getRatio() };
+        }
+    }
+    else if(type == "key") {
+        if (!key_texture.is_valid()) {
+            if (!key_texture.load_from_file(startworld_textures_path("keys.png")))
+            {
+                fprintf(stderr, "Failed to load armour details texture!");
+                return false;
+            }
+            wr = key_texture.width * 0.5f;
+            hr = key_texture.height * 0.5f;
+            m_scale.x = -0.14f * ViewHelper::getRatio();
+            m_scale.y = 0.14f * ViewHelper::getRatio();
+            m_position = { 320.f* ViewHelper::getRatio(), 550.f* ViewHelper::getRatio() };
+        }
+    }
     
     TexturedVertex vertices[4];
     vertices[0].position = { -wr, +hr, -0.02f };
@@ -213,7 +255,12 @@ void Info::draw(const mat3& projection)
         glBindTexture(GL_TEXTURE_2D, missile_texture.id);
     else if(type == "armour")
         glBindTexture(GL_TEXTURE_2D, armour_texture.id);
-
+    else if(type == "winner1")
+       glBindTexture(GL_TEXTURE_2D, winner1_texture.id);
+    else if(type == "winner2")
+        glBindTexture(GL_TEXTURE_2D, winner2_texture.id);
+    else if(type == "key")
+        glBindTexture(GL_TEXTURE_2D, key_texture.id);
     
     // Setting uniform values to the currently bound program
     glUniformMatrix3fv(transform_uloc, 1, GL_FALSE, (float*)&transform);
