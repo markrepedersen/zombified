@@ -3,23 +3,65 @@
 
 #include <cmath>
 
-Texture Button::button_texture;
+Texture Button::startbutton_texture;
+Texture Button::infobutton_texture;
+Texture Button::backbutton_texture;
 
-bool Button::init()
+bool Button::init(std::string buttontype)
 {
     // Load shared texture
-    if (!button_texture.is_valid())
-    {
-        if (!button_texture.load_from_file(startworld_textures_path("startbutton unclick.png")))
-        {
-            fprintf(stderr, "Failed to load start button texture!");
-            return false;
+    //if (!button_texture.is_valid())
+    //{
+    type = buttontype;
+    float wr;
+    float hr;
+    
+    if(type == "start") {
+        if (!startbutton_texture.is_valid()) {
+            if (!startbutton_texture.load_from_file(startworld_textures_path("startbutton unclick.png")))
+            {
+                fprintf(stderr, "Failed to load start button texture!");
+                return false;
+            }
+            wr = startbutton_texture.width * 0.5f;
+            hr = startbutton_texture.height * 0.5f;
+            m_scale.x = -0.95f* ViewHelper::getRatio();
+            m_scale.y = 0.95f* ViewHelper::getRatio();
+            m_position = { 640.f* ViewHelper::getRatio(), 360.f* ViewHelper::getRatio() }; //360
+        }
+    }
+    else if(type == "info") {
+        if (!infobutton_texture.is_valid()) {
+            if (!infobutton_texture.load_from_file(startworld_textures_path("infobutton.png")))
+            {
+                fprintf(stderr, "Failed to load info button texture!");
+                return false;
+            }
+            wr = infobutton_texture.width * 0.5f;
+            hr = infobutton_texture.height * 0.5f;
+            m_scale.x = -0.45f* ViewHelper::getRatio();
+            m_scale.y = 0.45f* ViewHelper::getRatio();
+            m_position = { 1100.f* ViewHelper::getRatio(), 640.f* ViewHelper::getRatio() };
+        }
+    }
+    else {
+        if (!backbutton_texture.is_valid()) {
+            if (!backbutton_texture.load_from_file(startworld_textures_path("backbutton.png")))
+            {
+                fprintf(stderr, "Failed to load back button texture!");
+                return false;
+            }
+            wr = backbutton_texture.width * 0.5f;
+            hr = backbutton_texture.height * 0.5f;
+            m_scale.x = -0.75f* ViewHelper::getRatio();
+            m_scale.y = 0.75f* ViewHelper::getRatio();
+            m_position = { 100.f* ViewHelper::getRatio(), 70.f* ViewHelper::getRatio() };
         }
     }
     
     // The position corresponds to the center of the texture
-    float wr = button_texture.width * 0.5f;
-    float hr = button_texture.height * 0.5f;
+    //float wr = button_texture.width * 0.5f;
+    //float hr = button_texture.height * 0.5f;
     
     TexturedVertex vertices[4];
     vertices[0].position = { -wr, +hr, -0.02f };
@@ -58,9 +100,6 @@ bool Button::init()
     
     // Setting initial values
     b_is_clicked = false;
-    m_scale.x = -0.95f* ViewHelper::getRatio();
-    m_scale.y = 0.95f* ViewHelper::getRatio();
-    m_position = { 640.f* ViewHelper::getRatio(), 360.f* ViewHelper::getRatio() };
     
     return true;
 }
@@ -69,6 +108,19 @@ void Button::draw(const mat3& projection)
 {
     // Transformation code, see Rendering and Transformation in the template specification for more info
     // Incrementally updates transformation matrix, thus ORDER IS IMPORTANT
+    if(type == "start") {
+        m_scale.x = -0.95f* ViewHelper::getRatio();
+        m_scale.y = 0.95f* ViewHelper::getRatio();
+    }
+    else if(type == "info") {
+        m_scale.x = -0.45f* ViewHelper::getRatio();
+        m_scale.y = 0.45f* ViewHelper::getRatio();
+    }
+    else {
+        m_scale.x = -0.75f* ViewHelper::getRatio();
+        m_scale.y = 0.75f* ViewHelper::getRatio();
+    }
+
     transform_begin();
     transform_translate(m_position);
     transform_scale(m_scale);
@@ -101,7 +153,12 @@ void Button::draw(const mat3& projection)
     
     // Enabling and binding texture to slot 0
     glActiveTexture(GL_TEXTURE0);
-    glBindTexture(GL_TEXTURE_2D, button_texture.id);
+    if(type == "start")
+        glBindTexture(GL_TEXTURE_2D, startbutton_texture.id);
+    else if(type == "info")
+        glBindTexture(GL_TEXTURE_2D, infobutton_texture.id);
+    else
+        glBindTexture(GL_TEXTURE_2D, backbutton_texture.id);
     
     // Setting uniform values to the currently bound program
     glUniformMatrix3fv(transform_uloc, 1, GL_FALSE, (float*)&transform);
@@ -115,24 +172,58 @@ void Button::draw(const mat3& projection)
 
 void Button::click()
 {
-    if(!button_texture.load_from_file(startworld_textures_path("startbutton unclick.png")))
-    {
-        fprintf(stderr, "Failed to load start button texture!");
+    if(type == "start") {
+        if(!startbutton_texture.load_from_file(startworld_textures_path("startbutton unclick.png")))
+        {
+            fprintf(stderr, "Failed to load start button texture!");
+        }
     }
+    else if(type == "info") {
+        if (!infobutton_texture.load_from_file(startworld_textures_path("infobutton.png")))
+        {
+            fprintf(stderr, "Failed to load info button texture!");
+        }
+    }
+    else {
+        if (!backbutton_texture.load_from_file(startworld_textures_path("backbutton.png")))
+        {
+            fprintf(stderr, "Failed to load back button texture!");
+        }
+    }
+
     b_is_clicked = true;
 }
 
 void Button::clickicon()
 {
-    if(!button_texture.load_from_file(startworld_textures_path("startbutton click.png")))
-    {
-        fprintf(stderr, "Failed to load start button clicked texture!");
+    if(type == "start") {
+        if(!startbutton_texture.load_from_file(startworld_textures_path("startbutton click.png")))
+        {
+            fprintf(stderr, "Failed to load start button clicked texture!");
+        }
+    }
+    else if(type == "info") {
+        if (!infobutton_texture.load_from_file(startworld_textures_path("infobutton.png")))
+        {
+            fprintf(stderr, "Failed to load info button texture!");
+        }
+    }
+    else {
+        if (!backbutton_texture.load_from_file(startworld_textures_path("backbutton.png")))
+        {
+            fprintf(stderr, "Failed to load back button texture!");
+        }
     }
 }
 
 bool Button::is_clicked()const
 {
     return b_is_clicked;
+}
+
+void Button::unclick()
+{
+    b_is_clicked = false;
 }
 
 void Button::destroy()

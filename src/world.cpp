@@ -73,9 +73,24 @@ bool World::init(vec2 screen) {
     mapGrid = new MapGrid((unsigned) screen.x / 100, (unsigned) screen.y / 100);
     m_limbsManager.init(screen, mapCollisionPoints);
 
+    bool rendered = false;
     game_started = false;
     game_over = false;
-    return m_button.init();
+    instruction_page = false;
+    infoscreen = "none";
+    
+    rendered = (m_infobutton.init("info") &&
+                m_button.init("start") &&
+                m_backbutton.init("back")&&
+                m_infopage.init("tool") &&
+                m_freezedetails.init("freeze") &&
+                m_waterdetails.init("water") &&
+                m_muddetails.init("mud") &&
+                m_bombdetails.init("bomb") &&
+                m_missiledetails.init("missile") &&
+                m_armourdetails.init("armour"));
+    
+    return rendered;
 }
 
 void World::destroy() {
@@ -155,50 +170,70 @@ bool World::update(float elapsed_ms) {
     glfwGetWindowSize(m_window, &w, &h);
     vec2 screen = {(float) w, (float) h};
     if (!game_started) {
-        if (m_button.is_clicked()) {
-            game_started = true;
-            m_button.destroy();
-
-            srand((unsigned) time(0));
-            explosion = false;
-            m_min = 1;
-            m_sec = 0;
-            timeDelay = 5;
-            start = time(0);
-            immobilize = 0;
-            armourInUse_p1 = false;
-            armourInUse_p2 = false;
-            droptool_p1 = false;
-            droptool_p2 = false;
-            useBomb = false;
-            useMissile = false;
-            is_punchingright_p1 = false;
-            is_punchingleft_p1 = false;
-            is_punchingright_p2 = false;
-            is_punchingleft_p2 = false;
-
-            //mud.init();
-            m_player1.init(screen, mapCollisionPoints);
-            m_player2.init(screen, mapCollisionPoints);
-            m_antidote.init(screen, mapCollisionPoints);
-            gloveRight_p1.init(screen);
-            gloveLeft_p1.init(screen);
-            
-            m_worldtexture.init(screen);
-            
-            m_toolboxManager.init({screen.x, screen.y});
-            
-            gloveRight_p2.init(screen);
-            gloveLeft_p2.init(screen);
-            
-            m_zombieManager.init({screen.x, screen.y}, mapCollisionPoints);
-            m_limbsManager.set_arms_size(0);
-            m_limbsManager.set_legs_size(0);
+        
+        if (!instruction_page){
+            if (m_infobutton.is_clicked()) {
+                instruction_page = true;
+                m_infobutton.unclick();
+                //draw();
+                return true;
+            }
+            else if (m_button.is_clicked()) {
+                game_started = true;
+                m_button.unclick();
+                
+                srand((unsigned) time(0));
+                explosion = false;
+                m_min = 0;
+                m_sec = 2;
+                timeDelay = 5;
+                start = time(0);
+                immobilize = 0;
+                armourInUse_p1 = false;
+                armourInUse_p2 = false;
+                droptool_p1 = false;
+                droptool_p2 = false;
+                useBomb = false;
+                useMissile = false;
+                is_punchingright_p1 = false;
+                is_punchingleft_p1 = false;
+                is_punchingright_p2 = false;
+                is_punchingleft_p2 = false;
+                
+                bool initialized = (
+                                    gloveRight_p1.init(screen)&&
+                                    gloveLeft_p1.init(screen)&&
+                                    
+                                    gloveRight_p2.init(screen)&&
+                                    gloveLeft_p2.init(screen)&&
+                                    
+                                    m_worldtexture.init(screen)&&
+                                    m_toolboxManager.init({screen.x, screen.y}) &&
+                                    m_antidote.init(screen, mapCollisionPoints) &&
+                                    m_player1.init(screen, mapCollisionPoints) &&
+                                    m_player2.init(screen, mapCollisionPoints) &&
+                                    
+                                    m_zombieManager.init({screen.x, screen.y}, mapCollisionPoints));
+                m_limbsManager.set_arms_size(0);
+                m_limbsManager.set_legs_size(0);
+                
+                m_player1.set_key(0, false);
+                m_player1.set_key(1, false);
+                m_player1.set_key(2, false);
+                m_player1.set_key(3, false);
+                m_player2.set_key(0, false);
+                m_player2.set_key(1, false);
+                m_player2.set_key(2, false);
+                m_player2.set_key(3, false);
+                
+                return initialized;
+                
+            }
             
         }
     }
 
-    if (game_started) {
+    else if (game_started) {
         m_player1.update(elapsed_ms);
         m_player2.update(elapsed_ms);
 
@@ -221,7 +256,6 @@ bool World::update(float elapsed_ms) {
                 m_zombieManager.spawn_zombie(pos, m_player1.get_position(), m_player2.get_position());
             }
         }
-        //TODO: compute paths for zombies
 
         if ((int) difftime(time(0), start) == timeDelay)
             timer_update();
@@ -292,10 +326,6 @@ bool World::update(float elapsed_ms) {
             gloveRight_p1.set_position({m_player1.get_position().x+ (30.f * ViewHelper::getRatio()),
                                         m_player1.get_position().y+ (15.f * ViewHelper::getRatio())});
 
-
-        // for (auto &explosion : m_explosion)
-        //    explosion.animate()
-
         return true;
     }
     return true;
@@ -307,7 +337,6 @@ void World::timer_update() {
         game_over = true;
         fprintf(stderr, "winner is %d \n", m_antidote.belongs_to);
         destroy();
-        m_button.init();
         game_started = false;
         m_min = 0;
         m_sec = 0;
@@ -346,6 +375,11 @@ void World::draw() {
 
     glViewport(0, 0, w, h);
     glDepthRange(0.00001, 10);
+    const float clear_color[3] = {0.1176f, 0.1451f, 0.1725f};
+    glClearColor(clear_color[0], clear_color[1], clear_color[2], 1.0);
+    glClearDepth(1.f);
+    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+
     float left = 0.f;        // *-0.5;
     float top = 0.f;         // (float)h * -0.5;
     float right = (float) w;  // *0.5;
@@ -361,13 +395,37 @@ void World::draw() {
                        {tx,  ty,  1.f}};
 
     if (!game_started) {
-        const float clear_color[3] = {0.3f, 0.3f, 0.8f};
-        glClearColor(clear_color[1], clear_color[1], clear_color[1], 1.0);
-        glClearDepth(1.f);
-        glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-        m_button.draw(projection_2D);
-    } else {
+        if (instruction_page){
+            m_infopage.draw(projection_2D);
+            
+            m_backbutton.draw(projection_2D);
+            
+            if (infoscreen == "freeze")
+                m_freezedetails.draw(projection_2D);
+            else if (infoscreen == "water")
+                m_waterdetails.draw(projection_2D);
+            else if (infoscreen == "mud")
+                m_muddetails.draw(projection_2D);
+            else if (infoscreen == "bomb")
+                m_bombdetails.draw(projection_2D);
+            else if (infoscreen == "missile")
+                m_missiledetails.draw(projection_2D);
+            else if (infoscreen == "armour")
+                m_armourdetails.draw(projection_2D);
+            
+            glfwSwapBuffers(m_window);
+        }
+        
+        else if (!instruction_page){
+            m_button.draw(projection_2D);
+            m_infobutton.draw(projection_2D);
+            
+            glfwSwapBuffers(m_window);
+        }
+
+    }
+    else {
         
         //these should always be drawn first
         m_worldtexture.draw(projection_2D);
@@ -387,10 +445,9 @@ void World::draw() {
             gloveLeft_p2.draw(projection_2D);
         if (is_punchingright_p2)
             gloveRight_p2.draw(projection_2D);
+        
+        glfwSwapBuffers(m_window);
     }
-
-    // Presenting
-    glfwSwapBuffers(m_window);
 }
 
 void World::entityDrawOrder(mat3 projection_2D) {
@@ -465,16 +522,6 @@ void World::entityDrawOrder(mat3 projection_2D) {
 
     m_zombieManager.transformZombies(drawOrderVector);
     m_limbsManager.transformLimbs(drawOrderVector);
-    
-    /*if (is_punchingleft_p1)
-        drawOrderVector.push_back(&gloveLeft_p1);
-    if (is_punchingright_p1)
-        drawOrderVector.push_back(&gloveRight_p1);
-    
-    if (is_punchingleft_p2)
-        drawOrderVector.push_back(&gloveLeft_p2);
-    if (is_punchingright_p2)
-        drawOrderVector.push_back(&gloveRight_p2);*/
 
     sort(drawOrderVector.begin(), drawOrderVector.end(), [](Renderable *lhs, Renderable *rhs) {
         return lhs->m_position.y < rhs->m_position.y;
@@ -515,10 +562,6 @@ void World::on_key(GLFWwindow *, int key, int, int action, int mod) {
 
         if (action == GLFW_PRESS && key == GLFW_KEY_RIGHT_SHIFT) {
 
-            //vec2 punchdirection = m_player2.get_shootDirection();
-            // if the player has no tools/no slots attack the other player by collided and pressing attack
-            //if (m_player1.collides_with(m_player2)) {
-            // can punch players if freeze is used
             bool hasTools = false;
             for (auto &tools : m_toolboxManager.getListOfSlot_2()) {
                 if (tools != 0 && tools != 3) {
@@ -549,12 +592,7 @@ void World::on_key(GLFWwindow *, int key, int, int action, int mod) {
                 //m_player1.numberofHits++;
             }
             else {
-                /*for (auto &tools : m_toolboxManager.getListOfSlot_2()) {
-                    if (tools != 0 && tools != 3) {
-                        hasTools = true;
-                        break;
-                    }
-                }*/
+
                 // if the player has no tools then can manually attack, or else, just use a tool
                 if (!hasTools) {
                     if ((m_player2.lastkey == 2) || (m_player2.lastkey == 1)) { //up and left
@@ -656,12 +694,6 @@ void World::on_key(GLFWwindow *, int key, int, int action, int mod) {
             }
             else
             {
-                /*for (auto &tools : m_toolboxManager.getListOfSlot_1()) {
-                    if (tools != 0 && tools != 3) {
-                        hasTools = true;
-                        break;
-                    }
-                }*/
                 
                 if (!hasTools) {
                     //if (immobilize == 2) {
@@ -681,9 +713,7 @@ void World::on_key(GLFWwindow *, int key, int, int action, int mod) {
                         if (m_player2.collides_with(gloveRight_p1) && !armourInUse_p2)
                             m_player2.numberofHits++;
                     }
-                    
-                    // m_player2.numberofHits++; // needs to hit the player 5 times in order for p1 to drop item
-                    //}
+
                 }
                 else
                     use_tool_1(m_toolboxManager.useItem(1));
@@ -692,10 +722,6 @@ void World::on_key(GLFWwindow *, int key, int, int action, int mod) {
             if(!hasTools) {
                 m_zombieManager.attack_zombies(m_player1.get_position(), m_player1.get_bounding_box(), 1, &m_toolboxManager);
             }
-            
-            //fprintf(stderr, "player1 number of hits: %d \n", m_player1.numberofHits);
-            //}
-            
         }
         if (action == GLFW_RELEASE && key == GLFW_KEY_Q) {
             is_punchingright_p1 = false;
@@ -713,7 +739,6 @@ void World::on_key(GLFWwindow *, int key, int, int action, int mod) {
             m_player1.set_freezestate(false);
             immobilize = 0;
             freezeTime = 0;
-            //fprintf(stderr, "start");
         }
     }
 }
@@ -724,27 +749,82 @@ void World::on_mouse_move(GLFWwindow *window, int button, int action, int mod) {
 
     if (!game_started) {
         if (action == GLFW_PRESS && button == GLFW_MOUSE_BUTTON_1) {
-            m_button.clickicon();
+            if (instruction_page){
+                //std::cout << "xpos: " << xpos << std::endl;
+                //std::cout << "ypos: " << ypos << std::endl;
+                if (xpos < 480.f && xpos > 340.f && ypos < 215.f && ypos > 90.f) {
+                    //std::cout << "ice" << std::endl;
+                    infoscreen = "freeze";
+                }
+                else if (xpos < 490.f && xpos > 345.f && ypos < 445.f && ypos > 290.f) {
+                    //std::cout << "water" << std::endl;
+                    infoscreen = "water";
+                }
+                else if (xpos < 615.f && xpos > 260.f && ypos < 615.f && ypos > 540.f) {
+                    //std::cout << "mud" << std::endl;
+                    infoscreen = "mud";
+                }
+                else if (xpos < 1010.f && xpos > 875.f && ypos < 215.f && ypos > 85.f) {
+                    //std::cout << "bomb" << std::endl;
+                    infoscreen = "bomb";
+                }
+                else if (xpos < 995.f && xpos > 870.f && ypos < 450.f && ypos > 290.f) {
+                    //std::cout << "missile" << std::endl;
+                    infoscreen = "missile";
+                }
+                else if (xpos < 1020.f && xpos > 855.f && ypos < 640.f && ypos > 525.f) {
+                    //std::cout << "armour" << std::endl;
+                    infoscreen = "armour";
+                }
+                else if (xpos < 175.f && xpos > 20.f && ypos < 80.f && ypos > 22.f) {
+                    //std::cout << "back" << std::endl;
+                    instruction_page = false;
+                }
+                
+                //draw();
+            }
+            else {
+                if (xpos < 650.f && xpos > 500.f && ypos < 350.f && ypos > 250.f)
+                    m_button.clickicon();
+            }
         }
         if (glfwGetMouseButton(window, GLFW_MOUSE_BUTTON_1) == GLFW_RELEASE) {
-            m_button.click();
-            draw();
+            //std::cout << "xpos: " << xpos << std::endl;
+            //std::cout << "ypos: " << ypos << std::endl;
+            if (!instruction_page){
+                //click start button
+                if (xpos < 650.f && xpos > 500.f && ypos < 350.f && ypos > 250.f){
+                    m_button.click();
+                }
+                
+                //clock info button
+                if (xpos < 1300.f && xpos > 970.f && ypos < 680.f && ypos > 600.f)
+                {
+                    //std::cout << "info page!" << std::endl;
+                    infoscreen = "default";
+                    m_infobutton.click();
+                }
+                //draw();
+                
+            }
+            
         }
-    } else {
+    }
+    /*else {
         if (glfwGetMouseButton(window, GLFW_MOUSE_BUTTON_1) == GLFW_RELEASE) {
 
             // std::cout << "mapCollisionPoints.push_back({ " << xpos << "f * ViewHelper::getRatio(), " << ypos << "f * ViewHelper::getRatio()});" << std::endl;
-            /*std::cout << "xpos: " << xpos << std::endl;
-            std::cout << "ypos: " << ypos << std::endl;
-            std::cout << "player pos: " << m_player1.get_position().x << ", " << m_player1.get_position().y
-                      << std::endl;*/
+            //std::cout << "xpos: " << xpos << std::endl;
+            //std::cout << "ypos: " << ypos << std::endl;
+            //std::cout << "player pos: " << m_player1.get_position().x << ", " << m_player1.get_position().y
+                      //<< std::endl;
             if (isInsidePolygon(mapCollisionPoints, {(float)xpos * ViewHelper::getRatio(), (float)ypos * ViewHelper::getRatio()})) {
-                //std::cout << "yes it's inside polygon" << std::endl;
+                std::cout << "yes it's inside polygon" << std::endl;
             } else {
-                //std::cout << "nope, it's outside the polygon" << std::endl;
+                std::cout << "nope, it's outside the polygon" << std::endl;
             }
         }
-    }
+    }*/
 }
 
 bool World::spawn_freeze() {

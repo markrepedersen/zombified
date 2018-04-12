@@ -27,6 +27,9 @@
 #include "zombie.hpp"
 #include "punchleft.hpp"
 #include "punchright.hpp"
+
+#include "infopage.hpp"
+
 #include <vector>
 // #include <Box2D.h>
 #include <time.h>
@@ -116,6 +119,7 @@ private:
 	// true if the start button was pressed to start the main game world
 	bool game_started;
 	bool game_over;
+    bool instruction_page;
 
 	// Number of fish eaten by the salmon, displayed in the window title
 	unsigned int m_min;
@@ -196,5 +200,17 @@ private:
 	std::default_random_engine m_rng;
 	std::uniform_real_distribution<float> m_dist; // default 0..1c
 
+    Info m_infopage;
+    Info m_freezedetails;
+    Info m_waterdetails;
+    Info m_muddetails;
+    Info m_bombdetails;
+    Info m_missiledetails;
+    Info m_armourdetails;
+    
+    std::string infoscreen;
+    
 	Button m_button;
+    Button m_infobutton;
+    Button m_backbutton;
 };
