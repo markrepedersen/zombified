@@ -178,7 +178,7 @@ void Button::click()
             fprintf(stderr, "Failed to load start button texture!");
         }
     }
-    else if(type == "info") {
+    /*else if(type == "info") {
         if (!infobutton_texture.load_from_file(startworld_textures_path("infobutton.png")))
         {
             fprintf(stderr, "Failed to load info button texture!");
@@ -189,7 +189,7 @@ void Button::click()
         {
             fprintf(stderr, "Failed to load back button texture!");
         }
-    }
+    }*/
 
     b_is_clicked = true;
 }
@@ -202,7 +202,7 @@ void Button::clickicon()
             fprintf(stderr, "Failed to load start button clicked texture!");
         }
     }
-    else if(type == "info") {
+    /*else if(type == "info") {
         if (!infobutton_texture.load_from_file(startworld_textures_path("infobutton.png")))
         {
             fprintf(stderr, "Failed to load info button texture!");
@@ -213,7 +213,7 @@ void Button::clickicon()
         {
             fprintf(stderr, "Failed to load back button texture!");
         }
-    }
+    }*/
 }
 
 bool Button::is_clicked()const

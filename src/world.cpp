@@ -200,7 +200,7 @@ bool World::update(float elapsed_ms) {
                 srand((unsigned) time(0));
                 explosion = false;
                 m_min = 0;
-                m_sec = 30;
+                m_sec = 2;
                 timeDelay = 5;
                 start = time(0);
                 immobilize = 0;
@@ -434,6 +434,7 @@ void World::draw() {
                 m_armourdetails.draw(projection_2D);
             
             glfwSwapBuffers(m_window);
+            return;
         }
         
         else if (!instruction_page){
@@ -447,6 +448,7 @@ void World::draw() {
                 m_winner2.draw(projection_2D);
             
             glfwSwapBuffers(m_window);
+            return;
         }
 
     }
@@ -476,6 +478,7 @@ void World::draw() {
             gloveRight_p2.draw(projection_2D);
         
         glfwSwapBuffers(m_window);
+        return;
     }
 }
 
@@ -822,7 +825,9 @@ void World::on_mouse_move(GLFWwindow *window, int button, int action, int mod) {
             //std::cout << "ypos: " << ypos << std::endl;
             if (!instruction_page){
                 //click start button
-                if (xpos < 650.f && xpos > 500.f && ypos < 350.f && ypos > 250.f){
+                //std::cout << "xpos: " << xpos << std::endl;
+                //std::cout << "ypos: " << ypos << std::endl;
+                if (xpos < 780.f && xpos > 505.f && ypos < 345.f && ypos > 280.f){
                     m_button.click();
                 }
                 
