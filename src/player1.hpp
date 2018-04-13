@@ -8,7 +8,6 @@
 #include "water.hpp"
 #include "antidote.hpp"
 #include "Limb.h"
-#include "PhysicalBody.h"
 #include "tree.hpp"
 #include "bomb.hpp"
 #include "armour.hpp"

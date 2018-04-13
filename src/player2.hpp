@@ -6,8 +6,6 @@
 #include "water.hpp"
 #include "antidote.hpp"
 #include "Limb.h"
-#include "PhysicalBody.h"
-#include <Box2D.h>
 #include "bomb.hpp"
 #include "armour.hpp"
 #include "missile.hpp"
