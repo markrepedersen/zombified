@@ -69,7 +69,7 @@ bool World::init(vec2 screen) {
 
     ViewHelper::getInstance(m_window);
     //populateMapCollisionPoints();
-    //mapGrid = new MapGrid((unsigned) screen.x / 100, (unsigned) screen.y / 100);
+    mapGrid = new MapGrid((unsigned) screen.x / 100, (unsigned) screen.y / 100);
     //m_limbsManager.init(screen, mapCollisionPoints);
 
     bool rendered = false;
@@ -83,6 +83,7 @@ bool World::init(vec2 screen) {
                 m_startbutton.init("start") &&
                 m_backbutton.init("back")&&
                 key_info.init("key") &&
+                story_info.init("story") &&
                 m_pause.init("pause") &&
                 m_infopage.init("tool") &&
                 m_freezedetails.init("freeze") &&
@@ -166,9 +167,6 @@ void World::destroy() {
     m_mud_collected.clear();
     
     mapCollisionPoints.clear();
-    mapGrid->destroy();
-
-    game_over = true;
 }
 
 bool World::update(float elapsed_ms) {
@@ -195,6 +193,7 @@ bool World::update(float elapsed_ms) {
                 m_infobutton.unclick();
                 return true;
             }
+            
             else if (m_startbutton.is_clicked()) {
                 game_started = true;
                 m_startbutton.unclick();
@@ -208,7 +207,6 @@ bool World::update(float elapsed_ms) {
                 winner = 0;
                 
                 populateMapCollisionPoints();
-                mapGrid = new MapGrid((unsigned) screen.x / 100, (unsigned) screen.y / 100);
                 
                 bool initialized = (gloveRight_p1.init(screen)&&
                                     gloveLeft_p1.init(screen)&&
@@ -228,7 +226,7 @@ bool World::update(float elapsed_ms) {
                 srand((unsigned) time(0));
                 explosion = false;
                 m_min = 0;
-                m_sec = 2;
+                m_sec = 30;
                 timeDelay = 5;
                 start = time(0);
                 immobilize = 0;
@@ -358,8 +356,6 @@ bool World::update(float elapsed_ms) {
             if(is_punchingright_p1)
                 gloveRight_p1.set_position({m_player1.get_position().x+ (30.f * ViewHelper::getRatio()),
                     m_player1.get_position().y+ (15.f * ViewHelper::getRatio())});
-            
-            return true;
         }
     }
     return true;
@@ -373,6 +369,8 @@ void World::timer_update() {
             fprintf(stderr, "winner is %d \n", m_antidote.belongs_to);
             winner = m_antidote.belongs_to;
             destroy();
+            
+            game_over = true;
             
         } else if (m_sec == 0) {
             m_sec = 59;
@@ -501,6 +499,7 @@ void World::startScreenDraw(mat3 projection_2D) {
     m_startbutton.draw(projection_2D);
     m_infobutton.draw(projection_2D);
     key_info.draw(projection_2D);
+    story_info.draw(projection_2D);
     
     if (winner == 1)
         m_winner1.draw(projection_2D);

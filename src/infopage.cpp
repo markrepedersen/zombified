@@ -14,6 +14,7 @@ Texture Info::armour_texture;
 Texture Info::winner1_texture;
 Texture Info::winner2_texture;
 Texture Info::key_texture;
+Texture Info::story_texture;
 
 Texture Info::pause_texture;
 
@@ -135,7 +136,7 @@ bool Info::init(std::string infotype)
             hr = winner1_texture.height * 0.5f;
             m_scale.x = -0.15f * ViewHelper::getRatio();
             m_scale.y = 0.15f * ViewHelper::getRatio();
-            m_position = { 620.f* ViewHelper::getRatio(), 150.f* ViewHelper::getRatio() };
+            m_position = { 250.f* ViewHelper::getRatio(), 150.f* ViewHelper::getRatio() };
         }
     }
     else if(type == "winner2") {
@@ -149,7 +150,7 @@ bool Info::init(std::string infotype)
             hr = winner2_texture.height * 0.5f;
             m_scale.x = -0.15f * ViewHelper::getRatio();
             m_scale.y = 0.15f * ViewHelper::getRatio();
-            m_position = { 620.f* ViewHelper::getRatio(), 150.f* ViewHelper::getRatio() };
+            m_position = { 250.f* ViewHelper::getRatio(), 150.f* ViewHelper::getRatio() };
         }
     }
     else if(type == "key") {
@@ -180,6 +181,22 @@ bool Info::init(std::string infotype)
             m_position = { 640.f* ViewHelper::getRatio(), 360.f* ViewHelper::getRatio() };
         }
     }
+    
+    else if(type == "story") {
+        if (!story_texture.is_valid()) {
+            if (!story_texture.load_from_file(startworld_textures_path("story.png")))
+            {
+                fprintf(stderr, "Failed to load story texture!");
+                return false;
+            }
+            wr = story_texture.width * 0.5f;
+            hr = story_texture.height * 0.5f;
+            m_scale.x = -0.18f * ViewHelper::getRatio();
+            m_scale.y = 0.18f * ViewHelper::getRatio();
+            m_position = { 1050.f* ViewHelper::getRatio(), 310.f* ViewHelper::getRatio() };
+        }
+    }
+
     
     TexturedVertex vertices[4];
     vertices[0].position = { -wr, +hr, -0.02f };
@@ -279,6 +296,8 @@ void Info::draw(const mat3& projection)
         glBindTexture(GL_TEXTURE_2D, key_texture.id);
     else if(type == "pause")
         glBindTexture(GL_TEXTURE_2D, pause_texture.id);
+    else if(type == "story")
+        glBindTexture(GL_TEXTURE_2D, story_texture.id);
     
     // Setting uniform values to the currently bound program
     glUniformMatrix3fv(transform_uloc, 1, GL_FALSE, (float*)&transform);

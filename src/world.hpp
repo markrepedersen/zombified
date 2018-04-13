@@ -217,6 +217,7 @@ private:
     int winner;
     
     Info key_info;
+    Info story_info;
     
     bool pause;
     Info m_pause;
