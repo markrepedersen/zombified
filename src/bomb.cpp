@@ -335,8 +335,7 @@ float Bomb::get_force(float mass1, float speed, vec2 objPosition)
 void Bomb::explode() {
     Explosion m_explosion;
 
-    // m_explosion.init();
-    m_explosion.set_position(m_position);
+    m_explosion.init(m_position);
     m_explosion.animate();
 }
 

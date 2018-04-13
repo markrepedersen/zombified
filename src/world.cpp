@@ -228,7 +228,7 @@ bool World::update(float elapsed_ms) {
                 srand((unsigned) time(0));
                 explosion = false;
                 m_min = 0;
-                m_sec = 2;
+                m_sec = 60;
                 timeDelay = 5;
                 start = time(0);
                 immobilize = 0;
@@ -294,9 +294,18 @@ bool World::update(float elapsed_ms) {
             }
             
             check_add_tools(screen);
+
+            std::vector<Explosion>::iterator itr;
+            for (itr = m_explosion.begin(); itr != m_explosion.end();)
+              if (itr->get_end_animation())
+                itr = m_explosion.erase(itr);
+              else
+                itr++;
             
             if (explosion)
                 explode();
+                //if (!m_explosion.empty())
+                //    m_explosion.begin()->animate();
             
             if (useBomb)
                 use_bomb(elapsed_ms);
@@ -456,6 +465,8 @@ void World::draw() {
         
         for (auto& mud_collected: m_mud_collected)
             mud_collected.draw(projection_2D);
+        for (auto& explosion: m_explosion)
+            explosion.draw(projection_2D);
         
         entityDrawOrder(projection_2D);
         
@@ -1848,6 +1859,8 @@ void World::use_bomb(float ms) {
 }
 
 void World::autoExplode(Bomb bomb, int position) {
+    create_explosion(bomb.get_position());
+    //bomb.explode();
     float force_p1 = 0;
     float force_p2 = 0;
     if (!armourInUse_p1) {

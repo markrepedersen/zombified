@@ -17,7 +17,7 @@ int num_rows_explosion = 1;
 int num_cols_explosion = 9;
 int frames_explosion [9] = {0, 1, 2, 3, 4, 5, 6, 7, 8};
 // animation timing
-int frame_time_explosion = 100.f;
+int frame_time_explosion = 60.f;
 auto start_time_explosion = std::chrono::high_resolution_clock::now();
 
 bool Explosion::init(vec2 position)
@@ -68,17 +68,16 @@ bool Explosion::init(vec2 position)
         return false;
     
     // Loading shaders
-    if (!effect.load_from_file(shader_path("textured.vs.glsl"), shader_path("textured.fs.glsl")))
+    if (!effect.load_from_file(shader_path("player.vs.glsl"), shader_path("textured.fs.glsl")))
         return false;
     
     // Setting initial values
-    m_scale.x = -0.25f * ViewHelper::getRatio();
-    m_scale.y = 0.25f * ViewHelper::getRatio();
+    m_scale.x = -1.f * ViewHelper::getRatio();
+    m_scale.y = 1.f * ViewHelper::getRatio();
     m_position = { position.x, position.y };
 
     std::cout << "Explosion created" << "\n";
-
-    animate();
+    end_animation = false;
     
     return true;
 }
@@ -106,6 +105,7 @@ void Explosion::draw(const mat3& projection)
     GLint num_rows_uloc = glGetUniformLocation(effect.program, "num_rows");
     GLint num_cols_uloc = glGetUniformLocation(effect.program, "num_cols");
     GLint sprite_frame_index_uloc = glGetUniformLocation(effect.program, "sprite_frame_index");
+    
     
     // Setting vertices and indices
     glBindVertexArray(mesh.vao);
@@ -137,6 +137,9 @@ void Explosion::draw(const mat3& projection)
     
     // Drawing!
     glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_SHORT, nullptr);
+
+    std::cout << "Frame: " << sprite_frame_index_explosion << "\n";
+    animate();
 }
 
 void Explosion::set_position(vec2 position)
@@ -154,8 +157,15 @@ void Explosion::set_scale(vec2 scale)
     m_scale = scale;
 }
 
+bool Explosion::get_end_animation()const
+{
+    return end_animation;
+}
+
 void Explosion::destroy()
 {
+    //printf("Destroy!\n");
+    end_animation = true;
     glDeleteBuffers(1, &mesh.vbo);
     glDeleteBuffers(1, &mesh.ibo);
     glDeleteBuffers(1, &mesh.vao);
@@ -176,7 +186,7 @@ void Explosion::animate() {
         start_time_explosion = curr_time;
     }
 
-    if (curr_frame_explosion > 9) {
+    if (curr_frame_explosion > 8) {
         destroy();
     }
 }
