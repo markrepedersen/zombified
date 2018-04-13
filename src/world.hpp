@@ -219,4 +219,7 @@ private:
     int winner;
     
     Info key_info;
+    
+    bool pause;
+    Info m_pause;
 };

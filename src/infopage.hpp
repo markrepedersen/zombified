@@ -18,6 +18,8 @@ class Info : public Renderable
     
     static Texture key_texture;
     
+    static Texture pause_texture;
+    
 public:
     // Creates all the associated render resources and default transform
     bool init(std::string Infotype);

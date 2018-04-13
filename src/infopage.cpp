@@ -15,6 +15,8 @@ Texture Info::winner1_texture;
 Texture Info::winner2_texture;
 Texture Info::key_texture;
 
+Texture Info::pause_texture;
+
 bool Info::init(std::string infotype)
 {
     // Load shared texture
@@ -164,6 +166,20 @@ bool Info::init(std::string infotype)
             m_position = { 320.f* ViewHelper::getRatio(), 550.f* ViewHelper::getRatio() };
         }
     }
+    else if(type == "pause") {
+        if (!pause_texture.is_valid()) {
+            if (!pause_texture.load_from_file(startworld_textures_path("pause.png")))
+            {
+                fprintf(stderr, "Failed to load pause texture!");
+                return false;
+            }
+            wr = pause_texture.width * 0.5f;
+            hr = pause_texture.height * 0.5f;
+            m_scale.x = -0.25f * ViewHelper::getRatio();
+            m_scale.y = 0.25f * ViewHelper::getRatio();
+            m_position = { 640.f* ViewHelper::getRatio(), 360.f* ViewHelper::getRatio() };
+        }
+    }
     
     TexturedVertex vertices[4];
     vertices[0].position = { -wr, +hr, -0.02f };
@@ -261,6 +277,8 @@ void Info::draw(const mat3& projection)
         glBindTexture(GL_TEXTURE_2D, winner2_texture.id);
     else if(type == "key")
         glBindTexture(GL_TEXTURE_2D, key_texture.id);
+    else if(type == "pause")
+        glBindTexture(GL_TEXTURE_2D, pause_texture.id);
     
     // Setting uniform values to the currently bound program
     glUniformMatrix3fv(transform_uloc, 1, GL_FALSE, (float*)&transform);
