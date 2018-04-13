@@ -114,9 +114,12 @@ private:
     bool create_explosion(vec2 bomb_position);
 
 private:
-	void entityDrawOrder(mat3 projection_2D);
+    void entityDrawOrder(mat3 projection_2D);
 
-        // Window handle
+    void instructionScreenDraw(mat3 projection_2D);
+    void startScreenDraw(mat3 projection_2D);
+
+    // Window handle
 	GLFWwindow* m_window;
 
 	// true if the start button was pressed to start the main game world
@@ -140,27 +143,22 @@ private:
 	// Game entities
 	Worldtexture m_worldtexture;
 	ToolboxManager m_toolboxManager;
-	ToolManager toolManager;
+	//ToolManager toolManager;
 	LimbsManager m_limbsManager;
     ZombieManager m_zombieManager;
 	Player1 m_player1;
 	Player2 m_player2;
-	Zombie m_zombie;
 	Antidote m_antidote;
-
-    Tree m_tree;
 
     Punchleft gloveLeft_p1;
     Punchright gloveRight_p1;
     bool is_punchingleft_p1;
     bool is_punchingright_p1;
-
+    
     Punchleft gloveLeft_p2;
     Punchright gloveRight_p2;
     bool is_punchingleft_p2;
     bool is_punchingright_p2;
-
-    //Mud mud;
     
     std::vector<Ice> m_freeze;
     std::vector<Water> m_water;
@@ -212,6 +210,8 @@ private:
     Info m_armourdetails;
 
     std::string infoscreen;
+    
+	Button m_startbutton;
 
 	Button m_button;
 
@@ -224,4 +224,7 @@ private:
     int winner;
 
     Info key_info;
+
+    bool pause;
+    Info m_pause;
 };

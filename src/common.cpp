@@ -140,6 +140,7 @@ bool intersect(vec2 p1, vec2 q1, vec2 p2, vec2 q2) {
     return false;
 
 }
+
 /*!
  * Checks if the test point is inside polygon
  * This check is indeterminate in the case that the test point lies on top of one of the lines
@@ -176,7 +177,7 @@ std::vector<vec2> getIntersectionWithPoly(std::vector<vec2> poly, vec2 point, ve
 
         if (intersect(poly1, poly2, point, oldpoint) ||
             ((orientation(poly1, point, poly2) == 0) && onSegment(poly1, point, poly2))) {
-            
+
             intersection.push_back(poly1);
             intersection.push_back(poly2);
             return intersection;
@@ -204,6 +205,12 @@ vec2 getRandomPointInMap(std::vector<vec2> mapCollisionPoints, vec2 screen) {
 
 }
 
+bool is_aabb_colliding(float x1, float y1, int w1, int h1, float x2, float y2, int w2, int h2) {
+    return (x1 < (x2 + w2) &&
+            (x1 + w1) > x2 &&
+            y1 < (y2 + h2) &&
+            (h1 + y1) > y2);
+}
 
 float getDistance(vec2 v1, vec2 v2) {
     return sqrt(pow(v1.x - v2.x, 2) + pow(v1.y - v2.y, 2));

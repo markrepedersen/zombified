@@ -3,6 +3,8 @@
 //
 #include "MapGrid.h"
 
+using namespace std;
+
 MapGrid *MapGrid::instance = nullptr;
 
 void MapGrid::Init(int x, int y) {
@@ -25,7 +27,7 @@ bool MapGrid::operator()(unsigned x, unsigned y) const {
     return xScale < width && yScale < height && !isOccupied(xScale, yScale);
 }
 
-bool MapGrid::isOccupied(int x, int y)const  {
+bool MapGrid::isOccupied(int x, int y) const {
     int xScale = x / SCALING;
     int yScale = y / SCALING;
     return !mapdata[xScale][yScale]->getPopulation().empty();
@@ -39,7 +41,7 @@ void MapGrid::addOccupant(Kinetic *occupant) {
     auto hScale = dimensions.y / SCALING;
     AABB aabb(xScale, yScale, wScale, hScale);
     for (auto vec : aabb.getCornerPoints()) {
-        mapdata[vec.x > width-1 ? width-1 : vec.x][vec.y > height-1 ? height-1 : vec.y]->addCollider(occupant);
+        mapdata[vec.x > width - 1 ? width - 1 : vec.x][vec.y > height - 1 ? height - 1 : vec.y]->addCollider(occupant);
     }
 }
 
@@ -51,12 +53,36 @@ void MapGrid::removeOccupant(Kinetic *occupant) {
     auto hScale = dimensions.y / SCALING;
     AABB aabb(xScale, yScale, wScale, hScale);
     for (auto vec : aabb.getCornerPoints()) {
-        mapdata[vec.x > width-1 ? width-1 : vec.x][vec.y > height-1 ? height-1 : vec.y]->removeCollider(occupant);
+        mapdata[vec.x > width - 1 ? width - 1 : vec.x][vec.y > height - 1 ? height - 1 : vec.y]->removeCollider(
+                occupant);
     }
 }
 
-std::vector<Kinetic*> MapGrid::getPossibleColliders(int x, int y) {
-    int xScale = x / SCALING;
-    int yScale = y / SCALING;
-    return mapdata[xScale][yScale]->getPopulation();
+vector<Kinetic *> MapGrid::getPossibleColliders(int x, int y) {
+    return mapdata[x][y]->getPopulation();
+}
+
+void MapGrid::processColliders() {
+    for (int x = 0; x < this->width; ++x) {
+        for (int y = 0; y < this->height; ++y) {
+            vector<Kinetic*> colliders = getPossibleColliders(x, y);
+            for (int i = 0; i < colliders.size(); ++i) {
+                for (int j = 0; j < colliders.size(); ++j) {
+                    AABB collider1(colliders[i]->getAABB().x,
+                                   colliders[i]->getAABB().y,
+                                   colliders[i]->m_position.x,
+                                   colliders[i]->m_position.y);
+                    AABB collider2(colliders[j]->getAABB().x,
+                                   colliders[j]->getAABB().y,
+                                   colliders[j]->m_position.x,
+                                   colliders[j]->m_position.y);
+                    if (is_aabb_colliding(collider1.x,collider1.y,collider1.width,collider1.height,
+                                          collider2.x,collider2.y,collider2.width,collider2.height)) {
+                        colliders[i]->collide(colliders[j]);
+                        colliders[j]->collide(colliders[i]);
+                    }
+                }
+            }
+        }
+    }
 }

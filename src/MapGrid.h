@@ -111,7 +111,7 @@ public:
     void addOccupant(Kinetic* occupant);
     void removeOccupant(Kinetic *occupant);
     std::vector<Kinetic*> getPossibleColliders(int x, int y);
-    void pixelGoddamnPerfectCollision();
+    void processColliders();
 private:
     MapGrid(MapGrid const&);
     std::vector<int> possibleCollisions(int x, int y);

@@ -217,5 +217,6 @@ void ToolboxManager::destroy()
 {
     m_listOfSlotsPlayer1.clear();
     m_listOfSlotsPlayer2.clear();
+    
 }
 
