@@ -1,0 +1,3 @@
+/Users/irenefang/Documents/CPSC436D/Game/zombified/build/CMakeFiles/rebuild_cache.dir
+/Users/irenefang/Documents/CPSC436D/Game/zombified/build/CMakeFiles/edit_cache.dir
+/Users/irenefang/Documents/CPSC436D/Game/zombified/build/CMakeFiles/zombie.dir

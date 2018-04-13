@@ -2,7 +2,7 @@
 // Created by Mark Pedersen on 2018-03-12.
 //
 
-#ifndef ZOMBIE_TOOLSMANAGER_H
+/*#ifndef ZOMBIE_TOOLSMANAGER_H
 #define ZOMBIE_TOOLSMANAGER_H
 
 
@@ -23,4 +23,4 @@ private:
 };
 
 
-#endif //ZOMBIE_TOOLSMANAGER_H
+#endif //ZOMBIE_TOOLSMANAGER_H*/

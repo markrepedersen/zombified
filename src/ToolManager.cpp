@@ -2,7 +2,7 @@
 // Created by Mark Pedersen on 2018-03-12.
 //
 
-#include "ToolManager.h"
+/*#include "ToolManager.h"
 
 void ToolManager::draw_tools(const mat3 &projection_2D) {
     for (auto& ice : vIce) {
@@ -15,4 +15,4 @@ void ToolManager::draw_tools(const mat3 &projection_2D) {
 
 void ToolManager::process_collisions() {
 
-}
+}*/
