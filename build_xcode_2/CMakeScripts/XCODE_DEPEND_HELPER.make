@@ -8,39 +8,39 @@ default:
 # link.  This forces Xcode to relink the targets from scratch.  It
 # does not seem to check these dependencies itself.
 PostBuild.zombie.Debug:
-/Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/build_xcode_2/Debug/zombie:\
+/Users/irenefang/Documents/CPSC436D/Game/zombified/build_xcode_2/Debug/zombie:\
 	/usr/local/lib/libtinyxml2.dylib\
 	/usr/local/lib/libglfw.dylib\
 	/usr/lib/libz.dylib\
 	/usr/lib/libz.dylib
-	/bin/rm -f /Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/build_xcode_2/Debug/zombie
+	/bin/rm -f /Users/irenefang/Documents/CPSC436D/Game/zombified/build_xcode_2/Debug/zombie
 
 
 PostBuild.zombie.Release:
-/Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/build_xcode_2/Release/zombie:\
+/Users/irenefang/Documents/CPSC436D/Game/zombified/build_xcode_2/Release/zombie:\
 	/usr/local/lib/libtinyxml2.dylib\
 	/usr/local/lib/libglfw.dylib\
 	/usr/lib/libz.dylib\
 	/usr/lib/libz.dylib
-	/bin/rm -f /Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/build_xcode_2/Release/zombie
+	/bin/rm -f /Users/irenefang/Documents/CPSC436D/Game/zombified/build_xcode_2/Release/zombie
 
 
 PostBuild.zombie.MinSizeRel:
-/Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/build_xcode_2/MinSizeRel/zombie:\
+/Users/irenefang/Documents/CPSC436D/Game/zombified/build_xcode_2/MinSizeRel/zombie:\
 	/usr/local/lib/libtinyxml2.dylib\
 	/usr/local/lib/libglfw.dylib\
 	/usr/lib/libz.dylib\
 	/usr/lib/libz.dylib
-	/bin/rm -f /Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/build_xcode_2/MinSizeRel/zombie
+	/bin/rm -f /Users/irenefang/Documents/CPSC436D/Game/zombified/build_xcode_2/MinSizeRel/zombie
 
 
 PostBuild.zombie.RelWithDebInfo:
-/Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/build_xcode_2/RelWithDebInfo/zombie:\
+/Users/irenefang/Documents/CPSC436D/Game/zombified/build_xcode_2/RelWithDebInfo/zombie:\
 	/usr/local/lib/libtinyxml2.dylib\
 	/usr/local/lib/libglfw.dylib\
 	/usr/lib/libz.dylib\
 	/usr/lib/libz.dylib
-	/bin/rm -f /Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/build_xcode_2/RelWithDebInfo/zombie
+	/bin/rm -f /Users/irenefang/Documents/CPSC436D/Game/zombified/build_xcode_2/RelWithDebInfo/zombie
 
 
 
