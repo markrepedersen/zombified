@@ -39,7 +39,7 @@ void MapGrid::addOccupant(Kinetic *occupant) {
     auto hScale = dimensions.y / SCALING;
     AABB aabb(xScale, yScale, wScale, hScale);
     for (auto vec : aabb.getCornerPoints()) {
-        mapdata[vec.x][vec.y]->removeCollider(occupant);
+        mapdata[vec.x > width-1 ? width-1 : vec.x][vec.y > height-1 ? height-1 : vec.y]->addCollider(occupant);
     }
 }
 
@@ -51,6 +51,6 @@ void MapGrid::removeOccupant(Kinetic *occupant) {
     auto hScale = dimensions.y / SCALING;
     AABB aabb(xScale, yScale, wScale, hScale);
     for (auto vec : aabb.getCornerPoints()) {
-        mapdata[vec.x][vec.y]->removeCollider(occupant);
+        mapdata[vec.x > width-1 ? width-1 : vec.x][vec.y > height-1 ? height-1 : vec.y]->removeCollider(occupant);
     }
 }

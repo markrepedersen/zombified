@@ -48,9 +48,9 @@ private:
 struct AABB {
 public:
     inline AABB(int x, int y, int width, int height) : x(x), y(y), width(width), height(height) {
-        cornerPoints.push_back((point) {x - width, y - width});
-        cornerPoints.push_back((point) {x + width, y - width});
-        cornerPoints.push_back((point) {x - width, y + width});
+        cornerPoints.push_back((point) {x - width < 0 ? 0 : x - width, y - width < 0 ? 0 : y - width});
+        cornerPoints.push_back((point) {x + width, y - width < 0 ? 0 : y - width});
+        cornerPoints.push_back((point) {x - width < 0 ? 0 : x - width, y + width});
         cornerPoints.push_back((point) {x + width, y + width});
     }
     int x;
@@ -77,7 +77,7 @@ public:
     }
 
     inline void removeCollider(Kinetic* collider) {
-        for (auto it = population.begin(); it != population.end();) {
+        for (auto it = population.begin(); it != population.end();++it) {
             if (*it == collider) {
                 population.erase(it);
                 break;
