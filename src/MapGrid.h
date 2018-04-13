@@ -110,6 +110,8 @@ public:
     bool isOccupied(int x, int y)const;
     void addOccupant(Kinetic* occupant);
     void removeOccupant(Kinetic *occupant);
+    std::vector<Kinetic*> getPossibleColliders(int x, int y);
+    void pixelGoddamnPerfectCollision();
 private:
     MapGrid(MapGrid const&);
     std::vector<int> possibleCollisions(int x, int y);

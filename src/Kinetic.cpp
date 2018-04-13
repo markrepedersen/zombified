@@ -10,7 +10,7 @@ void Kinetic::move(vec2 pos) {
     MapGrid::GetInstance()->addOccupant(this);
 }
 
-void Kinetic::on_collide(Kinetic *collider) {
+void Kinetic::collide(Kinetic *collider) {
     if (auto player1 = dynamic_cast<Player1 *>(collider)) {
         on_player1_collision(player1);
     } else if (auto player2 = dynamic_cast<Player2 *>(collider)) {

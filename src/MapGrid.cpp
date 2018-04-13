@@ -54,3 +54,9 @@ void MapGrid::removeOccupant(Kinetic *occupant) {
         mapdata[vec.x > width-1 ? width-1 : vec.x][vec.y > height-1 ? height-1 : vec.y]->removeCollider(occupant);
     }
 }
+
+std::vector<Kinetic*> MapGrid::getPossibleColliders(int x, int y) {
+    int xScale = x / SCALING;
+    int yScale = y / SCALING;
+    return mapdata[xScale][yScale]->getPopulation();
+}

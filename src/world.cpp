@@ -199,8 +199,8 @@ bool World::update(float elapsed_ms) {
 
                 srand((unsigned) time(0));
                 explosion = false;
-                m_min = 0;
-                m_sec = 2;
+                m_min = 10;
+                m_sec = 0;
                 timeDelay = 5;
                 start = time(0);
                 immobilize = 0;
