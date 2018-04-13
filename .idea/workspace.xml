@@ -12,437 +12,33 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1678c5fe-1dfe-4c6a-a598-17127e4ca97e" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/ext/glfw/lib/glfw3-x64.dll" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/ext/glfw/lib/glfw3-x86.dll" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/ext/glfw/lib/glfw3dll-x64.lib" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/ext/glfw/lib/glfw3dll-x86.lib" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/ext/glfw/lib/libglfw3-x64.a" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/ext/sdl/lib/SDL2-x64.lib" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/ext/sdl/lib/SDL2-x86.lib" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/ext/sdl/lib/SDL2_mixer-x64.lib" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/ext/sdl/lib/SDL2_mixer-x86.lib" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/meshes/bomb.mesh" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/meshes/missile.mesh" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/meshes/salmon.mesh" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/background2.BMP" afterPath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/background2.BMP" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/background2.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/tiles/tiles_01.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/tiles/tiles_02.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/tiles/tiles_03.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/tiles/tiles_04.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/tiles/tiles_05.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/tiles/tiles_06.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/tiles/tiles_07.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/tiles/tiles_08.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/tiles/tiles_09.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/tiles/tiles_10.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/tiles/tiles_100.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/tiles/tiles_101.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/tiles/tiles_102.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/tiles/tiles_103.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/tiles/tiles_104.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/tiles/tiles_105.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/tiles/tiles_106.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/tiles/tiles_107.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/tiles/tiles_108.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/tiles/tiles_109.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/tiles/tiles_11.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/tiles/tiles_110.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/tiles/tiles_111.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/tiles/tiles_112.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/tiles/tiles_113.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/tiles/tiles_114.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/tiles/tiles_115.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/tiles/tiles_116.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/tiles/tiles_117.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/tiles/tiles_118.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/tiles/tiles_119.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/tiles/tiles_12.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/tiles/tiles_120.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/tiles/tiles_121.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/tiles/tiles_122.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/tiles/tiles_123.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/tiles/tiles_124.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/tiles/tiles_125.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/tiles/tiles_126.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/tiles/tiles_127.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/tiles/tiles_128.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/tiles/tiles_129.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/tiles/tiles_13.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/tiles/tiles_130.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/tiles/tiles_131.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/tiles/tiles_132.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/tiles/tiles_133.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/tiles/tiles_134.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/tiles/tiles_135.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/tiles/tiles_136.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/tiles/tiles_137.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/tiles/tiles_138.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/tiles/tiles_139.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/tiles/tiles_14.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/tiles/tiles_140.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/tiles/tiles_141.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/tiles/tiles_142.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/tiles/tiles_143.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/tiles/tiles_144.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/tiles/tiles_145.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/tiles/tiles_146.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/tiles/tiles_147.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/tiles/tiles_148.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/tiles/tiles_149.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/tiles/tiles_15.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/tiles/tiles_150.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/tiles/tiles_151.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/tiles/tiles_152.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/tiles/tiles_153.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/tiles/tiles_154.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/tiles/tiles_155.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/tiles/tiles_156.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/tiles/tiles_157.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/tiles/tiles_158.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/tiles/tiles_159.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/tiles/tiles_16.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/tiles/tiles_160.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/tiles/tiles_161.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/tiles/tiles_162.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/tiles/tiles_163.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/tiles/tiles_164.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/tiles/tiles_165.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/tiles/tiles_166.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/tiles/tiles_167.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/tiles/tiles_168.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/tiles/tiles_169.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/tiles/tiles_17.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/tiles/tiles_170.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/tiles/tiles_171.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/tiles/tiles_172.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/tiles/tiles_173.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/tiles/tiles_174.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/tiles/tiles_175.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/tiles/tiles_176.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/tiles/tiles_177.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/tiles/tiles_178.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/tiles/tiles_179.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/tiles/tiles_18.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/tiles/tiles_180.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/tiles/tiles_19.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/tiles/tiles_20.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/tiles/tiles_21.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/tiles/tiles_22.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/tiles/tiles_23.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/tiles/tiles_24.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/tiles/tiles_25.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/tiles/tiles_26.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/tiles/tiles_27.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/tiles/tiles_28.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/tiles/tiles_29.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/tiles/tiles_30.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/tiles/tiles_31.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/tiles/tiles_32.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/tiles/tiles_33.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/tiles/tiles_34.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/tiles/tiles_35.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/tiles/tiles_36.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/tiles/tiles_37.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/tiles/tiles_38.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/tiles/tiles_39.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/tiles/tiles_40.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/tiles/tiles_41.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/tiles/tiles_42.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/tiles/tiles_43.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/tiles/tiles_44.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/tiles/tiles_45.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/tiles/tiles_46.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/tiles/tiles_47.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/tiles/tiles_48.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/tiles/tiles_49.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/tiles/tiles_50.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/tiles/tiles_51.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/tiles/tiles_52.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/tiles/tiles_53.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/tiles/tiles_54.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/tiles/tiles_55.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/tiles/tiles_56.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/tiles/tiles_57.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/tiles/tiles_58.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/tiles/tiles_59.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/tiles/tiles_60.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/tiles/tiles_61.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/tiles/tiles_62.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/tiles/tiles_63.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/tiles/tiles_64.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/tiles/tiles_65.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/tiles/tiles_66.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/tiles/tiles_67.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/tiles/tiles_68.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/tiles/tiles_69.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/tiles/tiles_70.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/tiles/tiles_71.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/tiles/tiles_72.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/tiles/tiles_73.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/tiles/tiles_74.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/tiles/tiles_75.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/tiles/tiles_76.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/tiles/tiles_77.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/tiles/tiles_78.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/tiles/tiles_79.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/tiles/tiles_80.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/tiles/tiles_81.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/tiles/tiles_82.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/tiles/tiles_83.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/tiles/tiles_84.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/tiles/tiles_85.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/tiles/tiles_86.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/tiles/tiles_87.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/tiles/tiles_88.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/tiles/tiles_89.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/tiles/tiles_90.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/tiles/tiles_91.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/tiles/tiles_92.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/tiles/tiles_93.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/tiles/tiles_94.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/tiles/tiles_95.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/tiles/tiles_96.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/tiles/tiles_97.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/tiles/tiles_98.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/tiles/tiles_99.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/tiles2/tiles_01.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/tiles2/tiles_02.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/tiles2/tiles_03.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/tiles2/tiles_04.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/tiles2/tiles_05.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/tiles2/tiles_06.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/tiles2/tiles_07.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/tiles2/tiles_08.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/tiles2/tiles_09.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/tiles2/tiles_10.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/tiles2/tiles_100.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/tiles2/tiles_101.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/tiles2/tiles_102.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/tiles2/tiles_103.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/tiles2/tiles_104.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/tiles2/tiles_105.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/tiles2/tiles_106.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/tiles2/tiles_107.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/tiles2/tiles_108.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/tiles2/tiles_109.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/tiles2/tiles_11.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/tiles2/tiles_110.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/tiles2/tiles_111.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/tiles2/tiles_112.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/tiles2/tiles_113.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/tiles2/tiles_114.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/tiles2/tiles_115.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/tiles2/tiles_116.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/tiles2/tiles_117.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/tiles2/tiles_118.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/tiles2/tiles_119.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/tiles2/tiles_12.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/tiles2/tiles_120.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/tiles2/tiles_121.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/tiles2/tiles_122.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/tiles2/tiles_123.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/tiles2/tiles_124.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/tiles2/tiles_125.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/tiles2/tiles_126.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/tiles2/tiles_127.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/tiles2/tiles_128.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/tiles2/tiles_129.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/tiles2/tiles_13.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/tiles2/tiles_130.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/tiles2/tiles_131.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/tiles2/tiles_132.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/tiles2/tiles_133.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/tiles2/tiles_134.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/tiles2/tiles_135.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/tiles2/tiles_136.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/tiles2/tiles_137.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/tiles2/tiles_138.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/tiles2/tiles_139.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/tiles2/tiles_14.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/tiles2/tiles_140.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/tiles2/tiles_141.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/tiles2/tiles_142.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/tiles2/tiles_143.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/tiles2/tiles_144.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/tiles2/tiles_145.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/tiles2/tiles_146.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/tiles2/tiles_147.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/tiles2/tiles_148.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/tiles2/tiles_149.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/tiles2/tiles_15.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/tiles2/tiles_150.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/tiles2/tiles_151.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/tiles2/tiles_152.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/tiles2/tiles_153.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/tiles2/tiles_154.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/tiles2/tiles_155.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/tiles2/tiles_156.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/tiles2/tiles_157.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/tiles2/tiles_158.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/tiles2/tiles_159.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/tiles2/tiles_16.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/tiles2/tiles_160.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/tiles2/tiles_161.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/tiles2/tiles_162.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/tiles2/tiles_163.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/tiles2/tiles_164.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/tiles2/tiles_165.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/tiles2/tiles_17.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/tiles2/tiles_18.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/tiles2/tiles_19.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/tiles2/tiles_20.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/tiles2/tiles_21.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/tiles2/tiles_22.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/tiles2/tiles_23.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/tiles2/tiles_24.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/tiles2/tiles_25.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/tiles2/tiles_26.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/tiles2/tiles_27.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/tiles2/tiles_28.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/tiles2/tiles_29.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/tiles2/tiles_30.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/tiles2/tiles_31.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/tiles2/tiles_32.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/tiles2/tiles_33.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/tiles2/tiles_34.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/tiles2/tiles_35.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/tiles2/tiles_36.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/tiles2/tiles_37.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/tiles2/tiles_38.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/tiles2/tiles_39.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/tiles2/tiles_40.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/tiles2/tiles_41.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/tiles2/tiles_42.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/tiles2/tiles_43.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/tiles2/tiles_44.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/tiles2/tiles_45.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/tiles2/tiles_46.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/tiles2/tiles_47.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/tiles2/tiles_48.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/tiles2/tiles_49.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/tiles2/tiles_50.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/tiles2/tiles_51.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/tiles2/tiles_52.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/tiles2/tiles_53.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/tiles2/tiles_54.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/tiles2/tiles_55.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/tiles2/tiles_56.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/tiles2/tiles_57.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/tiles2/tiles_58.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/tiles2/tiles_59.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/tiles2/tiles_60.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/tiles2/tiles_61.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/tiles2/tiles_62.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/tiles2/tiles_63.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/tiles2/tiles_64.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/tiles2/tiles_65.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/tiles2/tiles_66.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/tiles2/tiles_67.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/tiles2/tiles_68.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/tiles2/tiles_69.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/tiles2/tiles_70.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/tiles2/tiles_71.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/tiles2/tiles_72.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/tiles2/tiles_73.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/tiles2/tiles_74.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/tiles2/tiles_75.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/tiles2/tiles_76.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/tiles2/tiles_77.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/tiles2/tiles_78.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/tiles2/tiles_79.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/tiles2/tiles_80.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/tiles2/tiles_81.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/tiles2/tiles_82.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/tiles2/tiles_83.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/tiles2/tiles_84.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/tiles2/tiles_85.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/tiles2/tiles_86.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/tiles2/tiles_87.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/tiles2/tiles_88.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/tiles2/tiles_89.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/tiles2/tiles_90.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/tiles2/tiles_91.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/tiles2/tiles_92.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/tiles2/tiles_93.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/tiles2/tiles_94.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/tiles2/tiles_95.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/tiles2/tiles_96.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/tiles2/tiles_97.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/tiles2/tiles_98.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/tiles2/tiles_99.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/background/tree.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/effects/blood.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/effects/explosion.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/p1/p1 standing left.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/p1/p1 standing right.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/p1/p1 walking down 1.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/p1/p1 walking down 2.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/p1/p1 walking left 1.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/p1/p1 walking left 2.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/p1/p1 walking left 3.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/p1/p1 walking right 1.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/p1/p1 walking right 2.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/p1/p1 walking right 3.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/p1/p1 walking up 1.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/p1/p1 walking up 2.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/p1/p1.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/p1/p1_num.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/p2/p2 standing left.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/p2/p2 standing right.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/p2/p2 walking down 1.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/p2/p2 walking down 2.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/p2/p2 walking left 1.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/p2/p2 walking left 2.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/p2/p2 walking left 3.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/p2/p2 walking right 1.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/p2/p2 walking right 2.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/p2/p2 walking right 3.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/p2/p2 walking up 1.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/p2/p2 walking up 2.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/p2/p2.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/start screen/startbutton click.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/start screen/startbutton unclick.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/toolboxSlot.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/tools/freeze.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/tools/glove2.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/tools/gloveleft.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/tools/gloveright.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/tools/leg 1.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/tools/leg 2.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/tools/leg_sprite.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/tools/mud.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/tools/water.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/tools/zombie arm move/zombie arm_00025.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/tools/zombie arm move/zombie arm_00050.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/tools/zombie arm move/zombie arm_00075.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/tools/zombie arm move/zombie arm_00100.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/tools/zombie foot move/foot_00000.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/tools/zombie foot move/foot_00008.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/tools/zombie foot move/foot_00016.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/tools/zombie foot move/foot_00024.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/tools/zombie foot move/foot_00040.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data/textures/tools/zombie leg.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/shaders/colored.fs.glsl" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/shaders/colored.vs.glsl" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/shaders/player.fs.glsl" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/shaders/player.vs.glsl" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/shaders/textured.fs.glsl" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/shaders/textured.vs.glsl" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/zombie.dir/CXX.includecache" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/zombie.dir/CXX.includecache" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/zombie.dir/depend.internal" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/zombie.dir/depend.internal" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/zombie.dir/depend.make" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/zombie.dir/depend.make" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/zombie" afterPath="$PROJECT_DIR$/cmake-build-debug/zombie" />
+      <change beforePath="$PROJECT_DIR$/src/Ice.cpp" afterPath="$PROJECT_DIR$/src/Ice.cpp" />
+      <change beforePath="$PROJECT_DIR$/src/Kinetic.cpp" afterPath="$PROJECT_DIR$/src/Kinetic.cpp" />
+      <change beforePath="$PROJECT_DIR$/src/Limb.cpp" afterPath="$PROJECT_DIR$/src/Limb.cpp" />
       <change beforePath="$PROJECT_DIR$/src/MapGrid.cpp" afterPath="$PROJECT_DIR$/src/MapGrid.cpp" />
-      <change beforePath="$PROJECT_DIR$/src/MapGrid.h" afterPath="$PROJECT_DIR$/src/MapGrid.h" />
-      <change beforePath="$PROJECT_DIR$/src/ToolManager.cpp" afterPath="$PROJECT_DIR$/src/ToolManager.cpp" />
-      <change beforePath="$PROJECT_DIR$/src/ToolManager.h" afterPath="$PROJECT_DIR$/src/ToolManager.h" />
+      <change beforePath="$PROJECT_DIR$/src/antidote.cpp" afterPath="$PROJECT_DIR$/src/antidote.cpp" />
+      <change beforePath="$PROJECT_DIR$/src/armour.cpp" afterPath="$PROJECT_DIR$/src/armour.cpp" />
+      <change beforePath="$PROJECT_DIR$/src/blood.cpp" afterPath="$PROJECT_DIR$/src/blood.cpp" />
+      <change beforePath="$PROJECT_DIR$/src/bomb.cpp" afterPath="$PROJECT_DIR$/src/bomb.cpp" />
       <change beforePath="$PROJECT_DIR$/src/common.cpp" afterPath="$PROJECT_DIR$/src/common.cpp" />
-      <change beforePath="$PROJECT_DIR$/src/common.hpp" afterPath="$PROJECT_DIR$/src/common.hpp" />
-      <change beforePath="$PROJECT_DIR$/src/infopage.cpp" afterPath="$PROJECT_DIR$/src/infopage.cpp" />
-      <change beforePath="$PROJECT_DIR$/src/infopage.hpp" afterPath="$PROJECT_DIR$/src/infopage.hpp" />
+      <change beforePath="$PROJECT_DIR$/src/explosion.cpp" afterPath="$PROJECT_DIR$/src/explosion.cpp" />
       <change beforePath="$PROJECT_DIR$/src/limbsManager.cpp" afterPath="$PROJECT_DIR$/src/limbsManager.cpp" />
-      <change beforePath="$PROJECT_DIR$/src/toolboxManager.cpp" afterPath="$PROJECT_DIR$/src/toolboxManager.cpp" />
+      <change beforePath="$PROJECT_DIR$/src/missile.cpp" afterPath="$PROJECT_DIR$/src/missile.cpp" />
+      <change beforePath="$PROJECT_DIR$/src/mud.cpp" afterPath="$PROJECT_DIR$/src/mud.cpp" />
+      <change beforePath="$PROJECT_DIR$/src/player1.cpp" afterPath="$PROJECT_DIR$/src/player1.cpp" />
+      <change beforePath="$PROJECT_DIR$/src/player2.cpp" afterPath="$PROJECT_DIR$/src/player2.cpp" />
+      <change beforePath="$PROJECT_DIR$/src/punchleft.cpp" afterPath="$PROJECT_DIR$/src/punchleft.cpp" />
+      <change beforePath="$PROJECT_DIR$/src/punchright.cpp" afterPath="$PROJECT_DIR$/src/punchright.cpp" />
+      <change beforePath="$PROJECT_DIR$/src/tree.cpp" afterPath="$PROJECT_DIR$/src/tree.cpp" />
+      <change beforePath="$PROJECT_DIR$/src/water.cpp" afterPath="$PROJECT_DIR$/src/water.cpp" />
       <change beforePath="$PROJECT_DIR$/src/world.cpp" afterPath="$PROJECT_DIR$/src/world.cpp" />
-      <change beforePath="$PROJECT_DIR$/src/world.hpp" afterPath="$PROJECT_DIR$/src/world.hpp" />
+      <change beforePath="$PROJECT_DIR$/src/zombie.cpp" afterPath="$PROJECT_DIR$/src/zombie.cpp" />
+      <change beforePath="$PROJECT_DIR$/src/zombieManager.cpp" afterPath="$PROJECT_DIR$/src/zombieManager.cpp" />
     </list>
     <ignored path="$PROJECT_DIR$/cmake-build-debug/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -455,48 +51,62 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="CMakeBuildProfile:Debug" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="MapGrid.cpp" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/MapGrid.cpp">
+      <file leaf-file-name="world.cpp" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/world.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="247">
-              <caret line="78" column="34" lean-forward="false" selection-start-line="78" selection-start-column="34" selection-end-line="78" selection-end-column="34" />
+            <state relative-caret-position="113">
+              <caret line="922" column="20" lean-forward="false" selection-start-line="922" selection-start-column="20" selection-end-line="922" selection-end-column="20" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="MapGrid.h" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/MapGrid.h">
+      <file leaf-file-name="zombieManager.cpp" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/zombieManager.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="300">
-              <caret line="20" column="10" lean-forward="true" selection-start-line="20" selection-start-column="10" selection-end-line="20" selection-end-column="10" />
-              <folding>
-                <element signature="e#64#85#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="1085">
+              <caret line="83" column="0" lean-forward="false" selection-start-line="83" selection-start-column="0" selection-end-line="83" selection-end-column="0" />
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Ice.cpp" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Ice.cpp">
+      <file leaf-file-name="limbsManager.cpp" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/limbsManager.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="15">
-              <caret line="1" column="9" lean-forward="false" selection-start-line="1" selection-start-column="9" selection-end-line="1" selection-end-column="9" />
-              <folding>
-                <element signature="e#10#28#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="149">
+              <caret line="39" column="0" lean-forward="false" selection-start-line="39" selection-start-column="0" selection-end-line="39" selection-end-column="0" />
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Ice.hpp" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Ice.hpp">
+      <file leaf-file-name="limbsManager.hpp" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/limbsManager.hpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="30">
-              <caret line="2" column="9" lean-forward="false" selection-start-line="2" selection-start-column="9" selection-end-line="2" selection-end-column="9" />
-              <folding>
-                <element signature="e#14#35#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="225">
+              <caret line="25" column="9" lean-forward="false" selection-start-line="25" selection-start-column="9" selection-end-line="25" selection-end-column="9" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="water.cpp" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/water.cpp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1509">
+              <caret line="203" column="0" lean-forward="false" selection-start-line="203" selection-start-column="0" selection-end-line="203" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="common.cpp" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/common.cpp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-4">
+              <caret line="180" column="0" lean-forward="false" selection-start-line="180" selection-start-column="0" selection-end-line="180" selection-end-column="0" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -504,8 +114,18 @@
       <file leaf-file-name="player1.cpp" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/player1.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="382">
-              <caret line="562" column="20" lean-forward="false" selection-start-line="562" selection-start-column="20" selection-end-line="562" selection-end-column="20" />
+            <state relative-caret-position="127">
+              <caret line="520" column="9" lean-forward="false" selection-start-line="520" selection-start-column="9" selection-end-line="520" selection-end-column="9" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="MapGrid.cpp" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/MapGrid.cpp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="145">
+              <caret line="32" column="34" lean-forward="false" selection-start-line="32" selection-start-column="34" selection-end-line="32" selection-end-column="34" />
               <folding />
             </state>
           </provider>
@@ -514,30 +134,8 @@
       <file leaf-file-name="Kinetic.cpp" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Kinetic.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="105">
-              <caret line="7" column="13" lean-forward="false" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
-              <folding>
-                <element signature="e#0#20#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Kinetic.h" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Kinetic.h">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="150">
-              <caret line="10" column="17" lean-forward="false" selection-start-line="10" selection-start-column="17" selection-end-line="10" selection-end-column="17" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="world.cpp" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/world.cpp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="220">
-              <caret line="592" column="4" lean-forward="false" selection-start-line="592" selection-start-column="4" selection-end-line="594" selection-end-column="7" />
+            <state relative-caret-position="120">
+              <caret line="12" column="14" lean-forward="false" selection-start-line="12" selection-start-column="14" selection-end-line="12" selection-end-column="14" />
               <folding />
             </state>
           </provider>
@@ -547,36 +145,36 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>Entity</find>
-      <find>algo</find>
-      <find>itera</find>
-      <find>position</find>
-      <find>zombiemanager</find>
-      <find>get_bounding</find>
-      <find>get_boun</find>
-      <find>collision</find>
-      <find>point_ins</find>
-      <find>po</find>
-      <find>isinside</find>
-      <find>isinsi</find>
-      <find>isbound</find>
-      <find>shift</find>
-      <find>renderable</find>
-      <find>explosion</find>
-      <find>get</find>
-      <find>mapgrid::</find>
-      <find>time r</find>
       <find>time</find>
       <find>scale</find>
       <find>info</find>
       <find>toolpage</find>
       <find>rendered</find>
-      <find>move</find>
       <find>type</find>
       <find>timer</find>
-      <find>init</find>
       <find>for_each</find>
       <find>is_aa</find>
+      <find>bounding</find>
+      <find>destroy</find>
+      <find>dest</find>
+      <find>des</find>
+      <find>destr</find>
+      <find>get_boud</find>
+      <find>get_boun</find>
+      <find>get</find>
+      <find>get_bou</find>
+      <find>compute</find>
+      <find>init</find>
+      <find>limb</find>
+      <find>limbs</find>
+      <find>draworder</find>
+      <find>move</find>
+      <find>computezpa</find>
+      <find>isini</find>
+      <find>update</find>
+      <find>collide</find>
+      <find>spawn</find>
+      <find>isem</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -590,9 +188,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/zombieManager.hpp" />
-        <option value="$PROJECT_DIR$/src/zombieManager.cpp" />
-        <option value="$PROJECT_DIR$/src/limbsManager.cpp" />
         <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/src/limbsManager.hpp" />
         <option value="$PROJECT_DIR$/src/MovableAndCollidable.cpp" />
@@ -603,44 +198,47 @@
         <option value="$PROJECT_DIR$/src/infopage.hpp" />
         <option value="$PROJECT_DIR$/src/button.cpp" />
         <option value="$PROJECT_DIR$/src/zombie.hpp" />
-        <option value="$PROJECT_DIR$/src/zombie.cpp" />
         <option value="$PROJECT_DIR$/src/Ice.hpp" />
-        <option value="$PROJECT_DIR$/src/Ice.cpp" />
-        <option value="$PROJECT_DIR$/src/antidote.cpp" />
         <option value="$PROJECT_DIR$/src/armour.hpp" />
-        <option value="$PROJECT_DIR$/src/armour.cpp" />
         <option value="$PROJECT_DIR$/src/blood.hpp" />
-        <option value="$PROJECT_DIR$/src/blood.cpp" />
         <option value="$PROJECT_DIR$/src/bomb.hpp" />
-        <option value="$PROJECT_DIR$/src/bomb.cpp" />
-        <option value="$PROJECT_DIR$/src/explosion.cpp" />
         <option value="$PROJECT_DIR$/src/mud.hpp" />
-        <option value="$PROJECT_DIR$/src/mud.cpp" />
         <option value="$PROJECT_DIR$/src/player1.hpp" />
         <option value="$PROJECT_DIR$/src/player2.hpp" />
         <option value="$PROJECT_DIR$/src/punchleft.hpp" />
         <option value="$PROJECT_DIR$/src/punchright.hpp" />
         <option value="$PROJECT_DIR$/src/tree.hpp" />
         <option value="$PROJECT_DIR$/src/water.hpp" />
-        <option value="$PROJECT_DIR$/src/player1.cpp" />
-        <option value="$PROJECT_DIR$/src/water.cpp" />
-        <option value="$PROJECT_DIR$/src/tree.cpp" />
-        <option value="$PROJECT_DIR$/src/punchright.cpp" />
-        <option value="$PROJECT_DIR$/src/punchleft.cpp" />
         <option value="$PROJECT_DIR$/src/Limb.h" />
-        <option value="$PROJECT_DIR$/src/Limb.cpp" />
         <option value="$PROJECT_DIR$/src/antidote.hpp" />
         <option value="$PROJECT_DIR$/src/explosion.hpp" />
         <option value="$PROJECT_DIR$/src/missile.hpp" />
-        <option value="$PROJECT_DIR$/src/missile.cpp" />
-        <option value="$PROJECT_DIR$/src/player2.cpp" />
-        <option value="$PROJECT_DIR$/src/Kinetic.cpp" />
         <option value="$PROJECT_DIR$/src/Kinetic.h" />
-        <option value="$PROJECT_DIR$/src/world.cpp" />
-        <option value="$PROJECT_DIR$/src/MapGrid.h" />
-        <option value="$PROJECT_DIR$/src/MapGrid.cpp" />
         <option value="$PROJECT_DIR$/src/common.hpp" />
+        <option value="$PROJECT_DIR$/src/MapGrid.h" />
         <option value="$PROJECT_DIR$/src/common.cpp" />
+        <option value="$PROJECT_DIR$/src/player2.cpp" />
+        <option value="$PROJECT_DIR$/src/explosion.cpp" />
+        <option value="$PROJECT_DIR$/src/blood.cpp" />
+        <option value="$PROJECT_DIR$/src/bomb.cpp" />
+        <option value="$PROJECT_DIR$/src/antidote.cpp" />
+        <option value="$PROJECT_DIR$/src/armour.cpp" />
+        <option value="$PROJECT_DIR$/src/Ice.cpp" />
+        <option value="$PROJECT_DIR$/src/Limb.cpp" />
+        <option value="$PROJECT_DIR$/src/missile.cpp" />
+        <option value="$PROJECT_DIR$/src/mud.cpp" />
+        <option value="$PROJECT_DIR$/src/punchleft.cpp" />
+        <option value="$PROJECT_DIR$/src/punchright.cpp" />
+        <option value="$PROJECT_DIR$/src/tree.cpp" />
+        <option value="$PROJECT_DIR$/src/water.cpp" />
+        <option value="$PROJECT_DIR$/src/JPS.h" />
+        <option value="$PROJECT_DIR$/src/Kinetic.cpp" />
+        <option value="$PROJECT_DIR$/src/zombie.cpp" />
+        <option value="$PROJECT_DIR$/src/player1.cpp" />
+        <option value="$PROJECT_DIR$/src/MapGrid.cpp" />
+        <option value="$PROJECT_DIR$/src/world.cpp" />
+        <option value="$PROJECT_DIR$/src/zombieManager.cpp" />
+        <option value="$PROJECT_DIR$/src/limbsManager.cpp" />
       </list>
     </option>
   </component>
@@ -694,6 +292,11 @@
             <path>
               <item name="zombie" type="dad4c3:CidrFilesViewHelper$MyProjectTreeStructure$1" />
               <item name="zombified" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="zombie" type="dad4c3:CidrFilesViewHelper$MyProjectTreeStructure$1" />
+              <item name="zombified" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -764,7 +367,7 @@
       <workItem from="1522990230419" duration="228000" />
       <workItem from="1523413255964" duration="11472000" />
       <workItem from="1523511070756" duration="4231000" />
-      <workItem from="1523578220324" duration="23790000" />
+      <workItem from="1523578220324" duration="36139000" />
     </task>
     <task id="LOCAL-00001" summary="isometric perspective + bunch of stuff that isn't finished yet">
       <created>1522461045972</created>
@@ -896,7 +499,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="83557000" />
+    <option name="totallyTimeSpent" value="95906000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -916,13 +519,13 @@
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.35601267" sideWeight="0.49563146" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="CMake" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32911393" sideWeight="0.49722" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.14556962" sideWeight="0.5059571" order="8" side_tool="true" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32911393" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.34968355" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.14556962" sideWeight="0.4940429" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1392405" sideWeight="0.49722" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.1392405" sideWeight="0.49722" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3227848" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22626582" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -1009,7 +612,7 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="20" />
+      <option name="time" value="47" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -1021,76 +624,48 @@
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>mapdata[0][2]</expression-string>
+        <expression-string>zombie</expression-string>
         <language-id>ObjectiveC</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>vec.y &gt; height ? height : vec.y</expression-string>
+        <expression-string>zombie.getCurrentPath()</expression-string>
         <language-id>ObjectiveC</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>vec.y &gt; height ? height</expression-string>
+        <expression-string>mapdat</expression-string>
         <language-id>ObjectiveC</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>vec.x &gt; width ? width : vec.x</expression-string>
+        <expression-string>colliders</expression-string>
         <language-id>ObjectiveC</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>mapdata[vec.x &gt; width ? width : vec.x][vec.y &gt; height ? height : vec.y]</expression-string>
+        <expression-string>colliders[0]</expression-string>
         <language-id>ObjectiveC</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>height</expression-string>
+        <expression-string>colliders[i]</expression-string>
         <language-id>ObjectiveC</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>width</expression-string>
+        <expression-string>colliders[j]</expression-string>
         <language-id>ObjectiveC</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>this-&gt;population</expression-string>
+        <expression-string>dynamic_cast&lt;Player1*&gt;(collider)</expression-string>
         <language-id>ObjectiveC</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/cmake-build-debug/data/textures/start screen/winner1.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/cmake-build-debug/data/textures/start screen/bomb text.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/cmake-build-debug/data/textures/start screen/tooldefault.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/button.hpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="5" column="8" lean-forward="false" selection-start-line="5" selection-start-column="8" selection-end-line="5" selection-end-column="8" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/cmake-build-debug/data/textures/start screen/keys.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/infopage.hpp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="363">
@@ -1107,234 +682,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/world.hpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="303">
-          <caret line="218" column="11" lean-forward="false" selection-start-line="218" selection-start-column="11" selection-end-line="218" selection-end-column="11" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/button.cpp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="198">
           <caret line="215" column="13" lean-forward="false" selection-start-line="215" selection-start-column="13" selection-end-line="215" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/zombieManager.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="477">
-          <caret line="126" column="28" lean-forward="true" selection-start-line="126" selection-start-column="28" selection-end-line="126" selection-end-column="28" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/zombie.hpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="378">
-          <caret line="65" column="27" lean-forward="false" selection-start-line="65" selection-start-column="27" selection-end-line="65" selection-end-column="27" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/antidote.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="195" column="0" lean-forward="false" selection-start-line="195" selection-start-column="0" selection-end-line="197" selection-end-column="1" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/armour.hpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="194">
-          <caret line="35" column="27" lean-forward="false" selection-start-line="35" selection-start-column="27" selection-end-line="35" selection-end-column="27" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/armour.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="288" column="0" lean-forward="false" selection-start-line="288" selection-start-column="0" selection-end-line="290" selection-end-column="1" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/bomb.hpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="71" column="27" lean-forward="false" selection-start-line="71" selection-start-column="27" selection-end-line="71" selection-end-column="27" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/bomb.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="439" column="0" lean-forward="false" selection-start-line="439" selection-start-column="0" selection-end-line="441" selection-end-column="1" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/explosion.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
-          <caret line="225" column="0" lean-forward="false" selection-start-line="225" selection-start-column="0" selection-end-line="227" selection-end-column="1" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/mud.hpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="313">
-          <caret line="42" column="9" lean-forward="false" selection-start-line="42" selection-start-column="9" selection-end-line="42" selection-end-column="9" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/mud.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="375">
-          <caret line="204" column="0" lean-forward="false" selection-start-line="204" selection-start-column="0" selection-end-line="206" selection-end-column="1" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/player1.hpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="158">
-          <caret line="91" column="9" lean-forward="true" selection-start-line="91" selection-start-column="0" selection-end-line="92" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/punchleft.hpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="42" column="0" lean-forward="false" selection-start-line="42" selection-start-column="0" selection-end-line="42" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/punchright.hpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="600">
-          <caret line="41" column="0" lean-forward="false" selection-start-line="41" selection-start-column="0" selection-end-line="41" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/tree.hpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="47" column="0" lean-forward="false" selection-start-line="47" selection-start-column="0" selection-end-line="47" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/water.hpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="41" column="27" lean-forward="false" selection-start-line="41" selection-start-column="27" selection-end-line="41" selection-end-column="27" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/water.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
-          <caret line="199" column="0" lean-forward="false" selection-start-line="199" selection-start-column="0" selection-end-line="201" selection-end-column="1" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/tree.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="375">
-          <caret line="223" column="0" lean-forward="false" selection-start-line="223" selection-start-column="0" selection-end-line="225" selection-end-column="1" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/punchright.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="375">
-          <caret line="194" column="0" lean-forward="false" selection-start-line="194" selection-start-column="0" selection-end-line="196" selection-end-column="1" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/punchleft.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="375">
-          <caret line="194" column="0" lean-forward="false" selection-start-line="194" selection-start-column="0" selection-end-line="196" selection-end-column="1" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Limb.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="128">
-          <caret line="81" column="29" lean-forward="false" selection-start-line="81" selection-start-column="29" selection-end-line="81" selection-end-column="29" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/antidote.hpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="64">
-          <caret line="42" column="9" lean-forward="false" selection-start-line="42" selection-start-column="9" selection-end-line="42" selection-end-column="9" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/explosion.hpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="64">
-          <caret line="37" column="15" lean-forward="false" selection-start-line="37" selection-start-column="0" selection-end-line="38" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/missile.hpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="114">
-          <caret line="58" column="0" lean-forward="false" selection-start-line="58" selection-start-column="0" selection-end-line="58" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Limb.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="307" column="0" lean-forward="false" selection-start-line="307" selection-start-column="0" selection-end-line="317" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/player2.hpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="214">
-          <caret line="87" column="0" lean-forward="false" selection-start-line="87" selection-start-column="0" selection-end-line="87" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/missile.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="169">
-          <caret line="350" column="0" lean-forward="false" selection-start-line="350" selection-start-column="0" selection-end-line="353" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/player2.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="244">
-          <caret line="529" column="89" lean-forward="false" selection-start-line="529" selection-start-column="89" selection-end-line="529" selection-end-column="89" />
           <folding />
         </state>
       </provider>
@@ -1347,100 +698,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file:///Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include/c++/v1/vector">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="127">
-          <caret line="1459" column="0" lean-forward="false" selection-start-line="1459" selection-start-column="0" selection-end-line="1459" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/zombie.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="237" column="1" lean-forward="false" selection-start-line="237" selection-start-column="1" selection-end-line="237" selection-end-column="1" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/blood.hpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="229">
-          <caret line="36" column="27" lean-forward="false" selection-start-line="36" selection-start-column="27" selection-end-line="36" selection-end-column="27" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/blood.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="194">
-          <caret line="178" column="0" lean-forward="false" selection-start-line="178" selection-start-column="0" selection-end-line="178" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/world.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="220">
-          <caret line="592" column="4" lean-forward="false" selection-start-line="592" selection-start-column="4" selection-end-line="594" selection-end-column="7" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/player1.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="382">
-          <caret line="562" column="20" lean-forward="false" selection-start-line="562" selection-start-column="20" selection-end-line="562" selection-end-column="20" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Kinetic.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="10" column="17" lean-forward="false" selection-start-line="10" selection-start-column="17" selection-end-line="10" selection-end-column="17" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/MapGrid.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="247">
-          <caret line="78" column="34" lean-forward="false" selection-start-line="78" selection-start-column="34" selection-end-line="78" selection-end-column="34" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Ice.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="1" column="9" lean-forward="false" selection-start-line="1" selection-start-column="9" selection-end-line="1" selection-end-column="9" />
-          <folding>
-            <element signature="e#10#28#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Ice.hpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" column="9" lean-forward="false" selection-start-line="2" selection-start-column="9" selection-end-line="2" selection-end-column="9" />
-          <folding>
-            <element signature="e#14#35#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Kinetic.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="7" column="13" lean-forward="false" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
-          <folding>
-            <element signature="e#0#20#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/common.hpp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="167">
@@ -1449,21 +706,373 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/common.cpp">
+    <entry file="file://$PROJECT_DIR$/src/player2.hpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="106">
-          <caret line="204" column="0" lean-forward="false" selection-start-line="204" selection-start-column="0" selection-end-line="204" selection-end-column="0" />
+        <state relative-caret-position="291">
+          <caret line="93" column="13" lean-forward="true" selection-start-line="93" selection-start-column="13" selection-end-line="93" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/player2.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="186">
+          <caret line="480" column="10" lean-forward="false" selection-start-line="480" selection-start-column="10" selection-end-line="480" selection-end-column="10" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/blood.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="201">
+          <caret line="135" column="5" lean-forward="false" selection-start-line="135" selection-start-column="5" selection-end-line="135" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/armour.hpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="134">
+          <caret line="31" column="17" lean-forward="true" selection-start-line="31" selection-start-column="17" selection-end-line="31" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/missile.hpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="248">
+          <caret line="35" column="17" lean-forward="true" selection-start-line="35" selection-start-column="17" selection-end-line="35" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/mud.hpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="164">
+          <caret line="24" column="16" lean-forward="true" selection-start-line="24" selection-start-column="16" selection-end-line="24" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/player1.hpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="113">
+          <caret line="72" column="16" lean-forward="true" selection-start-line="72" selection-start-column="16" selection-end-line="72" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/punchleft.hpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="26" column="15" lean-forward="false" selection-start-line="26" selection-start-column="15" selection-end-line="26" selection-end-column="15" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/punchleft.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="348">
+          <caret line="198" column="0" lean-forward="false" selection-start-line="198" selection-start-column="0" selection-end-line="198" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/punchright.hpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="219">
+          <caret line="26" column="16" lean-forward="false" selection-start-line="26" selection-start-column="16" selection-end-line="26" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/punchright.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="348">
+          <caret line="198" column="0" lean-forward="false" selection-start-line="198" selection-start-column="0" selection-end-line="198" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/tree.hpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="23">
+          <caret line="28" column="19" lean-forward="true" selection-start-line="28" selection-start-column="19" selection-end-line="28" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/tree.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="348">
+          <caret line="227" column="0" lean-forward="false" selection-start-line="227" selection-start-column="0" selection-end-line="227" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/antidote.hpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="299">
+          <caret line="27" column="16" lean-forward="false" selection-start-line="27" selection-start-column="16" selection-end-line="27" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/antidote.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="333">
+          <caret line="198" column="18" lean-forward="false" selection-start-line="198" selection-start-column="16" selection-end-line="198" selection-end-column="18" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/blood.hpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="164">
+          <caret line="19" column="13" lean-forward="false" selection-start-line="19" selection-start-column="13" selection-end-line="19" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/bomb.hpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="164">
+          <caret line="45" column="19" lean-forward="false" selection-start-line="45" selection-start-column="19" selection-end-line="45" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Ice.hpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="164">
+          <caret line="31" column="13" lean-forward="false" selection-start-line="31" selection-start-column="13" selection-end-line="31" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/JPS.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="190">
+          <caret line="706" column="72" lean-forward="false" selection-start-line="706" selection-start-column="72" selection-end-line="706" selection-end-column="72" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/explosion.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="227" column="9" lean-forward="false" selection-start-line="227" selection-start-column="9" selection-end-line="227" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/explosion.hpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="29">
+          <caret line="18" column="13" lean-forward="false" selection-start-line="18" selection-start-column="13" selection-end-line="18" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/armour.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="294" column="87" lean-forward="false" selection-start-line="294" selection-start-column="87" selection-end-line="294" selection-end-column="87" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/bomb.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-3210">
+          <caret line="210" column="11" lean-forward="false" selection-start-line="210" selection-start-column="11" selection-end-line="210" selection-end-column="11" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/missile.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="356" column="89" lean-forward="false" selection-start-line="356" selection-start-column="89" selection-end-line="356" selection-end-column="89" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Ice.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-720">
+          <caret line="156" column="10" lean-forward="false" selection-start-line="156" selection-start-column="10" selection-end-line="156" selection-end-column="10" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/MapGrid.h">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="20" column="10" lean-forward="true" selection-start-line="20" selection-start-column="10" selection-end-line="20" selection-end-column="10" />
+        <state relative-caret-position="95">
+          <caret line="69" column="40" lean-forward="false" selection-start-line="69" selection-start-column="40" selection-end-line="69" selection-end-column="40" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Limb.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="223">
+          <caret line="312" column="0" lean-forward="false" selection-start-line="312" selection-start-column="0" selection-end-line="312" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/mud.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3075">
+          <caret line="209" column="99" lean-forward="false" selection-start-line="209" selection-start-column="99" selection-end-line="209" selection-end-column="99" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/water.hpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="43">
+          <caret line="28" column="17" lean-forward="true" selection-start-line="28" selection-start-column="17" selection-end-line="28" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/world.hpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="94">
+          <caret line="162" column="0" lean-forward="false" selection-start-line="162" selection-start-column="0" selection-end-line="167" selection-end-column="39" />
           <folding>
-            <element signature="e#64#85#0" expanded="true" />
+            <element signature="e#15#36#0" expanded="false" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Kinetic.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="8" column="12" lean-forward="false" selection-start-line="8" selection-start-column="12" selection-end-line="8" selection-end-column="12" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/zombie.hpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="50" column="15" lean-forward="false" selection-start-line="50" selection-start-column="15" selection-end-line="50" selection-end-column="15" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/zombie.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3585">
+          <caret line="243" column="1" lean-forward="false" selection-start-line="243" selection-start-column="1" selection-end-line="243" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Limb.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="133">
+          <caret line="50" column="18" lean-forward="false" selection-start-line="50" selection-start-column="18" selection-end-line="50" selection-end-column="18" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/zombieManager.hpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="78">
+          <caret line="37" column="14" lean-forward="false" selection-start-line="37" selection-start-column="14" selection-end-line="37" selection-end-column="14" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Kinetic.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="12" column="14" lean-forward="false" selection-start-line="12" selection-start-column="14" selection-end-line="12" selection-end-column="14" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/common.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-4">
+          <caret line="180" column="0" lean-forward="false" selection-start-line="180" selection-start-column="0" selection-end-line="180" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/player1.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="127">
+          <caret line="520" column="9" lean-forward="false" selection-start-line="520" selection-start-column="9" selection-end-line="520" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/water.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1509">
+          <caret line="203" column="0" lean-forward="false" selection-start-line="203" selection-start-column="0" selection-end-line="203" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include/c++/v1/vector">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="139">
+          <caret line="638" column="0" lean-forward="false" selection-start-line="638" selection-start-column="0" selection-end-line="638" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/MapGrid.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="145">
+          <caret line="32" column="34" lean-forward="false" selection-start-line="32" selection-start-column="34" selection-end-line="32" selection-end-column="34" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/world.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="113">
+          <caret line="922" column="20" lean-forward="false" selection-start-line="922" selection-start-column="20" selection-end-line="922" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/limbsManager.hpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="25" column="9" lean-forward="false" selection-start-line="25" selection-start-column="9" selection-end-line="25" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/zombieManager.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1085">
+          <caret line="83" column="0" lean-forward="false" selection-start-line="83" selection-start-column="0" selection-end-line="83" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/limbsManager.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="149">
+          <caret line="39" column="0" lean-forward="false" selection-start-line="39" selection-start-column="0" selection-end-line="39" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>

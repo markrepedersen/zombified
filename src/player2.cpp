@@ -1,5 +1,6 @@
 // Header
 #include "player2.hpp"
+#include "MapGrid.h"
 
 Texture Player2::player2_texture;
 
@@ -477,6 +478,7 @@ bool Player2::isBoundingBoxForFeetInsidePolygon(float dx, float dy) {
 }
 
 void Player2::destroy() {
+    MapGrid::GetInstance()->removeOccupant(this);
     glDeleteBuffers(1, &mesh.vbo);
     glDeleteBuffers(1, &mesh.ibo);
     glDeleteBuffers(1, &mesh.vao);
@@ -527,5 +529,5 @@ void Player2::on_zombie_collision(Kinetic *zombie) {
 }
 
 vec2 Player2::getAABB() {
-    return {static_cast<float>(player2_texture.width), static_cast<float>(player2_texture.height)};
+    return {std::fabs(m_scale.x) * sprite_width_p2, std::fabs(m_scale.y) * sprite_height_p2};
 }

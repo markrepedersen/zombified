@@ -206,10 +206,8 @@ vec2 getRandomPointInMap(std::vector<vec2> mapCollisionPoints, vec2 screen) {
 }
 
 bool is_aabb_colliding(float x1, float y1, int w1, int h1, float x2, float y2, int w2, int h2) {
-    return (x1 < (x2 + w2) &&
-            (x1 + w1) > x2 &&
-            y1 < (y2 + h2) &&
-            (h1 + y1) > y2);
+        return (abs(x1 - x2) * 2 < (w1 + w2)) &&
+               (abs(y1 - y2) * 2 < (h1 + h2));
 }
 
 float getDistance(vec2 v1, vec2 v2) {

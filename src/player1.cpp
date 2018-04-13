@@ -1,5 +1,6 @@
 // Header
 #include "player1.hpp"
+#include "MapGrid.h"
 
 #include <cmath>
 #include <iostream>
@@ -517,6 +518,7 @@ vec2 Player1::get_bounding_box() const{
 }
 
 void Player1::destroy() {
+    MapGrid::GetInstance()->removeOccupant(this);
     glDeleteBuffers(1, &mesh.vbo);
     glDeleteBuffers(1, &mesh.ibo);
     glDeleteBuffers(1, &mesh.vao);
@@ -568,5 +570,5 @@ void Player1::on_zombie_collision(Kinetic *zombie) {
 }
 
 vec2 Player1::getAABB() {
-    return {static_cast<float>(player1_texture.width), static_cast<float>(player1_texture.height)};
+    return {std::fabs(m_scale.x) * sprite_width_p1, std::fabs(m_scale.y) * sprite_height_p1};
 }

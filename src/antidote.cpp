@@ -1,5 +1,6 @@
 // Header
 #include "antidote.hpp"
+#include "MapGrid.h"
 
 #include <cmath>
 
@@ -138,6 +139,7 @@ bool Antidote::is_alive()const
 
 void Antidote::destroy()
 {
+    MapGrid::GetInstance()->removeOccupant(this);
     glDeleteBuffers(1, &mesh.vbo);
     glDeleteBuffers(1, &mesh.ibo);
     glDeleteBuffers(1, &mesh.vao);
@@ -194,5 +196,5 @@ void Antidote::on_zombie_collision(Kinetic *zombie) {
 }
 
 vec2 Antidote::getAABB() {
-    return {static_cast<float>(antidote_texture.width), static_cast<float>(antidote_texture.height)};
+    return { std::fabs(m_scale.x) * antidote_texture.width, std::fabs(m_scale.y) * antidote_texture.height };
 }

@@ -1,6 +1,7 @@
 // Header
 #include "armour.hpp"
 #include "viewHelper.hpp"
+#include "MapGrid.h"
 
 #include <cmath>
 #include <iostream>
@@ -213,6 +214,7 @@ bool Armour::is_alive()const
 
 void Armour::destroy()
 {
+    MapGrid::GetInstance()->removeOccupant(this);
     glDeleteBuffers(1, &mesh.vbo);
     glDeleteBuffers(1, &mesh.ibo);
     glDeleteBuffers(1, &mesh.vao);
@@ -287,5 +289,7 @@ void Armour::on_zombie_collision(Kinetic *zombie) {
 }
 
 vec2 Armour::getAABB() {
-    return {static_cast<float>(armour_texture.width), static_cast<float>(armour_texture.height)};
-}
+    float armourwidth = 5.f;
+    float armourheight = 6.f;
+    // fabs is to avoid negative scale due to the facing direction
+    return { std::fabs(m_scale.x) * armourwidth, std::fabs(m_scale.y) * armourheight };}

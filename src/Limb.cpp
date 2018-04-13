@@ -4,7 +4,7 @@
 
 #include "Limb.h"
 #include "viewHelper.hpp"
-#include <iostream>
+#include "MapGrid.h"
 
 static const std::string ARM_TYPE = "leg";
 static const std::string LEG_TYPE = "arm";
@@ -169,7 +169,8 @@ void Limb::draw(const mat3& projection)
 
 void Limb::destroy()
 {
-        glDeleteBuffers(1, &mesh.vbo);
+    MapGrid::GetInstance()->removeOccupant(this);
+    glDeleteBuffers(1, &mesh.vbo);
     glDeleteBuffers(1, &mesh.ibo);
     glDeleteBuffers(1, &mesh.vao);
     
@@ -235,7 +236,9 @@ void Limb::set_position(vec2 position) {
 }
  
 void Limb::move(vec2 pos) {
+    MapGrid::GetInstance()->removeOccupant(this);
     this->m_position += pos;
+    MapGrid::GetInstance()->addOccupant(this);
     animate();
 }
 
@@ -306,13 +309,11 @@ void Limb::on_zombie_collision(Kinetic *zombie) {
 }
 
 vec2 Limb::getAABB() {
-    vec2 t_aabb;
-    if (this->type == ARM_TYPE) {
-        t_aabb = {static_cast<float>(arm_texture.width), static_cast<float>(arm_texture.height)};
+    // fabs is to avoid negative scale due to the facing direction
+    if (type == "arm") {
+        return { std::fabs(m_scale.x) * sprite_width_arm, std::fabs(m_scale.y) * sprite_height_arm };
+    } else {
+        return { std::fabs(m_scale.x) * sprite_width_leg, std::fabs(m_scale.y) * sprite_height_leg };
     }
-    else {
-        t_aabb = {static_cast<float>(leg_texture.width), static_cast<float>(leg_texture.height)};
-    }
-    return t_aabb;
 }
 

@@ -1,6 +1,7 @@
 // Header
 #include "punchleft.hpp"
 #include "viewHelper.hpp"
+#include "MapGrid.h"
 
 #include <cmath>
 
@@ -136,6 +137,7 @@ bool Punchleft::is_alive()const
 
 void Punchleft::destroy()
 {
+    MapGrid::GetInstance()->removeOccupant(this);
     glDeleteBuffers(1, &mesh.vbo);
     glDeleteBuffers(1, &mesh.ibo);
     glDeleteBuffers(1, &mesh.vao);
@@ -193,5 +195,5 @@ void Punchleft::on_zombie_collision(Kinetic *zombie) {
 }
 
 vec2 Punchleft::getAABB() {
-    return {static_cast<float>(punchleft_texture.width), static_cast<float>(punchleft_texture.height)};
+    return { std::fabs(m_scale.x) * punchleft_texture.width+30.f, std::fabs(m_scale.y) * punchleft_texture.height };
 }

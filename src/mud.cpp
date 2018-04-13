@@ -1,6 +1,7 @@
 // Header
 #include "mud.hpp"
 #include "viewHelper.hpp"
+#include "MapGrid.h"
 
 #include <cmath>
 
@@ -146,6 +147,7 @@ void Mud::set_affected(int player, bool affected)
 
 void Mud::destroy()
 {
+    MapGrid::GetInstance()->removeOccupant(this);
     glDeleteBuffers(1, &mesh.vbo);
     glDeleteBuffers(1, &mesh.ibo);
     glDeleteBuffers(1, &mesh.vao);
@@ -203,5 +205,6 @@ void Mud::on_zombie_collision(Kinetic *zombie) {
 }
 
 vec2 Mud::getAABB() {
-    return {static_cast<float>(mud_texture.width), static_cast<float>(mud_texture.height)};
-}
+    // fabs is to avoid negative scale due to the facing direction
+    //fprintf(stderr, "texture height %f \n", (std::fabs(m_scale.y) * mud_texture.height)-20 );
+    return { std::fabs(m_scale.x) * mud_texture.width, std::fabs(m_scale.y) * mud_texture.height };}

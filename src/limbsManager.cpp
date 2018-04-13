@@ -10,6 +10,7 @@ bool LimbsManager::init(vec2 screen, const std::vector<vec2> &mapCollisionPoints
     m_screen = screen;
     collectedLegs_p1 = 0;
     collectedLegs_p2 = 0;
+    limbs.reserve(1000);
     return true;
 }
 
@@ -18,12 +19,6 @@ void LimbsManager::draw(const mat3 &projection_2D) {
     for (auto &limb : limbs) {
         limb.draw(projection_2D);
     }
-    /*for (auto &collectedLegs1 : collectedLegs_p1) {
-        collectedLegs1.draw(projection_2D);
-    }
-    for (auto &collectedLegs2 : collectedLegs_p2) {
-        collectedLegs2.draw(projection_2D);
-    }*/
 }
 
 unsigned long LimbsManager::getLimbCount() {
@@ -38,9 +33,19 @@ void LimbsManager::transformLimbs(std::vector<Renderable*> &container) {
 bool LimbsManager::spawn_arms() {
     Limb arm;
     if (arm.init("arm")) {
-        arm.set_position(getRandomPointInMap(m_mapCollisionPoints,
+        vec2 spawnPoint = getRandomPointInMap(m_mapCollisionPoints,
+                            {m_screen.x * ViewHelper::getRatio(),
+                             m_screen.y * ViewHelper::getRatio()});
+        int i = 0;
+        while (MapGrid::GetInstance()->isOccupied(spawnPoint.x, spawnPoint.y)) {
+            if (i > 100) {
+                return true;
+            }
+            spawnPoint = getRandomPointInMap(m_mapCollisionPoints,
                                              {m_screen.x * ViewHelper::getRatio(),
-                                              m_screen.y * ViewHelper::getRatio()}));
+                                              m_screen.y * ViewHelper::getRatio()});
+        }
+        arm.set_position(spawnPoint);
         m_arms_total++;
         limbs.emplace_back(arm);
 
@@ -54,9 +59,18 @@ bool LimbsManager::spawn_arms() {
 bool LimbsManager::spawn_legs() {
     Limb leg;
     if (leg.init("leg")) {
-        leg.set_position(getRandomPointInMap(m_mapCollisionPoints,
+        vec2 spawnPoint = getRandomPointInMap(m_mapCollisionPoints,
+                                              {m_screen.x * ViewHelper::getRatio(),
+                                               m_screen.y * ViewHelper::getRatio()});
+        int i = 0;
+        while (MapGrid::GetInstance()->isOccupied(spawnPoint.x, spawnPoint.y)) {
+            if (i > 100) {
+                return true;
+            }
+            spawnPoint = getRandomPointInMap(m_mapCollisionPoints,
                                              {m_screen.x * ViewHelper::getRatio(),
-                                              m_screen.y * ViewHelper::getRatio()}));
+                                              m_screen.y * ViewHelper::getRatio()});
+        }
 
         m_legs_total++;
         limbs.emplace_back(leg);
@@ -263,10 +277,10 @@ void LimbsManager::computePaths(float ms, const MapGrid &mapGrid) {
         vec2 target = limb.getCurrentTarget();
 
         if (limb.getLastTarget() != target || !limb.isInitialized()) {
-            auto srcX = (unsigned) (limb.get_position().x / 100);
-            auto srcY = (unsigned) (limb.get_position().y / 100);
-            auto dstX = (unsigned) (target.x / 100);
-            auto dstY = (unsigned) (target.y / 100);
+            auto srcX = (unsigned) (limb.get_position().x);
+            auto srcY = (unsigned) (limb.get_position().y);
+            auto dstX = (unsigned) (target.x);
+            auto dstY = (unsigned) (target.y);
             JPS::findPath(path, mapGrid, srcX, srcY, dstX, dstY, 1);
             limb.setCurrentPath(path);
             limb.setInitialized(true);
@@ -281,8 +295,8 @@ void LimbsManager::computePaths(float ms, const MapGrid &mapGrid) {
             }
             float step = 50 * (ms / 1000);
             vec2 dir;
-            dir.x = nextNode.x * 100 - limb.get_position().x;
-            dir.y = nextNode.y * 100 - limb.get_position().y;
+            dir.x = nextNode.x * 500 - limb.get_position().x;
+            dir.y = nextNode.y * 500 - limb.get_position().y;
 
             auto next_pos = scale(step, normalize(dir));
 

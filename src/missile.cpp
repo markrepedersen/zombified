@@ -1,6 +1,7 @@
 // Header
 #include "missile.hpp"
 #include "viewHelper.hpp"
+#include "MapGrid.h"
 
 #include <cmath>
 #include <iostream>
@@ -232,6 +233,7 @@ vec2 Missile::get_speed()const{
 
 void Missile::destroy()
 {
+    MapGrid::GetInstance()->removeOccupant(this);
     glDeleteBuffers(1, &mesh.vbo);
     glDeleteBuffers(1, &mesh.ibo);
     glDeleteBuffers(1, &mesh.vao);
@@ -349,5 +351,7 @@ void Missile::on_zombie_collision(Kinetic *zombie) {
 }
 
 vec2 Missile::getAABB() {
-    return {static_cast<float>(missile_texture.width), static_cast<float>(missile_texture.height)};
-}
+    float missilewidth = 2.f;
+    float missileheight = 8.f;
+    // fabs is to avoid negative scale due to the facing direction
+    return { std::fabs(m_scale.x) * missilewidth, std::fabs(m_scale.y) * missileheight };}

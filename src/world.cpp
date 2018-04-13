@@ -93,7 +93,13 @@ bool World::init(vec2 screen) {
                 m_bombdetails.init("bomb") &&
                 m_missiledetails.init("missile") &&
                 m_armourdetails.init("armour"));
-    
+
+    m_freeze.reserve(MAX_FREEZE);
+    m_water.reserve(MAX_WATER);
+    m_missile.reserve(MAX_MISSILE);
+    m_bomb.reserve(MAX_BOMB);
+    m_armour.reserve(MAX_ARMOUR);
+
     return rendered;
 }
 
@@ -230,8 +236,8 @@ bool World::update(float elapsed_ms) {
 
                 srand((unsigned) time(0));
                 explosion = false;
-                m_min = 10;
-                m_sec = 0;
+                m_min = 0;
+                m_sec = 500;
                 timeDelay = 5;
                 start = time(0);
                 immobilize = 0;
@@ -295,6 +301,8 @@ bool World::update(float elapsed_ms) {
                     m_zombieManager.spawn_zombie(pos, m_player1.get_position(), m_player2.get_position());
                 }
             }
+
+            MapGrid::GetInstance()->processColliders();
 
             check_add_tools(screen);
 
@@ -905,6 +913,7 @@ void World::on_mouse_move(GLFWwindow *window, int button, int action, int mod) {
 bool World::spawn_freeze() {
     Ice freeze;
     if (freeze.init()) {
+//        MapGrid::GetInstance()->addOccupant(&freeze);
         m_freeze.emplace_back(freeze);
         return true;
     }
@@ -914,6 +923,7 @@ bool World::spawn_freeze() {
 bool World::spawn_missile() {
     Missile missile;
     if (missile.init()) {
+//        MapGrid::GetInstance()->addOccupant(&missile);
         m_missile.emplace_back(missile);
         return true;
     }
@@ -923,6 +933,7 @@ bool World::spawn_missile() {
 bool World::spawn_armour() {
     Armour armour;
     if (armour.init()) {
+//        MapGrid::GetInstance()->addOccupant(&armour);
         m_armour.emplace_back(armour);
         return true;
     }
@@ -932,6 +943,7 @@ bool World::spawn_armour() {
 bool World::spawn_bomb() {
     Bomb bomb;
     if (bomb.init()) {
+//        MapGrid::GetInstance()->addOccupant(&bomb);
         m_bomb.emplace_back(bomb);
         return true;
     }
@@ -941,6 +953,7 @@ bool World::spawn_bomb() {
 bool World::create_explosion(vec2 bomb_position) {
     Explosion explosion;
     if (explosion.init(bomb_position)) {
+//        MapGrid::GetInstance()->addOccupant(&explosion);
         m_explosion.emplace_back(explosion);
         return true;
     }
@@ -950,6 +963,7 @@ bool World::create_explosion(vec2 bomb_position) {
 bool World::spawn_water() {
     Water water;
     if (water.init()) {
+//        MapGrid::GetInstance()->addOccupant(&water);
         m_water.emplace_back(water);
         return true;
     }

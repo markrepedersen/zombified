@@ -1,6 +1,7 @@
 // Header
 #include "punchright.hpp"
 #include "viewHelper.hpp"
+#include "MapGrid.h"
 
 #include <cmath>
 
@@ -137,6 +138,7 @@ bool Punchright::is_alive()const
 
 void Punchright::destroy()
 {
+    MapGrid::GetInstance()->removeOccupant(this);
     glDeleteBuffers(1, &mesh.vbo);
     glDeleteBuffers(1, &mesh.ibo);
     glDeleteBuffers(1, &mesh.vao);
@@ -193,5 +195,5 @@ void Punchright::on_zombie_collision(Kinetic *zombie) {
 }
 
 vec2 Punchright::getAABB() {
-    return {static_cast<float>(punchright_texture.width), static_cast<float>(punchright_texture.height)};
+    return { std::fabs(m_scale.x) * punchright_texture.width+30.f, std::fabs(m_scale.y) * punchright_texture.height };
 }

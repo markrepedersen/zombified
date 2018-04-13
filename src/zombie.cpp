@@ -1,6 +1,7 @@
 // Header
 #include "zombie.hpp"
 #include "viewHelper.hpp"
+#include "MapGrid.h"
 
 #include <cmath>
 
@@ -123,6 +124,7 @@ void Zombie::set_scale(vec2 scale)
 
 void Zombie::destroy()
 {
+    MapGrid::GetInstance()->removeOccupant(this);
     glDeleteBuffers(1, &mesh.vbo);
     glDeleteBuffers(1, &mesh.ibo);
     glDeleteBuffers(1, &mesh.vao);
@@ -238,5 +240,5 @@ void Zombie::on_zombie_collision(Kinetic *zombie) {
 }
 
 vec2 Zombie::getAABB() {
-    return {static_cast<float>(zombie_texture.width), static_cast<float>(zombie_texture.height)};
+    return { std::fabs(m_scale.x) * zombie_texture.width, std::fabs(m_scale.y) * zombie_texture.height };
 }

@@ -1,5 +1,6 @@
 // Header
 #include "blood.hpp"
+#include "MapGrid.h"
 
 #include <cmath>
 #include <iostream>
@@ -132,6 +133,7 @@ void Blood::set_scale(vec2 scale)
 
 void Blood::destroy()
 {
+    MapGrid::GetInstance()->removeOccupant(this);
     glDeleteBuffers(1, &mesh.vbo);
     glDeleteBuffers(1, &mesh.ibo);
     glDeleteBuffers(1, &mesh.vao);

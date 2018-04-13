@@ -2,6 +2,7 @@
 #include "explosion.hpp"
 #include "viewHelper.hpp"
 #include "player1.hpp"
+#include "MapGrid.h"
 
 #include <cmath>
 #include <iostream>
@@ -158,6 +159,7 @@ void Explosion::set_scale(vec2 scale)
 
 void Explosion::destroy()
 {
+    MapGrid::GetInstance()->removeOccupant(this);
     glDeleteBuffers(1, &mesh.vbo);
     glDeleteBuffers(1, &mesh.ibo);
     glDeleteBuffers(1, &mesh.vao);

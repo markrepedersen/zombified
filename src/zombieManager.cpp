@@ -5,6 +5,7 @@ bool ZombieManager::init(vec2 screen, const std::vector<vec2> &mapCollisionPoint
     m_mapCollisionPoints = mapCollisionPoints;
     m_screen = screen;
     speed = 50;
+    zombies.reserve(1000);
     return true;
 }
 
@@ -80,8 +81,6 @@ vec2 ZombieManager::update_zombies(float elapsed_ms, vec2 player1_pos, vec2 play
             }
         }
     }
-    
-    // std::cout << "player1damage, player2damage: " << player1damage <<", " << player2damage <<std::endl;
     return {player1damage, player2damage};
 }
 
@@ -92,10 +91,10 @@ void ZombieManager::computeZPaths(float ms, const MapGrid &mapGrid) {
         vec2 target = zombie.getCurrentTarget();
 
         if (zombie.getLastTarget() != target || !zombie.isInitialized()) {
-            auto srcX = (unsigned) (zombie.get_position().x / 100);
-            auto srcY = (unsigned) (zombie.get_position().y / 100);
-            auto dstX = (unsigned) (target.x / 100);
-            auto dstY = (unsigned) (target.y / 100);
+            auto srcX = (unsigned) (zombie.get_position().x);
+            auto srcY = (unsigned) (zombie.get_position().y);
+            auto dstX = (unsigned) (target.x);
+            auto dstY = (unsigned) (target.y);
             JPS::findPath(path, mapGrid, srcX, srcY, dstX, dstY, 1);
             zombie.setCurrentPath(path);
             zombie.setInitialized(true);
@@ -110,8 +109,8 @@ void ZombieManager::computeZPaths(float ms, const MapGrid &mapGrid) {
             }
             float step = speed * (ms / 1000);
             vec2 dir;
-            dir.x = nextNode.x * 100 - zombie.get_position().x;
-            dir.y = nextNode.y * 100 - zombie.get_position().y;
+            dir.x = nextNode.x * 500 - zombie.get_position().x;
+            dir.y = nextNode.y * 500 - zombie.get_position().y;
 
             auto next_pos = scale(step, normalize(dir));
 

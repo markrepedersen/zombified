@@ -1,6 +1,7 @@
 // Header
 #include "water.hpp"
 #include "viewHelper.hpp"
+#include "MapGrid.h"
 
 #include <cmath>
 
@@ -142,6 +143,7 @@ bool Water::is_alive()const
 
 void Water::destroy()
 {
+    MapGrid::GetInstance()->removeOccupant(this);
     glDeleteBuffers(1, &mesh.vbo);
     glDeleteBuffers(1, &mesh.ibo);
     glDeleteBuffers(1, &mesh.vao);
@@ -198,5 +200,5 @@ void Water::on_zombie_collision(Kinetic *zombie) {
 }
 
 vec2 Water::getAABB() {
-    return {static_cast<float>(water_texture.width), static_cast<float>(water_texture.height)};
+    return { std::fabs(m_scale.x) * water_texture.width, std::fabs(m_scale.y) * water_texture.height };
 }

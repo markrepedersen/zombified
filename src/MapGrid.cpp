@@ -68,18 +68,20 @@ void MapGrid::processColliders() {
             vector<Kinetic*> colliders = getPossibleColliders(x, y);
             for (int i = 0; i < colliders.size(); ++i) {
                 for (int j = 0; j < colliders.size(); ++j) {
-                    AABB collider1(colliders[i]->getAABB().x,
-                                   colliders[i]->getAABB().y,
-                                   colliders[i]->m_position.x,
-                                   colliders[i]->m_position.y);
-                    AABB collider2(colliders[j]->getAABB().x,
-                                   colliders[j]->getAABB().y,
-                                   colliders[j]->m_position.x,
-                                   colliders[j]->m_position.y);
-                    if (is_aabb_colliding(collider1.x,collider1.y,collider1.width,collider1.height,
-                                          collider2.x,collider2.y,collider2.width,collider2.height)) {
-                        colliders[i]->collide(colliders[j]);
-                        colliders[j]->collide(colliders[i]);
+                    if (colliders[i] != colliders[j]) {
+                        AABB collider1(colliders[i]->m_position.x,
+                                       colliders[i]->m_position.y,
+                                       colliders[i]->getAABB().x,
+                                       colliders[i]->getAABB().y);
+                        AABB collider2(colliders[j]->m_position.x,
+                                       colliders[j]->m_position.y,
+                                       colliders[j]->getAABB().x,
+                                       colliders[j]->getAABB().y);
+                        if (is_aabb_colliding(collider1.x, collider1.y, collider1.width, collider1.height,
+                                              collider2.x, collider2.y, collider2.width, collider2.height)) {
+                            colliders[i]->collide(colliders[j]);
+                            colliders[j]->collide(colliders[i]);
+                        }
                     }
                 }
             }

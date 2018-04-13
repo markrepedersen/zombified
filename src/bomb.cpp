@@ -2,6 +2,7 @@
 #include "bomb.hpp"
 #include "viewHelper.hpp"
 #include "explosion.hpp"
+#include "MapGrid.h"
 
 #include <cmath>
 #include <iostream>
@@ -197,6 +198,7 @@ bool Bomb::is_alive()const
 
 void Bomb::destroy()
 {
+    MapGrid::GetInstance()->removeOccupant(this);
     glDeleteBuffers(1, &mesh.vbo);
     glDeleteBuffers(1, &mesh.ibo);
     glDeleteBuffers(1, &mesh.vao);
@@ -438,5 +440,5 @@ void Bomb::on_zombie_collision(Kinetic *zombie) {
 }
 
 vec2 Bomb::getAABB() {
-    return {static_cast<float>(bomb_texture.width), static_cast<float>(bomb_texture.height)};
-}
+    float bombradius = 5.f;
+    return { std::fabs(m_scale.x) * bombradius, std::fabs(m_scale.y) * bombradius};}

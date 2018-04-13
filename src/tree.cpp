@@ -1,5 +1,6 @@
 // Header
 #include "tree.hpp"
+#include "MapGrid.h"
 
 #include <cmath>
 
@@ -166,6 +167,7 @@ void Tree::set_explode(bool exploded)
 
 void Tree::destroy()
 {
+    MapGrid::GetInstance()->removeOccupant(this);
     glDeleteBuffers(1, &mesh.vbo);
     glDeleteBuffers(1, &mesh.ibo);
     glDeleteBuffers(1, &mesh.vao);
@@ -222,5 +224,5 @@ void Tree::on_zombie_collision(Kinetic *zombie) {
 }
 
 vec2 Tree::getAABB() {
-    return {static_cast<float>(tree_texture.width), static_cast<float>(tree_texture.height)};
+    return { std::fabs(m_scale.x) * tree_texture.width, std::fabs(m_scale.y) * tree_texture.height };
 }

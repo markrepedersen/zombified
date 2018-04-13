@@ -1,6 +1,7 @@
 // Header
 #include "Ice.hpp"
 #include "viewHelper.hpp"
+#include "MapGrid.h"
 
 #include <cmath>
 
@@ -143,6 +144,7 @@ bool Ice::is_alive()const
 
 void Ice::destroy()
 {
+    MapGrid::GetInstance()->removeOccupant(this);
     glDeleteBuffers(1, &mesh.vbo);
     glDeleteBuffers(1, &mesh.ibo);
     glDeleteBuffers(1, &mesh.vao);
@@ -218,5 +220,5 @@ void Ice::on_zombie_collision(Kinetic *zombie) {
 }
 
 vec2 Ice::getAABB() {
-    return {static_cast<float>(ice_texture.width), static_cast<float>(ice_texture.height)};
+    return { std::fabs(m_scale.x) * ice_texture.width, std::fabs(m_scale.y) * ice_texture.height };
 }

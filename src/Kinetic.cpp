@@ -33,4 +33,3 @@ void Kinetic::collide(Kinetic *collider) {
         on_zombie_collision(zombie);
     }
 }
-
