@@ -27,31 +27,31 @@ int frame_time_limb = 100;
 auto start_time_limb = std::chrono::high_resolution_clock::now();
 
 bool Limb::init(std::string inputtype) {
-        // Load shared texture
-        type = inputtype;
-
-        float wr;
-        float hr;
-
-        if(type == "arm") {
-            if(!arm_texture.is_valid()) {
-                if (!arm_texture.load_from_file(tools_textures_path("arm_sprite.png")))
-                {
-                    fprintf(stderr, "Failed to load arms texture!");
-                    return false; 
-                }
-            }
-            wr = sprite_width_arm * 0.5f;
-            hr = sprite_height_arm * 0.5f;
-        } else {
-            if (!leg_texture.load_from_file(tools_textures_path("leg_sprite.png")))
+    // Load shared texture
+    type = inputtype;
+    
+    float wr;
+    float hr;
+    
+    if(type == "arm") {
+        if(!arm_texture.is_valid()) {
+            if (!arm_texture.load_from_file(tools_textures_path("arm_sprite.png")))
             {
-                fprintf(stderr, "Failed to load leg texture!");
+                fprintf(stderr, "Failed to load arms texture!");
                 return false;
             }
-            wr = sprite_width_leg * 0.5f;
-            hr = sprite_width_leg * 0.5f;
-        } 
+        }
+        wr = sprite_width_arm * 0.5f;
+        hr = sprite_height_arm * 0.5f;
+    } else {
+        if (!leg_texture.load_from_file(tools_textures_path("leg_sprite.png")))
+        {
+            fprintf(stderr, "Failed to load leg texture!");
+            return false;
+        }
+        wr = sprite_width_leg * 0.5f;
+        hr = sprite_width_leg * 0.5f;
+    }
     
     // The position corresponds to the center of the texture
     // float wr = limb_texture.width * 0.5f;
