@@ -9,9 +9,6 @@ Texture Button::backbutton_texture;
 
 bool Button::init(std::string buttontype)
 {
-    // Load shared texture
-    //if (!button_texture.is_valid())
-    //{
     type = buttontype;
     float wr;
     float hr;
@@ -58,11 +55,6 @@ bool Button::init(std::string buttontype)
             m_position = { 100.f* ViewHelper::getRatio(), 70.f* ViewHelper::getRatio() };
         }
     }
-    
-    // The position corresponds to the center of the texture
-    //float wr = button_texture.width * 0.5f;
-    //float hr = button_texture.height * 0.5f;
-    
     TexturedVertex vertices[4];
     vertices[0].position = { -wr, +hr, -0.02f };
     vertices[0].texcoord = { 0.f, 1.f };

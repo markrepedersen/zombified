@@ -15,11 +15,12 @@ Texture Info::winner1_texture;
 Texture Info::winner2_texture;
 Texture Info::key_texture;
 
+bool Info::init_tool() {
+
+}
+
 bool Info::init(std::string infotype)
 {
-    // Load shared texture
-    //if (!Info_texture.is_valid())
-    //{
     type = infotype;
     float wr;
     float hr;
