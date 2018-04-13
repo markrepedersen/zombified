@@ -205,9 +205,6 @@ bool Info::init(std::string infotype)
 
 void Info::draw(const mat3& projection)
 {
-    //scale();
-    // Transformation code, see Rendering and Transformation in the template specification for more info
-    // Incrementally updates transformation matrix, thus ORDER IS IMPORTANT
     transform_begin();
     transform_translate(m_position);
     transform_scale(m_scale);

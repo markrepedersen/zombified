@@ -786,38 +786,27 @@ void World::on_mouse_move(GLFWwindow *window, int button, int action, int mod) {
     if (!game_started) {
         if (action == GLFW_PRESS && button == GLFW_MOUSE_BUTTON_1) {
             if (instruction_page){
-                //std::cout << "xpos: " << xpos << std::endl;
-                //std::cout << "ypos: " << ypos << std::endl;
                 if (xpos < 480.f && xpos > 340.f && ypos < 215.f && ypos > 90.f) {
-                    //std::cout << "ice" << std::endl;
                     infoscreen = "freeze";
                 }
                 else if (xpos < 490.f && xpos > 345.f && ypos < 445.f && ypos > 290.f) {
-                    //std::cout << "water" << std::endl;
                     infoscreen = "water";
                 }
                 else if (xpos < 615.f && xpos > 260.f && ypos < 615.f && ypos > 540.f) {
-                    //std::cout << "mud" << std::endl;
                     infoscreen = "mud";
                 }
                 else if (xpos < 1010.f && xpos > 875.f && ypos < 215.f && ypos > 85.f) {
-                    //std::cout << "bomb" << std::endl;
                     infoscreen = "bomb";
                 }
                 else if (xpos < 995.f && xpos > 870.f && ypos < 450.f && ypos > 290.f) {
-                    //std::cout << "missile" << std::endl;
                     infoscreen = "missile";
                 }
                 else if (xpos < 1020.f && xpos > 855.f && ypos < 640.f && ypos > 525.f) {
-                    //std::cout << "armour" << std::endl;
                     infoscreen = "armour";
                 }
                 else if (xpos < 175.f && xpos > 20.f && ypos < 80.f && ypos > 22.f) {
-                    //std::cout << "back" << std::endl;
                     instruction_page = false;
                 }
-
-                //draw();
             }
             else {
                 if (xpos < 650.f && xpos > 500.f && ypos < 350.f && ypos > 250.f)
@@ -825,12 +814,7 @@ void World::on_mouse_move(GLFWwindow *window, int button, int action, int mod) {
             }
         }
         if (glfwGetMouseButton(window, GLFW_MOUSE_BUTTON_1) == GLFW_RELEASE) {
-            //std::cout << "xpos: " << xpos << std::endl;
-            //std::cout << "ypos: " << ypos << std::endl;
             if (!instruction_page){
-                //click start button
-                //std::cout << "xpos: " << xpos << std::endl;
-                //std::cout << "ypos: " << ypos << std::endl;
                 if (xpos < 780.f && xpos > 505.f && ypos < 345.f && ypos > 280.f){
                     m_button.click();
                 }
@@ -838,31 +822,13 @@ void World::on_mouse_move(GLFWwindow *window, int button, int action, int mod) {
                 //clock info button
                 if (xpos < 1300.f && xpos > 970.f && ypos < 680.f && ypos > 600.f)
                 {
-                    //std::cout << "info page!" << std::endl;
                     infoscreen = "default";
                     m_infobutton.click();
                 }
-                //draw();
-
             }
 
         }
     }
-    /*else {
-        if (glfwGetMouseButton(window, GLFW_MOUSE_BUTTON_1) == GLFW_RELEASE) {
-
-            // std::cout << "mapCollisionPoints.push_back({ " << xpos << "f * ViewHelper::getRatio(), " << ypos << "f * ViewHelper::getRatio()});" << std::endl;
-            //std::cout << "xpos: " << xpos << std::endl;
-            //std::cout << "ypos: " << ypos << std::endl;
-            //std::cout << "player pos: " << m_player1.get_position().x << ", " << m_player1.get_position().y
-                      //<< std::endl;
-            if (isInsidePolygon(mapCollisionPoints, {(float)xpos * ViewHelper::getRatio(), (float)ypos * ViewHelper::getRatio()})) {
-                std::cout << "yes it's inside polygon" << std::endl;
-            } else {
-                std::cout << "nope, it's outside the polygon" << std::endl;
-            }
-        }
-    }*/
 }
 
 bool World::spawn_freeze() {
