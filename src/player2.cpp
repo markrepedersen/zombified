@@ -465,7 +465,6 @@ vec2 Player2::get_bounding_box() const {
 
 bool Player2::isBoundingBoxForFeetInsidePolygon(float dx, float dy) {
     //these numbers make no sense.. it should be divided by 2......
-    // apparently as D -> inf, it becomes more accurate
     int D = 1000;
     int halfX = sprite_width_p2 / D;
     int halfY = sprite_height_p2 / D;

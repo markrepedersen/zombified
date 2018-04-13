@@ -26,6 +26,7 @@ class MapGrid {
 public:
     MapGrid (unsigned, unsigned);
     bool operator()(unsigned x, unsigned y) const;
+    void destroy();
 private:
     const unsigned width, height;
     std::vector<std::vector<Node*>> mapdata;

@@ -27,6 +27,9 @@
 #include "zombie.hpp"
 #include "punchleft.hpp"
 #include "punchright.hpp"
+
+#include "infopage.hpp"
+
 #include <vector>
 // #include <Box2D.h>
 #include <time.h>
@@ -109,13 +112,17 @@ private:
 
 private:
     void entityDrawOrder(mat3 projection_2D);
+    
+    void instructionScreenDraw(mat3 projection_2D);
+    void startScreenDraw(mat3 projection_2D);
 
-        // Window handle
+    // Window handle
 	GLFWwindow* m_window;
 
 	// true if the start button was pressed to start the main game world
 	bool game_started;
 	bool game_over;
+    bool instruction_page;
 
 	// Number of fish eaten by the salmon, displayed in the window title
 	unsigned int m_min;
@@ -133,15 +140,12 @@ private:
 	// Game entities
 	Worldtexture m_worldtexture;
 	ToolboxManager m_toolboxManager;
-	ToolManager toolManager;
+	//ToolManager toolManager;
 	LimbsManager m_limbsManager;
     ZombieManager m_zombieManager;
 	Player1 m_player1;
 	Player2 m_player2;
-	Zombie m_zombie;
 	Antidote m_antidote;
-
-    Tree m_tree;
     
     Punchleft gloveLeft_p1;
     Punchright gloveRight_p1;
@@ -152,8 +156,6 @@ private:
     Punchright gloveRight_p2;
     bool is_punchingleft_p2;
     bool is_punchingright_p2;
-
-    //Mud mud;
     
     std::vector<Ice> m_freeze;
     std::vector<Water> m_water;
@@ -196,5 +198,27 @@ private:
 	std::default_random_engine m_rng;
 	std::uniform_real_distribution<float> m_dist; // default 0..1c
 
-	Button m_button;
+    Info m_infopage;
+    Info m_freezedetails;
+    Info m_waterdetails;
+    Info m_muddetails;
+    Info m_bombdetails;
+    Info m_missiledetails;
+    Info m_armourdetails;
+    
+    std::string infoscreen;
+    
+	Button m_startbutton;
+    Button m_infobutton;
+    Button m_backbutton;
+    
+    Info m_winner1;
+    Info m_winner2;
+    int winner;
+    
+    Info key_info;
+    Info story_info;
+    
+    bool pause;
+    Info m_pause;
 };
