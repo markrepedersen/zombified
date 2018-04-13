@@ -1,5 +1,7 @@
 // Header
 #include "bomb.hpp"
+#include "viewHelper.hpp"
+#include "explosion.hpp"
 
 #include <cmath>
 #include <iostream>
@@ -395,4 +397,42 @@ void Bomb::checkCollision(Bomb other, float ms) {
     }
 }
 
+void Bomb::on_player1_collision(Kinetic *player) {
+    printf("player1");
+}
 
+void Bomb::on_player2_collision(Kinetic *player) {
+    printf("player2");
+}
+
+void Bomb::on_antidote_collision(Kinetic *antidote) {
+    printf("antidote");
+}
+
+void Bomb::on_limb_collision(Kinetic *limb) {
+    printf("limb");
+}
+
+void Bomb::on_armour_collision(Kinetic *player) {
+    printf("armour");
+}
+
+void Bomb::on_explosion_collision(Kinetic *explosion) {
+    printf("explosion");
+}
+
+void Bomb::on_ice_collision(Kinetic *ice) {
+    printf("ice");
+}
+
+void Bomb::on_missile_collision(Kinetic *missile) {
+    printf("missile");
+}
+
+void Bomb::on_water_collision(Kinetic *water) {
+    printf("water");
+}
+
+void Bomb::on_zombie_collision(Kinetic *zombie) {
+    printf("zombie");
+}

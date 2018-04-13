@@ -1,24 +1,21 @@
 #pragma once
 
 #include "common.hpp"
-#include "viewHelper.hpp"
-#include <list>
-#include <iostream>
 #include "Ice.hpp"
+#include "Limb.h"
 #include "water.hpp"
 #include "antidote.hpp"
-#include "Limb.h"
-#include "tree.hpp"
 #include "bomb.hpp"
 #include "armour.hpp"
 #include "missile.hpp"
 #include "mud.hpp"
-#include "blood.hpp"
 #include "player2.hpp"
-#include "punchleft.hpp"
 #include "punchright.hpp"
+#include "punchleft.hpp"
+#include "blood.hpp"
+#include "Kinetic.h"
 
-class Player1 : public Renderable
+class Player1 : public Kinetic
 {
     static Texture player1_texture;
 public:
@@ -82,6 +79,17 @@ public:
     //float negx;
     int numberofHits;
     int lastkey;
+
+    void on_player1_collision(Kinetic *player)override;
+    void on_player2_collision(Kinetic *player)override;
+    void on_antidote_collision(Kinetic *antidote)override;
+    void on_limb_collision(Kinetic *limb)override;
+    void on_armour_collision(Kinetic *player)override;
+    void on_explosion_collision(Kinetic *explosion)override;
+    void on_ice_collision(Kinetic *ice)override;
+    void on_missile_collision(Kinetic *missile)override;
+    void on_water_collision(Kinetic *water)override;
+    void on_zombie_collision(Kinetic *zombie)override;
 
 private:
     bool m_is_alive; // True if the salmon is alive

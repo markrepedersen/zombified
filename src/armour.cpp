@@ -1,5 +1,6 @@
 // Header
 #include "armour.hpp"
+#include "viewHelper.hpp"
 
 #include <cmath>
 #include <iostream>
@@ -245,3 +246,42 @@ bool Armour::collides_with(const Armour& armour)
     return false;
 }
 
+void Armour::on_player1_collision(Kinetic *player) {
+    printf("player1");
+}
+
+void Armour::on_player2_collision(Kinetic *player) {
+    printf("player2");
+}
+
+void Armour::on_antidote_collision(Kinetic *antidote) {
+    printf("antidote");
+}
+
+void Armour::on_limb_collision(Kinetic *limb) {
+    printf("limb");
+}
+
+void Armour::on_armour_collision(Kinetic *player) {
+    printf("armour");
+}
+
+void Armour::on_explosion_collision(Kinetic *explosion) {
+    printf("explosion");
+}
+
+void Armour::on_ice_collision(Kinetic *ice) {
+    printf("ice");
+}
+
+void Armour::on_missile_collision(Kinetic *missile) {
+    printf("missile");
+}
+
+void Armour::on_water_collision(Kinetic *water) {
+    printf("water");
+}
+
+void Armour::on_zombie_collision(Kinetic *zombie) {
+    printf("zombie");
+}

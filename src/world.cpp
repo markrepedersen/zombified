@@ -72,7 +72,7 @@ bool World::init(vec2 screen) {
     // in this order
     ViewHelper::getInstance(m_window);
     populateMapCollisionPoints();
-    mapGrid = MapGrid::Get((unsigned) ((screen.x) * ViewHelper::getRatio()),
+    mapGrid = MapGrid::Use((unsigned) ((screen.x) * ViewHelper::getRatio()),
                            (unsigned) ((screen.y) * ViewHelper::getRatio()));
     m_limbsManager.init(screen, mapCollisionPoints);
 
@@ -474,16 +474,6 @@ void World::entityDrawOrder(mat3 projection_2D) {
 
     m_zombieManager.transformZombies(drawOrderVector);
     m_limbsManager.transformLimbs(drawOrderVector);
-
-    /*if (is_punchingleft_p1)
-        drawOrderVector.push_back(&gloveLeft_p1);
-    if (is_punchingright_p1)
-        drawOrderVector.push_back(&gloveRight_p1);
-
-    if (is_punchingleft_p2)
-        drawOrderVector.push_back(&gloveLeft_p2);
-    if (is_punchingright_p2)
-        drawOrderVector.push_back(&gloveRight_p2);*/
 
     sort(drawOrderVector.begin(), drawOrderVector.end(), [](Renderable *lhs, Renderable *rhs) {
         return lhs->m_position.y < rhs->m_position.y;
@@ -1426,13 +1416,13 @@ void World::shift_1(bool droppedAntidote) {
                 m_antidote.set_position(m_toolboxManager.new_tool_position(index, 1));
             }
         }
-        if (*it == 4) {
-            if (!droppedAntidote)
-            {
-                m_limbsManager.shiftCollectedLegs(1, &m_toolboxManager, index, legcount);
-            }
-            legcount++;
-        }
+//        if (*it == 4) {
+//            if (!droppedAntidote)
+//            {
+//                m_limbsManager.shiftCollectedLegs(1, &m_toolboxManager, index, legcount);
+//            }
+//            legcount++;
+//        }
         if (*it == 5) {
             if (!droppedAntidote)
             {

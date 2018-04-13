@@ -1,13 +1,12 @@
 #pragma once
 
 #include "common.hpp"
-#include "viewHelper.hpp"
-#include "toolboxManager.hpp"
+#include "Kinetic.h"
 #include <vector>
 #include <tuple>
 #include <unistd.h>
 
-class Missile : public Renderable
+class Missile : public Kinetic
 {
     static Texture missile_texture;
 public:
@@ -46,6 +45,17 @@ public:
     
     int useMissileOnPlayer;
     vec2 onPlayerPos;
+
+    void on_player1_collision(Kinetic *player)override;
+    void on_player2_collision(Kinetic *player)override;
+    void on_antidote_collision(Kinetic *antidote)override;
+    void on_limb_collision(Kinetic *limb)override;
+    void on_armour_collision(Kinetic *player)override;
+    void on_explosion_collision(Kinetic *explosion)override;
+    void on_ice_collision(Kinetic *ice)override;
+    void on_missile_collision(Kinetic *missile)override;
+    void on_water_collision(Kinetic *water)override;
+    void on_zombie_collision(Kinetic *zombie)override;
     
 private:
     bool m_is_alive; // True if the salmon is alive

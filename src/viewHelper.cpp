@@ -1,9 +1,5 @@
 //Header
 #include "viewHelper.hpp"
-#include <iostream>
-#include <list>
-#include <cmath>
-
 
 ViewHelper* ViewHelper::instance = 0;
 

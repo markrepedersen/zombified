@@ -1,5 +1,6 @@
 // Header
 #include "missile.hpp"
+#include "viewHelper.hpp"
 
 #include <cmath>
 #include <iostream>
@@ -311,3 +312,42 @@ bool Missile::checkPoint() {
 
 }
 
+void Missile::on_player1_collision(Kinetic *player) {
+    printf("player1");
+}
+
+void Missile::on_player2_collision(Kinetic *player) {
+    printf("player2");
+}
+
+void Missile::on_antidote_collision(Kinetic *antidote) {
+    printf("antidote");
+}
+
+void Missile::on_limb_collision(Kinetic *limb) {
+    printf("limb");
+}
+
+void Missile::on_armour_collision(Kinetic *player) {
+    printf("armour");
+}
+
+void Missile::on_explosion_collision(Kinetic *explosion) {
+    printf("explosion");
+}
+
+void Missile::on_ice_collision(Kinetic *ice) {
+    printf("ice");
+}
+
+void Missile::on_missile_collision(Kinetic *missile) {
+    printf("missile");
+}
+
+void Missile::on_water_collision(Kinetic *water) {
+    printf("water");
+}
+
+void Missile::on_zombie_collision(Kinetic *zombie) {
+    printf("zombie");
+}

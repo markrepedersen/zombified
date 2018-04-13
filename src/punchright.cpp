@@ -1,5 +1,6 @@
 // Header
 #include "punchright.hpp"
+#include "viewHelper.hpp"
 
 #include <cmath>
 
@@ -149,4 +150,44 @@ vec2 Punchright::get_bounding_box()const
 {
     // fabs is to avoid negative scale due to the facing direction
     return { std::fabs(m_scale.x) * punchright_texture.width+30.f, std::fabs(m_scale.y) * punchright_texture.height };
+}
+
+void Punchright::on_player1_collision(Kinetic *player) {
+    printf("player1");
+}
+
+void Punchright::on_player2_collision(Kinetic *player) {
+    printf("player2");
+}
+
+void Punchright::on_antidote_collision(Kinetic *antidote) {
+    printf("antidote");
+}
+
+void Punchright::on_limb_collision(Kinetic *limb) {
+    printf("limb");
+}
+
+void Punchright::on_armour_collision(Kinetic *player) {
+    printf("armour");
+}
+
+void Punchright::on_explosion_collision(Kinetic *explosion) {
+    printf("explosion");
+}
+
+void Punchright::on_ice_collision(Kinetic *ice) {
+    printf("ice");
+}
+
+void Punchright::on_missile_collision(Kinetic *missile) {
+    printf("missile");
+}
+
+void Punchright::on_water_collision(Kinetic *water) {
+    printf("water");
+}
+
+void Punchright::on_zombie_collision(Kinetic *zombie) {
+    printf("zombie");
 }

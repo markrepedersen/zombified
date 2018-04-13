@@ -1,5 +1,7 @@
 // Header
 #include "explosion.hpp"
+#include "viewHelper.hpp"
+#include "player1.hpp"
 
 #include <cmath>
 #include <iostream>
@@ -179,4 +181,44 @@ void Explosion::animate() {
     if (curr_frame_explosion > 9) {
         destroy();
     }
+}
+
+void Explosion::on_player1_collision(Kinetic *player) {
+    printf("player1");
+}
+
+void Explosion::on_player2_collision(Kinetic *player) {
+    printf("player2");
+}
+
+void Explosion::on_antidote_collision(Kinetic *antidote) {
+    printf("antidote");
+}
+
+void Explosion::on_limb_collision(Kinetic *limb) {
+    printf("limb");
+}
+
+void Explosion::on_armour_collision(Kinetic *player) {
+    printf("armour");
+}
+
+void Explosion::on_explosion_collision(Kinetic *explosion) {
+    printf("explosion");
+}
+
+void Explosion::on_ice_collision(Kinetic *ice) {
+    printf("ice");
+}
+
+void Explosion::on_missile_collision(Kinetic *missile) {
+    printf("missile");
+}
+
+void Explosion::on_water_collision(Kinetic *water) {
+    printf("water");
+}
+
+void Explosion::on_zombie_collision(Kinetic *zombie) {
+    printf("zombie");
 }

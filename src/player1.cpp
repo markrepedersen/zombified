@@ -530,3 +530,44 @@ void Player1::destroy() {
     glDeleteShader(effect.fragment);
     glDeleteShader(effect.program);
 }
+
+
+void Player1::on_player1_collision(Kinetic *player) {
+    printf("player1");
+}
+
+void Player1::on_player2_collision(Kinetic *player) {
+    printf("player2");
+}
+
+void Player1::on_antidote_collision(Kinetic *antidote) {
+    printf("antidote");
+}
+
+void Player1::on_limb_collision(Kinetic *limb) {
+    printf("limb");
+}
+
+void Player1::on_armour_collision(Kinetic *player) {
+    printf("armour");
+}
+
+void Player1::on_explosion_collision(Kinetic *explosion) {
+    printf("explosion");
+}
+
+void Player1::on_ice_collision(Kinetic *ice) {
+    printf("ice");
+}
+
+void Player1::on_missile_collision(Kinetic *missile) {
+    printf("missile");
+}
+
+void Player1::on_water_collision(Kinetic *water) {
+    printf("water");
+}
+
+void Player1::on_zombie_collision(Kinetic *zombie) {
+    printf("zombie");
+}

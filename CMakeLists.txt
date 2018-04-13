@@ -32,7 +32,7 @@ file(GLOB_RECURSE EXT ${CMAKE_SOURCE_DIR}/ext/*.h ${CMAKE_SOURCE_DIR}/ext/*.cpp 
 file(GLOB_RECURSE cmake-build-debug/data ${CMAKE_SOURCE_DIR}/data/*.png ${CMAKE_SOURCE_DIR}/data/*.BMP)
 file(GLOB_RECURSE cmake-build-debug/shaders ${CMAKE_SOURCE_DIR}/shaders/*.glsl)
 
-add_executable(zombie ${SRC} ${DATA} ${SHADERS} ${EXT} ${HEADERS} ${HPPHEADERS} src/gl3w.c src/ToolManager.cpp src/ToolManager.h)
+add_executable(zombie ${SRC} ${DATA} ${SHADERS} ${EXT} ${HEADERS} ${HPPHEADERS} src/gl3w.c src/ToolManager.cpp src/ToolManager.h src/Kinetic.h src/Kinetic.cpp)
 
 
 target_link_libraries(zombie

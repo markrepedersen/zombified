@@ -140,3 +140,43 @@ void Blood::destroy()
     glDeleteShader(effect.fragment);
     glDeleteShader(effect.program);
 }
+
+void Blood::on_player1_collision(Kinetic *player) {
+    printf("player1");
+}
+
+void Blood::on_player2_collision(Kinetic *player) {
+    printf("player2");
+}
+
+void Blood::on_antidote_collision(Kinetic *antidote) {
+    printf("antidote");
+}
+
+void Blood::on_limb_collision(Kinetic *limb) {
+    printf("limb");
+}
+
+void Blood::on_armour_collision(Kinetic *player) {
+    printf("armour");
+}
+
+void Blood::on_explosion_collision(Kinetic *explosion) {
+    printf("explosion");
+}
+
+void Blood::on_ice_collision(Kinetic *ice) {
+    printf("ice");
+}
+
+void Blood::on_missile_collision(Kinetic *missile) {
+    printf("missile");
+}
+
+void Blood::on_water_collision(Kinetic *water) {
+    printf("water");
+}
+
+void Blood::on_zombie_collision(Kinetic *zombie) {
+    printf("zombie");
+}

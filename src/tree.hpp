@@ -3,8 +3,9 @@
 #include "common.hpp"
 #include "viewHelper.hpp"
 #include "bomb.hpp"
+#include "Kinetic.h"
 
-class Tree : public Renderable
+class Tree : public Kinetic
 {
     static Texture tree_texture;
 public:
@@ -28,6 +29,17 @@ public:
     vec2 get_bounding_box()const;
     
     float get_force(float mass, float speed, vec2 objPosition);
+
+    void on_player1_collision(Kinetic *player)override;
+    void on_player2_collision(Kinetic *player)override;
+    void on_antidote_collision(Kinetic *antidote)override;
+    void on_limb_collision(Kinetic *limb)override;
+    void on_armour_collision(Kinetic *player)override;
+    void on_explosion_collision(Kinetic *explosion)override;
+    void on_ice_collision(Kinetic *ice)override;
+    void on_missile_collision(Kinetic *missile)override;
+    void on_water_collision(Kinetic *water)override;
+    void on_zombie_collision(Kinetic *zombie)override;
     
     //bool get_explode()const;
     //void set_explode();

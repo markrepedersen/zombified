@@ -152,3 +152,43 @@ vec2 Antidote::get_bounding_box()const
     // fabs is to avoid negative scale due to the facing direction
     return { std::fabs(m_scale.x) * antidote_texture.width, std::fabs(m_scale.y) * antidote_texture.height };
 }
+
+void Antidote::on_player1_collision(Kinetic *player) {
+    printf("player1");
+}
+
+void Antidote::on_player2_collision(Kinetic *player) {
+    printf("player2");
+}
+
+void Antidote::on_antidote_collision(Kinetic *antidote) {
+    printf("antidote");
+}
+
+void Antidote::on_limb_collision(Kinetic *limb) {
+    printf("limb");
+}
+
+void Antidote::on_armour_collision(Kinetic *player) {
+    printf("armour");
+}
+
+void Antidote::on_explosion_collision(Kinetic *explosion) {
+    printf("explosion");
+}
+
+void Antidote::on_ice_collision(Kinetic *ice) {
+    printf("ice");
+}
+
+void Antidote::on_missile_collision(Kinetic *missile) {
+    printf("missile");
+}
+
+void Antidote::on_water_collision(Kinetic *water) {
+    printf("water");
+}
+
+void Antidote::on_zombie_collision(Kinetic *zombie) {
+    printf("zombie");
+}

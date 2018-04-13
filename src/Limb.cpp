@@ -3,6 +3,7 @@
 //
 
 #include "Limb.h"
+#include "viewHelper.hpp"
 #include <iostream>
 
 
@@ -225,6 +226,7 @@ JPS::PathVector &Limb::getLastPath() {
 
 vec2 &Limb::get_position() {
     return m_position;
+}
 
 void Limb::set_position(vec2 position) {
     this->m_position = position;
@@ -261,4 +263,43 @@ time_t Limb::getLegTime(){
     }
 }
 
+void Limb::on_player1_collision(Kinetic *player) {
+    printf("player1");
+}
+
+void Limb::on_player2_collision(Kinetic *player) {
+    printf("player2");
+}
+
+void Limb::on_antidote_collision(Kinetic *antidote) {
+    printf("antidote");
+}
+
+void Limb::on_limb_collision(Kinetic *limb) {
+    printf("limb");
+}
+
+void Limb::on_armour_collision(Kinetic *player) {
+    printf("armour");
+}
+
+void Limb::on_explosion_collision(Kinetic *explosion) {
+    printf("explosion");
+}
+
+void Limb::on_ice_collision(Kinetic *ice) {
+    printf("ice");
+}
+
+void Limb::on_missile_collision(Kinetic *missile) {
+    printf("missile");
+}
+
+void Limb::on_water_collision(Kinetic *water) {
+    printf("water");
+}
+
+void Limb::on_zombie_collision(Kinetic *zombie) {
+    printf("zombie");
+}
 

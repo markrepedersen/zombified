@@ -2,8 +2,7 @@
 // Created by Mark Pedersen on 2018-02-24.
 //
 
-#ifndef ZOMBIE_MAPGRID_H
-#define ZOMBIE_MAPGRID_H
+#pragma once
 
 #include "common.hpp"
 #include <vector>
@@ -31,7 +30,7 @@ struct Pos {
 
 struct AABBC {
 public:
-    AABBC(int x, int y, int radius) : x(x), y(y), radius(radius) {
+    inline AABBC(int x, int y, int radius) : x(x), y(y), radius(radius) {
         cornerPoints.push_back((point) {x - radius, y - radius});
         cornerPoints.push_back((point) {x + radius, y - radius});
         cornerPoints.push_back((point) {x - radius, y + radius});
@@ -40,7 +39,7 @@ public:
     int x;
     int y;
     int radius;
-    std::vector<point> getCornerPoints() {
+    inline std::vector<point> getCornerPoints() {
         return cornerPoints;
     }
 private:
@@ -48,7 +47,7 @@ private:
 };
 struct AABB {
 public:
-    AABB(int x, int y, int width, int height) : x(x), y(y), width(width), height(height) {
+    inline AABB(int x, int y, int width, int height) : x(x), y(y), width(width), height(height) {
         cornerPoints.push_back((point) {x - width, y - width});
         cornerPoints.push_back((point) {x + width, y - width});
         cornerPoints.push_back((point) {x - width, y + width});
@@ -58,7 +57,7 @@ public:
     int y;
     int width;
     int height;
-    std::vector<point> getCornerPoints() {
+    inline std::vector<point> getCornerPoints() {
         return cornerPoints;
     }
 private:
@@ -67,17 +66,17 @@ private:
 
 struct Node {
 public:
-    Node(int sexiness, bool walkable, int terrain) : sexiness(sexiness), walkable(walkable), terrain(terrain) {};
-    const std::vector<Renderable*> &getPopulation() {
+    inline Node(int sexiness, bool walkable, int terrain) : sexiness(sexiness), walkable(walkable), terrain(terrain) {};
+    inline const std::vector<Kinetic*> &getPopulation() {
         return population;
     }
-    void addCollider(Renderable* collider) {
+    inline void addCollider(Kinetic* collider) {
         if(std::find(population.begin(), population.end(), collider) == population.end()) {
             population.push_back(collider);
         }
     }
 
-    void removeCollider(Renderable* collider) {
+    inline void removeCollider(Kinetic* collider) {
         for (auto it = population.begin(); it != population.end();) {
             if (*it == collider) {
                 population.erase(it);
@@ -89,15 +88,15 @@ public:
     bool walkable;
     int terrain;
 private:
-    std::vector<Renderable*> population;
+    std::vector<Kinetic*> population;
 };
 
 class MapGrid {
 public:
     MapGrid()=default;
     ~MapGrid()=default;
-    static MapGrid* Get(int x, int y) {
-        if (instance == 0) {
+    static MapGrid* Use(int x, int y) {
+        if (instance == nullptr) {
             instance = new MapGrid();
             instance->Init(x, y);
         }
@@ -109,10 +108,10 @@ public:
     void Init(int x, int y);
     bool operator()(unsigned x, unsigned y) const;
     bool isOccupied(int x, int y)const;
-    void addOccupant(int x, int y, Renderable* occupant);
-    void addOccupant(int radius, Renderable* occupant);
-    void removeOccupant(int x, int y, Renderable *occupant);
-    void removeOccupant(int radius, Renderable *occupant);
+    void addOccupant(int x, int y, Kinetic* occupant);
+    void addOccupant(int radius, Kinetic* occupant);
+    void removeOccupant(int x, int y, Kinetic *occupant);
+    void removeOccupant(int radius, Kinetic *occupant);
 private:
     MapGrid(MapGrid const&);
     std::vector<int> possibleCollisions(int x, int y);
@@ -121,5 +120,3 @@ private:
     std::vector<std::vector<Node*>> mapdata;
     static MapGrid *instance;
 };
-
-#endif //ZOMBIE_MAPGRID_H

@@ -3,7 +3,7 @@
 //
 #include "MapGrid.h"
 
-MapGrid* MapGrid::instance = 0;
+MapGrid *MapGrid::instance = nullptr;
 
 void MapGrid::Init(int x, int y) {
     int xScale = x / SCALING;
@@ -31,7 +31,7 @@ bool MapGrid::isOccupied(int x, int y)const  {
     return !mapdata[xScale][yScale]->getPopulation().empty();
 }
 
-void MapGrid::addOccupant(int w, int h, Renderable *occupant) {
+void MapGrid::addOccupant(int w, int h, Kinetic *occupant) {
     auto xScale = (int) (occupant->m_position.x / SCALING);
     auto yScale = (int) (occupant->m_position.x / SCALING);
     auto wScale = w / SCALING;
@@ -42,7 +42,7 @@ void MapGrid::addOccupant(int w, int h, Renderable *occupant) {
     }
 }
 
-void MapGrid::addOccupant(int radius, Renderable *occupant) {
+void MapGrid::addOccupant(int radius, Kinetic *occupant) {
     int rScale = radius / SCALING;
     auto xScale = (int) (occupant->m_position.x / SCALING);
     auto yScale = (int) (occupant->m_position.x / SCALING);
@@ -52,7 +52,7 @@ void MapGrid::addOccupant(int radius, Renderable *occupant) {
     }
 }
 
-void MapGrid::removeOccupant(int w, int h, Renderable *occupant) {
+void MapGrid::removeOccupant(int w, int h, Kinetic *occupant) {
     auto xScale = (int) (occupant->m_position.x / SCALING);
     auto yScale = (int) (occupant->m_position.x / SCALING);
     auto wScale = w / SCALING;
@@ -63,7 +63,7 @@ void MapGrid::removeOccupant(int w, int h, Renderable *occupant) {
     }
 }
 
-void MapGrid::removeOccupant(int radius, Renderable *occupant) {
+void MapGrid::removeOccupant(int radius, Kinetic *occupant) {
     auto xScale = (int) (occupant->m_position.x / SCALING);
     auto yScale = (int) (occupant->m_position.x / SCALING);
     auto rScale = radius / SCALING;
@@ -72,15 +72,3 @@ void MapGrid::removeOccupant(int radius, Renderable *occupant) {
         mapdata[vec.x][vec.y]->removeCollider(occupant);
     }
 }
-
-//std::vector<int> MapGrid::possibleCollisions(int x, int y) {
-//    int xScale = x / SCALING;
-//    int yScale = y / SCALING;
-//    std::vector<Renderable*> possibleCollisions;
-//    // get occupants from object's centre position and the four surrounding tiles
-//    std::vector<Renderable*> centreOccupants = mapdata[xScale][yScale]->getPopulation();
-//    std::vector<Renderable*> westOccupants = mapdata[xScale-1][yScale]->getPopulation();
-//    std::vector<Renderable*> eastOccupants = mapdata[xScale+1][yScale]->getPopulation();
-//    std::vector<Renderable*> northOccupants = mapdata[xScale][yScale+1]->getPopulation();
-//    std::vector<Renderable*> southOccupants = mapdata[xScale][yScale-1]->getPopulation();
-//}
