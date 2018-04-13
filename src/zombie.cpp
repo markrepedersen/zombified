@@ -196,10 +196,6 @@ float Zombie::getMass() {
 void Zombie::set_position(vec2 position) {
     this->m_position = position;
 }
- 
-void Zombie::move(vec2 pos) {
-    this->m_position += pos;
-}
 
 void Zombie::on_player1_collision(Kinetic *player) {
     printf("player1");
@@ -239,4 +235,8 @@ void Zombie::on_water_collision(Kinetic *water) {
 
 void Zombie::on_zombie_collision(Kinetic *zombie) {
     printf("zombie");
+}
+
+vec2 Zombie::getAABB() {
+    return {static_cast<float>(zombie_texture.width), static_cast<float>(zombie_texture.height)};
 }

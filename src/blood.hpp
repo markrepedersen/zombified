@@ -33,6 +33,8 @@ public:
     void on_missile_collision(Kinetic *missile)override;
     void on_water_collision(Kinetic *water)override;
     void on_zombie_collision(Kinetic *zombie)override;
+
+    vec2 getAABB()override;
     
 private:
     vec2 m_position;

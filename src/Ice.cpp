@@ -216,3 +216,7 @@ void Ice::on_water_collision(Kinetic *water) {
 void Ice::on_zombie_collision(Kinetic *zombie) {
     printf("zombie");
 }
+
+vec2 Ice::getAABB() {
+    return {static_cast<float>(ice_texture.width), static_cast<float>(ice_texture.height)};
+}

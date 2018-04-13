@@ -38,7 +38,9 @@ public:
     void on_missile_collision(Kinetic *missile)override;
     void on_water_collision(Kinetic *water)override;
     void on_zombie_collision(Kinetic *zombie)override;
-    
+    vec2 getAABB()override;
+
+
 private:
     bool m_is_alive; // True if the salmon is alive
     vec2 m_scale; // 1.f in each dimension. 1.f is as big as the associated texture

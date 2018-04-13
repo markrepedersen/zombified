@@ -48,8 +48,6 @@ public:
 
     float getMass();
 
-    void move(vec2 pos);
-
     bool isInitialized() {return initialized;}
 
     void setInitialized(bool flag) {this->initialized = flag;}
@@ -64,6 +62,8 @@ public:
     void on_missile_collision(Kinetic *missile)override;
     void on_water_collision(Kinetic *water)override;
     void on_zombie_collision(Kinetic *zombie)override;
+
+    vec2 getAABB()override;
 
 protected:
     vec2 cur_target;

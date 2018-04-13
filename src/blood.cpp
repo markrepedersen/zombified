@@ -180,3 +180,7 @@ void Blood::on_water_collision(Kinetic *water) {
 void Blood::on_zombie_collision(Kinetic *zombie) {
     printf("zombie");
 }
+
+vec2 Blood::getAABB() {
+    return {static_cast<float>(blood_texture.width), static_cast<float>(blood_texture.height)};
+}

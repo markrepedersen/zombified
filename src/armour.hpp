@@ -33,6 +33,8 @@ public:
     
     bool collides_with(const Armour& armour);
 
+    vec2 getAABB()override;
+
     void on_player1_collision(Kinetic *player)override;
     void on_player2_collision(Kinetic *player)override;
     void on_antidote_collision(Kinetic *antidote)override;

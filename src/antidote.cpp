@@ -192,3 +192,7 @@ void Antidote::on_water_collision(Kinetic *water) {
 void Antidote::on_zombie_collision(Kinetic *zombie) {
     printf("zombie");
 }
+
+vec2 Antidote::getAABB() {
+    return {static_cast<float>(antidote_texture.width), static_cast<float>(antidote_texture.height)};
+}

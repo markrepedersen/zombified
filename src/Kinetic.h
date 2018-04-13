@@ -7,6 +7,8 @@ public:
 	// polymorphic collision handler
 	// internal functions must be implemented in all game objects that may collide with other objects
 	void on_collide(Kinetic *collider);
+	virtual void move(vec2);
+	virtual vec2 getAABB() = 0;
 private:
 	virtual void on_player1_collision(Kinetic *player) = 0;
 	virtual void on_player2_collision(Kinetic *player) = 0;

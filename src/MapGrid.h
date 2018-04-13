@@ -108,10 +108,8 @@ public:
     void Init(int x, int y);
     bool operator()(unsigned x, unsigned y) const;
     bool isOccupied(int x, int y)const;
-    void addOccupant(int x, int y, Kinetic* occupant);
-    void addOccupant(int radius, Kinetic* occupant);
-    void removeOccupant(int x, int y, Kinetic *occupant);
-    void removeOccupant(int radius, Kinetic *occupant);
+    void addOccupant(Kinetic* occupant);
+    void removeOccupant(Kinetic *occupant);
 private:
     MapGrid(MapGrid const&);
     std::vector<int> possibleCollisions(int x, int y);

@@ -2,6 +2,13 @@
 #include "player1.hpp"
 #include "explosion.hpp"
 #include "zombie.hpp"
+#include "MapGrid.h"
+
+void Kinetic::move(vec2 pos) {
+    MapGrid::GetInstance()->removeOccupant(this);
+    this->m_position += pos;
+    MapGrid::GetInstance()->addOccupant(this);
+}
 
 void Kinetic::on_collide(Kinetic *collider) {
     if (auto player1 = dynamic_cast<Player1 *>(collider)) {

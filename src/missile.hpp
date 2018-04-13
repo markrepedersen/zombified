@@ -35,8 +35,6 @@ public:
     
     vec2 get_bounding_box()const;
     
-    void move(vec2 pos);
-    
     bool collides_with(const Missile& missile);
     
     float get_force(float mass, float speed, vec2 objPosition);
@@ -56,7 +54,10 @@ public:
     void on_missile_collision(Kinetic *missile)override;
     void on_water_collision(Kinetic *water)override;
     void on_zombie_collision(Kinetic *zombie)override;
-    
+
+    vec2 getAABB()override;
+
+
 private:
     bool m_is_alive; // True if the salmon is alive
 	float m_rotation;

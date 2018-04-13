@@ -222,3 +222,7 @@ void Explosion::on_water_collision(Kinetic *water) {
 void Explosion::on_zombie_collision(Kinetic *zombie) {
     printf("zombie");
 }
+
+vec2 Explosion::getAABB() {
+    return {static_cast<float>(explosion_texture.width), static_cast<float>(explosion_texture.height)};
+}

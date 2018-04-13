@@ -251,10 +251,6 @@ vec2 Missile::get_bounding_box()const
     return { std::fabs(m_scale.x) * missilewidth, std::fabs(m_scale.y) * missileheight };
 }
 
-void Missile::move(vec2 pos) {
-    m_position += pos;
-}
-
 bool Missile::collides_with(const Missile& missile)
 {
     float dx = m_position.x - missile.get_position().x;
@@ -350,4 +346,8 @@ void Missile::on_water_collision(Kinetic *water) {
 
 void Missile::on_zombie_collision(Kinetic *zombie) {
     printf("zombie");
+}
+
+vec2 Missile::getAABB() {
+    return {static_cast<float>(missile_texture.width), static_cast<float>(missile_texture.height)};
 }

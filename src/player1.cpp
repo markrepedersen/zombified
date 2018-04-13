@@ -325,11 +325,6 @@ void Player1::update(float ms) {
 
 }
 
-void Player1::move(vec2 off) {
-    m_position.x += off.x;
-    m_position.y += off.y;
-}
-
 void Player1::animate()
 {
     auto curr_time = std::chrono::high_resolution_clock::now();
@@ -570,4 +565,8 @@ void Player1::on_water_collision(Kinetic *water) {
 
 void Player1::on_zombie_collision(Kinetic *zombie) {
     printf("zombie");
+}
+
+vec2 Player1::getAABB() {
+    return {static_cast<float>(player1_texture.width), static_cast<float>(player1_texture.height)};
 }

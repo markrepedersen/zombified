@@ -201,3 +201,7 @@ void Mud::on_water_collision(Kinetic *water) {
 void Mud::on_zombie_collision(Kinetic *zombie) {
     printf("zombie");
 }
+
+vec2 Mud::getAABB() {
+    return {static_cast<float>(mud_texture.width), static_cast<float>(mud_texture.height)};
+}

@@ -6,6 +6,8 @@
 #include "viewHelper.hpp"
 #include <iostream>
 
+static const std::string ARM_TYPE = "leg";
+static const std::string LEG_TYPE = "arm";
 
 Texture Limb::leg_texture;
 Texture Limb::arm_texture;
@@ -301,5 +303,16 @@ void Limb::on_water_collision(Kinetic *water) {
 
 void Limb::on_zombie_collision(Kinetic *zombie) {
     printf("zombie");
+}
+
+vec2 Limb::getAABB() {
+    vec2 t_aabb;
+    if (this->type == ARM_TYPE) {
+        t_aabb = {static_cast<float>(arm_texture.width), static_cast<float>(arm_texture.height)};
+    }
+    else {
+        t_aabb = {static_cast<float>(leg_texture.width), static_cast<float>(leg_texture.height)};
+    }
+    return t_aabb;
 }
 

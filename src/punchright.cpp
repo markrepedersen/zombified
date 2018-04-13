@@ -191,3 +191,7 @@ void Punchright::on_water_collision(Kinetic *water) {
 void Punchright::on_zombie_collision(Kinetic *zombie) {
     printf("zombie");
 }
+
+vec2 Punchright::getAABB() {
+    return {static_cast<float>(punchright_texture.width), static_cast<float>(punchright_texture.height)};
+}

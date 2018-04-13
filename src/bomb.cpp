@@ -436,3 +436,7 @@ void Bomb::on_water_collision(Kinetic *water) {
 void Bomb::on_zombie_collision(Kinetic *zombie) {
     printf("zombie");
 }
+
+vec2 Bomb::getAABB() {
+    return {static_cast<float>(bomb_texture.width), static_cast<float>(bomb_texture.height)};
+}

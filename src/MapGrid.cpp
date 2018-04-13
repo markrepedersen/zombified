@@ -31,44 +31,26 @@ bool MapGrid::isOccupied(int x, int y)const  {
     return !mapdata[xScale][yScale]->getPopulation().empty();
 }
 
-void MapGrid::addOccupant(int w, int h, Kinetic *occupant) {
+void MapGrid::addOccupant(Kinetic *occupant) {
+    vec2 dimensions = occupant->getAABB();
     auto xScale = (int) (occupant->m_position.x / SCALING);
     auto yScale = (int) (occupant->m_position.x / SCALING);
-    auto wScale = w / SCALING;
-    auto hScale = h / SCALING;
+    auto wScale = dimensions.x / SCALING;
+    auto hScale = dimensions.y / SCALING;
     AABB aabb(xScale, yScale, wScale, hScale);
     for (auto vec : aabb.getCornerPoints()) {
         mapdata[vec.x][vec.y]->removeCollider(occupant);
     }
 }
 
-void MapGrid::addOccupant(int radius, Kinetic *occupant) {
-    int rScale = radius / SCALING;
+void MapGrid::removeOccupant(Kinetic *occupant) {
+    vec2 dimensions = occupant->getAABB();
     auto xScale = (int) (occupant->m_position.x / SCALING);
     auto yScale = (int) (occupant->m_position.x / SCALING);
-    AABBC aabbc(xScale, yScale, rScale);
-    for (auto vec : aabbc.getCornerPoints()) {
-        mapdata[vec.x][vec.y]->removeCollider(occupant);
-    }
-}
-
-void MapGrid::removeOccupant(int w, int h, Kinetic *occupant) {
-    auto xScale = (int) (occupant->m_position.x / SCALING);
-    auto yScale = (int) (occupant->m_position.x / SCALING);
-    auto wScale = w / SCALING;
-    auto hScale = h / SCALING;
+    auto wScale = dimensions.x / SCALING;
+    auto hScale = dimensions.y / SCALING;
     AABB aabb(xScale, yScale, wScale, hScale);
     for (auto vec : aabb.getCornerPoints()) {
-        mapdata[vec.x][vec.y]->removeCollider(occupant);
-    }
-}
-
-void MapGrid::removeOccupant(int radius, Kinetic *occupant) {
-    auto xScale = (int) (occupant->m_position.x / SCALING);
-    auto yScale = (int) (occupant->m_position.x / SCALING);
-    auto rScale = radius / SCALING;
-    AABBC aabbc(xScale, yScale, rScale);
-    for (auto vec : aabbc.getCornerPoints()) {
         mapdata[vec.x][vec.y]->removeCollider(occupant);
     }
 }

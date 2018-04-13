@@ -196,3 +196,7 @@ void Water::on_water_collision(Kinetic *water) {
 void Water::on_zombie_collision(Kinetic *zombie) {
     printf("zombie");
 }
+
+vec2 Water::getAABB() {
+    return {static_cast<float>(water_texture.width), static_cast<float>(water_texture.height)};
+}

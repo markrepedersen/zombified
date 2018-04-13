@@ -25,8 +25,6 @@ public:
 
     void update(float ms);
 
-    void move(vec2 off);
-
     // Returns the current salmon position
     vec2 get_position()const;
     
@@ -85,6 +83,9 @@ public:
     void on_missile_collision(Kinetic *missile)override;
     void on_water_collision(Kinetic *water)override;
     void on_zombie_collision(Kinetic *zombie)override;
+
+    vec2 getAABB()override;
+
 
     vec2 get_bounding_box()const;
 

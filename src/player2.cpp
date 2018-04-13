@@ -294,11 +294,6 @@ void Player2::update(float ms) {
     }
 }
 
-void Player2::move(vec2 off) {
-    m_position.x += off.x;
-    m_position.y += off.y;
-}
-
 void Player2::animate() {
     auto curr_time = std::chrono::high_resolution_clock::now();
     int milliseconds = std::chrono::duration_cast<std::chrono::milliseconds>(curr_time - start_time_p2).count();
@@ -529,4 +524,8 @@ void Player2::on_water_collision(Kinetic *water) {
 
 void Player2::on_zombie_collision(Kinetic *zombie) {
     printf("zombie");
+}
+
+vec2 Player2::getAABB() {
+    return {static_cast<float>(player2_texture.width), static_cast<float>(player2_texture.height)};
 }

@@ -44,7 +44,7 @@ public:
 
     void set_position(vec2 position);
 
-    void move(vec2 pos);
+    void move(vec2 pos)override;
 
     std::string getLimbType();
 
@@ -69,6 +69,8 @@ public:
     void on_missile_collision(Kinetic *missile)override;
     void on_water_collision(Kinetic *water)override;
     void on_zombie_collision(Kinetic *zombie)override;
+
+    vec2 getAABB()override;
 
 protected:
     vec2 cur_target;

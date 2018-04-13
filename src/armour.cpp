@@ -285,3 +285,7 @@ void Armour::on_water_collision(Kinetic *water) {
 void Armour::on_zombie_collision(Kinetic *zombie) {
     printf("zombie");
 }
+
+vec2 Armour::getAABB() {
+    return {static_cast<float>(armour_texture.width), static_cast<float>(armour_texture.height)};
+}
