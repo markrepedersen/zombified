@@ -10,6 +10,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7a2ddb66-73d2-4bf6-afc0-8d4883a195a7" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.name" afterPath="" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change beforePath="$PROJECT_DIR$/CMakeLists.txt" afterPath="$PROJECT_DIR$/CMakeLists .txt" />
       <change beforePath="$PROJECT_DIR$/MapGrid.o" afterPath="" />
@@ -817,7 +818,7 @@
       <change beforePath="$PROJECT_DIR$/build/src/zombie.hpp" afterPath="" />
       <change beforePath="$PROJECT_DIR$/build/src/zombieManager.cpp" afterPath="" />
       <change beforePath="$PROJECT_DIR$/build/src/zombieManager.hpp" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/build/zombie" afterPath="$PROJECT_DIR$/build/zombie" />
+      <change beforePath="$PROJECT_DIR$/build/zombie" afterPath="" />
       <change beforePath="$PROJECT_DIR$/build/zombie.dSYM/Contents/Info.plist" afterPath="" />
       <change beforePath="$PROJECT_DIR$/build/zombie.dSYM/Contents/Resources/DWARF/zombie" afterPath="" />
       <change beforePath="$PROJECT_DIR$/build_xcode_2/CMakeCache.txt" afterPath="" />
@@ -1691,12 +1692,12 @@
       <workItem from="1523089729691" duration="528000" />
       <workItem from="1523644847894" duration="1472000" />
       <workItem from="1523676188401" duration="308000" />
-      <workItem from="1523705177532" duration="212000" />
+      <workItem from="1523705177532" duration="276000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="9406000" />
+    <option name="totallyTimeSpent" value="9470000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1260" height="686" extended-state="0" />

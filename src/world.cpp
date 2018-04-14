@@ -188,7 +188,9 @@ bool World::update(float elapsed_ms) {
         else if (winner == 2)
             m_winner2.init("winner2");*/
         game_over = false;
-        game_over_limbo = true;
+        if(winner != 0) {
+            game_over_limbo = true;
+        }
         game_started = false;
         return true;
         
@@ -203,7 +205,7 @@ bool World::update(float elapsed_ms) {
                 return true;
             }
             
-            else if (m_startbutton.is_clicked()) {
+            else if (m_startbutton.is_clicked() && !game_over_limbo) {
                 
                 gl_has_errors();
                 game_started = true;
@@ -919,7 +921,7 @@ void World::on_mouse_move(GLFWwindow *window, int button, int action, int mod) {
         if (glfwGetMouseButton(window, GLFW_MOUSE_BUTTON_1) == GLFW_RELEASE) {
             //std::cout << "xpos: " << xpos << std::endl;
             //std::cout << "ypos: " << ypos << std::endl;
-            if (!instruction_page){
+            if (!instruction_page && !game_over_limbo){
                 //click start button
                 //std::cout << "xpos: " << xpos << std::endl;
                 //std::cout << "ypos: " << ypos << std::endl;
