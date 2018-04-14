@@ -75,7 +75,9 @@ bool World::init(vec2 screen) {
     bool rendered = false;
     game_started = false;
     game_over = false;
+    game_over_limbo = false;
     instruction_page = false;
+    currWinnerName = "";
     infoscreen = "none";
     pause = false;
     m_min = 0;
@@ -97,7 +99,6 @@ bool World::init(vec2 screen) {
                 m_winner1.init("winner1")&&
                 m_winner2.init("winner2"));
     
-    saveToFile();
     
     return rendered;
 }
@@ -187,6 +188,7 @@ bool World::update(float elapsed_ms) {
         else if (winner == 2)
             m_winner2.init("winner2");*/
         game_over = false;
+        game_over_limbo = true;
         game_started = false;
         return true;
         
@@ -235,7 +237,7 @@ bool World::update(float elapsed_ms) {
                 srand((unsigned) time(0));
                 explosion = false;
                 m_min = 0;
-                m_sec = 30;
+                m_sec = 5;
                 timeDelay = 5;
                 start = time(0);
                 immobilize = 0;
@@ -379,6 +381,20 @@ void World::timer_update() {
             fprintf(stderr, "winner is %d \n", m_antidote.belongs_to);
             winner = m_antidote.belongs_to;
             destroy();
+            
+//            //TODO: remove
+//            string winnername;
+//            if(winner == 1) {
+//                winnername = "player1";
+//            } else if(winner == 2) {
+//                winnername = "player2";
+//            } else {
+//                winnername = "none";
+//            }
+//            
+//            if (winnername != "none") {
+//                saveToFile(winnername);
+//            }
             
             game_over = true;
             
@@ -617,7 +633,36 @@ void World::on_key(GLFWwindow *, int key, int, int action, int mod) {
             pause = true;
     }
     
-    if (!pause){
+    if(game_over_limbo) {
+        std::cout<< "in limbo" << std::endl;
+        int a = 'A';
+        int z = 'Z';
+        int a2 = 'a';
+        int z2 = 'z';
+        
+        if (action == GLFW_RELEASE)
+        {
+            string temp;
+            //if key is a letter key
+            if((key > a && key < z) || (key > a2 && key < z2)){
+                temp =(char) key;
+                std::cout<< temp << std::endl;
+                currWinnerName.append(temp);
+                std::cout << currWinnerName << std::endl;
+            } else if (key == GLFW_KEY_ENTER) {
+                std::cout<< "saving now" << currWinnerName << std::endl;
+                saveToFile(currWinnerName);
+                game_over_limbo = false;
+                currWinnerName = "";
+            } else if (key == GLFW_KEY_BACKSPACE) {
+                currWinnerName = currWinnerName.substr(0, currWinnerName.length() - 1);
+            }
+        }
+        //get keys
+        //if enter key pressed,
+        //save to file and game_over_limbo == false
+    }
+    else if (!pause){
         // player2 actions
         if (immobilize != 2 && !m_player2.get_blowback()) {
             if (action == GLFW_PRESS && key == GLFW_KEY_UP)
@@ -2044,7 +2089,7 @@ void World::populateMapCollisionPoints() {
 
 }
 
-int World::saveToFile() {
+int World::saveToFile(string winnername) {
     FILE *file;
     int file_exists;
     const char * filename="score.txt";
@@ -2068,14 +2113,167 @@ int World::saveToFile() {
     
     if (file!=NULL)
     {
+        string tempWinnerName = winnername;
         printf ("file opened succesfully!\n");
-        char buffer[] = { 'x' , 'y' , 'z' };
-        fwrite (buffer , sizeof(char), sizeof(buffer), file);
+        string temp = "";
+//        temp.append("player2");
+//        temp.append(":");
+//        temp.append("5\n");
+//        temp.append("player1");
+//        temp.append(":");
+//        temp.append("5\n");
+//
+
+        std::vector<std::string> scores = parseFile(file);
+        
+        fclose(file);
+        file=fopen(filename,"w+b");
+        
+        bool winner_exist = false;
+//        foreach item, if match the name, parse, and add. else just append.
+        for(auto &score : scores) {
+            size_t position = score.find(":");
+            if(position != std::string::npos) {
+                if(tempWinnerName == score.substr(0, position)) {
+                    winner_exist = true;
+                    string thisScore = score.substr(position+1);
+                    int thisScoreInt = std::stoi(thisScore);
+                    thisScoreInt++;
+                    string thisScoreString = std::to_string(thisScoreInt);
+                    temp.append(tempWinnerName);
+                    temp.append(":");
+                    temp.append(thisScoreString);
+                    temp.append("\n");
+                } else {
+                    temp.append(score);
+                    temp.append("\n");
+                }
+            }
+        }
+        
+        if (!winner_exist){
+            temp.append(tempWinnerName);
+            temp.append(":");
+            temp.append("1");
+            temp.append("\n");
+        }
+        
+        char toWrite[temp.length() * (sizeof(char)) + 1];
+        strncpy(toWrite, temp.c_str(), sizeof(toWrite));
+        toWrite[sizeof(toWrite) - 1] = 0;
+        
+        fwrite (toWrite , sizeof(char), sizeof(toWrite), file);
         
         fclose(file);
     }
 
     return 0;
+}
+
+std::vector<std::string> World::parseFile(FILE *file) {
+
+    long lSize;
+    char * buffer;
+    string bufferString;
+    size_t result;
+    std::vector<std::string> vectorResult;
+    
+    fseek (file , 0 , SEEK_END);
+    lSize = ftell (file);
+    rewind (file);
+    
+    
+    std::cout << lSize << std::endl;
+    
+    // allocate memory to contain the whole file:
+    buffer = (char*) malloc ((sizeof(char))*lSize);
+    if (buffer == NULL) {fputs ("Memory error",stderr); exit (2);}
+    
+    // copy the file into the buffer:
+    result = fread (buffer,sizeof buffer[0],lSize,file);
+    if (result != lSize) {fputs ("Reading error",stderr); exit (3);}
+
+    
+    bufferString = std::string(buffer);
+    
+    string token;
+    string delimiter = "\n";
+    size_t pos = 0;
+
+    while ((pos = bufferString.find(delimiter)) != std::string::npos) {
+        token = bufferString.substr(0, pos);
+        std::cout << token <<std::endl;
+        bufferString.erase(0, pos + delimiter.length());
+        vectorResult.push_back(token);
+    }
+    
+    for(string vr : vectorResult) {
+        std::cout << "vectorResult" << vr << std::endl;
+    }
+    
+    
+    
+    free(buffer);
+    
+    return vectorResult;
+}
+
+std::map<std::string, int> World::getHighScores(int numOfHighScores) {
+    FILE *file;
+    int file_exists;
+    const char * filename="score.txt";
+    std::map<std::string, int> hsMap;
+    
+    /*first check if the file exists...*/
+    file=fopen(filename,"r");
+    if (file==NULL) file_exists=0;
+    else {file_exists=1; fclose(file);}
+    
+    /*...then open it in the appropriate way*/
+    if (file_exists==1)
+    {
+        printf("file exists!\n");
+        file=fopen(filename,"r+b");
+    }
+    else
+    {
+        return hsMap;
+    }
+    
+    if (file!=NULL)
+    {
+        std::vector<std::string> scores = parseFile(file);
+        
+        for(auto &score : scores) {
+            size_t position = score.find(":");
+            if(position != std::string::npos) {
+                string thisName = score.substr(0, position);
+                string thisScore = score.substr(position+1);
+                int thisScoreInt = std::stoi(thisScore);
+                
+                if(hsMap.size() <= numOfHighScores) {
+                    hsMap[thisName] = thisScoreInt;
+                } else {
+                    map<std::string, int>::iterator it;
+                    
+                    for ( it = hsMap.begin(); it != hsMap.end(); it++ )
+                    {
+                        if(thisScoreInt > it->second) {
+                            hsMap.erase(it);
+                            hsMap[thisName] = thisScoreInt;
+                            break;
+                        }
+                    }
+                }
+              
+            }
+        }
+        
+        fclose(file);
+        
+        return hsMap;
+    }
+
 }
 
 

@@ -110,7 +110,11 @@ private:
 
     bool create_explosion(vec2 bomb_position);
     
-    int saveToFile();
+    int saveToFile(std::string winnername);
+    
+    std::vector<std::string> parseFile(FILE *file);
+    
+    std::map<std::string, int> getHighScores(int numOfHighScores);
 
 private:
     void entityDrawOrder(mat3 projection_2D);
@@ -125,6 +129,7 @@ private:
 	bool game_started;
 	bool game_over;
     bool instruction_page;
+    bool game_over_limbo;
 
 	// Number of fish eaten by the salmon, displayed in the window title
 	unsigned int m_min;
@@ -217,6 +222,7 @@ private:
     Info m_winner1;
     Info m_winner2;
     int winner;
+    std::string currWinnerName;
     
     Info key_info;
     Info story_info;
