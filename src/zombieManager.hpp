@@ -39,11 +39,15 @@ public:
 
     //when the player is attacking using hand combat it will attack at most one zombie in the vicinity
     //per punch
-    void attack_zombies(vec2 player_pos, vec2 bounding_box, int playerNum, ToolboxManager *m_toolboxmanager);
+    bool attack_zombies(vec2 player_pos, vec2 bounding_box, int playerNum, ToolboxManager *m_toolboxmanager);
 
     void setSpeed(float speed);
     
     float getSpeed();
+    
+    void setZombiesInUse(bool inUse);
+    
+    bool getZombiesInUse();
 
     void destroy();
     
@@ -52,5 +56,6 @@ private:
     std::vector<Zombie> zombies;
     std::vector<vec2> m_mapCollisionPoints;
     float speed;
+    bool zombiesInUse;
     
 };

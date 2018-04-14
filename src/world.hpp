@@ -109,6 +109,8 @@ private:
 	void add_to_broadphase(int w, int h, float posx, float posy, void*);
 
     bool create_explosion(vec2 bomb_position);
+    
+    int saveToFile();
 
 private:
     void entityDrawOrder(mat3 projection_2D);
