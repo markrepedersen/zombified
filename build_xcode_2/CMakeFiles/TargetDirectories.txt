@@ -1,0 +1,3 @@
+/Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/build_xcode_2/CMakeFiles/zombie.dir
+/Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/build_xcode_2/CMakeFiles/ALL_BUILD.dir
+/Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/build_xcode_2/CMakeFiles/ZERO_CHECK.dir

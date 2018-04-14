@@ -17,6 +17,7 @@ class Info : public Renderable
     static Texture winner2_texture;
     
     static Texture key_texture;
+    static Texture story_texture;
     
     static Texture pause_texture;
     

@@ -25,8 +25,8 @@ int main(int argc, char* argv[])
 	if (!world.init({ (float)width, (float)height }))
 	{
 		// Time to read the error message
-		std::cout << "Press any key to exit" << std::endl;
-		std::cin.get();
+//		std::cout << "Press any key to exit" << std::endl;
+//		std::cin.get();
 		return EXIT_FAILURE;
 	}
 	auto t = Clock::now();
