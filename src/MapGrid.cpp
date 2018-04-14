@@ -30,7 +30,7 @@ bool MapGrid::operator()(unsigned x, unsigned y) const {
 bool MapGrid::isOccupied(int x, int y) const {
     int xScale = x / SCALING;
     int yScale = y / SCALING;
-    return !mapdata[xScale][yScale]->getPopulation().empty();
+    return !mapdata[xScale > width-1 ? width-1 : xScale][yScale > height-1 ? height-1 : yScale]->getPopulation().empty();
 }
 
 void MapGrid::addOccupant(Kinetic *occupant) {

@@ -7,11 +7,11 @@ C_FLAGS = -g
 
 C_DEFINES = 
 
-C_INCLUDES = -I/Users/markpedersen/Desktop/zombified/ext/gl3w -I/Users/markpedersen/Desktop/zombified/ext/glfw -I/Users/markpedersen/Desktop/zombified/ext/sdl -I/Users/markpedersen/Desktop/zombified/ext/stb_image -I/Users/markpedersen/Desktop/zombified/ext/Box2D 
+C_INCLUDES = -I/Users/markpedersen/Desktop/zombified/ext/gl3w -I/Users/markpedersen/Desktop/zombified/ext/glfw -I/Users/markpedersen/Desktop/zombified/ext/sdl -I/Users/markpedersen/Desktop/zombified/ext/stb_image -I/Users/markpedersen/Desktop/zombified/ext/Box2D -I/Library/Frameworks/Mono.framework/Headers -I/usr/local/include/freetype2 
 
 CXX_FLAGS = -g   -std=gnu++11
 
 CXX_DEFINES = 
 
-CXX_INCLUDES = -I/Users/markpedersen/Desktop/zombified/ext/gl3w -I/Users/markpedersen/Desktop/zombified/ext/glfw -I/Users/markpedersen/Desktop/zombified/ext/sdl -I/Users/markpedersen/Desktop/zombified/ext/stb_image -I/Users/markpedersen/Desktop/zombified/ext/Box2D 
+CXX_INCLUDES = -I/Users/markpedersen/Desktop/zombified/ext/gl3w -I/Users/markpedersen/Desktop/zombified/ext/glfw -I/Users/markpedersen/Desktop/zombified/ext/sdl -I/Users/markpedersen/Desktop/zombified/ext/stb_image -I/Users/markpedersen/Desktop/zombified/ext/Box2D -I/Library/Frameworks/Mono.framework/Headers -I/usr/local/include/freetype2 
 

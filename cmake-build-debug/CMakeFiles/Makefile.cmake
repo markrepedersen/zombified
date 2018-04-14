@@ -21,6 +21,7 @@ set(CMAKE_MAKEFILE_DEPENDS
   "/Applications/CLion.app/Contents/bin/cmake/share/cmake-3.9/Modules/Compiler/CMakeCommonCompilerMacros.cmake"
   "/Applications/CLion.app/Contents/bin/cmake/share/cmake-3.9/Modules/Compiler/Clang.cmake"
   "/Applications/CLion.app/Contents/bin/cmake/share/cmake-3.9/Modules/Compiler/GNU.cmake"
+  "/Applications/CLion.app/Contents/bin/cmake/share/cmake-3.9/Modules/FindFreetype.cmake"
   "/Applications/CLion.app/Contents/bin/cmake/share/cmake-3.9/Modules/FindOpenGL.cmake"
   "/Applications/CLion.app/Contents/bin/cmake/share/cmake-3.9/Modules/FindPackageHandleStandardArgs.cmake"
   "/Applications/CLion.app/Contents/bin/cmake/share/cmake-3.9/Modules/FindPackageMessage.cmake"

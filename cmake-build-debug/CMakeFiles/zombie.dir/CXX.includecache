@@ -168,15 +168,11 @@ missile.hpp
 player1.hpp
 /Users/markpedersen/Desktop/zombified/src/player1.hpp
 
-/Users/markpedersen/Desktop/zombified/src/ToolManager.cpp
+/Users/markpedersen/Desktop/zombified/src/PhysicalBody.cpp
 
-/Users/markpedersen/Desktop/zombified/src/ToolManager.h
-vector
--
-Ice.hpp
-/Users/markpedersen/Desktop/zombified/src/Ice.hpp
-water.hpp
-/Users/markpedersen/Desktop/zombified/src/water.hpp
+/Users/markpedersen/Desktop/zombified/src/Physics.cpp
+
+/Users/markpedersen/Desktop/zombified/src/ToolManager.cpp
 
 /Users/markpedersen/Desktop/zombified/src/antidote.cpp
 antidote.hpp
@@ -1067,8 +1063,6 @@ world.hpp
 /Users/markpedersen/Desktop/zombified/src/world.hpp
 sstream
 -
-unordered_set
--
 
 /Users/markpedersen/Desktop/zombified/src/world.hpp
 common.hpp
@@ -1093,8 +1087,6 @@ mud.hpp
 /Users/markpedersen/Desktop/zombified/src/mud.hpp
 Ice.hpp
 /Users/markpedersen/Desktop/zombified/src/Ice.hpp
-tree.hpp
-/Users/markpedersen/Desktop/zombified/src/tree.hpp
 explosion.hpp
 /Users/markpedersen/Desktop/zombified/src/explosion.hpp
 worldtexture.hpp
@@ -1109,8 +1101,6 @@ MapGrid.h
 /Users/markpedersen/Desktop/zombified/src/MapGrid.h
 JPS.h
 /Users/markpedersen/Desktop/zombified/src/JPS.h
-ToolManager.h
-/Users/markpedersen/Desktop/zombified/src/ToolManager.h
 missile.hpp
 /Users/markpedersen/Desktop/zombified/src/missile.hpp
 bomb.hpp
@@ -1138,6 +1128,8 @@ random
 tmxparser/Tmx.h
 -
 algorithm
+-
+freetype2/ft2build.h
 -
 
 /Users/markpedersen/Desktop/zombified/src/worldtexture.cpp

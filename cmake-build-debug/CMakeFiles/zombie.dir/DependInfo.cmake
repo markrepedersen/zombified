@@ -18,6 +18,8 @@ set(CMAKE_C_TARGET_INCLUDE_PATH
   "../ext/sdl"
   "../ext/stb_image"
   "../ext/Box2D"
+  "/Library/Frameworks/Mono.framework/Headers"
+  "/usr/local/include/freetype2"
   )
 set(CMAKE_DEPENDS_CHECK_CXX
   "/Users/markpedersen/Desktop/zombified/src/Ice.cpp" "/Users/markpedersen/Desktop/zombified/cmake-build-debug/CMakeFiles/zombie.dir/src/Ice.cpp.o"
@@ -25,6 +27,8 @@ set(CMAKE_DEPENDS_CHECK_CXX
   "/Users/markpedersen/Desktop/zombified/src/Kinetic.cpp" "/Users/markpedersen/Desktop/zombified/cmake-build-debug/CMakeFiles/zombie.dir/src/Kinetic.cpp.o"
   "/Users/markpedersen/Desktop/zombified/src/Limb.cpp" "/Users/markpedersen/Desktop/zombified/cmake-build-debug/CMakeFiles/zombie.dir/src/Limb.cpp.o"
   "/Users/markpedersen/Desktop/zombified/src/MapGrid.cpp" "/Users/markpedersen/Desktop/zombified/cmake-build-debug/CMakeFiles/zombie.dir/src/MapGrid.cpp.o"
+  "/Users/markpedersen/Desktop/zombified/src/PhysicalBody.cpp" "/Users/markpedersen/Desktop/zombified/cmake-build-debug/CMakeFiles/zombie.dir/src/PhysicalBody.cpp.o"
+  "/Users/markpedersen/Desktop/zombified/src/Physics.cpp" "/Users/markpedersen/Desktop/zombified/cmake-build-debug/CMakeFiles/zombie.dir/src/Physics.cpp.o"
   "/Users/markpedersen/Desktop/zombified/src/ToolManager.cpp" "/Users/markpedersen/Desktop/zombified/cmake-build-debug/CMakeFiles/zombie.dir/src/ToolManager.cpp.o"
   "/Users/markpedersen/Desktop/zombified/src/antidote.cpp" "/Users/markpedersen/Desktop/zombified/cmake-build-debug/CMakeFiles/zombie.dir/src/antidote.cpp.o"
   "/Users/markpedersen/Desktop/zombified/src/armour.cpp" "/Users/markpedersen/Desktop/zombified/cmake-build-debug/CMakeFiles/zombie.dir/src/armour.cpp.o"
@@ -86,6 +90,8 @@ set(CMAKE_CXX_TARGET_INCLUDE_PATH
   "../ext/sdl"
   "../ext/stb_image"
   "../ext/Box2D"
+  "/Library/Frameworks/Mono.framework/Headers"
+  "/usr/local/include/freetype2"
   )
 
 # Targets to which this target links.

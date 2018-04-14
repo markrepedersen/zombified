@@ -100,6 +100,10 @@ CMakeFiles/zombie.dir/src/MapGrid.cpp.o: ../src/punchright.hpp
 CMakeFiles/zombie.dir/src/MapGrid.cpp.o: ../src/viewHelper.hpp
 CMakeFiles/zombie.dir/src/MapGrid.cpp.o: ../src/water.hpp
 
+CMakeFiles/zombie.dir/src/PhysicalBody.cpp.o: ../src/PhysicalBody.cpp
+
+CMakeFiles/zombie.dir/src/Physics.cpp.o: ../src/Physics.cpp
+
 CMakeFiles/zombie.dir/src/ToolManager.cpp.o: ../src/ToolManager.cpp
 
 CMakeFiles/zombie.dir/src/antidote.cpp.o: ../ext/gl3w/gl3w.h
@@ -268,7 +272,6 @@ CMakeFiles/zombie.dir/src/main.cpp.o: ../src/JPS.h
 CMakeFiles/zombie.dir/src/main.cpp.o: ../src/Kinetic.h
 CMakeFiles/zombie.dir/src/main.cpp.o: ../src/Limb.h
 CMakeFiles/zombie.dir/src/main.cpp.o: ../src/MapGrid.h
-CMakeFiles/zombie.dir/src/main.cpp.o: ../src/ToolManager.h
 CMakeFiles/zombie.dir/src/main.cpp.o: ../src/antidote.hpp
 CMakeFiles/zombie.dir/src/main.cpp.o: ../src/armour.hpp
 CMakeFiles/zombie.dir/src/main.cpp.o: ../src/blood.hpp
@@ -287,7 +290,6 @@ CMakeFiles/zombie.dir/src/main.cpp.o: ../src/punchleft.hpp
 CMakeFiles/zombie.dir/src/main.cpp.o: ../src/punchright.hpp
 CMakeFiles/zombie.dir/src/main.cpp.o: ../src/toolboxManager.hpp
 CMakeFiles/zombie.dir/src/main.cpp.o: ../src/toolboxSlot.hpp
-CMakeFiles/zombie.dir/src/main.cpp.o: ../src/tree.hpp
 CMakeFiles/zombie.dir/src/main.cpp.o: ../src/viewHelper.hpp
 CMakeFiles/zombie.dir/src/main.cpp.o: ../src/water.hpp
 CMakeFiles/zombie.dir/src/main.cpp.o: ../src/world.hpp
@@ -665,7 +667,6 @@ CMakeFiles/zombie.dir/src/world.cpp.o: ../src/JPS.h
 CMakeFiles/zombie.dir/src/world.cpp.o: ../src/Kinetic.h
 CMakeFiles/zombie.dir/src/world.cpp.o: ../src/Limb.h
 CMakeFiles/zombie.dir/src/world.cpp.o: ../src/MapGrid.h
-CMakeFiles/zombie.dir/src/world.cpp.o: ../src/ToolManager.h
 CMakeFiles/zombie.dir/src/world.cpp.o: ../src/antidote.hpp
 CMakeFiles/zombie.dir/src/world.cpp.o: ../src/armour.hpp
 CMakeFiles/zombie.dir/src/world.cpp.o: ../src/blood.hpp
@@ -683,7 +684,6 @@ CMakeFiles/zombie.dir/src/world.cpp.o: ../src/punchleft.hpp
 CMakeFiles/zombie.dir/src/world.cpp.o: ../src/punchright.hpp
 CMakeFiles/zombie.dir/src/world.cpp.o: ../src/toolboxManager.hpp
 CMakeFiles/zombie.dir/src/world.cpp.o: ../src/toolboxSlot.hpp
-CMakeFiles/zombie.dir/src/world.cpp.o: ../src/tree.hpp
 CMakeFiles/zombie.dir/src/world.cpp.o: ../src/viewHelper.hpp
 CMakeFiles/zombie.dir/src/world.cpp.o: ../src/water.hpp
 CMakeFiles/zombie.dir/src/world.cpp.o: ../src/world.cpp

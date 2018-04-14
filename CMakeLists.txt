@@ -4,15 +4,6 @@ project(zombie)
 set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR}/cmake ${CMAKE_MODULE_PATH})
 
-include_directories(${OPENGL_INCLUDE_DIR})
-include_directories(${GLFW_INCLUDE_DIRS})
-include_directories(ext/gl3w)
-include_directories(ext/glfw)
-include_directories(ext/sdl)
-include_directories(ext/stb_image)
-include_directories(ext/Box2D)
-include_directories(${ZLIB_INCLUDE_DIRS})
-
 find_package(SDL)
 find_package(SDL_mixer)
 find_package(OpenGL REQUIRED)
@@ -21,8 +12,23 @@ find_package(TinyXML2)
 find_package(ZLIB)
 find_package(GLFW REQUIRED glfw3)
 find_library(CoreFoundation corefoundation)
+find_package(Freetype REQUIRED)
+
+include_directories(${OPENGL_INCLUDE_DIR})
+include_directories(${GLFW_INCLUDE_DIRS})
+include_directories(ext/gl3w)
+include_directories(ext/glfw)
+include_directories(ext/sdl)
+include_directories(ext/stb_image)
+include_directories(ext/Box2D)
+include_directories(${ZLIB_INCLUDE_DIRS})
+include_directories(${FREETYPE_INCLUDE_DIRS})
+
 message(INFO ${TINYXML2_LIBRARIES})
 message(INFO ${TINYXML2_INCLUDE_DIR})
+
+message(INFO ${FREETYPE_LIBRARIES})
+message(INFO ${FREETYPE_INCLUDE_DIRS})
 
 
 file(GLOB_RECURSE cmake-build-debug/data ${CMAKE_SOURCE_DIR}/data/*.wav ${CMAKE_SOURCE_DIR}/data/*.png ${CMAKE_SOURCE_DIR}/data/*.mesh ${CMAKE_SOURCE_DIR}/data/*.bmp)
@@ -42,6 +48,7 @@ target_link_libraries(zombie
         ${SDL_MAIN_LIBRARY}
         ${SDL_LIBRARY}
         ${ZLIB_LIBRARIES}
+        ${FREETYPE_LIBRARIES}
         SDLmain
         SDL_mixer
         dl

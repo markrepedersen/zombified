@@ -258,6 +258,60 @@ src/MapGrid.cpp.s:
 	$(MAKE) -f CMakeFiles/zombie.dir/build.make CMakeFiles/zombie.dir/src/MapGrid.cpp.s
 .PHONY : src/MapGrid.cpp.s
 
+src/PhysicalBody.o: src/PhysicalBody.cpp.o
+
+.PHONY : src/PhysicalBody.o
+
+# target to build an object file
+src/PhysicalBody.cpp.o:
+	$(MAKE) -f CMakeFiles/zombie.dir/build.make CMakeFiles/zombie.dir/src/PhysicalBody.cpp.o
+.PHONY : src/PhysicalBody.cpp.o
+
+src/PhysicalBody.i: src/PhysicalBody.cpp.i
+
+.PHONY : src/PhysicalBody.i
+
+# target to preprocess a source file
+src/PhysicalBody.cpp.i:
+	$(MAKE) -f CMakeFiles/zombie.dir/build.make CMakeFiles/zombie.dir/src/PhysicalBody.cpp.i
+.PHONY : src/PhysicalBody.cpp.i
+
+src/PhysicalBody.s: src/PhysicalBody.cpp.s
+
+.PHONY : src/PhysicalBody.s
+
+# target to generate assembly for a file
+src/PhysicalBody.cpp.s:
+	$(MAKE) -f CMakeFiles/zombie.dir/build.make CMakeFiles/zombie.dir/src/PhysicalBody.cpp.s
+.PHONY : src/PhysicalBody.cpp.s
+
+src/Physics.o: src/Physics.cpp.o
+
+.PHONY : src/Physics.o
+
+# target to build an object file
+src/Physics.cpp.o:
+	$(MAKE) -f CMakeFiles/zombie.dir/build.make CMakeFiles/zombie.dir/src/Physics.cpp.o
+.PHONY : src/Physics.cpp.o
+
+src/Physics.i: src/Physics.cpp.i
+
+.PHONY : src/Physics.i
+
+# target to preprocess a source file
+src/Physics.cpp.i:
+	$(MAKE) -f CMakeFiles/zombie.dir/build.make CMakeFiles/zombie.dir/src/Physics.cpp.i
+.PHONY : src/Physics.cpp.i
+
+src/Physics.s: src/Physics.cpp.s
+
+.PHONY : src/Physics.s
+
+# target to generate assembly for a file
+src/Physics.cpp.s:
+	$(MAKE) -f CMakeFiles/zombie.dir/build.make CMakeFiles/zombie.dir/src/Physics.cpp.s
+.PHONY : src/Physics.cpp.s
+
 src/ToolManager.o: src/ToolManager.cpp.o
 
 .PHONY : src/ToolManager.o
@@ -1686,6 +1740,12 @@ help:
 	@echo "... src/MapGrid.o"
 	@echo "... src/MapGrid.i"
 	@echo "... src/MapGrid.s"
+	@echo "... src/PhysicalBody.o"
+	@echo "... src/PhysicalBody.i"
+	@echo "... src/PhysicalBody.s"
+	@echo "... src/Physics.o"
+	@echo "... src/Physics.i"
+	@echo "... src/Physics.s"
 	@echo "... src/ToolManager.o"
 	@echo "... src/ToolManager.i"
 	@echo "... src/ToolManager.s"

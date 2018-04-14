@@ -12,7 +12,6 @@
 #include "water.hpp"
 #include "mud.hpp"
 #include "Ice.hpp"
-//#include "tree.hpp"
 #include "explosion.hpp"
 #include "worldtexture.hpp"
 #include "viewHelper.hpp"
@@ -20,16 +19,13 @@
 #include "antidote.hpp"
 #include "MapGrid.h"
 #include "JPS.h"
-//#include "ToolManager.h"
 #include "missile.hpp"
 #include "bomb.hpp"
 #include "armour.hpp"
 #include "zombie.hpp"
 #include "punchleft.hpp"
 #include "punchright.hpp"
-
 #include "infopage.hpp"
-
 #include <vector>
 #include <SDL/SDL.h>
 #include <SDL/SDL_mixer.h>
@@ -37,12 +33,22 @@
 #include <random>
 #include <tmxparser/Tmx.h>
 #include <algorithm>
+#include <freetype2/ft2build.h>
+#include FT_FREETYPE_H
 
 // #if !defined(DISABLE_SDL)
 //  #include <SDL/SDL.h>
  // #include <SDL/SDL_mixer.h>
  // #define SDL_MAIN_HANDLED
 // #endif
+
+struct Character {
+    GLuint     TextureID;  // ID handle of the glyph texture
+    vec2 Size;       // Size of glyph
+    vec2 Bearing;    // Offset from baseline to left/top of glyph
+    GLuint     Advance;    // Offset to advance to next glyph
+};
+
 
 
 
@@ -95,6 +101,8 @@ private:
     bool spawn_missile();
     bool spawn_armour();
     bool spawn_bomb();
+
+    bool initFreetype();
 
     void shift_1(bool droppedAntidote);
     void shift_2(bool droppedAntidote);
