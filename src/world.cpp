@@ -11,7 +11,7 @@ namespace {
     const size_t MAX_MISSILE = 2;
     const size_t MAX_ARMOUR = 2;
     const size_t MAX_BOMB = 1;
-    const size_t MAX_WATER = 1;
+    const size_t MAX_WATER = 2;
     const size_t ARM_DELAY_MS = 1000;
     const size_t LEG_DELAY_MS = 1000;
     const size_t DELAY_MS = 1000;
@@ -234,7 +234,7 @@ bool World::update(float elapsed_ms) {
                 
                 srand((unsigned) time(0));
                 explosion = false;
-                m_min = 2;
+                m_min = 1;
                 m_sec = 0;
                 timeDelay = 5;
                 start = time(0);
@@ -897,8 +897,8 @@ void World::on_mouse_move(GLFWwindow *window, int button, int action, int mod) {
                     draw();
                 }
                 
-                //clock info button
-                if (xpos < 1300.f && xpos > 970.f && ypos < 680.f && ypos > 600.f)
+                //click info button
+                if (xpos < 1300.f && xpos > 970.f && ypos < 700.f && ypos > 630.f)
                 {
                     //std::cout << "info page!" << std::endl;
                     infoscreen = "default";
@@ -1746,7 +1746,7 @@ void World::shift_2(bool droppedAntidote) {
     std::vector<int>::iterator it;
     int freezecount = 0;
     int watercount = 0;
-    int legcount = 0;
+    //int legcount = 0;
     int bombcount = 0;
     int armourcount = 0;
     int missilecount = 0;

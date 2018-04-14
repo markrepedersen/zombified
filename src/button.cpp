@@ -13,8 +13,8 @@ bool Button::init(std::string buttontype)
     //if (!button_texture.is_valid())
     //{
     type = buttontype;
-    float wr;
-    float hr;
+    float wr = 0;
+    float hr = 0;
     
     if(type == "start") {
         if (!startbutton_texture.is_valid()) {
@@ -41,7 +41,7 @@ bool Button::init(std::string buttontype)
             hr = infobutton_texture.height * 0.5f;
             m_scale.x = -0.45f* ViewHelper::getRatio();
             m_scale.y = 0.45f* ViewHelper::getRatio();
-            m_position = { 1100.f* ViewHelper::getRatio(), 640.f* ViewHelper::getRatio() };
+            m_position = { 1100.f* ViewHelper::getRatio(), 660.f* ViewHelper::getRatio() };
         }
     }
     else {

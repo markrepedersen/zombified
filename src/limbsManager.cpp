@@ -135,7 +135,7 @@ std::string LimbsManager::check_collision_with_players(Player1 *m_player1, Playe
 
     int collided = 0;
     for (auto it = limbs.begin(); it != limbs.end();) {
-         int limb_collided = 0;
+         //int limb_collided = 0;
         
         if (m_player1->collides_with(*it))
             collided = 1;
