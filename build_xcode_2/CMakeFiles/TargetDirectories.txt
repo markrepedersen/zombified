@@ -1,3 +1,0 @@
-/Users/irenefang/Documents/CPSC436D/Game/zombified/build_xcode_2/CMakeFiles/zombie.dir
-/Users/irenefang/Documents/CPSC436D/Game/zombified/build_xcode_2/CMakeFiles/ALL_BUILD.dir
-/Users/irenefang/Documents/CPSC436D/Game/zombified/build_xcode_2/CMakeFiles/ZERO_CHECK.dir

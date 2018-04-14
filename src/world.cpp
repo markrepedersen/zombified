@@ -234,8 +234,8 @@ bool World::update(float elapsed_ms) {
                 
                 srand((unsigned) time(0));
                 explosion = false;
-                m_min = 0;
-                m_sec = 30;
+                m_min = 2;
+                m_sec = 0;
                 timeDelay = 5;
                 start = time(0);
                 immobilize = 0;
@@ -311,17 +311,20 @@ bool World::update(float elapsed_ms) {
                 if (useMissile)
                     use_missile(elapsed_ms);
                 
-                if ((int) difftime(time(0), armourTime_p1) >= 10) {
-                    armourInUse_p1 = false;
-                    m_player1.set_armourstate(false);
-                    armourTime_p1 = 0;
+                if (armourInUse_p1){
+                    if ((int) difftime(time(0), armourTime_p1) >= 10) {
+                        armourInUse_p1 = false;
+                        m_player1.set_armourstate(false);
+                        armourTime_p1 = 0;
+                    }
                 }
-                if ((int) difftime(time(0), armourTime_p2) >= 10) {
-                    armourInUse_p2 = false;
-                    m_player2.set_armourstate(false);
-                    armourTime_p2 = 0;
+                if (armourInUse_p2) {
+                    if ((int) difftime(time(0), armourTime_p2) >= 10) {
+                        armourInUse_p2 = false;
+                        m_player2.set_armourstate(false);
+                        armourTime_p2 = 0;
+                    }
                 }
-                
                 // check how many times the player has been hit
                 // if player was hit 5 times, drops items
                 if (m_player1.numberofHits >= 5) {
@@ -1867,17 +1870,28 @@ void World::use_bomb(float ms) {
 void World::autoExplode(Bomb bomb, int position) {
     float force_p1 = 0;
     float force_p2 = 0;
-    if (!armourInUse_p1) {
+    //if (!armourInUse_p1) {
         force_p1 = bomb.get_force(m_player1.get_mass(),
                                                 m_player1.get_speed(),
                                                 m_player1.get_position());
-    }
+    //}
 
-    if (!armourInUse_p2) {
+    //if (!armourInUse_p2) {
         force_p2 = bomb.get_force(m_player2.get_mass(),
                                                 m_player2.get_speed(),
                                                 m_player2.get_position());
+    //}
+    if (armourInUse_p1){
+        force_p1 = 0;
+        armourInUse_p1 = false;
+        m_player1.set_armourstate(false);
     }
+    if (armourInUse_p2) {
+        force_p2 = 0;
+        armourInUse_p2 = false;
+        m_player2.set_armourstate(false);
+    }
+    
     if (force_p1 > 0) {
         m_player1.set_blowback(true);
         m_player1.set_speed(force_p1);
@@ -1960,17 +1974,29 @@ void World::use_missile(float ms) {
 void World::autoExplodeMissile(Missile missile, int position) {
     float force_p1 = 0;
     float force_p2 = 0;
-    if (!armourInUse_p1) {
+    //if (!armourInUse_p1) {
         force_p1 = missile.get_force(m_player1.get_mass(),
                                                 m_player1.get_speed(),
                                                 m_player1.get_position());
-    }
+    //}
     
-    if (!armourInUse_p2) {
+    //if (!armourInUse_p2) {
         force_p2 = missile.get_force(m_player2.get_mass(),
                                                 m_player2.get_speed(),
                                                 m_player2.get_position());
+    //}
+    
+    if (armourInUse_p1){
+        force_p1 = 0;
+        armourInUse_p1 = false;
+        m_player1.set_armourstate(false);
     }
+    if (armourInUse_p2) {
+        force_p2 = 0;
+        armourInUse_p2 = false;
+        m_player2.set_armourstate(false);
+    }
+    
     if (force_p1 > 0) {
         m_player1.set_blowback(true);
         m_player1.set_speed(force_p1);
