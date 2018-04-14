@@ -4,14 +4,14 @@ empty:=
 space:= $(empty) $(empty)
 spaceplus:= $(empty)\ $(empty)
 
-TARGETS += $(subst $(space),$(spaceplus),$(wildcard /Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/CMakeLists.txt))
-TARGETS += $(subst $(space),$(spaceplus),$(wildcard /Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/build_xcode_2/CMakeFiles/3.10.3/CMakeCCompiler.cmake))
-TARGETS += $(subst $(space),$(spaceplus),$(wildcard /Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/build_xcode_2/CMakeFiles/3.10.3/CMakeCXXCompiler.cmake))
-TARGETS += $(subst $(space),$(spaceplus),$(wildcard /Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/build_xcode_2/CMakeFiles/3.10.3/CMakeSystem.cmake))
-TARGETS += $(subst $(space),$(spaceplus),$(wildcard /Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/build_xcode_2/CMakeFiles/feature_tests.c))
-TARGETS += $(subst $(space),$(spaceplus),$(wildcard /Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/build_xcode_2/CMakeFiles/feature_tests.cxx))
-TARGETS += $(subst $(space),$(spaceplus),$(wildcard /Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/cmake/FindGLFW.cmake))
-TARGETS += $(subst $(space),$(spaceplus),$(wildcard /Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/cmake/FindTinyXML2.cmake))
+TARGETS += $(subst $(space),$(spaceplus),$(wildcard /Users/irenefang/Documents/CPSC436D/Game/zombified/CMakeLists.txt))
+TARGETS += $(subst $(space),$(spaceplus),$(wildcard /Users/irenefang/Documents/CPSC436D/Game/zombified/build_xcode_2/CMakeFiles/3.10.3/CMakeCCompiler.cmake))
+TARGETS += $(subst $(space),$(spaceplus),$(wildcard /Users/irenefang/Documents/CPSC436D/Game/zombified/build_xcode_2/CMakeFiles/3.10.3/CMakeCXXCompiler.cmake))
+TARGETS += $(subst $(space),$(spaceplus),$(wildcard /Users/irenefang/Documents/CPSC436D/Game/zombified/build_xcode_2/CMakeFiles/3.10.3/CMakeSystem.cmake))
+TARGETS += $(subst $(space),$(spaceplus),$(wildcard /Users/irenefang/Documents/CPSC436D/Game/zombified/build_xcode_2/CMakeFiles/feature_tests.c))
+TARGETS += $(subst $(space),$(spaceplus),$(wildcard /Users/irenefang/Documents/CPSC436D/Game/zombified/build_xcode_2/CMakeFiles/feature_tests.cxx))
+TARGETS += $(subst $(space),$(spaceplus),$(wildcard /Users/irenefang/Documents/CPSC436D/Game/zombified/cmake/FindGLFW.cmake))
+TARGETS += $(subst $(space),$(spaceplus),$(wildcard /Users/irenefang/Documents/CPSC436D/Game/zombified/cmake/FindTinyXML2.cmake))
 TARGETS += $(subst $(space),$(spaceplus),$(wildcard /usr/local/Cellar/cmake/3.10.3/share/cmake/Modules/CMakeCCompiler.cmake.in))
 TARGETS += $(subst $(space),$(spaceplus),$(wildcard /usr/local/Cellar/cmake/3.10.3/share/cmake/Modules/CMakeCCompilerABI.c))
 TARGETS += $(subst $(space),$(spaceplus),$(wildcard /usr/local/Cellar/cmake/3.10.3/share/cmake/Modules/CMakeCInformation.cmake))
@@ -104,5 +104,5 @@ TARGETS += $(subst $(space),$(spaceplus),$(wildcard /usr/local/Cellar/cmake/3.10
 TARGETS += $(subst $(space),$(spaceplus),$(wildcard /usr/local/Cellar/cmake/3.10.3/share/cmake/Modules/Platform/UnixPaths.cmake))
 TARGETS += $(subst $(space),$(spaceplus),$(wildcard /usr/local/Cellar/cmake/3.10.3/share/cmake/Modules/SelectLibraryConfigurations.cmake))
 
-/Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/build_xcode_2/CMakeFiles/cmake.check_cache: $(TARGETS)
-	/usr/local/Cellar/cmake/3.10.3/bin/cmake -H/Users/ppnia/Documents/Winter20172018/CPSC436D/zombified -B/Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/build_xcode_2
+/Users/irenefang/Documents/CPSC436D/Game/zombified/build_xcode_2/CMakeFiles/cmake.check_cache: $(TARGETS)
+	/usr/local/Cellar/cmake/3.10.3/bin/cmake -H/Users/irenefang/Documents/CPSC436D/Game/zombified -B/Users/irenefang/Documents/CPSC436D/Game/zombified/build_xcode_2

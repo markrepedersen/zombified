@@ -22,7 +22,3 @@ bool MapGrid::operator()(unsigned x, unsigned y) const {
 
     return x < width && y < height;
 }
-
-void MapGrid::destroy() {
-    mapdata.clear();
-}

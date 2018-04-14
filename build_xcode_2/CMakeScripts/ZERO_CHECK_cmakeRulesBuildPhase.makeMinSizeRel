@@ -2,9 +2,9 @@
 # Custom rules for ZERO_CHECK
 .SUFFIXES: 
 all: \
-	/Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/build_xcode_2/CMakeFiles/ZERO_CHECK
+	/Users/irenefang/Documents/CPSC436D/Game/zombified/build_xcode_2/CMakeFiles/ZERO_CHECK
 
 
-/Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/build_xcode_2/CMakeFiles/ZERO_CHECK: 
+/Users/irenefang/Documents/CPSC436D/Game/zombified/build_xcode_2/CMakeFiles/ZERO_CHECK: 
 	echo ""
-	make -f /Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/build_xcode_2/CMakeScripts/ReRunCMake.make
+	make -f /Users/irenefang/Documents/CPSC436D/Game/zombified/build_xcode_2/CMakeScripts/ReRunCMake.make

@@ -524,9 +524,9 @@ vec2 Player1::get_bounding_box() const{
 void Player1::destroy() {
     glDeleteBuffers(1, &mesh.vbo);
     glDeleteBuffers(1, &mesh.ibo);
-    glDeleteBuffers(1, &mesh.vao);
+    glDeleteVertexArrays(1, &mesh.vao);
 
     glDeleteShader(effect.vertex);
     glDeleteShader(effect.fragment);
-    glDeleteShader(effect.program);
+    glDeleteProgram(effect.program);
 }
