@@ -11,7 +11,7 @@ namespace {
     const size_t MAX_MISSILE = 2;
     const size_t MAX_ARMOUR = 2;
     const size_t MAX_BOMB = 1;
-    const size_t MAX_WATER = 1;
+    const size_t MAX_WATER = 2;
     const size_t ARM_DELAY_MS = 1000;
     const size_t LEG_DELAY_MS = 1000;
     const size_t DELAY_MS = 1000;
@@ -98,7 +98,7 @@ bool World::init(vec2 screen) {
                 m_armourdetails.init("armour") &&
                 m_winner1.init("winner1")&&
                 m_winner2.init("winner2"));
-    
+
     
     return rendered;
 }
@@ -236,8 +236,8 @@ bool World::update(float elapsed_ms) {
                 
                 srand((unsigned) time(0));
                 explosion = false;
-                m_min = 0;
-                m_sec = 5;
+                m_min = 1;
+                m_sec = 0;
                 timeDelay = 5;
                 start = time(0);
                 immobilize = 0;
@@ -313,17 +313,20 @@ bool World::update(float elapsed_ms) {
                 if (useMissile)
                     use_missile(elapsed_ms);
                 
-                if ((int) difftime(time(0), armourTime_p1) >= 10) {
-                    armourInUse_p1 = false;
-                    m_player1.set_armourstate(false);
-                    armourTime_p1 = 0;
+                if (armourInUse_p1){
+                    if ((int) difftime(time(0), armourTime_p1) >= 10) {
+                        armourInUse_p1 = false;
+                        m_player1.set_armourstate(false);
+                        armourTime_p1 = 0;
+                    }
                 }
-                if ((int) difftime(time(0), armourTime_p2) >= 10) {
-                    armourInUse_p2 = false;
-                    m_player2.set_armourstate(false);
-                    armourTime_p2 = 0;
+                if (armourInUse_p2) {
+                    if ((int) difftime(time(0), armourTime_p2) >= 10) {
+                        armourInUse_p2 = false;
+                        m_player2.set_armourstate(false);
+                        armourTime_p2 = 0;
+                    }
                 }
-                
                 // check how many times the player has been hit
                 // if player was hit 5 times, drops items
                 if (m_player1.numberofHits >= 5) {
@@ -381,20 +384,6 @@ void World::timer_update() {
             fprintf(stderr, "winner is %d \n", m_antidote.belongs_to);
             winner = m_antidote.belongs_to;
             destroy();
-            
-//            //TODO: remove
-//            string winnername;
-//            if(winner == 1) {
-//                winnername = "player1";
-//            } else if(winner == 2) {
-//                winnername = "player2";
-//            } else {
-//                winnername = "none";
-//            }
-//            
-//            if (winnername != "none") {
-//                saveToFile(winnername);
-//            }
             
             game_over = true;
             
@@ -639,7 +628,7 @@ void World::on_key(GLFWwindow *, int key, int, int action, int mod) {
         int z = 'Z';
         int a2 = 'a';
         int z2 = 'z';
-        
+
         if (action == GLFW_RELEASE)
         {
             string temp;
@@ -939,8 +928,8 @@ void World::on_mouse_move(GLFWwindow *window, int button, int action, int mod) {
                     draw();
                 }
                 
-                //clock info button
-                if (xpos < 1300.f && xpos > 970.f && ypos < 680.f && ypos > 600.f)
+                //click info button
+                if (xpos < 1300.f && xpos > 970.f && ypos < 700.f && ypos > 630.f)
                 {
                     //std::cout << "info page!" << std::endl;
                     infoscreen = "default";
@@ -1788,7 +1777,7 @@ void World::shift_2(bool droppedAntidote) {
     std::vector<int>::iterator it;
     int freezecount = 0;
     int watercount = 0;
-    int legcount = 0;
+    //int legcount = 0;
     int bombcount = 0;
     int armourcount = 0;
     int missilecount = 0;
@@ -1912,17 +1901,28 @@ void World::use_bomb(float ms) {
 void World::autoExplode(Bomb bomb, int position) {
     float force_p1 = 0;
     float force_p2 = 0;
-    if (!armourInUse_p1) {
+    //if (!armourInUse_p1) {
         force_p1 = bomb.get_force(m_player1.get_mass(),
                                                 m_player1.get_speed(),
                                                 m_player1.get_position());
-    }
+    //}
 
-    if (!armourInUse_p2) {
+    //if (!armourInUse_p2) {
         force_p2 = bomb.get_force(m_player2.get_mass(),
                                                 m_player2.get_speed(),
                                                 m_player2.get_position());
+    //}
+    if (armourInUse_p1){
+        force_p1 = 0;
+        armourInUse_p1 = false;
+        m_player1.set_armourstate(false);
     }
+    if (armourInUse_p2) {
+        force_p2 = 0;
+        armourInUse_p2 = false;
+        m_player2.set_armourstate(false);
+    }
+
     if (force_p1 > 0) {
         m_player1.set_blowback(true);
         m_player1.set_speed(force_p1);
@@ -2005,17 +2005,29 @@ void World::use_missile(float ms) {
 void World::autoExplodeMissile(Missile missile, int position) {
     float force_p1 = 0;
     float force_p2 = 0;
-    if (!armourInUse_p1) {
+    //if (!armourInUse_p1) {
         force_p1 = missile.get_force(m_player1.get_mass(),
                                                 m_player1.get_speed(),
                                                 m_player1.get_position());
-    }
+    //}
     
-    if (!armourInUse_p2) {
+    //if (!armourInUse_p2) {
         force_p2 = missile.get_force(m_player2.get_mass(),
                                                 m_player2.get_speed(),
                                                 m_player2.get_position());
+    //}
+
+    if (armourInUse_p1){
+        force_p1 = 0;
+        armourInUse_p1 = false;
+        m_player1.set_armourstate(false);
     }
+    if (armourInUse_p2) {
+        force_p2 = 0;
+        armourInUse_p2 = false;
+        m_player2.set_armourstate(false);
+    }
+
     if (force_p1 > 0) {
         m_player1.set_blowback(true);
         m_player1.set_speed(force_p1);
@@ -2125,10 +2137,10 @@ int World::saveToFile(string winnername) {
 //
 
         std::vector<std::string> scores = parseFile(file);
-        
+
         fclose(file);
         file=fopen(filename,"w+b");
-        
+
         bool winner_exist = false;
 //        foreach item, if match the name, parse, and add. else just append.
         for(auto &score : scores) {
@@ -2150,18 +2162,18 @@ int World::saveToFile(string winnername) {
                 }
             }
         }
-        
+
         if (!winner_exist){
             temp.append(tempWinnerName);
             temp.append(":");
             temp.append("1");
             temp.append("\n");
         }
-        
+
         char toWrite[temp.length() * (sizeof(char)) + 1];
         strncpy(toWrite, temp.c_str(), sizeof(toWrite));
         toWrite[sizeof(toWrite) - 1] = 0;
-        
+
         fwrite (toWrite , sizeof(char), sizeof(toWrite), file);
         
         fclose(file);
@@ -2177,25 +2189,25 @@ std::vector<std::string> World::parseFile(FILE *file) {
     string bufferString;
     size_t result;
     std::vector<std::string> vectorResult;
-    
+
     fseek (file , 0 , SEEK_END);
     lSize = ftell (file);
     rewind (file);
-    
-    
+
+
     std::cout << lSize << std::endl;
-    
+
     // allocate memory to contain the whole file:
     buffer = (char*) malloc ((sizeof(char))*lSize);
     if (buffer == NULL) {fputs ("Memory error",stderr); exit (2);}
-    
+
     // copy the file into the buffer:
     result = fread (buffer,sizeof buffer[0],lSize,file);
     if (result != lSize) {fputs ("Reading error",stderr); exit (3);}
 
-    
+
     bufferString = std::string(buffer);
-    
+
     string token;
     string delimiter = "\n";
     size_t pos = 0;
@@ -2206,15 +2218,15 @@ std::vector<std::string> World::parseFile(FILE *file) {
         bufferString.erase(0, pos + delimiter.length());
         vectorResult.push_back(token);
     }
-    
+
     for(string vr : vectorResult) {
         std::cout << "vectorResult" << vr << std::endl;
     }
-    
-    
-    
+
+
+
     free(buffer);
-    
+
     return vectorResult;
 }
 
@@ -2223,12 +2235,12 @@ std::map<std::string, int> World::getHighScores(int numOfHighScores) {
     int file_exists;
     const char * filename="score.txt";
     std::map<std::string, int> hsMap;
-    
+
     /*first check if the file exists...*/
     file=fopen(filename,"r");
     if (file==NULL) file_exists=0;
     else {file_exists=1; fclose(file);}
-    
+
     /*...then open it in the appropriate way*/
     if (file_exists==1)
     {
@@ -2239,23 +2251,23 @@ std::map<std::string, int> World::getHighScores(int numOfHighScores) {
     {
         return hsMap;
     }
-    
+
     if (file!=NULL)
     {
         std::vector<std::string> scores = parseFile(file);
-        
+
         for(auto &score : scores) {
             size_t position = score.find(":");
             if(position != std::string::npos) {
                 string thisName = score.substr(0, position);
                 string thisScore = score.substr(position+1);
                 int thisScoreInt = std::stoi(thisScore);
-                
+
                 if(hsMap.size() <= numOfHighScores) {
                     hsMap[thisName] = thisScoreInt;
                 } else {
                     map<std::string, int>::iterator it;
-                    
+
                     for ( it = hsMap.begin(); it != hsMap.end(); it++ )
                     {
                         if(thisScoreInt > it->second) {
@@ -2265,12 +2277,12 @@ std::map<std::string, int> World::getHighScores(int numOfHighScores) {
                         }
                     }
                 }
-              
+
             }
         }
-        
+
         fclose(file);
-        
+
         return hsMap;
     }
 
