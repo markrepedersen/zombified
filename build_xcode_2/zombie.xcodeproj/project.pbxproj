@@ -7,473 +7,570 @@
 	objects = {
 
 /* Begin PBXAggregateTarget section */
-		77816A940A564D659CE14726 /* ALL_BUILD */ = {
+		07E5D66BA2D64111BA31120D /* ZERO_CHECK */ = {
 			isa = PBXAggregateTarget;
-			buildConfigurationList = 3C4427891E0049ECBD228609 /* Build configuration list for PBXAggregateTarget "ALL_BUILD" */;
+			buildConfigurationList = 905EF67C81764C109255ACD8 /* Build configuration list for PBXAggregateTarget "ZERO_CHECK" */;
 			buildPhases = (
-				3E19735452D549C3AAE50B04 /* CMake Rules */,
-			);
-			dependencies = (
-				EF6C5CFE4F1D40A5BB972DEE /* PBXTargetDependency */,
-				80FE2F946DC84EDBA2D4A610 /* PBXTargetDependency */,
-			);
-			name = ALL_BUILD;
-			productName = ALL_BUILD;
-		};
-		F2CC23FDD27045F3B6C03DB6 /* ZERO_CHECK */ = {
-			isa = PBXAggregateTarget;
-			buildConfigurationList = 57E2D7482BEE41B2A8041E3B /* Build configuration list for PBXAggregateTarget "ZERO_CHECK" */;
-			buildPhases = (
-				3CBC256340684ABC9864FDC0 /* CMake Rules */,
+				FAF18E79394B42D29BB83B3D /* CMake Rules */,
 			);
 			dependencies = (
 			);
 			name = ZERO_CHECK;
 			productName = ZERO_CHECK;
 		};
+		D84599428B4B435B9928072F /* ALL_BUILD */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = 694DFEC9048E4B398D956C6A /* Build configuration list for PBXAggregateTarget "ALL_BUILD" */;
+			buildPhases = (
+				5457C7459CF04FAE88AF6E8F /* CMake Rules */,
+			);
+			dependencies = (
+				7BFCE17CDE1F4A1DA3DBDC9E /* PBXTargetDependency */,
+				F47DFA457ADA4E20A7965B98 /* PBXTargetDependency */,
+			);
+			name = ALL_BUILD;
+			productName = ALL_BUILD;
+		};
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
-		0081299FC5E84B7881DE80B7 /* TmxImageLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 096A00F438B548CCB43DECAF /* TmxImageLayer.cpp */; };
-		02E17E5BA80C4AB7B4CB9A47 /* CollisionManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ACC59FC1D0CB41F396E61BA2 /* CollisionManager.cpp */; };
-		05277FBA38544068BE60F7F4 /* limbsManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 075758724F2E4962A22B4C8D /* limbsManager.cpp */; };
-		05C5D9ED84E94EADB17181E9 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 44BE4EBDB202411BA67D204D /* main.cpp */; };
-		143DBD0B20154CFDBADB10C1 /* zombieManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C05A09E835E84CF198EEAE6B /* zombieManager.cpp */; };
-		164C26D23CBF458195FEB2A9 /* Physics.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A8441C200DB64FEBB08B0F37 /* Physics.cpp */; };
-		1B9D075537D540758FF4C1A9 /* TmxImage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 635EB67F9BF04D91A16B4BD9 /* TmxImage.cpp */; };
-		1EDD25F130B843E2BCD10696 /* TmxTileLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EF196A3DF2584049BFF7D01C /* TmxTileLayer.cpp */; };
-		20279656F15B43378CE11879 /* antidote.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C1A3BC21C1154C958204EA41 /* antidote.cpp */; };
-		23542AFD92AA4672B9921153 /* viewHelper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3A133A4C4E2747F6A02037D8 /* viewHelper.cpp */; };
-		23D017C28BB54782B799EC39 /* tree.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E945C781C56F490AB67B7DD3 /* tree.cpp */; };
-		25CFBD27C5284F63800721C8 /* TmxTileset.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 48C0F4BE59CE47588481BBE9 /* TmxTileset.cpp */; };
-		2A125F85CA7C4EF98B21292D /* zombie.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 12EA987D81C048C8AA4D45CE /* zombie.cpp */; };
-		2DBCBABAB1264568970208B2 /* world.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5AD5C9641A8D4D02AF38E08E /* world.cpp */; };
-		31E8AEBE2BAC4E58B4EA5FAE /* miniz.c in Sources */ = {isa = PBXBuildFile; fileRef = F068CBA407594F0CBE23FE54 /* miniz.c */; };
-		365AA07A0B4449BB9281BA42 /* common.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7A2CA950A93D4BEF84FAFB1A /* common.cpp */; };
-		379F1A982C9641B08BC894F6 /* TmxEllipse.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E32CED3F1B8B43E987ED1305 /* TmxEllipse.cpp */; };
-		3FE6ED29B2F74166A76C7401 /* Limb.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 043B4E659D7F47A980CFE7DA /* Limb.cpp */; };
-		4278CCA24C45464D8224212B /* gl3w.c in Sources */ = {isa = PBXBuildFile; fileRef = 8359CE1B98CF4C58B674EFA1 /* gl3w.c */; };
-		4479B072D9C34F48A7BF80FD /* bomb.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EF0274F9165144D2A0E787BE /* bomb.cpp */; };
-		497699E11A5D448BB5493CA5 /* TmxTerrainArray.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B12372F1D7BE48928C9E7E96 /* TmxTerrainArray.cpp */; };
-		4D36FF53E9204E4ABB0F9FA9 /* water.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 36FD3D656D7F4FAEA543F60C /* water.cpp */; };
-		516F88E85ACC4D51AACEE42C /* button.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2D72B760C98249B699ACF0D3 /* button.cpp */; };
-		5371D4FBA4AA43C79565F0AC /* TmxProperty.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6F3DEF02331741798F85374E /* TmxProperty.cpp */; };
-		633F63B3C21E454583CAA3A3 /* PhysicalBody.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 99D5F2FCC7E048B0B9B0FC8A /* PhysicalBody.cpp */; };
-		68E2E6CCECAF432993B483E7 /* KMeans.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FB793413C734482EBCDDF0FF /* KMeans.cpp */; };
-		69C9BCD68A3B4FACB8B3F82C /* mud.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2FD9F88E9C5B490186F1D7BA /* mud.cpp */; };
-		6EF0E25E021C41BFB4526AC4 /* punchleft.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 28886395CC32458A9078142A /* punchleft.cpp */; };
-		6EFBE37710B1407F8039ED90 /* TmxTileOffset.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CAEF15C5861246E7910FAAF8 /* TmxTileOffset.cpp */; };
-		73F75A0EDE28440BB4768BCE /* blood.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 58B66BFB0C1548BE989C8949 /* blood.cpp */; };
-		75248E1D5FFC40A290EA04AD /* worldtexture.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A1799CFFBD224C3999453FB9 /* worldtexture.cpp */; };
-		82C5FF7090784E35AD7D2708 /* TmxPolygon.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 858C2597D8694A43A68C76E9 /* TmxPolygon.cpp */; };
-		89E51FC38059444285D3F7E5 /* TmxUtil.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1B680AF43F264D34B1F47FDA /* TmxUtil.cpp */; };
-		8BCABBA5BBC64AB9A3E57E5F /* TmxPolyline.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F0A248DC1F69450CAC8C6EDB /* TmxPolyline.cpp */; };
-		8E51AC9DE9554B158E368C77 /* player2.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 953D56B3A6A74776868AD70A /* player2.cpp */; };
-		91007519FEDB437FACA62BA1 /* TmxLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E877B707EB2A45A38E53658C /* TmxLayer.cpp */; };
-		91A06824112B4F448DE14796 /* player1.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8A5A4CE19BBE4EC5AA9CA87F /* player1.cpp */; };
-		93173B3DAC5A425198CD427C /* punchright.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9A990A53B56B4A6E99391947 /* punchright.cpp */; };
-		9BDE76E4BD3B49919CC77217 /* armour.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1AEA4BADD53C4A2890BA42C7 /* armour.cpp */; };
-		A5B82922FF294B7D988ED6D4 /* TmxMap.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1AE2E230BCBC42649D3FF1C3 /* TmxMap.cpp */; };
-		A8D11C6E64604D11BCDA721E /* TmxTile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B7B6F7A3F64E484DA568C21C /* TmxTile.cpp */; };
-		A9ED85D7BB74400BA778A9C3 /* ToolManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B8839B5530104AF3A0FE766B /* ToolManager.cpp */; };
-		AEC047DD5888416B83DE1860 /* toolboxSlot.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3C06C268197A49C2A0C45456 /* toolboxSlot.cpp */; };
-		B8BB5D447C6641FABBB7D931 /* TmxTerrain.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AA24A6608B7D4210A3BBF764 /* TmxTerrain.cpp */; };
-		C3B8385AF40E4E6F8F69D9C2 /* TmxGroupLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2D530A635DB54B2481C0E5C7 /* TmxGroupLayer.cpp */; };
-		C5E0771D22964B0DACE388BE /* Ice.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 78D47B84F63044C193D45F5B /* Ice.cpp */; };
-		C97A450F7B0141D687CE58DD /* toolboxManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6B304BC5CFD64BC78048998A /* toolboxManager.cpp */; };
-		CED8C9164CD04ACC92030D68 /* TmxObject.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7A73A3A8A6254796ABD8A2C3 /* TmxObject.cpp */; };
-		D045051C3B984B52A0031661 /* base64.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 96427039AA69436394F2AE0C /* base64.cpp */; };
-		D5B2952766964286A93D8C7F /* TmxPropertySet.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2267534DD8B8416D908F30AB /* TmxPropertySet.cpp */; };
-		D807C41ED98A49FA95A5D63A /* TmxObjectGroup.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 27C2D8E8B16542E985E07129 /* TmxObjectGroup.cpp */; };
-		DC5A27F8DB9B48F99343A961 /* missile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2A46698917F840C2BD6A68AF /* missile.cpp */; };
-		DD71C5F1D9584405ABB3EE26 /* TmxText.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5FC2762840B64B9AB3BB852A /* TmxText.cpp */; };
-		E0763CA0947941D5BD757EEA /* TmxColor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 58D6D22F938E441C96133856 /* TmxColor.cpp */; };
-		F34C18B0B8E141C59DB71F6C /* MapGrid.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 020F21DAAB6A45AB8204198E /* MapGrid.cpp */; };
-		F51325CFDE9C489C9957F48F /* explosion.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FE1DF500BAD0430F91574DC8 /* explosion.cpp */; };
+		021757DEB8F747F98A4451C2 /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/worldtexture.hpp */ = {isa = PBXBuildFile; fileRef = 47372B11128441BBB624D5DB /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/worldtexture.hpp */; };
+		04DA84C011F54B5F93324E92 /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/KMeans.h */ = {isa = PBXBuildFile; fileRef = 17911971ED904910A60E9F24 /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/KMeans.h */; };
+		0669134C3EBD48A8B1BF9181 /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/tmxparser/TmxTileset.h */ = {isa = PBXBuildFile; fileRef = 9168776292834DAAADD0FF4F /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/tmxparser/TmxTileset.h */; };
+		0852443268574E07B15499B5 /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/toolboxSlot.hpp */ = {isa = PBXBuildFile; fileRef = C4325E599D79452EBE905CF6 /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/toolboxSlot.hpp */; };
+		0ECD198F5BA1443F9C68F097 /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/Ice.cpp */ = {isa = PBXBuildFile; fileRef = 090B12DF484B49568BA03B0C /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/Ice.cpp */; };
+		105DA9A3A2DF46AAB84547EF /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/tmxparser/TmxProperty.h */ = {isa = PBXBuildFile; fileRef = 259EF05D875B4D4782C26B95 /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/tmxparser/TmxProperty.h */; };
+		106D05D8BB1E4E5B90E38EB3 /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/tmxparser/TmxGroupLayer.cpp */ = {isa = PBXBuildFile; fileRef = 6B8F6025CA5B492BA7789DD4 /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/tmxparser/TmxGroupLayer.cpp */; };
+		1208DED4CFC34533BD9AF515 /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/explosion.hpp */ = {isa = PBXBuildFile; fileRef = EEC85D0405324FD6B93F161B /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/explosion.hpp */; };
+		15F3F5C3B6CC4F27A522B654 /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/KMeans.cpp */ = {isa = PBXBuildFile; fileRef = BF3FFCC5C7AE49DE8D4A4CEB /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/KMeans.cpp */; };
+		18781D15BF7D4F6F88B26288 /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/tmxparser/TmxUtil.h */ = {isa = PBXBuildFile; fileRef = 2C1314CF8AE845B1B8A60A93 /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/tmxparser/TmxUtil.h */; };
+		1BFC3B21524D4BA7AF59536E /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/tmxparser/TmxImage.cpp */ = {isa = PBXBuildFile; fileRef = 87C96AC205A7421E88D0B783 /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/tmxparser/TmxImage.cpp */; };
+		1CD1BF492ADC452A85ED62F2 /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/limbsManager.cpp */ = {isa = PBXBuildFile; fileRef = 74EDFF649BB84D51B7DBE91E /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/limbsManager.cpp */; };
+		1D08355083FE47CF8B79CB80 /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/antidote.hpp */ = {isa = PBXBuildFile; fileRef = 2737E6D4486E4F51AFD5F6CC /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/antidote.hpp */; };
+		23B9DF3CEC174A72A842D48D /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/player2.hpp */ = {isa = PBXBuildFile; fileRef = 3FA258F1171146F4B2F230DC /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/player2.hpp */; };
+		2551AB02CA7B456CB7AB284E /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/worldtexture.cpp */ = {isa = PBXBuildFile; fileRef = F6E54FC029B44969B1F997E3 /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/worldtexture.cpp */; };
+		263E777CEE6148B8BCE1689D /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/tmxparser/TmxColor.cpp */ = {isa = PBXBuildFile; fileRef = 5ACDA3D9BDCD4795B5285077 /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/tmxparser/TmxColor.cpp */; };
+		2729619C716F460A9A19BD73 /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/mud.hpp */ = {isa = PBXBuildFile; fileRef = 970E971E6B744CF980CF066D /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/mud.hpp */; };
+		2AD788B091704C248CD0310C /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/ToolManager.cpp */ = {isa = PBXBuildFile; fileRef = 1E84D7CA5CED47A7AE900FEF /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/ToolManager.cpp */; };
+		2BD2BF6016354FBD84E4FC5C /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/tmxparser/TmxTerrain.cpp */ = {isa = PBXBuildFile; fileRef = 26775D4D89F34EC1A500A22B /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/tmxparser/TmxTerrain.cpp */; };
+		2F8309F486294C679F575DDA /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/tmxparser/TmxPolyline.cpp */ = {isa = PBXBuildFile; fileRef = 5AD644413B754535A888FC44 /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/tmxparser/TmxPolyline.cpp */; };
+		3116F151691E46BE839EE7F0 /* /Users/irenefang/Documents/CPSC436D/Game/zombified/CMakeLists.txt */ = {isa = PBXBuildFile; fileRef = 9197BF8D08C54D79987F1E2E /* /Users/irenefang/Documents/CPSC436D/Game/zombified/CMakeLists.txt */; };
+		35A5849610264473BA18978F /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/blood.cpp */ = {isa = PBXBuildFile; fileRef = 2C30428532864FE6ACD20785 /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/blood.cpp */; };
+		36F7E33A796D4AD38610C8FB /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/tmxparser/TmxLayer.cpp */ = {isa = PBXBuildFile; fileRef = B60F9376D5494E79BA920C5A /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/tmxparser/TmxLayer.cpp */; };
+		38209B4AA7E04F5FA33481C5 /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/tmxparser/TmxTileOffset.cpp */ = {isa = PBXBuildFile; fileRef = 5C44C331D62349DA9BD24E1B /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/tmxparser/TmxTileOffset.cpp */; };
+		39408F8D77AB4767B55F0F9D /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/zombieManager.cpp */ = {isa = PBXBuildFile; fileRef = E0C45853D54B43C0AA728E2A /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/zombieManager.cpp */; };
+		3D4D611630BF47D99303D9EF /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/toolboxManager.cpp */ = {isa = PBXBuildFile; fileRef = 307224540D1D43F28B54DE9C /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/toolboxManager.cpp */; };
+		3FAF708DA3594D02B18D49C8 /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/armour.cpp */ = {isa = PBXBuildFile; fileRef = 23C71FFA60204276949F8BC4 /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/armour.cpp */; };
+		40056FDD9EA34096B8BD9F9F /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/tmxparser/TmxImageLayer.h */ = {isa = PBXBuildFile; fileRef = C088B254EC414906BD47A38B /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/tmxparser/TmxImageLayer.h */; };
+		406C795EAFE44F40B3CB0454 /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/tmxparser/TmxEllipse.h */ = {isa = PBXBuildFile; fileRef = 2CE3B01248844311A4E09065 /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/tmxparser/TmxEllipse.h */; };
+		413B7B25BF4246D0B76EDACD /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/tmxparser/Tmx.h.in */ = {isa = PBXBuildFile; fileRef = 4E1F3A2769E340C29836FE34 /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/tmxparser/Tmx.h.in */; };
+		417961CE329E4786B50661A8 /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/tmxparser/TmxPolygon.cpp */ = {isa = PBXBuildFile; fileRef = 3769B648BDC4449185E06112 /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/tmxparser/TmxPolygon.cpp */; };
+		45E9CC1E75304252B8BC1537 /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/toolboxSlot.cpp */ = {isa = PBXBuildFile; fileRef = 31CA98391F574FBA95B3DCAF /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/toolboxSlot.cpp */; };
+		46E88CD6B35941338D603455 /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/tmxparser/TmxMap.cpp */ = {isa = PBXBuildFile; fileRef = 7F394801F46746FA916EDECD /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/tmxparser/TmxMap.cpp */; };
+		47E182BCDCEE42E0A1D2207D /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/missile.hpp */ = {isa = PBXBuildFile; fileRef = 4D7EE66D747C40A69928396B /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/missile.hpp */; };
+		4936216F7BFD4655B373283A /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/gl3w.c */ = {isa = PBXBuildFile; fileRef = 3C37E667750D495CADAF61A6 /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/gl3w.c */; };
+		4C6D27D8BB6948B39821F70E /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/common.hpp */ = {isa = PBXBuildFile; fileRef = BB97D6B8631344F7876813D4 /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/common.hpp */; };
+		4E226F15BCDC41EC9E4A2FBE /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/toolboxManager.hpp */ = {isa = PBXBuildFile; fileRef = 19A83F7473EE401CB86F1FA3 /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/toolboxManager.hpp */; };
+		53A012D5FE894AB981EC6CC5 /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/tmxparser/TmxTerrainArray.h */ = {isa = PBXBuildFile; fileRef = 6414A5A2379240DB9995AC88 /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/tmxparser/TmxTerrainArray.h */; };
+		53D4D36FA59141E0A420C89E /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/tmxparser/TmxProperty.cpp */ = {isa = PBXBuildFile; fileRef = 607E9ED3E20D499F882C6611 /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/tmxparser/TmxProperty.cpp */; };
+		5A21F3D241E44DF5AEE41FF4 /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/tmxparser/TmxMapTile.h */ = {isa = PBXBuildFile; fileRef = C2A79E67FD4947B680BCA511 /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/tmxparser/TmxMapTile.h */; };
+		5C46995A4FDD4570B29D132B /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/punchright.cpp */ = {isa = PBXBuildFile; fileRef = E0CC1073C21C4129880BB1AE /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/punchright.cpp */; };
+		5F8053E9B44E4FC69A6B8A29 /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/button.hpp */ = {isa = PBXBuildFile; fileRef = EBC80DBCD93449CCA5F7ECF0 /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/button.hpp */; };
+		5FAEE92E85074069AB1A9C88 /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/PhysicalBody.cpp */ = {isa = PBXBuildFile; fileRef = 3EB56D3395864E5FAE64B2C1 /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/PhysicalBody.cpp */; };
+		62C9E5EDB29040CC802E2992 /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/water.hpp */ = {isa = PBXBuildFile; fileRef = 9BD52F9D126244DDBB354AB6 /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/water.hpp */; };
+		63834F131423444CA847F1DE /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/tmxparser/TmxImageLayer.cpp */ = {isa = PBXBuildFile; fileRef = 691E6C5DFCBB456EA7A12745 /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/tmxparser/TmxImageLayer.cpp */; };
+		63EC4BE194E6436D8478E242 /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/punchright.hpp */ = {isa = PBXBuildFile; fileRef = B5E53DBEB5F948BFA658FFAD /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/punchright.hpp */; };
+		64B2601D7A7148428E01E547 /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/tmxparser/TmxGroupLayer.h */ = {isa = PBXBuildFile; fileRef = 3A2BCC3DEA6A4541AF246239 /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/tmxparser/TmxGroupLayer.h */; };
+		653847631583459296CE8353 /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/viewHelper.cpp */ = {isa = PBXBuildFile; fileRef = 1C3493D77E5145A5AC45E32C /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/viewHelper.cpp */; };
+		67E5A1D6B67C4E2B9DAAE000 /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/tmxparser/tmxparser.pc.in */ = {isa = PBXBuildFile; fileRef = BCAED95A39F247C18C3A2751 /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/tmxparser/tmxparser.pc.in */; };
+		6C79E06A4C4245EDB76AB566 /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/Ice copy.hpp */ = {isa = PBXBuildFile; fileRef = F8370EDF47714C4BB6BDD82B /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/Ice copy.hpp */; };
+		6CE760AA6FA4466C8B1CA341 /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/tmxparser/TmxLayer.h */ = {isa = PBXBuildFile; fileRef = E0F0B45F357549C28F7EE52D /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/tmxparser/TmxLayer.h */; };
+		6EB6DBAFB39646B9B685B622 /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/tmxparser/TmxTile.cpp */ = {isa = PBXBuildFile; fileRef = B6D7099426DB42E381253A5D /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/tmxparser/TmxTile.cpp */; };
+		764A21D7E080403990A84CB3 /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/PhysicalBody.h */ = {isa = PBXBuildFile; fileRef = 0B5D1A8BB0684E35ADBA6456 /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/PhysicalBody.h */; };
+		7A65A2307BE148869A606DF9 /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/tmxparser/base64/base64.h */ = {isa = PBXBuildFile; fileRef = 0BF4B6D426CB4B0094BAFE5C /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/tmxparser/base64/base64.h */; };
+		7ABB15BC1BA24167B1996957 /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/tmxparser/TmxPoint.h */ = {isa = PBXBuildFile; fileRef = 459E7609B240430CAE419EC3 /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/tmxparser/TmxPoint.h */; };
+		7DA88E4B80634D28991E7CF4 /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/world.hpp */ = {isa = PBXBuildFile; fileRef = 39038209C4374A50B6BE154C /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/world.hpp */; };
+		7F40F93CBDA2448A9087B59E /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/antidote.cpp */ = {isa = PBXBuildFile; fileRef = BA807FE720E64D788F89F92F /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/antidote.cpp */; };
+		83F0372BDF24428AB1DB5C98 /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/Physics.h */ = {isa = PBXBuildFile; fileRef = 6D355FE5296948158B2AEF9C /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/Physics.h */; };
+		865D2A4FCA9547BF9305C1C8 /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/tree.hpp */ = {isa = PBXBuildFile; fileRef = 6CE31E5954A34BC28ABDC8F7 /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/tree.hpp */; };
+		8ACBA1B952B84ED49EDBFF29 /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/bomb.cpp */ = {isa = PBXBuildFile; fileRef = BD6E836BDE2444B4B8BE03AA /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/bomb.cpp */; };
+		8B453E9ACF4F4466BB37C242 /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/tmxparser/TmxPolygon.h */ = {isa = PBXBuildFile; fileRef = EF7808FAB61E4A15818C6334 /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/tmxparser/TmxPolygon.h */; };
+		8F8005FF414843A0979D7BAB /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/world.cpp */ = {isa = PBXBuildFile; fileRef = EEDE9498FBF442A2BF028701 /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/world.cpp */; };
+		8FFB173594414CC5B99CA517 /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/player2.cpp */ = {isa = PBXBuildFile; fileRef = 783AB8295A674509911256E2 /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/player2.cpp */; };
+		9134D52D5B4D4E40ACCA4146 /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/common.cpp */ = {isa = PBXBuildFile; fileRef = 0FA1DAB2DC874E6D9639B0B4 /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/common.cpp */; };
+		956008A909DC4E81971DD806 /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/tmxparser/TmxPropertySet.h */ = {isa = PBXBuildFile; fileRef = F896672AFAE84B819D500012 /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/tmxparser/TmxPropertySet.h */; };
+		9644D141A2BF469B9A8AA4FB /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/tmxparser/TmxImage.h */ = {isa = PBXBuildFile; fileRef = A3AE9C6F9DE749DA9C963198 /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/tmxparser/TmxImage.h */; };
+		9840FF8013154CEA8A8BE336 /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/JPS.h */ = {isa = PBXBuildFile; fileRef = 49081BCD82C24CE39A437633 /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/JPS.h */; };
+		98622DB73AEB467A934A9EFB /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/player1.cpp */ = {isa = PBXBuildFile; fileRef = 7DC7D46915D044D689BB952F /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/player1.cpp */; };
+		98D5DC0A1A114BF58578B00E /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/Limb.h */ = {isa = PBXBuildFile; fileRef = 3702DE3DBF924805A2CE93F5 /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/Limb.h */; };
+		99C13964F55C4BD4A5BC006C /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/tmxparser/TmxPropertySet.cpp */ = {isa = PBXBuildFile; fileRef = EC630A894D034F389D331B74 /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/tmxparser/TmxPropertySet.cpp */; };
+		99EC0E58355648C4988E3E2D /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/zombie.hpp */ = {isa = PBXBuildFile; fileRef = 88A1FB6A6EFC46948521F704 /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/zombie.hpp */; };
+		9AC95C348E8C4ABA9553E73D /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/bomb.hpp */ = {isa = PBXBuildFile; fileRef = E586819019324ABEA240687A /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/bomb.hpp */; };
+		9E476B7746A74BC7B9B87FA9 /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/zombie.cpp */ = {isa = PBXBuildFile; fileRef = D6B966377BE141C49B2C524A /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/zombie.cpp */; };
+		9E5C216E84E24588B55CFEB4 /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/infopage.hpp */ = {isa = PBXBuildFile; fileRef = 664E964E4EFC43828C3E6CDF /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/infopage.hpp */; };
+		9F3DB2ED1C4448D2A3E603E7 /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/tmxparser/TmxTile.h */ = {isa = PBXBuildFile; fileRef = A6D2A0AF91F2441D8BB3C1A0 /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/tmxparser/TmxTile.h */; };
+		A16A4E183CD249E6BF70CF15 /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/main.cpp */ = {isa = PBXBuildFile; fileRef = FDCF3FD8F80948B2A5ECB235 /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/main.cpp */; };
+		A2FDC067414A4485BDF7B2C3 /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/tmxparser/TmxTerrainArray.cpp */ = {isa = PBXBuildFile; fileRef = D9B5C5CC422F4BF5AF96B5C5 /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/tmxparser/TmxTerrainArray.cpp */; };
+		A4AF73BB8F084925BD9CC1D4 /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/tmxparser/TmxObject.h */ = {isa = PBXBuildFile; fileRef = 473327ED714441DF88259C00 /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/tmxparser/TmxObject.h */; };
+		A84D9D871811457384051F89 /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/tmxparser/TmxColor.h */ = {isa = PBXBuildFile; fileRef = 0B6CF10282B14225B4C3FB77 /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/tmxparser/TmxColor.h */; };
+		A977FFE1966D4CFCA79D3139 /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/missile.cpp */ = {isa = PBXBuildFile; fileRef = C2EE54BBFC7540BB87DB7D4B /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/missile.cpp */; };
+		A9DDB979CC08455F9B1A7F97 /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/blood.hpp */ = {isa = PBXBuildFile; fileRef = 8F572EAD72874999A4602052 /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/blood.hpp */; };
+		B1771D651612481C82575F58 /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/tmxparser/TmxTileOffset.h */ = {isa = PBXBuildFile; fileRef = 453D78F7E0684BE8ACCEE402 /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/tmxparser/TmxTileOffset.h */; };
+		B19C3436BF9E4E90ADB15F8C /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/tmxparser/base64/base64.cpp */ = {isa = PBXBuildFile; fileRef = 392F1BAEB15A4B8E90A690E7 /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/tmxparser/base64/base64.cpp */; };
+		B66388FED69E499999E4C17B /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/Ice.hpp */ = {isa = PBXBuildFile; fileRef = 567C079B71CE4CE78B1CDED2 /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/Ice.hpp */; };
+		B6697E34611C4892A44418D0 /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/tmxparser/TmxObject.cpp */ = {isa = PBXBuildFile; fileRef = 22EEC4A735614896BA0F7F46 /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/tmxparser/TmxObject.cpp */; };
+		B76B70736EA74A519A01C7E1 /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/explosion.cpp */ = {isa = PBXBuildFile; fileRef = EAB5E896762C453DAF894A6F /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/explosion.cpp */; };
+		B8C06A93E1874A6AB6BF774C /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/tmxparser/TmxTileLayer.h */ = {isa = PBXBuildFile; fileRef = A6E27E325D374F99B4EC9D13 /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/tmxparser/TmxTileLayer.h */; };
+		B9A483A24D7C47C9827EF28A /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/Limb.cpp */ = {isa = PBXBuildFile; fileRef = 4EBB3811BADC4FA1ACA484B2 /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/Limb.cpp */; };
+		BC3F18C907E3476C9B99D18F /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/tmxparser/TmxEllipse.cpp */ = {isa = PBXBuildFile; fileRef = EB9EEB2C5A9F42CA9FA6A1B4 /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/tmxparser/TmxEllipse.cpp */; };
+		BCF28C507A88470FBD7C5DEC /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/zombieManager.hpp */ = {isa = PBXBuildFile; fileRef = 47FC3231BF0549F89B976202 /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/zombieManager.hpp */; };
+		C1AE87CA400948E9948D9908 /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/tmxparser/TmxObjectGroup.h */ = {isa = PBXBuildFile; fileRef = B6472B430A82481E9B2B1054 /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/tmxparser/TmxObjectGroup.h */; };
+		C22A5EC887CF42648903BB90 /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/tmxparser/TmxObjectGroup.cpp */ = {isa = PBXBuildFile; fileRef = AB51A8C9C0E34BFF84C26558 /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/tmxparser/TmxObjectGroup.cpp */; };
+		C2B3F5C77FA34A9E8E37A512 /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/punchleft.cpp */ = {isa = PBXBuildFile; fileRef = 0605B0B8D8B8457B885735BD /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/punchleft.cpp */; };
+		C40E640B15FA473199BB6136 /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/tmxparser/TmxTerrain.h */ = {isa = PBXBuildFile; fileRef = BB8CD6EBAF074EF499FAD4D5 /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/tmxparser/TmxTerrain.h */; };
+		C7C7EC2667CA486EBF671946 /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/tmxparser/TmxText.cpp */ = {isa = PBXBuildFile; fileRef = C5766602E1794BF6ABEA8900 /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/tmxparser/TmxText.cpp */; };
+		C9D376CCAB6249EB817D93B2 /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/button.cpp */ = {isa = PBXBuildFile; fileRef = 03C3051061CE4B0393F98918 /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/button.cpp */; };
+		CA3FA5A367F041F6889D66CA /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/water.cpp */ = {isa = PBXBuildFile; fileRef = 9BBBC9BB6ACC4D0FA88A7749 /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/water.cpp */; };
+		CCC090D722F64C8AB9051070 /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/infopage.cpp */ = {isa = PBXBuildFile; fileRef = 0A1F98E3A48848209C3616B0 /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/infopage.cpp */; };
+		CDACCBC6BE0F4686A8A9F279 /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/armour.hpp */ = {isa = PBXBuildFile; fileRef = F7E7EF2D3E8F4C8587979D91 /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/armour.hpp */; };
+		D34E1580D8E642629D4CEAA0 /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/tmxparser/TmxUtil.cpp */ = {isa = PBXBuildFile; fileRef = 7A08C6DF043D415BB33F0933 /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/tmxparser/TmxUtil.cpp */; };
+		D47D60B26209441F82A4306F /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/tmxparser/TmxTileset.cpp */ = {isa = PBXBuildFile; fileRef = F005EF6A71694656A7E08A27 /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/tmxparser/TmxTileset.cpp */; };
+		D5663BEB5440447FA7995D4F /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/tmxparser/TmxTileLayer.cpp */ = {isa = PBXBuildFile; fileRef = CBA6A88FB0F942008E1F5A0A /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/tmxparser/TmxTileLayer.cpp */; };
+		D8EE8969009B4A71B4FD409A /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/mud.cpp */ = {isa = PBXBuildFile; fileRef = 2EE5AA8F527149CE9BD8405B /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/mud.cpp */; };
+		D93B7EC3E7644CACB210ADB7 /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/tmxparser/TmxText.h */ = {isa = PBXBuildFile; fileRef = C3C9D09192804955BDD50A5E /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/tmxparser/TmxText.h */; };
+		DF4599BDCFBE44C3868AAB23 /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/MapGrid.cpp */ = {isa = PBXBuildFile; fileRef = 899BDB15CF994A0EB05327D7 /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/MapGrid.cpp */; };
+		E147BB46C89B4A079A439F95 /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/ToolManager.h */ = {isa = PBXBuildFile; fileRef = 8D713A67519E44D59CBE57E3 /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/ToolManager.h */; };
+		E59ADF320B3B4B3ABBD7F671 /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/tmxparser/TmxPolyline.h */ = {isa = PBXBuildFile; fileRef = 24FF39A8A3EC4C05A0C34E8E /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/tmxparser/TmxPolyline.h */; };
+		E888D21F326C42DAB1E3AD47 /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/tree.cpp */ = {isa = PBXBuildFile; fileRef = 04E5D8D46E2E4F7DAC65C923 /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/tree.cpp */; };
+		EFF621480678470A8D507EBD /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/Physics.cpp */ = {isa = PBXBuildFile; fileRef = 89011A182B7A42C284819ED1 /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/Physics.cpp */; };
+		F02C2904380E423CA93D7A75 /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/tmxparser/miniz.c */ = {isa = PBXBuildFile; fileRef = D1BB8A6430034D7F9BC2F6B5 /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/tmxparser/miniz.c */; };
+		F432295E82A94C248BE42230 /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/player1.hpp */ = {isa = PBXBuildFile; fileRef = C4B8F9B9767D4C9985E306F6 /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/player1.hpp */; };
+		F4FC438077554CE18C8C477B /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/MapGrid.h */ = {isa = PBXBuildFile; fileRef = 03FF0D4CAE0D436296EAF79E /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/MapGrid.h */; };
+		F9AB0C0905E1404BA2C35F44 /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/punchleft.hpp */ = {isa = PBXBuildFile; fileRef = 389EB371B76C4BFBA7F116D5 /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/punchleft.hpp */; };
+		FA376314E4064DF5BE7F3912 /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/viewHelper.hpp */ = {isa = PBXBuildFile; fileRef = 5C948089B2BE44509B5F75FA /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/viewHelper.hpp */; };
+		FB6B7B7118B849E6BEF81794 /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/limbsManager.hpp */ = {isa = PBXBuildFile; fileRef = 3A52D271AB8542EAB699F9D3 /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/limbsManager.hpp */; };
+		FC45365172BF43349C67F86C /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/tmxparser/TmxMap.h */ = {isa = PBXBuildFile; fileRef = 5C77254D3EE642D78462F3B2 /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/tmxparser/TmxMap.h */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXBuildStyle section */
+		0A538F7E1F774D33AEC0085D /* Debug */ = {
+			isa = PBXBuildStyle;
+			buildSettings = {
+				COPY_PHASE_STRIP = NO;
+			};
+			name = Debug;
+		};
+		5F067E9F4E2B4FDD9019FD8C /* RelWithDebInfo */ = {
+			isa = PBXBuildStyle;
+			buildSettings = {
+				COPY_PHASE_STRIP = NO;
+			};
+			name = RelWithDebInfo;
+		};
+		A1D46D02DDA04BBFBA427D8F /* MinSizeRel */ = {
+			isa = PBXBuildStyle;
+			buildSettings = {
+				COPY_PHASE_STRIP = NO;
+			};
+			name = MinSizeRel;
+		};
+		C04F1BF9B419468DB43391E2 /* Release */ = {
+			isa = PBXBuildStyle;
+			buildSettings = {
+				COPY_PHASE_STRIP = NO;
+			};
+			name = Release;
+		};
+/* End PBXBuildStyle section */
+
 /* Begin PBXContainerItemProxy section */
-		484BFAEF82AB43C1B5E12594 /* PBXContainerItemProxy */ = {
+		8E7188FC0C0A49E8A75B5C8F /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 5EABCBDA28E04E1D810ADD22 /* Project object */;
+			containerPortal = DED6348F980F450EA2CC907A /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = F2CC23FDD27045F3B6C03DB6;
+			remoteGlobalIDString = 07E5D66BA2D64111BA31120D;
 			remoteInfo = ZERO_CHECK;
 		};
-		6A7879837C3B41B5828CAF90 /* PBXContainerItemProxy */ = {
+		C609EDCF5A4C455DA9F4F230 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 5EABCBDA28E04E1D810ADD22 /* Project object */;
+			containerPortal = DED6348F980F450EA2CC907A /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = F2CC23FDD27045F3B6C03DB6;
-			remoteInfo = ZERO_CHECK;
-		};
-		D93DE730CDA94138B75BF550 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 5EABCBDA28E04E1D810ADD22 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = C5EBF06C85A243059C1DA4E3;
+			remoteGlobalIDString = CC88889EAE7440D9AACA23D1;
 			remoteInfo = zombie;
+		};
+		D4C0B14C500A4DE8847E1EA1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = DED6348F980F450EA2CC907A /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 07E5D66BA2D64111BA31120D;
+			remoteInfo = ZERO_CHECK;
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		01FF0C884BB343CD90AA2F3F /* TmxText.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = TmxText.h; path = src/tmxparser/TmxText.h; sourceTree = SOURCE_ROOT; };
-		020F21DAAB6A45AB8204198E /* MapGrid.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = MapGrid.cpp; path = src/MapGrid.cpp; sourceTree = SOURCE_ROOT; };
-		040DCCBDA89143FC8F9C9E95 /* KMeans.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = KMeans.h; path = src/KMeans.h; sourceTree = SOURCE_ROOT; };
-		043B4E659D7F47A980CFE7DA /* Limb.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = Limb.cpp; path = src/Limb.cpp; sourceTree = SOURCE_ROOT; };
-		071E7BF162CF4A71A1C81C13 /* water.hpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; fileEncoding = 4; name = water.hpp; path = src/water.hpp; sourceTree = SOURCE_ROOT; };
-		075758724F2E4962A22B4C8D /* limbsManager.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = limbsManager.cpp; path = src/limbsManager.cpp; sourceTree = SOURCE_ROOT; };
-		096A00F438B548CCB43DECAF /* TmxImageLayer.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = TmxImageLayer.cpp; path = src/tmxparser/TmxImageLayer.cpp; sourceTree = SOURCE_ROOT; };
-		0AAE0BA96BF64C55BE03304B /* TmxLayer.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = TmxLayer.h; path = src/tmxparser/TmxLayer.h; sourceTree = SOURCE_ROOT; };
-		118493A5BF0547888A328967 /* PhysicalBody.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = PhysicalBody.h; path = src/PhysicalBody.h; sourceTree = SOURCE_ROOT; };
-		12EA987D81C048C8AA4D45CE /* zombie.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = zombie.cpp; path = src/zombie.cpp; sourceTree = SOURCE_ROOT; };
-		17CFE44DB59F4FA2B3461CFF /* CMakeLists.txt */ = {isa = PBXFileReference; explicitFileType = sourcecode.text; fileEncoding = 4; lastKnownFileType = text; path = CMakeLists.txt; sourceTree = SOURCE_ROOT; };
-		1A191CC61A2E475C92ADCD2A /* base64.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = base64.h; path = src/tmxparser/base64/base64.h; sourceTree = SOURCE_ROOT; };
-		1AE2E230BCBC42649D3FF1C3 /* TmxMap.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = TmxMap.cpp; path = src/tmxparser/TmxMap.cpp; sourceTree = SOURCE_ROOT; };
-		1AEA4BADD53C4A2890BA42C7 /* armour.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = armour.cpp; path = src/armour.cpp; sourceTree = SOURCE_ROOT; };
-		1B680AF43F264D34B1F47FDA /* TmxUtil.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = TmxUtil.cpp; path = src/tmxparser/TmxUtil.cpp; sourceTree = SOURCE_ROOT; };
-		1CAEEF60EA644D3A98F58D4E /* Tmx.h.in */ = {isa = PBXFileReference; explicitFileType = sourcecode; fileEncoding = 4; name = Tmx.h.in; path = src/tmxparser/Tmx.h.in; sourceTree = SOURCE_ROOT; };
-		2267534DD8B8416D908F30AB /* TmxPropertySet.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = TmxPropertySet.cpp; path = src/tmxparser/TmxPropertySet.cpp; sourceTree = SOURCE_ROOT; };
-		227BB17715B446E4BAB5C4DB /* zombie.hpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; fileEncoding = 4; name = zombie.hpp; path = src/zombie.hpp; sourceTree = SOURCE_ROOT; };
-		22D2E4A5CD354640AE4E17BE /* TmxColor.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = TmxColor.h; path = src/tmxparser/TmxColor.h; sourceTree = SOURCE_ROOT; };
-		23F4B7FB73084C8EB6A74DC2 /* tmxparser.pc.in */ = {isa = PBXFileReference; explicitFileType = sourcecode; fileEncoding = 4; name = tmxparser.pc.in; path = src/tmxparser/tmxparser.pc.in; sourceTree = SOURCE_ROOT; };
-		258252C10A5C4F02A4EF2A50 /* button.hpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; fileEncoding = 4; name = button.hpp; path = src/button.hpp; sourceTree = SOURCE_ROOT; };
-		27C2D8E8B16542E985E07129 /* TmxObjectGroup.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = TmxObjectGroup.cpp; path = src/tmxparser/TmxObjectGroup.cpp; sourceTree = SOURCE_ROOT; };
-		28886395CC32458A9078142A /* punchleft.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = punchleft.cpp; path = src/punchleft.cpp; sourceTree = SOURCE_ROOT; };
-		2A46698917F840C2BD6A68AF /* missile.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = missile.cpp; path = src/missile.cpp; sourceTree = SOURCE_ROOT; };
-		2D530A635DB54B2481C0E5C7 /* TmxGroupLayer.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = TmxGroupLayer.cpp; path = src/tmxparser/TmxGroupLayer.cpp; sourceTree = SOURCE_ROOT; };
-		2D72B760C98249B699ACF0D3 /* button.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = button.cpp; path = src/button.cpp; sourceTree = SOURCE_ROOT; };
-		2DA12532A4364D1EA6D2C224 /* zombieManager.hpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; fileEncoding = 4; name = zombieManager.hpp; path = src/zombieManager.hpp; sourceTree = SOURCE_ROOT; };
-		2FD9F88E9C5B490186F1D7BA /* mud.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = mud.cpp; path = src/mud.cpp; sourceTree = SOURCE_ROOT; };
-		308FA618F29E450994EB5120 /* TmxEllipse.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = TmxEllipse.h; path = src/tmxparser/TmxEllipse.h; sourceTree = SOURCE_ROOT; };
-		336EBAF927044CB8AEF97D1E /* limbsManager.hpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; fileEncoding = 4; name = limbsManager.hpp; path = src/limbsManager.hpp; sourceTree = SOURCE_ROOT; };
-		36FD3D656D7F4FAEA543F60C /* water.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = water.cpp; path = src/water.cpp; sourceTree = SOURCE_ROOT; };
-		3726CFB9A5704249AA87BDAE /* MapGrid.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = MapGrid.h; path = src/MapGrid.h; sourceTree = SOURCE_ROOT; };
-		37759777F2AB4CC58DB2CE4F /* CMakeLists.txt */ = {isa = PBXFileReference; explicitFileType = sourcecode.text; fileEncoding = 4; lastKnownFileType = text; path = CMakeLists.txt; sourceTree = SOURCE_ROOT; };
-		37D6FB4D22114593A6865B03 /* CollisionManager.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = CollisionManager.h; path = src/CollisionManager.h; sourceTree = SOURCE_ROOT; };
-		37EE6729DB9D463EB423C396 /* worldtexture.hpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; fileEncoding = 4; name = worldtexture.hpp; path = src/worldtexture.hpp; sourceTree = SOURCE_ROOT; };
-		3A133A4C4E2747F6A02037D8 /* viewHelper.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = viewHelper.cpp; path = src/viewHelper.cpp; sourceTree = SOURCE_ROOT; };
-		3C06C268197A49C2A0C45456 /* toolboxSlot.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = toolboxSlot.cpp; path = src/toolboxSlot.cpp; sourceTree = SOURCE_ROOT; };
-		3E6FBFA8C01D41F6A7302BBB /* TmxTile.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = TmxTile.h; path = src/tmxparser/TmxTile.h; sourceTree = SOURCE_ROOT; };
-		3FEA521DB032442794204B4F /* common.hpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; fileEncoding = 4; name = common.hpp; path = src/common.hpp; sourceTree = SOURCE_ROOT; };
-		406CB27C5FB84787BA2069CF /* missile.hpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; fileEncoding = 4; name = missile.hpp; path = src/missile.hpp; sourceTree = SOURCE_ROOT; };
-		42AF1FDB46534054B646B839 /* antidote.hpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; fileEncoding = 4; name = antidote.hpp; path = src/antidote.hpp; sourceTree = SOURCE_ROOT; };
-		44BE4EBDB202411BA67D204D /* main.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = main.cpp; path = src/main.cpp; sourceTree = SOURCE_ROOT; };
-		48C0F4BE59CE47588481BBE9 /* TmxTileset.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = TmxTileset.cpp; path = src/tmxparser/TmxTileset.cpp; sourceTree = SOURCE_ROOT; };
-		4AC808E26E924F4FBB7D9872 /* JPS.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = JPS.h; path = src/JPS.h; sourceTree = SOURCE_ROOT; };
-		569897D2103742038F5CFA14 /* TmxTileOffset.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = TmxTileOffset.h; path = src/tmxparser/TmxTileOffset.h; sourceTree = SOURCE_ROOT; };
-		58B66BFB0C1548BE989C8949 /* blood.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = blood.cpp; path = src/blood.cpp; sourceTree = SOURCE_ROOT; };
-		58D6D22F938E441C96133856 /* TmxColor.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = TmxColor.cpp; path = src/tmxparser/TmxColor.cpp; sourceTree = SOURCE_ROOT; };
-		5AD5C9641A8D4D02AF38E08E /* world.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = world.cpp; path = src/world.cpp; sourceTree = SOURCE_ROOT; };
-		5D1778CF158640F1AFA6FC21 /* TmxMap.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = TmxMap.h; path = src/tmxparser/TmxMap.h; sourceTree = SOURCE_ROOT; };
-		5FC2762840B64B9AB3BB852A /* TmxText.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = TmxText.cpp; path = src/tmxparser/TmxText.cpp; sourceTree = SOURCE_ROOT; };
-		61BBE6EF52584988AE99F382 /* TmxPolygon.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = TmxPolygon.h; path = src/tmxparser/TmxPolygon.h; sourceTree = SOURCE_ROOT; };
-		635EB67F9BF04D91A16B4BD9 /* TmxImage.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = TmxImage.cpp; path = src/tmxparser/TmxImage.cpp; sourceTree = SOURCE_ROOT; };
-		6409D6A5D0A44380A42D6F07 /* explosion.hpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; fileEncoding = 4; name = explosion.hpp; path = src/explosion.hpp; sourceTree = SOURCE_ROOT; };
-		640D14FB44F34160B4FBF909 /* blood.hpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; fileEncoding = 4; name = blood.hpp; path = src/blood.hpp; sourceTree = SOURCE_ROOT; };
-		6B304BC5CFD64BC78048998A /* toolboxManager.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = toolboxManager.cpp; path = src/toolboxManager.cpp; sourceTree = SOURCE_ROOT; };
-		6F3DEF02331741798F85374E /* TmxProperty.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = TmxProperty.cpp; path = src/tmxparser/TmxProperty.cpp; sourceTree = SOURCE_ROOT; };
-		71C1820CF367418194F15AF2 /* punchleft.hpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; fileEncoding = 4; name = punchleft.hpp; path = src/punchleft.hpp; sourceTree = SOURCE_ROOT; };
-		73FA5C5B9DEA4254A0F10F28 /* TmxTileLayer.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = TmxTileLayer.h; path = src/tmxparser/TmxTileLayer.h; sourceTree = SOURCE_ROOT; };
-		78D47B84F63044C193D45F5B /* Ice.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = Ice.cpp; path = src/Ice.cpp; sourceTree = SOURCE_ROOT; };
-		7A2CA950A93D4BEF84FAFB1A /* common.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = common.cpp; path = src/common.cpp; sourceTree = SOURCE_ROOT; };
-		7A73A3A8A6254796ABD8A2C3 /* TmxObject.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = TmxObject.cpp; path = src/tmxparser/TmxObject.cpp; sourceTree = SOURCE_ROOT; };
-		8359CE1B98CF4C58B674EFA1 /* gl3w.c */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.c; fileEncoding = 4; name = gl3w.c; path = src/gl3w.c; sourceTree = SOURCE_ROOT; };
-		858C2597D8694A43A68C76E9 /* TmxPolygon.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = TmxPolygon.cpp; path = src/tmxparser/TmxPolygon.cpp; sourceTree = SOURCE_ROOT; };
-		878579AC13D44B65892EF19F /* TmxTerrainArray.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = TmxTerrainArray.h; path = src/tmxparser/TmxTerrainArray.h; sourceTree = SOURCE_ROOT; };
-		8788622B97964D1683CC054F /* ToolManager.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = ToolManager.h; path = src/ToolManager.h; sourceTree = SOURCE_ROOT; };
-		8A5A4CE19BBE4EC5AA9CA87F /* player1.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = player1.cpp; path = src/player1.cpp; sourceTree = SOURCE_ROOT; };
-		8E3623567AF347B3BB2A627F /* TmxObjectGroup.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = TmxObjectGroup.h; path = src/tmxparser/TmxObjectGroup.h; sourceTree = SOURCE_ROOT; };
-		90D3164A0A894EA091D5C2D7 /* TmxPolyline.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = TmxPolyline.h; path = src/tmxparser/TmxPolyline.h; sourceTree = SOURCE_ROOT; };
-		90D9B8AC56FA4564B6742F75 /* TmxObject.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = TmxObject.h; path = src/tmxparser/TmxObject.h; sourceTree = SOURCE_ROOT; };
-		9348BAD0815D4A5F8D440BF9 /* TmxPropertySet.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = TmxPropertySet.h; path = src/tmxparser/TmxPropertySet.h; sourceTree = SOURCE_ROOT; };
-		953D56B3A6A74776868AD70A /* player2.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = player2.cpp; path = src/player2.cpp; sourceTree = SOURCE_ROOT; };
-		96427039AA69436394F2AE0C /* base64.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = base64.cpp; path = src/tmxparser/base64/base64.cpp; sourceTree = SOURCE_ROOT; };
-		9781139B855745CDAE0651D4 /* player2.hpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; fileEncoding = 4; name = player2.hpp; path = src/player2.hpp; sourceTree = SOURCE_ROOT; };
-		99D5F2FCC7E048B0B9B0FC8A /* PhysicalBody.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = PhysicalBody.cpp; path = src/PhysicalBody.cpp; sourceTree = SOURCE_ROOT; };
-		9A990A53B56B4A6E99391947 /* punchright.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = punchright.cpp; path = src/punchright.cpp; sourceTree = SOURCE_ROOT; };
-		9AF8E9BA99FB415FAF3A6537 /* bomb.hpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; fileEncoding = 4; name = bomb.hpp; path = src/bomb.hpp; sourceTree = SOURCE_ROOT; };
-		A01D21A8F9D144258B01E6FE /* mud.hpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; fileEncoding = 4; name = mud.hpp; path = src/mud.hpp; sourceTree = SOURCE_ROOT; };
-		A1799CFFBD224C3999453FB9 /* worldtexture.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = worldtexture.cpp; path = src/worldtexture.cpp; sourceTree = SOURCE_ROOT; };
-		A7B00D0EA6EF4CA7AABAC375 /* TmxGroupLayer.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = TmxGroupLayer.h; path = src/tmxparser/TmxGroupLayer.h; sourceTree = SOURCE_ROOT; };
-		A8441C200DB64FEBB08B0F37 /* Physics.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = Physics.cpp; path = src/Physics.cpp; sourceTree = SOURCE_ROOT; };
-		AA08C51201C8433880C818E6 /* punchright.hpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; fileEncoding = 4; name = punchright.hpp; path = src/punchright.hpp; sourceTree = SOURCE_ROOT; };
-		AA24A6608B7D4210A3BBF764 /* TmxTerrain.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = TmxTerrain.cpp; path = src/tmxparser/TmxTerrain.cpp; sourceTree = SOURCE_ROOT; };
-		ACC59FC1D0CB41F396E61BA2 /* CollisionManager.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = CollisionManager.cpp; path = src/CollisionManager.cpp; sourceTree = SOURCE_ROOT; };
-		AEA08301765F4D419415B004 /* TmxTerrain.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = TmxTerrain.h; path = src/tmxparser/TmxTerrain.h; sourceTree = SOURCE_ROOT; };
-		AF070115C14F4F759E733543 /* Physics.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = Physics.h; path = src/Physics.h; sourceTree = SOURCE_ROOT; };
-		B12372F1D7BE48928C9E7E96 /* TmxTerrainArray.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = TmxTerrainArray.cpp; path = src/tmxparser/TmxTerrainArray.cpp; sourceTree = SOURCE_ROOT; };
-		B293AA26E0ED48F7A9C7C1D5 /* armour.hpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; fileEncoding = 4; name = armour.hpp; path = src/armour.hpp; sourceTree = SOURCE_ROOT; };
-		B63F0FEA6B7C4515B1C27DA6 /* TmxPoint.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = TmxPoint.h; path = src/tmxparser/TmxPoint.h; sourceTree = SOURCE_ROOT; };
-		B7B6F7A3F64E484DA568C21C /* TmxTile.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = TmxTile.cpp; path = src/tmxparser/TmxTile.cpp; sourceTree = SOURCE_ROOT; };
-		B8839B5530104AF3A0FE766B /* ToolManager.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = ToolManager.cpp; path = src/ToolManager.cpp; sourceTree = SOURCE_ROOT; };
-		BDE324FB791E4480AE73AABA /* TmxTileset.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = TmxTileset.h; path = src/tmxparser/TmxTileset.h; sourceTree = SOURCE_ROOT; };
-		C044123DD1AC4292B7A951FD /* TmxImageLayer.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = TmxImageLayer.h; path = src/tmxparser/TmxImageLayer.h; sourceTree = SOURCE_ROOT; };
-		C05A09E835E84CF198EEAE6B /* zombieManager.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = zombieManager.cpp; path = src/zombieManager.cpp; sourceTree = SOURCE_ROOT; };
-		C18435582BB949998880ECAA /* Limb.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = Limb.h; path = src/Limb.h; sourceTree = SOURCE_ROOT; };
-		C1A3BC21C1154C958204EA41 /* antidote.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = antidote.cpp; path = src/antidote.cpp; sourceTree = SOURCE_ROOT; };
-		C1C47FF754F24058AC2DA4A5 /* TmxMapTile.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = TmxMapTile.h; path = src/tmxparser/TmxMapTile.h; sourceTree = SOURCE_ROOT; };
-		C2C8B1905AB14416A994A890 /* Ice.hpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; fileEncoding = 4; name = Ice.hpp; path = src/Ice.hpp; sourceTree = SOURCE_ROOT; };
-		C74A75EEEDAE4F148E6AF231 /* TmxUtil.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = TmxUtil.h; path = src/tmxparser/TmxUtil.h; sourceTree = SOURCE_ROOT; };
-		C7F48174A424491EA9E2E847 /* zombie */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; path = zombie; sourceTree = BUILT_PRODUCTS_DIR; };
-		CAEF15C5861246E7910FAAF8 /* TmxTileOffset.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = TmxTileOffset.cpp; path = src/tmxparser/TmxTileOffset.cpp; sourceTree = SOURCE_ROOT; };
-		CB1F52B5EC044A6CBD3E13CB /* CMakeLists.txt */ = {isa = PBXFileReference; explicitFileType = sourcecode.text; fileEncoding = 4; lastKnownFileType = text; path = CMakeLists.txt; sourceTree = SOURCE_ROOT; };
-		CF609BF5940A415E90C39E74 /* toolboxSlot.hpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; fileEncoding = 4; name = toolboxSlot.hpp; path = src/toolboxSlot.hpp; sourceTree = SOURCE_ROOT; };
-		D447726F9AF94F1BBC437295 /* viewHelper.hpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; fileEncoding = 4; name = viewHelper.hpp; path = src/viewHelper.hpp; sourceTree = SOURCE_ROOT; };
-		D6AA9397DCA9498A9980E60D /* tree.hpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; fileEncoding = 4; name = tree.hpp; path = src/tree.hpp; sourceTree = SOURCE_ROOT; };
-		D984236CA5E04061A66183E2 /* toolboxManager.hpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; fileEncoding = 4; name = toolboxManager.hpp; path = src/toolboxManager.hpp; sourceTree = SOURCE_ROOT; };
-		E167F0438FCE4D0CBA8249A9 /* world.hpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; fileEncoding = 4; name = world.hpp; path = src/world.hpp; sourceTree = SOURCE_ROOT; };
-		E32CED3F1B8B43E987ED1305 /* TmxEllipse.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = TmxEllipse.cpp; path = src/tmxparser/TmxEllipse.cpp; sourceTree = SOURCE_ROOT; };
-		E6AF4841444A4060A6AC9681 /* TmxProperty.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = TmxProperty.h; path = src/tmxparser/TmxProperty.h; sourceTree = SOURCE_ROOT; };
-		E877B707EB2A45A38E53658C /* TmxLayer.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = TmxLayer.cpp; path = src/tmxparser/TmxLayer.cpp; sourceTree = SOURCE_ROOT; };
-		E945C781C56F490AB67B7DD3 /* tree.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = tree.cpp; path = src/tree.cpp; sourceTree = SOURCE_ROOT; };
-		ECC58665B73C42FD8FB907C0 /* player1.hpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; fileEncoding = 4; name = player1.hpp; path = src/player1.hpp; sourceTree = SOURCE_ROOT; };
-		EF0274F9165144D2A0E787BE /* bomb.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = bomb.cpp; path = src/bomb.cpp; sourceTree = SOURCE_ROOT; };
-		EF196A3DF2584049BFF7D01C /* TmxTileLayer.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = TmxTileLayer.cpp; path = src/tmxparser/TmxTileLayer.cpp; sourceTree = SOURCE_ROOT; };
-		F068CBA407594F0CBE23FE54 /* miniz.c */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.c; fileEncoding = 4; name = miniz.c; path = src/tmxparser/miniz.c; sourceTree = SOURCE_ROOT; };
-		F0A248DC1F69450CAC8C6EDB /* TmxPolyline.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = TmxPolyline.cpp; path = src/tmxparser/TmxPolyline.cpp; sourceTree = SOURCE_ROOT; };
-		F8F8270717A743218F3BBDE3 /* TmxImage.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = TmxImage.h; path = src/tmxparser/TmxImage.h; sourceTree = SOURCE_ROOT; };
-		FB793413C734482EBCDDF0FF /* KMeans.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = KMeans.cpp; path = src/KMeans.cpp; sourceTree = SOURCE_ROOT; };
-		FE1DF500BAD0430F91574DC8 /* explosion.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = explosion.cpp; path = src/explosion.cpp; sourceTree = SOURCE_ROOT; };
+		03C3051061CE4B0393F98918 /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/button.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = button.cpp; path = src/button.cpp; sourceTree = SOURCE_ROOT; };
+		03FF0D4CAE0D436296EAF79E /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/MapGrid.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = MapGrid.h; path = src/MapGrid.h; sourceTree = SOURCE_ROOT; };
+		04E5D8D46E2E4F7DAC65C923 /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/tree.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = tree.cpp; path = src/tree.cpp; sourceTree = SOURCE_ROOT; };
+		0605B0B8D8B8457B885735BD /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/punchleft.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = punchleft.cpp; path = src/punchleft.cpp; sourceTree = SOURCE_ROOT; };
+		090B12DF484B49568BA03B0C /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/Ice.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = Ice.cpp; path = src/Ice.cpp; sourceTree = SOURCE_ROOT; };
+		0A1F98E3A48848209C3616B0 /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/infopage.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = infopage.cpp; path = src/infopage.cpp; sourceTree = SOURCE_ROOT; };
+		0B5D1A8BB0684E35ADBA6456 /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/PhysicalBody.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = PhysicalBody.h; path = src/PhysicalBody.h; sourceTree = SOURCE_ROOT; };
+		0B6CF10282B14225B4C3FB77 /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/tmxparser/TmxColor.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = TmxColor.h; path = src/tmxparser/TmxColor.h; sourceTree = SOURCE_ROOT; };
+		0BF4B6D426CB4B0094BAFE5C /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/tmxparser/base64/base64.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = base64.h; path = src/tmxparser/base64/base64.h; sourceTree = SOURCE_ROOT; };
+		0FA1DAB2DC874E6D9639B0B4 /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/common.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = common.cpp; path = src/common.cpp; sourceTree = SOURCE_ROOT; };
+		17911971ED904910A60E9F24 /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/KMeans.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = KMeans.h; path = src/KMeans.h; sourceTree = SOURCE_ROOT; };
+		19A83F7473EE401CB86F1FA3 /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/toolboxManager.hpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; fileEncoding = 4; name = toolboxManager.hpp; path = src/toolboxManager.hpp; sourceTree = SOURCE_ROOT; };
+		1C3493D77E5145A5AC45E32C /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/viewHelper.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = viewHelper.cpp; path = src/viewHelper.cpp; sourceTree = SOURCE_ROOT; };
+		1E84D7CA5CED47A7AE900FEF /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/ToolManager.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = ToolManager.cpp; path = src/ToolManager.cpp; sourceTree = SOURCE_ROOT; };
+		22EEC4A735614896BA0F7F46 /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/tmxparser/TmxObject.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = TmxObject.cpp; path = src/tmxparser/TmxObject.cpp; sourceTree = SOURCE_ROOT; };
+		23C71FFA60204276949F8BC4 /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/armour.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = armour.cpp; path = src/armour.cpp; sourceTree = SOURCE_ROOT; };
+		24FF39A8A3EC4C05A0C34E8E /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/tmxparser/TmxPolyline.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = TmxPolyline.h; path = src/tmxparser/TmxPolyline.h; sourceTree = SOURCE_ROOT; };
+		259EF05D875B4D4782C26B95 /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/tmxparser/TmxProperty.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = TmxProperty.h; path = src/tmxparser/TmxProperty.h; sourceTree = SOURCE_ROOT; };
+		26775D4D89F34EC1A500A22B /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/tmxparser/TmxTerrain.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = TmxTerrain.cpp; path = src/tmxparser/TmxTerrain.cpp; sourceTree = SOURCE_ROOT; };
+		2737E6D4486E4F51AFD5F6CC /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/antidote.hpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; fileEncoding = 4; name = antidote.hpp; path = src/antidote.hpp; sourceTree = SOURCE_ROOT; };
+		2C1314CF8AE845B1B8A60A93 /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/tmxparser/TmxUtil.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = TmxUtil.h; path = src/tmxparser/TmxUtil.h; sourceTree = SOURCE_ROOT; };
+		2C30428532864FE6ACD20785 /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/blood.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = blood.cpp; path = src/blood.cpp; sourceTree = SOURCE_ROOT; };
+		2CE3B01248844311A4E09065 /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/tmxparser/TmxEllipse.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = TmxEllipse.h; path = src/tmxparser/TmxEllipse.h; sourceTree = SOURCE_ROOT; };
+		2EE5AA8F527149CE9BD8405B /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/mud.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = mud.cpp; path = src/mud.cpp; sourceTree = SOURCE_ROOT; };
+		307224540D1D43F28B54DE9C /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/toolboxManager.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = toolboxManager.cpp; path = src/toolboxManager.cpp; sourceTree = SOURCE_ROOT; };
+		31CA98391F574FBA95B3DCAF /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/toolboxSlot.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = toolboxSlot.cpp; path = src/toolboxSlot.cpp; sourceTree = SOURCE_ROOT; };
+		3702DE3DBF924805A2CE93F5 /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/Limb.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = Limb.h; path = src/Limb.h; sourceTree = SOURCE_ROOT; };
+		3769B648BDC4449185E06112 /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/tmxparser/TmxPolygon.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = TmxPolygon.cpp; path = src/tmxparser/TmxPolygon.cpp; sourceTree = SOURCE_ROOT; };
+		389EB371B76C4BFBA7F116D5 /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/punchleft.hpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; fileEncoding = 4; name = punchleft.hpp; path = src/punchleft.hpp; sourceTree = SOURCE_ROOT; };
+		39038209C4374A50B6BE154C /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/world.hpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; fileEncoding = 4; name = world.hpp; path = src/world.hpp; sourceTree = SOURCE_ROOT; };
+		392F1BAEB15A4B8E90A690E7 /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/tmxparser/base64/base64.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = base64.cpp; path = src/tmxparser/base64/base64.cpp; sourceTree = SOURCE_ROOT; };
+		3A2BCC3DEA6A4541AF246239 /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/tmxparser/TmxGroupLayer.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = TmxGroupLayer.h; path = src/tmxparser/TmxGroupLayer.h; sourceTree = SOURCE_ROOT; };
+		3A52D271AB8542EAB699F9D3 /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/limbsManager.hpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; fileEncoding = 4; name = limbsManager.hpp; path = src/limbsManager.hpp; sourceTree = SOURCE_ROOT; };
+		3C37E667750D495CADAF61A6 /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/gl3w.c */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.c; fileEncoding = 4; name = gl3w.c; path = src/gl3w.c; sourceTree = SOURCE_ROOT; };
+		3EB56D3395864E5FAE64B2C1 /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/PhysicalBody.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = PhysicalBody.cpp; path = src/PhysicalBody.cpp; sourceTree = SOURCE_ROOT; };
+		3FA258F1171146F4B2F230DC /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/player2.hpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; fileEncoding = 4; name = player2.hpp; path = src/player2.hpp; sourceTree = SOURCE_ROOT; };
+		453D78F7E0684BE8ACCEE402 /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/tmxparser/TmxTileOffset.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = TmxTileOffset.h; path = src/tmxparser/TmxTileOffset.h; sourceTree = SOURCE_ROOT; };
+		459E7609B240430CAE419EC3 /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/tmxparser/TmxPoint.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = TmxPoint.h; path = src/tmxparser/TmxPoint.h; sourceTree = SOURCE_ROOT; };
+		473327ED714441DF88259C00 /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/tmxparser/TmxObject.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = TmxObject.h; path = src/tmxparser/TmxObject.h; sourceTree = SOURCE_ROOT; };
+		47372B11128441BBB624D5DB /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/worldtexture.hpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; fileEncoding = 4; name = worldtexture.hpp; path = src/worldtexture.hpp; sourceTree = SOURCE_ROOT; };
+		47FC3231BF0549F89B976202 /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/zombieManager.hpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; fileEncoding = 4; name = zombieManager.hpp; path = src/zombieManager.hpp; sourceTree = SOURCE_ROOT; };
+		49081BCD82C24CE39A437633 /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/JPS.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = JPS.h; path = src/JPS.h; sourceTree = SOURCE_ROOT; };
+		4D7EE66D747C40A69928396B /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/missile.hpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; fileEncoding = 4; name = missile.hpp; path = src/missile.hpp; sourceTree = SOURCE_ROOT; };
+		4E1F3A2769E340C29836FE34 /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/tmxparser/Tmx.h.in */ = {isa = PBXFileReference; explicitFileType = sourcecode; fileEncoding = 4; name = Tmx.h.in; path = src/tmxparser/Tmx.h.in; sourceTree = SOURCE_ROOT; };
+		4EBB3811BADC4FA1ACA484B2 /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/Limb.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = Limb.cpp; path = src/Limb.cpp; sourceTree = SOURCE_ROOT; };
+		567C079B71CE4CE78B1CDED2 /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/Ice.hpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; fileEncoding = 4; name = Ice.hpp; path = src/Ice.hpp; sourceTree = SOURCE_ROOT; };
+		5ACDA3D9BDCD4795B5285077 /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/tmxparser/TmxColor.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = TmxColor.cpp; path = src/tmxparser/TmxColor.cpp; sourceTree = SOURCE_ROOT; };
+		5AD644413B754535A888FC44 /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/tmxparser/TmxPolyline.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = TmxPolyline.cpp; path = src/tmxparser/TmxPolyline.cpp; sourceTree = SOURCE_ROOT; };
+		5C44C331D62349DA9BD24E1B /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/tmxparser/TmxTileOffset.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = TmxTileOffset.cpp; path = src/tmxparser/TmxTileOffset.cpp; sourceTree = SOURCE_ROOT; };
+		5C77254D3EE642D78462F3B2 /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/tmxparser/TmxMap.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = TmxMap.h; path = src/tmxparser/TmxMap.h; sourceTree = SOURCE_ROOT; };
+		5C948089B2BE44509B5F75FA /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/viewHelper.hpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; fileEncoding = 4; name = viewHelper.hpp; path = src/viewHelper.hpp; sourceTree = SOURCE_ROOT; };
+		5DCA996DAFB7490A8759470C /* zombie */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; path = zombie; sourceTree = BUILT_PRODUCTS_DIR; };
+		607E9ED3E20D499F882C6611 /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/tmxparser/TmxProperty.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = TmxProperty.cpp; path = src/tmxparser/TmxProperty.cpp; sourceTree = SOURCE_ROOT; };
+		6414A5A2379240DB9995AC88 /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/tmxparser/TmxTerrainArray.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = TmxTerrainArray.h; path = src/tmxparser/TmxTerrainArray.h; sourceTree = SOURCE_ROOT; };
+		664E964E4EFC43828C3E6CDF /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/infopage.hpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; fileEncoding = 4; name = infopage.hpp; path = src/infopage.hpp; sourceTree = SOURCE_ROOT; };
+		691E6C5DFCBB456EA7A12745 /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/tmxparser/TmxImageLayer.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = TmxImageLayer.cpp; path = src/tmxparser/TmxImageLayer.cpp; sourceTree = SOURCE_ROOT; };
+		6B8F6025CA5B492BA7789DD4 /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/tmxparser/TmxGroupLayer.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = TmxGroupLayer.cpp; path = src/tmxparser/TmxGroupLayer.cpp; sourceTree = SOURCE_ROOT; };
+		6CE31E5954A34BC28ABDC8F7 /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/tree.hpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; fileEncoding = 4; name = tree.hpp; path = src/tree.hpp; sourceTree = SOURCE_ROOT; };
+		6D355FE5296948158B2AEF9C /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/Physics.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = Physics.h; path = src/Physics.h; sourceTree = SOURCE_ROOT; };
+		7056AA8642864D75927A9C25 /* /Users/irenefang/Documents/CPSC436D/Game/zombified/CMakeLists.txt */ = {isa = PBXFileReference; explicitFileType = sourcecode.text; fileEncoding = 4; name = CMakeLists.txt; path = CMakeLists.txt; sourceTree = SOURCE_ROOT; };
+		74EDFF649BB84D51B7DBE91E /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/limbsManager.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = limbsManager.cpp; path = src/limbsManager.cpp; sourceTree = SOURCE_ROOT; };
+		783AB8295A674509911256E2 /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/player2.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = player2.cpp; path = src/player2.cpp; sourceTree = SOURCE_ROOT; };
+		7A08C6DF043D415BB33F0933 /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/tmxparser/TmxUtil.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = TmxUtil.cpp; path = src/tmxparser/TmxUtil.cpp; sourceTree = SOURCE_ROOT; };
+		7DC7D46915D044D689BB952F /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/player1.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = player1.cpp; path = src/player1.cpp; sourceTree = SOURCE_ROOT; };
+		7F394801F46746FA916EDECD /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/tmxparser/TmxMap.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = TmxMap.cpp; path = src/tmxparser/TmxMap.cpp; sourceTree = SOURCE_ROOT; };
+		87C96AC205A7421E88D0B783 /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/tmxparser/TmxImage.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = TmxImage.cpp; path = src/tmxparser/TmxImage.cpp; sourceTree = SOURCE_ROOT; };
+		88A1FB6A6EFC46948521F704 /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/zombie.hpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; fileEncoding = 4; name = zombie.hpp; path = src/zombie.hpp; sourceTree = SOURCE_ROOT; };
+		89011A182B7A42C284819ED1 /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/Physics.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = Physics.cpp; path = src/Physics.cpp; sourceTree = SOURCE_ROOT; };
+		899BDB15CF994A0EB05327D7 /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/MapGrid.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = MapGrid.cpp; path = src/MapGrid.cpp; sourceTree = SOURCE_ROOT; };
+		8D713A67519E44D59CBE57E3 /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/ToolManager.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = ToolManager.h; path = src/ToolManager.h; sourceTree = SOURCE_ROOT; };
+		8F572EAD72874999A4602052 /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/blood.hpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; fileEncoding = 4; name = blood.hpp; path = src/blood.hpp; sourceTree = SOURCE_ROOT; };
+		9168776292834DAAADD0FF4F /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/tmxparser/TmxTileset.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = TmxTileset.h; path = src/tmxparser/TmxTileset.h; sourceTree = SOURCE_ROOT; };
+		9197BF8D08C54D79987F1E2E /* /Users/irenefang/Documents/CPSC436D/Game/zombified/CMakeLists.txt */ = {isa = PBXFileReference; explicitFileType = sourcecode.text; fileEncoding = 4; name = CMakeLists.txt; path = CMakeLists.txt; sourceTree = SOURCE_ROOT; };
+		970E971E6B744CF980CF066D /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/mud.hpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; fileEncoding = 4; name = mud.hpp; path = src/mud.hpp; sourceTree = SOURCE_ROOT; };
+		9BBBC9BB6ACC4D0FA88A7749 /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/water.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = water.cpp; path = src/water.cpp; sourceTree = SOURCE_ROOT; };
+		9BD52F9D126244DDBB354AB6 /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/water.hpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; fileEncoding = 4; name = water.hpp; path = src/water.hpp; sourceTree = SOURCE_ROOT; };
+		A3AE9C6F9DE749DA9C963198 /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/tmxparser/TmxImage.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = TmxImage.h; path = src/tmxparser/TmxImage.h; sourceTree = SOURCE_ROOT; };
+		A41BA9C0DCAC4717A1E62B01 /* /Users/irenefang/Documents/CPSC436D/Game/zombified/CMakeLists.txt */ = {isa = PBXFileReference; explicitFileType = sourcecode.text; fileEncoding = 4; name = CMakeLists.txt; path = CMakeLists.txt; sourceTree = SOURCE_ROOT; };
+		A6D2A0AF91F2441D8BB3C1A0 /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/tmxparser/TmxTile.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = TmxTile.h; path = src/tmxparser/TmxTile.h; sourceTree = SOURCE_ROOT; };
+		A6E27E325D374F99B4EC9D13 /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/tmxparser/TmxTileLayer.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = TmxTileLayer.h; path = src/tmxparser/TmxTileLayer.h; sourceTree = SOURCE_ROOT; };
+		AB51A8C9C0E34BFF84C26558 /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/tmxparser/TmxObjectGroup.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = TmxObjectGroup.cpp; path = src/tmxparser/TmxObjectGroup.cpp; sourceTree = SOURCE_ROOT; };
+		B5E53DBEB5F948BFA658FFAD /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/punchright.hpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; fileEncoding = 4; name = punchright.hpp; path = src/punchright.hpp; sourceTree = SOURCE_ROOT; };
+		B60F9376D5494E79BA920C5A /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/tmxparser/TmxLayer.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = TmxLayer.cpp; path = src/tmxparser/TmxLayer.cpp; sourceTree = SOURCE_ROOT; };
+		B6472B430A82481E9B2B1054 /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/tmxparser/TmxObjectGroup.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = TmxObjectGroup.h; path = src/tmxparser/TmxObjectGroup.h; sourceTree = SOURCE_ROOT; };
+		B6D7099426DB42E381253A5D /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/tmxparser/TmxTile.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = TmxTile.cpp; path = src/tmxparser/TmxTile.cpp; sourceTree = SOURCE_ROOT; };
+		BA807FE720E64D788F89F92F /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/antidote.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = antidote.cpp; path = src/antidote.cpp; sourceTree = SOURCE_ROOT; };
+		BB8CD6EBAF074EF499FAD4D5 /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/tmxparser/TmxTerrain.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = TmxTerrain.h; path = src/tmxparser/TmxTerrain.h; sourceTree = SOURCE_ROOT; };
+		BB97D6B8631344F7876813D4 /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/common.hpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; fileEncoding = 4; name = common.hpp; path = src/common.hpp; sourceTree = SOURCE_ROOT; };
+		BCAED95A39F247C18C3A2751 /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/tmxparser/tmxparser.pc.in */ = {isa = PBXFileReference; explicitFileType = sourcecode; fileEncoding = 4; name = tmxparser.pc.in; path = src/tmxparser/tmxparser.pc.in; sourceTree = SOURCE_ROOT; };
+		BD6E836BDE2444B4B8BE03AA /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/bomb.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = bomb.cpp; path = src/bomb.cpp; sourceTree = SOURCE_ROOT; };
+		BF3FFCC5C7AE49DE8D4A4CEB /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/KMeans.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = KMeans.cpp; path = src/KMeans.cpp; sourceTree = SOURCE_ROOT; };
+		C088B254EC414906BD47A38B /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/tmxparser/TmxImageLayer.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = TmxImageLayer.h; path = src/tmxparser/TmxImageLayer.h; sourceTree = SOURCE_ROOT; };
+		C2A79E67FD4947B680BCA511 /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/tmxparser/TmxMapTile.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = TmxMapTile.h; path = src/tmxparser/TmxMapTile.h; sourceTree = SOURCE_ROOT; };
+		C2EE54BBFC7540BB87DB7D4B /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/missile.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = missile.cpp; path = src/missile.cpp; sourceTree = SOURCE_ROOT; };
+		C3C9D09192804955BDD50A5E /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/tmxparser/TmxText.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = TmxText.h; path = src/tmxparser/TmxText.h; sourceTree = SOURCE_ROOT; };
+		C4325E599D79452EBE905CF6 /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/toolboxSlot.hpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; fileEncoding = 4; name = toolboxSlot.hpp; path = src/toolboxSlot.hpp; sourceTree = SOURCE_ROOT; };
+		C4B8F9B9767D4C9985E306F6 /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/player1.hpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; fileEncoding = 4; name = player1.hpp; path = src/player1.hpp; sourceTree = SOURCE_ROOT; };
+		C5766602E1794BF6ABEA8900 /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/tmxparser/TmxText.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = TmxText.cpp; path = src/tmxparser/TmxText.cpp; sourceTree = SOURCE_ROOT; };
+		CBA6A88FB0F942008E1F5A0A /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/tmxparser/TmxTileLayer.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = TmxTileLayer.cpp; path = src/tmxparser/TmxTileLayer.cpp; sourceTree = SOURCE_ROOT; };
+		D1BB8A6430034D7F9BC2F6B5 /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/tmxparser/miniz.c */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.c; fileEncoding = 4; name = miniz.c; path = src/tmxparser/miniz.c; sourceTree = SOURCE_ROOT; };
+		D6B966377BE141C49B2C524A /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/zombie.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = zombie.cpp; path = src/zombie.cpp; sourceTree = SOURCE_ROOT; };
+		D9B5C5CC422F4BF5AF96B5C5 /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/tmxparser/TmxTerrainArray.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = TmxTerrainArray.cpp; path = src/tmxparser/TmxTerrainArray.cpp; sourceTree = SOURCE_ROOT; };
+		E0C45853D54B43C0AA728E2A /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/zombieManager.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = zombieManager.cpp; path = src/zombieManager.cpp; sourceTree = SOURCE_ROOT; };
+		E0CC1073C21C4129880BB1AE /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/punchright.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = punchright.cpp; path = src/punchright.cpp; sourceTree = SOURCE_ROOT; };
+		E0F0B45F357549C28F7EE52D /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/tmxparser/TmxLayer.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = TmxLayer.h; path = src/tmxparser/TmxLayer.h; sourceTree = SOURCE_ROOT; };
+		E586819019324ABEA240687A /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/bomb.hpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; fileEncoding = 4; name = bomb.hpp; path = src/bomb.hpp; sourceTree = SOURCE_ROOT; };
+		EAB5E896762C453DAF894A6F /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/explosion.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = explosion.cpp; path = src/explosion.cpp; sourceTree = SOURCE_ROOT; };
+		EB9EEB2C5A9F42CA9FA6A1B4 /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/tmxparser/TmxEllipse.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = TmxEllipse.cpp; path = src/tmxparser/TmxEllipse.cpp; sourceTree = SOURCE_ROOT; };
+		EBC80DBCD93449CCA5F7ECF0 /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/button.hpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; fileEncoding = 4; name = button.hpp; path = src/button.hpp; sourceTree = SOURCE_ROOT; };
+		EC630A894D034F389D331B74 /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/tmxparser/TmxPropertySet.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = TmxPropertySet.cpp; path = src/tmxparser/TmxPropertySet.cpp; sourceTree = SOURCE_ROOT; };
+		EEC85D0405324FD6B93F161B /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/explosion.hpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; fileEncoding = 4; name = explosion.hpp; path = src/explosion.hpp; sourceTree = SOURCE_ROOT; };
+		EEDE9498FBF442A2BF028701 /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/world.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = world.cpp; path = src/world.cpp; sourceTree = SOURCE_ROOT; };
+		EF7808FAB61E4A15818C6334 /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/tmxparser/TmxPolygon.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = TmxPolygon.h; path = src/tmxparser/TmxPolygon.h; sourceTree = SOURCE_ROOT; };
+		F005EF6A71694656A7E08A27 /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/tmxparser/TmxTileset.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = TmxTileset.cpp; path = src/tmxparser/TmxTileset.cpp; sourceTree = SOURCE_ROOT; };
+		F6E54FC029B44969B1F997E3 /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/worldtexture.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = worldtexture.cpp; path = src/worldtexture.cpp; sourceTree = SOURCE_ROOT; };
+		F7E7EF2D3E8F4C8587979D91 /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/armour.hpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; fileEncoding = 4; name = armour.hpp; path = src/armour.hpp; sourceTree = SOURCE_ROOT; };
+		F8370EDF47714C4BB6BDD82B /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/Ice copy.hpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; fileEncoding = 4; name = "Ice copy.hpp"; path = "src/Ice copy.hpp"; sourceTree = SOURCE_ROOT; };
+		F896672AFAE84B819D500012 /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/tmxparser/TmxPropertySet.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = TmxPropertySet.h; path = src/tmxparser/TmxPropertySet.h; sourceTree = SOURCE_ROOT; };
+		FDCF3FD8F80948B2A5ECB235 /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/main.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = main.cpp; path = src/main.cpp; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXGroup section */
-		277AD96FD57C4B51B79AEF4D /* CMake Rules */ = {
+		6311980538024114BA2CDDA6 /* zombie */ = {
 			isa = PBXGroup;
 			children = (
+				C1CB9034E12B483D9B08083F /* Source Files */,
+				83C3CF23304F46AD97CDA4DE /* Header Files */,
+				9197BF8D08C54D79987F1E2E /* /Users/irenefang/Documents/CPSC436D/Game/zombified/CMakeLists.txt */,
 			);
-			name = "CMake Rules";
+			name = zombie;
 			sourceTree = "<group>";
 		};
-		28B7E161550B445A8C5FC826 /* ALL_BUILD */ = {
+		83C3CF23304F46AD97CDA4DE /* Header Files */ = {
 			isa = PBXGroup;
 			children = (
-				277AD96FD57C4B51B79AEF4D /* CMake Rules */,
-				37759777F2AB4CC58DB2CE4F /* CMakeLists.txt */,
-			);
-			name = ALL_BUILD;
-			sourceTree = "<group>";
-		};
-		42D55224954E4E4F86D098B6 /* CMake Rules */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = "CMake Rules";
-			sourceTree = "<group>";
-		};
-		4B712C44AED94B51908A13FE /* Source Files */ = {
-			isa = PBXGroup;
-			children = (
-				ACC59FC1D0CB41F396E61BA2 /* CollisionManager.cpp */,
-				78D47B84F63044C193D45F5B /* Ice.cpp */,
-				FB793413C734482EBCDDF0FF /* KMeans.cpp */,
-				043B4E659D7F47A980CFE7DA /* Limb.cpp */,
-				020F21DAAB6A45AB8204198E /* MapGrid.cpp */,
-				99D5F2FCC7E048B0B9B0FC8A /* PhysicalBody.cpp */,
-				A8441C200DB64FEBB08B0F37 /* Physics.cpp */,
-				B8839B5530104AF3A0FE766B /* ToolManager.cpp */,
-				C1A3BC21C1154C958204EA41 /* antidote.cpp */,
-				1AEA4BADD53C4A2890BA42C7 /* armour.cpp */,
-				58B66BFB0C1548BE989C8949 /* blood.cpp */,
-				EF0274F9165144D2A0E787BE /* bomb.cpp */,
-				2D72B760C98249B699ACF0D3 /* button.cpp */,
-				7A2CA950A93D4BEF84FAFB1A /* common.cpp */,
-				FE1DF500BAD0430F91574DC8 /* explosion.cpp */,
-				8359CE1B98CF4C58B674EFA1 /* gl3w.c */,
-				075758724F2E4962A22B4C8D /* limbsManager.cpp */,
-				44BE4EBDB202411BA67D204D /* main.cpp */,
-				2A46698917F840C2BD6A68AF /* missile.cpp */,
-				2FD9F88E9C5B490186F1D7BA /* mud.cpp */,
-				8A5A4CE19BBE4EC5AA9CA87F /* player1.cpp */,
-				953D56B3A6A74776868AD70A /* player2.cpp */,
-				28886395CC32458A9078142A /* punchleft.cpp */,
-				9A990A53B56B4A6E99391947 /* punchright.cpp */,
-				58D6D22F938E441C96133856 /* TmxColor.cpp */,
-				E32CED3F1B8B43E987ED1305 /* TmxEllipse.cpp */,
-				2D530A635DB54B2481C0E5C7 /* TmxGroupLayer.cpp */,
-				635EB67F9BF04D91A16B4BD9 /* TmxImage.cpp */,
-				096A00F438B548CCB43DECAF /* TmxImageLayer.cpp */,
-				E877B707EB2A45A38E53658C /* TmxLayer.cpp */,
-				1AE2E230BCBC42649D3FF1C3 /* TmxMap.cpp */,
-				7A73A3A8A6254796ABD8A2C3 /* TmxObject.cpp */,
-				27C2D8E8B16542E985E07129 /* TmxObjectGroup.cpp */,
-				858C2597D8694A43A68C76E9 /* TmxPolygon.cpp */,
-				F0A248DC1F69450CAC8C6EDB /* TmxPolyline.cpp */,
-				6F3DEF02331741798F85374E /* TmxProperty.cpp */,
-				2267534DD8B8416D908F30AB /* TmxPropertySet.cpp */,
-				AA24A6608B7D4210A3BBF764 /* TmxTerrain.cpp */,
-				B12372F1D7BE48928C9E7E96 /* TmxTerrainArray.cpp */,
-				5FC2762840B64B9AB3BB852A /* TmxText.cpp */,
-				B7B6F7A3F64E484DA568C21C /* TmxTile.cpp */,
-				EF196A3DF2584049BFF7D01C /* TmxTileLayer.cpp */,
-				CAEF15C5861246E7910FAAF8 /* TmxTileOffset.cpp */,
-				48C0F4BE59CE47588481BBE9 /* TmxTileset.cpp */,
-				1B680AF43F264D34B1F47FDA /* TmxUtil.cpp */,
-				96427039AA69436394F2AE0C /* base64.cpp */,
-				F068CBA407594F0CBE23FE54 /* miniz.c */,
-				6B304BC5CFD64BC78048998A /* toolboxManager.cpp */,
-				3C06C268197A49C2A0C45456 /* toolboxSlot.cpp */,
-				E945C781C56F490AB67B7DD3 /* tree.cpp */,
-				3A133A4C4E2747F6A02037D8 /* viewHelper.cpp */,
-				36FD3D656D7F4FAEA543F60C /* water.cpp */,
-				5AD5C9641A8D4D02AF38E08E /* world.cpp */,
-				A1799CFFBD224C3999453FB9 /* worldtexture.cpp */,
-				12EA987D81C048C8AA4D45CE /* zombie.cpp */,
-				C05A09E835E84CF198EEAE6B /* zombieManager.cpp */,
-			);
-			name = "Source Files";
-			sourceTree = "<group>";
-		};
-		848BFDF65D6E4AA196B89B66 /* Header Files */ = {
-			isa = PBXGroup;
-			children = (
-				37D6FB4D22114593A6865B03 /* CollisionManager.h */,
-				C2C8B1905AB14416A994A890 /* Ice.hpp */,
-				4AC808E26E924F4FBB7D9872 /* JPS.h */,
-				040DCCBDA89143FC8F9C9E95 /* KMeans.h */,
-				C18435582BB949998880ECAA /* Limb.h */,
-				3726CFB9A5704249AA87BDAE /* MapGrid.h */,
-				118493A5BF0547888A328967 /* PhysicalBody.h */,
-				AF070115C14F4F759E733543 /* Physics.h */,
-				8788622B97964D1683CC054F /* ToolManager.h */,
-				42AF1FDB46534054B646B839 /* antidote.hpp */,
-				B293AA26E0ED48F7A9C7C1D5 /* armour.hpp */,
-				640D14FB44F34160B4FBF909 /* blood.hpp */,
-				9AF8E9BA99FB415FAF3A6537 /* bomb.hpp */,
-				258252C10A5C4F02A4EF2A50 /* button.hpp */,
-				3FEA521DB032442794204B4F /* common.hpp */,
-				6409D6A5D0A44380A42D6F07 /* explosion.hpp */,
-				336EBAF927044CB8AEF97D1E /* limbsManager.hpp */,
-				406CB27C5FB84787BA2069CF /* missile.hpp */,
-				A01D21A8F9D144258B01E6FE /* mud.hpp */,
-				ECC58665B73C42FD8FB907C0 /* player1.hpp */,
-				9781139B855745CDAE0651D4 /* player2.hpp */,
-				71C1820CF367418194F15AF2 /* punchleft.hpp */,
-				AA08C51201C8433880C818E6 /* punchright.hpp */,
-				1CAEEF60EA644D3A98F58D4E /* Tmx.h.in */,
-				22D2E4A5CD354640AE4E17BE /* TmxColor.h */,
-				308FA618F29E450994EB5120 /* TmxEllipse.h */,
-				A7B00D0EA6EF4CA7AABAC375 /* TmxGroupLayer.h */,
-				F8F8270717A743218F3BBDE3 /* TmxImage.h */,
-				C044123DD1AC4292B7A951FD /* TmxImageLayer.h */,
-				0AAE0BA96BF64C55BE03304B /* TmxLayer.h */,
-				5D1778CF158640F1AFA6FC21 /* TmxMap.h */,
-				C1C47FF754F24058AC2DA4A5 /* TmxMapTile.h */,
-				90D9B8AC56FA4564B6742F75 /* TmxObject.h */,
-				8E3623567AF347B3BB2A627F /* TmxObjectGroup.h */,
-				B63F0FEA6B7C4515B1C27DA6 /* TmxPoint.h */,
-				61BBE6EF52584988AE99F382 /* TmxPolygon.h */,
-				90D3164A0A894EA091D5C2D7 /* TmxPolyline.h */,
-				E6AF4841444A4060A6AC9681 /* TmxProperty.h */,
-				9348BAD0815D4A5F8D440BF9 /* TmxPropertySet.h */,
-				AEA08301765F4D419415B004 /* TmxTerrain.h */,
-				878579AC13D44B65892EF19F /* TmxTerrainArray.h */,
-				01FF0C884BB343CD90AA2F3F /* TmxText.h */,
-				3E6FBFA8C01D41F6A7302BBB /* TmxTile.h */,
-				73FA5C5B9DEA4254A0F10F28 /* TmxTileLayer.h */,
-				569897D2103742038F5CFA14 /* TmxTileOffset.h */,
-				BDE324FB791E4480AE73AABA /* TmxTileset.h */,
-				C74A75EEEDAE4F148E6AF231 /* TmxUtil.h */,
-				1A191CC61A2E475C92ADCD2A /* base64.h */,
-				23F4B7FB73084C8EB6A74DC2 /* tmxparser.pc.in */,
-				D984236CA5E04061A66183E2 /* toolboxManager.hpp */,
-				CF609BF5940A415E90C39E74 /* toolboxSlot.hpp */,
-				D6AA9397DCA9498A9980E60D /* tree.hpp */,
-				D447726F9AF94F1BBC437295 /* viewHelper.hpp */,
-				071E7BF162CF4A71A1C81C13 /* water.hpp */,
-				E167F0438FCE4D0CBA8249A9 /* world.hpp */,
-				37EE6729DB9D463EB423C396 /* worldtexture.hpp */,
-				227BB17715B446E4BAB5C4DB /* zombie.hpp */,
-				2DA12532A4364D1EA6D2C224 /* zombieManager.hpp */,
+				F8370EDF47714C4BB6BDD82B /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/Ice copy.hpp */,
+				567C079B71CE4CE78B1CDED2 /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/Ice.hpp */,
+				49081BCD82C24CE39A437633 /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/JPS.h */,
+				17911971ED904910A60E9F24 /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/KMeans.h */,
+				3702DE3DBF924805A2CE93F5 /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/Limb.h */,
+				03FF0D4CAE0D436296EAF79E /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/MapGrid.h */,
+				0B5D1A8BB0684E35ADBA6456 /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/PhysicalBody.h */,
+				6D355FE5296948158B2AEF9C /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/Physics.h */,
+				8D713A67519E44D59CBE57E3 /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/ToolManager.h */,
+				2737E6D4486E4F51AFD5F6CC /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/antidote.hpp */,
+				F7E7EF2D3E8F4C8587979D91 /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/armour.hpp */,
+				8F572EAD72874999A4602052 /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/blood.hpp */,
+				E586819019324ABEA240687A /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/bomb.hpp */,
+				EBC80DBCD93449CCA5F7ECF0 /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/button.hpp */,
+				BB97D6B8631344F7876813D4 /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/common.hpp */,
+				EEC85D0405324FD6B93F161B /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/explosion.hpp */,
+				664E964E4EFC43828C3E6CDF /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/infopage.hpp */,
+				3A52D271AB8542EAB699F9D3 /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/limbsManager.hpp */,
+				4D7EE66D747C40A69928396B /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/missile.hpp */,
+				970E971E6B744CF980CF066D /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/mud.hpp */,
+				C4B8F9B9767D4C9985E306F6 /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/player1.hpp */,
+				3FA258F1171146F4B2F230DC /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/player2.hpp */,
+				389EB371B76C4BFBA7F116D5 /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/punchleft.hpp */,
+				B5E53DBEB5F948BFA658FFAD /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/punchright.hpp */,
+				4E1F3A2769E340C29836FE34 /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/tmxparser/Tmx.h.in */,
+				0B6CF10282B14225B4C3FB77 /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/tmxparser/TmxColor.h */,
+				2CE3B01248844311A4E09065 /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/tmxparser/TmxEllipse.h */,
+				3A2BCC3DEA6A4541AF246239 /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/tmxparser/TmxGroupLayer.h */,
+				A3AE9C6F9DE749DA9C963198 /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/tmxparser/TmxImage.h */,
+				C088B254EC414906BD47A38B /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/tmxparser/TmxImageLayer.h */,
+				E0F0B45F357549C28F7EE52D /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/tmxparser/TmxLayer.h */,
+				5C77254D3EE642D78462F3B2 /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/tmxparser/TmxMap.h */,
+				C2A79E67FD4947B680BCA511 /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/tmxparser/TmxMapTile.h */,
+				473327ED714441DF88259C00 /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/tmxparser/TmxObject.h */,
+				B6472B430A82481E9B2B1054 /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/tmxparser/TmxObjectGroup.h */,
+				459E7609B240430CAE419EC3 /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/tmxparser/TmxPoint.h */,
+				EF7808FAB61E4A15818C6334 /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/tmxparser/TmxPolygon.h */,
+				24FF39A8A3EC4C05A0C34E8E /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/tmxparser/TmxPolyline.h */,
+				259EF05D875B4D4782C26B95 /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/tmxparser/TmxProperty.h */,
+				F896672AFAE84B819D500012 /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/tmxparser/TmxPropertySet.h */,
+				BB8CD6EBAF074EF499FAD4D5 /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/tmxparser/TmxTerrain.h */,
+				6414A5A2379240DB9995AC88 /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/tmxparser/TmxTerrainArray.h */,
+				C3C9D09192804955BDD50A5E /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/tmxparser/TmxText.h */,
+				A6D2A0AF91F2441D8BB3C1A0 /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/tmxparser/TmxTile.h */,
+				A6E27E325D374F99B4EC9D13 /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/tmxparser/TmxTileLayer.h */,
+				453D78F7E0684BE8ACCEE402 /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/tmxparser/TmxTileOffset.h */,
+				9168776292834DAAADD0FF4F /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/tmxparser/TmxTileset.h */,
+				2C1314CF8AE845B1B8A60A93 /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/tmxparser/TmxUtil.h */,
+				0BF4B6D426CB4B0094BAFE5C /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/tmxparser/base64/base64.h */,
+				BCAED95A39F247C18C3A2751 /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/tmxparser/tmxparser.pc.in */,
+				19A83F7473EE401CB86F1FA3 /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/toolboxManager.hpp */,
+				C4325E599D79452EBE905CF6 /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/toolboxSlot.hpp */,
+				6CE31E5954A34BC28ABDC8F7 /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/tree.hpp */,
+				5C948089B2BE44509B5F75FA /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/viewHelper.hpp */,
+				9BD52F9D126244DDBB354AB6 /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/water.hpp */,
+				39038209C4374A50B6BE154C /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/world.hpp */,
+				47372B11128441BBB624D5DB /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/worldtexture.hpp */,
+				88A1FB6A6EFC46948521F704 /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/zombie.hpp */,
+				47FC3231BF0549F89B976202 /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/zombieManager.hpp */,
 			);
 			name = "Header Files";
 			sourceTree = "<group>";
 		};
-		B02B5DEFF0A8494FAFE3F8FE = {
+		9D4B16D091AE40C793E65943 /* CMake Rules */ = {
 			isa = PBXGroup;
 			children = (
-				FCC0B8CE01004B26BDEEF6F0 /* zombie */,
-				28B7E161550B445A8C5FC826 /* ALL_BUILD */,
-				B62146E5F51444A68BAD7F40 /* ZERO_CHECK */,
-				D09BB370839640018C5A43E3 /* Products */,
 			);
+			name = "CMake Rules";
 			sourceTree = "<group>";
 		};
-		B62146E5F51444A68BAD7F40 /* ZERO_CHECK */ = {
+		A8E15E00FB4D4626B06C4185 /* ZERO_CHECK */ = {
 			isa = PBXGroup;
 			children = (
-				42D55224954E4E4F86D098B6 /* CMake Rules */,
-				17CFE44DB59F4FA2B3461CFF /* CMakeLists.txt */,
+				9D4B16D091AE40C793E65943 /* CMake Rules */,
+				7056AA8642864D75927A9C25 /* /Users/irenefang/Documents/CPSC436D/Game/zombified/CMakeLists.txt */,
 			);
 			name = ZERO_CHECK;
 			sourceTree = "<group>";
 		};
-		D09BB370839640018C5A43E3 /* Products */ = {
+		AF5EC2294CB849D0936D7833 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				C7F48174A424491EA9E2E847 /* zombie */,
+				5DCA996DAFB7490A8759470C /* zombie */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		FCC0B8CE01004B26BDEEF6F0 /* zombie */ = {
+		C1CB9034E12B483D9B08083F /* Source Files */ = {
 			isa = PBXGroup;
 			children = (
-				4B712C44AED94B51908A13FE /* Source Files */,
-				848BFDF65D6E4AA196B89B66 /* Header Files */,
-				CB1F52B5EC044A6CBD3E13CB /* CMakeLists.txt */,
+				090B12DF484B49568BA03B0C /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/Ice.cpp */,
+				BF3FFCC5C7AE49DE8D4A4CEB /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/KMeans.cpp */,
+				4EBB3811BADC4FA1ACA484B2 /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/Limb.cpp */,
+				899BDB15CF994A0EB05327D7 /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/MapGrid.cpp */,
+				3EB56D3395864E5FAE64B2C1 /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/PhysicalBody.cpp */,
+				89011A182B7A42C284819ED1 /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/Physics.cpp */,
+				1E84D7CA5CED47A7AE900FEF /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/ToolManager.cpp */,
+				BA807FE720E64D788F89F92F /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/antidote.cpp */,
+				23C71FFA60204276949F8BC4 /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/armour.cpp */,
+				2C30428532864FE6ACD20785 /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/blood.cpp */,
+				BD6E836BDE2444B4B8BE03AA /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/bomb.cpp */,
+				03C3051061CE4B0393F98918 /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/button.cpp */,
+				0FA1DAB2DC874E6D9639B0B4 /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/common.cpp */,
+				EAB5E896762C453DAF894A6F /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/explosion.cpp */,
+				3C37E667750D495CADAF61A6 /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/gl3w.c */,
+				0A1F98E3A48848209C3616B0 /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/infopage.cpp */,
+				74EDFF649BB84D51B7DBE91E /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/limbsManager.cpp */,
+				FDCF3FD8F80948B2A5ECB235 /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/main.cpp */,
+				C2EE54BBFC7540BB87DB7D4B /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/missile.cpp */,
+				2EE5AA8F527149CE9BD8405B /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/mud.cpp */,
+				7DC7D46915D044D689BB952F /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/player1.cpp */,
+				783AB8295A674509911256E2 /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/player2.cpp */,
+				0605B0B8D8B8457B885735BD /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/punchleft.cpp */,
+				E0CC1073C21C4129880BB1AE /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/punchright.cpp */,
+				5ACDA3D9BDCD4795B5285077 /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/tmxparser/TmxColor.cpp */,
+				EB9EEB2C5A9F42CA9FA6A1B4 /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/tmxparser/TmxEllipse.cpp */,
+				6B8F6025CA5B492BA7789DD4 /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/tmxparser/TmxGroupLayer.cpp */,
+				87C96AC205A7421E88D0B783 /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/tmxparser/TmxImage.cpp */,
+				691E6C5DFCBB456EA7A12745 /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/tmxparser/TmxImageLayer.cpp */,
+				B60F9376D5494E79BA920C5A /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/tmxparser/TmxLayer.cpp */,
+				7F394801F46746FA916EDECD /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/tmxparser/TmxMap.cpp */,
+				22EEC4A735614896BA0F7F46 /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/tmxparser/TmxObject.cpp */,
+				AB51A8C9C0E34BFF84C26558 /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/tmxparser/TmxObjectGroup.cpp */,
+				3769B648BDC4449185E06112 /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/tmxparser/TmxPolygon.cpp */,
+				5AD644413B754535A888FC44 /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/tmxparser/TmxPolyline.cpp */,
+				607E9ED3E20D499F882C6611 /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/tmxparser/TmxProperty.cpp */,
+				EC630A894D034F389D331B74 /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/tmxparser/TmxPropertySet.cpp */,
+				26775D4D89F34EC1A500A22B /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/tmxparser/TmxTerrain.cpp */,
+				D9B5C5CC422F4BF5AF96B5C5 /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/tmxparser/TmxTerrainArray.cpp */,
+				C5766602E1794BF6ABEA8900 /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/tmxparser/TmxText.cpp */,
+				B6D7099426DB42E381253A5D /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/tmxparser/TmxTile.cpp */,
+				CBA6A88FB0F942008E1F5A0A /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/tmxparser/TmxTileLayer.cpp */,
+				5C44C331D62349DA9BD24E1B /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/tmxparser/TmxTileOffset.cpp */,
+				F005EF6A71694656A7E08A27 /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/tmxparser/TmxTileset.cpp */,
+				7A08C6DF043D415BB33F0933 /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/tmxparser/TmxUtil.cpp */,
+				392F1BAEB15A4B8E90A690E7 /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/tmxparser/base64/base64.cpp */,
+				D1BB8A6430034D7F9BC2F6B5 /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/tmxparser/miniz.c */,
+				307224540D1D43F28B54DE9C /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/toolboxManager.cpp */,
+				31CA98391F574FBA95B3DCAF /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/toolboxSlot.cpp */,
+				04E5D8D46E2E4F7DAC65C923 /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/tree.cpp */,
+				1C3493D77E5145A5AC45E32C /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/viewHelper.cpp */,
+				9BBBC9BB6ACC4D0FA88A7749 /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/water.cpp */,
+				EEDE9498FBF442A2BF028701 /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/world.cpp */,
+				F6E54FC029B44969B1F997E3 /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/worldtexture.cpp */,
+				D6B966377BE141C49B2C524A /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/zombie.cpp */,
+				E0C45853D54B43C0AA728E2A /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/zombieManager.cpp */,
 			);
-			name = zombie;
+			name = "Source Files";
+			sourceTree = "<group>";
+		};
+		CA6F2D866CB2445E86965CC9 /* CMake Rules */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "CMake Rules";
+			sourceTree = "<group>";
+		};
+		F79813F2994645E79726D769 = {
+			isa = PBXGroup;
+			children = (
+				6311980538024114BA2CDDA6 /* zombie */,
+				F9ADCF5333CB4950BCBA8250 /* ALL_BUILD */,
+				A8E15E00FB4D4626B06C4185 /* ZERO_CHECK */,
+				AF5EC2294CB849D0936D7833 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		F9ADCF5333CB4950BCBA8250 /* ALL_BUILD */ = {
+			isa = PBXGroup;
+			children = (
+				CA6F2D866CB2445E86965CC9 /* CMake Rules */,
+				A41BA9C0DCAC4717A1E62B01 /* /Users/irenefang/Documents/CPSC436D/Game/zombified/CMakeLists.txt */,
+			);
+			name = ALL_BUILD;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		C5EBF06C85A243059C1DA4E3 /* zombie */ = {
+		CC88889EAE7440D9AACA23D1 /* zombie */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 91E5EC4FB75B4DD29958D4CC /* Build configuration list for PBXNativeTarget "zombie" */;
+			buildConfigurationList = B0721098B2BE40CC93A4F285 /* Build configuration list for PBXNativeTarget "zombie" */;
 			buildPhases = (
-				7354B9FFC2DB4A22BB676200 /* Sources */,
+				44C16A1D652F4923B64B3EE3 /* Sources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				4B333E32F35E4DF0BFA0CFC3 /* PBXTargetDependency */,
+				C264F454A1F846F9BDAE18CF /* PBXTargetDependency */,
 			);
 			name = zombie;
 			productName = zombie;
-			productReference = C7F48174A424491EA9E2E847 /* zombie */;
+			productReference = 5DCA996DAFB7490A8759470C /* zombie */;
 			productType = "com.apple.product-type.tool";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		5EABCBDA28E04E1D810ADD22 /* Project object */ = {
+		DED6348F980F450EA2CC907A /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = YES;
-				LastUpgradeCheck = 0830;
+				LastUpgradeCheck = 0630;
 			};
-			buildConfigurationList = F195F212EBAF4856A46F2E35 /* Build configuration list for PBXProject "zombie" */;
-			compatibilityVersion = "Xcode 3.2";
-			developmentRegion = English;
-			hasScannedForEncodings = 0;
-			knownRegions = (
-				en,
+			buildConfigurationList = 9888C018543F491C8E66D958 /* Build configuration list for PBXProject "zombie" */;
+			buildSettings = {
+			};
+			buildStyles = (
+				0A538F7E1F774D33AEC0085D /* Debug */,
+				C04F1BF9B419468DB43391E2 /* Release */,
+				A1D46D02DDA04BBFBA427D8F /* MinSizeRel */,
+				5F067E9F4E2B4FDD9019FD8C /* RelWithDebInfo */,
 			);
-			mainGroup = B02B5DEFF0A8494FAFE3F8FE;
+			compatibilityVersion = "Xcode 3.2";
+			hasScannedForEncodings = 0;
+			mainGroup = F79813F2994645E79726D769;
 			projectDirPath = ../;
 			projectRoot = "";
 			targets = (
-				77816A940A564D659CE14726 /* ALL_BUILD */,
-				F2CC23FDD27045F3B6C03DB6 /* ZERO_CHECK */,
-				C5EBF06C85A243059C1DA4E3 /* zombie */,
+				D84599428B4B435B9928072F /* ALL_BUILD */,
+				07E5D66BA2D64111BA31120D /* ZERO_CHECK */,
+				CC88889EAE7440D9AACA23D1 /* zombie */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		3CBC256340684ABC9864FDC0 /* CMake Rules */ = {
+		5457C7459CF04FAE88AF6E8F /* CMake Rules */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -481,10 +578,40 @@
 			name = "CMake Rules";
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "make -C /Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/build_xcode_2 -f /Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/build_xcode_2/CMakeScripts/ZERO_CHECK_cmakeRulesBuildPhase.make$CONFIGURATION all";
+			shellScript = "make -C /Users/irenefang/Documents/CPSC436D/Game/zombified/build_xcode_2 -f /Users/irenefang/Documents/CPSC436D/Game/zombified/build_xcode_2/CMakeScripts/ALL_BUILD_cmakeRulesBuildPhase.make$CONFIGURATION all";
 			showEnvVarsInLog = 0;
 		};
-		3E19735452D549C3AAE50B04 /* CMake Rules */ = {
+		7E20FDA1590740B2A30B88F1 = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# shell script goes here
+exit 0";
+			showEnvVarsInLog = 0;
+		};
+		E474D4E36EAA4176B2F8BF8B = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# shell script goes here
+exit 0";
+			showEnvVarsInLog = 0;
+		};
+		FAF18E79394B42D29BB83B3D /* CMake Rules */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -492,737 +619,464 @@
 			name = "CMake Rules";
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "make -C /Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/build_xcode_2 -f /Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/build_xcode_2/CMakeScripts/ALL_BUILD_cmakeRulesBuildPhase.make$CONFIGURATION all";
+			shellScript = "make -C /Users/irenefang/Documents/CPSC436D/Game/zombified/build_xcode_2 -f /Users/irenefang/Documents/CPSC436D/Game/zombified/build_xcode_2/CMakeScripts/ZERO_CHECK_cmakeRulesBuildPhase.make$CONFIGURATION all";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		7354B9FFC2DB4A22BB676200 /* Sources */ = {
+		44C16A1D652F4923B64B3EE3 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				02E17E5BA80C4AB7B4CB9A47 /* CollisionManager.cpp in Sources */,
-				C5E0771D22964B0DACE388BE /* Ice.cpp in Sources */,
-				68E2E6CCECAF432993B483E7 /* KMeans.cpp in Sources */,
-				3FE6ED29B2F74166A76C7401 /* Limb.cpp in Sources */,
-				F34C18B0B8E141C59DB71F6C /* MapGrid.cpp in Sources */,
-				633F63B3C21E454583CAA3A3 /* PhysicalBody.cpp in Sources */,
-				164C26D23CBF458195FEB2A9 /* Physics.cpp in Sources */,
-				A9ED85D7BB74400BA778A9C3 /* ToolManager.cpp in Sources */,
-				20279656F15B43378CE11879 /* antidote.cpp in Sources */,
-				9BDE76E4BD3B49919CC77217 /* armour.cpp in Sources */,
-				73F75A0EDE28440BB4768BCE /* blood.cpp in Sources */,
-				4479B072D9C34F48A7BF80FD /* bomb.cpp in Sources */,
-				516F88E85ACC4D51AACEE42C /* button.cpp in Sources */,
-				365AA07A0B4449BB9281BA42 /* common.cpp in Sources */,
-				F51325CFDE9C489C9957F48F /* explosion.cpp in Sources */,
-				4278CCA24C45464D8224212B /* gl3w.c in Sources */,
-				05277FBA38544068BE60F7F4 /* limbsManager.cpp in Sources */,
-				05C5D9ED84E94EADB17181E9 /* main.cpp in Sources */,
-				DC5A27F8DB9B48F99343A961 /* missile.cpp in Sources */,
-				69C9BCD68A3B4FACB8B3F82C /* mud.cpp in Sources */,
-				91A06824112B4F448DE14796 /* player1.cpp in Sources */,
-				8E51AC9DE9554B158E368C77 /* player2.cpp in Sources */,
-				6EF0E25E021C41BFB4526AC4 /* punchleft.cpp in Sources */,
-				93173B3DAC5A425198CD427C /* punchright.cpp in Sources */,
-				E0763CA0947941D5BD757EEA /* TmxColor.cpp in Sources */,
-				379F1A982C9641B08BC894F6 /* TmxEllipse.cpp in Sources */,
-				C3B8385AF40E4E6F8F69D9C2 /* TmxGroupLayer.cpp in Sources */,
-				1B9D075537D540758FF4C1A9 /* TmxImage.cpp in Sources */,
-				0081299FC5E84B7881DE80B7 /* TmxImageLayer.cpp in Sources */,
-				91007519FEDB437FACA62BA1 /* TmxLayer.cpp in Sources */,
-				A5B82922FF294B7D988ED6D4 /* TmxMap.cpp in Sources */,
-				CED8C9164CD04ACC92030D68 /* TmxObject.cpp in Sources */,
-				D807C41ED98A49FA95A5D63A /* TmxObjectGroup.cpp in Sources */,
-				82C5FF7090784E35AD7D2708 /* TmxPolygon.cpp in Sources */,
-				8BCABBA5BBC64AB9A3E57E5F /* TmxPolyline.cpp in Sources */,
-				5371D4FBA4AA43C79565F0AC /* TmxProperty.cpp in Sources */,
-				D5B2952766964286A93D8C7F /* TmxPropertySet.cpp in Sources */,
-				B8BB5D447C6641FABBB7D931 /* TmxTerrain.cpp in Sources */,
-				497699E11A5D448BB5493CA5 /* TmxTerrainArray.cpp in Sources */,
-				DD71C5F1D9584405ABB3EE26 /* TmxText.cpp in Sources */,
-				A8D11C6E64604D11BCDA721E /* TmxTile.cpp in Sources */,
-				1EDD25F130B843E2BCD10696 /* TmxTileLayer.cpp in Sources */,
-				6EFBE37710B1407F8039ED90 /* TmxTileOffset.cpp in Sources */,
-				25CFBD27C5284F63800721C8 /* TmxTileset.cpp in Sources */,
-				89E51FC38059444285D3F7E5 /* TmxUtil.cpp in Sources */,
-				D045051C3B984B52A0031661 /* base64.cpp in Sources */,
-				31E8AEBE2BAC4E58B4EA5FAE /* miniz.c in Sources */,
-				C97A450F7B0141D687CE58DD /* toolboxManager.cpp in Sources */,
-				AEC047DD5888416B83DE1860 /* toolboxSlot.cpp in Sources */,
-				23D017C28BB54782B799EC39 /* tree.cpp in Sources */,
-				23542AFD92AA4672B9921153 /* viewHelper.cpp in Sources */,
-				4D36FF53E9204E4ABB0F9FA9 /* water.cpp in Sources */,
-				2DBCBABAB1264568970208B2 /* world.cpp in Sources */,
-				75248E1D5FFC40A290EA04AD /* worldtexture.cpp in Sources */,
-				2A125F85CA7C4EF98B21292D /* zombie.cpp in Sources */,
-				143DBD0B20154CFDBADB10C1 /* zombieManager.cpp in Sources */,
+				0ECD198F5BA1443F9C68F097 /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/Ice.cpp */,
+				15F3F5C3B6CC4F27A522B654 /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/KMeans.cpp */,
+				B9A483A24D7C47C9827EF28A /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/Limb.cpp */,
+				DF4599BDCFBE44C3868AAB23 /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/MapGrid.cpp */,
+				5FAEE92E85074069AB1A9C88 /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/PhysicalBody.cpp */,
+				EFF621480678470A8D507EBD /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/Physics.cpp */,
+				2AD788B091704C248CD0310C /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/ToolManager.cpp */,
+				7F40F93CBDA2448A9087B59E /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/antidote.cpp */,
+				3FAF708DA3594D02B18D49C8 /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/armour.cpp */,
+				35A5849610264473BA18978F /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/blood.cpp */,
+				8ACBA1B952B84ED49EDBFF29 /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/bomb.cpp */,
+				C9D376CCAB6249EB817D93B2 /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/button.cpp */,
+				9134D52D5B4D4E40ACCA4146 /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/common.cpp */,
+				B76B70736EA74A519A01C7E1 /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/explosion.cpp */,
+				4936216F7BFD4655B373283A /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/gl3w.c */,
+				CCC090D722F64C8AB9051070 /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/infopage.cpp */,
+				1CD1BF492ADC452A85ED62F2 /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/limbsManager.cpp */,
+				A16A4E183CD249E6BF70CF15 /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/main.cpp */,
+				A977FFE1966D4CFCA79D3139 /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/missile.cpp */,
+				D8EE8969009B4A71B4FD409A /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/mud.cpp */,
+				98622DB73AEB467A934A9EFB /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/player1.cpp */,
+				8FFB173594414CC5B99CA517 /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/player2.cpp */,
+				C2B3F5C77FA34A9E8E37A512 /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/punchleft.cpp */,
+				5C46995A4FDD4570B29D132B /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/punchright.cpp */,
+				263E777CEE6148B8BCE1689D /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/tmxparser/TmxColor.cpp */,
+				BC3F18C907E3476C9B99D18F /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/tmxparser/TmxEllipse.cpp */,
+				106D05D8BB1E4E5B90E38EB3 /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/tmxparser/TmxGroupLayer.cpp */,
+				1BFC3B21524D4BA7AF59536E /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/tmxparser/TmxImage.cpp */,
+				63834F131423444CA847F1DE /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/tmxparser/TmxImageLayer.cpp */,
+				36F7E33A796D4AD38610C8FB /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/tmxparser/TmxLayer.cpp */,
+				46E88CD6B35941338D603455 /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/tmxparser/TmxMap.cpp */,
+				B6697E34611C4892A44418D0 /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/tmxparser/TmxObject.cpp */,
+				C22A5EC887CF42648903BB90 /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/tmxparser/TmxObjectGroup.cpp */,
+				417961CE329E4786B50661A8 /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/tmxparser/TmxPolygon.cpp */,
+				2F8309F486294C679F575DDA /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/tmxparser/TmxPolyline.cpp */,
+				53D4D36FA59141E0A420C89E /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/tmxparser/TmxProperty.cpp */,
+				99C13964F55C4BD4A5BC006C /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/tmxparser/TmxPropertySet.cpp */,
+				2BD2BF6016354FBD84E4FC5C /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/tmxparser/TmxTerrain.cpp */,
+				A2FDC067414A4485BDF7B2C3 /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/tmxparser/TmxTerrainArray.cpp */,
+				C7C7EC2667CA486EBF671946 /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/tmxparser/TmxText.cpp */,
+				6EB6DBAFB39646B9B685B622 /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/tmxparser/TmxTile.cpp */,
+				D5663BEB5440447FA7995D4F /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/tmxparser/TmxTileLayer.cpp */,
+				38209B4AA7E04F5FA33481C5 /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/tmxparser/TmxTileOffset.cpp */,
+				D47D60B26209441F82A4306F /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/tmxparser/TmxTileset.cpp */,
+				D34E1580D8E642629D4CEAA0 /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/tmxparser/TmxUtil.cpp */,
+				B19C3436BF9E4E90ADB15F8C /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/tmxparser/base64/base64.cpp */,
+				F02C2904380E423CA93D7A75 /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/tmxparser/miniz.c */,
+				3D4D611630BF47D99303D9EF /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/toolboxManager.cpp */,
+				45E9CC1E75304252B8BC1537 /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/toolboxSlot.cpp */,
+				E888D21F326C42DAB1E3AD47 /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/tree.cpp */,
+				653847631583459296CE8353 /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/viewHelper.cpp */,
+				CA3FA5A367F041F6889D66CA /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/water.cpp */,
+				8F8005FF414843A0979D7BAB /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/world.cpp */,
+				2551AB02CA7B456CB7AB284E /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/worldtexture.cpp */,
+				9E476B7746A74BC7B9B87FA9 /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/zombie.cpp */,
+				39408F8D77AB4767B55F0F9D /* /Users/irenefang/Documents/CPSC436D/Game/zombified/src/zombieManager.cpp */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		4B333E32F35E4DF0BFA0CFC3 /* PBXTargetDependency */ = {
+		7BFCE17CDE1F4A1DA3DBDC9E /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = F2CC23FDD27045F3B6C03DB6 /* ZERO_CHECK */;
-			targetProxy = 6A7879837C3B41B5828CAF90 /* PBXContainerItemProxy */;
+			target = CC88889EAE7440D9AACA23D1 /* zombie */;
+			targetProxy = C609EDCF5A4C455DA9F4F230 /* PBXContainerItemProxy */;
 		};
-		80FE2F946DC84EDBA2D4A610 /* PBXTargetDependency */ = {
+		C264F454A1F846F9BDAE18CF /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = F2CC23FDD27045F3B6C03DB6 /* ZERO_CHECK */;
-			targetProxy = 484BFAEF82AB43C1B5E12594 /* PBXContainerItemProxy */;
+			target = 07E5D66BA2D64111BA31120D /* ZERO_CHECK */;
+			targetProxy = 8E7188FC0C0A49E8A75B5C8F /* PBXContainerItemProxy */;
 		};
-		EF6C5CFE4F1D40A5BB972DEE /* PBXTargetDependency */ = {
+		F47DFA457ADA4E20A7965B98 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = C5EBF06C85A243059C1DA4E3 /* zombie */;
-			targetProxy = D93DE730CDA94138B75BF550 /* PBXContainerItemProxy */;
+			target = 07E5D66BA2D64111BA31120D /* ZERO_CHECK */;
+			targetProxy = D4C0B14C500A4DE8847E1EA1 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
-		06E9A708F6014E2C856A2E99 /* MinSizeRel */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				COMBINE_HIDPI_IMAGES = YES;
-				FRAMEWORK_SEARCH_PATHS = /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.12.sdk/System/Library/Frameworks;
-				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
-				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PREPROCESSOR_DEFINITIONS = "'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'";
-				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
-				HEADER_SEARCH_PATHS = (
-					/Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/ext/gl3w,
-					/Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/ext/glfw/include,
-					/Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/ext/stb_image,
-					/usr/local/include,
-				);
-				INSTALL_PATH = "";
-				OTHER_LDFLAGS = " ";
-				OTHER_REZFLAGS = "";
-				PRODUCT_NAME = ZERO_CHECK;
-				SECTORDER_FLAGS = "";
-				SYMROOT = /Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/build_xcode_2;
-				USE_HEADERMAP = NO;
-				WARNING_CFLAGS = (
-					"-Wmost",
-					"-Wno-four-char-constants",
-					"-Wno-unknown-pragmas",
-					"$(inherited)",
-				);
-			};
-			name = MinSizeRel;
-		};
-		169FFE64FEAA4291AEC29EEA /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				COMBINE_HIDPI_IMAGES = YES;
-				FRAMEWORK_SEARCH_PATHS = /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.12.sdk/System/Library/Frameworks;
-				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
-				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PREPROCESSOR_DEFINITIONS = "'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'";
-				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
-				HEADER_SEARCH_PATHS = (
-					/Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/ext/gl3w,
-					/Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/ext/glfw/include,
-					/Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/ext/stb_image,
-					/usr/local/include,
-				);
-				INSTALL_PATH = "";
-				OTHER_LDFLAGS = " ";
-				OTHER_REZFLAGS = "";
-				PRODUCT_NAME = ALL_BUILD;
-				SECTORDER_FLAGS = "";
-				SYMROOT = /Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/build_xcode_2;
-				USE_HEADERMAP = NO;
-				WARNING_CFLAGS = (
-					"-Wmost",
-					"-Wno-four-char-constants",
-					"-Wno-unknown-pragmas",
-					"$(inherited)",
-				);
-			};
-			name = Release;
-		};
-		1D58A18CDBB84A8C9A7BA1F7 /* Release */ = {
+		37D9E2A91E814FE1952B62EC /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				COMBINE_HIDPI_IMAGES = YES;
 				EXECUTABLE_PREFIX = "";
 				EXECUTABLE_SUFFIX = "";
-				FRAMEWORK_SEARCH_PATHS = /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.12.sdk/System/Library/Frameworks;
-				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				FRAMEWORK_SEARCH_PATHS = (/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.10.sdk/System/Library/Frameworks);
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
 				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
-				GCC_OPTIMIZATION_LEVEL = 3;
-				GCC_PREPROCESSOR_DEFINITIONS = "'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'";
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'");
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
-				HEADER_SEARCH_PATHS = (
-					/Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/ext/gl3w,
-					/Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/ext/glfw/include,
-					/Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/ext/stb_image,
-					/usr/local/include,
-					/Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/ext/Box2D,
-					/Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/build_xcode_2,
-				);
+				HEADER_SEARCH_PATHS = (/Users/irenefang/Documents/CPSC436D/Game/zombified/ext/gl3w,/Users/irenefang/Documents/CPSC436D/Game/zombified/ext/glfw/include,/Users/irenefang/Documents/CPSC436D/Game/zombified/ext/stb_image,/usr/local/include);
 				INSTALL_PATH = "";
 				LIBRARY_SEARCH_PATHS = "";
-				OTHER_CFLAGS = "    -DNDEBUG  ";
-				OTHER_CPLUSPLUSFLAGS = (
-					"-DNDEBUG",
-					"'-std=gnu++11'",
-				);
-				OTHER_LDFLAGS = (
-					"-Wl,-search_paths_first",
-					"-Wl,-headerpad_max_install_names",
-					"-lpthread",
-					/usr/local/lib/libtinyxml2.dylib,
-					"-framework",
-					OpenGL,
-					"-framework",
-					OpenGL,
-					/usr/local/lib/libglfw.dylib,
-					"-framework",
-					Cocoa,
-					"-framework",
-					IOKit,
-					"-framework",
-					CoreVideo,
-					/usr/lib/libz.dylib,
-					"-ldl",
-					"-framework",
-					OpenGL,
-					"-framework",
-					CoreFoundation,
-					"-framework",
-					Cocoa,
-					"-framework",
-					IOKit,
-					"-framework",
-					CoreVideo,
-					/usr/lib/libz.dylib,
-					"-ldl",
-					"-framework",
-					OpenGL,
-					"-framework",
-					CoreFoundation,
-				);
+				OTHER_CFLAGS = "   -F/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.10.sdk/System/Library/Frameworks -I/Users/irenefang/Documents/CPSC436D/Game/zombified/ext/gl3w -I/Users/irenefang/Documents/CPSC436D/Game/zombified/ext/glfw/include -I/Users/irenefang/Documents/CPSC436D/Game/zombified/ext/stb_image -I/usr/local/include   ";
+				OTHER_CPLUSPLUSFLAGS = "   '-std=gnu++11' -F/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.10.sdk/System/Library/Frameworks -I/Users/irenefang/Documents/CPSC436D/Game/zombified/ext/gl3w -I/Users/irenefang/Documents/CPSC436D/Game/zombified/ext/glfw/include -I/Users/irenefang/Documents/CPSC436D/Game/zombified/ext/stb_image -I/usr/local/include   ";
+				OTHER_LDFLAGS = " -Wl,-search_paths_first -Wl,-headerpad_max_install_names  -lpthread /usr/local/lib/libtinyxml2.dylib -framework OpenGL -framework OpenGL /usr/local/lib/libglfw.dylib -framework Cocoa -framework IOKit -framework CoreVideo /usr/lib/libz.dylib -ldl -framework OpenGL -framework CoreFoundation -framework Cocoa -framework IOKit -framework CoreVideo /usr/lib/libz.dylib -ldl -framework OpenGL -framework CoreFoundation";
 				OTHER_REZFLAGS = "";
 				PRODUCT_NAME = zombie;
 				SECTORDER_FLAGS = "";
-				SYMROOT = /Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/build_xcode_2;
+				SYMROOT = /Users/irenefang/Documents/CPSC436D/Game/zombified/build_xcode_2;
 				USE_HEADERMAP = NO;
-				WARNING_CFLAGS = (
-					"-Wmost",
-					"-Wno-four-char-constants",
-					"-Wno-unknown-pragmas",
-					"$(inherited)",
-				);
+				WARNING_CFLAGS = ("-Wmost","-Wno-four-char-constants","-Wno-unknown-pragmas","$(inherited)");
 			};
-			name = Release;
+			name = Debug;
 		};
-		2EAC55937FDF4B61B0B8D2D0 /* MinSizeRel */ = {
+		53A263E227D74DBFB4D7F177 /* RelWithDebInfo */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				COMBINE_HIDPI_IMAGES = YES;
 				EXECUTABLE_PREFIX = "";
 				EXECUTABLE_SUFFIX = "";
-				FRAMEWORK_SEARCH_PATHS = /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.12.sdk/System/Library/Frameworks;
-				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
-				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
-				GCC_OPTIMIZATION_LEVEL = s;
-				GCC_PREPROCESSOR_DEFINITIONS = "'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'";
-				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
-				HEADER_SEARCH_PATHS = (
-					/Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/ext/gl3w,
-					/Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/ext/glfw/include,
-					/Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/ext/stb_image,
-					/usr/local/include,
-					/Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/ext/Box2D,
-					/Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/build_xcode_2,
-				);
-				INSTALL_PATH = "";
-				LIBRARY_SEARCH_PATHS = "";
-				OTHER_CFLAGS = "    -DNDEBUG  ";
-				OTHER_CPLUSPLUSFLAGS = (
-					"-DNDEBUG",
-					"'-std=gnu++11'",
-				);
-				OTHER_LDFLAGS = (
-					"-Wl,-search_paths_first",
-					"-Wl,-headerpad_max_install_names",
-					"-lpthread",
-					/usr/local/lib/libtinyxml2.dylib,
-					"-framework",
-					OpenGL,
-					"-framework",
-					OpenGL,
-					/usr/local/lib/libglfw.dylib,
-					"-framework",
-					Cocoa,
-					"-framework",
-					IOKit,
-					"-framework",
-					CoreVideo,
-					/usr/lib/libz.dylib,
-					"-ldl",
-					"-framework",
-					OpenGL,
-					"-framework",
-					CoreFoundation,
-					"-framework",
-					Cocoa,
-					"-framework",
-					IOKit,
-					"-framework",
-					CoreVideo,
-					/usr/lib/libz.dylib,
-					"-ldl",
-					"-framework",
-					OpenGL,
-					"-framework",
-					CoreFoundation,
-				);
-				OTHER_REZFLAGS = "";
-				PRODUCT_NAME = zombie;
-				SECTORDER_FLAGS = "";
-				SYMROOT = /Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/build_xcode_2;
-				USE_HEADERMAP = NO;
-				WARNING_CFLAGS = (
-					"-Wmost",
-					"-Wno-four-char-constants",
-					"-Wno-unknown-pragmas",
-					"$(inherited)",
-				);
-			};
-			name = MinSizeRel;
-		};
-		3EF5E8269B0C4FC5A925A01E /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				COMBINE_HIDPI_IMAGES = YES;
-				FRAMEWORK_SEARCH_PATHS = /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.12.sdk/System/Library/Frameworks;
-				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
-				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PREPROCESSOR_DEFINITIONS = "'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'";
-				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
-				HEADER_SEARCH_PATHS = (
-					/Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/ext/gl3w,
-					/Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/ext/glfw/include,
-					/Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/ext/stb_image,
-					/usr/local/include,
-				);
-				INSTALL_PATH = "";
-				OTHER_LDFLAGS = " ";
-				OTHER_REZFLAGS = "";
-				PRODUCT_NAME = ALL_BUILD;
-				SECTORDER_FLAGS = "";
-				SYMROOT = /Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/build_xcode_2;
-				USE_HEADERMAP = NO;
-				WARNING_CFLAGS = (
-					"-Wmost",
-					"-Wno-four-char-constants",
-					"-Wno-unknown-pragmas",
-					"$(inherited)",
-				);
-			};
-			name = Debug;
-		};
-		48066311F4F14AEFB3D8B55A /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				COMBINE_HIDPI_IMAGES = YES;
-				FRAMEWORK_SEARCH_PATHS = /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.12.sdk/System/Library/Frameworks;
-				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
-				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PREPROCESSOR_DEFINITIONS = "'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'";
-				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
-				HEADER_SEARCH_PATHS = (
-					/Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/ext/gl3w,
-					/Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/ext/glfw/include,
-					/Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/ext/stb_image,
-					/usr/local/include,
-				);
-				INSTALL_PATH = "";
-				OTHER_LDFLAGS = " ";
-				OTHER_REZFLAGS = "";
-				PRODUCT_NAME = ZERO_CHECK;
-				SECTORDER_FLAGS = "";
-				SYMROOT = /Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/build_xcode_2;
-				USE_HEADERMAP = NO;
-				WARNING_CFLAGS = (
-					"-Wmost",
-					"-Wno-four-char-constants",
-					"-Wno-unknown-pragmas",
-					"$(inherited)",
-				);
-			};
-			name = Debug;
-		};
-		536CA6CB2E0148C7BBFB62CD /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ONLY_ACTIVE_ARCH = YES;
-				SDKROOT = /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.12.sdk;
-				SYMROOT = /Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/build_xcode_2/build;
-			};
-			name = Release;
-		};
-		72321245D594466CBAE9567D /* RelWithDebInfo */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ONLY_ACTIVE_ARCH = YES;
-				SDKROOT = /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.12.sdk;
-				SYMROOT = /Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/build_xcode_2/build;
-			};
-			name = RelWithDebInfo;
-		};
-		7CFADB27291E42A4AF1BE400 /* RelWithDebInfo */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				COMBINE_HIDPI_IMAGES = YES;
-				EXECUTABLE_PREFIX = "";
-				EXECUTABLE_SUFFIX = "";
-				FRAMEWORK_SEARCH_PATHS = /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.12.sdk/System/Library/Frameworks;
+				FRAMEWORK_SEARCH_PATHS = (/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.10.sdk/System/Library/Frameworks);
 				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
 				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
 				GCC_OPTIMIZATION_LEVEL = 2;
-				GCC_PREPROCESSOR_DEFINITIONS = "'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'";
+				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'");
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
-				HEADER_SEARCH_PATHS = (
-					/Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/ext/gl3w,
-					/Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/ext/glfw/include,
-					/Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/ext/stb_image,
-					/usr/local/include,
-					/Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/ext/Box2D,
-					/Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/build_xcode_2,
-				);
+				HEADER_SEARCH_PATHS = (/Users/irenefang/Documents/CPSC436D/Game/zombified/ext/gl3w,/Users/irenefang/Documents/CPSC436D/Game/zombified/ext/glfw/include,/Users/irenefang/Documents/CPSC436D/Game/zombified/ext/stb_image,/usr/local/include);
 				INSTALL_PATH = "";
 				LIBRARY_SEARCH_PATHS = "";
-				OTHER_CFLAGS = "       -DNDEBUG  ";
-				OTHER_CPLUSPLUSFLAGS = (
-					"-DNDEBUG",
-					"'-std=gnu++11'",
-				);
-				OTHER_LDFLAGS = (
-					"-Wl,-search_paths_first",
-					"-Wl,-headerpad_max_install_names",
-					"-lpthread",
-					/usr/local/lib/libtinyxml2.dylib,
-					"-framework",
-					OpenGL,
-					"-framework",
-					OpenGL,
-					/usr/local/lib/libglfw.dylib,
-					"-framework",
-					Cocoa,
-					"-framework",
-					IOKit,
-					"-framework",
-					CoreVideo,
-					/usr/lib/libz.dylib,
-					"-ldl",
-					"-framework",
-					OpenGL,
-					"-framework",
-					CoreFoundation,
-					"-framework",
-					Cocoa,
-					"-framework",
-					IOKit,
-					"-framework",
-					CoreVideo,
-					/usr/lib/libz.dylib,
-					"-ldl",
-					"-framework",
-					OpenGL,
-					"-framework",
-					CoreFoundation,
-				);
+				OTHER_CFLAGS = "       -DNDEBUG -F/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.10.sdk/System/Library/Frameworks -I/Users/irenefang/Documents/CPSC436D/Game/zombified/ext/gl3w -I/Users/irenefang/Documents/CPSC436D/Game/zombified/ext/glfw/include -I/Users/irenefang/Documents/CPSC436D/Game/zombified/ext/stb_image -I/usr/local/include   ";
+				OTHER_CPLUSPLUSFLAGS = "       -DNDEBUG '-std=gnu++11' -F/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.10.sdk/System/Library/Frameworks -I/Users/irenefang/Documents/CPSC436D/Game/zombified/ext/gl3w -I/Users/irenefang/Documents/CPSC436D/Game/zombified/ext/glfw/include -I/Users/irenefang/Documents/CPSC436D/Game/zombified/ext/stb_image -I/usr/local/include   ";
+				OTHER_LDFLAGS = " -Wl,-search_paths_first -Wl,-headerpad_max_install_names  -lpthread /usr/local/lib/libtinyxml2.dylib -framework OpenGL -framework OpenGL /usr/local/lib/libglfw.dylib -framework Cocoa -framework IOKit -framework CoreVideo /usr/lib/libz.dylib -ldl -framework OpenGL -framework CoreFoundation -framework Cocoa -framework IOKit -framework CoreVideo /usr/lib/libz.dylib -ldl -framework OpenGL -framework CoreFoundation";
 				OTHER_REZFLAGS = "";
 				PRODUCT_NAME = zombie;
 				SECTORDER_FLAGS = "";
-				SYMROOT = /Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/build_xcode_2;
+				SYMROOT = /Users/irenefang/Documents/CPSC436D/Game/zombified/build_xcode_2;
 				USE_HEADERMAP = NO;
-				WARNING_CFLAGS = (
-					"-Wmost",
-					"-Wno-four-char-constants",
-					"-Wno-unknown-pragmas",
-					"$(inherited)",
-				);
+				WARNING_CFLAGS = ("-Wmost","-Wno-four-char-constants","-Wno-unknown-pragmas","$(inherited)");
 			};
 			name = RelWithDebInfo;
 		};
-		83D4BA4CEB7540A2AA6C8966 /* RelWithDebInfo */ = {
+		5A1C58550EE44191BEAE5969 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				COMBINE_HIDPI_IMAGES = YES;
-				FRAMEWORK_SEARCH_PATHS = /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.12.sdk/System/Library/Frameworks;
+				FRAMEWORK_SEARCH_PATHS = (/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.10.sdk/System/Library/Frameworks);
 				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
 				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PREPROCESSOR_DEFINITIONS = "'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'";
+				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'");
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
-				HEADER_SEARCH_PATHS = (
-					/Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/ext/gl3w,
-					/Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/ext/glfw/include,
-					/Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/ext/stb_image,
-					/usr/local/include,
-				);
+				HEADER_SEARCH_PATHS = (/Users/irenefang/Documents/CPSC436D/Game/zombified/ext/gl3w,/Users/irenefang/Documents/CPSC436D/Game/zombified/ext/glfw/include,/Users/irenefang/Documents/CPSC436D/Game/zombified/ext/stb_image,/usr/local/include);
 				INSTALL_PATH = "";
 				OTHER_LDFLAGS = " ";
 				OTHER_REZFLAGS = "";
 				PRODUCT_NAME = ALL_BUILD;
 				SECTORDER_FLAGS = "";
-				SYMROOT = /Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/build_xcode_2;
+				SYMROOT = /Users/irenefang/Documents/CPSC436D/Game/zombified/build_xcode_2;
 				USE_HEADERMAP = NO;
-				WARNING_CFLAGS = (
-					"-Wmost",
-					"-Wno-four-char-constants",
-					"-Wno-unknown-pragmas",
-					"$(inherited)",
-				);
+				WARNING_CFLAGS = ("-Wmost","-Wno-four-char-constants","-Wno-unknown-pragmas","$(inherited)");
 			};
-			name = RelWithDebInfo;
+			name = Debug;
 		};
-		AD869430793E44898F4C38C5 /* MinSizeRel */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ONLY_ACTIVE_ARCH = YES;
-				SDKROOT = /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.12.sdk;
-				SYMROOT = /Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/build_xcode_2/build;
-			};
-			name = MinSizeRel;
-		};
-		CBE0F8F50B844DBEB4EFB7E8 /* RelWithDebInfo */ = {
+		730E2F6D0C984795B169A8CA /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				COMBINE_HIDPI_IMAGES = YES;
-				FRAMEWORK_SEARCH_PATHS = /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.12.sdk/System/Library/Frameworks;
+				FRAMEWORK_SEARCH_PATHS = (/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.10.sdk/System/Library/Frameworks);
 				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
 				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PREPROCESSOR_DEFINITIONS = "'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'";
+				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'");
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
-				HEADER_SEARCH_PATHS = (
-					/Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/ext/gl3w,
-					/Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/ext/glfw/include,
-					/Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/ext/stb_image,
-					/usr/local/include,
-				);
+				HEADER_SEARCH_PATHS = (/Users/irenefang/Documents/CPSC436D/Game/zombified/ext/gl3w,/Users/irenefang/Documents/CPSC436D/Game/zombified/ext/glfw/include,/Users/irenefang/Documents/CPSC436D/Game/zombified/ext/stb_image,/usr/local/include);
 				INSTALL_PATH = "";
 				OTHER_LDFLAGS = " ";
 				OTHER_REZFLAGS = "";
 				PRODUCT_NAME = ZERO_CHECK;
 				SECTORDER_FLAGS = "";
-				SYMROOT = /Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/build_xcode_2;
+				SYMROOT = /Users/irenefang/Documents/CPSC436D/Game/zombified/build_xcode_2;
 				USE_HEADERMAP = NO;
-				WARNING_CFLAGS = (
-					"-Wmost",
-					"-Wno-four-char-constants",
-					"-Wno-unknown-pragmas",
-					"$(inherited)",
-				);
+				WARNING_CFLAGS = ("-Wmost","-Wno-four-char-constants","-Wno-unknown-pragmas","$(inherited)");
 			};
-			name = RelWithDebInfo;
+			name = Debug;
 		};
-		E9076B36297442208F6F56A7 /* MinSizeRel */ = {
+		770471CCF60C4C7D8D8E6640 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				COMBINE_HIDPI_IMAGES = YES;
-				FRAMEWORK_SEARCH_PATHS = /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.12.sdk/System/Library/Frameworks;
+				FRAMEWORK_SEARCH_PATHS = (/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.10.sdk/System/Library/Frameworks);
 				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
 				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PREPROCESSOR_DEFINITIONS = "'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'";
+				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'");
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
-				HEADER_SEARCH_PATHS = (
-					/Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/ext/gl3w,
-					/Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/ext/glfw/include,
-					/Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/ext/stb_image,
-					/usr/local/include,
-				);
+				HEADER_SEARCH_PATHS = (/Users/irenefang/Documents/CPSC436D/Game/zombified/ext/gl3w,/Users/irenefang/Documents/CPSC436D/Game/zombified/ext/glfw/include,/Users/irenefang/Documents/CPSC436D/Game/zombified/ext/stb_image,/usr/local/include);
+				INSTALL_PATH = "";
+				OTHER_LDFLAGS = " ";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = ZERO_CHECK;
+				SECTORDER_FLAGS = "";
+				SYMROOT = /Users/irenefang/Documents/CPSC436D/Game/zombified/build_xcode_2;
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = ("-Wmost","-Wno-four-char-constants","-Wno-unknown-pragmas","$(inherited)");
+			};
+			name = Release;
+		};
+		7E5210F5174C4844B764DBAB /* RelWithDebInfo */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.10.sdk;
+				SYMROOT = /Users/irenefang/Documents/CPSC436D/Game/zombified/build_xcode_2/build;
+			};
+			name = RelWithDebInfo;
+		};
+		82EFF51BA4264778A64ED53C /* MinSizeRel */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.10.sdk/System/Library/Frameworks);
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'");
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				HEADER_SEARCH_PATHS = (/Users/irenefang/Documents/CPSC436D/Game/zombified/ext/gl3w,/Users/irenefang/Documents/CPSC436D/Game/zombified/ext/glfw/include,/Users/irenefang/Documents/CPSC436D/Game/zombified/ext/stb_image,/usr/local/include);
 				INSTALL_PATH = "";
 				OTHER_LDFLAGS = " ";
 				OTHER_REZFLAGS = "";
 				PRODUCT_NAME = ALL_BUILD;
 				SECTORDER_FLAGS = "";
-				SYMROOT = /Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/build_xcode_2;
+				SYMROOT = /Users/irenefang/Documents/CPSC436D/Game/zombified/build_xcode_2;
 				USE_HEADERMAP = NO;
-				WARNING_CFLAGS = (
-					"-Wmost",
-					"-Wno-four-char-constants",
-					"-Wno-unknown-pragmas",
-					"$(inherited)",
-				);
+				WARNING_CFLAGS = ("-Wmost","-Wno-four-char-constants","-Wno-unknown-pragmas","$(inherited)");
 			};
 			name = MinSizeRel;
 		};
-		EEA1D592062D49F48933F2C0 /* Debug */ = {
+		91774AAE8D384FF7A5C9209F /* MinSizeRel */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.10.sdk/System/Library/Frameworks);
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'");
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				HEADER_SEARCH_PATHS = (/Users/irenefang/Documents/CPSC436D/Game/zombified/ext/gl3w,/Users/irenefang/Documents/CPSC436D/Game/zombified/ext/glfw/include,/Users/irenefang/Documents/CPSC436D/Game/zombified/ext/stb_image,/usr/local/include);
+				INSTALL_PATH = "";
+				OTHER_LDFLAGS = " ";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = ZERO_CHECK;
+				SECTORDER_FLAGS = "";
+				SYMROOT = /Users/irenefang/Documents/CPSC436D/Game/zombified/build_xcode_2;
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = ("-Wmost","-Wno-four-char-constants","-Wno-unknown-pragmas","$(inherited)");
+			};
+			name = MinSizeRel;
+		};
+		A23ADF320C124C04AC5C9579 /* MinSizeRel */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				COMBINE_HIDPI_IMAGES = YES;
 				EXECUTABLE_PREFIX = "";
 				EXECUTABLE_SUFFIX = "";
-				FRAMEWORK_SEARCH_PATHS = /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.12.sdk/System/Library/Frameworks;
-				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				FRAMEWORK_SEARCH_PATHS = (/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.10.sdk/System/Library/Frameworks);
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
 				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PREPROCESSOR_DEFINITIONS = "'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'";
+				GCC_OPTIMIZATION_LEVEL = s;
+				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'");
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
-				HEADER_SEARCH_PATHS = (
-					/Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/ext/gl3w,
-					/Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/ext/glfw/include,
-					/Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/ext/stb_image,
-					/usr/local/include,
-					/Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/ext/Box2D,
-					/Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/build_xcode_2,
-				);
+				HEADER_SEARCH_PATHS = (/Users/irenefang/Documents/CPSC436D/Game/zombified/ext/gl3w,/Users/irenefang/Documents/CPSC436D/Game/zombified/ext/glfw/include,/Users/irenefang/Documents/CPSC436D/Game/zombified/ext/stb_image,/usr/local/include);
 				INSTALL_PATH = "";
 				LIBRARY_SEARCH_PATHS = "";
-				OTHER_CFLAGS = "    ";
-				OTHER_CPLUSPLUSFLAGS = "   '-std=gnu++11'  ";
-				OTHER_LDFLAGS = (
-					"-Wl,-search_paths_first",
-					"-Wl,-headerpad_max_install_names",
-					"-lpthread",
-					/usr/local/lib/libtinyxml2.dylib,
-					"-framework",
-					OpenGL,
-					"-framework",
-					OpenGL,
-					/usr/local/lib/libglfw.dylib,
-					"-framework",
-					Cocoa,
-					"-framework",
-					IOKit,
-					"-framework",
-					CoreVideo,
-					/usr/lib/libz.dylib,
-					"-ldl",
-					"-framework",
-					OpenGL,
-					"-framework",
-					CoreFoundation,
-					"-framework",
-					Cocoa,
-					"-framework",
-					IOKit,
-					"-framework",
-					CoreVideo,
-					/usr/lib/libz.dylib,
-					"-ldl",
-					"-framework",
-					OpenGL,
-					"-framework",
-					CoreFoundation,
-				);
+				OTHER_CFLAGS = "    -DNDEBUG -F/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.10.sdk/System/Library/Frameworks -I/Users/irenefang/Documents/CPSC436D/Game/zombified/ext/gl3w -I/Users/irenefang/Documents/CPSC436D/Game/zombified/ext/glfw/include -I/Users/irenefang/Documents/CPSC436D/Game/zombified/ext/stb_image -I/usr/local/include   ";
+				OTHER_CPLUSPLUSFLAGS = "    -DNDEBUG '-std=gnu++11' -F/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.10.sdk/System/Library/Frameworks -I/Users/irenefang/Documents/CPSC436D/Game/zombified/ext/gl3w -I/Users/irenefang/Documents/CPSC436D/Game/zombified/ext/glfw/include -I/Users/irenefang/Documents/CPSC436D/Game/zombified/ext/stb_image -I/usr/local/include   ";
+				OTHER_LDFLAGS = " -Wl,-search_paths_first -Wl,-headerpad_max_install_names  -lpthread /usr/local/lib/libtinyxml2.dylib -framework OpenGL -framework OpenGL /usr/local/lib/libglfw.dylib -framework Cocoa -framework IOKit -framework CoreVideo /usr/lib/libz.dylib -ldl -framework OpenGL -framework CoreFoundation -framework Cocoa -framework IOKit -framework CoreVideo /usr/lib/libz.dylib -ldl -framework OpenGL -framework CoreFoundation";
 				OTHER_REZFLAGS = "";
 				PRODUCT_NAME = zombie;
 				SECTORDER_FLAGS = "";
-				SYMROOT = /Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/build_xcode_2;
+				SYMROOT = /Users/irenefang/Documents/CPSC436D/Game/zombified/build_xcode_2;
 				USE_HEADERMAP = NO;
-				WARNING_CFLAGS = (
-					"-Wmost",
-					"-Wno-four-char-constants",
-					"-Wno-unknown-pragmas",
-					"$(inherited)",
-				);
+				WARNING_CFLAGS = ("-Wmost","-Wno-four-char-constants","-Wno-unknown-pragmas","$(inherited)");
+			};
+			name = MinSizeRel;
+		};
+		AA4FCFE5028A4A34AED21C2B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.10.sdk;
+				SYMROOT = /Users/irenefang/Documents/CPSC436D/Game/zombified/build_xcode_2/build;
 			};
 			name = Debug;
 		};
-		FBF5FA0B258A41CB99872C6A /* Release */ = {
+		B31C0FCB05494F10B227149C /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				COMBINE_HIDPI_IMAGES = YES;
-				FRAMEWORK_SEARCH_PATHS = /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.12.sdk/System/Library/Frameworks;
+				FRAMEWORK_SEARCH_PATHS = (/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.10.sdk/System/Library/Frameworks);
 				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
 				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PREPROCESSOR_DEFINITIONS = "'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'";
+				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'");
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
-				HEADER_SEARCH_PATHS = (
-					/Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/ext/gl3w,
-					/Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/ext/glfw/include,
-					/Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/ext/stb_image,
-					/usr/local/include,
-				);
+				HEADER_SEARCH_PATHS = (/Users/irenefang/Documents/CPSC436D/Game/zombified/ext/gl3w,/Users/irenefang/Documents/CPSC436D/Game/zombified/ext/glfw/include,/Users/irenefang/Documents/CPSC436D/Game/zombified/ext/stb_image,/usr/local/include);
+				INSTALL_PATH = "";
+				OTHER_LDFLAGS = " ";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = ALL_BUILD;
+				SECTORDER_FLAGS = "";
+				SYMROOT = /Users/irenefang/Documents/CPSC436D/Game/zombified/build_xcode_2;
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = ("-Wmost","-Wno-four-char-constants","-Wno-unknown-pragmas","$(inherited)");
+			};
+			name = Release;
+		};
+		BD6876ADDD4E4D4CA4444BA6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.10.sdk;
+				SYMROOT = /Users/irenefang/Documents/CPSC436D/Game/zombified/build_xcode_2/build;
+			};
+			name = Release;
+		};
+		CC17565B361242E7B0823445 /* RelWithDebInfo */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.10.sdk/System/Library/Frameworks);
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'");
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				HEADER_SEARCH_PATHS = (/Users/irenefang/Documents/CPSC436D/Game/zombified/ext/gl3w,/Users/irenefang/Documents/CPSC436D/Game/zombified/ext/glfw/include,/Users/irenefang/Documents/CPSC436D/Game/zombified/ext/stb_image,/usr/local/include);
+				INSTALL_PATH = "";
+				OTHER_LDFLAGS = " ";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = ALL_BUILD;
+				SECTORDER_FLAGS = "";
+				SYMROOT = /Users/irenefang/Documents/CPSC436D/Game/zombified/build_xcode_2;
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = ("-Wmost","-Wno-four-char-constants","-Wno-unknown-pragmas","$(inherited)");
+			};
+			name = RelWithDebInfo;
+		};
+		D9A545B260C9402EBDCED94F /* MinSizeRel */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.10.sdk;
+				SYMROOT = /Users/irenefang/Documents/CPSC436D/Game/zombified/build_xcode_2/build;
+			};
+			name = MinSizeRel;
+		};
+		E83AE7B223DF44E1ABA42A56 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				EXECUTABLE_PREFIX = "";
+				EXECUTABLE_SUFFIX = "";
+				FRAMEWORK_SEARCH_PATHS = (/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.10.sdk/System/Library/Frameworks);
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 3;
+				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'");
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				HEADER_SEARCH_PATHS = (/Users/irenefang/Documents/CPSC436D/Game/zombified/ext/gl3w,/Users/irenefang/Documents/CPSC436D/Game/zombified/ext/glfw/include,/Users/irenefang/Documents/CPSC436D/Game/zombified/ext/stb_image,/usr/local/include);
+				INSTALL_PATH = "";
+				LIBRARY_SEARCH_PATHS = "";
+				OTHER_CFLAGS = "    -DNDEBUG -F/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.10.sdk/System/Library/Frameworks -I/Users/irenefang/Documents/CPSC436D/Game/zombified/ext/gl3w -I/Users/irenefang/Documents/CPSC436D/Game/zombified/ext/glfw/include -I/Users/irenefang/Documents/CPSC436D/Game/zombified/ext/stb_image -I/usr/local/include   ";
+				OTHER_CPLUSPLUSFLAGS = "    -DNDEBUG '-std=gnu++11' -F/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.10.sdk/System/Library/Frameworks -I/Users/irenefang/Documents/CPSC436D/Game/zombified/ext/gl3w -I/Users/irenefang/Documents/CPSC436D/Game/zombified/ext/glfw/include -I/Users/irenefang/Documents/CPSC436D/Game/zombified/ext/stb_image -I/usr/local/include   ";
+				OTHER_LDFLAGS = " -Wl,-search_paths_first -Wl,-headerpad_max_install_names  -lpthread /usr/local/lib/libtinyxml2.dylib -framework OpenGL -framework OpenGL /usr/local/lib/libglfw.dylib -framework Cocoa -framework IOKit -framework CoreVideo /usr/lib/libz.dylib -ldl -framework OpenGL -framework CoreFoundation -framework Cocoa -framework IOKit -framework CoreVideo /usr/lib/libz.dylib -ldl -framework OpenGL -framework CoreFoundation";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = zombie;
+				SECTORDER_FLAGS = "";
+				SYMROOT = /Users/irenefang/Documents/CPSC436D/Game/zombified/build_xcode_2;
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = ("-Wmost","-Wno-four-char-constants","-Wno-unknown-pragmas","$(inherited)");
+			};
+			name = Release;
+		};
+		FE0CBD0499C3411FB5D18CEF /* RelWithDebInfo */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.10.sdk/System/Library/Frameworks);
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'");
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				HEADER_SEARCH_PATHS = (/Users/irenefang/Documents/CPSC436D/Game/zombified/ext/gl3w,/Users/irenefang/Documents/CPSC436D/Game/zombified/ext/glfw/include,/Users/irenefang/Documents/CPSC436D/Game/zombified/ext/stb_image,/usr/local/include);
 				INSTALL_PATH = "";
 				OTHER_LDFLAGS = " ";
 				OTHER_REZFLAGS = "";
 				PRODUCT_NAME = ZERO_CHECK;
 				SECTORDER_FLAGS = "";
-				SYMROOT = /Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/build_xcode_2;
+				SYMROOT = /Users/irenefang/Documents/CPSC436D/Game/zombified/build_xcode_2;
 				USE_HEADERMAP = NO;
-				WARNING_CFLAGS = (
-					"-Wmost",
-					"-Wno-four-char-constants",
-					"-Wno-unknown-pragmas",
-					"$(inherited)",
-				);
+				WARNING_CFLAGS = ("-Wmost","-Wno-four-char-constants","-Wno-unknown-pragmas","$(inherited)");
 			};
-			name = Release;
-		};
-		FF37AA9C3063448DBD5FB006 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ONLY_ACTIVE_ARCH = YES;
-				SDKROOT = /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.12.sdk;
-				SYMROOT = /Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/build_xcode_2/build;
-			};
-			name = Debug;
+			name = RelWithDebInfo;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		3C4427891E0049ECBD228609 /* Build configuration list for PBXAggregateTarget "ALL_BUILD" */ = {
+		694DFEC9048E4B398D956C6A /* Build configuration list for PBXAggregateTarget "ALL_BUILD" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				3EF5E8269B0C4FC5A925A01E /* Debug */,
-				169FFE64FEAA4291AEC29EEA /* Release */,
-				E9076B36297442208F6F56A7 /* MinSizeRel */,
-				83D4BA4CEB7540A2AA6C8966 /* RelWithDebInfo */,
+				5A1C58550EE44191BEAE5969 /* Debug */,
+				B31C0FCB05494F10B227149C /* Release */,
+				82EFF51BA4264778A64ED53C /* MinSizeRel */,
+				CC17565B361242E7B0823445 /* RelWithDebInfo */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Debug;
 		};
-		57E2D7482BEE41B2A8041E3B /* Build configuration list for PBXAggregateTarget "ZERO_CHECK" */ = {
+		905EF67C81764C109255ACD8 /* Build configuration list for PBXAggregateTarget "ZERO_CHECK" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				48066311F4F14AEFB3D8B55A /* Debug */,
-				FBF5FA0B258A41CB99872C6A /* Release */,
-				06E9A708F6014E2C856A2E99 /* MinSizeRel */,
-				CBE0F8F50B844DBEB4EFB7E8 /* RelWithDebInfo */,
+				730E2F6D0C984795B169A8CA /* Debug */,
+				770471CCF60C4C7D8D8E6640 /* Release */,
+				91774AAE8D384FF7A5C9209F /* MinSizeRel */,
+				FE0CBD0499C3411FB5D18CEF /* RelWithDebInfo */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Debug;
 		};
-		91E5EC4FB75B4DD29958D4CC /* Build configuration list for PBXNativeTarget "zombie" */ = {
+		9888C018543F491C8E66D958 /* Build configuration list for PBXProject "zombie" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				EEA1D592062D49F48933F2C0 /* Debug */,
-				1D58A18CDBB84A8C9A7BA1F7 /* Release */,
-				2EAC55937FDF4B61B0B8D2D0 /* MinSizeRel */,
-				7CFADB27291E42A4AF1BE400 /* RelWithDebInfo */,
+				AA4FCFE5028A4A34AED21C2B /* Debug */,
+				BD6876ADDD4E4D4CA4444BA6 /* Release */,
+				D9A545B260C9402EBDCED94F /* MinSizeRel */,
+				7E5210F5174C4844B764DBAB /* RelWithDebInfo */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Debug;
 		};
-		F195F212EBAF4856A46F2E35 /* Build configuration list for PBXProject "zombie" */ = {
+		B0721098B2BE40CC93A4F285 /* Build configuration list for PBXNativeTarget "zombie" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				FF37AA9C3063448DBD5FB006 /* Debug */,
-				536CA6CB2E0148C7BBFB62CD /* Release */,
-				AD869430793E44898F4C38C5 /* MinSizeRel */,
-				72321245D594466CBAE9567D /* RelWithDebInfo */,
+				37D9E2A91E814FE1952B62EC /* Debug */,
+				E83AE7B223DF44E1ABA42A56 /* Release */,
+				A23ADF320C124C04AC5C9579 /* MinSizeRel */,
+				53A263E227D74DBFB4D7F177 /* RelWithDebInfo */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Debug;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = 5EABCBDA28E04E1D810ADD22 /* Project object */;
+	rootObject = DED6348F980F450EA2CC907A /* Project object */;
 }

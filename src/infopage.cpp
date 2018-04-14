@@ -1,4 +1,4 @@
-// Header
+ // Header
 #include "infopage.hpp"
 
 #include <cmath>
@@ -29,16 +29,20 @@ bool Info::init(std::string infotype)
     
     if(type == "tool") {
         if (!toolpage_texture.is_valid()) {
+            //printf("1\n");
             if (!toolpage_texture.load_from_file(startworld_textures_path("tooldefault.png")))
             {
+                //printf("2\n");
                 fprintf(stderr, "Failed to load tool page texture!");
                 return false;
             }
+            //printf("3\n");
             wr = toolpage_texture.width * 0.5f;
             hr = toolpage_texture.height * 0.5f;
             m_scale.x = -0.12f * ViewHelper::getRatio();
             m_scale.y = 0.12f * ViewHelper::getRatio();
             m_position = { 640.f* ViewHelper::getRatio(), 360.f* ViewHelper::getRatio() };
+            //printf("4\n");
         }
     }
     else if(type == "freeze") {
@@ -326,9 +330,9 @@ void Info::destroy()
 {
     glDeleteBuffers(1, &mesh.vbo);
     glDeleteBuffers(1, &mesh.ibo);
-    glDeleteBuffers(1, &mesh.vao);
+    glDeleteVertexArrays(1, &mesh.vao);
     
     glDeleteShader(effect.vertex);
     glDeleteShader(effect.fragment);
-    glDeleteShader(effect.program);
+    glDeleteProgram(effect.program);
 }
