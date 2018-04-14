@@ -1991,8 +1991,8 @@ void World::use_missile(float ms) {
         if (itmissile->checkPoint())
             autoExplodeMissile(*itmissile, count);
         else {
-            itmissile->move({itmissile->get_speed().x * (ms / 1000),
-                itmissile->get_speed().y * (ms / 1000)});
+            itmissile->move({itmissile->get_speed().x * (ms / 800),
+                itmissile->get_speed().y * (ms / 800)});
             /*if (itmissile->checkboundary())
                 used_missiles.erase(itmissile);
             else*/
