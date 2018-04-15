@@ -691,7 +691,7 @@ void World::on_key(GLFWwindow *, int key, int, int action, int mod) {
                         is_punchingright_p2= true;
                     }
                 }else {
-                    if (immobilize == 1){
+                    if (immobilize == 1 && m_player1.collides_with(m_player2)){
                         //fprintf(stderr, "player2 number of hits: %d \n", m_player2.numberofHits);
                         if ((m_player2.lastkey == 2) || (m_player2.lastkey == 1)) { //up and left
                             //fprintf(stderr, "left\n");
@@ -710,10 +710,8 @@ void World::on_key(GLFWwindow *, int key, int, int action, int mod) {
                                 m_player1.numberofHits++;
                         }
                         
-                        //m_player1.numberofHits++;
                     }
                     else {
-                        
                         // if the player has no tools then can manually attack, or else, just use a tool
                         if (!hasTools) {
                             if ((m_player2.lastkey == 2) || (m_player2.lastkey == 1)) { //up and left
@@ -801,7 +799,7 @@ void World::on_key(GLFWwindow *, int key, int, int action, int mod) {
                     }
                 } else {
                     //if (m_player1.collides_with(m_player2)) {
-                    if (immobilize == 2)
+                    if (immobilize == 2 && m_player1.collides_with(m_player2))
                     {
                         if ((m_player1.lastkey == 2) || (m_player1.lastkey == 1)) { //up and left
                             //fprintf(stderr, "left p1\n");
