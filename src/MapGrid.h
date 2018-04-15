@@ -13,8 +13,6 @@
 #include "missile.hpp"
 #include "player1.hpp"
 
-#define SCALING 500
-
 enum Terrain {
     REGULAR = 1,
     POOP,

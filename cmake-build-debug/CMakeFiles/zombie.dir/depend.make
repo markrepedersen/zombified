@@ -100,8 +100,6 @@ CMakeFiles/zombie.dir/src/MapGrid.cpp.o: ../src/punchright.hpp
 CMakeFiles/zombie.dir/src/MapGrid.cpp.o: ../src/viewHelper.hpp
 CMakeFiles/zombie.dir/src/MapGrid.cpp.o: ../src/water.hpp
 
-CMakeFiles/zombie.dir/src/PhysicalBody.cpp.o: ../src/PhysicalBody.cpp
-
 CMakeFiles/zombie.dir/src/Physics.cpp.o: ../src/Physics.cpp
 
 CMakeFiles/zombie.dir/src/ToolManager.cpp.o: ../src/ToolManager.cpp

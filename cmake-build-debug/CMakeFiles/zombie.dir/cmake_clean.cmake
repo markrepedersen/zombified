@@ -4,7 +4,6 @@ file(REMOVE_RECURSE
   "CMakeFiles/zombie.dir/src/Kinetic.cpp.o"
   "CMakeFiles/zombie.dir/src/Limb.cpp.o"
   "CMakeFiles/zombie.dir/src/MapGrid.cpp.o"
-  "CMakeFiles/zombie.dir/src/PhysicalBody.cpp.o"
   "CMakeFiles/zombie.dir/src/Physics.cpp.o"
   "CMakeFiles/zombie.dir/src/ToolManager.cpp.o"
   "CMakeFiles/zombie.dir/src/antidote.cpp.o"

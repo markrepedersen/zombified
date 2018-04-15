@@ -398,12 +398,6 @@
 		<Unit filename="/Users/markpedersen/Desktop/zombified/src/MapGrid.h">
 			<Option target="zombie"/>
 		</Unit>
-		<Unit filename="/Users/markpedersen/Desktop/zombified/src/PhysicalBody.cpp">
-			<Option target="zombie"/>
-		</Unit>
-		<Unit filename="/Users/markpedersen/Desktop/zombified/src/PhysicalBody.h">
-			<Option target="zombie"/>
-		</Unit>
 		<Unit filename="/Users/markpedersen/Desktop/zombified/src/Physics.cpp">
 			<Option target="zombie"/>
 		</Unit>

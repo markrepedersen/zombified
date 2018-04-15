@@ -523,26 +523,59 @@ void World::entityDrawOrder(mat3 projection_2D) {
             m_bomb.size() +
             used_bombs.size() +
             m_explosion.size() +
+            m_water_collected_1.size() +
+            m_water_collected_2.size() +
+            m_freeze_collected_1.size() +
+            m_freeze_collected_2.size() +
+            m_missile_collected_1.size() +
+            m_missile_collected_2.size() +
+            m_bomb_collected_1.size() +
+            m_bomb_collected_2.size() +
+            m_armour_collected_1.size() +
+            m_armour_collected_2.size() +
+            //m_mud_collected.size() +
             m_zombieManager.getZombieCount() +
             m_limbsManager.getLimbCount()
             + 3);
 
     transform(m_freeze.begin(), m_freeze.end(), std::back_inserter(drawOrderVector),
-              [](Ice &entity) { return &entity; });
+              [](Ice& entity) { return &entity; });
     transform(m_water.begin(), m_water.end(), std::back_inserter(drawOrderVector),
-              [](Water &entity) { return &entity; });
+              [](Water& entity) { return &entity; });
     transform(m_missile.begin(), m_missile.end(), std::back_inserter(drawOrderVector),
-              [](Missile &entity) { return &entity; });
+              [](Missile& entity) { return &entity; });
     transform(used_missiles.begin(), used_missiles.end(), std::back_inserter(drawOrderVector),
-              [](Missile &entity) { return &entity; });
+              [](Missile& entity) { return &entity; });
     transform(m_armour.begin(), m_armour.end(), std::back_inserter(drawOrderVector),
-              [](Armour &entity) { return &entity; });
+              [](Armour& entity) { return &entity; });
     transform(m_bomb.begin(), m_bomb.end(), std::back_inserter(drawOrderVector),
-              [](Bomb &entity) { return &entity; });
+              [](Bomb& entity) { return &entity; });
     transform(used_bombs.begin(), used_bombs.end(), std::back_inserter(drawOrderVector),
-              [](Bomb &entity) { return &entity; });
+              [](Bomb& entity) { return &entity; });
     transform(m_explosion.begin(), m_explosion.end(), std::back_inserter(drawOrderVector),
-              [](Explosion &entity) { return &entity; });
+              [](Explosion& entity) { return &entity; });
+    transform(m_water_collected_1.begin(), m_water_collected_1.end(), std::back_inserter(drawOrderVector),
+              [](Water& entity) { return &entity; });
+    transform(m_water_collected_2.begin(), m_water_collected_2.end(), std::back_inserter(drawOrderVector),
+              [](Water& entity) { return &entity; });
+    transform(m_freeze_collected_1.begin(), m_freeze_collected_1.end(), std::back_inserter(drawOrderVector),
+              [](Ice& entity) { return &entity; });
+    transform(m_freeze_collected_2.begin(), m_freeze_collected_2.end(), std::back_inserter(drawOrderVector),
+              [](Ice& entity) { return &entity; });
+    transform(m_missile_collected_1.begin(), m_missile_collected_1.end(), std::back_inserter(drawOrderVector),
+              [](Missile& entity) { return &entity; });
+    transform(m_missile_collected_2.begin(), m_missile_collected_2.end(), std::back_inserter(drawOrderVector),
+              [](Missile& entity) { return &entity; });
+    transform(m_bomb_collected_1.begin(), m_bomb_collected_1.end(), std::back_inserter(drawOrderVector),
+              [](Bomb& entity) { return &entity; });
+    transform(m_bomb_collected_2.begin(), m_bomb_collected_2.end(), std::back_inserter(drawOrderVector),
+              [](Bomb& entity) { return &entity; });
+    transform(m_armour_collected_1.begin(), m_armour_collected_1.end(), std::back_inserter(drawOrderVector),
+              [](Armour& entity) { return &entity; });
+    transform(m_armour_collected_2.begin(), m_armour_collected_2.end(), std::back_inserter(drawOrderVector),
+              [](Armour& entity) { return &entity; });
+    //transform(m_mud_collected.begin(), m_mud_collected.end(), std::back_inserter(drawOrderVector),
+    //          [](Mud& entity) { return &entity; });
 
     drawOrderVector.push_back(&m_player2);
     drawOrderVector.push_back(&m_player1);
@@ -964,271 +997,271 @@ bool World::random_spawn(float elapsed_ms, vec2 screen) {
 void World::check_add_tools(vec2 screen) {
 
 //=================check for ice collision
-//    int collided = 0;
-//    std::vector<Ice>::iterator itf;
-//    for (itf = m_freeze.begin(); itf != m_freeze.end();) {
-//        if (m_player1.collides_with(*itf))
-//            collided = 1;
-//        if (m_player2.collides_with(*itf))
-//            collided = 2;
-//
-//        if (collided != 0) {
-//            float index = (float) m_toolboxManager.addItem(1, collided);
-//            if ((int) index != 100) {
-//                itf = m_freeze.erase(itf);//m_freeze.begin()+freezecount);
-//                collect_freeze(*itf, collided, index);
-//                if (collided == 1) {
-//                    m_player1.set_mass(m_player1.get_mass() + itf->get_mass());
-//                }
-//                if (collided == 2) {
-//                    m_player2.set_mass(m_player2.get_mass() + itf->get_mass());
-//                }
-//
-//            } else
-//                ++itf;
-//
-//        } else
-//            ++itf;
-//        collided = 0;
-//    }
-//
-////=================check for water collision
-//    std::vector<Water>::iterator itw;
-//    for (itw = m_water.begin(); itw != m_water.end();) {
-//        if (m_player1.collides_with(*itw))//water))
-//            collided = 1;
-//        if (m_player2.collides_with(*itw))//water))
-//            collided = 2;
-//
-//        if (collided != 0) {
-//            float index = (float) m_toolboxManager.addItem(2, collided);
-//            if ((int) index != 100) {
-//                itw = m_water.erase(itw);
-//                collect_water(*itw, collided, index);
-//                if (collided == 1) {
-//                    m_player1.set_mass(m_player1.get_mass() + itw->get_mass());
-//                }
-//                if (collided == 2) {
-//                    m_player2.set_mass(m_player2.get_mass() + itw->get_mass());
-//                }
-//            } else
-//                ++itw;
-//        } else
-//            ++itw;
-//        collided = 0;
-//    }
-//
-//
-////=================check for mud collision
-//    std::vector<Mud>::iterator itmud;
-//    std::vector<Mud>::iterator itmudcheck;
-//    int collided1 = false;
-//    int collided2 = false;
-//
-//    for (itmudcheck = m_mud_collected.begin(); itmudcheck != m_mud_collected.end();) {
-//        if ((int) difftime(time(0), itmudcheck->mudTime) >= 15) {
-//            m_player1.set_speed(m_player1.get_originalspeed());
-//            m_player2.set_speed(m_player2.get_originalspeed());
-//            itmudcheck->destroy();
-//            itmudcheck = m_mud_collected.erase(itmudcheck);
-//        } else
-//            ++itmudcheck;
-//    }
-//    for (itmud = m_mud_collected.begin(); itmud != m_mud_collected.end(); ++itmud) {
-//        if (m_player1.collides_with(*itmud))
-//            collided1 = true;
-//        if (m_player2.collides_with(*itmud))
-//            collided2 = true;
-//
-//        if (collided1) {
-//            bool beingaffected = false;
-//            for (auto &mud_collected : m_mud_collected) {
-//                if (mud_collected.is_affected(1))
-//                    beingaffected = true;
-//            }
-//            if (!beingaffected) {
-//                m_player1.set_originalspeed(m_player1.get_speed());
-//                //fprintf(stderr, "player1 speed %f \n", m_player1.get_speed());
-//                m_player1.set_speed(m_player1.get_speed() - (100.f * m_player1.get_mass()));
-//                if (m_player1.get_speed() <= 0.f)
-//                    m_player1.set_speed(10.f);
-//                //fprintf(stderr, "player1 speed affected %f \n", m_player1.get_speed());
-//                itmud->set_affected(1, true);
-//            }
+    int collided = 0;
+    std::vector<Ice>::iterator itf;
+    for (itf = m_freeze.begin(); itf != m_freeze.end();) {
+        if (m_player1.collides_with(*itf))
+            collided = 1;
+        if (m_player2.collides_with(*itf))
+            collided = 2;
+
+        if (collided != 0) {
+            float index = (float) m_toolboxManager.addItem(1, collided);
+            if ((int) index != 100) {
+                itf = m_freeze.erase(itf);//m_freeze.begin()+freezecount);
+                collect_freeze(*itf, collided, index);
+                if (collided == 1) {
+                    m_player1.set_mass(m_player1.get_mass() + itf->get_mass());
+                }
+                if (collided == 2) {
+                    m_player2.set_mass(m_player2.get_mass() + itf->get_mass());
+                }
+
+            } else
+                ++itf;
+
+        } else
+            ++itf;
+        collided = 0;
+    }
+
+//=================check for water collision
+    std::vector<Water>::iterator itw;
+    for (itw = m_water.begin(); itw != m_water.end();) {
+        if (m_player1.collides_with(*itw))//water))
+            collided = 1;
+        if (m_player2.collides_with(*itw))//water))
+            collided = 2;
+
+        if (collided != 0) {
+            float index = (float) m_toolboxManager.addItem(2, collided);
+            if ((int) index != 100) {
+                itw = m_water.erase(itw);
+                collect_water(*itw, collided, index);
+                if (collided == 1) {
+                    m_player1.set_mass(m_player1.get_mass() + itw->get_mass());
+                }
+                if (collided == 2) {
+                    m_player2.set_mass(m_player2.get_mass() + itw->get_mass());
+                }
+            } else
+                ++itw;
+        } else
+            ++itw;
+        collided = 0;
+    }
+
+
+//=================check for mud collision
+    std::vector<Mud>::iterator itmud;
+    std::vector<Mud>::iterator itmudcheck;
+    int collided1 = false;
+    int collided2 = false;
+
+    for (itmudcheck = m_mud_collected.begin(); itmudcheck != m_mud_collected.end();) {
+        if ((int) difftime(time(0), itmudcheck->mudTime) >= 15) {
+            m_player1.set_speed(m_player1.get_originalspeed());
+            m_player2.set_speed(m_player2.get_originalspeed());
+            itmudcheck->destroy();
+            itmudcheck = m_mud_collected.erase(itmudcheck);
+        } else
+            ++itmudcheck;
+    }
+    for (itmud = m_mud_collected.begin(); itmud != m_mud_collected.end(); ++itmud) {
+        if (m_player1.collides_with(*itmud))
+            collided1 = true;
+        if (m_player2.collides_with(*itmud))
+            collided2 = true;
+
+        if (collided1) {
+            bool beingaffected = false;
+            for (auto &mud_collected : m_mud_collected) {
+                if (mud_collected.is_affected(1))
+                    beingaffected = true;
+            }
+            if (!beingaffected) {
+                m_player1.set_originalspeed(m_player1.get_speed());
+                //fprintf(stderr, "player1 speed %f \n", m_player1.get_speed());
+                m_player1.set_speed(m_player1.get_speed() - (100.f * m_player1.get_mass()));
+                if (m_player1.get_speed() <= 0.f)
+                    m_player1.set_speed(10.f);
+                //fprintf(stderr, "player1 speed affected %f \n", m_player1.get_speed());
+                itmud->set_affected(1, true);
+            }
+        }
+        if (collided2) {
+            bool beingaffected = false;
+            for (auto &mud_collected : m_mud_collected) {
+                if (mud_collected.is_affected(2))
+                    beingaffected = true;
+            }
+            if (!beingaffected) {
+                m_player2.set_originalspeed(m_player2.get_speed());
+                //fprintf(stderr, "player2 speed %f \n", m_player2.get_speed());
+                m_player2.set_speed(m_player2.get_speed() - (100.f * m_player2.get_mass()));
+                if (m_player2.get_speed() <= 0.f)
+                    m_player2.set_speed(10.f);
+                //fprintf(stderr, "player2 speed affected %f \n", m_player2.get_speed());
+                itmud->set_affected(2, true);
+            }
+        }
+
+        if (!collided1) {
+            itmud->set_affected(1, false);
+            bool beingaffected = false;
+            for (auto &mud_collected : m_mud_collected) {
+                if (mud_collected.is_affected(1))
+                    beingaffected = true;
+            }
+            if (!beingaffected)
+                m_player1.set_speed(m_player1.get_originalspeed());
+        }
+        if (!collided2) {
+            itmud->set_affected(2, false);
+            bool beingaffected = false;
+            for (auto &mud_collected : m_mud_collected) {
+                if (mud_collected.is_affected(2))
+                    beingaffected = true;
+            }
+            if (!beingaffected)
+                m_player2.set_speed(m_player2.get_originalspeed());
+        }
+
+        if (armourInUse_p1)
+            m_player1.set_speed(m_player1.get_originalspeed());
+        if (armourInUse_p2)
+            m_player2.set_speed(m_player2.get_originalspeed());
+
+        collided1 = false;
+        collided2 = false;
+    }
+
+//=================check for bomb collision
+    std::vector<Bomb>::iterator itb;
+    for (itb = m_bomb.begin(); itb != m_bomb.end();) {
+        if (m_player1.collides_with(*itb))
+            collided = 1;
+        if (m_player2.collides_with(*itb))
+            collided = 2;
+
+        if (collided != 0) {
+            float index = (float) m_toolboxManager.addItem(5, collided);
+            if ((int) index != 100) {
+                itb = m_bomb.erase(itb);
+                collect_bomb(*itb, collided, index);
+                if (collided == 1) {
+                    m_player1.set_mass(m_player1.get_mass() + itb->get_mass());
+                    m_player1.create_blood(m_player1.get_position());
+                }
+                if (collided == 2) {
+                    m_player2.set_mass(m_player2.get_mass() + itb->get_mass());
+                }
+            } else
+                ++itb;
+        } else
+            ++itb;
+        collided = 0;
+    }
+
+//=================check for missile collision
+    std::vector<Missile>::iterator itm;
+    for (itm = m_missile.begin(); itm != m_missile.end();) {
+        if (m_player1.collides_with(*itm))
+            collided = 1;
+        if (m_player2.collides_with(*itm))
+            collided = 2;
+
+        if (collided != 0) {
+            float index = (float) m_toolboxManager.addItem(6, collided);
+            if ((int) index != 100) {
+                itm = m_missile.erase(itm);
+                collect_missile(*itm, collided, index);
+                if (collided == 1) {
+                    m_player1.set_mass(m_player1.get_mass() + itm->get_mass());
+                }
+                if (collided == 2) {
+                    m_player2.set_mass(m_player2.get_mass() + itm->get_mass());
+                }
+            } else
+                ++itm;
+        } else
+            ++itm;
+        collided = 0;
+    }
+
+//=================check for armour collision
+    std::vector<Armour>::iterator ita;
+    for (ita = m_armour.begin(); ita != m_armour.end();) {
+        if (m_player1.collides_with(*ita))
+            collided = 1;
+        if (m_player2.collides_with(*ita))
+            collided = 2;
+
+        if (collided != 0) {
+            float index = (float) m_toolboxManager.addItem(7, collided);
+            if ((int) index != 100) {
+                ita = m_armour.erase(ita);
+                collect_armour(*ita, collided, index);
+                if (collided == 1) {
+                    m_player1.set_mass(m_player1.get_mass() + ita->get_mass());
+                }
+                if (collided == 2) {
+                    m_player2.set_mass(m_player2.get_mass() + ita->get_mass());
+                }
+            } else
+                ++ita;
+        } else
+            ++ita;
+        collided = 0;
+    }
+
+//=================check for antidote collision
+    if (m_player1.collides_with(m_antidote)) {
+        // 5 sec delay before players can pick up tools again
+        if ((int) difftime(time(0), droppedAntidoteTime_p1) >= 5)
+            collided = 1;
+    }
+    if (m_player2.collides_with(m_antidote)) {
+        if ((int) difftime(time(0), droppedAntidoteTime_p2) >= 5)
+            collided = 2;
+    }
+
+    if (collided != 0 && m_antidote.belongs_to == 0) {
+        //fprintf(stderr, "collided \n");
+        float index = (float) m_toolboxManager.addItem(3, collided);
+        if ((int) index != 100) {
+            if (collided == 1)
+                m_antidote.belongs_to = 1;
+            if (collided == 2)
+                m_antidote.belongs_to = 2;
+            m_antidote.set_position(m_toolboxManager.new_tool_position(index, collided));
+            m_antidote.set_scale({-0.08f * ViewHelper::getRatio(), 0.08f * ViewHelper::getRatio()});
+        }
+    }
+
+//=================check for limbs collision
+    string checklegs;
+    checklegs = m_limbsManager.check_collision_with_players(&m_player1, &m_player2, &m_toolboxManager);
+
+    if (checklegs == "1leg"){
+        if (m_limbsManager.getCollectedLegs(1) == 1)
+            leg_times_1 = time(0);
+        //fprintf(stderr, "1leg");
+    }
+    if (checklegs == "2leg"){
+        if (m_limbsManager.getCollectedLegs(2) == 1)
+            leg_times_2 = time(0);
+        //fprintf(stderr, "2leg");
+    }
+//    if (collided != 0) {
+//        if (collided <= 2) {
+//            m_toolboxManager.addSlot(collided);
 //        }
-//        if (collided2) {
-//            bool beingaffected = false;
-//            for (auto &mud_collected : m_mud_collected) {
-//                if (mud_collected.is_affected(2))
-//                    beingaffected = true;
-//            }
-//            if (!beingaffected) {
-//                m_player2.set_originalspeed(m_player2.get_speed());
-//                //fprintf(stderr, "player2 speed %f \n", m_player2.get_speed());
-//                m_player2.set_speed(m_player2.get_speed() - (100.f * m_player2.get_mass()));
-//                if (m_player2.get_speed() <= 0.f)
-//                    m_player2.set_speed(10.f);
-//                //fprintf(stderr, "player2 speed affected %f \n", m_player2.get_speed());
-//                itmud->set_affected(2, true);
-//            }
-//        }
-//
-//        if (!collided1) {
-//            itmud->set_affected(1, false);
-//            bool beingaffected = false;
-//            for (auto &mud_collected : m_mud_collected) {
-//                if (mud_collected.is_affected(1))
-//                    beingaffected = true;
-//            }
-//            if (!beingaffected)
-//                m_player1.set_speed(m_player1.get_originalspeed());
-//        }
-//        if (!collided2) {
-//            itmud->set_affected(2, false);
-//            bool beingaffected = false;
-//            for (auto &mud_collected : m_mud_collected) {
-//                if (mud_collected.is_affected(2))
-//                    beingaffected = true;
-//            }
-//            if (!beingaffected)
-//                m_player2.set_speed(m_player2.get_originalspeed());
-//        }
-//
-//        if (armourInUse_p1)
-//            m_player1.set_speed(m_player1.get_originalspeed());
-//        if (armourInUse_p2)
-//            m_player2.set_speed(m_player2.get_originalspeed());
-//
-//        collided1 = false;
-//        collided2 = false;
-//    }
-//
-////=================check for bomb collision
-//    std::vector<Bomb>::iterator itb;
-//    for (itb = m_bomb.begin(); itb != m_bomb.end();) {
-//        if (m_player1.collides_with(*itb))
-//            collided = 1;
-//        if (m_player2.collides_with(*itb))
-//            collided = 2;
-//
-//        if (collided != 0) {
-//            float index = (float) m_toolboxManager.addItem(5, collided);
-//            if ((int) index != 100) {
-//                itb = m_bomb.erase(itb);
-//                collect_bomb(*itb, collided, index);
-//                if (collided == 1) {
-//                    m_player1.set_mass(m_player1.get_mass() + itb->get_mass());
-//                    m_player1.create_blood(m_player1.get_position());
-//                }
-//                if (collided == 2) {
-//                    m_player2.set_mass(m_player2.get_mass() + itb->get_mass());
-//                }
-//            } else
-//                ++itb;
-//        } else
-//            ++itb;
-//        collided = 0;
-//    }
-//
-////=================check for missile collision
-//    std::vector<Missile>::iterator itm;
-//    for (itm = m_missile.begin(); itm != m_missile.end();) {
-//        if (m_player1.collides_with(*itm))
-//            collided = 1;
-//        if (m_player2.collides_with(*itm))
-//            collided = 2;
-//
-//        if (collided != 0) {
-//            float index = (float) m_toolboxManager.addItem(6, collided);
-//            if ((int) index != 100) {
-//                itm = m_missile.erase(itm);
-//                collect_missile(*itm, collided, index);
-//                if (collided == 1) {
-//                    m_player1.set_mass(m_player1.get_mass() + itm->get_mass());
-//                }
-//                if (collided == 2) {
-//                    m_player2.set_mass(m_player2.get_mass() + itm->get_mass());
-//                }
-//            } else
-//                ++itm;
-//        } else
-//            ++itm;
-//        collided = 0;
-//    }
-//
-////=================check for armour collision
-//    std::vector<Armour>::iterator ita;
-//    for (ita = m_armour.begin(); ita != m_armour.end();) {
-//        if (m_player1.collides_with(*ita))
-//            collided = 1;
-//        if (m_player2.collides_with(*ita))
-//            collided = 2;
-//
-//        if (collided != 0) {
-//            float index = (float) m_toolboxManager.addItem(7, collided);
-//            if ((int) index != 100) {
-//                ita = m_armour.erase(ita);
-//                collect_armour(*ita, collided, index);
-//                if (collided == 1) {
-//                    m_player1.set_mass(m_player1.get_mass() + ita->get_mass());
-//                }
-//                if (collided == 2) {
-//                    m_player2.set_mass(m_player2.get_mass() + ita->get_mass());
-//                }
-//            } else
-//                ++ita;
-//        } else
-//            ++ita;
-//        collided = 0;
-//    }
-//
-////=================check for antidote collision
-//    if (m_player1.collides_with(m_antidote)) {
-//        // 5 sec delay before players can pick up tools again
-//        if ((int) difftime(time(0), droppedAntidoteTime_p1) >= 5)
-//            collided = 1;
-//    }
-//    if (m_player2.collides_with(m_antidote)) {
-//        if ((int) difftime(time(0), droppedAntidoteTime_p2) >= 5)
-//            collided = 2;
-//    }
-//
-//    if (collided != 0 && m_antidote.belongs_to == 0) {
-//        //fprintf(stderr, "collided \n");
-//        float index = (float) m_toolboxManager.addItem(3, collided);
-//        if ((int) index != 100) {
-//            if (collided == 1)
-//                m_antidote.belongs_to = 1;
-//            if (collided == 2)
-//                m_antidote.belongs_to = 2;
-//            m_antidote.set_position(m_toolboxManager.new_tool_position(index, collided));
-//            m_antidote.set_scale({-0.08f * ViewHelper::getRatio(), 0.08f * ViewHelper::getRatio()});
+//        else {
+//            m_toolboxManager.addSlot(1);
+//            m_toolboxManager.addSlot(2);
 //        }
 //    }
-//
-////=================check for limbs collision
-//    string checklegs;
-//    checklegs = m_limbsManager.check_collision_with_players(&m_player1, &m_player2, &m_toolboxManager);
-//
-//    if (checklegs == "1leg"){
-//        if (m_limbsManager.getCollectedLegs(1) == 1)
-//            leg_times_1 = time(0);
-//        //fprintf(stderr, "1leg");
-//    }
-//    if (checklegs == "2leg"){
-//        if (m_limbsManager.getCollectedLegs(2) == 1)
-//            leg_times_2 = time(0);
-//        //fprintf(stderr, "2leg");
-//    }
-////    if (collided != 0) {
-////        if (collided <= 2) {
-////            m_toolboxManager.addSlot(collided);
-////        }
-////        else {
-////            m_toolboxManager.addSlot(1);
-////            m_toolboxManager.addSlot(2);
-////        }
-////    }
 
     //TODO check collision with zombies
 }

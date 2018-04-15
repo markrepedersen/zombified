@@ -177,33 +177,9 @@ CMakeFiles/zombie.dir/src/MapGrid.cpp.o.provides: CMakeFiles/zombie.dir/src/MapG
 CMakeFiles/zombie.dir/src/MapGrid.cpp.o.provides.build: CMakeFiles/zombie.dir/src/MapGrid.cpp.o
 
 
-CMakeFiles/zombie.dir/src/PhysicalBody.cpp.o: CMakeFiles/zombie.dir/flags.make
-CMakeFiles/zombie.dir/src/PhysicalBody.cpp.o: ../src/PhysicalBody.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/markpedersen/Desktop/zombified/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/zombie.dir/src/PhysicalBody.cpp.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/zombie.dir/src/PhysicalBody.cpp.o -c /Users/markpedersen/Desktop/zombified/src/PhysicalBody.cpp
-
-CMakeFiles/zombie.dir/src/PhysicalBody.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/zombie.dir/src/PhysicalBody.cpp.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/markpedersen/Desktop/zombified/src/PhysicalBody.cpp > CMakeFiles/zombie.dir/src/PhysicalBody.cpp.i
-
-CMakeFiles/zombie.dir/src/PhysicalBody.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/zombie.dir/src/PhysicalBody.cpp.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/markpedersen/Desktop/zombified/src/PhysicalBody.cpp -o CMakeFiles/zombie.dir/src/PhysicalBody.cpp.s
-
-CMakeFiles/zombie.dir/src/PhysicalBody.cpp.o.requires:
-
-.PHONY : CMakeFiles/zombie.dir/src/PhysicalBody.cpp.o.requires
-
-CMakeFiles/zombie.dir/src/PhysicalBody.cpp.o.provides: CMakeFiles/zombie.dir/src/PhysicalBody.cpp.o.requires
-	$(MAKE) -f CMakeFiles/zombie.dir/build.make CMakeFiles/zombie.dir/src/PhysicalBody.cpp.o.provides.build
-.PHONY : CMakeFiles/zombie.dir/src/PhysicalBody.cpp.o.provides
-
-CMakeFiles/zombie.dir/src/PhysicalBody.cpp.o.provides.build: CMakeFiles/zombie.dir/src/PhysicalBody.cpp.o
-
-
 CMakeFiles/zombie.dir/src/Physics.cpp.o: CMakeFiles/zombie.dir/flags.make
 CMakeFiles/zombie.dir/src/Physics.cpp.o: ../src/Physics.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/markpedersen/Desktop/zombified/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/zombie.dir/src/Physics.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/markpedersen/Desktop/zombified/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/zombie.dir/src/Physics.cpp.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/zombie.dir/src/Physics.cpp.o -c /Users/markpedersen/Desktop/zombified/src/Physics.cpp
 
 CMakeFiles/zombie.dir/src/Physics.cpp.i: cmake_force
@@ -227,7 +203,7 @@ CMakeFiles/zombie.dir/src/Physics.cpp.o.provides.build: CMakeFiles/zombie.dir/sr
 
 CMakeFiles/zombie.dir/src/ToolManager.cpp.o: CMakeFiles/zombie.dir/flags.make
 CMakeFiles/zombie.dir/src/ToolManager.cpp.o: ../src/ToolManager.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/markpedersen/Desktop/zombified/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/zombie.dir/src/ToolManager.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/markpedersen/Desktop/zombified/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/zombie.dir/src/ToolManager.cpp.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/zombie.dir/src/ToolManager.cpp.o -c /Users/markpedersen/Desktop/zombified/src/ToolManager.cpp
 
 CMakeFiles/zombie.dir/src/ToolManager.cpp.i: cmake_force
@@ -251,7 +227,7 @@ CMakeFiles/zombie.dir/src/ToolManager.cpp.o.provides.build: CMakeFiles/zombie.di
 
 CMakeFiles/zombie.dir/src/antidote.cpp.o: CMakeFiles/zombie.dir/flags.make
 CMakeFiles/zombie.dir/src/antidote.cpp.o: ../src/antidote.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/markpedersen/Desktop/zombified/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/zombie.dir/src/antidote.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/markpedersen/Desktop/zombified/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/zombie.dir/src/antidote.cpp.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/zombie.dir/src/antidote.cpp.o -c /Users/markpedersen/Desktop/zombified/src/antidote.cpp
 
 CMakeFiles/zombie.dir/src/antidote.cpp.i: cmake_force
@@ -275,7 +251,7 @@ CMakeFiles/zombie.dir/src/antidote.cpp.o.provides.build: CMakeFiles/zombie.dir/s
 
 CMakeFiles/zombie.dir/src/armour.cpp.o: CMakeFiles/zombie.dir/flags.make
 CMakeFiles/zombie.dir/src/armour.cpp.o: ../src/armour.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/markpedersen/Desktop/zombified/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object CMakeFiles/zombie.dir/src/armour.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/markpedersen/Desktop/zombified/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/zombie.dir/src/armour.cpp.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/zombie.dir/src/armour.cpp.o -c /Users/markpedersen/Desktop/zombified/src/armour.cpp
 
 CMakeFiles/zombie.dir/src/armour.cpp.i: cmake_force
@@ -299,7 +275,7 @@ CMakeFiles/zombie.dir/src/armour.cpp.o.provides.build: CMakeFiles/zombie.dir/src
 
 CMakeFiles/zombie.dir/src/blood.cpp.o: CMakeFiles/zombie.dir/flags.make
 CMakeFiles/zombie.dir/src/blood.cpp.o: ../src/blood.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/markpedersen/Desktop/zombified/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object CMakeFiles/zombie.dir/src/blood.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/markpedersen/Desktop/zombified/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object CMakeFiles/zombie.dir/src/blood.cpp.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/zombie.dir/src/blood.cpp.o -c /Users/markpedersen/Desktop/zombified/src/blood.cpp
 
 CMakeFiles/zombie.dir/src/blood.cpp.i: cmake_force
@@ -323,7 +299,7 @@ CMakeFiles/zombie.dir/src/blood.cpp.o.provides.build: CMakeFiles/zombie.dir/src/
 
 CMakeFiles/zombie.dir/src/bomb.cpp.o: CMakeFiles/zombie.dir/flags.make
 CMakeFiles/zombie.dir/src/bomb.cpp.o: ../src/bomb.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/markpedersen/Desktop/zombified/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building CXX object CMakeFiles/zombie.dir/src/bomb.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/markpedersen/Desktop/zombified/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object CMakeFiles/zombie.dir/src/bomb.cpp.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/zombie.dir/src/bomb.cpp.o -c /Users/markpedersen/Desktop/zombified/src/bomb.cpp
 
 CMakeFiles/zombie.dir/src/bomb.cpp.i: cmake_force
@@ -347,7 +323,7 @@ CMakeFiles/zombie.dir/src/bomb.cpp.o.provides.build: CMakeFiles/zombie.dir/src/b
 
 CMakeFiles/zombie.dir/src/button.cpp.o: CMakeFiles/zombie.dir/flags.make
 CMakeFiles/zombie.dir/src/button.cpp.o: ../src/button.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/markpedersen/Desktop/zombified/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Building CXX object CMakeFiles/zombie.dir/src/button.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/markpedersen/Desktop/zombified/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building CXX object CMakeFiles/zombie.dir/src/button.cpp.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/zombie.dir/src/button.cpp.o -c /Users/markpedersen/Desktop/zombified/src/button.cpp
 
 CMakeFiles/zombie.dir/src/button.cpp.i: cmake_force
@@ -371,7 +347,7 @@ CMakeFiles/zombie.dir/src/button.cpp.o.provides.build: CMakeFiles/zombie.dir/src
 
 CMakeFiles/zombie.dir/src/common.cpp.o: CMakeFiles/zombie.dir/flags.make
 CMakeFiles/zombie.dir/src/common.cpp.o: ../src/common.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/markpedersen/Desktop/zombified/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Building CXX object CMakeFiles/zombie.dir/src/common.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/markpedersen/Desktop/zombified/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Building CXX object CMakeFiles/zombie.dir/src/common.cpp.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/zombie.dir/src/common.cpp.o -c /Users/markpedersen/Desktop/zombified/src/common.cpp
 
 CMakeFiles/zombie.dir/src/common.cpp.i: cmake_force
@@ -395,7 +371,7 @@ CMakeFiles/zombie.dir/src/common.cpp.o.provides.build: CMakeFiles/zombie.dir/src
 
 CMakeFiles/zombie.dir/src/explosion.cpp.o: CMakeFiles/zombie.dir/flags.make
 CMakeFiles/zombie.dir/src/explosion.cpp.o: ../src/explosion.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/markpedersen/Desktop/zombified/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_15) "Building CXX object CMakeFiles/zombie.dir/src/explosion.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/markpedersen/Desktop/zombified/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Building CXX object CMakeFiles/zombie.dir/src/explosion.cpp.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/zombie.dir/src/explosion.cpp.o -c /Users/markpedersen/Desktop/zombified/src/explosion.cpp
 
 CMakeFiles/zombie.dir/src/explosion.cpp.i: cmake_force
@@ -419,7 +395,7 @@ CMakeFiles/zombie.dir/src/explosion.cpp.o.provides.build: CMakeFiles/zombie.dir/
 
 CMakeFiles/zombie.dir/src/infopage.cpp.o: CMakeFiles/zombie.dir/flags.make
 CMakeFiles/zombie.dir/src/infopage.cpp.o: ../src/infopage.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/markpedersen/Desktop/zombified/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_16) "Building CXX object CMakeFiles/zombie.dir/src/infopage.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/markpedersen/Desktop/zombified/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_15) "Building CXX object CMakeFiles/zombie.dir/src/infopage.cpp.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/zombie.dir/src/infopage.cpp.o -c /Users/markpedersen/Desktop/zombified/src/infopage.cpp
 
 CMakeFiles/zombie.dir/src/infopage.cpp.i: cmake_force
@@ -443,7 +419,7 @@ CMakeFiles/zombie.dir/src/infopage.cpp.o.provides.build: CMakeFiles/zombie.dir/s
 
 CMakeFiles/zombie.dir/src/limbsManager.cpp.o: CMakeFiles/zombie.dir/flags.make
 CMakeFiles/zombie.dir/src/limbsManager.cpp.o: ../src/limbsManager.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/markpedersen/Desktop/zombified/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_17) "Building CXX object CMakeFiles/zombie.dir/src/limbsManager.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/markpedersen/Desktop/zombified/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_16) "Building CXX object CMakeFiles/zombie.dir/src/limbsManager.cpp.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/zombie.dir/src/limbsManager.cpp.o -c /Users/markpedersen/Desktop/zombified/src/limbsManager.cpp
 
 CMakeFiles/zombie.dir/src/limbsManager.cpp.i: cmake_force
@@ -467,7 +443,7 @@ CMakeFiles/zombie.dir/src/limbsManager.cpp.o.provides.build: CMakeFiles/zombie.d
 
 CMakeFiles/zombie.dir/src/main.cpp.o: CMakeFiles/zombie.dir/flags.make
 CMakeFiles/zombie.dir/src/main.cpp.o: ../src/main.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/markpedersen/Desktop/zombified/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_18) "Building CXX object CMakeFiles/zombie.dir/src/main.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/markpedersen/Desktop/zombified/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_17) "Building CXX object CMakeFiles/zombie.dir/src/main.cpp.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/zombie.dir/src/main.cpp.o -c /Users/markpedersen/Desktop/zombified/src/main.cpp
 
 CMakeFiles/zombie.dir/src/main.cpp.i: cmake_force
@@ -491,7 +467,7 @@ CMakeFiles/zombie.dir/src/main.cpp.o.provides.build: CMakeFiles/zombie.dir/src/m
 
 CMakeFiles/zombie.dir/src/missile.cpp.o: CMakeFiles/zombie.dir/flags.make
 CMakeFiles/zombie.dir/src/missile.cpp.o: ../src/missile.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/markpedersen/Desktop/zombified/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_19) "Building CXX object CMakeFiles/zombie.dir/src/missile.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/markpedersen/Desktop/zombified/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_18) "Building CXX object CMakeFiles/zombie.dir/src/missile.cpp.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/zombie.dir/src/missile.cpp.o -c /Users/markpedersen/Desktop/zombified/src/missile.cpp
 
 CMakeFiles/zombie.dir/src/missile.cpp.i: cmake_force
@@ -515,7 +491,7 @@ CMakeFiles/zombie.dir/src/missile.cpp.o.provides.build: CMakeFiles/zombie.dir/sr
 
 CMakeFiles/zombie.dir/src/mud.cpp.o: CMakeFiles/zombie.dir/flags.make
 CMakeFiles/zombie.dir/src/mud.cpp.o: ../src/mud.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/markpedersen/Desktop/zombified/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_20) "Building CXX object CMakeFiles/zombie.dir/src/mud.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/markpedersen/Desktop/zombified/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_19) "Building CXX object CMakeFiles/zombie.dir/src/mud.cpp.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/zombie.dir/src/mud.cpp.o -c /Users/markpedersen/Desktop/zombified/src/mud.cpp
 
 CMakeFiles/zombie.dir/src/mud.cpp.i: cmake_force
@@ -539,7 +515,7 @@ CMakeFiles/zombie.dir/src/mud.cpp.o.provides.build: CMakeFiles/zombie.dir/src/mu
 
 CMakeFiles/zombie.dir/src/player1.cpp.o: CMakeFiles/zombie.dir/flags.make
 CMakeFiles/zombie.dir/src/player1.cpp.o: ../src/player1.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/markpedersen/Desktop/zombified/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_21) "Building CXX object CMakeFiles/zombie.dir/src/player1.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/markpedersen/Desktop/zombified/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_20) "Building CXX object CMakeFiles/zombie.dir/src/player1.cpp.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/zombie.dir/src/player1.cpp.o -c /Users/markpedersen/Desktop/zombified/src/player1.cpp
 
 CMakeFiles/zombie.dir/src/player1.cpp.i: cmake_force
@@ -563,7 +539,7 @@ CMakeFiles/zombie.dir/src/player1.cpp.o.provides.build: CMakeFiles/zombie.dir/sr
 
 CMakeFiles/zombie.dir/src/player2.cpp.o: CMakeFiles/zombie.dir/flags.make
 CMakeFiles/zombie.dir/src/player2.cpp.o: ../src/player2.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/markpedersen/Desktop/zombified/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_22) "Building CXX object CMakeFiles/zombie.dir/src/player2.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/markpedersen/Desktop/zombified/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_21) "Building CXX object CMakeFiles/zombie.dir/src/player2.cpp.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/zombie.dir/src/player2.cpp.o -c /Users/markpedersen/Desktop/zombified/src/player2.cpp
 
 CMakeFiles/zombie.dir/src/player2.cpp.i: cmake_force
@@ -587,7 +563,7 @@ CMakeFiles/zombie.dir/src/player2.cpp.o.provides.build: CMakeFiles/zombie.dir/sr
 
 CMakeFiles/zombie.dir/src/punchleft.cpp.o: CMakeFiles/zombie.dir/flags.make
 CMakeFiles/zombie.dir/src/punchleft.cpp.o: ../src/punchleft.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/markpedersen/Desktop/zombified/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_23) "Building CXX object CMakeFiles/zombie.dir/src/punchleft.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/markpedersen/Desktop/zombified/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_22) "Building CXX object CMakeFiles/zombie.dir/src/punchleft.cpp.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/zombie.dir/src/punchleft.cpp.o -c /Users/markpedersen/Desktop/zombified/src/punchleft.cpp
 
 CMakeFiles/zombie.dir/src/punchleft.cpp.i: cmake_force
@@ -611,7 +587,7 @@ CMakeFiles/zombie.dir/src/punchleft.cpp.o.provides.build: CMakeFiles/zombie.dir/
 
 CMakeFiles/zombie.dir/src/punchright.cpp.o: CMakeFiles/zombie.dir/flags.make
 CMakeFiles/zombie.dir/src/punchright.cpp.o: ../src/punchright.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/markpedersen/Desktop/zombified/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_24) "Building CXX object CMakeFiles/zombie.dir/src/punchright.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/markpedersen/Desktop/zombified/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_23) "Building CXX object CMakeFiles/zombie.dir/src/punchright.cpp.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/zombie.dir/src/punchright.cpp.o -c /Users/markpedersen/Desktop/zombified/src/punchright.cpp
 
 CMakeFiles/zombie.dir/src/punchright.cpp.i: cmake_force
@@ -635,7 +611,7 @@ CMakeFiles/zombie.dir/src/punchright.cpp.o.provides.build: CMakeFiles/zombie.dir
 
 CMakeFiles/zombie.dir/src/terrain.cpp.o: CMakeFiles/zombie.dir/flags.make
 CMakeFiles/zombie.dir/src/terrain.cpp.o: ../src/terrain.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/markpedersen/Desktop/zombified/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_25) "Building CXX object CMakeFiles/zombie.dir/src/terrain.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/markpedersen/Desktop/zombified/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_24) "Building CXX object CMakeFiles/zombie.dir/src/terrain.cpp.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/zombie.dir/src/terrain.cpp.o -c /Users/markpedersen/Desktop/zombified/src/terrain.cpp
 
 CMakeFiles/zombie.dir/src/terrain.cpp.i: cmake_force
@@ -659,7 +635,7 @@ CMakeFiles/zombie.dir/src/terrain.cpp.o.provides.build: CMakeFiles/zombie.dir/sr
 
 CMakeFiles/zombie.dir/src/tilemap.cpp.o: CMakeFiles/zombie.dir/flags.make
 CMakeFiles/zombie.dir/src/tilemap.cpp.o: ../src/tilemap.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/markpedersen/Desktop/zombified/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_26) "Building CXX object CMakeFiles/zombie.dir/src/tilemap.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/markpedersen/Desktop/zombified/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_25) "Building CXX object CMakeFiles/zombie.dir/src/tilemap.cpp.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/zombie.dir/src/tilemap.cpp.o -c /Users/markpedersen/Desktop/zombified/src/tilemap.cpp
 
 CMakeFiles/zombie.dir/src/tilemap.cpp.i: cmake_force
@@ -683,7 +659,7 @@ CMakeFiles/zombie.dir/src/tilemap.cpp.o.provides.build: CMakeFiles/zombie.dir/sr
 
 CMakeFiles/zombie.dir/src/tmxparser/TmxColor.cpp.o: CMakeFiles/zombie.dir/flags.make
 CMakeFiles/zombie.dir/src/tmxparser/TmxColor.cpp.o: ../src/tmxparser/TmxColor.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/markpedersen/Desktop/zombified/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_27) "Building CXX object CMakeFiles/zombie.dir/src/tmxparser/TmxColor.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/markpedersen/Desktop/zombified/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_26) "Building CXX object CMakeFiles/zombie.dir/src/tmxparser/TmxColor.cpp.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/zombie.dir/src/tmxparser/TmxColor.cpp.o -c /Users/markpedersen/Desktop/zombified/src/tmxparser/TmxColor.cpp
 
 CMakeFiles/zombie.dir/src/tmxparser/TmxColor.cpp.i: cmake_force
@@ -707,7 +683,7 @@ CMakeFiles/zombie.dir/src/tmxparser/TmxColor.cpp.o.provides.build: CMakeFiles/zo
 
 CMakeFiles/zombie.dir/src/tmxparser/TmxEllipse.cpp.o: CMakeFiles/zombie.dir/flags.make
 CMakeFiles/zombie.dir/src/tmxparser/TmxEllipse.cpp.o: ../src/tmxparser/TmxEllipse.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/markpedersen/Desktop/zombified/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_28) "Building CXX object CMakeFiles/zombie.dir/src/tmxparser/TmxEllipse.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/markpedersen/Desktop/zombified/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_27) "Building CXX object CMakeFiles/zombie.dir/src/tmxparser/TmxEllipse.cpp.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/zombie.dir/src/tmxparser/TmxEllipse.cpp.o -c /Users/markpedersen/Desktop/zombified/src/tmxparser/TmxEllipse.cpp
 
 CMakeFiles/zombie.dir/src/tmxparser/TmxEllipse.cpp.i: cmake_force
@@ -731,7 +707,7 @@ CMakeFiles/zombie.dir/src/tmxparser/TmxEllipse.cpp.o.provides.build: CMakeFiles/
 
 CMakeFiles/zombie.dir/src/tmxparser/TmxGroupLayer.cpp.o: CMakeFiles/zombie.dir/flags.make
 CMakeFiles/zombie.dir/src/tmxparser/TmxGroupLayer.cpp.o: ../src/tmxparser/TmxGroupLayer.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/markpedersen/Desktop/zombified/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_29) "Building CXX object CMakeFiles/zombie.dir/src/tmxparser/TmxGroupLayer.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/markpedersen/Desktop/zombified/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_28) "Building CXX object CMakeFiles/zombie.dir/src/tmxparser/TmxGroupLayer.cpp.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/zombie.dir/src/tmxparser/TmxGroupLayer.cpp.o -c /Users/markpedersen/Desktop/zombified/src/tmxparser/TmxGroupLayer.cpp
 
 CMakeFiles/zombie.dir/src/tmxparser/TmxGroupLayer.cpp.i: cmake_force
@@ -755,7 +731,7 @@ CMakeFiles/zombie.dir/src/tmxparser/TmxGroupLayer.cpp.o.provides.build: CMakeFil
 
 CMakeFiles/zombie.dir/src/tmxparser/TmxImage.cpp.o: CMakeFiles/zombie.dir/flags.make
 CMakeFiles/zombie.dir/src/tmxparser/TmxImage.cpp.o: ../src/tmxparser/TmxImage.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/markpedersen/Desktop/zombified/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_30) "Building CXX object CMakeFiles/zombie.dir/src/tmxparser/TmxImage.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/markpedersen/Desktop/zombified/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_29) "Building CXX object CMakeFiles/zombie.dir/src/tmxparser/TmxImage.cpp.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/zombie.dir/src/tmxparser/TmxImage.cpp.o -c /Users/markpedersen/Desktop/zombified/src/tmxparser/TmxImage.cpp
 
 CMakeFiles/zombie.dir/src/tmxparser/TmxImage.cpp.i: cmake_force
@@ -779,7 +755,7 @@ CMakeFiles/zombie.dir/src/tmxparser/TmxImage.cpp.o.provides.build: CMakeFiles/zo
 
 CMakeFiles/zombie.dir/src/tmxparser/TmxImageLayer.cpp.o: CMakeFiles/zombie.dir/flags.make
 CMakeFiles/zombie.dir/src/tmxparser/TmxImageLayer.cpp.o: ../src/tmxparser/TmxImageLayer.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/markpedersen/Desktop/zombified/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_31) "Building CXX object CMakeFiles/zombie.dir/src/tmxparser/TmxImageLayer.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/markpedersen/Desktop/zombified/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_30) "Building CXX object CMakeFiles/zombie.dir/src/tmxparser/TmxImageLayer.cpp.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/zombie.dir/src/tmxparser/TmxImageLayer.cpp.o -c /Users/markpedersen/Desktop/zombified/src/tmxparser/TmxImageLayer.cpp
 
 CMakeFiles/zombie.dir/src/tmxparser/TmxImageLayer.cpp.i: cmake_force
@@ -803,7 +779,7 @@ CMakeFiles/zombie.dir/src/tmxparser/TmxImageLayer.cpp.o.provides.build: CMakeFil
 
 CMakeFiles/zombie.dir/src/tmxparser/TmxLayer.cpp.o: CMakeFiles/zombie.dir/flags.make
 CMakeFiles/zombie.dir/src/tmxparser/TmxLayer.cpp.o: ../src/tmxparser/TmxLayer.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/markpedersen/Desktop/zombified/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_32) "Building CXX object CMakeFiles/zombie.dir/src/tmxparser/TmxLayer.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/markpedersen/Desktop/zombified/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_31) "Building CXX object CMakeFiles/zombie.dir/src/tmxparser/TmxLayer.cpp.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/zombie.dir/src/tmxparser/TmxLayer.cpp.o -c /Users/markpedersen/Desktop/zombified/src/tmxparser/TmxLayer.cpp
 
 CMakeFiles/zombie.dir/src/tmxparser/TmxLayer.cpp.i: cmake_force
@@ -827,7 +803,7 @@ CMakeFiles/zombie.dir/src/tmxparser/TmxLayer.cpp.o.provides.build: CMakeFiles/zo
 
 CMakeFiles/zombie.dir/src/tmxparser/TmxMap.cpp.o: CMakeFiles/zombie.dir/flags.make
 CMakeFiles/zombie.dir/src/tmxparser/TmxMap.cpp.o: ../src/tmxparser/TmxMap.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/markpedersen/Desktop/zombified/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_33) "Building CXX object CMakeFiles/zombie.dir/src/tmxparser/TmxMap.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/markpedersen/Desktop/zombified/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_32) "Building CXX object CMakeFiles/zombie.dir/src/tmxparser/TmxMap.cpp.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/zombie.dir/src/tmxparser/TmxMap.cpp.o -c /Users/markpedersen/Desktop/zombified/src/tmxparser/TmxMap.cpp
 
 CMakeFiles/zombie.dir/src/tmxparser/TmxMap.cpp.i: cmake_force
@@ -851,7 +827,7 @@ CMakeFiles/zombie.dir/src/tmxparser/TmxMap.cpp.o.provides.build: CMakeFiles/zomb
 
 CMakeFiles/zombie.dir/src/tmxparser/TmxObject.cpp.o: CMakeFiles/zombie.dir/flags.make
 CMakeFiles/zombie.dir/src/tmxparser/TmxObject.cpp.o: ../src/tmxparser/TmxObject.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/markpedersen/Desktop/zombified/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_34) "Building CXX object CMakeFiles/zombie.dir/src/tmxparser/TmxObject.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/markpedersen/Desktop/zombified/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_33) "Building CXX object CMakeFiles/zombie.dir/src/tmxparser/TmxObject.cpp.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/zombie.dir/src/tmxparser/TmxObject.cpp.o -c /Users/markpedersen/Desktop/zombified/src/tmxparser/TmxObject.cpp
 
 CMakeFiles/zombie.dir/src/tmxparser/TmxObject.cpp.i: cmake_force
@@ -875,7 +851,7 @@ CMakeFiles/zombie.dir/src/tmxparser/TmxObject.cpp.o.provides.build: CMakeFiles/z
 
 CMakeFiles/zombie.dir/src/tmxparser/TmxObjectGroup.cpp.o: CMakeFiles/zombie.dir/flags.make
 CMakeFiles/zombie.dir/src/tmxparser/TmxObjectGroup.cpp.o: ../src/tmxparser/TmxObjectGroup.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/markpedersen/Desktop/zombified/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_35) "Building CXX object CMakeFiles/zombie.dir/src/tmxparser/TmxObjectGroup.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/markpedersen/Desktop/zombified/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_34) "Building CXX object CMakeFiles/zombie.dir/src/tmxparser/TmxObjectGroup.cpp.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/zombie.dir/src/tmxparser/TmxObjectGroup.cpp.o -c /Users/markpedersen/Desktop/zombified/src/tmxparser/TmxObjectGroup.cpp
 
 CMakeFiles/zombie.dir/src/tmxparser/TmxObjectGroup.cpp.i: cmake_force
@@ -899,7 +875,7 @@ CMakeFiles/zombie.dir/src/tmxparser/TmxObjectGroup.cpp.o.provides.build: CMakeFi
 
 CMakeFiles/zombie.dir/src/tmxparser/TmxPolygon.cpp.o: CMakeFiles/zombie.dir/flags.make
 CMakeFiles/zombie.dir/src/tmxparser/TmxPolygon.cpp.o: ../src/tmxparser/TmxPolygon.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/markpedersen/Desktop/zombified/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_36) "Building CXX object CMakeFiles/zombie.dir/src/tmxparser/TmxPolygon.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/markpedersen/Desktop/zombified/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_35) "Building CXX object CMakeFiles/zombie.dir/src/tmxparser/TmxPolygon.cpp.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/zombie.dir/src/tmxparser/TmxPolygon.cpp.o -c /Users/markpedersen/Desktop/zombified/src/tmxparser/TmxPolygon.cpp
 
 CMakeFiles/zombie.dir/src/tmxparser/TmxPolygon.cpp.i: cmake_force
@@ -923,7 +899,7 @@ CMakeFiles/zombie.dir/src/tmxparser/TmxPolygon.cpp.o.provides.build: CMakeFiles/
 
 CMakeFiles/zombie.dir/src/tmxparser/TmxPolyline.cpp.o: CMakeFiles/zombie.dir/flags.make
 CMakeFiles/zombie.dir/src/tmxparser/TmxPolyline.cpp.o: ../src/tmxparser/TmxPolyline.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/markpedersen/Desktop/zombified/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_37) "Building CXX object CMakeFiles/zombie.dir/src/tmxparser/TmxPolyline.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/markpedersen/Desktop/zombified/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_36) "Building CXX object CMakeFiles/zombie.dir/src/tmxparser/TmxPolyline.cpp.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/zombie.dir/src/tmxparser/TmxPolyline.cpp.o -c /Users/markpedersen/Desktop/zombified/src/tmxparser/TmxPolyline.cpp
 
 CMakeFiles/zombie.dir/src/tmxparser/TmxPolyline.cpp.i: cmake_force
@@ -947,7 +923,7 @@ CMakeFiles/zombie.dir/src/tmxparser/TmxPolyline.cpp.o.provides.build: CMakeFiles
 
 CMakeFiles/zombie.dir/src/tmxparser/TmxProperty.cpp.o: CMakeFiles/zombie.dir/flags.make
 CMakeFiles/zombie.dir/src/tmxparser/TmxProperty.cpp.o: ../src/tmxparser/TmxProperty.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/markpedersen/Desktop/zombified/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_38) "Building CXX object CMakeFiles/zombie.dir/src/tmxparser/TmxProperty.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/markpedersen/Desktop/zombified/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_37) "Building CXX object CMakeFiles/zombie.dir/src/tmxparser/TmxProperty.cpp.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/zombie.dir/src/tmxparser/TmxProperty.cpp.o -c /Users/markpedersen/Desktop/zombified/src/tmxparser/TmxProperty.cpp
 
 CMakeFiles/zombie.dir/src/tmxparser/TmxProperty.cpp.i: cmake_force
@@ -971,7 +947,7 @@ CMakeFiles/zombie.dir/src/tmxparser/TmxProperty.cpp.o.provides.build: CMakeFiles
 
 CMakeFiles/zombie.dir/src/tmxparser/TmxPropertySet.cpp.o: CMakeFiles/zombie.dir/flags.make
 CMakeFiles/zombie.dir/src/tmxparser/TmxPropertySet.cpp.o: ../src/tmxparser/TmxPropertySet.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/markpedersen/Desktop/zombified/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_39) "Building CXX object CMakeFiles/zombie.dir/src/tmxparser/TmxPropertySet.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/markpedersen/Desktop/zombified/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_38) "Building CXX object CMakeFiles/zombie.dir/src/tmxparser/TmxPropertySet.cpp.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/zombie.dir/src/tmxparser/TmxPropertySet.cpp.o -c /Users/markpedersen/Desktop/zombified/src/tmxparser/TmxPropertySet.cpp
 
 CMakeFiles/zombie.dir/src/tmxparser/TmxPropertySet.cpp.i: cmake_force
@@ -995,7 +971,7 @@ CMakeFiles/zombie.dir/src/tmxparser/TmxPropertySet.cpp.o.provides.build: CMakeFi
 
 CMakeFiles/zombie.dir/src/tmxparser/TmxTerrain.cpp.o: CMakeFiles/zombie.dir/flags.make
 CMakeFiles/zombie.dir/src/tmxparser/TmxTerrain.cpp.o: ../src/tmxparser/TmxTerrain.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/markpedersen/Desktop/zombified/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_40) "Building CXX object CMakeFiles/zombie.dir/src/tmxparser/TmxTerrain.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/markpedersen/Desktop/zombified/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_39) "Building CXX object CMakeFiles/zombie.dir/src/tmxparser/TmxTerrain.cpp.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/zombie.dir/src/tmxparser/TmxTerrain.cpp.o -c /Users/markpedersen/Desktop/zombified/src/tmxparser/TmxTerrain.cpp
 
 CMakeFiles/zombie.dir/src/tmxparser/TmxTerrain.cpp.i: cmake_force
@@ -1019,7 +995,7 @@ CMakeFiles/zombie.dir/src/tmxparser/TmxTerrain.cpp.o.provides.build: CMakeFiles/
 
 CMakeFiles/zombie.dir/src/tmxparser/TmxTerrainArray.cpp.o: CMakeFiles/zombie.dir/flags.make
 CMakeFiles/zombie.dir/src/tmxparser/TmxTerrainArray.cpp.o: ../src/tmxparser/TmxTerrainArray.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/markpedersen/Desktop/zombified/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_41) "Building CXX object CMakeFiles/zombie.dir/src/tmxparser/TmxTerrainArray.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/markpedersen/Desktop/zombified/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_40) "Building CXX object CMakeFiles/zombie.dir/src/tmxparser/TmxTerrainArray.cpp.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/zombie.dir/src/tmxparser/TmxTerrainArray.cpp.o -c /Users/markpedersen/Desktop/zombified/src/tmxparser/TmxTerrainArray.cpp
 
 CMakeFiles/zombie.dir/src/tmxparser/TmxTerrainArray.cpp.i: cmake_force
@@ -1043,7 +1019,7 @@ CMakeFiles/zombie.dir/src/tmxparser/TmxTerrainArray.cpp.o.provides.build: CMakeF
 
 CMakeFiles/zombie.dir/src/tmxparser/TmxText.cpp.o: CMakeFiles/zombie.dir/flags.make
 CMakeFiles/zombie.dir/src/tmxparser/TmxText.cpp.o: ../src/tmxparser/TmxText.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/markpedersen/Desktop/zombified/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_42) "Building CXX object CMakeFiles/zombie.dir/src/tmxparser/TmxText.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/markpedersen/Desktop/zombified/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_41) "Building CXX object CMakeFiles/zombie.dir/src/tmxparser/TmxText.cpp.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/zombie.dir/src/tmxparser/TmxText.cpp.o -c /Users/markpedersen/Desktop/zombified/src/tmxparser/TmxText.cpp
 
 CMakeFiles/zombie.dir/src/tmxparser/TmxText.cpp.i: cmake_force
@@ -1067,7 +1043,7 @@ CMakeFiles/zombie.dir/src/tmxparser/TmxText.cpp.o.provides.build: CMakeFiles/zom
 
 CMakeFiles/zombie.dir/src/tmxparser/TmxTile.cpp.o: CMakeFiles/zombie.dir/flags.make
 CMakeFiles/zombie.dir/src/tmxparser/TmxTile.cpp.o: ../src/tmxparser/TmxTile.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/markpedersen/Desktop/zombified/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_43) "Building CXX object CMakeFiles/zombie.dir/src/tmxparser/TmxTile.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/markpedersen/Desktop/zombified/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_42) "Building CXX object CMakeFiles/zombie.dir/src/tmxparser/TmxTile.cpp.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/zombie.dir/src/tmxparser/TmxTile.cpp.o -c /Users/markpedersen/Desktop/zombified/src/tmxparser/TmxTile.cpp
 
 CMakeFiles/zombie.dir/src/tmxparser/TmxTile.cpp.i: cmake_force
@@ -1091,7 +1067,7 @@ CMakeFiles/zombie.dir/src/tmxparser/TmxTile.cpp.o.provides.build: CMakeFiles/zom
 
 CMakeFiles/zombie.dir/src/tmxparser/TmxTileLayer.cpp.o: CMakeFiles/zombie.dir/flags.make
 CMakeFiles/zombie.dir/src/tmxparser/TmxTileLayer.cpp.o: ../src/tmxparser/TmxTileLayer.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/markpedersen/Desktop/zombified/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_44) "Building CXX object CMakeFiles/zombie.dir/src/tmxparser/TmxTileLayer.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/markpedersen/Desktop/zombified/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_43) "Building CXX object CMakeFiles/zombie.dir/src/tmxparser/TmxTileLayer.cpp.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/zombie.dir/src/tmxparser/TmxTileLayer.cpp.o -c /Users/markpedersen/Desktop/zombified/src/tmxparser/TmxTileLayer.cpp
 
 CMakeFiles/zombie.dir/src/tmxparser/TmxTileLayer.cpp.i: cmake_force
@@ -1115,7 +1091,7 @@ CMakeFiles/zombie.dir/src/tmxparser/TmxTileLayer.cpp.o.provides.build: CMakeFile
 
 CMakeFiles/zombie.dir/src/tmxparser/TmxTileOffset.cpp.o: CMakeFiles/zombie.dir/flags.make
 CMakeFiles/zombie.dir/src/tmxparser/TmxTileOffset.cpp.o: ../src/tmxparser/TmxTileOffset.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/markpedersen/Desktop/zombified/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_45) "Building CXX object CMakeFiles/zombie.dir/src/tmxparser/TmxTileOffset.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/markpedersen/Desktop/zombified/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_44) "Building CXX object CMakeFiles/zombie.dir/src/tmxparser/TmxTileOffset.cpp.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/zombie.dir/src/tmxparser/TmxTileOffset.cpp.o -c /Users/markpedersen/Desktop/zombified/src/tmxparser/TmxTileOffset.cpp
 
 CMakeFiles/zombie.dir/src/tmxparser/TmxTileOffset.cpp.i: cmake_force
@@ -1139,7 +1115,7 @@ CMakeFiles/zombie.dir/src/tmxparser/TmxTileOffset.cpp.o.provides.build: CMakeFil
 
 CMakeFiles/zombie.dir/src/tmxparser/TmxTileset.cpp.o: CMakeFiles/zombie.dir/flags.make
 CMakeFiles/zombie.dir/src/tmxparser/TmxTileset.cpp.o: ../src/tmxparser/TmxTileset.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/markpedersen/Desktop/zombified/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_46) "Building CXX object CMakeFiles/zombie.dir/src/tmxparser/TmxTileset.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/markpedersen/Desktop/zombified/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_45) "Building CXX object CMakeFiles/zombie.dir/src/tmxparser/TmxTileset.cpp.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/zombie.dir/src/tmxparser/TmxTileset.cpp.o -c /Users/markpedersen/Desktop/zombified/src/tmxparser/TmxTileset.cpp
 
 CMakeFiles/zombie.dir/src/tmxparser/TmxTileset.cpp.i: cmake_force
@@ -1163,7 +1139,7 @@ CMakeFiles/zombie.dir/src/tmxparser/TmxTileset.cpp.o.provides.build: CMakeFiles/
 
 CMakeFiles/zombie.dir/src/tmxparser/TmxUtil.cpp.o: CMakeFiles/zombie.dir/flags.make
 CMakeFiles/zombie.dir/src/tmxparser/TmxUtil.cpp.o: ../src/tmxparser/TmxUtil.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/markpedersen/Desktop/zombified/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_47) "Building CXX object CMakeFiles/zombie.dir/src/tmxparser/TmxUtil.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/markpedersen/Desktop/zombified/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_46) "Building CXX object CMakeFiles/zombie.dir/src/tmxparser/TmxUtil.cpp.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/zombie.dir/src/tmxparser/TmxUtil.cpp.o -c /Users/markpedersen/Desktop/zombified/src/tmxparser/TmxUtil.cpp
 
 CMakeFiles/zombie.dir/src/tmxparser/TmxUtil.cpp.i: cmake_force
@@ -1187,7 +1163,7 @@ CMakeFiles/zombie.dir/src/tmxparser/TmxUtil.cpp.o.provides.build: CMakeFiles/zom
 
 CMakeFiles/zombie.dir/src/tmxparser/base64/base64.cpp.o: CMakeFiles/zombie.dir/flags.make
 CMakeFiles/zombie.dir/src/tmxparser/base64/base64.cpp.o: ../src/tmxparser/base64/base64.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/markpedersen/Desktop/zombified/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_48) "Building CXX object CMakeFiles/zombie.dir/src/tmxparser/base64/base64.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/markpedersen/Desktop/zombified/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_47) "Building CXX object CMakeFiles/zombie.dir/src/tmxparser/base64/base64.cpp.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/zombie.dir/src/tmxparser/base64/base64.cpp.o -c /Users/markpedersen/Desktop/zombified/src/tmxparser/base64/base64.cpp
 
 CMakeFiles/zombie.dir/src/tmxparser/base64/base64.cpp.i: cmake_force
@@ -1211,7 +1187,7 @@ CMakeFiles/zombie.dir/src/tmxparser/base64/base64.cpp.o.provides.build: CMakeFil
 
 CMakeFiles/zombie.dir/src/toolboxManager.cpp.o: CMakeFiles/zombie.dir/flags.make
 CMakeFiles/zombie.dir/src/toolboxManager.cpp.o: ../src/toolboxManager.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/markpedersen/Desktop/zombified/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_49) "Building CXX object CMakeFiles/zombie.dir/src/toolboxManager.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/markpedersen/Desktop/zombified/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_48) "Building CXX object CMakeFiles/zombie.dir/src/toolboxManager.cpp.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/zombie.dir/src/toolboxManager.cpp.o -c /Users/markpedersen/Desktop/zombified/src/toolboxManager.cpp
 
 CMakeFiles/zombie.dir/src/toolboxManager.cpp.i: cmake_force
@@ -1235,7 +1211,7 @@ CMakeFiles/zombie.dir/src/toolboxManager.cpp.o.provides.build: CMakeFiles/zombie
 
 CMakeFiles/zombie.dir/src/toolboxSlot.cpp.o: CMakeFiles/zombie.dir/flags.make
 CMakeFiles/zombie.dir/src/toolboxSlot.cpp.o: ../src/toolboxSlot.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/markpedersen/Desktop/zombified/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_50) "Building CXX object CMakeFiles/zombie.dir/src/toolboxSlot.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/markpedersen/Desktop/zombified/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_49) "Building CXX object CMakeFiles/zombie.dir/src/toolboxSlot.cpp.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/zombie.dir/src/toolboxSlot.cpp.o -c /Users/markpedersen/Desktop/zombified/src/toolboxSlot.cpp
 
 CMakeFiles/zombie.dir/src/toolboxSlot.cpp.i: cmake_force
@@ -1259,7 +1235,7 @@ CMakeFiles/zombie.dir/src/toolboxSlot.cpp.o.provides.build: CMakeFiles/zombie.di
 
 CMakeFiles/zombie.dir/src/tree.cpp.o: CMakeFiles/zombie.dir/flags.make
 CMakeFiles/zombie.dir/src/tree.cpp.o: ../src/tree.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/markpedersen/Desktop/zombified/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_51) "Building CXX object CMakeFiles/zombie.dir/src/tree.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/markpedersen/Desktop/zombified/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_50) "Building CXX object CMakeFiles/zombie.dir/src/tree.cpp.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/zombie.dir/src/tree.cpp.o -c /Users/markpedersen/Desktop/zombified/src/tree.cpp
 
 CMakeFiles/zombie.dir/src/tree.cpp.i: cmake_force
@@ -1283,7 +1259,7 @@ CMakeFiles/zombie.dir/src/tree.cpp.o.provides.build: CMakeFiles/zombie.dir/src/t
 
 CMakeFiles/zombie.dir/src/viewHelper.cpp.o: CMakeFiles/zombie.dir/flags.make
 CMakeFiles/zombie.dir/src/viewHelper.cpp.o: ../src/viewHelper.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/markpedersen/Desktop/zombified/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_52) "Building CXX object CMakeFiles/zombie.dir/src/viewHelper.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/markpedersen/Desktop/zombified/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_51) "Building CXX object CMakeFiles/zombie.dir/src/viewHelper.cpp.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/zombie.dir/src/viewHelper.cpp.o -c /Users/markpedersen/Desktop/zombified/src/viewHelper.cpp
 
 CMakeFiles/zombie.dir/src/viewHelper.cpp.i: cmake_force
@@ -1307,7 +1283,7 @@ CMakeFiles/zombie.dir/src/viewHelper.cpp.o.provides.build: CMakeFiles/zombie.dir
 
 CMakeFiles/zombie.dir/src/water.cpp.o: CMakeFiles/zombie.dir/flags.make
 CMakeFiles/zombie.dir/src/water.cpp.o: ../src/water.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/markpedersen/Desktop/zombified/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_53) "Building CXX object CMakeFiles/zombie.dir/src/water.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/markpedersen/Desktop/zombified/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_52) "Building CXX object CMakeFiles/zombie.dir/src/water.cpp.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/zombie.dir/src/water.cpp.o -c /Users/markpedersen/Desktop/zombified/src/water.cpp
 
 CMakeFiles/zombie.dir/src/water.cpp.i: cmake_force
@@ -1331,7 +1307,7 @@ CMakeFiles/zombie.dir/src/water.cpp.o.provides.build: CMakeFiles/zombie.dir/src/
 
 CMakeFiles/zombie.dir/src/world.cpp.o: CMakeFiles/zombie.dir/flags.make
 CMakeFiles/zombie.dir/src/world.cpp.o: ../src/world.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/markpedersen/Desktop/zombified/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_54) "Building CXX object CMakeFiles/zombie.dir/src/world.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/markpedersen/Desktop/zombified/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_53) "Building CXX object CMakeFiles/zombie.dir/src/world.cpp.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/zombie.dir/src/world.cpp.o -c /Users/markpedersen/Desktop/zombified/src/world.cpp
 
 CMakeFiles/zombie.dir/src/world.cpp.i: cmake_force
@@ -1355,7 +1331,7 @@ CMakeFiles/zombie.dir/src/world.cpp.o.provides.build: CMakeFiles/zombie.dir/src/
 
 CMakeFiles/zombie.dir/src/worldtexture.cpp.o: CMakeFiles/zombie.dir/flags.make
 CMakeFiles/zombie.dir/src/worldtexture.cpp.o: ../src/worldtexture.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/markpedersen/Desktop/zombified/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_55) "Building CXX object CMakeFiles/zombie.dir/src/worldtexture.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/markpedersen/Desktop/zombified/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_54) "Building CXX object CMakeFiles/zombie.dir/src/worldtexture.cpp.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/zombie.dir/src/worldtexture.cpp.o -c /Users/markpedersen/Desktop/zombified/src/worldtexture.cpp
 
 CMakeFiles/zombie.dir/src/worldtexture.cpp.i: cmake_force
@@ -1379,7 +1355,7 @@ CMakeFiles/zombie.dir/src/worldtexture.cpp.o.provides.build: CMakeFiles/zombie.d
 
 CMakeFiles/zombie.dir/src/zombie.cpp.o: CMakeFiles/zombie.dir/flags.make
 CMakeFiles/zombie.dir/src/zombie.cpp.o: ../src/zombie.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/markpedersen/Desktop/zombified/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_56) "Building CXX object CMakeFiles/zombie.dir/src/zombie.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/markpedersen/Desktop/zombified/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_55) "Building CXX object CMakeFiles/zombie.dir/src/zombie.cpp.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/zombie.dir/src/zombie.cpp.o -c /Users/markpedersen/Desktop/zombified/src/zombie.cpp
 
 CMakeFiles/zombie.dir/src/zombie.cpp.i: cmake_force
@@ -1403,7 +1379,7 @@ CMakeFiles/zombie.dir/src/zombie.cpp.o.provides.build: CMakeFiles/zombie.dir/src
 
 CMakeFiles/zombie.dir/src/zombieManager.cpp.o: CMakeFiles/zombie.dir/flags.make
 CMakeFiles/zombie.dir/src/zombieManager.cpp.o: ../src/zombieManager.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/markpedersen/Desktop/zombified/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_57) "Building CXX object CMakeFiles/zombie.dir/src/zombieManager.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/markpedersen/Desktop/zombified/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_56) "Building CXX object CMakeFiles/zombie.dir/src/zombieManager.cpp.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/zombie.dir/src/zombieManager.cpp.o -c /Users/markpedersen/Desktop/zombified/src/zombieManager.cpp
 
 CMakeFiles/zombie.dir/src/zombieManager.cpp.i: cmake_force
@@ -1427,7 +1403,7 @@ CMakeFiles/zombie.dir/src/zombieManager.cpp.o.provides.build: CMakeFiles/zombie.
 
 CMakeFiles/zombie.dir/src/gl3w.c.o: CMakeFiles/zombie.dir/flags.make
 CMakeFiles/zombie.dir/src/gl3w.c.o: ../src/gl3w.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/markpedersen/Desktop/zombified/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_58) "Building C object CMakeFiles/zombie.dir/src/gl3w.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/markpedersen/Desktop/zombified/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_57) "Building C object CMakeFiles/zombie.dir/src/gl3w.c.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/zombie.dir/src/gl3w.c.o   -c /Users/markpedersen/Desktop/zombified/src/gl3w.c
 
 CMakeFiles/zombie.dir/src/gl3w.c.i: cmake_force
@@ -1451,7 +1427,7 @@ CMakeFiles/zombie.dir/src/gl3w.c.o.provides.build: CMakeFiles/zombie.dir/src/gl3
 
 CMakeFiles/zombie.dir/src/tmxparser/miniz.c.o: CMakeFiles/zombie.dir/flags.make
 CMakeFiles/zombie.dir/src/tmxparser/miniz.c.o: ../src/tmxparser/miniz.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/markpedersen/Desktop/zombified/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_59) "Building C object CMakeFiles/zombie.dir/src/tmxparser/miniz.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/markpedersen/Desktop/zombified/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_58) "Building C object CMakeFiles/zombie.dir/src/tmxparser/miniz.c.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/zombie.dir/src/tmxparser/miniz.c.o   -c /Users/markpedersen/Desktop/zombified/src/tmxparser/miniz.c
 
 CMakeFiles/zombie.dir/src/tmxparser/miniz.c.i: cmake_force
@@ -1480,7 +1456,6 @@ zombie_OBJECTS = \
 "CMakeFiles/zombie.dir/src/Kinetic.cpp.o" \
 "CMakeFiles/zombie.dir/src/Limb.cpp.o" \
 "CMakeFiles/zombie.dir/src/MapGrid.cpp.o" \
-"CMakeFiles/zombie.dir/src/PhysicalBody.cpp.o" \
 "CMakeFiles/zombie.dir/src/Physics.cpp.o" \
 "CMakeFiles/zombie.dir/src/ToolManager.cpp.o" \
 "CMakeFiles/zombie.dir/src/antidote.cpp.o" \
@@ -1543,7 +1518,6 @@ zombie: CMakeFiles/zombie.dir/src/KMeans.cpp.o
 zombie: CMakeFiles/zombie.dir/src/Kinetic.cpp.o
 zombie: CMakeFiles/zombie.dir/src/Limb.cpp.o
 zombie: CMakeFiles/zombie.dir/src/MapGrid.cpp.o
-zombie: CMakeFiles/zombie.dir/src/PhysicalBody.cpp.o
 zombie: CMakeFiles/zombie.dir/src/Physics.cpp.o
 zombie: CMakeFiles/zombie.dir/src/ToolManager.cpp.o
 zombie: CMakeFiles/zombie.dir/src/antidote.cpp.o
@@ -1607,7 +1581,7 @@ zombie: /usr/local/lib/libSDL.dylib
 zombie: /usr/lib/libz.dylib
 zombie: /usr/local/lib/libfreetype.dylib
 zombie: CMakeFiles/zombie.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/markpedersen/Desktop/zombified/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_60) "Linking CXX executable zombie"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/markpedersen/Desktop/zombified/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_59) "Linking CXX executable zombie"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/zombie.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -1620,7 +1594,6 @@ CMakeFiles/zombie.dir/requires: CMakeFiles/zombie.dir/src/KMeans.cpp.o.requires
 CMakeFiles/zombie.dir/requires: CMakeFiles/zombie.dir/src/Kinetic.cpp.o.requires
 CMakeFiles/zombie.dir/requires: CMakeFiles/zombie.dir/src/Limb.cpp.o.requires
 CMakeFiles/zombie.dir/requires: CMakeFiles/zombie.dir/src/MapGrid.cpp.o.requires
-CMakeFiles/zombie.dir/requires: CMakeFiles/zombie.dir/src/PhysicalBody.cpp.o.requires
 CMakeFiles/zombie.dir/requires: CMakeFiles/zombie.dir/src/Physics.cpp.o.requires
 CMakeFiles/zombie.dir/requires: CMakeFiles/zombie.dir/src/ToolManager.cpp.o.requires
 CMakeFiles/zombie.dir/requires: CMakeFiles/zombie.dir/src/antidote.cpp.o.requires

@@ -3,6 +3,8 @@
 //
 #include "MapGrid.h"
 
+#define SCALING 300
+
 using namespace std;
 
 MapGrid *MapGrid::instance = nullptr;
@@ -58,7 +60,7 @@ void MapGrid::removeOccupant(Kinetic *occupant) {
     }
 }
 
-vector<Kinetic *> MapGrid::getPossibleColliders(int x, int y) {
+vector<Kinetic*> MapGrid::getPossibleColliders(int x, int y) {
     return mapdata[x][y]->getPopulation();
 }
 

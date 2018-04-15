@@ -100,8 +100,6 @@ CMakeFiles/zombie.dir/src/MapGrid.cpp.o
  /Users/markpedersen/Desktop/zombified/src/punchright.hpp
  /Users/markpedersen/Desktop/zombified/src/viewHelper.hpp
  /Users/markpedersen/Desktop/zombified/src/water.hpp
-CMakeFiles/zombie.dir/src/PhysicalBody.cpp.o
- /Users/markpedersen/Desktop/zombified/src/PhysicalBody.cpp
 CMakeFiles/zombie.dir/src/Physics.cpp.o
  /Users/markpedersen/Desktop/zombified/src/Physics.cpp
 CMakeFiles/zombie.dir/src/ToolManager.cpp.o

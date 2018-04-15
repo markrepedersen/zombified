@@ -200,8 +200,8 @@ void LimbsManager::computePaths(float ms, const MapGrid &mapGrid) {
             }
             float step = 50 * (ms / 1000);
             vec2 dir;
-            dir.x = nextNode.x * 500 - limb.get_position().x;
-            dir.y = nextNode.y * 500 - limb.get_position().y;
+            dir.x = nextNode.x * 300 - limb.get_position().x;
+            dir.y = nextNode.y * 300 - limb.get_position().y;
 
             auto next_pos = scale(step, normalize(dir));
 

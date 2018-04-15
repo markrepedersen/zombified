@@ -168,8 +168,6 @@ missile.hpp
 player1.hpp
 /Users/markpedersen/Desktop/zombified/src/player1.hpp
 
-/Users/markpedersen/Desktop/zombified/src/PhysicalBody.cpp
-
 /Users/markpedersen/Desktop/zombified/src/Physics.cpp
 
 /Users/markpedersen/Desktop/zombified/src/ToolManager.cpp
