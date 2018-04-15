@@ -10,7 +10,7 @@ bool Worldtexture::init(vec2 screen)
     // Load shared texture
     if (!world_texture.is_valid())
     {
-        if (!world_texture.load_from_file(background_textures_path("background2.png")))
+        if (!world_texture.load_from_file(background_textures_path("background3.png")))
         {
             fprintf(stderr, "Failed to load start button texture!");
             return false;
@@ -57,10 +57,10 @@ bool Worldtexture::init(vec2 screen)
         return false;
     
     // Setting initial values
-    m_scale.x = -0.29f * ViewHelper::getRatio();
-    m_scale.y = 0.29f * ViewHelper::getRatio();
+    m_scale.x = -0.59f * ViewHelper::getRatio();
+    m_scale.y = 0.51f * ViewHelper::getRatio();
     float xpos = (screen.x*0.5) * ViewHelper::getRatio();
-    float ypos = (screen.y*0.5 +38) * ViewHelper::getRatio();
+    float ypos = (screen.y*0.5) * ViewHelper::getRatio();
     m_position = { xpos, ypos };
     
     return true;

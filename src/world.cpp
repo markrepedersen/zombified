@@ -943,21 +943,21 @@ void World::on_mouse_move(GLFWwindow *window, int button, int action, int mod) {
             
         }
     }
-    /*else {
+    else {
         if (glfwGetMouseButton(window, GLFW_MOUSE_BUTTON_1) == GLFW_RELEASE) {
 
-            // std::cout << "mapCollisionPoints.push_back({ " << xpos << "f * ViewHelper::getRatio(), " << ypos << "f * ViewHelper::getRatio()});" << std::endl;
-            //std::cout << "xpos: " << xpos << std::endl;
-            //std::cout << "ypos: " << ypos << std::endl;
-            //std::cout << "player pos: " << m_player1.get_position().x << ", " << m_player1.get_position().y
-                      //<< std::endl;
-            if (isInsidePolygon(mapCollisionPoints, {(float)xpos * ViewHelper::getRatio(), (float)ypos * ViewHelper::getRatio()})) {
-                std::cout << "yes it's inside polygon" << std::endl;
-            } else {
-                std::cout << "nope, it's outside the polygon" << std::endl;
-            }
+             std::cout << "mapCollisionPoints.push_back({ " << xpos << "f * ViewHelper::getRatio(), " << ypos << "f * ViewHelper::getRatio()});" << std::endl;
+//            std::cout << "xpos: " << xpos << std::endl;
+//            std::cout << "ypos: " << ypos << std::endl;
+//            std::cout << "player pos: " << m_player1.get_position().x << ", " << m_player1.get_position().y
+//                      << std::endl;
+//            if (isInsidePolygon(mapCollisionPoints, {(float)xpos * ViewHelper::getRatio(), (float)ypos * ViewHelper::getRatio()})) {
+//                std::cout << "yes it's inside polygon" << std::endl;
+//            } else {
+//                std::cout << "nope, it's outside the polygon" << std::endl;
+//            }
         }
-    }*/
+    }
 }
 
 bool World::spawn_freeze() {
@@ -2067,40 +2067,44 @@ void World::autoExplodeMissile(Missile missile, int position) {
 
 void World::populateMapCollisionPoints() {
 
-    mapCollisionPoints.push_back({223.867f * ViewHelper::getRatio(), 247.844f * ViewHelper::getRatio()});
-    mapCollisionPoints.push_back({253.789f * ViewHelper::getRatio(), 207.f * ViewHelper::getRatio()});
-    mapCollisionPoints.push_back({222.035f * ViewHelper::getRatio(), 135.445f * ViewHelper::getRatio()});
-    mapCollisionPoints.push_back({280.605f * ViewHelper::getRatio(), 91.4688f * ViewHelper::getRatio()});
-    mapCollisionPoints.push_back({399.387f * ViewHelper::getRatio(), 73.6523f * ViewHelper::getRatio()});
-    mapCollisionPoints.push_back({383.434f * ViewHelper::getRatio(), 54.6992f * ViewHelper::getRatio()});
-    mapCollisionPoints.push_back({450.113f * ViewHelper::getRatio(), 37.8789f * ViewHelper::getRatio()});
-    mapCollisionPoints.push_back({574.777f * ViewHelper::getRatio(), 36.1602f * ViewHelper::getRatio()});
-    mapCollisionPoints.push_back({638.223f * ViewHelper::getRatio(), 52.457f * ViewHelper::getRatio()});
-    mapCollisionPoints.push_back({802.496f * ViewHelper::getRatio(), 36.4766f * ViewHelper::getRatio()});
-    mapCollisionPoints.push_back({947.973f * ViewHelper::getRatio(), 41.2305f * ViewHelper::getRatio()});
-    mapCollisionPoints.push_back({990.297f * ViewHelper::getRatio(), 57.4141f * ViewHelper::getRatio()});
-    mapCollisionPoints.push_back({1048.98f * ViewHelper::getRatio(), 48.7969f * ViewHelper::getRatio()});
-    mapCollisionPoints.push_back({1002.9f * ViewHelper::getRatio(), 97.2695f * ViewHelper::getRatio()});
-    mapCollisionPoints.push_back({983.055f * ViewHelper::getRatio(), 154.824f * ViewHelper::getRatio()});
-    mapCollisionPoints.push_back({995.055f * ViewHelper::getRatio(), 183.164f * ViewHelper::getRatio()});
-    mapCollisionPoints.push_back({970.074f * ViewHelper::getRatio(), 200.82f * ViewHelper::getRatio()});
-    mapCollisionPoints.push_back({930.824f * ViewHelper::getRatio(), 272.875f * ViewHelper::getRatio()});
-    mapCollisionPoints.push_back({979.504f * ViewHelper::getRatio(), 296.066f * ViewHelper::getRatio()});
-    mapCollisionPoints.push_back({1097.2f * ViewHelper::getRatio(), 329.453f * ViewHelper::getRatio()});
-    mapCollisionPoints.push_back({1103.01f * ViewHelper::getRatio(), 379.234f * ViewHelper::getRatio()});
-    mapCollisionPoints.push_back({1001.41f * ViewHelper::getRatio(), 426.199f * ViewHelper::getRatio()});
-    mapCollisionPoints.push_back({960.559f * ViewHelper::getRatio(), 495.484f * ViewHelper::getRatio()});
-    mapCollisionPoints.push_back({859.465f * ViewHelper::getRatio(), 491.738f * ViewHelper::getRatio()});
-    mapCollisionPoints.push_back({739.609f * ViewHelper::getRatio(), 510.684f * ViewHelper::getRatio()});
-    mapCollisionPoints.push_back({613.824f * ViewHelper::getRatio(), 583.027f * ViewHelper::getRatio()});
-    mapCollisionPoints.push_back({329.875f * ViewHelper::getRatio(), 479.305f * ViewHelper::getRatio()});
-    mapCollisionPoints.push_back({307.199f * ViewHelper::getRatio(), 414.918f * ViewHelper::getRatio()});
-    mapCollisionPoints.push_back({271.188f * ViewHelper::getRatio(), 407.184f * ViewHelper::getRatio()});
-    mapCollisionPoints.push_back({256.871f * ViewHelper::getRatio(), 368.508f * ViewHelper::getRatio()});
-    mapCollisionPoints.push_back({195.324f * ViewHelper::getRatio(), 338.215f * ViewHelper::getRatio()});
-    mapCollisionPoints.push_back({164.711f * ViewHelper::getRatio(), 316.941f * ViewHelper::getRatio()});
-    mapCollisionPoints.push_back({187.73f * ViewHelper::getRatio(), 254.641f * ViewHelper::getRatio()});
-
+    mapCollisionPoints.push_back({ 47.3633f * ViewHelper::getRatio(), 371.539f * ViewHelper::getRatio()});
+    mapCollisionPoints.push_back({ 40.1484f * ViewHelper::getRatio(), 292.309f * ViewHelper::getRatio()});
+    mapCollisionPoints.push_back({ 96.5586f * ViewHelper::getRatio(), 252.488f * ViewHelper::getRatio()});
+    mapCollisionPoints.push_back({ 142.387f * ViewHelper::getRatio(), 203.789f * ViewHelper::getRatio()});
+    mapCollisionPoints.push_back({ 139.512f * ViewHelper::getRatio(), 181.172f * ViewHelper::getRatio()});
+    mapCollisionPoints.push_back({ 176.07f * ViewHelper::getRatio(), 152.285f * ViewHelper::getRatio()});
+    mapCollisionPoints.push_back({ 256.551f * ViewHelper::getRatio(), 152.48f * ViewHelper::getRatio()});
+    mapCollisionPoints.push_back({ 261.172f * ViewHelper::getRatio(), 137.648f * ViewHelper::getRatio()});
+    mapCollisionPoints.push_back({ 334.645f * ViewHelper::getRatio(), 102.211f * ViewHelper::getRatio()});
+    mapCollisionPoints.push_back({ 422.746f * ViewHelper::getRatio(), 60.7383f * ViewHelper::getRatio()});
+    mapCollisionPoints.push_back({ 601.715f * ViewHelper::getRatio(), 96.6602f * ViewHelper::getRatio()});
+    mapCollisionPoints.push_back({ 690.293f * ViewHelper::getRatio(), 96.0742f * ViewHelper::getRatio()});
+    mapCollisionPoints.push_back({ 774.266f * ViewHelper::getRatio(), 81.8281f * ViewHelper::getRatio()});
+    mapCollisionPoints.push_back({ 794.629f * ViewHelper::getRatio(), 87.1016f * ViewHelper::getRatio()});
+    mapCollisionPoints.push_back({ 814.023f * ViewHelper::getRatio(), 63.6406f * ViewHelper::getRatio()});
+    mapCollisionPoints.push_back({ 878.555f * ViewHelper::getRatio(), 83.2891f * ViewHelper::getRatio()});
+    mapCollisionPoints.push_back({ 958.617f * ViewHelper::getRatio(), 95.7852f * ViewHelper::getRatio()});
+    mapCollisionPoints.push_back({ 1007.97f * ViewHelper::getRatio(), 122.348f * ViewHelper::getRatio()});
+    mapCollisionPoints.push_back({ 1062.52f * ViewHelper::getRatio(), 101.793f * ViewHelper::getRatio()});
+    mapCollisionPoints.push_back({ 1182.62f * ViewHelper::getRatio(), 117.871f * ViewHelper::getRatio()});
+    mapCollisionPoints.push_back({ 1136.04f * ViewHelper::getRatio(), 138.668f * ViewHelper::getRatio()});
+    mapCollisionPoints.push_back({ 1134.95f * ViewHelper::getRatio(), 218.684f * ViewHelper::getRatio()});
+    mapCollisionPoints.push_back({ 1189.22f * ViewHelper::getRatio(), 247.887f * ViewHelper::getRatio()});
+    mapCollisionPoints.push_back({ 1179.44f * ViewHelper::getRatio(), 290.305f * ViewHelper::getRatio()});
+    mapCollisionPoints.push_back({ 1223.39f * ViewHelper::getRatio(), 286.859f * ViewHelper::getRatio()});
+    mapCollisionPoints.push_back({ 1252.36f * ViewHelper::getRatio(), 309.699f * ViewHelper::getRatio()});
+    mapCollisionPoints.push_back({ 1245.82f * ViewHelper::getRatio(), 379.09f * ViewHelper::getRatio()});
+    mapCollisionPoints.push_back({ 1172.02f * ViewHelper::getRatio(), 431.262f * ViewHelper::getRatio()});
+    mapCollisionPoints.push_back({ 1023.17f * ViewHelper::getRatio(), 477.641f * ViewHelper::getRatio()});
+    mapCollisionPoints.push_back({ 1043.39f * ViewHelper::getRatio(), 510.52f * ViewHelper::getRatio()});
+    mapCollisionPoints.push_back({ 834.137f * ViewHelper::getRatio(), 565.66f * ViewHelper::getRatio()});
+    mapCollisionPoints.push_back({ 722.289f * ViewHelper::getRatio(), 554.605f * ViewHelper::getRatio()});
+    mapCollisionPoints.push_back({ 598.59f * ViewHelper::getRatio(), 612.293f * ViewHelper::getRatio()});
+    mapCollisionPoints.push_back({ 307.602f * ViewHelper::getRatio(), 521.102f * ViewHelper::getRatio()});
+    mapCollisionPoints.push_back({ 288.453f * ViewHelper::getRatio(), 457.098f * ViewHelper::getRatio()});
+    mapCollisionPoints.push_back({ 256.238f * ViewHelper::getRatio(), 469.301f * ViewHelper::getRatio()});
+    mapCollisionPoints.push_back({ 86.1797f * ViewHelper::getRatio(), 393.562f * ViewHelper::getRatio()});
+    mapCollisionPoints.push_back({ 91.6211f * ViewHelper::getRatio(), 374.586f * ViewHelper::getRatio()});
 }
 
 int World::saveToFile(string winnername) {
