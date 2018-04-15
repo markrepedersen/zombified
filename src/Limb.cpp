@@ -3,11 +3,8 @@
 //
 
 #include "Limb.h"
-#include "viewHelper.hpp"
-#include "MapGrid.h"
+#include <iostream>
 
-static const std::string ARM_TYPE = "leg";
-static const std::string LEG_TYPE = "arm";
 
 Texture Limb::leg_texture;
 Texture Limb::arm_texture;
@@ -169,7 +166,6 @@ void Limb::draw(const mat3& projection)
 
 void Limb::destroy()
 {
-    MapGrid::GetInstance()->removeOccupant(this);
     glDeleteBuffers(1, &mesh.vbo);
     glDeleteBuffers(1, &mesh.ibo);
     glDeleteVertexArrays(1, &mesh.vao);
@@ -211,23 +207,23 @@ void Limb::setLastTarget(vec2 target) {
     this->last_target = target;
 }
 
-vec2 &Limb::getCurrentTarget() {
+vec2 Limb::getCurrentTarget()const {
     return cur_target;
 }
 
-vec2 &Limb::getLastTarget() {
+vec2 Limb::getLastTarget()const {
     return last_target;
 }
 
-JPS::PathVector &Limb::getCurrentPath() {
+JPS::PathVector Limb::getCurrentPath()const {
     return currentPath;
 }
 
-JPS::PathVector &Limb::getLastPath() {
+JPS::PathVector Limb::getLastPath()const {
     return lastPath;
 }
 
-vec2 &Limb::get_position() {
+vec2 Limb::get_position()const {
     return m_position;
 }
 
@@ -236,9 +232,7 @@ void Limb::set_position(vec2 position) {
 }
  
 void Limb::move(vec2 pos) {
-    MapGrid::GetInstance()->removeOccupant(this);
     this->m_position += pos;
-    MapGrid::GetInstance()->addOccupant(this);
     animate();
 }
 
@@ -268,52 +262,4 @@ time_t Limb::getLegTime(){
     }
 }
 
-void Limb::on_player1_collision(Kinetic *player) {
-    printf("player1");
-}
-
-void Limb::on_player2_collision(Kinetic *player) {
-    printf("player2");
-}
-
-void Limb::on_antidote_collision(Kinetic *antidote) {
-    printf("antidote");
-}
-
-void Limb::on_limb_collision(Kinetic *limb) {
-    printf("limb");
-}
-
-void Limb::on_armour_collision(Kinetic *player) {
-    printf("armour");
-}
-
-void Limb::on_explosion_collision(Kinetic *explosion) {
-    printf("explosion");
-}
-
-void Limb::on_ice_collision(Kinetic *ice) {
-    printf("ice");
-}
-
-void Limb::on_missile_collision(Kinetic *missile) {
-    printf("missile");
-}
-
-void Limb::on_water_collision(Kinetic *water) {
-    printf("water");
-}
-
-void Limb::on_zombie_collision(Kinetic *zombie) {
-    printf("zombie");
-}
-
-vec2 Limb::getAABB() {
-    // fabs is to avoid negative scale due to the facing direction
-    if (type == "arm") {
-        return { std::fabs(m_scale.x) * sprite_width_arm, std::fabs(m_scale.y) * sprite_height_arm };
-    } else {
-        return { std::fabs(m_scale.x) * sprite_width_leg, std::fabs(m_scale.y) * sprite_height_leg };
-    }
-}
 

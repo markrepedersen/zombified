@@ -1,12 +1,13 @@
 #pragma once
 
 #include "common.hpp"
-#include "Kinetic.h"
+#include "viewHelper.hpp"
+#include "toolboxManager.hpp"
 #include <vector>
 #include <tuple>
 #include <unistd.h>
 
-class Missile : public Kinetic
+class Missile : public Renderable
 {
     static Texture missile_texture;
 public:
@@ -35,6 +36,8 @@ public:
     
     vec2 get_bounding_box()const;
     
+    void move(vec2 pos);
+    
     bool collides_with(const Missile& missile);
     
     float get_force(float mass, float speed, vec2 objPosition);
@@ -43,21 +46,7 @@ public:
     
     int useMissileOnPlayer;
     vec2 onPlayerPos;
-
-    void on_player1_collision(Kinetic *player)override;
-    void on_player2_collision(Kinetic *player)override;
-    void on_antidote_collision(Kinetic *antidote)override;
-    void on_limb_collision(Kinetic *limb)override;
-    void on_armour_collision(Kinetic *player)override;
-    void on_explosion_collision(Kinetic *explosion)override;
-    void on_ice_collision(Kinetic *ice)override;
-    void on_missile_collision(Kinetic *missile)override;
-    void on_water_collision(Kinetic *water)override;
-    void on_zombie_collision(Kinetic *zombie)override;
-
-    vec2 getAABB()override;
-
-
+    
 private:
     bool m_is_alive; // True if the salmon is alive
 	float m_rotation;

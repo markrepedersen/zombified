@@ -1,7 +1,5 @@
 // Header
 #include "water.hpp"
-#include "viewHelper.hpp"
-#include "MapGrid.h"
 
 #include <cmath>
 
@@ -143,7 +141,6 @@ bool Water::is_alive()const
 
 void Water::destroy()
 {
-    MapGrid::GetInstance()->removeOccupant(this);
     glDeleteBuffers(1, &mesh.vbo);
     glDeleteBuffers(1, &mesh.ibo);
     glDeleteVertexArrays(1, &mesh.vao);
@@ -156,39 +153,5 @@ void Water::destroy()
 vec2 Water::get_bounding_box()const
 {
     // fabs is to avoid negative scale due to the facing direction
-    return { std::fabs(m_scale.x) * water_texture.width, std::fabs(m_scale.y) * water_texture.height };
-}
-
-void Water::on_player1_collision(Kinetic *player) {
-}
-
-void Water::on_player2_collision(Kinetic *player) {
-}
-
-void Water::on_antidote_collision(Kinetic *antidote) {
-}
-
-void Water::on_limb_collision(Kinetic *limb) {
-}
-
-void Water::on_armour_collision(Kinetic *player) {
-}
-
-void Water::on_explosion_collision(Kinetic *explosion) {
-}
-
-void Water::on_ice_collision(Kinetic *ice) {
-}
-
-void Water::on_missile_collision(Kinetic *missile) {
-}
-
-void Water::on_water_collision(Kinetic *water) {
-}
-
-void Water::on_zombie_collision(Kinetic *zombie) {
-}
-
-vec2 Water::getAABB() {
     return { std::fabs(m_scale.x) * water_texture.width, std::fabs(m_scale.y) * water_texture.height };
 }

@@ -1,6 +1,5 @@
 // Header
 #include "player2.hpp"
-#include "MapGrid.h"
 
 Texture Player2::player2_texture;
 
@@ -329,6 +328,11 @@ void Player2::update(float ms) {
     }
 }
 
+void Player2::move(vec2 off) {
+    m_position.x += off.x;
+    m_position.y += off.y;
+}
+
 void Player2::animate() {
     auto curr_time = std::chrono::high_resolution_clock::now();
     int milliseconds = std::chrono::duration_cast<std::chrono::milliseconds>(curr_time - start_time_p2).count();
@@ -385,7 +389,7 @@ bool Player2::collides_with(const Water &water) {
     return false;
 }
 
-bool Player2::collides_with(Limb &limb) {
+bool Player2::collides_with(const Limb &limb) {
     float dx = m_position.x - limb.get_position().x;
     float dy = m_position.y - limb.get_position().y;
     float d_sq = dx * dx + dy * dy;
@@ -512,46 +516,11 @@ bool Player2::isBoundingBoxForFeetInsidePolygon(float dx, float dy) {
 }
 
 void Player2::destroy() {
-    MapGrid::GetInstance()->removeOccupant(this);
     glDeleteBuffers(1, &mesh.vbo);
     glDeleteBuffers(1, &mesh.ibo);
     glDeleteVertexArrays(1, &mesh.vao);
-
+    
     glDeleteShader(effect.vertex);
     glDeleteShader(effect.fragment);
     glDeleteProgram(effect.program);
-}
-
-void Player2::on_player1_collision(Kinetic *player) {
-}
-
-void Player2::on_player2_collision(Kinetic *player) {
-}
-
-void Player2::on_antidote_collision(Kinetic *antidote) {
-}
-
-void Player2::on_limb_collision(Kinetic *limb) {
-}
-
-void Player2::on_armour_collision(Kinetic *player) {
-}
-
-void Player2::on_explosion_collision(Kinetic *explosion) {
-}
-
-void Player2::on_ice_collision(Kinetic *ice) {
-}
-
-void Player2::on_missile_collision(Kinetic *missile) {
-}
-
-void Player2::on_water_collision(Kinetic *water) {
-}
-
-void Player2::on_zombie_collision(Kinetic *zombie) {
-}
-
-vec2 Player2::getAABB() {
-    return {std::fabs(m_scale.x) * sprite_width_p2, std::fabs(m_scale.y) * sprite_height_p2};
 }

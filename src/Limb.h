@@ -6,11 +6,11 @@
 #define ZOMBIE_LIMB_H
 
 #include "JPS.h"
+#include "viewHelper.hpp"
 #include "common.hpp"
-#include "Kinetic.h"
 #include <time.h>
 
-class Limb : public Kinetic {
+class Limb : public Renderable {
 
 static Texture leg_texture;
 static Texture arm_texture;
@@ -32,19 +32,19 @@ public:
 
     void setLastTarget(vec2 target);
 
-    vec2 &getCurrentTarget();
+    vec2 getCurrentTarget()const;
 
-    vec2 &getLastTarget();
+    vec2 getLastTarget()const;
 
-    JPS::PathVector &getCurrentPath();
+    JPS::PathVector getCurrentPath()const;
 
-    JPS::PathVector &getLastPath();
+    JPS::PathVector getLastPath()const;
 
-    vec2 &get_position();
+    vec2 get_position()const;
 
     void set_position(vec2 position);
 
-    void move(vec2 pos)override;
+    void move(vec2 pos);
 
     std::string getLimbType();
 
@@ -59,24 +59,12 @@ public:
     
     time_t legTime;
 
-    void on_player1_collision(Kinetic *player)override;
-    void on_player2_collision(Kinetic *player)override;
-    void on_antidote_collision(Kinetic *antidote)override;
-    void on_limb_collision(Kinetic *limb)override;
-    void on_armour_collision(Kinetic *player)override;
-    void on_explosion_collision(Kinetic *explosion)override;
-    void on_ice_collision(Kinetic *ice)override;
-    void on_missile_collision(Kinetic *missile)override;
-    void on_water_collision(Kinetic *water)override;
-    void on_zombie_collision(Kinetic *zombie)override;
-
-    vec2 getAABB()override;
-
 protected:
     vec2 cur_target;
     vec2 last_target;
     JPS::PathVector lastPath;
     JPS::PathVector currentPath;
+    vec2 m_position;
     vec2 m_scale;
     std::string type;
     bool initialized = false;

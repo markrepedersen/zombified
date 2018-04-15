@@ -1,7 +1,5 @@
 // Header
 #include "punchleft.hpp"
-#include "viewHelper.hpp"
-#include "MapGrid.h"
 
 #include <cmath>
 
@@ -137,7 +135,6 @@ bool Punchleft::is_alive()const
 
 void Punchleft::destroy()
 {
-    MapGrid::GetInstance()->removeOccupant(this);
     glDeleteBuffers(1, &mesh.vbo);
     glDeleteBuffers(1, &mesh.ibo);
     glDeleteVertexArrays(1, &mesh.vao);
@@ -150,50 +147,5 @@ void Punchleft::destroy()
 vec2 Punchleft::get_bounding_box()const
 {
     // fabs is to avoid negative scale due to the facing direction
-    return { std::fabs(m_scale.x) * punchleft_texture.width+30.f, std::fabs(m_scale.y) * punchleft_texture.height };
-}
-
-
-void Punchleft::on_player1_collision(Kinetic *player) {
-    printf("player1");
-}
-
-void Punchleft::on_player2_collision(Kinetic *player) {
-    printf("player2");
-}
-
-void Punchleft::on_antidote_collision(Kinetic *antidote) {
-    printf("antidote");
-}
-
-void Punchleft::on_limb_collision(Kinetic *limb) {
-    printf("limb");
-}
-
-void Punchleft::on_armour_collision(Kinetic *player) {
-    printf("armour");
-}
-
-void Punchleft::on_explosion_collision(Kinetic *explosion) {
-    printf("explosion");
-}
-
-void Punchleft::on_ice_collision(Kinetic *ice) {
-    printf("ice");
-}
-
-void Punchleft::on_missile_collision(Kinetic *missile) {
-    printf("missile");
-}
-
-void Punchleft::on_water_collision(Kinetic *water) {
-    printf("water");
-}
-
-void Punchleft::on_zombie_collision(Kinetic *zombie) {
-    printf("zombie");
-}
-
-vec2 Punchleft::getAABB() {
     return { std::fabs(m_scale.x) * punchleft_texture.width+30.f, std::fabs(m_scale.y) * punchleft_texture.height };
 }

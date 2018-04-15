@@ -1,6 +1,5 @@
 // Header
 #include "tree.hpp"
-#include "MapGrid.h"
 
 #include <cmath>
 
@@ -167,7 +166,6 @@ void Tree::set_explode(bool exploded)
 
 void Tree::destroy()
 {
-    MapGrid::GetInstance()->removeOccupant(this);
     glDeleteBuffers(1, &mesh.vbo);
     glDeleteBuffers(1, &mesh.ibo);
     glDeleteVertexArrays(1, &mesh.vao);
@@ -180,49 +178,5 @@ void Tree::destroy()
 vec2 Tree::get_bounding_box()const
 {
     // fabs is to avoid negative scale due to the facing direction
-    return { std::fabs(m_scale.x) * tree_texture.width, std::fabs(m_scale.y) * tree_texture.height };
-}
-
-void Tree::on_player1_collision(Kinetic *player) {
-    printf("player1");
-}
-
-void Tree::on_player2_collision(Kinetic *player) {
-    printf("player2");
-}
-
-void Tree::on_antidote_collision(Kinetic *antidote) {
-    printf("antidote");
-}
-
-void Tree::on_limb_collision(Kinetic *limb) {
-    printf("limb");
-}
-
-void Tree::on_armour_collision(Kinetic *player) {
-    printf("armour");
-}
-
-void Tree::on_explosion_collision(Kinetic *explosion) {
-    printf("explosion");
-}
-
-void Tree::on_ice_collision(Kinetic *ice) {
-    printf("ice");
-}
-
-void Tree::on_missile_collision(Kinetic *missile) {
-    printf("missile");
-}
-
-void Tree::on_water_collision(Kinetic *water) {
-    printf("water");
-}
-
-void Tree::on_zombie_collision(Kinetic *zombie) {
-    printf("zombie");
-}
-
-vec2 Tree::getAABB() {
     return { std::fabs(m_scale.x) * tree_texture.width, std::fabs(m_scale.y) * tree_texture.height };
 }

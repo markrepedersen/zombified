@@ -2,9 +2,8 @@
 
 #include "common.hpp"
 #include "viewHelper.hpp"
-#include "Kinetic.h"
 
-class Antidote : public Kinetic
+class Antidote : public Renderable
 {
     static Texture antidote_texture;
 public:
@@ -28,19 +27,6 @@ public:
     vec2 get_bounding_box()const;
 
     int belongs_to; // who is currently holding the antidote
-
-    void on_player1_collision(Kinetic *player)override;
-    void on_player2_collision(Kinetic *player)override;
-    void on_antidote_collision(Kinetic *antidote)override;
-    void on_limb_collision(Kinetic *limb)override;
-    void on_armour_collision(Kinetic *player)override;
-    void on_explosion_collision(Kinetic *explosion)override;
-    void on_ice_collision(Kinetic *ice)override;
-    void on_missile_collision(Kinetic *missile)override;
-    void on_water_collision(Kinetic *water)override;
-    void on_zombie_collision(Kinetic *zombie)override;
-
-    vec2 getAABB()override;
     
 private:
     bool m_is_alive; // True if the salmon is alive

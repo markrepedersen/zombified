@@ -1,7 +1,5 @@
 // Header
 #include "zombie.hpp"
-#include "viewHelper.hpp"
-#include "MapGrid.h"
 
 #include <cmath>
 
@@ -124,7 +122,6 @@ void Zombie::set_scale(vec2 scale)
 
 void Zombie::destroy()
 {
-    MapGrid::GetInstance()->removeOccupant(this);
     glDeleteBuffers(1, &mesh.vbo);
     glDeleteBuffers(1, &mesh.ibo);
     glDeleteVertexArrays(1, &mesh.vao);
@@ -198,37 +195,7 @@ float Zombie::getMass() {
 void Zombie::set_position(vec2 position) {
     this->m_position = position;
 }
-
-void Zombie::on_player1_collision(Kinetic *player) {
-}
-
-void Zombie::on_player2_collision(Kinetic *player) {
-}
-
-void Zombie::on_antidote_collision(Kinetic *antidote) {
-}
-
-void Zombie::on_limb_collision(Kinetic *limb) {
-}
-
-void Zombie::on_armour_collision(Kinetic *player) {
-}
-
-void Zombie::on_explosion_collision(Kinetic *explosion) {
-}
-
-void Zombie::on_ice_collision(Kinetic *ice) {
-}
-
-void Zombie::on_missile_collision(Kinetic *missile) {
-}
-
-void Zombie::on_water_collision(Kinetic *water) {
-}
-
-void Zombie::on_zombie_collision(Kinetic *zombie) {
-}
-
-vec2 Zombie::getAABB() {
-    return { std::fabs(m_scale.x) * zombie_texture.width, std::fabs(m_scale.y) * zombie_texture.height };
+ 
+void Zombie::move(vec2 pos) {
+    this->m_position += pos;
 }

@@ -1,7 +1,5 @@
 // Header
 #include "mud.hpp"
-#include "viewHelper.hpp"
-#include "MapGrid.h"
 
 #include <cmath>
 
@@ -147,7 +145,6 @@ void Mud::set_affected(int player, bool affected)
 
 void Mud::destroy()
 {
-    MapGrid::GetInstance()->removeOccupant(this);
     glDeleteBuffers(1, &mesh.vbo);
     glDeleteBuffers(1, &mesh.ibo);
     glDeleteVertexArrays(1, &mesh.vao);
@@ -163,48 +160,3 @@ vec2 Mud::get_bounding_box()const
     //fprintf(stderr, "texture height %f \n", (std::fabs(m_scale.y) * mud_texture.height)-20 );
     return { std::fabs(m_scale.x) * mud_texture.width, std::fabs(m_scale.y) * mud_texture.height };
 }
-
-void Mud::on_player1_collision(Kinetic *player) {
-    printf("player1");
-}
-
-void Mud::on_player2_collision(Kinetic *player) {
-    printf("player2");
-}
-
-void Mud::on_antidote_collision(Kinetic *antidote) {
-    printf("antidote");
-}
-
-void Mud::on_limb_collision(Kinetic *limb) {
-    printf("limb");
-}
-
-void Mud::on_armour_collision(Kinetic *player) {
-    printf("armour");
-}
-
-void Mud::on_explosion_collision(Kinetic *explosion) {
-    printf("explosion");
-}
-
-void Mud::on_ice_collision(Kinetic *ice) {
-    printf("ice");
-}
-
-void Mud::on_missile_collision(Kinetic *missile) {
-    printf("missile");
-}
-
-void Mud::on_water_collision(Kinetic *water) {
-    printf("water");
-}
-
-void Mud::on_zombie_collision(Kinetic *zombie) {
-    printf("zombie");
-}
-
-vec2 Mud::getAABB() {
-    // fabs is to avoid negative scale due to the facing direction
-    //fprintf(stderr, "texture height %f \n", (std::fabs(m_scale.y) * mud_texture.height)-20 );
-    return { std::fabs(m_scale.x) * mud_texture.width, std::fabs(m_scale.y) * mud_texture.height };}

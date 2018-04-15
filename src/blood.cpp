@@ -1,6 +1,5 @@
 // Header
 #include "blood.hpp"
-#include "MapGrid.h"
 
 #include <cmath>
 #include <iostream>
@@ -133,7 +132,6 @@ void Blood::set_scale(vec2 scale)
 
 void Blood::destroy()
 {
-    MapGrid::GetInstance()->removeOccupant(this);
     glDeleteBuffers(1, &mesh.vbo);
     glDeleteBuffers(1, &mesh.ibo);
     glDeleteVertexArrays(1, &mesh.vao);
@@ -141,48 +139,4 @@ void Blood::destroy()
     glDeleteShader(effect.vertex);
     glDeleteShader(effect.fragment);
     glDeleteProgram(effect.program);
-}
-
-void Blood::on_player1_collision(Kinetic *player) {
-    printf("player1");
-}
-
-void Blood::on_player2_collision(Kinetic *player) {
-    printf("player2");
-}
-
-void Blood::on_antidote_collision(Kinetic *antidote) {
-    printf("antidote");
-}
-
-void Blood::on_limb_collision(Kinetic *limb) {
-    printf("limb");
-}
-
-void Blood::on_armour_collision(Kinetic *player) {
-    printf("armour");
-}
-
-void Blood::on_explosion_collision(Kinetic *explosion) {
-    printf("explosion");
-}
-
-void Blood::on_ice_collision(Kinetic *ice) {
-    printf("ice");
-}
-
-void Blood::on_missile_collision(Kinetic *missile) {
-    printf("missile");
-}
-
-void Blood::on_water_collision(Kinetic *water) {
-    printf("water");
-}
-
-void Blood::on_zombie_collision(Kinetic *zombie) {
-    printf("zombie");
-}
-
-vec2 Blood::getAABB() {
-    return {static_cast<float>(blood_texture.width), static_cast<float>(blood_texture.height)};
 }

@@ -5,7 +5,6 @@ bool ZombieManager::init(vec2 screen, const std::vector<vec2> &mapCollisionPoint
     m_mapCollisionPoints = mapCollisionPoints;
     m_screen = screen;
     speed = 50;
-    zombies.reserve(1000);
     zombiesInUse = false;
     return true;
 }
@@ -28,12 +27,12 @@ void ZombieManager::transformZombies(std::vector<Renderable *> &container) {
 //spawn new zombie where clusters meet
 bool ZombieManager::spawn_zombie(vec2 zombie_pos, vec2 player1_pos, vec2 player2_pos) {
     Zombie zombie;
-
+    
 //    if(!zombiesInUse) {
 //        zombiesInUse = true;
         if (zombie.init()) {
             zombie.set_position(zombie_pos);
-
+            
             if (getDistance(zombie_pos, player1_pos) > getDistance(zombie_pos, player2_pos)) {
                 zombie.setCurrentTarget({static_cast<float>(player2_pos.x), static_cast<float>(player2_pos.y)});
                 //std::cout << "current target is player 2" << std::endl;
@@ -47,7 +46,7 @@ bool ZombieManager::spawn_zombie(vec2 zombie_pos, vec2 player1_pos, vec2 player2
 //        zombiesInUse = false;
 //    }
     return false;
-
+    
 }
 
 //updating targets of zombies if necessary, as well as attack timeout time for each zombie if necessary
@@ -61,29 +60,29 @@ vec2 ZombieManager::update_zombies(float elapsed_ms, vec2 player1_pos, vec2 play
         for (auto &zombie : zombies) {
             float distance_to_player1 = getDistance(zombie.get_position(), player1_pos);
             float distance_to_player2 = getDistance(zombie.get_position(), player2_pos);
-
+            
             if(distance_to_player1 > distance_to_player2) {
                 zombie.setCurrentTarget({static_cast<float>(player2_pos.x), static_cast<float>(player2_pos.y)});
             } else {
                 zombie.setCurrentTarget({static_cast<float>(player1_pos.x), static_cast<float>(player1_pos.y)});
             }
-
+            
             float currTimeout = zombie.getAttackTimeout();
             if (currTimeout > 0) {
                 zombie.setAttackTimeout(currTimeout - elapsed_ms);
             } else {
                 bool zombieAttacked = false;
-
+                
                 if(distance_to_player1 < (m_screen.x/30 * ViewHelper::getRatio())) {
                     player1damage++;
                     zombieAttacked = true;
                 }
-
+                
                 if(distance_to_player2 < (m_screen.x/30 * ViewHelper::getRatio())) {
                     player2damage++;
                     zombieAttacked = true;
                 }
-
+                
                 //if this zombie attacked something this round, set timeout for 3 seconds
                 if (zombieAttacked) {
                     zombie.setAttackTimeout(1000);
@@ -92,7 +91,7 @@ vec2 ZombieManager::update_zombies(float elapsed_ms, vec2 player1_pos, vec2 play
         }
 //        zombiesInUse = false;
 //    }
-
+    
     return {player1damage, player2damage};
 }
 
@@ -103,7 +102,7 @@ void ZombieManager::computeZPaths(float ms, const MapGrid &mapGrid) {
         for (auto &zombie : zombies) {
             JPS::PathVector path;
             vec2 target = zombie.getCurrentTarget();
-
+            
             if (zombie.getLastTarget() != target || !zombie.isInitialized()) {
                 auto srcX = (unsigned) (zombie.get_position().x / 100);
                 auto srcY = (unsigned) (zombie.get_position().y / 100);
@@ -116,18 +115,18 @@ void ZombieManager::computeZPaths(float ms, const MapGrid &mapGrid) {
             if (!zombie.getCurrentPath().empty()) {
                 vec2 nextNode, curNode;
                 curNode = nextNode = {zombie.get_position().x, zombie.get_position().y};
-
+                
                 for (int i = 0; i < zombie.getCurrentPath().size() && getDistance(curNode, nextNode) < 10; ++i) {
                     nextNode = {static_cast<float>(zombie.getCurrentPath()[i].x),
                         static_cast<float>(zombie.getCurrentPath()[i].y)};
                 }
                 float step = speed * (ms / 1000);
                 vec2 dir;
-                dir.x = nextNode.x * 300 - zombie.get_position().x;
-                dir.y = nextNode.y * 300 - zombie.get_position().y;
-
+                dir.x = nextNode.x * 100 - zombie.get_position().x;
+                dir.y = nextNode.y * 100 - zombie.get_position().y;
+                
                 auto next_pos = scale(step, normalize(dir));
-
+                
                 zombie.move(next_pos);
                 zombie.setLastPath(zombie.getCurrentPath());
                 zombie.setLastTarget(target);
@@ -145,7 +144,7 @@ int ZombieManager::check_collision_with_players(Player1 *p1, Player2 *p2, Toolbo
 }
 
 bool ZombieManager::attack_zombies(vec2 player_pos, vec2 player_boundingbox, int playerNum, ToolboxManager *m_toolboxmanager) {
-//
+//    
 //    if(!zombiesInUse) {
 //        zombiesInUse = true;
         for (auto it = zombies.begin(); it != zombies.end();){

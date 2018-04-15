@@ -4,7 +4,6 @@
 #define STB_IMAGE_IMPLEMENTATION
 
 #include "../ext/stb_image/stb_image.h"
-#include "MapGrid.h"
 
 // stlib
 #include <vector>
@@ -141,7 +140,6 @@ bool intersect(vec2 p1, vec2 q1, vec2 p2, vec2 q2) {
     return false;
 
 }
-
 /*!
  * Checks if the test point is inside polygon
  * This check is indeterminate in the case that the test point lies on top of one of the lines
@@ -178,7 +176,7 @@ std::vector<vec2> getIntersectionWithPoly(std::vector<vec2> poly, vec2 point, ve
 
         if (intersect(poly1, poly2, point, oldpoint) ||
             ((orientation(poly1, point, poly2) == 0) && onSegment(poly1, point, poly2))) {
-
+            
             intersection.push_back(poly1);
             intersection.push_back(poly2);
             return intersection;
@@ -193,24 +191,19 @@ vec2 getRandomPointInMap(std::vector<vec2> mapCollisionPoints, vec2 screen) {
 
     srand((unsigned) time(0));
 
-    vec2 randomPoint = 0;
-    int i = 0;
-    while (randomPoint == 0 || !isInsidePolygon(mapCollisionPoints, randomPoint) ||
-            MapGrid::GetInstance()->isOccupied((int)randomPoint.x, (int) randomPoint.y)) {
-        if (i > 50)
-            break;
-        randomPoint = {(float) ((rand() % (int) screen.x)), (float) ((rand() % (int) screen.y))};
-        ++i;
+    vec2 randomPoint = {(float) ((rand() % (int) screen.x)),
+                        (float) ((rand() % (int) screen.y))};
+
+    while (!isInsidePolygon(mapCollisionPoints, randomPoint)) {
+        randomPoint = {(float) ((rand() % (int) screen.x)),
+                       (float) ((rand() % (int) screen.y))};
+
     }
 
     return randomPoint;
 
 }
 
-bool is_aabb_colliding(float x1, float y1, int w1, int h1, float x2, float y2, int w2, int h2) {
-        return (abs(x1 - x2) * 2 < (w1 + w2)) &&
-               (abs(y1 - y2) * 2 < (h1 + h2));
-}
 
 float getDistance(vec2 v1, vec2 v2) {
     return sqrt(pow(v1.x - v2.x, 2) + pow(v1.y - v2.y, 2));

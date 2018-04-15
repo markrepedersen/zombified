@@ -1,7 +1,5 @@
 // Header
 #include "Ice.hpp"
-#include "viewHelper.hpp"
-#include "MapGrid.h"
 
 #include <cmath>
 
@@ -144,7 +142,6 @@ bool Ice::is_alive()const
 
 void Ice::destroy()
 {
-    MapGrid::GetInstance()->removeOccupant(this);
     glDeleteBuffers(1, &mesh.vbo);
     glDeleteBuffers(1, &mesh.ibo);
     glDeleteVertexArrays(1, &mesh.vao);
@@ -177,48 +174,4 @@ bool Ice::collides_with(const Ice& freeze)
 int Ice::use_freeze(int useOnPlayer)
 {
     return useOnPlayer;
-}
-
-void Ice::on_player1_collision(Kinetic *player) {
-    printf("player1");
-}
-
-void Ice::on_player2_collision(Kinetic *player) {
-    printf("player2");
-}
-
-void Ice::on_antidote_collision(Kinetic *antidote) {
-    printf("antidote");
-}
-
-void Ice::on_limb_collision(Kinetic *limb) {
-    printf("limb");
-}
-
-void Ice::on_armour_collision(Kinetic *player) {
-    printf("armour");
-}
-
-void Ice::on_explosion_collision(Kinetic *explosion) {
-    printf("explosion");
-}
-
-void Ice::on_ice_collision(Kinetic *ice) {
-    printf("ice");
-}
-
-void Ice::on_missile_collision(Kinetic *missile) {
-    printf("missile");
-}
-
-void Ice::on_water_collision(Kinetic *water) {
-    printf("water");
-}
-
-void Ice::on_zombie_collision(Kinetic *zombie) {
-    printf("zombie");
-}
-
-vec2 Ice::getAABB() {
-    return { std::fabs(m_scale.x) * ice_texture.width, std::fabs(m_scale.y) * ice_texture.height };
 }

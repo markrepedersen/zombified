@@ -1,14 +1,16 @@
 #pragma once
 
 #include "common.hpp"
-#include "Kinetic.h"
+#include "viewHelper.hpp"
+#include "toolboxManager.hpp"
+#include "explosion.hpp"
 #include <vector>
 #include <tuple>
 #include <unistd.h>
 #include <time.h>
 //#include <math.h>
 
-class Bomb : public Kinetic
+class Bomb : public Renderable
 {
     static Texture bomb_texture;
 public:
@@ -57,20 +59,7 @@ public:
     void explode();
     
     time_t bombTime;
-
-    void on_player1_collision(Kinetic *player)override;
-    void on_player2_collision(Kinetic *player)override;
-    void on_antidote_collision(Kinetic *antidote)override;
-    void on_limb_collision(Kinetic *limb)override;
-    void on_armour_collision(Kinetic *player)override;
-    void on_explosion_collision(Kinetic *explosion)override;
-    void on_ice_collision(Kinetic *ice)override;
-    void on_missile_collision(Kinetic *missile)override;
-    void on_water_collision(Kinetic *water)override;
-    void on_zombie_collision(Kinetic *zombie)override;
-
-    vec2 getAABB()override;
-
+    
 private:
     bool m_is_alive; // True if the salmon is alive
 	float m_rotation;
@@ -79,6 +68,5 @@ private:
     vec2 speed;
     vec2 oldspeed;
     vec2 m_oldposition;
-    vec2 m_position;
     float mass;
 };

@@ -31,18 +31,7 @@ public:
     void destroy();
     
     void scale();
-
-    bool init_tool();
-    bool init_freeze();
-    bool init_water();
-    bool init_mud();
-    bool init_bomb();
-    bool init_missile();
-    bool init_armour();
-    bool init_winner2();
-    bool init_winner1();
-    bool init_key();
-
+    
 private:
     vec2 m_position; // Window coordinates
     vec2 m_scale;
