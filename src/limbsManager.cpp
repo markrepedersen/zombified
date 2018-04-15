@@ -31,53 +31,35 @@ void LimbsManager::transformLimbs(std::vector<Renderable*> &container) {
 
 //spawn new arm in random
 bool LimbsManager::spawn_arms() {
-    Limb arm;
-    if (arm.init("arm")) {
-        vec2 spawnPoint = getRandomPointInMap(m_mapCollisionPoints,
-                            {m_screen.x * ViewHelper::getRatio(),
-                             m_screen.y * ViewHelper::getRatio()});
-        int i = 0;
-//        while (MapGrid::GetInstance()->isOccupied(spawnPoint.x, spawnPoint.y)) {
-//            if (i > 100) {
-//                return true;
-//            }
-//            spawnPoint = getRandomPointInMap(m_mapCollisionPoints,
-//                                             {m_screen.x * ViewHelper::getRatio(),
-//                                              m_screen.y * ViewHelper::getRatio()});
-//        }
-        arm.set_position(spawnPoint);
-        m_arms_total++;
-        limbs.emplace_back(arm);
-
-        return cluster_limbs();
+    vec2 spawnPoint = getRandomPointInMap(m_mapCollisionPoints,
+                                          {m_screen.x * ViewHelper::getRatio(),
+                                           m_screen.y * ViewHelper::getRatio()});
+    if (spawnPoint != NULL) {
+        auto *arm = new Limb();
+        if (arm->init("arm")) {
+            arm->set_position(spawnPoint);
+            m_arms_total++;
+            limbs.emplace_back(*arm);
+            return cluster_limbs();
+        }
     }
-
-    return false;
+    return spawnPoint == NULL;
 }
 
 //spawn new leg in random
 bool LimbsManager::spawn_legs() {
-    Limb leg;
-    if (leg.init("leg")) {
-        vec2 spawnPoint = getRandomPointInMap(m_mapCollisionPoints,
-                                              {m_screen.x * ViewHelper::getRatio(),
-                                               m_screen.y * ViewHelper::getRatio()});
-        int i = 0;
-//        while (MapGrid::GetInstance()->isOccupied(spawnPoint.x, spawnPoint.y)) {
-//            if (i > 100) {
-//                return true;
-//            }
-//            spawnPoint = getRandomPointInMap(m_mapCollisionPoints,
-//                                             {m_screen.x * ViewHelper::getRatio(),
-//                                              m_screen.y * ViewHelper::getRatio()});
-//        }
-
-        m_legs_total++;
-        limbs.emplace_back(leg);
-
-        return cluster_limbs();
+    vec2 spawnPoint = getRandomPointInMap(m_mapCollisionPoints,
+                                          {m_screen.x * ViewHelper::getRatio(),
+                                           m_screen.y * ViewHelper::getRatio()});
+    if (spawnPoint != NULL) {
+        auto *leg = new Limb();
+        if (leg->init("leg")) {
+            m_legs_total++;
+            limbs.emplace_back(*leg);
+            return cluster_limbs();
+        }
     }
-    return false;
+    return spawnPoint == NULL;
 }
 
 bool LimbsManager::cluster_limbs() {

@@ -4,6 +4,7 @@
 #define STB_IMAGE_IMPLEMENTATION
 
 #include "../ext/stb_image/stb_image.h"
+#include "MapGrid.h"
 
 // stlib
 #include <vector>
@@ -194,14 +195,17 @@ vec2 getRandomPointInMap(std::vector<vec2> mapCollisionPoints, vec2 screen) {
 
     vec2 randomPoint = {(float) ((rand() % (int) screen.x)),
                         (float) ((rand() % (int) screen.y))};
-
-    while (!isInsidePolygon(mapCollisionPoints, randomPoint)) {
-        randomPoint = {(float) ((rand() % (int) screen.x)),
-                       (float) ((rand() % (int) screen.y))};
-
+    vec2 branch = randomPoint;
+    int i = 0;
+    while (!isInsidePolygon(mapCollisionPoints, randomPoint) &&
+            MapGrid::GetInstance()->isOccupied((int)randomPoint.x, (int) randomPoint.y)) {
+        if (i > 50)
+            break;
+        randomPoint = {(float) ((rand() % (int) screen.x)), (float) ((rand() % (int) screen.y))};
+        ++i;
     }
 
-    return randomPoint;
+    return randomPoint == branch ? NULL : randomPoint;
 
 }
 
