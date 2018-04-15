@@ -91,6 +91,34 @@ bool World::init(vec2 screen) {
                 m_bombdetails.init("bomb") &&
                 m_missiledetails.init("missile") &&
                 m_armourdetails.init("armour"));
+
+    	//-------------------------------------------------------------------------
+	// Loading music and sounds
+	if (SDL_Init(SDL_INIT_AUDIO) < 0)
+	{
+		fprintf(stderr, "Failed to initialize SDL Audio");
+		return false;
+	}
+
+	if (Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 2048) == -1)
+	{
+		fprintf(stderr, "Failed to open audio device");
+		return false;
+	}
+
+	m_background_music = Mix_LoadMUS(audio_path("music.wav"));
+	m_explosion_sound = Mix_LoadWAV(audio_path("explosion_medium.wav"));
+
+	if (m_background_music == nullptr || m_explosion_sound == nullptr)
+	{
+		fprintf(stderr, "Failed to load sounds, make sure the data directory is present");
+		return false;
+	}
+
+	// Playing background music undefinitely
+	Mix_PlayMusic(m_background_music, -1);
+	
+	//fprintf(stderr, "Loaded music");
     
     return rendered;
 }
@@ -167,6 +195,13 @@ void World::destroy() {
     
     mapCollisionPoints.clear();
     mapGrid->destroy();
+
+    if (m_background_music != nullptr)
+		Mix_FreeMusic(m_background_music);
+	if (m_explosion_sound != nullptr)
+		Mix_FreeChunk(m_explosion_sound);
+
+	Mix_CloseAudio();
 
     game_over = true;
 }
@@ -965,6 +1000,7 @@ bool World::spawn_bomb() {
 }
 
 bool World::create_explosion(vec2 bomb_position) {
+    Mix_PlayChannel(-1, m_explosion_sound, 0);
     Explosion explosion;
     if (explosion.init(bomb_position)) {
         m_explosion.emplace_back(explosion);
@@ -983,6 +1019,7 @@ bool World::create_blood(vec2 player_position) {
 }
 
 bool World::create_mushroom_explosion(vec2 missile_position) {
+    Mix_PlayChannel(-1, m_explosion_sound, 0);
     vec2 explosion_position = missile_position;
     explosion_position.y = explosion_position.y - 200.f;
     //fprintf(stderr, "explosion position %f \n", explosion_position.y);

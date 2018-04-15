@@ -37,13 +37,9 @@
 #include <time.h>
 #include <random>
 
-// #if !defined(DISABLE_SDL)
-//  #include <SDL/SDL.h>
- // #include <SDL/SDL_mixer.h>
- // #define SDL_MAIN_HANDLED
-// #endif
-
-
+#define SDL_MAIN_HANDLED
+#include <SDL/SDL.h>
+#include <SDL/SDL_mixer.h>
 
 // Container for all our entities and game logic. Individual rendering / update is
 // deferred to the relative update() methods
@@ -226,4 +222,7 @@ private:
     
     bool pause;
     Info m_pause;
+
+    Mix_Music* m_background_music;
+	Mix_Chunk* m_explosion_sound;
 };
