@@ -195,7 +195,7 @@ vec2 getRandomPointInMap(std::vector<vec2> mapCollisionPoints, vec2 screen) {
 
     vec2 randomPoint = 0;
     int i = 0;
-    while (randomPoint == 0 || !isInsidePolygon(mapCollisionPoints, randomPoint) &&
+    while (randomPoint == 0 || !isInsidePolygon(mapCollisionPoints, randomPoint) ||
             MapGrid::GetInstance()->isOccupied((int)randomPoint.x, (int) randomPoint.y)) {
         if (i > 50)
             break;
