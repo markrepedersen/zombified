@@ -295,12 +295,26 @@ bool World::update(float elapsed_ms) {
             
             check_add_tools(screen);
 
-            std::vector<Explosion>::iterator itr;
-            for (itr = m_explosion.begin(); itr != m_explosion.end();)
-              if (itr->get_end_animation())
-                itr = m_explosion.erase(itr);
+            std::vector<Explosion>::iterator itr_e;
+            for (itr_e = m_explosion.begin(); itr_e != m_explosion.end();)
+              if (itr_e->get_end_animation())
+                itr_e = m_explosion.erase(itr_e);
               else
-                itr++;
+                itr_e++;
+
+            std::vector<Mushroom_Explosion>::iterator itr_m;
+            for (itr_m = m_mushroom_explosion.begin(); itr_m != m_mushroom_explosion.end();)
+              if (itr_m->get_end_animation())
+                itr_m = m_mushroom_explosion.erase(itr_m);
+              else
+                itr_m++;
+            
+            std::vector<Blood>::iterator itr_b;
+            for (itr_b = m_blood.begin(); itr_b != m_blood.end();)
+              if (itr_b->get_end_animation())
+                itr_b = m_blood.erase(itr_b);
+              else
+                itr_b++;
             
             if (explosion)
                 explode();
@@ -467,6 +481,10 @@ void World::draw() {
             mud_collected.draw(projection_2D);
         for (auto& explosion: m_explosion)
             explosion.draw(projection_2D);
+        for (auto& mushroom_explosion: m_mushroom_explosion)
+            mushroom_explosion.draw(projection_2D);
+        for (auto& blood: m_blood)
+            blood.draw(projection_2D);
         
         entityDrawOrder(projection_2D);
         
@@ -955,6 +973,29 @@ bool World::create_explosion(vec2 bomb_position) {
     return false;
 }
 
+bool World::create_blood(vec2 player_position) {
+    Blood blood;
+    if (blood.init(player_position)) {
+        m_blood.emplace_back(blood);
+        return true;
+    }
+    return false;
+}
+
+bool World::create_mushroom_explosion(vec2 missile_position) {
+    vec2 explosion_position = missile_position;
+    explosion_position.y = explosion_position.y - 200.f;
+    //fprintf(stderr, "explosion position %f \n", explosion_position.y);
+    //explosion_position.y = 
+
+    Mushroom_Explosion mushroom_explosion;
+    if (mushroom_explosion.init(explosion_position)) {
+        m_mushroom_explosion.emplace_back(mushroom_explosion);
+        return true;
+    }
+    return false;
+}
+
 bool World::spawn_water() {
     Water water;
     if (water.init()) {
@@ -1217,7 +1258,6 @@ void World::check_add_tools(vec2 screen) {
                 collect_bomb(*itb, collided, index);
                 if (collided == 1) {
                     m_player1.set_mass(m_player1.get_mass() + itb->get_mass());
-                    m_player1.create_blood(m_player1.get_position());
                 }
                 if (collided == 2) {
                     m_player2.set_mass(m_player2.get_mass() + itb->get_mass());
@@ -1874,6 +1914,12 @@ void World::autoExplode(Bomb bomb, int position) {
                                                 m_player2.get_speed(),
                                                 m_player2.get_position());
     }
+    if (force_p1 > 100) {
+        create_blood(m_player1.get_position());
+    }
+    if (force_p2 > 100) {
+        create_blood(m_player2.get_position());
+    }
     if (force_p1 > 0) {
         m_player1.set_blowback(true);
         m_player1.set_speed(force_p1);
@@ -1954,6 +2000,7 @@ void World::use_missile(float ms) {
 
 
 void World::autoExplodeMissile(Missile missile, int position) {
+    create_mushroom_explosion(missile.get_position());
     float force_p1 = 0;
     float force_p2 = 0;
     if (!armourInUse_p1) {
@@ -1966,6 +2013,12 @@ void World::autoExplodeMissile(Missile missile, int position) {
         force_p2 = missile.get_force(m_player2.get_mass(),
                                                 m_player2.get_speed(),
                                                 m_player2.get_position());
+    }
+    if (force_p1 > 100) {
+        create_blood(m_player1.get_position());
+    }
+    if (force_p2 > 100) {
+        create_blood(m_player2.get_position());
     }
     if (force_p1 > 0) {
         m_player1.set_blowback(true);

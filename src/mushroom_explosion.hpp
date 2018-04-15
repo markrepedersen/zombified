@@ -4,9 +4,9 @@
 #include "viewHelper.hpp"
 //#include <math.h>
 
-class Blood : public Renderable
+class Mushroom_Explosion : public Renderable
 {
-    static Texture blood_texture;
+    static Texture mushroom_explosion_texture;
 public:
     // Creates all the associated render resources and default transform
     bool init(vec2 position);

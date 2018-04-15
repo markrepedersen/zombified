@@ -14,6 +14,8 @@
 #include "Ice.hpp"
 #include "tree.hpp"
 #include "explosion.hpp"
+#include "mushroom_explosion.hpp"
+#include "blood.hpp"
 #include "worldtexture.hpp"
 #include "viewHelper.hpp"
 #include "button.hpp"
@@ -109,6 +111,8 @@ private:
 	void add_to_broadphase(int w, int h, float posx, float posy, void*);
 
     bool create_explosion(vec2 bomb_position);
+    bool create_mushroom_explosion(vec2 missile_position);
+    bool create_blood(vec2 player_position);
 
 private:
     void entityDrawOrder(mat3 projection_2D);
@@ -163,6 +167,8 @@ private:
     std::vector<Bomb> m_bomb;
     std::vector<Armour> m_armour;
     std::vector<Explosion> m_explosion;
+    std::vector<Mushroom_Explosion> m_mushroom_explosion;
+    std::vector<Blood> m_blood;
 
     std::vector<Ice> m_freeze_collected_1;
     std::vector<Water> m_water_collected_1;
