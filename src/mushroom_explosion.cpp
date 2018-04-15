@@ -1,46 +1,46 @@
 // Header
-#include "explosion.hpp"
+#include "mushroom_explosion.hpp"
 
 #include <cmath>
 #include <iostream>
 
-Texture Explosion::explosion_texture;
+Texture Mushroom_Explosion::mushroom_explosion_texture;
 
 // sprite information
-int sprite_width_explosion = 210;
-int sprite_height_explosion = 210;
-int num_rows_explosion = 1;
-int num_cols_explosion = 9;
-int frames_explosion [9] = {0, 1, 2, 3, 4, 5, 6, 7, 8};
+int sprite_width_mushroom_explosion = 320;
+int sprite_height_mushroom_explosion = 320;
+int num_rows_mushroom_explosion = 2;
+int num_cols_mushroom_explosion = 8;
+int frames_mushroom_explosion [16] = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15};
 // animation timing
-int frame_time_explosion = 60.f;
-auto start_time_explosion = std::chrono::high_resolution_clock::now();
+int frame_time_mushroom_explosion = 40.f;
+auto start_time_mushroom_explosion = std::chrono::high_resolution_clock::now();
 
-bool Explosion::init(vec2 position)
+bool Mushroom_Explosion::init(vec2 position)
 {
     // Load shared texture
-    if (!explosion_texture.is_valid())
+    if (!mushroom_explosion_texture.is_valid())
     {
-        if (!explosion_texture.load_from_file(effects_textures_path("explosion.png")))
+        if (!mushroom_explosion_texture.load_from_file(effects_textures_path("mushroom_cloud.png")))
         {
-            fprintf(stderr, "Failed to load explosion texture!");
+            fprintf(stderr, "Failed to load mushroom explosion texture!");
             return false;
         }
     }
     
     // The position corresponds to the center of the texture
-    float wr = sprite_width_explosion * 0.5f;
-    float hr = sprite_height_explosion * 0.5f;
+    float wr = sprite_width_mushroom_explosion * 0.5f;
+    float hr = sprite_height_mushroom_explosion * 0.5f;
     
     TexturedVertex vertices[4];
     vertices[0].position = { -wr, +hr, -0.02f };
-    vertices[0].texcoord = { 1/9.f, 1.f };
+    vertices[0].texcoord = { 1/8.f, 1/2.f };
     vertices[1].position = { +wr, +hr, -0.02f };
-    vertices[1].texcoord = { 0.f, 1.f };
+    vertices[1].texcoord = { 0.f, 1/2.f };
     vertices[2].position = { +wr, -hr, -0.02f };
     vertices[2].texcoord = { 0.f, 0.f };
     vertices[3].position = { -wr, -hr, -0.02f };
-    vertices[3].texcoord = { 1/9.f, 0.f };
+    vertices[3].texcoord = { 1/8.f, 0.f };
     
     // counterclockwise as it's the default opengl front winding direction
     uint16_t indices[] = { 0, 3, 1, 1, 3, 2 };
@@ -70,15 +70,15 @@ bool Explosion::init(vec2 position)
     // Setting initial values
     m_scale.x = -1.f * ViewHelper::getRatio();
     m_scale.y = 1.f * ViewHelper::getRatio();
-    m_position = { position.x, position.y };
+    m_position = { position.x, position.y};
 
-    //std::cout << "Explosion created" << "\n";
+    std::cout << "Explosion created" << "\n";
     end_animation = false;
     
     return true;
 }
 
-void Explosion::draw(const mat3& projection)
+void Mushroom_Explosion::draw(const mat3& projection)
 {
     // Transformation code, see Rendering and Transformation in the template specification for more info
     // Incrementally updates transformation matrix, thus ORDER IS IMPORTANT
@@ -118,12 +118,12 @@ void Explosion::draw(const mat3& projection)
     
     // Enabling and binding texture to slot 0
     glActiveTexture(GL_TEXTURE0);
-    glBindTexture(GL_TEXTURE_2D, explosion_texture.id);
+    glBindTexture(GL_TEXTURE_2D, mushroom_explosion_texture.id);
 
     // Specify uniform variables
     glUniform1iv(sprite_frame_index_uloc, 1, &sprite_frame_index_explosion);
-    glUniform1iv(num_rows_uloc, 1, &num_rows_explosion);
-    glUniform1iv(num_cols_uloc, 1, &num_cols_explosion);
+    glUniform1iv(num_rows_uloc, 1, &num_rows_mushroom_explosion);
+    glUniform1iv(num_cols_uloc, 1, &num_cols_mushroom_explosion);
     
     // Setting uniform values to the currently bound program
     glUniformMatrix3fv(transform_uloc, 1, GL_FALSE, (float*)&transform);
@@ -138,51 +138,51 @@ void Explosion::draw(const mat3& projection)
     animate();
 }
 
-void Explosion::set_position(vec2 position)
+void Mushroom_Explosion::set_position(vec2 position)
 {
     m_position = position;
 }
 
-vec2 Explosion::get_position()const
+vec2 Mushroom_Explosion::get_position()const
 {
     return m_position;
 }
 
-void Explosion::set_scale(vec2 scale)
+void Mushroom_Explosion::set_scale(vec2 scale)
 {
     m_scale = scale;
 }
 
-bool Explosion::get_end_animation()const
+bool Mushroom_Explosion::get_end_animation()const
 {
     return end_animation;
 }
 
-void Explosion::destroy()
+void Mushroom_Explosion::destroy()
 {
     //printf("Destroy!\n");
     end_animation = true;
     glDeleteBuffers(1, &mesh.vbo);
     glDeleteBuffers(1, &mesh.ibo);
-    glDeleteVertexArrays(1, &mesh.vao);
+    glDeleteBuffers(1, &mesh.vao);
     
     glDeleteShader(effect.vertex);
     glDeleteShader(effect.fragment);
-    glDeleteProgram(effect.program);
+    glDeleteShader(effect.program);
 }
 
-void Explosion::animate() {
+void Mushroom_Explosion::animate() {
     auto curr_time = std::chrono::high_resolution_clock::now();
-    int milliseconds = std::chrono::duration_cast<std::chrono::milliseconds>(curr_time - start_time_explosion).count();
+    int milliseconds = std::chrono::duration_cast<std::chrono::milliseconds>(curr_time - start_time_mushroom_explosion).count();
 
-    if (milliseconds > frame_time_explosion)
+    if (milliseconds > frame_time_mushroom_explosion)
     {
         curr_frame_explosion = (curr_frame_explosion + 1);
-        sprite_frame_index_explosion = frames_explosion[curr_frame_explosion];
-        start_time_explosion = curr_time;
+        sprite_frame_index_explosion = frames_mushroom_explosion[curr_frame_explosion];
+        start_time_mushroom_explosion = curr_time;
     }
 
-    if (curr_frame_explosion > 8) {
+    if (curr_frame_explosion > 15) {
         destroy();
     }
 }

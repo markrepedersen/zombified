@@ -78,8 +78,8 @@ bool Missile::init()
     onPlayerPos = {0.f, 0.f};
 
 	m_num_indices = indices.size();
-	m_rotation = 0.f;
-    mass = 0.15f;
+	m_rotation = -1.2;
+    mass = 1.f;
     
     return true;
 }
