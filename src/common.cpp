@@ -193,11 +193,9 @@ vec2 getRandomPointInMap(std::vector<vec2> mapCollisionPoints, vec2 screen) {
 
     srand((unsigned) time(0));
 
-    vec2 randomPoint = {(float) ((rand() % (int) screen.x)),
-                        (float) ((rand() % (int) screen.y))};
-    vec2 branch = randomPoint;
+    vec2 randomPoint = 0;
     int i = 0;
-    while (!isInsidePolygon(mapCollisionPoints, randomPoint) &&
+    while (randomPoint == 0 || !isInsidePolygon(mapCollisionPoints, randomPoint) &&
             MapGrid::GetInstance()->isOccupied((int)randomPoint.x, (int) randomPoint.y)) {
         if (i > 50)
             break;
@@ -205,7 +203,7 @@ vec2 getRandomPointInMap(std::vector<vec2> mapCollisionPoints, vec2 screen) {
         ++i;
     }
 
-    return randomPoint == branch ? NULL : randomPoint;
+    return randomPoint;
 
 }
 

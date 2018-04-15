@@ -160,43 +160,33 @@ vec2 Water::get_bounding_box()const
 }
 
 void Water::on_player1_collision(Kinetic *player) {
-    printf("player1");
 }
 
 void Water::on_player2_collision(Kinetic *player) {
-    printf("player2");
 }
 
 void Water::on_antidote_collision(Kinetic *antidote) {
-    printf("antidote");
 }
 
 void Water::on_limb_collision(Kinetic *limb) {
-    printf("limb");
 }
 
 void Water::on_armour_collision(Kinetic *player) {
-    printf("armour");
 }
 
 void Water::on_explosion_collision(Kinetic *explosion) {
-    printf("explosion");
 }
 
 void Water::on_ice_collision(Kinetic *ice) {
-    printf("ice");
 }
 
 void Water::on_missile_collision(Kinetic *missile) {
-    printf("missile");
 }
 
 void Water::on_water_collision(Kinetic *water) {
-    printf("water");
 }
 
 void Water::on_zombie_collision(Kinetic *zombie) {
-    printf("zombie");
 }
 
 vec2 Water::getAABB() {

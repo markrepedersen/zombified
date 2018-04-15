@@ -523,43 +523,33 @@ void Player2::destroy() {
 }
 
 void Player2::on_player1_collision(Kinetic *player) {
-    printf("player1");
 }
 
 void Player2::on_player2_collision(Kinetic *player) {
-    printf("player2");
 }
 
 void Player2::on_antidote_collision(Kinetic *antidote) {
-    printf("antidote");
 }
 
 void Player2::on_limb_collision(Kinetic *limb) {
-    printf("limb");
 }
 
 void Player2::on_armour_collision(Kinetic *player) {
-    printf("armour");
 }
 
 void Player2::on_explosion_collision(Kinetic *explosion) {
-    printf("explosion");
 }
 
 void Player2::on_ice_collision(Kinetic *ice) {
-    printf("ice");
 }
 
 void Player2::on_missile_collision(Kinetic *missile) {
-    printf("missile");
 }
 
 void Player2::on_water_collision(Kinetic *water) {
-    printf("water");
 }
 
 void Player2::on_zombie_collision(Kinetic *zombie) {
-    printf("zombie");
 }
 
 vec2 Player2::getAABB() {

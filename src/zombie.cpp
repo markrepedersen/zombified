@@ -200,43 +200,33 @@ void Zombie::set_position(vec2 position) {
 }
 
 void Zombie::on_player1_collision(Kinetic *player) {
-    printf("player1");
 }
 
 void Zombie::on_player2_collision(Kinetic *player) {
-    printf("player2");
 }
 
 void Zombie::on_antidote_collision(Kinetic *antidote) {
-    printf("antidote");
 }
 
 void Zombie::on_limb_collision(Kinetic *limb) {
-    printf("limb");
 }
 
 void Zombie::on_armour_collision(Kinetic *player) {
-    printf("armour");
 }
 
 void Zombie::on_explosion_collision(Kinetic *explosion) {
-    printf("explosion");
 }
 
 void Zombie::on_ice_collision(Kinetic *ice) {
-    printf("ice");
 }
 
 void Zombie::on_missile_collision(Kinetic *missile) {
-    printf("missile");
 }
 
 void Zombie::on_water_collision(Kinetic *water) {
-    printf("water");
 }
 
 void Zombie::on_zombie_collision(Kinetic *zombie) {
-    printf("zombie");
 }
 
 vec2 Zombie::getAABB() {
