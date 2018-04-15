@@ -84,6 +84,9 @@ bool Player2::init(vec2 screen, std::vector<vec2> mapCollisionPoints) {
     blowback = false;
     frozen = false;
     armour_in_use = false;
+    droppedantidotedelay = false;
+    explosiondelay = false;
+    punched = false;
 
     // Setting initial values
     m_scale.x = -0.2f * ViewHelper::getRatio();
@@ -164,6 +167,25 @@ void Player2::draw(const mat3 &projection) {
         greenValue = 0.8f;
         blueValue = 0.3f;
     }
+    
+    if (explosiondelay) {
+        redValue = sin(6.0f*timeValue) / 2.0f + 0.8f;
+        greenValue = sin(6.0f*timeValue) / 2.0f + 0.8f;
+        blueValue = sin(6.0f*timeValue) / 2.0f + 0.8f;
+    }
+    
+    if (punched) {
+        redValue = 20.f;
+        greenValue = 0.1f;
+        blueValue = 0.1f;
+        punched = false;
+    }
+    
+    if (droppedantidotedelay && !frozen && !armour_in_use && !explosiondelay) {
+        redValue = fmin(sin(20.0f*timeValue) / 2.0f + 0.8f, 0.9f);
+        greenValue = 0.1f;
+        blueValue = 0.1f;
+    }
 
     glUniform3f(effect_color_uloc, redValue, greenValue, blueValue);
 
@@ -203,6 +225,18 @@ void Player2::set_freezestate(bool newFreezeState) {
 
 bool Player2::get_freezestate() const {
     return frozen;
+}
+
+void Player2::set_droppedantidotestate(bool delay) {
+    droppedantidotedelay = delay;
+}
+
+void Player2::set_explosion(bool delay) {
+    explosiondelay = delay;
+}
+
+void Player2::set_punched(bool waspunched){
+    punched = waspunched;
 }
 
 vec2 Player2::get_shootDirection() {

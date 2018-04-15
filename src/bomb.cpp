@@ -239,15 +239,15 @@ void Bomb::move(vec2 pos, bool jump = false) {
 void Bomb::checkBoundaryCollision(float width, float height, float ms, std::vector<vec2> mapCollisionPoints) {
 
 
-    float radius = (bomb_texture.width/2  * m_scale.x);
+    //float radius = (bomb_texture.width/2  * m_scale.x);
     if (m_rotation > 18.f)
         m_rotation = 0.f;
     else
         m_rotation += speed.x *(0.001);
 
 
-    float widthNew = width * ViewHelper::getRatio();
-    float heightNew = height * ViewHelper::getRatio();
+    //float widthNew = width * ViewHelper::getRatio();
+    //float heightNew = height * ViewHelper::getRatio();
 
 
 

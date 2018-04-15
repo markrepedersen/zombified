@@ -44,6 +44,9 @@ public:
     
     void move_antidoteback(int player);
     
+    void setToolboxInUse(bool inUse);
+    bool getToolboxInUse();
+    
     void destroy();
     //bool max_slots_filled1;
     //bool max_slots_filled2;
@@ -54,5 +57,6 @@ private:
     std::vector<int> m_listOfSlotsPlayer1; //list of slots, 0 if empty and available. Non-zero numbers each maps to an item
     std::vector<int> m_listOfSlotsPlayer2;
     std::list<ToolboxSlot> m_listOfToolboxSlots;
+    bool toolboxInUse;
     
 };

@@ -36,9 +36,9 @@ public:
     void on_zombie_collision(Kinetic *zombie)override;
 
     vec2 getAABB()override;
-    
+
 private:
-	float m_rotation;
+	//float m_rotation;
     vec2 m_scale; // 1.f in each dimension. 1.f is as big as the associated texture
-    bool end_animation;
+
 };

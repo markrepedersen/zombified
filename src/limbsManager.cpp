@@ -11,6 +11,7 @@ bool LimbsManager::init(vec2 screen, const std::vector<vec2> &mapCollisionPoints
     collectedLegs_p1 = 0;
     collectedLegs_p2 = 0;
     limbs.reserve(1000);
+
     return true;
 }
 
@@ -229,9 +230,9 @@ std::unordered_set<vec2> LimbsManager::checkClusters() {
             } else {
                 zombie_map[it->getCurrentTarget()] = 1;
             }
-            it++;
+            ++it;
         } else {
-            it++;
+            ++it;
         }
      }
 
@@ -254,7 +255,7 @@ std::unordered_set<vec2> LimbsManager::checkClusters() {
                 m_arms_total--;
             }
         } else {
-            it++;
+            ++it;
         }
     }
 

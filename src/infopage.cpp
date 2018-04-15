@@ -24,8 +24,8 @@ bool Info::init(std::string infotype)
     //if (!Info_texture.is_valid())
     //{
     type = infotype;
-    float wr;
-    float hr;
+    float wr = 0;
+    float hr = 0;
     
     if(type == "tool") {
         if (!toolpage_texture.is_valid()) {
@@ -195,9 +195,9 @@ bool Info::init(std::string infotype)
             }
             wr = story_texture.width * 0.5f;
             hr = story_texture.height * 0.5f;
-            m_scale.x = -0.18f * ViewHelper::getRatio();
-            m_scale.y = 0.18f * ViewHelper::getRatio();
-            m_position = { 1050.f* ViewHelper::getRatio(), 310.f* ViewHelper::getRatio() };
+            m_scale.x = -0.21f * ViewHelper::getRatio();
+            m_scale.y = 0.21f * ViewHelper::getRatio();
+            m_position = { 875.f* ViewHelper::getRatio(), 310.f* ViewHelper::getRatio() };
         }
     }
 
