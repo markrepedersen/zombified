@@ -12,7 +12,8 @@ enum Terrain {
     REGULAR = 1,
     POOP,
     WATER,
-    ICE
+    ICE,
+    OCCUPADO
 };
 
 struct Node {

@@ -31,6 +31,8 @@
 #include "punchright.hpp"
 
 #include "infopage.hpp"
+#include "lifep1.hpp"
+#include "lifep2.hpp"
 
 #include <vector>
 // #include <Box2D.h>
@@ -147,8 +149,6 @@ private:
 	Worldtexture m_worldtexture;
 	ToolboxManager m_toolboxManager;
 	//ToolManager toolManager;
-	LimbsManager m_limbsManager;
-    ZombieManager m_zombieManager;
 	Player1 m_player1;
 	Player2 m_player2;
 	Antidote m_antidote;
@@ -233,6 +233,17 @@ private:
     
     bool pause;
     Info m_pause;
+    
+    Lifep1 onep1;
+    Lifep1 twop1;
+    Lifep1 threep1;
+    Lifep1 fourp1;
+    
+    Lifep2 onep2;
+    Lifep2 twop2;
+    Lifep2 threep2;
+    Lifep2 fourp2;
+    
 
     Mix_Music* m_background_music;
 	Mix_Chunk* m_explosion_sound;

@@ -92,6 +92,7 @@ bool isInsidePolygon(std::vector<vec2>, vec2);
 std::vector<vec2> getIntersectionWithPoly(std::vector<vec2> poly, vec2 point, vec2 oldpoint);
 vec2 getRandomPointInMap(std::vector<vec2> mapCollisionPoints, vec2 screen);
 
+bool is_aabb_colliding(float x1, float y1, int w1, int h1, float x2, float y2, int w2, int h2);
 
 
 // OpenGL utilities

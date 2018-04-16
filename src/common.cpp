@@ -75,6 +75,11 @@ mat3 mul(const mat3 &l, const mat3 &r) {
     return ret;
 }
 
+bool is_aabb_colliding(float x1, float y1, int w1, int h1, float x2, float y2, int w2, int h2) {
+    return (abs(x1 - x2) * 2 < (w1 + w2)) &&
+           (abs(y1 - y2) * 2 < (h1 + h2));
+}
+
 vec2 normalize(vec2 v) {
     float hyp = sqrt(v.x * v.x + v.y * v.y);
     v.x /= hyp;

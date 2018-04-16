@@ -1,6 +1,5 @@
 #include "world.hpp"
 #include <sstream>
-#include <unordered_set>
 
 using namespace std;
 
@@ -69,8 +68,9 @@ bool World::init(vec2 screen) {
 
     ViewHelper::getInstance(m_window);
     populateMapCollisionPoints();
-    mapGrid = new MapGrid((unsigned) screen.x / 100, (unsigned) screen.y / 100);
-    //m_limbsManager.init(screen, mapCollisionPoints);
+    mapGrid = new MapGrid((unsigned) (screen.x * ViewHelper::getInstance(m_window)->getRatio()), (unsigned) (screen.y * ViewHelper::getInstance(m_window)->getRatio()));
+
+
 
     bool rendered = false;
     game_started = false;
@@ -115,8 +115,8 @@ bool World::init(vec2 screen) {
         return false;
     }
 
-    m_background_music = Mix_LoadMUS(audio_path("music.wav"));
-    // m_explosion_sound = Mix_LoadWAV(audio_path("explosion_medium.wav"));
+    m_background_music = Mix_LoadMUS(audio_path("badass_background.wav"));
+//     m_explosion_sound = Mix_LoadWAV(audio_path("explosion_medium.wav"));
 
     if (m_background_music == nullptr)
     {
@@ -127,8 +127,6 @@ bool World::init(vec2 screen) {
     // Playing background music undefinitely
     Mix_PlayMusic(m_background_music, -1);
 
-    //fprintf(stderr, "Loaded music");
-
     return rendered;
 }
 
@@ -138,8 +136,8 @@ void World::destroy() {
     m_toolboxManager.destroy();
     m_player1.destroy();
     m_player2.destroy();
-    m_limbsManager.destroy();
-    m_zombieManager.destroy();
+    LimbsManager::GetInstance()->destroy();
+    ZombieManager::GetInstance()->destroy();
     for (auto &freeze : m_freeze)
         freeze.destroy();
     for (auto &water : m_water)
@@ -182,6 +180,16 @@ void World::destroy() {
     for (auto &missiles_used : used_missiles)
         missiles_used.destroy();
 
+    onep1.destroy();
+    twop1.destroy();
+    threep1.destroy();
+    fourp1.destroy();
+
+    onep2.destroy();
+    twop2.destroy();
+    threep2.destroy();
+    fourp2.destroy();
+
     m_freeze.clear();
     m_water.clear();
     m_missile.clear();
@@ -201,17 +209,6 @@ void World::destroy() {
     used_bombs.clear();
     used_missiles.clear();
     m_mud_collected.clear();
-    
-    //mapCollisionPoints.clear();
-
-    // i think this is causing segfaults??? *******
-
-    /*if (m_background_music != nullptr)
-        Mix_FreeMusic(m_background_music);
-    if (m_explosion_sound != nullptr)
-        Mix_FreeChunk(m_explosion_sound);*/
-
-    //Mix_CloseAudio();
 
     game_over = true;
 }
@@ -222,10 +219,6 @@ bool World::update(float elapsed_ms) {
     vec2 screen = {(float) w, (float) h};
     
     if (game_over) {
-        /*if (winner == 1)
-         m_winner1.init("winner1");
-         else if (winner == 2)
-         m_winner2.init("winner2");*/
         game_over = false;
         if(winner != 0) {
             game_over_limbo = true;
@@ -236,7 +229,7 @@ bool World::update(float elapsed_ms) {
     }
     
     else if (!game_started) {
-        
+
         if (!instruction_page  && !game_over_limbo){
             if (m_infobutton.is_clicked()) {
                 instruction_page = true;
@@ -245,43 +238,40 @@ bool World::update(float elapsed_ms) {
             }
             
             else if (m_startbutton.is_clicked()) {
-                
-                std::cout << "getting highscores" << std::endl;
-                getHighScores(5);
 
                 gl_has_errors();
                 game_started = true;
                 m_startbutton.unclick();
 
                 pause = false;
-                
-                /*if (winner == 1)
-                 m_winner1.destroy();
-                 else if (winner == 2)
-                 m_winner2.destroy();
-                 winner = 0;*/
-                
-                //populateMapCollisionPoints();
-                
                 bool initialized = (gloveRight_p1.init(screen)&&
                                     gloveLeft_p1.init(screen)&&
                                     
                                     gloveRight_p2.init(screen)&&
                                     gloveLeft_p2.init(screen)&&
                                     
+                                    onep1.init("one") &&
+                                    twop1.init("two") &&
+                                    threep1.init("three")&&
+                                    fourp1.init("four")&&
+
+                                    onep2.init("one")&&
+                                    twop2.init("two")&&
+                                    threep2.init("three")&&
+                                    fourp2.init("four")&&
+
                                     m_worldtexture.init(screen)&&
                                     m_toolboxManager.init({screen.x, screen.y}) &&
                                     m_antidote.init(screen, mapCollisionPoints) &&
                                     m_player1.init(screen, mapCollisionPoints) &&
                                     m_player2.init(screen, mapCollisionPoints) &&
-                                    
-                                    m_zombieManager.init({screen.x, screen.y}, mapCollisionPoints) &&
-                                    m_limbsManager.init(screen, mapCollisionPoints2));
+                                    ZombieManager::GetInstance()->init({screen.x, screen.y}, mapCollisionPoints) &&
+                                    LimbsManager::GetInstance()->init(screen, mapCollisionPoints2));
                 
                 srand((unsigned) time(0));
                 explosion = false;
                 m_min = 0;
-                m_sec = 5;
+                m_sec = 60;
                 timeDelay = 5;
                 start = time(0);
                 immobilize = 0;
@@ -298,9 +288,9 @@ bool World::update(float elapsed_ms) {
                 
                 droppedAntidoteTime_p1 = 5;
                 droppedAntidoteTime_p2 = 5;
-                
-                m_limbsManager.set_arms_size(0);
-                m_limbsManager.set_legs_size(0);
+
+                LimbsManager::GetInstance()->set_arms_size(0);
+                LimbsManager::GetInstance()->set_legs_size(0);
                 
                 m_player1.set_key(0, false);
                 m_player1.set_key(1, false);
@@ -327,7 +317,7 @@ bool World::update(float elapsed_ms) {
                 m_player2.update(elapsed_ms);
                 
                 random_spawn(elapsed_ms, {screen.x * ViewHelper::getRatio(), screen.y * ViewHelper::getRatio()});
-                vec2 player_hits_from_zombies = m_zombieManager.update_zombies(elapsed_ms, m_player1.get_position(), m_player2.get_position());
+                vec2 player_hits_from_zombies = ZombieManager::GetInstance()->update_zombies(elapsed_ms, m_player1.get_position(), m_player2.get_position());
                 
                 if(!armourInUse_p1) {
                     if (player_hits_from_zombies.x != 0)
@@ -363,60 +353,16 @@ bool World::update(float elapsed_ms) {
                     else
                         itr_b++;
 
-                if (explosion)
-                    explode();
-                //if (!m_explosion.empty())
-                //    m_explosion.begin()->animate();
-
-                if (useBomb)
-                    use_bomb(elapsed_ms);
-
-                if (useMissile)
-                    use_missile(elapsed_ms);
-
-                if ((int) difftime(time(0), armourTime_p1) >= 10) {
-                    armourInUse_p1 = false;
-                    m_player1.set_armourstate(false);
-                    armourTime_p1 = 0;
-                }
-                if ((int) difftime(time(0), armourTime_p2) >= 10) {
-                    armourInUse_p2 = false;
-                    m_player2.set_armourstate(false);
-                    armourTime_p2 = 0;
-                }
-
-                // check how many times the player has been hit
-                // if player was hit 5 times, drops items
-                if (m_player1.numberofHits >= 5) {
-                    droptool_p1 = true;
-                    use_tool_1(m_toolboxManager.useItem(1));
-                    m_player1.numberofHits = 0;
-                }
-                if (m_player2.numberofHits >= 5) {
-                    droptool_p2 = true;
-                    use_tool_2(m_toolboxManager.useItem(2));
-                    m_player2.numberofHits = 0;
-                }
-
-                /*if (m_limbsManager.getCollectedLegs(1) > 0){
-                 if ((int) difftime(time(0), leg_times_1) >= 10){
-                 //fprintf(stderr, "remove leg1 \n");
-                 m_limbsManager.decreaseCollectedLegs(1);
-                 m_player2.increase_speed_legs(-10);
-                 leg_times_1 = time(0);
-                 }
-                 }*/
-                
-                m_limbsManager.computePaths(elapsed_ms, *mapGrid);
+                LimbsManager::GetInstance()->computePaths(elapsed_ms, *mapGrid);
                 //if the freeze item is used, then zombies will stop moving
                 if ((int) difftime(time(0), freezeTime) >= 5)
                 {
-                    m_zombieManager.computeZPaths(elapsed_ms, *mapGrid);
+                    ZombieManager::GetInstance()->computeZPaths(elapsed_ms, *mapGrid);
                 }
-                std::unordered_set<vec2> new_zombie_positions = m_limbsManager.checkClusters();
+                std::unordered_set<vec2> new_zombie_positions = LimbsManager::GetInstance()->checkClusters();
                 if (!new_zombie_positions.empty()) {
                     for (const vec2 &pos : new_zombie_positions) {
-                        m_zombieManager.spawn_zombie(pos, m_player1.get_position(), m_player2.get_position());
+                        ZombieManager::GetInstance()->spawn_zombie(pos, m_player1.get_position(), m_player2.get_position());
                     }
                 }
                 
@@ -424,7 +370,9 @@ bool World::update(float elapsed_ms) {
                 
                 if (explosion)
                     explode();
-                
+                if (!m_explosion.empty())
+                    m_explosion.begin()->animate();
+
                 if (useBomb)
                     use_bomb(elapsed_ms);
                 
@@ -447,30 +395,30 @@ bool World::update(float elapsed_ms) {
                 }
                 // check how many times the player has been hit
                 // if player was hit 5 times, drops items
-                if (m_player1.numberofHits >= 5) {
+                if (m_player1.numberofHits >= 4) {
                     droptool_p1 = true;
                     use_tool_1(m_toolboxManager.useItem(1));
                     m_player1.numberofHits = 0;
                 }
-                if (m_player2.numberofHits >= 5) {
+                if (m_player2.numberofHits >= 4) {
                     droptool_p2 = true;
                     use_tool_2(m_toolboxManager.useItem(2));
                     m_player2.numberofHits = 0;
                 }
                 
-                if (m_limbsManager.getCollectedLegs(1) > 0){
+                if (LimbsManager::GetInstance()->getCollectedLegs(1) > 0){
                     if ((int) difftime(time(0), leg_times_1) >= 10){
                         //fprintf(stderr, "remove leg1 \n");
-                        m_limbsManager.decreaseCollectedLegs(1);
+                        LimbsManager::GetInstance()->decreaseCollectedLegs(1);
                         m_player1.increase_speed_legs(-10);
                         leg_times_1 = time(0);
                     }
                 }
                 
-                if (m_limbsManager.getCollectedLegs(2) > 0){
+                if (LimbsManager::GetInstance()->getCollectedLegs(2) > 0){
                     if ((int) difftime(time(0), leg_times_2) >= 10){
                         //fprintf(stderr, "remove leg2 \n");
-                        m_limbsManager.decreaseCollectedLegs(2);
+                        LimbsManager::GetInstance()->decreaseCollectedLegs(2);
                         m_player2.increase_speed_legs(-10);
                         leg_times_2 = time(0);
                     }
@@ -535,17 +483,17 @@ void World::draw() {
 
     std::stringstream title_ss;
     if (m_sec < 10)
-        title_ss << "player1 numberoflegs: " << m_limbsManager.getCollectedLegs(1) << "          "
+        title_ss << "player1 numberoflegs: " <<LimbsManager::GetInstance()->getCollectedLegs(1) << "          "
         << "player1 damage count: " << m_player1.numberofHits << "          "
         << "Time remaining " << m_min << ":" << "0" << m_sec << "          "
         << "player2 damage count: " << m_player2.numberofHits << "          "
-        << "player2 numberoflegs: " << m_limbsManager.getCollectedLegs(2);
+        << "player2 numberoflegs: " << LimbsManager::GetInstance()->getCollectedLegs(2);
     else
-        title_ss << "player1 numberoflegs: " << m_limbsManager.getCollectedLegs(1) << "          "
+        title_ss << "player1 numberoflegs: " <<LimbsManager::GetInstance()->getCollectedLegs(1) << "          "
         << "player1 damage count: " << m_player1.numberofHits << "          "
         << "Time remaining " << m_min << ":" << m_sec << "          "
         << "player2 damage count: " << m_player2.numberofHits << "          "
-        << "player2 numberoflegs: " << m_limbsManager.getCollectedLegs(2);
+        << "player2 numberoflegs: " << LimbsManager::GetInstance()->getCollectedLegs(2);
     glfwSetWindowTitle(m_window, title_ss.str().c_str());
 
     glViewport(0, 0, w, h);
@@ -588,8 +536,8 @@ void World::draw() {
         m_toolboxManager.draw(projection_2D);
 
         //these are drawn in ascending order w.r.t. their y position
-        m_limbsManager.draw(projection_2D);
-        m_zombieManager.draw(projection_2D);
+        LimbsManager::GetInstance()->draw(projection_2D);
+        ZombieManager::GetInstance()->draw(projection_2D);
         
         for (auto& mud_collected: m_mud_collected)
             mud_collected.draw(projection_2D);
@@ -612,6 +560,24 @@ void World::draw() {
         if (is_punchingright_p2)
             gloveRight_p2.draw(projection_2D);
         
+        if (m_player1.numberofHits == 0)
+            fourp1.draw(projection_2D);
+        if (m_player1.numberofHits == 1)
+            threep1.draw(projection_2D);
+        if (m_player1.numberofHits == 2)
+            twop1.draw(projection_2D);
+        if (m_player1.numberofHits == 3)
+            onep1.draw(projection_2D);
+
+        if (m_player2.numberofHits == 0)
+            fourp2.draw(projection_2D);
+        if (m_player2.numberofHits == 1)
+            threep2.draw(projection_2D);
+        if (m_player2.numberofHits == 2)
+            twop2.draw(projection_2D);
+        if (m_player2.numberofHits == 3)
+            onep2.draw(projection_2D);
+
         if (pause)
             m_pause.draw(projection_2D);
         
@@ -681,8 +647,8 @@ void World::entityDrawOrder(mat3 projection_2D) {
                             m_armour_collected_1.size() +
                             m_armour_collected_2.size() +
                             //m_mud_collected.size() +
-                            m_zombieManager.getZombieCount() +
-                            m_limbsManager.getLimbCount()
+                            ZombieManager::GetInstance()->getZombieCount() +
+                            LimbsManager::GetInstance()->getLimbCount()
                             + 3);
 
     transform(m_freeze.begin(), m_freeze.end(), std::back_inserter(drawOrderVector),
@@ -728,8 +694,8 @@ void World::entityDrawOrder(mat3 projection_2D) {
     drawOrderVector.push_back(&m_player1);
     drawOrderVector.push_back(&m_antidote);
 
-    m_zombieManager.transformZombies(drawOrderVector);
-    m_limbsManager.transformLimbs(drawOrderVector);
+    ZombieManager::GetInstance()->transformZombies(drawOrderVector);
+    LimbsManager::GetInstance()->transformLimbs(drawOrderVector);
 
     sort(drawOrderVector.begin(), drawOrderVector.end(), [](Renderable *lhs, Renderable *rhs) {
         return lhs->m_position.y < rhs->m_position.y;
@@ -818,7 +784,7 @@ void World::on_key(GLFWwindow *, int key, int, int action, int mod) {
                     }
                 }
                 
-                if(m_zombieManager.attack_zombies(m_player2.get_position(), m_player2.get_bounding_box(), 2, &m_toolboxManager))
+                if(ZombieManager::GetInstance()->attack_zombies(m_player2.get_position(), m_player2.get_bounding_box(), 2, &m_toolboxManager))
                 {
                     if((m_player1.lastkey == 2) || (m_player1.lastkey == 1)) {
                         is_punchingleft_p2 = true;
@@ -933,7 +899,7 @@ void World::on_key(GLFWwindow *, int key, int, int action, int mod) {
                         break;
                     }
                 }
-                if(m_zombieManager.attack_zombies(m_player1.get_position(), m_player1.get_bounding_box(), 1, &m_toolboxManager))
+                if(ZombieManager::GetInstance()->attack_zombies(m_player1.get_position(), m_player1.get_bounding_box(), 1, &m_toolboxManager))
                 {
                     if((m_player1.lastkey == 2) || (m_player1.lastkey == 1)) {
                         is_punchingleft_p1 = true;
@@ -1092,21 +1058,21 @@ void World::on_mouse_move(GLFWwindow *window, int button, int action, int mod) {
             
         }
     }
-    else {
+    /*else {
      if (glfwGetMouseButton(window, GLFW_MOUSE_BUTTON_1) == GLFW_RELEASE) {
 
-     std::cout << "mapCollisionPoints.push_back({ " << xpos << "f * ViewHelper::getRatio(), " << ypos << "f * ViewHelper::getRatio()});" << std::endl;
+     // std::cout << "mapCollisionPoints.push_back({ " << xpos << "f * ViewHelper::getRatio(), " << ypos << "f * ViewHelper::getRatio()});" << std::endl;
      //std::cout << "xpos: " << xpos << std::endl;
      //std::cout << "ypos: " << ypos << std::endl;
      //std::cout << "player pos: " << m_player1.get_position().x << ", " << m_player1.get_position().y
      //<< std::endl;
-    //  if (isInsidePolygon(mapCollisionPoints, {(float)xpos * ViewHelper::getRatio(), (float)ypos * ViewHelper::getRatio()})) {
-    //  std::cout << "yes it's inside polygon" << std::endl;
-    //  } else {
-    //  std::cout << "nope, it's outside the polygon" << std::endl;
-    //  }
+     if (isInsidePolygon(mapCollisionPoints, {(float)xpos * ViewHelper::getRatio(), (float)ypos * ViewHelper::getRatio()})) {
+     std::cout << "yes it's inside polygon" << std::endl;
+     } else {
+     std::cout << "nope, it's outside the polygon" << std::endl;
      }
      }
+     }*/
 }
 
 bool World::spawn_freeze() {
@@ -1193,20 +1159,20 @@ bool World::random_spawn(float elapsed_ms, vec2 screen) {
     m_next_leg_spawn -= elapsed_ms;
     m_next_spawn -= elapsed_ms;
     vec2 randompoint = getRandomPointInMap(mapCollisionPoints2, screen);
-    
+
     //srand((unsigned) time(0));
     int randNum = (rand() % (10)) + 1;
 
     //if (randNum % 2 == 0 || randNum % 1 == 0) {
-    if (randNum == 1 || randNum == 10 || randNum == 8 || m_limbsManager.get_arms_size() == 0){
-        if (m_limbsManager.get_arms_size() <= MAX_ARMS && m_next_arm_spawn < 0.f) {
-            if (!(m_limbsManager.spawn_arms()))
+    if (randNum == 1 || randNum == 10 || randNum == 8 || LimbsManager::GetInstance()->get_arms_size() == 0){
+        if (LimbsManager::GetInstance()->get_arms_size() <= MAX_ARMS && m_next_arm_spawn < 0.f) {
+            if (!(LimbsManager::GetInstance()->spawn_arms()))
                 return false;
             m_next_arm_spawn = (ARM_DELAY_MS / 2) + rand() % (1000);
         }
     } else if (randNum == 2) {
-        if (m_limbsManager.get_legs_size() <= MAX_LEGS && m_next_leg_spawn < 0.f) {
-            if (!(m_limbsManager.spawn_legs()))
+        if (LimbsManager::GetInstance()->get_legs_size() <= MAX_LEGS && m_next_leg_spawn < 0.f) {
+            if (!(LimbsManager::GetInstance()->spawn_legs()))
                 return false;
             m_next_leg_spawn = (LEG_DELAY_MS / 2) + rand() % (1000);
         }
@@ -1517,15 +1483,15 @@ void World::check_add_tools(vec2 screen) {
 
     //=================check for limbs collision
     string checklegs;
-    checklegs = m_limbsManager.check_collision_with_players(&m_player1, &m_player2, &m_toolboxManager);
+    checklegs = LimbsManager::GetInstance()->check_collision_with_players(&m_player1, &m_player2, &m_toolboxManager);
 
     if (checklegs == "1leg"){
-        if (m_limbsManager.getCollectedLegs(1) == 1)
+        if (LimbsManager::GetInstance()->getCollectedLegs(1) == 1)
             leg_times_1 = time(0);
         //fprintf(stderr, "1leg");
     }
     if (checklegs == "2leg"){
-        if (m_limbsManager.getCollectedLegs(2) == 1)
+        if (LimbsManager::GetInstance()->getCollectedLegs(2) == 1)
             leg_times_2 = time(0);
         //fprintf(stderr, "2leg");
     }
@@ -1728,11 +1694,6 @@ void World::use_tool_1(int tool_number) {
             float angle = atan2(missileDir.x, missileDir.y);
             
             use_missile.set_rotation(angle);
-            //float x = (m_player2.get_position().x- use_missile.get_position().x);
-            //std::fabs(( m_player2.get_position().x - use_missile.get_position().x));
-            //float y = (m_player2.get_position().y - use_missile.get_position().y);
-            //std::fabs((m_player2.get_position().y - use_missile.get_position().y));
-            
             use_missile.set_speed(missileDir);
         }
         m_player1.set_mass(m_player1.get_mass() - m_missile_collected_1.begin()->get_mass());
@@ -2026,14 +1987,21 @@ void World::use_bomb(float ms) {
 
     for (itbomb = used_bombs.begin(); itbomb != used_bombs.end();) {
         itbomb->set_speed({itbomb->get_speed().x * (0.997f), itbomb->get_speed().y * (0.997f)});
-
-
+        std::vector<vec2> shit;
+        shit.push_back(itbomb->m_position);
+        shit.push_back(itbomb->get_bounding_box());
+        bool isShit_vol2_remasteredVersion = LimbsManager::GetInstance()->isColliding(shit);
+        bool isShit = ZombieManager::GetInstance()->isColliding(shit);
         if ((std::fabs(itbomb->get_speed().x) <= 50 && std::fabs(itbomb->get_speed().y) <= 50)) {
             itbomb->set_speed({0.f, 0.f});
             autoExplode(*itbomb, count);
         }
-        else if (m_player1.collides_with(*itbomb)||m_player2.collides_with(*itbomb)){
-            if ((int) difftime(time(0), itbomb->bombTime) >= 2) {
+        else if (isShit_vol2_remasteredVersion|| isShit || m_player1.collides_with(*itbomb)||m_player2.collides_with(*itbomb)){
+            if (isShit || isShit_vol2_remasteredVersion) {
+                itbomb->set_speed({0.f, 0.f});
+                autoExplode(*itbomb, count);
+            }
+            else if ((int) difftime(time(0), itbomb->bombTime) >= 2) {
                 itbomb->set_speed({0.f, 0.f});
                 autoExplode(*itbomb, count);
             }
@@ -2125,10 +2093,6 @@ void World::autoExplode(Bomb bomb, int position) {
         m_player2.set_explosion(true);
     }
 
-    // create_explosion(used_bombs.begin()->get_position());
-    // used_bombs.begin()->explode();
-    //fprintf(stderr,"# of bombs: %lu \n", used_bombs.size());
-    //fprintf(stderr,"bomb to remove: %d \n", position);
     std::vector<Bomb>::iterator itbomb;
     int i = 0;
     for (itbomb = used_bombs.begin(); itbomb != used_bombs.end();) {
@@ -2168,17 +2132,11 @@ void World::use_missile(float ms) {
     glfwGetWindowSize(m_window, &width, &height);
     
     for (itmissile = used_missiles.begin(); itmissile != used_missiles.end();) {
-        /*if ((itmissile->useMissileOnPlayer == 1 && m_player1.collides_with(*itmissile))||
-         (itmissile->useMissileOnPlayer == 2 && m_player2.collides_with(*itmissile)))*/
-        //fprintf(stderr,"# of missiles: %lu", used_missiles.size());
         if (itmissile->checkPoint())
             autoExplodeMissile(*itmissile, count);
         else {
             itmissile->move({itmissile->get_speed().x * (ms / 800),
                 itmissile->get_speed().y * (ms / 800)});
-            /*if (itmissile->checkboundary())
-             used_missiles.erase(itmissile);
-             else*/
             ++itmissile;
             ++count;
         }
@@ -2297,7 +2255,7 @@ void World::populateMapCollisionPoints() {
         mapCollisionPoints.push_back({ 256.238f * ViewHelper::getRatio(), 469.301f * ViewHelper::getRatio()});
         mapCollisionPoints.push_back({ 86.1797f * ViewHelper::getRatio(), 393.562f * ViewHelper::getRatio()});
         mapCollisionPoints.push_back({ 91.6211f * ViewHelper::getRatio(), 374.586f * ViewHelper::getRatio()});
-   
+
     //populate less accurate mapCollisionPoints
         mapCollisionPoints2.push_back({ 92.4023f * ViewHelper::getRatio(), 333.953f * ViewHelper::getRatio()});
         mapCollisionPoints2.push_back({ 98.082f * ViewHelper::getRatio(), 281.676f * ViewHelper::getRatio()});
@@ -2451,10 +2409,10 @@ std::map<std::string, int> World::getHighScores(int numOfHighScores) {
         return hsMap;
     }
     else
-    {  
+    {
         fclose(file);
         file=fopen(filename,"r+b");
-    
+
         std::vector<std::string> scores = parseFile(file);
 
         for(auto &score : scores) {
@@ -2462,7 +2420,7 @@ std::map<std::string, int> World::getHighScores(int numOfHighScores) {
             if(position != std::string::npos) {
                 string thisName = score.substr(0, position);
                 string thisScore = score.substr(position+1);
-                
+
                 int thisScoreInt = std::stoi(thisScore);
 
                 if(hsMap.size() < numOfHighScores) {

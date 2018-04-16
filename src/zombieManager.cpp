@@ -1,5 +1,7 @@
 #include "zombieManager.hpp"
 
+ZombieManager* ZombieManager::instance = nullptr;
+
 // initialize a zombie manager
 bool ZombieManager::init(vec2 screen, const std::vector<vec2> &mapCollisionPoints) {
     m_mapCollisionPoints = mapCollisionPoints;
@@ -8,6 +10,27 @@ bool ZombieManager::init(vec2 screen, const std::vector<vec2> &mapCollisionPoint
     zombiesInUse = false;
     return true;
 }
+
+bool ZombieManager::isColliding(std::vector<vec2> shit) {
+    vec2 penguin = shit.front();
+    vec2 pos = shit.back();
+    for (auto it = zombies.begin(); it != zombies.end(); ++it) {
+        if (is_aabb_colliding(penguin.x,
+                              penguin.y,
+                              (int) pos.x,
+                              (int) pos.y,
+                              it->m_position.x,
+                              it->m_position.y,
+                              (int)  it->get_bounding_box().x,
+                              (int) it->get_bounding_box().y)) {
+            it->destroy();
+            zombies.erase(it);
+            return true;
+        }
+    }
+    return false;
+}
+
 
 // Renders the existing zombies
 void ZombieManager::draw(const mat3 &projection) {
@@ -27,24 +50,17 @@ void ZombieManager::transformZombies(std::vector<Renderable *> &container) {
 //spawn new zombie where clusters meet
 bool ZombieManager::spawn_zombie(vec2 zombie_pos, vec2 player1_pos, vec2 player2_pos) {
     Zombie zombie;
-    
-//    if(!zombiesInUse) {
-//        zombiesInUse = true;
         if (zombie.init()) {
             zombie.set_position(zombie_pos);
             
             if (getDistance(zombie_pos, player1_pos) > getDistance(zombie_pos, player2_pos)) {
                 zombie.setCurrentTarget({static_cast<float>(player2_pos.x), static_cast<float>(player2_pos.y)});
-                //std::cout << "current target is player 2" << std::endl;
             } else {
                 zombie.setCurrentTarget({static_cast<float>(player1_pos.x), static_cast<float>(player1_pos.y)});
-                //std::cout << "current target is player 1" << std::endl;
             }
             zombies.emplace_back(zombie);
             return true;
         }
-//        zombiesInUse = false;
-//    }
     return false;
     
 }
@@ -54,9 +70,6 @@ bool ZombieManager::spawn_zombie(vec2 zombie_pos, vec2 player1_pos, vec2 player2
 vec2 ZombieManager::update_zombies(float elapsed_ms, vec2 player1_pos, vec2 player2_pos) {
     float player1damage = 0.f;
     float player2damage = 0.f;
-
-//    if(!zombiesInUse){
-//        zombiesInUse = true;
         for (auto &zombie : zombies) {
             float distance_to_player1 = getDistance(zombie.get_position(), player1_pos);
             float distance_to_player2 = getDistance(zombie.get_position(), player2_pos);
@@ -104,10 +117,10 @@ void ZombieManager::computeZPaths(float ms, const MapGrid &mapGrid) {
             vec2 target = zombie.getCurrentTarget();
             
             if (zombie.getLastTarget() != target || !zombie.isInitialized()) {
-                auto srcX = (unsigned) (zombie.get_position().x / 100);
-                auto srcY = (unsigned) (zombie.get_position().y / 100);
-                auto dstX = (unsigned) (target.x / 100);
-                auto dstY = (unsigned) (target.y / 100);
+                auto srcX = (unsigned) (zombie.get_position().x);
+                auto srcY = (unsigned) (zombie.get_position().y);
+                auto dstX = (unsigned) (target.x);
+                auto dstY = (unsigned) (target.y);
                 JPS::findPath(path, mapGrid, srcX, srcY, dstX, dstY, 1);
                 zombie.setCurrentPath(path);
                 zombie.setInitialized(true);
@@ -122,8 +135,8 @@ void ZombieManager::computeZPaths(float ms, const MapGrid &mapGrid) {
                 }
                 float step = speed * (ms / 1000);
                 vec2 dir;
-                dir.x = nextNode.x * 100 - zombie.get_position().x;
-                dir.y = nextNode.y * 100 - zombie.get_position().y;
+                dir.x = nextNode.x - zombie.get_position().x;
+                dir.y = nextNode.y - zombie.get_position().y;
                 
                 auto next_pos = scale(step, normalize(dir));
                 
