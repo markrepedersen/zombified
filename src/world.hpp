@@ -14,6 +14,8 @@
 #include "Ice.hpp"
 //#include "tree.hpp"
 #include "explosion.hpp"
+#include "mushroom_explosion.hpp"
+#include "blood.hpp"
 #include "worldtexture.hpp"
 #include "viewHelper.hpp"
 #include "button.hpp"
@@ -35,13 +37,9 @@
 #include <time.h>
 #include <random>
 
-// #if !defined(DISABLE_SDL)
-//  #include <SDL/SDL.h>
- // #include <SDL/SDL_mixer.h>
- // #define SDL_MAIN_HANDLED
-// #endif
-
-
+#define SDL_MAIN_HANDLED
+#include <SDL/SDL.h>
+#include <SDL/SDL_mixer.h>
 
 // Container for all our entities and game logic. Individual rendering / update is
 // deferred to the relative update() methods
@@ -109,12 +107,13 @@ private:
 	void add_to_broadphase(int w, int h, float posx, float posy, void*);
 
     bool create_explosion(vec2 bomb_position);
-    
     int saveToFile(std::string winnername);
     
     std::vector<std::string> parseFile(FILE *file);
     
     std::map<std::string, int> getHighScores(int numOfHighScores);
+    bool create_mushroom_explosion(vec2 missile_position);
+    bool create_blood(vec2 player_position);
 
 private:
     void entityDrawOrder(mat3 projection_2D);
@@ -170,6 +169,8 @@ private:
     std::vector<Bomb> m_bomb;
     std::vector<Armour> m_armour;
     std::vector<Explosion> m_explosion;
+    std::vector<Mushroom_Explosion> m_mushroom_explosion;
+    std::vector<Blood> m_blood;
 
     std::vector<Ice> m_freeze_collected_1;
     std::vector<Water> m_water_collected_1;
@@ -230,4 +231,7 @@ private:
     
     bool pause;
     Info m_pause;
+
+    Mix_Music* m_background_music;
+	Mix_Chunk* m_explosion_sound;
 };

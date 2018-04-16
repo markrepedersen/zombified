@@ -51,6 +51,10 @@ public:
 
     void set_armourstate(bool newArmourState);
     bool get_armourstate()const;
+    
+    void set_droppedantidotestate(bool delay);
+    void set_explosion(bool delay);
+    void set_punched(bool waspunched);
 
     // True if the salmon is alive
     bool is_alive()const;
@@ -102,4 +106,7 @@ private:
 
     bool frozen;
     bool armour_in_use;
+    bool droppedantidotedelay;
+    bool explosiondelay;
+    bool punched;
 };

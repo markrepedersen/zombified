@@ -513,9 +513,33 @@ CMakeFiles/zombie.dir/src/mud.cpp.o.provides: CMakeFiles/zombie.dir/src/mud.cpp.
 CMakeFiles/zombie.dir/src/mud.cpp.o.provides.build: CMakeFiles/zombie.dir/src/mud.cpp.o
 
 
+CMakeFiles/zombie.dir/src/mushroom_explosion.cpp.o: CMakeFiles/zombie.dir/flags.make
+CMakeFiles/zombie.dir/src/mushroom_explosion.cpp.o: ../src/mushroom_explosion.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_20) "Building CXX object CMakeFiles/zombie.dir/src/mushroom_explosion.cpp.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/zombie.dir/src/mushroom_explosion.cpp.o -c /Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/src/mushroom_explosion.cpp
+
+CMakeFiles/zombie.dir/src/mushroom_explosion.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/zombie.dir/src/mushroom_explosion.cpp.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/src/mushroom_explosion.cpp > CMakeFiles/zombie.dir/src/mushroom_explosion.cpp.i
+
+CMakeFiles/zombie.dir/src/mushroom_explosion.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/zombie.dir/src/mushroom_explosion.cpp.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/src/mushroom_explosion.cpp -o CMakeFiles/zombie.dir/src/mushroom_explosion.cpp.s
+
+CMakeFiles/zombie.dir/src/mushroom_explosion.cpp.o.requires:
+
+.PHONY : CMakeFiles/zombie.dir/src/mushroom_explosion.cpp.o.requires
+
+CMakeFiles/zombie.dir/src/mushroom_explosion.cpp.o.provides: CMakeFiles/zombie.dir/src/mushroom_explosion.cpp.o.requires
+	$(MAKE) -f CMakeFiles/zombie.dir/build.make CMakeFiles/zombie.dir/src/mushroom_explosion.cpp.o.provides.build
+.PHONY : CMakeFiles/zombie.dir/src/mushroom_explosion.cpp.o.provides
+
+CMakeFiles/zombie.dir/src/mushroom_explosion.cpp.o.provides.build: CMakeFiles/zombie.dir/src/mushroom_explosion.cpp.o
+
+
 CMakeFiles/zombie.dir/src/player1.cpp.o: CMakeFiles/zombie.dir/flags.make
 CMakeFiles/zombie.dir/src/player1.cpp.o: ../src/player1.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_20) "Building CXX object CMakeFiles/zombie.dir/src/player1.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_21) "Building CXX object CMakeFiles/zombie.dir/src/player1.cpp.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/zombie.dir/src/player1.cpp.o -c /Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/src/player1.cpp
 
 CMakeFiles/zombie.dir/src/player1.cpp.i: cmake_force
@@ -539,7 +563,7 @@ CMakeFiles/zombie.dir/src/player1.cpp.o.provides.build: CMakeFiles/zombie.dir/sr
 
 CMakeFiles/zombie.dir/src/player2.cpp.o: CMakeFiles/zombie.dir/flags.make
 CMakeFiles/zombie.dir/src/player2.cpp.o: ../src/player2.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_21) "Building CXX object CMakeFiles/zombie.dir/src/player2.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_22) "Building CXX object CMakeFiles/zombie.dir/src/player2.cpp.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/zombie.dir/src/player2.cpp.o -c /Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/src/player2.cpp
 
 CMakeFiles/zombie.dir/src/player2.cpp.i: cmake_force
@@ -563,7 +587,7 @@ CMakeFiles/zombie.dir/src/player2.cpp.o.provides.build: CMakeFiles/zombie.dir/sr
 
 CMakeFiles/zombie.dir/src/punchleft.cpp.o: CMakeFiles/zombie.dir/flags.make
 CMakeFiles/zombie.dir/src/punchleft.cpp.o: ../src/punchleft.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_22) "Building CXX object CMakeFiles/zombie.dir/src/punchleft.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_23) "Building CXX object CMakeFiles/zombie.dir/src/punchleft.cpp.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/zombie.dir/src/punchleft.cpp.o -c /Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/src/punchleft.cpp
 
 CMakeFiles/zombie.dir/src/punchleft.cpp.i: cmake_force
@@ -587,7 +611,7 @@ CMakeFiles/zombie.dir/src/punchleft.cpp.o.provides.build: CMakeFiles/zombie.dir/
 
 CMakeFiles/zombie.dir/src/punchright.cpp.o: CMakeFiles/zombie.dir/flags.make
 CMakeFiles/zombie.dir/src/punchright.cpp.o: ../src/punchright.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_23) "Building CXX object CMakeFiles/zombie.dir/src/punchright.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_24) "Building CXX object CMakeFiles/zombie.dir/src/punchright.cpp.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/zombie.dir/src/punchright.cpp.o -c /Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/src/punchright.cpp
 
 CMakeFiles/zombie.dir/src/punchright.cpp.i: cmake_force
@@ -611,7 +635,7 @@ CMakeFiles/zombie.dir/src/punchright.cpp.o.provides.build: CMakeFiles/zombie.dir
 
 CMakeFiles/zombie.dir/src/tmxparser/TmxColor.cpp.o: CMakeFiles/zombie.dir/flags.make
 CMakeFiles/zombie.dir/src/tmxparser/TmxColor.cpp.o: ../src/tmxparser/TmxColor.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_24) "Building CXX object CMakeFiles/zombie.dir/src/tmxparser/TmxColor.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_25) "Building CXX object CMakeFiles/zombie.dir/src/tmxparser/TmxColor.cpp.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/zombie.dir/src/tmxparser/TmxColor.cpp.o -c /Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/src/tmxparser/TmxColor.cpp
 
 CMakeFiles/zombie.dir/src/tmxparser/TmxColor.cpp.i: cmake_force
@@ -635,7 +659,7 @@ CMakeFiles/zombie.dir/src/tmxparser/TmxColor.cpp.o.provides.build: CMakeFiles/zo
 
 CMakeFiles/zombie.dir/src/tmxparser/TmxEllipse.cpp.o: CMakeFiles/zombie.dir/flags.make
 CMakeFiles/zombie.dir/src/tmxparser/TmxEllipse.cpp.o: ../src/tmxparser/TmxEllipse.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_25) "Building CXX object CMakeFiles/zombie.dir/src/tmxparser/TmxEllipse.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_26) "Building CXX object CMakeFiles/zombie.dir/src/tmxparser/TmxEllipse.cpp.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/zombie.dir/src/tmxparser/TmxEllipse.cpp.o -c /Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/src/tmxparser/TmxEllipse.cpp
 
 CMakeFiles/zombie.dir/src/tmxparser/TmxEllipse.cpp.i: cmake_force
@@ -659,7 +683,7 @@ CMakeFiles/zombie.dir/src/tmxparser/TmxEllipse.cpp.o.provides.build: CMakeFiles/
 
 CMakeFiles/zombie.dir/src/tmxparser/TmxGroupLayer.cpp.o: CMakeFiles/zombie.dir/flags.make
 CMakeFiles/zombie.dir/src/tmxparser/TmxGroupLayer.cpp.o: ../src/tmxparser/TmxGroupLayer.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_26) "Building CXX object CMakeFiles/zombie.dir/src/tmxparser/TmxGroupLayer.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_27) "Building CXX object CMakeFiles/zombie.dir/src/tmxparser/TmxGroupLayer.cpp.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/zombie.dir/src/tmxparser/TmxGroupLayer.cpp.o -c /Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/src/tmxparser/TmxGroupLayer.cpp
 
 CMakeFiles/zombie.dir/src/tmxparser/TmxGroupLayer.cpp.i: cmake_force
@@ -683,7 +707,7 @@ CMakeFiles/zombie.dir/src/tmxparser/TmxGroupLayer.cpp.o.provides.build: CMakeFil
 
 CMakeFiles/zombie.dir/src/tmxparser/TmxImage.cpp.o: CMakeFiles/zombie.dir/flags.make
 CMakeFiles/zombie.dir/src/tmxparser/TmxImage.cpp.o: ../src/tmxparser/TmxImage.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_27) "Building CXX object CMakeFiles/zombie.dir/src/tmxparser/TmxImage.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_28) "Building CXX object CMakeFiles/zombie.dir/src/tmxparser/TmxImage.cpp.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/zombie.dir/src/tmxparser/TmxImage.cpp.o -c /Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/src/tmxparser/TmxImage.cpp
 
 CMakeFiles/zombie.dir/src/tmxparser/TmxImage.cpp.i: cmake_force
@@ -707,7 +731,7 @@ CMakeFiles/zombie.dir/src/tmxparser/TmxImage.cpp.o.provides.build: CMakeFiles/zo
 
 CMakeFiles/zombie.dir/src/tmxparser/TmxImageLayer.cpp.o: CMakeFiles/zombie.dir/flags.make
 CMakeFiles/zombie.dir/src/tmxparser/TmxImageLayer.cpp.o: ../src/tmxparser/TmxImageLayer.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_28) "Building CXX object CMakeFiles/zombie.dir/src/tmxparser/TmxImageLayer.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_29) "Building CXX object CMakeFiles/zombie.dir/src/tmxparser/TmxImageLayer.cpp.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/zombie.dir/src/tmxparser/TmxImageLayer.cpp.o -c /Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/src/tmxparser/TmxImageLayer.cpp
 
 CMakeFiles/zombie.dir/src/tmxparser/TmxImageLayer.cpp.i: cmake_force
@@ -731,7 +755,7 @@ CMakeFiles/zombie.dir/src/tmxparser/TmxImageLayer.cpp.o.provides.build: CMakeFil
 
 CMakeFiles/zombie.dir/src/tmxparser/TmxLayer.cpp.o: CMakeFiles/zombie.dir/flags.make
 CMakeFiles/zombie.dir/src/tmxparser/TmxLayer.cpp.o: ../src/tmxparser/TmxLayer.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_29) "Building CXX object CMakeFiles/zombie.dir/src/tmxparser/TmxLayer.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_30) "Building CXX object CMakeFiles/zombie.dir/src/tmxparser/TmxLayer.cpp.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/zombie.dir/src/tmxparser/TmxLayer.cpp.o -c /Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/src/tmxparser/TmxLayer.cpp
 
 CMakeFiles/zombie.dir/src/tmxparser/TmxLayer.cpp.i: cmake_force
@@ -755,7 +779,7 @@ CMakeFiles/zombie.dir/src/tmxparser/TmxLayer.cpp.o.provides.build: CMakeFiles/zo
 
 CMakeFiles/zombie.dir/src/tmxparser/TmxMap.cpp.o: CMakeFiles/zombie.dir/flags.make
 CMakeFiles/zombie.dir/src/tmxparser/TmxMap.cpp.o: ../src/tmxparser/TmxMap.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_30) "Building CXX object CMakeFiles/zombie.dir/src/tmxparser/TmxMap.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_31) "Building CXX object CMakeFiles/zombie.dir/src/tmxparser/TmxMap.cpp.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/zombie.dir/src/tmxparser/TmxMap.cpp.o -c /Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/src/tmxparser/TmxMap.cpp
 
 CMakeFiles/zombie.dir/src/tmxparser/TmxMap.cpp.i: cmake_force
@@ -779,7 +803,7 @@ CMakeFiles/zombie.dir/src/tmxparser/TmxMap.cpp.o.provides.build: CMakeFiles/zomb
 
 CMakeFiles/zombie.dir/src/tmxparser/TmxObject.cpp.o: CMakeFiles/zombie.dir/flags.make
 CMakeFiles/zombie.dir/src/tmxparser/TmxObject.cpp.o: ../src/tmxparser/TmxObject.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_31) "Building CXX object CMakeFiles/zombie.dir/src/tmxparser/TmxObject.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_32) "Building CXX object CMakeFiles/zombie.dir/src/tmxparser/TmxObject.cpp.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/zombie.dir/src/tmxparser/TmxObject.cpp.o -c /Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/src/tmxparser/TmxObject.cpp
 
 CMakeFiles/zombie.dir/src/tmxparser/TmxObject.cpp.i: cmake_force
@@ -803,7 +827,7 @@ CMakeFiles/zombie.dir/src/tmxparser/TmxObject.cpp.o.provides.build: CMakeFiles/z
 
 CMakeFiles/zombie.dir/src/tmxparser/TmxObjectGroup.cpp.o: CMakeFiles/zombie.dir/flags.make
 CMakeFiles/zombie.dir/src/tmxparser/TmxObjectGroup.cpp.o: ../src/tmxparser/TmxObjectGroup.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_32) "Building CXX object CMakeFiles/zombie.dir/src/tmxparser/TmxObjectGroup.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_33) "Building CXX object CMakeFiles/zombie.dir/src/tmxparser/TmxObjectGroup.cpp.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/zombie.dir/src/tmxparser/TmxObjectGroup.cpp.o -c /Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/src/tmxparser/TmxObjectGroup.cpp
 
 CMakeFiles/zombie.dir/src/tmxparser/TmxObjectGroup.cpp.i: cmake_force
@@ -827,7 +851,7 @@ CMakeFiles/zombie.dir/src/tmxparser/TmxObjectGroup.cpp.o.provides.build: CMakeFi
 
 CMakeFiles/zombie.dir/src/tmxparser/TmxPolygon.cpp.o: CMakeFiles/zombie.dir/flags.make
 CMakeFiles/zombie.dir/src/tmxparser/TmxPolygon.cpp.o: ../src/tmxparser/TmxPolygon.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_33) "Building CXX object CMakeFiles/zombie.dir/src/tmxparser/TmxPolygon.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_34) "Building CXX object CMakeFiles/zombie.dir/src/tmxparser/TmxPolygon.cpp.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/zombie.dir/src/tmxparser/TmxPolygon.cpp.o -c /Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/src/tmxparser/TmxPolygon.cpp
 
 CMakeFiles/zombie.dir/src/tmxparser/TmxPolygon.cpp.i: cmake_force
@@ -851,7 +875,7 @@ CMakeFiles/zombie.dir/src/tmxparser/TmxPolygon.cpp.o.provides.build: CMakeFiles/
 
 CMakeFiles/zombie.dir/src/tmxparser/TmxPolyline.cpp.o: CMakeFiles/zombie.dir/flags.make
 CMakeFiles/zombie.dir/src/tmxparser/TmxPolyline.cpp.o: ../src/tmxparser/TmxPolyline.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_34) "Building CXX object CMakeFiles/zombie.dir/src/tmxparser/TmxPolyline.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_35) "Building CXX object CMakeFiles/zombie.dir/src/tmxparser/TmxPolyline.cpp.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/zombie.dir/src/tmxparser/TmxPolyline.cpp.o -c /Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/src/tmxparser/TmxPolyline.cpp
 
 CMakeFiles/zombie.dir/src/tmxparser/TmxPolyline.cpp.i: cmake_force
@@ -875,7 +899,7 @@ CMakeFiles/zombie.dir/src/tmxparser/TmxPolyline.cpp.o.provides.build: CMakeFiles
 
 CMakeFiles/zombie.dir/src/tmxparser/TmxProperty.cpp.o: CMakeFiles/zombie.dir/flags.make
 CMakeFiles/zombie.dir/src/tmxparser/TmxProperty.cpp.o: ../src/tmxparser/TmxProperty.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_35) "Building CXX object CMakeFiles/zombie.dir/src/tmxparser/TmxProperty.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_36) "Building CXX object CMakeFiles/zombie.dir/src/tmxparser/TmxProperty.cpp.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/zombie.dir/src/tmxparser/TmxProperty.cpp.o -c /Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/src/tmxparser/TmxProperty.cpp
 
 CMakeFiles/zombie.dir/src/tmxparser/TmxProperty.cpp.i: cmake_force
@@ -899,7 +923,7 @@ CMakeFiles/zombie.dir/src/tmxparser/TmxProperty.cpp.o.provides.build: CMakeFiles
 
 CMakeFiles/zombie.dir/src/tmxparser/TmxPropertySet.cpp.o: CMakeFiles/zombie.dir/flags.make
 CMakeFiles/zombie.dir/src/tmxparser/TmxPropertySet.cpp.o: ../src/tmxparser/TmxPropertySet.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_36) "Building CXX object CMakeFiles/zombie.dir/src/tmxparser/TmxPropertySet.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_37) "Building CXX object CMakeFiles/zombie.dir/src/tmxparser/TmxPropertySet.cpp.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/zombie.dir/src/tmxparser/TmxPropertySet.cpp.o -c /Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/src/tmxparser/TmxPropertySet.cpp
 
 CMakeFiles/zombie.dir/src/tmxparser/TmxPropertySet.cpp.i: cmake_force
@@ -923,7 +947,7 @@ CMakeFiles/zombie.dir/src/tmxparser/TmxPropertySet.cpp.o.provides.build: CMakeFi
 
 CMakeFiles/zombie.dir/src/tmxparser/TmxTerrain.cpp.o: CMakeFiles/zombie.dir/flags.make
 CMakeFiles/zombie.dir/src/tmxparser/TmxTerrain.cpp.o: ../src/tmxparser/TmxTerrain.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_37) "Building CXX object CMakeFiles/zombie.dir/src/tmxparser/TmxTerrain.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_38) "Building CXX object CMakeFiles/zombie.dir/src/tmxparser/TmxTerrain.cpp.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/zombie.dir/src/tmxparser/TmxTerrain.cpp.o -c /Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/src/tmxparser/TmxTerrain.cpp
 
 CMakeFiles/zombie.dir/src/tmxparser/TmxTerrain.cpp.i: cmake_force
@@ -947,7 +971,7 @@ CMakeFiles/zombie.dir/src/tmxparser/TmxTerrain.cpp.o.provides.build: CMakeFiles/
 
 CMakeFiles/zombie.dir/src/tmxparser/TmxTerrainArray.cpp.o: CMakeFiles/zombie.dir/flags.make
 CMakeFiles/zombie.dir/src/tmxparser/TmxTerrainArray.cpp.o: ../src/tmxparser/TmxTerrainArray.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_38) "Building CXX object CMakeFiles/zombie.dir/src/tmxparser/TmxTerrainArray.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_39) "Building CXX object CMakeFiles/zombie.dir/src/tmxparser/TmxTerrainArray.cpp.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/zombie.dir/src/tmxparser/TmxTerrainArray.cpp.o -c /Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/src/tmxparser/TmxTerrainArray.cpp
 
 CMakeFiles/zombie.dir/src/tmxparser/TmxTerrainArray.cpp.i: cmake_force
@@ -971,7 +995,7 @@ CMakeFiles/zombie.dir/src/tmxparser/TmxTerrainArray.cpp.o.provides.build: CMakeF
 
 CMakeFiles/zombie.dir/src/tmxparser/TmxText.cpp.o: CMakeFiles/zombie.dir/flags.make
 CMakeFiles/zombie.dir/src/tmxparser/TmxText.cpp.o: ../src/tmxparser/TmxText.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_39) "Building CXX object CMakeFiles/zombie.dir/src/tmxparser/TmxText.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_40) "Building CXX object CMakeFiles/zombie.dir/src/tmxparser/TmxText.cpp.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/zombie.dir/src/tmxparser/TmxText.cpp.o -c /Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/src/tmxparser/TmxText.cpp
 
 CMakeFiles/zombie.dir/src/tmxparser/TmxText.cpp.i: cmake_force
@@ -995,7 +1019,7 @@ CMakeFiles/zombie.dir/src/tmxparser/TmxText.cpp.o.provides.build: CMakeFiles/zom
 
 CMakeFiles/zombie.dir/src/tmxparser/TmxTile.cpp.o: CMakeFiles/zombie.dir/flags.make
 CMakeFiles/zombie.dir/src/tmxparser/TmxTile.cpp.o: ../src/tmxparser/TmxTile.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_40) "Building CXX object CMakeFiles/zombie.dir/src/tmxparser/TmxTile.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_41) "Building CXX object CMakeFiles/zombie.dir/src/tmxparser/TmxTile.cpp.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/zombie.dir/src/tmxparser/TmxTile.cpp.o -c /Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/src/tmxparser/TmxTile.cpp
 
 CMakeFiles/zombie.dir/src/tmxparser/TmxTile.cpp.i: cmake_force
@@ -1019,7 +1043,7 @@ CMakeFiles/zombie.dir/src/tmxparser/TmxTile.cpp.o.provides.build: CMakeFiles/zom
 
 CMakeFiles/zombie.dir/src/tmxparser/TmxTileLayer.cpp.o: CMakeFiles/zombie.dir/flags.make
 CMakeFiles/zombie.dir/src/tmxparser/TmxTileLayer.cpp.o: ../src/tmxparser/TmxTileLayer.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_41) "Building CXX object CMakeFiles/zombie.dir/src/tmxparser/TmxTileLayer.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_42) "Building CXX object CMakeFiles/zombie.dir/src/tmxparser/TmxTileLayer.cpp.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/zombie.dir/src/tmxparser/TmxTileLayer.cpp.o -c /Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/src/tmxparser/TmxTileLayer.cpp
 
 CMakeFiles/zombie.dir/src/tmxparser/TmxTileLayer.cpp.i: cmake_force
@@ -1043,7 +1067,7 @@ CMakeFiles/zombie.dir/src/tmxparser/TmxTileLayer.cpp.o.provides.build: CMakeFile
 
 CMakeFiles/zombie.dir/src/tmxparser/TmxTileOffset.cpp.o: CMakeFiles/zombie.dir/flags.make
 CMakeFiles/zombie.dir/src/tmxparser/TmxTileOffset.cpp.o: ../src/tmxparser/TmxTileOffset.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_42) "Building CXX object CMakeFiles/zombie.dir/src/tmxparser/TmxTileOffset.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_43) "Building CXX object CMakeFiles/zombie.dir/src/tmxparser/TmxTileOffset.cpp.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/zombie.dir/src/tmxparser/TmxTileOffset.cpp.o -c /Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/src/tmxparser/TmxTileOffset.cpp
 
 CMakeFiles/zombie.dir/src/tmxparser/TmxTileOffset.cpp.i: cmake_force
@@ -1067,7 +1091,7 @@ CMakeFiles/zombie.dir/src/tmxparser/TmxTileOffset.cpp.o.provides.build: CMakeFil
 
 CMakeFiles/zombie.dir/src/tmxparser/TmxTileset.cpp.o: CMakeFiles/zombie.dir/flags.make
 CMakeFiles/zombie.dir/src/tmxparser/TmxTileset.cpp.o: ../src/tmxparser/TmxTileset.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_43) "Building CXX object CMakeFiles/zombie.dir/src/tmxparser/TmxTileset.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_44) "Building CXX object CMakeFiles/zombie.dir/src/tmxparser/TmxTileset.cpp.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/zombie.dir/src/tmxparser/TmxTileset.cpp.o -c /Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/src/tmxparser/TmxTileset.cpp
 
 CMakeFiles/zombie.dir/src/tmxparser/TmxTileset.cpp.i: cmake_force
@@ -1091,7 +1115,7 @@ CMakeFiles/zombie.dir/src/tmxparser/TmxTileset.cpp.o.provides.build: CMakeFiles/
 
 CMakeFiles/zombie.dir/src/tmxparser/TmxUtil.cpp.o: CMakeFiles/zombie.dir/flags.make
 CMakeFiles/zombie.dir/src/tmxparser/TmxUtil.cpp.o: ../src/tmxparser/TmxUtil.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_44) "Building CXX object CMakeFiles/zombie.dir/src/tmxparser/TmxUtil.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_45) "Building CXX object CMakeFiles/zombie.dir/src/tmxparser/TmxUtil.cpp.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/zombie.dir/src/tmxparser/TmxUtil.cpp.o -c /Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/src/tmxparser/TmxUtil.cpp
 
 CMakeFiles/zombie.dir/src/tmxparser/TmxUtil.cpp.i: cmake_force
@@ -1115,7 +1139,7 @@ CMakeFiles/zombie.dir/src/tmxparser/TmxUtil.cpp.o.provides.build: CMakeFiles/zom
 
 CMakeFiles/zombie.dir/src/tmxparser/base64/base64.cpp.o: CMakeFiles/zombie.dir/flags.make
 CMakeFiles/zombie.dir/src/tmxparser/base64/base64.cpp.o: ../src/tmxparser/base64/base64.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_45) "Building CXX object CMakeFiles/zombie.dir/src/tmxparser/base64/base64.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_46) "Building CXX object CMakeFiles/zombie.dir/src/tmxparser/base64/base64.cpp.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/zombie.dir/src/tmxparser/base64/base64.cpp.o -c /Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/src/tmxparser/base64/base64.cpp
 
 CMakeFiles/zombie.dir/src/tmxparser/base64/base64.cpp.i: cmake_force
@@ -1139,7 +1163,7 @@ CMakeFiles/zombie.dir/src/tmxparser/base64/base64.cpp.o.provides.build: CMakeFil
 
 CMakeFiles/zombie.dir/src/toolboxManager.cpp.o: CMakeFiles/zombie.dir/flags.make
 CMakeFiles/zombie.dir/src/toolboxManager.cpp.o: ../src/toolboxManager.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_46) "Building CXX object CMakeFiles/zombie.dir/src/toolboxManager.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_47) "Building CXX object CMakeFiles/zombie.dir/src/toolboxManager.cpp.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/zombie.dir/src/toolboxManager.cpp.o -c /Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/src/toolboxManager.cpp
 
 CMakeFiles/zombie.dir/src/toolboxManager.cpp.i: cmake_force
@@ -1163,7 +1187,7 @@ CMakeFiles/zombie.dir/src/toolboxManager.cpp.o.provides.build: CMakeFiles/zombie
 
 CMakeFiles/zombie.dir/src/toolboxSlot.cpp.o: CMakeFiles/zombie.dir/flags.make
 CMakeFiles/zombie.dir/src/toolboxSlot.cpp.o: ../src/toolboxSlot.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_47) "Building CXX object CMakeFiles/zombie.dir/src/toolboxSlot.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_48) "Building CXX object CMakeFiles/zombie.dir/src/toolboxSlot.cpp.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/zombie.dir/src/toolboxSlot.cpp.o -c /Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/src/toolboxSlot.cpp
 
 CMakeFiles/zombie.dir/src/toolboxSlot.cpp.i: cmake_force
@@ -1187,7 +1211,7 @@ CMakeFiles/zombie.dir/src/toolboxSlot.cpp.o.provides.build: CMakeFiles/zombie.di
 
 CMakeFiles/zombie.dir/src/tree.cpp.o: CMakeFiles/zombie.dir/flags.make
 CMakeFiles/zombie.dir/src/tree.cpp.o: ../src/tree.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_48) "Building CXX object CMakeFiles/zombie.dir/src/tree.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_49) "Building CXX object CMakeFiles/zombie.dir/src/tree.cpp.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/zombie.dir/src/tree.cpp.o -c /Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/src/tree.cpp
 
 CMakeFiles/zombie.dir/src/tree.cpp.i: cmake_force
@@ -1211,7 +1235,7 @@ CMakeFiles/zombie.dir/src/tree.cpp.o.provides.build: CMakeFiles/zombie.dir/src/t
 
 CMakeFiles/zombie.dir/src/viewHelper.cpp.o: CMakeFiles/zombie.dir/flags.make
 CMakeFiles/zombie.dir/src/viewHelper.cpp.o: ../src/viewHelper.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_49) "Building CXX object CMakeFiles/zombie.dir/src/viewHelper.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_50) "Building CXX object CMakeFiles/zombie.dir/src/viewHelper.cpp.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/zombie.dir/src/viewHelper.cpp.o -c /Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/src/viewHelper.cpp
 
 CMakeFiles/zombie.dir/src/viewHelper.cpp.i: cmake_force
@@ -1235,7 +1259,7 @@ CMakeFiles/zombie.dir/src/viewHelper.cpp.o.provides.build: CMakeFiles/zombie.dir
 
 CMakeFiles/zombie.dir/src/water.cpp.o: CMakeFiles/zombie.dir/flags.make
 CMakeFiles/zombie.dir/src/water.cpp.o: ../src/water.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_50) "Building CXX object CMakeFiles/zombie.dir/src/water.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_51) "Building CXX object CMakeFiles/zombie.dir/src/water.cpp.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/zombie.dir/src/water.cpp.o -c /Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/src/water.cpp
 
 CMakeFiles/zombie.dir/src/water.cpp.i: cmake_force
@@ -1259,7 +1283,7 @@ CMakeFiles/zombie.dir/src/water.cpp.o.provides.build: CMakeFiles/zombie.dir/src/
 
 CMakeFiles/zombie.dir/src/world.cpp.o: CMakeFiles/zombie.dir/flags.make
 CMakeFiles/zombie.dir/src/world.cpp.o: ../src/world.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_51) "Building CXX object CMakeFiles/zombie.dir/src/world.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_52) "Building CXX object CMakeFiles/zombie.dir/src/world.cpp.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/zombie.dir/src/world.cpp.o -c /Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/src/world.cpp
 
 CMakeFiles/zombie.dir/src/world.cpp.i: cmake_force
@@ -1283,7 +1307,7 @@ CMakeFiles/zombie.dir/src/world.cpp.o.provides.build: CMakeFiles/zombie.dir/src/
 
 CMakeFiles/zombie.dir/src/worldtexture.cpp.o: CMakeFiles/zombie.dir/flags.make
 CMakeFiles/zombie.dir/src/worldtexture.cpp.o: ../src/worldtexture.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_52) "Building CXX object CMakeFiles/zombie.dir/src/worldtexture.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_53) "Building CXX object CMakeFiles/zombie.dir/src/worldtexture.cpp.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/zombie.dir/src/worldtexture.cpp.o -c /Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/src/worldtexture.cpp
 
 CMakeFiles/zombie.dir/src/worldtexture.cpp.i: cmake_force
@@ -1307,7 +1331,7 @@ CMakeFiles/zombie.dir/src/worldtexture.cpp.o.provides.build: CMakeFiles/zombie.d
 
 CMakeFiles/zombie.dir/src/zombie.cpp.o: CMakeFiles/zombie.dir/flags.make
 CMakeFiles/zombie.dir/src/zombie.cpp.o: ../src/zombie.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_53) "Building CXX object CMakeFiles/zombie.dir/src/zombie.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_54) "Building CXX object CMakeFiles/zombie.dir/src/zombie.cpp.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/zombie.dir/src/zombie.cpp.o -c /Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/src/zombie.cpp
 
 CMakeFiles/zombie.dir/src/zombie.cpp.i: cmake_force
@@ -1331,7 +1355,7 @@ CMakeFiles/zombie.dir/src/zombie.cpp.o.provides.build: CMakeFiles/zombie.dir/src
 
 CMakeFiles/zombie.dir/src/zombieManager.cpp.o: CMakeFiles/zombie.dir/flags.make
 CMakeFiles/zombie.dir/src/zombieManager.cpp.o: ../src/zombieManager.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_54) "Building CXX object CMakeFiles/zombie.dir/src/zombieManager.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_55) "Building CXX object CMakeFiles/zombie.dir/src/zombieManager.cpp.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/zombie.dir/src/zombieManager.cpp.o -c /Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/src/zombieManager.cpp
 
 CMakeFiles/zombie.dir/src/zombieManager.cpp.i: cmake_force
@@ -1355,7 +1379,7 @@ CMakeFiles/zombie.dir/src/zombieManager.cpp.o.provides.build: CMakeFiles/zombie.
 
 CMakeFiles/zombie.dir/src/gl3w.c.o: CMakeFiles/zombie.dir/flags.make
 CMakeFiles/zombie.dir/src/gl3w.c.o: ../src/gl3w.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_55) "Building C object CMakeFiles/zombie.dir/src/gl3w.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_56) "Building C object CMakeFiles/zombie.dir/src/gl3w.c.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/zombie.dir/src/gl3w.c.o   -c /Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/src/gl3w.c
 
 CMakeFiles/zombie.dir/src/gl3w.c.i: cmake_force
@@ -1379,7 +1403,7 @@ CMakeFiles/zombie.dir/src/gl3w.c.o.provides.build: CMakeFiles/zombie.dir/src/gl3
 
 CMakeFiles/zombie.dir/src/tmxparser/miniz.c.o: CMakeFiles/zombie.dir/flags.make
 CMakeFiles/zombie.dir/src/tmxparser/miniz.c.o: ../src/tmxparser/miniz.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_56) "Building C object CMakeFiles/zombie.dir/src/tmxparser/miniz.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_57) "Building C object CMakeFiles/zombie.dir/src/tmxparser/miniz.c.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/zombie.dir/src/tmxparser/miniz.c.o   -c /Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/src/tmxparser/miniz.c
 
 CMakeFiles/zombie.dir/src/tmxparser/miniz.c.i: cmake_force
@@ -1399,1110 +1423,6 @@ CMakeFiles/zombie.dir/src/tmxparser/miniz.c.o.provides: CMakeFiles/zombie.dir/sr
 .PHONY : CMakeFiles/zombie.dir/src/tmxparser/miniz.c.o.provides
 
 CMakeFiles/zombie.dir/src/tmxparser/miniz.c.o.provides.build: CMakeFiles/zombie.dir/src/tmxparser/miniz.c.o
-
-
-CMakeFiles/zombie.dir/ext/Box2D/Collision/Shapes/b2ChainShape.cpp.o: CMakeFiles/zombie.dir/flags.make
-CMakeFiles/zombie.dir/ext/Box2D/Collision/Shapes/b2ChainShape.cpp.o: ../ext/Box2D/Collision/Shapes/b2ChainShape.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_57) "Building CXX object CMakeFiles/zombie.dir/ext/Box2D/Collision/Shapes/b2ChainShape.cpp.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/zombie.dir/ext/Box2D/Collision/Shapes/b2ChainShape.cpp.o -c /Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/ext/Box2D/Collision/Shapes/b2ChainShape.cpp
-
-CMakeFiles/zombie.dir/ext/Box2D/Collision/Shapes/b2ChainShape.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/zombie.dir/ext/Box2D/Collision/Shapes/b2ChainShape.cpp.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/ext/Box2D/Collision/Shapes/b2ChainShape.cpp > CMakeFiles/zombie.dir/ext/Box2D/Collision/Shapes/b2ChainShape.cpp.i
-
-CMakeFiles/zombie.dir/ext/Box2D/Collision/Shapes/b2ChainShape.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/zombie.dir/ext/Box2D/Collision/Shapes/b2ChainShape.cpp.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/ext/Box2D/Collision/Shapes/b2ChainShape.cpp -o CMakeFiles/zombie.dir/ext/Box2D/Collision/Shapes/b2ChainShape.cpp.s
-
-CMakeFiles/zombie.dir/ext/Box2D/Collision/Shapes/b2ChainShape.cpp.o.requires:
-
-.PHONY : CMakeFiles/zombie.dir/ext/Box2D/Collision/Shapes/b2ChainShape.cpp.o.requires
-
-CMakeFiles/zombie.dir/ext/Box2D/Collision/Shapes/b2ChainShape.cpp.o.provides: CMakeFiles/zombie.dir/ext/Box2D/Collision/Shapes/b2ChainShape.cpp.o.requires
-	$(MAKE) -f CMakeFiles/zombie.dir/build.make CMakeFiles/zombie.dir/ext/Box2D/Collision/Shapes/b2ChainShape.cpp.o.provides.build
-.PHONY : CMakeFiles/zombie.dir/ext/Box2D/Collision/Shapes/b2ChainShape.cpp.o.provides
-
-CMakeFiles/zombie.dir/ext/Box2D/Collision/Shapes/b2ChainShape.cpp.o.provides.build: CMakeFiles/zombie.dir/ext/Box2D/Collision/Shapes/b2ChainShape.cpp.o
-
-
-CMakeFiles/zombie.dir/ext/Box2D/Collision/Shapes/b2CircleShape.cpp.o: CMakeFiles/zombie.dir/flags.make
-CMakeFiles/zombie.dir/ext/Box2D/Collision/Shapes/b2CircleShape.cpp.o: ../ext/Box2D/Collision/Shapes/b2CircleShape.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_58) "Building CXX object CMakeFiles/zombie.dir/ext/Box2D/Collision/Shapes/b2CircleShape.cpp.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/zombie.dir/ext/Box2D/Collision/Shapes/b2CircleShape.cpp.o -c /Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/ext/Box2D/Collision/Shapes/b2CircleShape.cpp
-
-CMakeFiles/zombie.dir/ext/Box2D/Collision/Shapes/b2CircleShape.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/zombie.dir/ext/Box2D/Collision/Shapes/b2CircleShape.cpp.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/ext/Box2D/Collision/Shapes/b2CircleShape.cpp > CMakeFiles/zombie.dir/ext/Box2D/Collision/Shapes/b2CircleShape.cpp.i
-
-CMakeFiles/zombie.dir/ext/Box2D/Collision/Shapes/b2CircleShape.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/zombie.dir/ext/Box2D/Collision/Shapes/b2CircleShape.cpp.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/ext/Box2D/Collision/Shapes/b2CircleShape.cpp -o CMakeFiles/zombie.dir/ext/Box2D/Collision/Shapes/b2CircleShape.cpp.s
-
-CMakeFiles/zombie.dir/ext/Box2D/Collision/Shapes/b2CircleShape.cpp.o.requires:
-
-.PHONY : CMakeFiles/zombie.dir/ext/Box2D/Collision/Shapes/b2CircleShape.cpp.o.requires
-
-CMakeFiles/zombie.dir/ext/Box2D/Collision/Shapes/b2CircleShape.cpp.o.provides: CMakeFiles/zombie.dir/ext/Box2D/Collision/Shapes/b2CircleShape.cpp.o.requires
-	$(MAKE) -f CMakeFiles/zombie.dir/build.make CMakeFiles/zombie.dir/ext/Box2D/Collision/Shapes/b2CircleShape.cpp.o.provides.build
-.PHONY : CMakeFiles/zombie.dir/ext/Box2D/Collision/Shapes/b2CircleShape.cpp.o.provides
-
-CMakeFiles/zombie.dir/ext/Box2D/Collision/Shapes/b2CircleShape.cpp.o.provides.build: CMakeFiles/zombie.dir/ext/Box2D/Collision/Shapes/b2CircleShape.cpp.o
-
-
-CMakeFiles/zombie.dir/ext/Box2D/Collision/Shapes/b2EdgeShape.cpp.o: CMakeFiles/zombie.dir/flags.make
-CMakeFiles/zombie.dir/ext/Box2D/Collision/Shapes/b2EdgeShape.cpp.o: ../ext/Box2D/Collision/Shapes/b2EdgeShape.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_59) "Building CXX object CMakeFiles/zombie.dir/ext/Box2D/Collision/Shapes/b2EdgeShape.cpp.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/zombie.dir/ext/Box2D/Collision/Shapes/b2EdgeShape.cpp.o -c /Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/ext/Box2D/Collision/Shapes/b2EdgeShape.cpp
-
-CMakeFiles/zombie.dir/ext/Box2D/Collision/Shapes/b2EdgeShape.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/zombie.dir/ext/Box2D/Collision/Shapes/b2EdgeShape.cpp.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/ext/Box2D/Collision/Shapes/b2EdgeShape.cpp > CMakeFiles/zombie.dir/ext/Box2D/Collision/Shapes/b2EdgeShape.cpp.i
-
-CMakeFiles/zombie.dir/ext/Box2D/Collision/Shapes/b2EdgeShape.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/zombie.dir/ext/Box2D/Collision/Shapes/b2EdgeShape.cpp.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/ext/Box2D/Collision/Shapes/b2EdgeShape.cpp -o CMakeFiles/zombie.dir/ext/Box2D/Collision/Shapes/b2EdgeShape.cpp.s
-
-CMakeFiles/zombie.dir/ext/Box2D/Collision/Shapes/b2EdgeShape.cpp.o.requires:
-
-.PHONY : CMakeFiles/zombie.dir/ext/Box2D/Collision/Shapes/b2EdgeShape.cpp.o.requires
-
-CMakeFiles/zombie.dir/ext/Box2D/Collision/Shapes/b2EdgeShape.cpp.o.provides: CMakeFiles/zombie.dir/ext/Box2D/Collision/Shapes/b2EdgeShape.cpp.o.requires
-	$(MAKE) -f CMakeFiles/zombie.dir/build.make CMakeFiles/zombie.dir/ext/Box2D/Collision/Shapes/b2EdgeShape.cpp.o.provides.build
-.PHONY : CMakeFiles/zombie.dir/ext/Box2D/Collision/Shapes/b2EdgeShape.cpp.o.provides
-
-CMakeFiles/zombie.dir/ext/Box2D/Collision/Shapes/b2EdgeShape.cpp.o.provides.build: CMakeFiles/zombie.dir/ext/Box2D/Collision/Shapes/b2EdgeShape.cpp.o
-
-
-CMakeFiles/zombie.dir/ext/Box2D/Collision/Shapes/b2PolygonShape.cpp.o: CMakeFiles/zombie.dir/flags.make
-CMakeFiles/zombie.dir/ext/Box2D/Collision/Shapes/b2PolygonShape.cpp.o: ../ext/Box2D/Collision/Shapes/b2PolygonShape.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_60) "Building CXX object CMakeFiles/zombie.dir/ext/Box2D/Collision/Shapes/b2PolygonShape.cpp.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/zombie.dir/ext/Box2D/Collision/Shapes/b2PolygonShape.cpp.o -c /Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/ext/Box2D/Collision/Shapes/b2PolygonShape.cpp
-
-CMakeFiles/zombie.dir/ext/Box2D/Collision/Shapes/b2PolygonShape.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/zombie.dir/ext/Box2D/Collision/Shapes/b2PolygonShape.cpp.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/ext/Box2D/Collision/Shapes/b2PolygonShape.cpp > CMakeFiles/zombie.dir/ext/Box2D/Collision/Shapes/b2PolygonShape.cpp.i
-
-CMakeFiles/zombie.dir/ext/Box2D/Collision/Shapes/b2PolygonShape.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/zombie.dir/ext/Box2D/Collision/Shapes/b2PolygonShape.cpp.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/ext/Box2D/Collision/Shapes/b2PolygonShape.cpp -o CMakeFiles/zombie.dir/ext/Box2D/Collision/Shapes/b2PolygonShape.cpp.s
-
-CMakeFiles/zombie.dir/ext/Box2D/Collision/Shapes/b2PolygonShape.cpp.o.requires:
-
-.PHONY : CMakeFiles/zombie.dir/ext/Box2D/Collision/Shapes/b2PolygonShape.cpp.o.requires
-
-CMakeFiles/zombie.dir/ext/Box2D/Collision/Shapes/b2PolygonShape.cpp.o.provides: CMakeFiles/zombie.dir/ext/Box2D/Collision/Shapes/b2PolygonShape.cpp.o.requires
-	$(MAKE) -f CMakeFiles/zombie.dir/build.make CMakeFiles/zombie.dir/ext/Box2D/Collision/Shapes/b2PolygonShape.cpp.o.provides.build
-.PHONY : CMakeFiles/zombie.dir/ext/Box2D/Collision/Shapes/b2PolygonShape.cpp.o.provides
-
-CMakeFiles/zombie.dir/ext/Box2D/Collision/Shapes/b2PolygonShape.cpp.o.provides.build: CMakeFiles/zombie.dir/ext/Box2D/Collision/Shapes/b2PolygonShape.cpp.o
-
-
-CMakeFiles/zombie.dir/ext/Box2D/Collision/b2BroadPhase.cpp.o: CMakeFiles/zombie.dir/flags.make
-CMakeFiles/zombie.dir/ext/Box2D/Collision/b2BroadPhase.cpp.o: ../ext/Box2D/Collision/b2BroadPhase.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_61) "Building CXX object CMakeFiles/zombie.dir/ext/Box2D/Collision/b2BroadPhase.cpp.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/zombie.dir/ext/Box2D/Collision/b2BroadPhase.cpp.o -c /Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/ext/Box2D/Collision/b2BroadPhase.cpp
-
-CMakeFiles/zombie.dir/ext/Box2D/Collision/b2BroadPhase.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/zombie.dir/ext/Box2D/Collision/b2BroadPhase.cpp.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/ext/Box2D/Collision/b2BroadPhase.cpp > CMakeFiles/zombie.dir/ext/Box2D/Collision/b2BroadPhase.cpp.i
-
-CMakeFiles/zombie.dir/ext/Box2D/Collision/b2BroadPhase.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/zombie.dir/ext/Box2D/Collision/b2BroadPhase.cpp.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/ext/Box2D/Collision/b2BroadPhase.cpp -o CMakeFiles/zombie.dir/ext/Box2D/Collision/b2BroadPhase.cpp.s
-
-CMakeFiles/zombie.dir/ext/Box2D/Collision/b2BroadPhase.cpp.o.requires:
-
-.PHONY : CMakeFiles/zombie.dir/ext/Box2D/Collision/b2BroadPhase.cpp.o.requires
-
-CMakeFiles/zombie.dir/ext/Box2D/Collision/b2BroadPhase.cpp.o.provides: CMakeFiles/zombie.dir/ext/Box2D/Collision/b2BroadPhase.cpp.o.requires
-	$(MAKE) -f CMakeFiles/zombie.dir/build.make CMakeFiles/zombie.dir/ext/Box2D/Collision/b2BroadPhase.cpp.o.provides.build
-.PHONY : CMakeFiles/zombie.dir/ext/Box2D/Collision/b2BroadPhase.cpp.o.provides
-
-CMakeFiles/zombie.dir/ext/Box2D/Collision/b2BroadPhase.cpp.o.provides.build: CMakeFiles/zombie.dir/ext/Box2D/Collision/b2BroadPhase.cpp.o
-
-
-CMakeFiles/zombie.dir/ext/Box2D/Collision/b2CollideCircle.cpp.o: CMakeFiles/zombie.dir/flags.make
-CMakeFiles/zombie.dir/ext/Box2D/Collision/b2CollideCircle.cpp.o: ../ext/Box2D/Collision/b2CollideCircle.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_62) "Building CXX object CMakeFiles/zombie.dir/ext/Box2D/Collision/b2CollideCircle.cpp.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/zombie.dir/ext/Box2D/Collision/b2CollideCircle.cpp.o -c /Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/ext/Box2D/Collision/b2CollideCircle.cpp
-
-CMakeFiles/zombie.dir/ext/Box2D/Collision/b2CollideCircle.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/zombie.dir/ext/Box2D/Collision/b2CollideCircle.cpp.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/ext/Box2D/Collision/b2CollideCircle.cpp > CMakeFiles/zombie.dir/ext/Box2D/Collision/b2CollideCircle.cpp.i
-
-CMakeFiles/zombie.dir/ext/Box2D/Collision/b2CollideCircle.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/zombie.dir/ext/Box2D/Collision/b2CollideCircle.cpp.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/ext/Box2D/Collision/b2CollideCircle.cpp -o CMakeFiles/zombie.dir/ext/Box2D/Collision/b2CollideCircle.cpp.s
-
-CMakeFiles/zombie.dir/ext/Box2D/Collision/b2CollideCircle.cpp.o.requires:
-
-.PHONY : CMakeFiles/zombie.dir/ext/Box2D/Collision/b2CollideCircle.cpp.o.requires
-
-CMakeFiles/zombie.dir/ext/Box2D/Collision/b2CollideCircle.cpp.o.provides: CMakeFiles/zombie.dir/ext/Box2D/Collision/b2CollideCircle.cpp.o.requires
-	$(MAKE) -f CMakeFiles/zombie.dir/build.make CMakeFiles/zombie.dir/ext/Box2D/Collision/b2CollideCircle.cpp.o.provides.build
-.PHONY : CMakeFiles/zombie.dir/ext/Box2D/Collision/b2CollideCircle.cpp.o.provides
-
-CMakeFiles/zombie.dir/ext/Box2D/Collision/b2CollideCircle.cpp.o.provides.build: CMakeFiles/zombie.dir/ext/Box2D/Collision/b2CollideCircle.cpp.o
-
-
-CMakeFiles/zombie.dir/ext/Box2D/Collision/b2CollideEdge.cpp.o: CMakeFiles/zombie.dir/flags.make
-CMakeFiles/zombie.dir/ext/Box2D/Collision/b2CollideEdge.cpp.o: ../ext/Box2D/Collision/b2CollideEdge.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_63) "Building CXX object CMakeFiles/zombie.dir/ext/Box2D/Collision/b2CollideEdge.cpp.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/zombie.dir/ext/Box2D/Collision/b2CollideEdge.cpp.o -c /Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/ext/Box2D/Collision/b2CollideEdge.cpp
-
-CMakeFiles/zombie.dir/ext/Box2D/Collision/b2CollideEdge.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/zombie.dir/ext/Box2D/Collision/b2CollideEdge.cpp.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/ext/Box2D/Collision/b2CollideEdge.cpp > CMakeFiles/zombie.dir/ext/Box2D/Collision/b2CollideEdge.cpp.i
-
-CMakeFiles/zombie.dir/ext/Box2D/Collision/b2CollideEdge.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/zombie.dir/ext/Box2D/Collision/b2CollideEdge.cpp.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/ext/Box2D/Collision/b2CollideEdge.cpp -o CMakeFiles/zombie.dir/ext/Box2D/Collision/b2CollideEdge.cpp.s
-
-CMakeFiles/zombie.dir/ext/Box2D/Collision/b2CollideEdge.cpp.o.requires:
-
-.PHONY : CMakeFiles/zombie.dir/ext/Box2D/Collision/b2CollideEdge.cpp.o.requires
-
-CMakeFiles/zombie.dir/ext/Box2D/Collision/b2CollideEdge.cpp.o.provides: CMakeFiles/zombie.dir/ext/Box2D/Collision/b2CollideEdge.cpp.o.requires
-	$(MAKE) -f CMakeFiles/zombie.dir/build.make CMakeFiles/zombie.dir/ext/Box2D/Collision/b2CollideEdge.cpp.o.provides.build
-.PHONY : CMakeFiles/zombie.dir/ext/Box2D/Collision/b2CollideEdge.cpp.o.provides
-
-CMakeFiles/zombie.dir/ext/Box2D/Collision/b2CollideEdge.cpp.o.provides.build: CMakeFiles/zombie.dir/ext/Box2D/Collision/b2CollideEdge.cpp.o
-
-
-CMakeFiles/zombie.dir/ext/Box2D/Collision/b2CollidePolygon.cpp.o: CMakeFiles/zombie.dir/flags.make
-CMakeFiles/zombie.dir/ext/Box2D/Collision/b2CollidePolygon.cpp.o: ../ext/Box2D/Collision/b2CollidePolygon.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_64) "Building CXX object CMakeFiles/zombie.dir/ext/Box2D/Collision/b2CollidePolygon.cpp.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/zombie.dir/ext/Box2D/Collision/b2CollidePolygon.cpp.o -c /Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/ext/Box2D/Collision/b2CollidePolygon.cpp
-
-CMakeFiles/zombie.dir/ext/Box2D/Collision/b2CollidePolygon.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/zombie.dir/ext/Box2D/Collision/b2CollidePolygon.cpp.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/ext/Box2D/Collision/b2CollidePolygon.cpp > CMakeFiles/zombie.dir/ext/Box2D/Collision/b2CollidePolygon.cpp.i
-
-CMakeFiles/zombie.dir/ext/Box2D/Collision/b2CollidePolygon.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/zombie.dir/ext/Box2D/Collision/b2CollidePolygon.cpp.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/ext/Box2D/Collision/b2CollidePolygon.cpp -o CMakeFiles/zombie.dir/ext/Box2D/Collision/b2CollidePolygon.cpp.s
-
-CMakeFiles/zombie.dir/ext/Box2D/Collision/b2CollidePolygon.cpp.o.requires:
-
-.PHONY : CMakeFiles/zombie.dir/ext/Box2D/Collision/b2CollidePolygon.cpp.o.requires
-
-CMakeFiles/zombie.dir/ext/Box2D/Collision/b2CollidePolygon.cpp.o.provides: CMakeFiles/zombie.dir/ext/Box2D/Collision/b2CollidePolygon.cpp.o.requires
-	$(MAKE) -f CMakeFiles/zombie.dir/build.make CMakeFiles/zombie.dir/ext/Box2D/Collision/b2CollidePolygon.cpp.o.provides.build
-.PHONY : CMakeFiles/zombie.dir/ext/Box2D/Collision/b2CollidePolygon.cpp.o.provides
-
-CMakeFiles/zombie.dir/ext/Box2D/Collision/b2CollidePolygon.cpp.o.provides.build: CMakeFiles/zombie.dir/ext/Box2D/Collision/b2CollidePolygon.cpp.o
-
-
-CMakeFiles/zombie.dir/ext/Box2D/Collision/b2Collision.cpp.o: CMakeFiles/zombie.dir/flags.make
-CMakeFiles/zombie.dir/ext/Box2D/Collision/b2Collision.cpp.o: ../ext/Box2D/Collision/b2Collision.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_65) "Building CXX object CMakeFiles/zombie.dir/ext/Box2D/Collision/b2Collision.cpp.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/zombie.dir/ext/Box2D/Collision/b2Collision.cpp.o -c /Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/ext/Box2D/Collision/b2Collision.cpp
-
-CMakeFiles/zombie.dir/ext/Box2D/Collision/b2Collision.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/zombie.dir/ext/Box2D/Collision/b2Collision.cpp.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/ext/Box2D/Collision/b2Collision.cpp > CMakeFiles/zombie.dir/ext/Box2D/Collision/b2Collision.cpp.i
-
-CMakeFiles/zombie.dir/ext/Box2D/Collision/b2Collision.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/zombie.dir/ext/Box2D/Collision/b2Collision.cpp.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/ext/Box2D/Collision/b2Collision.cpp -o CMakeFiles/zombie.dir/ext/Box2D/Collision/b2Collision.cpp.s
-
-CMakeFiles/zombie.dir/ext/Box2D/Collision/b2Collision.cpp.o.requires:
-
-.PHONY : CMakeFiles/zombie.dir/ext/Box2D/Collision/b2Collision.cpp.o.requires
-
-CMakeFiles/zombie.dir/ext/Box2D/Collision/b2Collision.cpp.o.provides: CMakeFiles/zombie.dir/ext/Box2D/Collision/b2Collision.cpp.o.requires
-	$(MAKE) -f CMakeFiles/zombie.dir/build.make CMakeFiles/zombie.dir/ext/Box2D/Collision/b2Collision.cpp.o.provides.build
-.PHONY : CMakeFiles/zombie.dir/ext/Box2D/Collision/b2Collision.cpp.o.provides
-
-CMakeFiles/zombie.dir/ext/Box2D/Collision/b2Collision.cpp.o.provides.build: CMakeFiles/zombie.dir/ext/Box2D/Collision/b2Collision.cpp.o
-
-
-CMakeFiles/zombie.dir/ext/Box2D/Collision/b2Distance.cpp.o: CMakeFiles/zombie.dir/flags.make
-CMakeFiles/zombie.dir/ext/Box2D/Collision/b2Distance.cpp.o: ../ext/Box2D/Collision/b2Distance.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_66) "Building CXX object CMakeFiles/zombie.dir/ext/Box2D/Collision/b2Distance.cpp.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/zombie.dir/ext/Box2D/Collision/b2Distance.cpp.o -c /Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/ext/Box2D/Collision/b2Distance.cpp
-
-CMakeFiles/zombie.dir/ext/Box2D/Collision/b2Distance.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/zombie.dir/ext/Box2D/Collision/b2Distance.cpp.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/ext/Box2D/Collision/b2Distance.cpp > CMakeFiles/zombie.dir/ext/Box2D/Collision/b2Distance.cpp.i
-
-CMakeFiles/zombie.dir/ext/Box2D/Collision/b2Distance.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/zombie.dir/ext/Box2D/Collision/b2Distance.cpp.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/ext/Box2D/Collision/b2Distance.cpp -o CMakeFiles/zombie.dir/ext/Box2D/Collision/b2Distance.cpp.s
-
-CMakeFiles/zombie.dir/ext/Box2D/Collision/b2Distance.cpp.o.requires:
-
-.PHONY : CMakeFiles/zombie.dir/ext/Box2D/Collision/b2Distance.cpp.o.requires
-
-CMakeFiles/zombie.dir/ext/Box2D/Collision/b2Distance.cpp.o.provides: CMakeFiles/zombie.dir/ext/Box2D/Collision/b2Distance.cpp.o.requires
-	$(MAKE) -f CMakeFiles/zombie.dir/build.make CMakeFiles/zombie.dir/ext/Box2D/Collision/b2Distance.cpp.o.provides.build
-.PHONY : CMakeFiles/zombie.dir/ext/Box2D/Collision/b2Distance.cpp.o.provides
-
-CMakeFiles/zombie.dir/ext/Box2D/Collision/b2Distance.cpp.o.provides.build: CMakeFiles/zombie.dir/ext/Box2D/Collision/b2Distance.cpp.o
-
-
-CMakeFiles/zombie.dir/ext/Box2D/Collision/b2DynamicTree.cpp.o: CMakeFiles/zombie.dir/flags.make
-CMakeFiles/zombie.dir/ext/Box2D/Collision/b2DynamicTree.cpp.o: ../ext/Box2D/Collision/b2DynamicTree.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_67) "Building CXX object CMakeFiles/zombie.dir/ext/Box2D/Collision/b2DynamicTree.cpp.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/zombie.dir/ext/Box2D/Collision/b2DynamicTree.cpp.o -c /Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/ext/Box2D/Collision/b2DynamicTree.cpp
-
-CMakeFiles/zombie.dir/ext/Box2D/Collision/b2DynamicTree.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/zombie.dir/ext/Box2D/Collision/b2DynamicTree.cpp.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/ext/Box2D/Collision/b2DynamicTree.cpp > CMakeFiles/zombie.dir/ext/Box2D/Collision/b2DynamicTree.cpp.i
-
-CMakeFiles/zombie.dir/ext/Box2D/Collision/b2DynamicTree.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/zombie.dir/ext/Box2D/Collision/b2DynamicTree.cpp.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/ext/Box2D/Collision/b2DynamicTree.cpp -o CMakeFiles/zombie.dir/ext/Box2D/Collision/b2DynamicTree.cpp.s
-
-CMakeFiles/zombie.dir/ext/Box2D/Collision/b2DynamicTree.cpp.o.requires:
-
-.PHONY : CMakeFiles/zombie.dir/ext/Box2D/Collision/b2DynamicTree.cpp.o.requires
-
-CMakeFiles/zombie.dir/ext/Box2D/Collision/b2DynamicTree.cpp.o.provides: CMakeFiles/zombie.dir/ext/Box2D/Collision/b2DynamicTree.cpp.o.requires
-	$(MAKE) -f CMakeFiles/zombie.dir/build.make CMakeFiles/zombie.dir/ext/Box2D/Collision/b2DynamicTree.cpp.o.provides.build
-.PHONY : CMakeFiles/zombie.dir/ext/Box2D/Collision/b2DynamicTree.cpp.o.provides
-
-CMakeFiles/zombie.dir/ext/Box2D/Collision/b2DynamicTree.cpp.o.provides.build: CMakeFiles/zombie.dir/ext/Box2D/Collision/b2DynamicTree.cpp.o
-
-
-CMakeFiles/zombie.dir/ext/Box2D/Collision/b2TimeOfImpact.cpp.o: CMakeFiles/zombie.dir/flags.make
-CMakeFiles/zombie.dir/ext/Box2D/Collision/b2TimeOfImpact.cpp.o: ../ext/Box2D/Collision/b2TimeOfImpact.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_68) "Building CXX object CMakeFiles/zombie.dir/ext/Box2D/Collision/b2TimeOfImpact.cpp.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/zombie.dir/ext/Box2D/Collision/b2TimeOfImpact.cpp.o -c /Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/ext/Box2D/Collision/b2TimeOfImpact.cpp
-
-CMakeFiles/zombie.dir/ext/Box2D/Collision/b2TimeOfImpact.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/zombie.dir/ext/Box2D/Collision/b2TimeOfImpact.cpp.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/ext/Box2D/Collision/b2TimeOfImpact.cpp > CMakeFiles/zombie.dir/ext/Box2D/Collision/b2TimeOfImpact.cpp.i
-
-CMakeFiles/zombie.dir/ext/Box2D/Collision/b2TimeOfImpact.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/zombie.dir/ext/Box2D/Collision/b2TimeOfImpact.cpp.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/ext/Box2D/Collision/b2TimeOfImpact.cpp -o CMakeFiles/zombie.dir/ext/Box2D/Collision/b2TimeOfImpact.cpp.s
-
-CMakeFiles/zombie.dir/ext/Box2D/Collision/b2TimeOfImpact.cpp.o.requires:
-
-.PHONY : CMakeFiles/zombie.dir/ext/Box2D/Collision/b2TimeOfImpact.cpp.o.requires
-
-CMakeFiles/zombie.dir/ext/Box2D/Collision/b2TimeOfImpact.cpp.o.provides: CMakeFiles/zombie.dir/ext/Box2D/Collision/b2TimeOfImpact.cpp.o.requires
-	$(MAKE) -f CMakeFiles/zombie.dir/build.make CMakeFiles/zombie.dir/ext/Box2D/Collision/b2TimeOfImpact.cpp.o.provides.build
-.PHONY : CMakeFiles/zombie.dir/ext/Box2D/Collision/b2TimeOfImpact.cpp.o.provides
-
-CMakeFiles/zombie.dir/ext/Box2D/Collision/b2TimeOfImpact.cpp.o.provides.build: CMakeFiles/zombie.dir/ext/Box2D/Collision/b2TimeOfImpact.cpp.o
-
-
-CMakeFiles/zombie.dir/ext/Box2D/Common/b2BlockAllocator.cpp.o: CMakeFiles/zombie.dir/flags.make
-CMakeFiles/zombie.dir/ext/Box2D/Common/b2BlockAllocator.cpp.o: ../ext/Box2D/Common/b2BlockAllocator.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_69) "Building CXX object CMakeFiles/zombie.dir/ext/Box2D/Common/b2BlockAllocator.cpp.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/zombie.dir/ext/Box2D/Common/b2BlockAllocator.cpp.o -c /Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/ext/Box2D/Common/b2BlockAllocator.cpp
-
-CMakeFiles/zombie.dir/ext/Box2D/Common/b2BlockAllocator.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/zombie.dir/ext/Box2D/Common/b2BlockAllocator.cpp.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/ext/Box2D/Common/b2BlockAllocator.cpp > CMakeFiles/zombie.dir/ext/Box2D/Common/b2BlockAllocator.cpp.i
-
-CMakeFiles/zombie.dir/ext/Box2D/Common/b2BlockAllocator.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/zombie.dir/ext/Box2D/Common/b2BlockAllocator.cpp.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/ext/Box2D/Common/b2BlockAllocator.cpp -o CMakeFiles/zombie.dir/ext/Box2D/Common/b2BlockAllocator.cpp.s
-
-CMakeFiles/zombie.dir/ext/Box2D/Common/b2BlockAllocator.cpp.o.requires:
-
-.PHONY : CMakeFiles/zombie.dir/ext/Box2D/Common/b2BlockAllocator.cpp.o.requires
-
-CMakeFiles/zombie.dir/ext/Box2D/Common/b2BlockAllocator.cpp.o.provides: CMakeFiles/zombie.dir/ext/Box2D/Common/b2BlockAllocator.cpp.o.requires
-	$(MAKE) -f CMakeFiles/zombie.dir/build.make CMakeFiles/zombie.dir/ext/Box2D/Common/b2BlockAllocator.cpp.o.provides.build
-.PHONY : CMakeFiles/zombie.dir/ext/Box2D/Common/b2BlockAllocator.cpp.o.provides
-
-CMakeFiles/zombie.dir/ext/Box2D/Common/b2BlockAllocator.cpp.o.provides.build: CMakeFiles/zombie.dir/ext/Box2D/Common/b2BlockAllocator.cpp.o
-
-
-CMakeFiles/zombie.dir/ext/Box2D/Common/b2Draw.cpp.o: CMakeFiles/zombie.dir/flags.make
-CMakeFiles/zombie.dir/ext/Box2D/Common/b2Draw.cpp.o: ../ext/Box2D/Common/b2Draw.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_70) "Building CXX object CMakeFiles/zombie.dir/ext/Box2D/Common/b2Draw.cpp.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/zombie.dir/ext/Box2D/Common/b2Draw.cpp.o -c /Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/ext/Box2D/Common/b2Draw.cpp
-
-CMakeFiles/zombie.dir/ext/Box2D/Common/b2Draw.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/zombie.dir/ext/Box2D/Common/b2Draw.cpp.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/ext/Box2D/Common/b2Draw.cpp > CMakeFiles/zombie.dir/ext/Box2D/Common/b2Draw.cpp.i
-
-CMakeFiles/zombie.dir/ext/Box2D/Common/b2Draw.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/zombie.dir/ext/Box2D/Common/b2Draw.cpp.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/ext/Box2D/Common/b2Draw.cpp -o CMakeFiles/zombie.dir/ext/Box2D/Common/b2Draw.cpp.s
-
-CMakeFiles/zombie.dir/ext/Box2D/Common/b2Draw.cpp.o.requires:
-
-.PHONY : CMakeFiles/zombie.dir/ext/Box2D/Common/b2Draw.cpp.o.requires
-
-CMakeFiles/zombie.dir/ext/Box2D/Common/b2Draw.cpp.o.provides: CMakeFiles/zombie.dir/ext/Box2D/Common/b2Draw.cpp.o.requires
-	$(MAKE) -f CMakeFiles/zombie.dir/build.make CMakeFiles/zombie.dir/ext/Box2D/Common/b2Draw.cpp.o.provides.build
-.PHONY : CMakeFiles/zombie.dir/ext/Box2D/Common/b2Draw.cpp.o.provides
-
-CMakeFiles/zombie.dir/ext/Box2D/Common/b2Draw.cpp.o.provides.build: CMakeFiles/zombie.dir/ext/Box2D/Common/b2Draw.cpp.o
-
-
-CMakeFiles/zombie.dir/ext/Box2D/Common/b2Math.cpp.o: CMakeFiles/zombie.dir/flags.make
-CMakeFiles/zombie.dir/ext/Box2D/Common/b2Math.cpp.o: ../ext/Box2D/Common/b2Math.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_71) "Building CXX object CMakeFiles/zombie.dir/ext/Box2D/Common/b2Math.cpp.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/zombie.dir/ext/Box2D/Common/b2Math.cpp.o -c /Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/ext/Box2D/Common/b2Math.cpp
-
-CMakeFiles/zombie.dir/ext/Box2D/Common/b2Math.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/zombie.dir/ext/Box2D/Common/b2Math.cpp.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/ext/Box2D/Common/b2Math.cpp > CMakeFiles/zombie.dir/ext/Box2D/Common/b2Math.cpp.i
-
-CMakeFiles/zombie.dir/ext/Box2D/Common/b2Math.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/zombie.dir/ext/Box2D/Common/b2Math.cpp.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/ext/Box2D/Common/b2Math.cpp -o CMakeFiles/zombie.dir/ext/Box2D/Common/b2Math.cpp.s
-
-CMakeFiles/zombie.dir/ext/Box2D/Common/b2Math.cpp.o.requires:
-
-.PHONY : CMakeFiles/zombie.dir/ext/Box2D/Common/b2Math.cpp.o.requires
-
-CMakeFiles/zombie.dir/ext/Box2D/Common/b2Math.cpp.o.provides: CMakeFiles/zombie.dir/ext/Box2D/Common/b2Math.cpp.o.requires
-	$(MAKE) -f CMakeFiles/zombie.dir/build.make CMakeFiles/zombie.dir/ext/Box2D/Common/b2Math.cpp.o.provides.build
-.PHONY : CMakeFiles/zombie.dir/ext/Box2D/Common/b2Math.cpp.o.provides
-
-CMakeFiles/zombie.dir/ext/Box2D/Common/b2Math.cpp.o.provides.build: CMakeFiles/zombie.dir/ext/Box2D/Common/b2Math.cpp.o
-
-
-CMakeFiles/zombie.dir/ext/Box2D/Common/b2Settings.cpp.o: CMakeFiles/zombie.dir/flags.make
-CMakeFiles/zombie.dir/ext/Box2D/Common/b2Settings.cpp.o: ../ext/Box2D/Common/b2Settings.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_72) "Building CXX object CMakeFiles/zombie.dir/ext/Box2D/Common/b2Settings.cpp.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/zombie.dir/ext/Box2D/Common/b2Settings.cpp.o -c /Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/ext/Box2D/Common/b2Settings.cpp
-
-CMakeFiles/zombie.dir/ext/Box2D/Common/b2Settings.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/zombie.dir/ext/Box2D/Common/b2Settings.cpp.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/ext/Box2D/Common/b2Settings.cpp > CMakeFiles/zombie.dir/ext/Box2D/Common/b2Settings.cpp.i
-
-CMakeFiles/zombie.dir/ext/Box2D/Common/b2Settings.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/zombie.dir/ext/Box2D/Common/b2Settings.cpp.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/ext/Box2D/Common/b2Settings.cpp -o CMakeFiles/zombie.dir/ext/Box2D/Common/b2Settings.cpp.s
-
-CMakeFiles/zombie.dir/ext/Box2D/Common/b2Settings.cpp.o.requires:
-
-.PHONY : CMakeFiles/zombie.dir/ext/Box2D/Common/b2Settings.cpp.o.requires
-
-CMakeFiles/zombie.dir/ext/Box2D/Common/b2Settings.cpp.o.provides: CMakeFiles/zombie.dir/ext/Box2D/Common/b2Settings.cpp.o.requires
-	$(MAKE) -f CMakeFiles/zombie.dir/build.make CMakeFiles/zombie.dir/ext/Box2D/Common/b2Settings.cpp.o.provides.build
-.PHONY : CMakeFiles/zombie.dir/ext/Box2D/Common/b2Settings.cpp.o.provides
-
-CMakeFiles/zombie.dir/ext/Box2D/Common/b2Settings.cpp.o.provides.build: CMakeFiles/zombie.dir/ext/Box2D/Common/b2Settings.cpp.o
-
-
-CMakeFiles/zombie.dir/ext/Box2D/Common/b2StackAllocator.cpp.o: CMakeFiles/zombie.dir/flags.make
-CMakeFiles/zombie.dir/ext/Box2D/Common/b2StackAllocator.cpp.o: ../ext/Box2D/Common/b2StackAllocator.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_73) "Building CXX object CMakeFiles/zombie.dir/ext/Box2D/Common/b2StackAllocator.cpp.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/zombie.dir/ext/Box2D/Common/b2StackAllocator.cpp.o -c /Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/ext/Box2D/Common/b2StackAllocator.cpp
-
-CMakeFiles/zombie.dir/ext/Box2D/Common/b2StackAllocator.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/zombie.dir/ext/Box2D/Common/b2StackAllocator.cpp.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/ext/Box2D/Common/b2StackAllocator.cpp > CMakeFiles/zombie.dir/ext/Box2D/Common/b2StackAllocator.cpp.i
-
-CMakeFiles/zombie.dir/ext/Box2D/Common/b2StackAllocator.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/zombie.dir/ext/Box2D/Common/b2StackAllocator.cpp.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/ext/Box2D/Common/b2StackAllocator.cpp -o CMakeFiles/zombie.dir/ext/Box2D/Common/b2StackAllocator.cpp.s
-
-CMakeFiles/zombie.dir/ext/Box2D/Common/b2StackAllocator.cpp.o.requires:
-
-.PHONY : CMakeFiles/zombie.dir/ext/Box2D/Common/b2StackAllocator.cpp.o.requires
-
-CMakeFiles/zombie.dir/ext/Box2D/Common/b2StackAllocator.cpp.o.provides: CMakeFiles/zombie.dir/ext/Box2D/Common/b2StackAllocator.cpp.o.requires
-	$(MAKE) -f CMakeFiles/zombie.dir/build.make CMakeFiles/zombie.dir/ext/Box2D/Common/b2StackAllocator.cpp.o.provides.build
-.PHONY : CMakeFiles/zombie.dir/ext/Box2D/Common/b2StackAllocator.cpp.o.provides
-
-CMakeFiles/zombie.dir/ext/Box2D/Common/b2StackAllocator.cpp.o.provides.build: CMakeFiles/zombie.dir/ext/Box2D/Common/b2StackAllocator.cpp.o
-
-
-CMakeFiles/zombie.dir/ext/Box2D/Common/b2Timer.cpp.o: CMakeFiles/zombie.dir/flags.make
-CMakeFiles/zombie.dir/ext/Box2D/Common/b2Timer.cpp.o: ../ext/Box2D/Common/b2Timer.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_74) "Building CXX object CMakeFiles/zombie.dir/ext/Box2D/Common/b2Timer.cpp.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/zombie.dir/ext/Box2D/Common/b2Timer.cpp.o -c /Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/ext/Box2D/Common/b2Timer.cpp
-
-CMakeFiles/zombie.dir/ext/Box2D/Common/b2Timer.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/zombie.dir/ext/Box2D/Common/b2Timer.cpp.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/ext/Box2D/Common/b2Timer.cpp > CMakeFiles/zombie.dir/ext/Box2D/Common/b2Timer.cpp.i
-
-CMakeFiles/zombie.dir/ext/Box2D/Common/b2Timer.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/zombie.dir/ext/Box2D/Common/b2Timer.cpp.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/ext/Box2D/Common/b2Timer.cpp -o CMakeFiles/zombie.dir/ext/Box2D/Common/b2Timer.cpp.s
-
-CMakeFiles/zombie.dir/ext/Box2D/Common/b2Timer.cpp.o.requires:
-
-.PHONY : CMakeFiles/zombie.dir/ext/Box2D/Common/b2Timer.cpp.o.requires
-
-CMakeFiles/zombie.dir/ext/Box2D/Common/b2Timer.cpp.o.provides: CMakeFiles/zombie.dir/ext/Box2D/Common/b2Timer.cpp.o.requires
-	$(MAKE) -f CMakeFiles/zombie.dir/build.make CMakeFiles/zombie.dir/ext/Box2D/Common/b2Timer.cpp.o.provides.build
-.PHONY : CMakeFiles/zombie.dir/ext/Box2D/Common/b2Timer.cpp.o.provides
-
-CMakeFiles/zombie.dir/ext/Box2D/Common/b2Timer.cpp.o.provides.build: CMakeFiles/zombie.dir/ext/Box2D/Common/b2Timer.cpp.o
-
-
-CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Contacts/b2ChainAndCircleContact.cpp.o: CMakeFiles/zombie.dir/flags.make
-CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Contacts/b2ChainAndCircleContact.cpp.o: ../ext/Box2D/Dynamics/Contacts/b2ChainAndCircleContact.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_75) "Building CXX object CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Contacts/b2ChainAndCircleContact.cpp.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Contacts/b2ChainAndCircleContact.cpp.o -c /Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/ext/Box2D/Dynamics/Contacts/b2ChainAndCircleContact.cpp
-
-CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Contacts/b2ChainAndCircleContact.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Contacts/b2ChainAndCircleContact.cpp.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/ext/Box2D/Dynamics/Contacts/b2ChainAndCircleContact.cpp > CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Contacts/b2ChainAndCircleContact.cpp.i
-
-CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Contacts/b2ChainAndCircleContact.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Contacts/b2ChainAndCircleContact.cpp.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/ext/Box2D/Dynamics/Contacts/b2ChainAndCircleContact.cpp -o CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Contacts/b2ChainAndCircleContact.cpp.s
-
-CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Contacts/b2ChainAndCircleContact.cpp.o.requires:
-
-.PHONY : CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Contacts/b2ChainAndCircleContact.cpp.o.requires
-
-CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Contacts/b2ChainAndCircleContact.cpp.o.provides: CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Contacts/b2ChainAndCircleContact.cpp.o.requires
-	$(MAKE) -f CMakeFiles/zombie.dir/build.make CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Contacts/b2ChainAndCircleContact.cpp.o.provides.build
-.PHONY : CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Contacts/b2ChainAndCircleContact.cpp.o.provides
-
-CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Contacts/b2ChainAndCircleContact.cpp.o.provides.build: CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Contacts/b2ChainAndCircleContact.cpp.o
-
-
-CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Contacts/b2ChainAndPolygonContact.cpp.o: CMakeFiles/zombie.dir/flags.make
-CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Contacts/b2ChainAndPolygonContact.cpp.o: ../ext/Box2D/Dynamics/Contacts/b2ChainAndPolygonContact.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_76) "Building CXX object CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Contacts/b2ChainAndPolygonContact.cpp.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Contacts/b2ChainAndPolygonContact.cpp.o -c /Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/ext/Box2D/Dynamics/Contacts/b2ChainAndPolygonContact.cpp
-
-CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Contacts/b2ChainAndPolygonContact.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Contacts/b2ChainAndPolygonContact.cpp.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/ext/Box2D/Dynamics/Contacts/b2ChainAndPolygonContact.cpp > CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Contacts/b2ChainAndPolygonContact.cpp.i
-
-CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Contacts/b2ChainAndPolygonContact.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Contacts/b2ChainAndPolygonContact.cpp.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/ext/Box2D/Dynamics/Contacts/b2ChainAndPolygonContact.cpp -o CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Contacts/b2ChainAndPolygonContact.cpp.s
-
-CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Contacts/b2ChainAndPolygonContact.cpp.o.requires:
-
-.PHONY : CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Contacts/b2ChainAndPolygonContact.cpp.o.requires
-
-CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Contacts/b2ChainAndPolygonContact.cpp.o.provides: CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Contacts/b2ChainAndPolygonContact.cpp.o.requires
-	$(MAKE) -f CMakeFiles/zombie.dir/build.make CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Contacts/b2ChainAndPolygonContact.cpp.o.provides.build
-.PHONY : CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Contacts/b2ChainAndPolygonContact.cpp.o.provides
-
-CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Contacts/b2ChainAndPolygonContact.cpp.o.provides.build: CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Contacts/b2ChainAndPolygonContact.cpp.o
-
-
-CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Contacts/b2CircleContact.cpp.o: CMakeFiles/zombie.dir/flags.make
-CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Contacts/b2CircleContact.cpp.o: ../ext/Box2D/Dynamics/Contacts/b2CircleContact.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_77) "Building CXX object CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Contacts/b2CircleContact.cpp.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Contacts/b2CircleContact.cpp.o -c /Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/ext/Box2D/Dynamics/Contacts/b2CircleContact.cpp
-
-CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Contacts/b2CircleContact.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Contacts/b2CircleContact.cpp.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/ext/Box2D/Dynamics/Contacts/b2CircleContact.cpp > CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Contacts/b2CircleContact.cpp.i
-
-CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Contacts/b2CircleContact.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Contacts/b2CircleContact.cpp.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/ext/Box2D/Dynamics/Contacts/b2CircleContact.cpp -o CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Contacts/b2CircleContact.cpp.s
-
-CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Contacts/b2CircleContact.cpp.o.requires:
-
-.PHONY : CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Contacts/b2CircleContact.cpp.o.requires
-
-CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Contacts/b2CircleContact.cpp.o.provides: CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Contacts/b2CircleContact.cpp.o.requires
-	$(MAKE) -f CMakeFiles/zombie.dir/build.make CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Contacts/b2CircleContact.cpp.o.provides.build
-.PHONY : CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Contacts/b2CircleContact.cpp.o.provides
-
-CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Contacts/b2CircleContact.cpp.o.provides.build: CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Contacts/b2CircleContact.cpp.o
-
-
-CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Contacts/b2Contact.cpp.o: CMakeFiles/zombie.dir/flags.make
-CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Contacts/b2Contact.cpp.o: ../ext/Box2D/Dynamics/Contacts/b2Contact.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_78) "Building CXX object CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Contacts/b2Contact.cpp.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Contacts/b2Contact.cpp.o -c /Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/ext/Box2D/Dynamics/Contacts/b2Contact.cpp
-
-CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Contacts/b2Contact.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Contacts/b2Contact.cpp.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/ext/Box2D/Dynamics/Contacts/b2Contact.cpp > CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Contacts/b2Contact.cpp.i
-
-CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Contacts/b2Contact.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Contacts/b2Contact.cpp.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/ext/Box2D/Dynamics/Contacts/b2Contact.cpp -o CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Contacts/b2Contact.cpp.s
-
-CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Contacts/b2Contact.cpp.o.requires:
-
-.PHONY : CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Contacts/b2Contact.cpp.o.requires
-
-CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Contacts/b2Contact.cpp.o.provides: CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Contacts/b2Contact.cpp.o.requires
-	$(MAKE) -f CMakeFiles/zombie.dir/build.make CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Contacts/b2Contact.cpp.o.provides.build
-.PHONY : CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Contacts/b2Contact.cpp.o.provides
-
-CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Contacts/b2Contact.cpp.o.provides.build: CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Contacts/b2Contact.cpp.o
-
-
-CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Contacts/b2ContactSolver.cpp.o: CMakeFiles/zombie.dir/flags.make
-CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Contacts/b2ContactSolver.cpp.o: ../ext/Box2D/Dynamics/Contacts/b2ContactSolver.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_79) "Building CXX object CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Contacts/b2ContactSolver.cpp.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Contacts/b2ContactSolver.cpp.o -c /Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/ext/Box2D/Dynamics/Contacts/b2ContactSolver.cpp
-
-CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Contacts/b2ContactSolver.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Contacts/b2ContactSolver.cpp.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/ext/Box2D/Dynamics/Contacts/b2ContactSolver.cpp > CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Contacts/b2ContactSolver.cpp.i
-
-CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Contacts/b2ContactSolver.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Contacts/b2ContactSolver.cpp.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/ext/Box2D/Dynamics/Contacts/b2ContactSolver.cpp -o CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Contacts/b2ContactSolver.cpp.s
-
-CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Contacts/b2ContactSolver.cpp.o.requires:
-
-.PHONY : CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Contacts/b2ContactSolver.cpp.o.requires
-
-CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Contacts/b2ContactSolver.cpp.o.provides: CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Contacts/b2ContactSolver.cpp.o.requires
-	$(MAKE) -f CMakeFiles/zombie.dir/build.make CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Contacts/b2ContactSolver.cpp.o.provides.build
-.PHONY : CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Contacts/b2ContactSolver.cpp.o.provides
-
-CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Contacts/b2ContactSolver.cpp.o.provides.build: CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Contacts/b2ContactSolver.cpp.o
-
-
-CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Contacts/b2EdgeAndCircleContact.cpp.o: CMakeFiles/zombie.dir/flags.make
-CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Contacts/b2EdgeAndCircleContact.cpp.o: ../ext/Box2D/Dynamics/Contacts/b2EdgeAndCircleContact.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_80) "Building CXX object CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Contacts/b2EdgeAndCircleContact.cpp.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Contacts/b2EdgeAndCircleContact.cpp.o -c /Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/ext/Box2D/Dynamics/Contacts/b2EdgeAndCircleContact.cpp
-
-CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Contacts/b2EdgeAndCircleContact.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Contacts/b2EdgeAndCircleContact.cpp.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/ext/Box2D/Dynamics/Contacts/b2EdgeAndCircleContact.cpp > CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Contacts/b2EdgeAndCircleContact.cpp.i
-
-CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Contacts/b2EdgeAndCircleContact.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Contacts/b2EdgeAndCircleContact.cpp.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/ext/Box2D/Dynamics/Contacts/b2EdgeAndCircleContact.cpp -o CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Contacts/b2EdgeAndCircleContact.cpp.s
-
-CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Contacts/b2EdgeAndCircleContact.cpp.o.requires:
-
-.PHONY : CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Contacts/b2EdgeAndCircleContact.cpp.o.requires
-
-CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Contacts/b2EdgeAndCircleContact.cpp.o.provides: CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Contacts/b2EdgeAndCircleContact.cpp.o.requires
-	$(MAKE) -f CMakeFiles/zombie.dir/build.make CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Contacts/b2EdgeAndCircleContact.cpp.o.provides.build
-.PHONY : CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Contacts/b2EdgeAndCircleContact.cpp.o.provides
-
-CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Contacts/b2EdgeAndCircleContact.cpp.o.provides.build: CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Contacts/b2EdgeAndCircleContact.cpp.o
-
-
-CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Contacts/b2EdgeAndPolygonContact.cpp.o: CMakeFiles/zombie.dir/flags.make
-CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Contacts/b2EdgeAndPolygonContact.cpp.o: ../ext/Box2D/Dynamics/Contacts/b2EdgeAndPolygonContact.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_81) "Building CXX object CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Contacts/b2EdgeAndPolygonContact.cpp.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Contacts/b2EdgeAndPolygonContact.cpp.o -c /Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/ext/Box2D/Dynamics/Contacts/b2EdgeAndPolygonContact.cpp
-
-CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Contacts/b2EdgeAndPolygonContact.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Contacts/b2EdgeAndPolygonContact.cpp.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/ext/Box2D/Dynamics/Contacts/b2EdgeAndPolygonContact.cpp > CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Contacts/b2EdgeAndPolygonContact.cpp.i
-
-CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Contacts/b2EdgeAndPolygonContact.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Contacts/b2EdgeAndPolygonContact.cpp.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/ext/Box2D/Dynamics/Contacts/b2EdgeAndPolygonContact.cpp -o CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Contacts/b2EdgeAndPolygonContact.cpp.s
-
-CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Contacts/b2EdgeAndPolygonContact.cpp.o.requires:
-
-.PHONY : CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Contacts/b2EdgeAndPolygonContact.cpp.o.requires
-
-CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Contacts/b2EdgeAndPolygonContact.cpp.o.provides: CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Contacts/b2EdgeAndPolygonContact.cpp.o.requires
-	$(MAKE) -f CMakeFiles/zombie.dir/build.make CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Contacts/b2EdgeAndPolygonContact.cpp.o.provides.build
-.PHONY : CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Contacts/b2EdgeAndPolygonContact.cpp.o.provides
-
-CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Contacts/b2EdgeAndPolygonContact.cpp.o.provides.build: CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Contacts/b2EdgeAndPolygonContact.cpp.o
-
-
-CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Contacts/b2PolygonAndCircleContact.cpp.o: CMakeFiles/zombie.dir/flags.make
-CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Contacts/b2PolygonAndCircleContact.cpp.o: ../ext/Box2D/Dynamics/Contacts/b2PolygonAndCircleContact.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_82) "Building CXX object CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Contacts/b2PolygonAndCircleContact.cpp.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Contacts/b2PolygonAndCircleContact.cpp.o -c /Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/ext/Box2D/Dynamics/Contacts/b2PolygonAndCircleContact.cpp
-
-CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Contacts/b2PolygonAndCircleContact.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Contacts/b2PolygonAndCircleContact.cpp.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/ext/Box2D/Dynamics/Contacts/b2PolygonAndCircleContact.cpp > CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Contacts/b2PolygonAndCircleContact.cpp.i
-
-CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Contacts/b2PolygonAndCircleContact.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Contacts/b2PolygonAndCircleContact.cpp.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/ext/Box2D/Dynamics/Contacts/b2PolygonAndCircleContact.cpp -o CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Contacts/b2PolygonAndCircleContact.cpp.s
-
-CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Contacts/b2PolygonAndCircleContact.cpp.o.requires:
-
-.PHONY : CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Contacts/b2PolygonAndCircleContact.cpp.o.requires
-
-CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Contacts/b2PolygonAndCircleContact.cpp.o.provides: CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Contacts/b2PolygonAndCircleContact.cpp.o.requires
-	$(MAKE) -f CMakeFiles/zombie.dir/build.make CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Contacts/b2PolygonAndCircleContact.cpp.o.provides.build
-.PHONY : CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Contacts/b2PolygonAndCircleContact.cpp.o.provides
-
-CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Contacts/b2PolygonAndCircleContact.cpp.o.provides.build: CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Contacts/b2PolygonAndCircleContact.cpp.o
-
-
-CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Contacts/b2PolygonContact.cpp.o: CMakeFiles/zombie.dir/flags.make
-CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Contacts/b2PolygonContact.cpp.o: ../ext/Box2D/Dynamics/Contacts/b2PolygonContact.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_83) "Building CXX object CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Contacts/b2PolygonContact.cpp.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Contacts/b2PolygonContact.cpp.o -c /Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/ext/Box2D/Dynamics/Contacts/b2PolygonContact.cpp
-
-CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Contacts/b2PolygonContact.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Contacts/b2PolygonContact.cpp.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/ext/Box2D/Dynamics/Contacts/b2PolygonContact.cpp > CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Contacts/b2PolygonContact.cpp.i
-
-CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Contacts/b2PolygonContact.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Contacts/b2PolygonContact.cpp.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/ext/Box2D/Dynamics/Contacts/b2PolygonContact.cpp -o CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Contacts/b2PolygonContact.cpp.s
-
-CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Contacts/b2PolygonContact.cpp.o.requires:
-
-.PHONY : CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Contacts/b2PolygonContact.cpp.o.requires
-
-CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Contacts/b2PolygonContact.cpp.o.provides: CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Contacts/b2PolygonContact.cpp.o.requires
-	$(MAKE) -f CMakeFiles/zombie.dir/build.make CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Contacts/b2PolygonContact.cpp.o.provides.build
-.PHONY : CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Contacts/b2PolygonContact.cpp.o.provides
-
-CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Contacts/b2PolygonContact.cpp.o.provides.build: CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Contacts/b2PolygonContact.cpp.o
-
-
-CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Joints/b2DistanceJoint.cpp.o: CMakeFiles/zombie.dir/flags.make
-CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Joints/b2DistanceJoint.cpp.o: ../ext/Box2D/Dynamics/Joints/b2DistanceJoint.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_84) "Building CXX object CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Joints/b2DistanceJoint.cpp.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Joints/b2DistanceJoint.cpp.o -c /Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/ext/Box2D/Dynamics/Joints/b2DistanceJoint.cpp
-
-CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Joints/b2DistanceJoint.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Joints/b2DistanceJoint.cpp.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/ext/Box2D/Dynamics/Joints/b2DistanceJoint.cpp > CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Joints/b2DistanceJoint.cpp.i
-
-CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Joints/b2DistanceJoint.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Joints/b2DistanceJoint.cpp.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/ext/Box2D/Dynamics/Joints/b2DistanceJoint.cpp -o CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Joints/b2DistanceJoint.cpp.s
-
-CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Joints/b2DistanceJoint.cpp.o.requires:
-
-.PHONY : CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Joints/b2DistanceJoint.cpp.o.requires
-
-CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Joints/b2DistanceJoint.cpp.o.provides: CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Joints/b2DistanceJoint.cpp.o.requires
-	$(MAKE) -f CMakeFiles/zombie.dir/build.make CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Joints/b2DistanceJoint.cpp.o.provides.build
-.PHONY : CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Joints/b2DistanceJoint.cpp.o.provides
-
-CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Joints/b2DistanceJoint.cpp.o.provides.build: CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Joints/b2DistanceJoint.cpp.o
-
-
-CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Joints/b2FrictionJoint.cpp.o: CMakeFiles/zombie.dir/flags.make
-CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Joints/b2FrictionJoint.cpp.o: ../ext/Box2D/Dynamics/Joints/b2FrictionJoint.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_85) "Building CXX object CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Joints/b2FrictionJoint.cpp.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Joints/b2FrictionJoint.cpp.o -c /Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/ext/Box2D/Dynamics/Joints/b2FrictionJoint.cpp
-
-CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Joints/b2FrictionJoint.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Joints/b2FrictionJoint.cpp.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/ext/Box2D/Dynamics/Joints/b2FrictionJoint.cpp > CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Joints/b2FrictionJoint.cpp.i
-
-CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Joints/b2FrictionJoint.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Joints/b2FrictionJoint.cpp.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/ext/Box2D/Dynamics/Joints/b2FrictionJoint.cpp -o CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Joints/b2FrictionJoint.cpp.s
-
-CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Joints/b2FrictionJoint.cpp.o.requires:
-
-.PHONY : CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Joints/b2FrictionJoint.cpp.o.requires
-
-CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Joints/b2FrictionJoint.cpp.o.provides: CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Joints/b2FrictionJoint.cpp.o.requires
-	$(MAKE) -f CMakeFiles/zombie.dir/build.make CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Joints/b2FrictionJoint.cpp.o.provides.build
-.PHONY : CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Joints/b2FrictionJoint.cpp.o.provides
-
-CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Joints/b2FrictionJoint.cpp.o.provides.build: CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Joints/b2FrictionJoint.cpp.o
-
-
-CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Joints/b2GearJoint.cpp.o: CMakeFiles/zombie.dir/flags.make
-CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Joints/b2GearJoint.cpp.o: ../ext/Box2D/Dynamics/Joints/b2GearJoint.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_86) "Building CXX object CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Joints/b2GearJoint.cpp.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Joints/b2GearJoint.cpp.o -c /Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/ext/Box2D/Dynamics/Joints/b2GearJoint.cpp
-
-CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Joints/b2GearJoint.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Joints/b2GearJoint.cpp.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/ext/Box2D/Dynamics/Joints/b2GearJoint.cpp > CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Joints/b2GearJoint.cpp.i
-
-CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Joints/b2GearJoint.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Joints/b2GearJoint.cpp.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/ext/Box2D/Dynamics/Joints/b2GearJoint.cpp -o CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Joints/b2GearJoint.cpp.s
-
-CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Joints/b2GearJoint.cpp.o.requires:
-
-.PHONY : CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Joints/b2GearJoint.cpp.o.requires
-
-CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Joints/b2GearJoint.cpp.o.provides: CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Joints/b2GearJoint.cpp.o.requires
-	$(MAKE) -f CMakeFiles/zombie.dir/build.make CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Joints/b2GearJoint.cpp.o.provides.build
-.PHONY : CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Joints/b2GearJoint.cpp.o.provides
-
-CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Joints/b2GearJoint.cpp.o.provides.build: CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Joints/b2GearJoint.cpp.o
-
-
-CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Joints/b2Joint.cpp.o: CMakeFiles/zombie.dir/flags.make
-CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Joints/b2Joint.cpp.o: ../ext/Box2D/Dynamics/Joints/b2Joint.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_87) "Building CXX object CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Joints/b2Joint.cpp.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Joints/b2Joint.cpp.o -c /Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/ext/Box2D/Dynamics/Joints/b2Joint.cpp
-
-CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Joints/b2Joint.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Joints/b2Joint.cpp.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/ext/Box2D/Dynamics/Joints/b2Joint.cpp > CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Joints/b2Joint.cpp.i
-
-CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Joints/b2Joint.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Joints/b2Joint.cpp.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/ext/Box2D/Dynamics/Joints/b2Joint.cpp -o CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Joints/b2Joint.cpp.s
-
-CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Joints/b2Joint.cpp.o.requires:
-
-.PHONY : CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Joints/b2Joint.cpp.o.requires
-
-CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Joints/b2Joint.cpp.o.provides: CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Joints/b2Joint.cpp.o.requires
-	$(MAKE) -f CMakeFiles/zombie.dir/build.make CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Joints/b2Joint.cpp.o.provides.build
-.PHONY : CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Joints/b2Joint.cpp.o.provides
-
-CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Joints/b2Joint.cpp.o.provides.build: CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Joints/b2Joint.cpp.o
-
-
-CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Joints/b2MotorJoint.cpp.o: CMakeFiles/zombie.dir/flags.make
-CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Joints/b2MotorJoint.cpp.o: ../ext/Box2D/Dynamics/Joints/b2MotorJoint.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_88) "Building CXX object CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Joints/b2MotorJoint.cpp.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Joints/b2MotorJoint.cpp.o -c /Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/ext/Box2D/Dynamics/Joints/b2MotorJoint.cpp
-
-CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Joints/b2MotorJoint.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Joints/b2MotorJoint.cpp.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/ext/Box2D/Dynamics/Joints/b2MotorJoint.cpp > CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Joints/b2MotorJoint.cpp.i
-
-CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Joints/b2MotorJoint.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Joints/b2MotorJoint.cpp.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/ext/Box2D/Dynamics/Joints/b2MotorJoint.cpp -o CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Joints/b2MotorJoint.cpp.s
-
-CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Joints/b2MotorJoint.cpp.o.requires:
-
-.PHONY : CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Joints/b2MotorJoint.cpp.o.requires
-
-CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Joints/b2MotorJoint.cpp.o.provides: CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Joints/b2MotorJoint.cpp.o.requires
-	$(MAKE) -f CMakeFiles/zombie.dir/build.make CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Joints/b2MotorJoint.cpp.o.provides.build
-.PHONY : CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Joints/b2MotorJoint.cpp.o.provides
-
-CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Joints/b2MotorJoint.cpp.o.provides.build: CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Joints/b2MotorJoint.cpp.o
-
-
-CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Joints/b2MouseJoint.cpp.o: CMakeFiles/zombie.dir/flags.make
-CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Joints/b2MouseJoint.cpp.o: ../ext/Box2D/Dynamics/Joints/b2MouseJoint.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_89) "Building CXX object CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Joints/b2MouseJoint.cpp.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Joints/b2MouseJoint.cpp.o -c /Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/ext/Box2D/Dynamics/Joints/b2MouseJoint.cpp
-
-CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Joints/b2MouseJoint.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Joints/b2MouseJoint.cpp.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/ext/Box2D/Dynamics/Joints/b2MouseJoint.cpp > CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Joints/b2MouseJoint.cpp.i
-
-CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Joints/b2MouseJoint.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Joints/b2MouseJoint.cpp.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/ext/Box2D/Dynamics/Joints/b2MouseJoint.cpp -o CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Joints/b2MouseJoint.cpp.s
-
-CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Joints/b2MouseJoint.cpp.o.requires:
-
-.PHONY : CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Joints/b2MouseJoint.cpp.o.requires
-
-CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Joints/b2MouseJoint.cpp.o.provides: CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Joints/b2MouseJoint.cpp.o.requires
-	$(MAKE) -f CMakeFiles/zombie.dir/build.make CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Joints/b2MouseJoint.cpp.o.provides.build
-.PHONY : CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Joints/b2MouseJoint.cpp.o.provides
-
-CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Joints/b2MouseJoint.cpp.o.provides.build: CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Joints/b2MouseJoint.cpp.o
-
-
-CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Joints/b2PrismaticJoint.cpp.o: CMakeFiles/zombie.dir/flags.make
-CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Joints/b2PrismaticJoint.cpp.o: ../ext/Box2D/Dynamics/Joints/b2PrismaticJoint.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_90) "Building CXX object CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Joints/b2PrismaticJoint.cpp.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Joints/b2PrismaticJoint.cpp.o -c /Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/ext/Box2D/Dynamics/Joints/b2PrismaticJoint.cpp
-
-CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Joints/b2PrismaticJoint.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Joints/b2PrismaticJoint.cpp.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/ext/Box2D/Dynamics/Joints/b2PrismaticJoint.cpp > CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Joints/b2PrismaticJoint.cpp.i
-
-CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Joints/b2PrismaticJoint.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Joints/b2PrismaticJoint.cpp.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/ext/Box2D/Dynamics/Joints/b2PrismaticJoint.cpp -o CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Joints/b2PrismaticJoint.cpp.s
-
-CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Joints/b2PrismaticJoint.cpp.o.requires:
-
-.PHONY : CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Joints/b2PrismaticJoint.cpp.o.requires
-
-CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Joints/b2PrismaticJoint.cpp.o.provides: CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Joints/b2PrismaticJoint.cpp.o.requires
-	$(MAKE) -f CMakeFiles/zombie.dir/build.make CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Joints/b2PrismaticJoint.cpp.o.provides.build
-.PHONY : CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Joints/b2PrismaticJoint.cpp.o.provides
-
-CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Joints/b2PrismaticJoint.cpp.o.provides.build: CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Joints/b2PrismaticJoint.cpp.o
-
-
-CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Joints/b2PulleyJoint.cpp.o: CMakeFiles/zombie.dir/flags.make
-CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Joints/b2PulleyJoint.cpp.o: ../ext/Box2D/Dynamics/Joints/b2PulleyJoint.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_91) "Building CXX object CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Joints/b2PulleyJoint.cpp.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Joints/b2PulleyJoint.cpp.o -c /Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/ext/Box2D/Dynamics/Joints/b2PulleyJoint.cpp
-
-CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Joints/b2PulleyJoint.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Joints/b2PulleyJoint.cpp.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/ext/Box2D/Dynamics/Joints/b2PulleyJoint.cpp > CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Joints/b2PulleyJoint.cpp.i
-
-CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Joints/b2PulleyJoint.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Joints/b2PulleyJoint.cpp.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/ext/Box2D/Dynamics/Joints/b2PulleyJoint.cpp -o CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Joints/b2PulleyJoint.cpp.s
-
-CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Joints/b2PulleyJoint.cpp.o.requires:
-
-.PHONY : CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Joints/b2PulleyJoint.cpp.o.requires
-
-CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Joints/b2PulleyJoint.cpp.o.provides: CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Joints/b2PulleyJoint.cpp.o.requires
-	$(MAKE) -f CMakeFiles/zombie.dir/build.make CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Joints/b2PulleyJoint.cpp.o.provides.build
-.PHONY : CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Joints/b2PulleyJoint.cpp.o.provides
-
-CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Joints/b2PulleyJoint.cpp.o.provides.build: CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Joints/b2PulleyJoint.cpp.o
-
-
-CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Joints/b2RevoluteJoint.cpp.o: CMakeFiles/zombie.dir/flags.make
-CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Joints/b2RevoluteJoint.cpp.o: ../ext/Box2D/Dynamics/Joints/b2RevoluteJoint.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_92) "Building CXX object CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Joints/b2RevoluteJoint.cpp.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Joints/b2RevoluteJoint.cpp.o -c /Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/ext/Box2D/Dynamics/Joints/b2RevoluteJoint.cpp
-
-CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Joints/b2RevoluteJoint.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Joints/b2RevoluteJoint.cpp.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/ext/Box2D/Dynamics/Joints/b2RevoluteJoint.cpp > CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Joints/b2RevoluteJoint.cpp.i
-
-CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Joints/b2RevoluteJoint.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Joints/b2RevoluteJoint.cpp.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/ext/Box2D/Dynamics/Joints/b2RevoluteJoint.cpp -o CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Joints/b2RevoluteJoint.cpp.s
-
-CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Joints/b2RevoluteJoint.cpp.o.requires:
-
-.PHONY : CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Joints/b2RevoluteJoint.cpp.o.requires
-
-CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Joints/b2RevoluteJoint.cpp.o.provides: CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Joints/b2RevoluteJoint.cpp.o.requires
-	$(MAKE) -f CMakeFiles/zombie.dir/build.make CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Joints/b2RevoluteJoint.cpp.o.provides.build
-.PHONY : CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Joints/b2RevoluteJoint.cpp.o.provides
-
-CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Joints/b2RevoluteJoint.cpp.o.provides.build: CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Joints/b2RevoluteJoint.cpp.o
-
-
-CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Joints/b2RopeJoint.cpp.o: CMakeFiles/zombie.dir/flags.make
-CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Joints/b2RopeJoint.cpp.o: ../ext/Box2D/Dynamics/Joints/b2RopeJoint.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_93) "Building CXX object CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Joints/b2RopeJoint.cpp.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Joints/b2RopeJoint.cpp.o -c /Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/ext/Box2D/Dynamics/Joints/b2RopeJoint.cpp
-
-CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Joints/b2RopeJoint.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Joints/b2RopeJoint.cpp.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/ext/Box2D/Dynamics/Joints/b2RopeJoint.cpp > CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Joints/b2RopeJoint.cpp.i
-
-CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Joints/b2RopeJoint.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Joints/b2RopeJoint.cpp.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/ext/Box2D/Dynamics/Joints/b2RopeJoint.cpp -o CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Joints/b2RopeJoint.cpp.s
-
-CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Joints/b2RopeJoint.cpp.o.requires:
-
-.PHONY : CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Joints/b2RopeJoint.cpp.o.requires
-
-CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Joints/b2RopeJoint.cpp.o.provides: CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Joints/b2RopeJoint.cpp.o.requires
-	$(MAKE) -f CMakeFiles/zombie.dir/build.make CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Joints/b2RopeJoint.cpp.o.provides.build
-.PHONY : CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Joints/b2RopeJoint.cpp.o.provides
-
-CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Joints/b2RopeJoint.cpp.o.provides.build: CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Joints/b2RopeJoint.cpp.o
-
-
-CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Joints/b2WeldJoint.cpp.o: CMakeFiles/zombie.dir/flags.make
-CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Joints/b2WeldJoint.cpp.o: ../ext/Box2D/Dynamics/Joints/b2WeldJoint.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_94) "Building CXX object CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Joints/b2WeldJoint.cpp.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Joints/b2WeldJoint.cpp.o -c /Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/ext/Box2D/Dynamics/Joints/b2WeldJoint.cpp
-
-CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Joints/b2WeldJoint.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Joints/b2WeldJoint.cpp.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/ext/Box2D/Dynamics/Joints/b2WeldJoint.cpp > CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Joints/b2WeldJoint.cpp.i
-
-CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Joints/b2WeldJoint.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Joints/b2WeldJoint.cpp.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/ext/Box2D/Dynamics/Joints/b2WeldJoint.cpp -o CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Joints/b2WeldJoint.cpp.s
-
-CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Joints/b2WeldJoint.cpp.o.requires:
-
-.PHONY : CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Joints/b2WeldJoint.cpp.o.requires
-
-CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Joints/b2WeldJoint.cpp.o.provides: CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Joints/b2WeldJoint.cpp.o.requires
-	$(MAKE) -f CMakeFiles/zombie.dir/build.make CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Joints/b2WeldJoint.cpp.o.provides.build
-.PHONY : CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Joints/b2WeldJoint.cpp.o.provides
-
-CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Joints/b2WeldJoint.cpp.o.provides.build: CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Joints/b2WeldJoint.cpp.o
-
-
-CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Joints/b2WheelJoint.cpp.o: CMakeFiles/zombie.dir/flags.make
-CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Joints/b2WheelJoint.cpp.o: ../ext/Box2D/Dynamics/Joints/b2WheelJoint.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_95) "Building CXX object CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Joints/b2WheelJoint.cpp.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Joints/b2WheelJoint.cpp.o -c /Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/ext/Box2D/Dynamics/Joints/b2WheelJoint.cpp
-
-CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Joints/b2WheelJoint.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Joints/b2WheelJoint.cpp.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/ext/Box2D/Dynamics/Joints/b2WheelJoint.cpp > CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Joints/b2WheelJoint.cpp.i
-
-CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Joints/b2WheelJoint.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Joints/b2WheelJoint.cpp.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/ext/Box2D/Dynamics/Joints/b2WheelJoint.cpp -o CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Joints/b2WheelJoint.cpp.s
-
-CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Joints/b2WheelJoint.cpp.o.requires:
-
-.PHONY : CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Joints/b2WheelJoint.cpp.o.requires
-
-CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Joints/b2WheelJoint.cpp.o.provides: CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Joints/b2WheelJoint.cpp.o.requires
-	$(MAKE) -f CMakeFiles/zombie.dir/build.make CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Joints/b2WheelJoint.cpp.o.provides.build
-.PHONY : CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Joints/b2WheelJoint.cpp.o.provides
-
-CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Joints/b2WheelJoint.cpp.o.provides.build: CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Joints/b2WheelJoint.cpp.o
-
-
-CMakeFiles/zombie.dir/ext/Box2D/Dynamics/b2Body.cpp.o: CMakeFiles/zombie.dir/flags.make
-CMakeFiles/zombie.dir/ext/Box2D/Dynamics/b2Body.cpp.o: ../ext/Box2D/Dynamics/b2Body.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_96) "Building CXX object CMakeFiles/zombie.dir/ext/Box2D/Dynamics/b2Body.cpp.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/zombie.dir/ext/Box2D/Dynamics/b2Body.cpp.o -c /Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/ext/Box2D/Dynamics/b2Body.cpp
-
-CMakeFiles/zombie.dir/ext/Box2D/Dynamics/b2Body.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/zombie.dir/ext/Box2D/Dynamics/b2Body.cpp.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/ext/Box2D/Dynamics/b2Body.cpp > CMakeFiles/zombie.dir/ext/Box2D/Dynamics/b2Body.cpp.i
-
-CMakeFiles/zombie.dir/ext/Box2D/Dynamics/b2Body.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/zombie.dir/ext/Box2D/Dynamics/b2Body.cpp.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/ext/Box2D/Dynamics/b2Body.cpp -o CMakeFiles/zombie.dir/ext/Box2D/Dynamics/b2Body.cpp.s
-
-CMakeFiles/zombie.dir/ext/Box2D/Dynamics/b2Body.cpp.o.requires:
-
-.PHONY : CMakeFiles/zombie.dir/ext/Box2D/Dynamics/b2Body.cpp.o.requires
-
-CMakeFiles/zombie.dir/ext/Box2D/Dynamics/b2Body.cpp.o.provides: CMakeFiles/zombie.dir/ext/Box2D/Dynamics/b2Body.cpp.o.requires
-	$(MAKE) -f CMakeFiles/zombie.dir/build.make CMakeFiles/zombie.dir/ext/Box2D/Dynamics/b2Body.cpp.o.provides.build
-.PHONY : CMakeFiles/zombie.dir/ext/Box2D/Dynamics/b2Body.cpp.o.provides
-
-CMakeFiles/zombie.dir/ext/Box2D/Dynamics/b2Body.cpp.o.provides.build: CMakeFiles/zombie.dir/ext/Box2D/Dynamics/b2Body.cpp.o
-
-
-CMakeFiles/zombie.dir/ext/Box2D/Dynamics/b2ContactManager.cpp.o: CMakeFiles/zombie.dir/flags.make
-CMakeFiles/zombie.dir/ext/Box2D/Dynamics/b2ContactManager.cpp.o: ../ext/Box2D/Dynamics/b2ContactManager.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_97) "Building CXX object CMakeFiles/zombie.dir/ext/Box2D/Dynamics/b2ContactManager.cpp.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/zombie.dir/ext/Box2D/Dynamics/b2ContactManager.cpp.o -c /Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/ext/Box2D/Dynamics/b2ContactManager.cpp
-
-CMakeFiles/zombie.dir/ext/Box2D/Dynamics/b2ContactManager.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/zombie.dir/ext/Box2D/Dynamics/b2ContactManager.cpp.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/ext/Box2D/Dynamics/b2ContactManager.cpp > CMakeFiles/zombie.dir/ext/Box2D/Dynamics/b2ContactManager.cpp.i
-
-CMakeFiles/zombie.dir/ext/Box2D/Dynamics/b2ContactManager.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/zombie.dir/ext/Box2D/Dynamics/b2ContactManager.cpp.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/ext/Box2D/Dynamics/b2ContactManager.cpp -o CMakeFiles/zombie.dir/ext/Box2D/Dynamics/b2ContactManager.cpp.s
-
-CMakeFiles/zombie.dir/ext/Box2D/Dynamics/b2ContactManager.cpp.o.requires:
-
-.PHONY : CMakeFiles/zombie.dir/ext/Box2D/Dynamics/b2ContactManager.cpp.o.requires
-
-CMakeFiles/zombie.dir/ext/Box2D/Dynamics/b2ContactManager.cpp.o.provides: CMakeFiles/zombie.dir/ext/Box2D/Dynamics/b2ContactManager.cpp.o.requires
-	$(MAKE) -f CMakeFiles/zombie.dir/build.make CMakeFiles/zombie.dir/ext/Box2D/Dynamics/b2ContactManager.cpp.o.provides.build
-.PHONY : CMakeFiles/zombie.dir/ext/Box2D/Dynamics/b2ContactManager.cpp.o.provides
-
-CMakeFiles/zombie.dir/ext/Box2D/Dynamics/b2ContactManager.cpp.o.provides.build: CMakeFiles/zombie.dir/ext/Box2D/Dynamics/b2ContactManager.cpp.o
-
-
-CMakeFiles/zombie.dir/ext/Box2D/Dynamics/b2Fixture.cpp.o: CMakeFiles/zombie.dir/flags.make
-CMakeFiles/zombie.dir/ext/Box2D/Dynamics/b2Fixture.cpp.o: ../ext/Box2D/Dynamics/b2Fixture.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_98) "Building CXX object CMakeFiles/zombie.dir/ext/Box2D/Dynamics/b2Fixture.cpp.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/zombie.dir/ext/Box2D/Dynamics/b2Fixture.cpp.o -c /Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/ext/Box2D/Dynamics/b2Fixture.cpp
-
-CMakeFiles/zombie.dir/ext/Box2D/Dynamics/b2Fixture.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/zombie.dir/ext/Box2D/Dynamics/b2Fixture.cpp.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/ext/Box2D/Dynamics/b2Fixture.cpp > CMakeFiles/zombie.dir/ext/Box2D/Dynamics/b2Fixture.cpp.i
-
-CMakeFiles/zombie.dir/ext/Box2D/Dynamics/b2Fixture.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/zombie.dir/ext/Box2D/Dynamics/b2Fixture.cpp.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/ext/Box2D/Dynamics/b2Fixture.cpp -o CMakeFiles/zombie.dir/ext/Box2D/Dynamics/b2Fixture.cpp.s
-
-CMakeFiles/zombie.dir/ext/Box2D/Dynamics/b2Fixture.cpp.o.requires:
-
-.PHONY : CMakeFiles/zombie.dir/ext/Box2D/Dynamics/b2Fixture.cpp.o.requires
-
-CMakeFiles/zombie.dir/ext/Box2D/Dynamics/b2Fixture.cpp.o.provides: CMakeFiles/zombie.dir/ext/Box2D/Dynamics/b2Fixture.cpp.o.requires
-	$(MAKE) -f CMakeFiles/zombie.dir/build.make CMakeFiles/zombie.dir/ext/Box2D/Dynamics/b2Fixture.cpp.o.provides.build
-.PHONY : CMakeFiles/zombie.dir/ext/Box2D/Dynamics/b2Fixture.cpp.o.provides
-
-CMakeFiles/zombie.dir/ext/Box2D/Dynamics/b2Fixture.cpp.o.provides.build: CMakeFiles/zombie.dir/ext/Box2D/Dynamics/b2Fixture.cpp.o
-
-
-CMakeFiles/zombie.dir/ext/Box2D/Dynamics/b2Island.cpp.o: CMakeFiles/zombie.dir/flags.make
-CMakeFiles/zombie.dir/ext/Box2D/Dynamics/b2Island.cpp.o: ../ext/Box2D/Dynamics/b2Island.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_99) "Building CXX object CMakeFiles/zombie.dir/ext/Box2D/Dynamics/b2Island.cpp.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/zombie.dir/ext/Box2D/Dynamics/b2Island.cpp.o -c /Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/ext/Box2D/Dynamics/b2Island.cpp
-
-CMakeFiles/zombie.dir/ext/Box2D/Dynamics/b2Island.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/zombie.dir/ext/Box2D/Dynamics/b2Island.cpp.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/ext/Box2D/Dynamics/b2Island.cpp > CMakeFiles/zombie.dir/ext/Box2D/Dynamics/b2Island.cpp.i
-
-CMakeFiles/zombie.dir/ext/Box2D/Dynamics/b2Island.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/zombie.dir/ext/Box2D/Dynamics/b2Island.cpp.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/ext/Box2D/Dynamics/b2Island.cpp -o CMakeFiles/zombie.dir/ext/Box2D/Dynamics/b2Island.cpp.s
-
-CMakeFiles/zombie.dir/ext/Box2D/Dynamics/b2Island.cpp.o.requires:
-
-.PHONY : CMakeFiles/zombie.dir/ext/Box2D/Dynamics/b2Island.cpp.o.requires
-
-CMakeFiles/zombie.dir/ext/Box2D/Dynamics/b2Island.cpp.o.provides: CMakeFiles/zombie.dir/ext/Box2D/Dynamics/b2Island.cpp.o.requires
-	$(MAKE) -f CMakeFiles/zombie.dir/build.make CMakeFiles/zombie.dir/ext/Box2D/Dynamics/b2Island.cpp.o.provides.build
-.PHONY : CMakeFiles/zombie.dir/ext/Box2D/Dynamics/b2Island.cpp.o.provides
-
-CMakeFiles/zombie.dir/ext/Box2D/Dynamics/b2Island.cpp.o.provides.build: CMakeFiles/zombie.dir/ext/Box2D/Dynamics/b2Island.cpp.o
-
-
-CMakeFiles/zombie.dir/ext/Box2D/Dynamics/b2World.cpp.o: CMakeFiles/zombie.dir/flags.make
-CMakeFiles/zombie.dir/ext/Box2D/Dynamics/b2World.cpp.o: ../ext/Box2D/Dynamics/b2World.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_100) "Building CXX object CMakeFiles/zombie.dir/ext/Box2D/Dynamics/b2World.cpp.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/zombie.dir/ext/Box2D/Dynamics/b2World.cpp.o -c /Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/ext/Box2D/Dynamics/b2World.cpp
-
-CMakeFiles/zombie.dir/ext/Box2D/Dynamics/b2World.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/zombie.dir/ext/Box2D/Dynamics/b2World.cpp.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/ext/Box2D/Dynamics/b2World.cpp > CMakeFiles/zombie.dir/ext/Box2D/Dynamics/b2World.cpp.i
-
-CMakeFiles/zombie.dir/ext/Box2D/Dynamics/b2World.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/zombie.dir/ext/Box2D/Dynamics/b2World.cpp.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/ext/Box2D/Dynamics/b2World.cpp -o CMakeFiles/zombie.dir/ext/Box2D/Dynamics/b2World.cpp.s
-
-CMakeFiles/zombie.dir/ext/Box2D/Dynamics/b2World.cpp.o.requires:
-
-.PHONY : CMakeFiles/zombie.dir/ext/Box2D/Dynamics/b2World.cpp.o.requires
-
-CMakeFiles/zombie.dir/ext/Box2D/Dynamics/b2World.cpp.o.provides: CMakeFiles/zombie.dir/ext/Box2D/Dynamics/b2World.cpp.o.requires
-	$(MAKE) -f CMakeFiles/zombie.dir/build.make CMakeFiles/zombie.dir/ext/Box2D/Dynamics/b2World.cpp.o.provides.build
-.PHONY : CMakeFiles/zombie.dir/ext/Box2D/Dynamics/b2World.cpp.o.provides
-
-CMakeFiles/zombie.dir/ext/Box2D/Dynamics/b2World.cpp.o.provides.build: CMakeFiles/zombie.dir/ext/Box2D/Dynamics/b2World.cpp.o
-
-
-CMakeFiles/zombie.dir/ext/Box2D/Dynamics/b2WorldCallbacks.cpp.o: CMakeFiles/zombie.dir/flags.make
-CMakeFiles/zombie.dir/ext/Box2D/Dynamics/b2WorldCallbacks.cpp.o: ../ext/Box2D/Dynamics/b2WorldCallbacks.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_101) "Building CXX object CMakeFiles/zombie.dir/ext/Box2D/Dynamics/b2WorldCallbacks.cpp.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/zombie.dir/ext/Box2D/Dynamics/b2WorldCallbacks.cpp.o -c /Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/ext/Box2D/Dynamics/b2WorldCallbacks.cpp
-
-CMakeFiles/zombie.dir/ext/Box2D/Dynamics/b2WorldCallbacks.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/zombie.dir/ext/Box2D/Dynamics/b2WorldCallbacks.cpp.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/ext/Box2D/Dynamics/b2WorldCallbacks.cpp > CMakeFiles/zombie.dir/ext/Box2D/Dynamics/b2WorldCallbacks.cpp.i
-
-CMakeFiles/zombie.dir/ext/Box2D/Dynamics/b2WorldCallbacks.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/zombie.dir/ext/Box2D/Dynamics/b2WorldCallbacks.cpp.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/ext/Box2D/Dynamics/b2WorldCallbacks.cpp -o CMakeFiles/zombie.dir/ext/Box2D/Dynamics/b2WorldCallbacks.cpp.s
-
-CMakeFiles/zombie.dir/ext/Box2D/Dynamics/b2WorldCallbacks.cpp.o.requires:
-
-.PHONY : CMakeFiles/zombie.dir/ext/Box2D/Dynamics/b2WorldCallbacks.cpp.o.requires
-
-CMakeFiles/zombie.dir/ext/Box2D/Dynamics/b2WorldCallbacks.cpp.o.provides: CMakeFiles/zombie.dir/ext/Box2D/Dynamics/b2WorldCallbacks.cpp.o.requires
-	$(MAKE) -f CMakeFiles/zombie.dir/build.make CMakeFiles/zombie.dir/ext/Box2D/Dynamics/b2WorldCallbacks.cpp.o.provides.build
-.PHONY : CMakeFiles/zombie.dir/ext/Box2D/Dynamics/b2WorldCallbacks.cpp.o.provides
-
-CMakeFiles/zombie.dir/ext/Box2D/Dynamics/b2WorldCallbacks.cpp.o.provides.build: CMakeFiles/zombie.dir/ext/Box2D/Dynamics/b2WorldCallbacks.cpp.o
-
-
-CMakeFiles/zombie.dir/ext/Box2D/Rope/b2Rope.cpp.o: CMakeFiles/zombie.dir/flags.make
-CMakeFiles/zombie.dir/ext/Box2D/Rope/b2Rope.cpp.o: ../ext/Box2D/Rope/b2Rope.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_102) "Building CXX object CMakeFiles/zombie.dir/ext/Box2D/Rope/b2Rope.cpp.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/zombie.dir/ext/Box2D/Rope/b2Rope.cpp.o -c /Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/ext/Box2D/Rope/b2Rope.cpp
-
-CMakeFiles/zombie.dir/ext/Box2D/Rope/b2Rope.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/zombie.dir/ext/Box2D/Rope/b2Rope.cpp.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/ext/Box2D/Rope/b2Rope.cpp > CMakeFiles/zombie.dir/ext/Box2D/Rope/b2Rope.cpp.i
-
-CMakeFiles/zombie.dir/ext/Box2D/Rope/b2Rope.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/zombie.dir/ext/Box2D/Rope/b2Rope.cpp.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/ext/Box2D/Rope/b2Rope.cpp -o CMakeFiles/zombie.dir/ext/Box2D/Rope/b2Rope.cpp.s
-
-CMakeFiles/zombie.dir/ext/Box2D/Rope/b2Rope.cpp.o.requires:
-
-.PHONY : CMakeFiles/zombie.dir/ext/Box2D/Rope/b2Rope.cpp.o.requires
-
-CMakeFiles/zombie.dir/ext/Box2D/Rope/b2Rope.cpp.o.provides: CMakeFiles/zombie.dir/ext/Box2D/Rope/b2Rope.cpp.o.requires
-	$(MAKE) -f CMakeFiles/zombie.dir/build.make CMakeFiles/zombie.dir/ext/Box2D/Rope/b2Rope.cpp.o.provides.build
-.PHONY : CMakeFiles/zombie.dir/ext/Box2D/Rope/b2Rope.cpp.o.provides
-
-CMakeFiles/zombie.dir/ext/Box2D/Rope/b2Rope.cpp.o.provides.build: CMakeFiles/zombie.dir/ext/Box2D/Rope/b2Rope.cpp.o
 
 
 # Object files for target zombie
@@ -2526,6 +1446,7 @@ zombie_OBJECTS = \
 "CMakeFiles/zombie.dir/src/main.cpp.o" \
 "CMakeFiles/zombie.dir/src/missile.cpp.o" \
 "CMakeFiles/zombie.dir/src/mud.cpp.o" \
+"CMakeFiles/zombie.dir/src/mushroom_explosion.cpp.o" \
 "CMakeFiles/zombie.dir/src/player1.cpp.o" \
 "CMakeFiles/zombie.dir/src/player2.cpp.o" \
 "CMakeFiles/zombie.dir/src/punchleft.cpp.o" \
@@ -2562,53 +1483,7 @@ zombie_OBJECTS = \
 "CMakeFiles/zombie.dir/src/zombie.cpp.o" \
 "CMakeFiles/zombie.dir/src/zombieManager.cpp.o" \
 "CMakeFiles/zombie.dir/src/gl3w.c.o" \
-"CMakeFiles/zombie.dir/src/tmxparser/miniz.c.o" \
-"CMakeFiles/zombie.dir/ext/Box2D/Collision/Shapes/b2ChainShape.cpp.o" \
-"CMakeFiles/zombie.dir/ext/Box2D/Collision/Shapes/b2CircleShape.cpp.o" \
-"CMakeFiles/zombie.dir/ext/Box2D/Collision/Shapes/b2EdgeShape.cpp.o" \
-"CMakeFiles/zombie.dir/ext/Box2D/Collision/Shapes/b2PolygonShape.cpp.o" \
-"CMakeFiles/zombie.dir/ext/Box2D/Collision/b2BroadPhase.cpp.o" \
-"CMakeFiles/zombie.dir/ext/Box2D/Collision/b2CollideCircle.cpp.o" \
-"CMakeFiles/zombie.dir/ext/Box2D/Collision/b2CollideEdge.cpp.o" \
-"CMakeFiles/zombie.dir/ext/Box2D/Collision/b2CollidePolygon.cpp.o" \
-"CMakeFiles/zombie.dir/ext/Box2D/Collision/b2Collision.cpp.o" \
-"CMakeFiles/zombie.dir/ext/Box2D/Collision/b2Distance.cpp.o" \
-"CMakeFiles/zombie.dir/ext/Box2D/Collision/b2DynamicTree.cpp.o" \
-"CMakeFiles/zombie.dir/ext/Box2D/Collision/b2TimeOfImpact.cpp.o" \
-"CMakeFiles/zombie.dir/ext/Box2D/Common/b2BlockAllocator.cpp.o" \
-"CMakeFiles/zombie.dir/ext/Box2D/Common/b2Draw.cpp.o" \
-"CMakeFiles/zombie.dir/ext/Box2D/Common/b2Math.cpp.o" \
-"CMakeFiles/zombie.dir/ext/Box2D/Common/b2Settings.cpp.o" \
-"CMakeFiles/zombie.dir/ext/Box2D/Common/b2StackAllocator.cpp.o" \
-"CMakeFiles/zombie.dir/ext/Box2D/Common/b2Timer.cpp.o" \
-"CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Contacts/b2ChainAndCircleContact.cpp.o" \
-"CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Contacts/b2ChainAndPolygonContact.cpp.o" \
-"CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Contacts/b2CircleContact.cpp.o" \
-"CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Contacts/b2Contact.cpp.o" \
-"CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Contacts/b2ContactSolver.cpp.o" \
-"CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Contacts/b2EdgeAndCircleContact.cpp.o" \
-"CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Contacts/b2EdgeAndPolygonContact.cpp.o" \
-"CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Contacts/b2PolygonAndCircleContact.cpp.o" \
-"CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Contacts/b2PolygonContact.cpp.o" \
-"CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Joints/b2DistanceJoint.cpp.o" \
-"CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Joints/b2FrictionJoint.cpp.o" \
-"CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Joints/b2GearJoint.cpp.o" \
-"CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Joints/b2Joint.cpp.o" \
-"CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Joints/b2MotorJoint.cpp.o" \
-"CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Joints/b2MouseJoint.cpp.o" \
-"CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Joints/b2PrismaticJoint.cpp.o" \
-"CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Joints/b2PulleyJoint.cpp.o" \
-"CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Joints/b2RevoluteJoint.cpp.o" \
-"CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Joints/b2RopeJoint.cpp.o" \
-"CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Joints/b2WeldJoint.cpp.o" \
-"CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Joints/b2WheelJoint.cpp.o" \
-"CMakeFiles/zombie.dir/ext/Box2D/Dynamics/b2Body.cpp.o" \
-"CMakeFiles/zombie.dir/ext/Box2D/Dynamics/b2ContactManager.cpp.o" \
-"CMakeFiles/zombie.dir/ext/Box2D/Dynamics/b2Fixture.cpp.o" \
-"CMakeFiles/zombie.dir/ext/Box2D/Dynamics/b2Island.cpp.o" \
-"CMakeFiles/zombie.dir/ext/Box2D/Dynamics/b2World.cpp.o" \
-"CMakeFiles/zombie.dir/ext/Box2D/Dynamics/b2WorldCallbacks.cpp.o" \
-"CMakeFiles/zombie.dir/ext/Box2D/Rope/b2Rope.cpp.o"
+"CMakeFiles/zombie.dir/src/tmxparser/miniz.c.o"
 
 # External object files for target zombie
 zombie_EXTERNAL_OBJECTS =
@@ -2632,6 +1507,7 @@ zombie: CMakeFiles/zombie.dir/src/limbsManager.cpp.o
 zombie: CMakeFiles/zombie.dir/src/main.cpp.o
 zombie: CMakeFiles/zombie.dir/src/missile.cpp.o
 zombie: CMakeFiles/zombie.dir/src/mud.cpp.o
+zombie: CMakeFiles/zombie.dir/src/mushroom_explosion.cpp.o
 zombie: CMakeFiles/zombie.dir/src/player1.cpp.o
 zombie: CMakeFiles/zombie.dir/src/player2.cpp.o
 zombie: CMakeFiles/zombie.dir/src/punchleft.cpp.o
@@ -2669,52 +1545,6 @@ zombie: CMakeFiles/zombie.dir/src/zombie.cpp.o
 zombie: CMakeFiles/zombie.dir/src/zombieManager.cpp.o
 zombie: CMakeFiles/zombie.dir/src/gl3w.c.o
 zombie: CMakeFiles/zombie.dir/src/tmxparser/miniz.c.o
-zombie: CMakeFiles/zombie.dir/ext/Box2D/Collision/Shapes/b2ChainShape.cpp.o
-zombie: CMakeFiles/zombie.dir/ext/Box2D/Collision/Shapes/b2CircleShape.cpp.o
-zombie: CMakeFiles/zombie.dir/ext/Box2D/Collision/Shapes/b2EdgeShape.cpp.o
-zombie: CMakeFiles/zombie.dir/ext/Box2D/Collision/Shapes/b2PolygonShape.cpp.o
-zombie: CMakeFiles/zombie.dir/ext/Box2D/Collision/b2BroadPhase.cpp.o
-zombie: CMakeFiles/zombie.dir/ext/Box2D/Collision/b2CollideCircle.cpp.o
-zombie: CMakeFiles/zombie.dir/ext/Box2D/Collision/b2CollideEdge.cpp.o
-zombie: CMakeFiles/zombie.dir/ext/Box2D/Collision/b2CollidePolygon.cpp.o
-zombie: CMakeFiles/zombie.dir/ext/Box2D/Collision/b2Collision.cpp.o
-zombie: CMakeFiles/zombie.dir/ext/Box2D/Collision/b2Distance.cpp.o
-zombie: CMakeFiles/zombie.dir/ext/Box2D/Collision/b2DynamicTree.cpp.o
-zombie: CMakeFiles/zombie.dir/ext/Box2D/Collision/b2TimeOfImpact.cpp.o
-zombie: CMakeFiles/zombie.dir/ext/Box2D/Common/b2BlockAllocator.cpp.o
-zombie: CMakeFiles/zombie.dir/ext/Box2D/Common/b2Draw.cpp.o
-zombie: CMakeFiles/zombie.dir/ext/Box2D/Common/b2Math.cpp.o
-zombie: CMakeFiles/zombie.dir/ext/Box2D/Common/b2Settings.cpp.o
-zombie: CMakeFiles/zombie.dir/ext/Box2D/Common/b2StackAllocator.cpp.o
-zombie: CMakeFiles/zombie.dir/ext/Box2D/Common/b2Timer.cpp.o
-zombie: CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Contacts/b2ChainAndCircleContact.cpp.o
-zombie: CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Contacts/b2ChainAndPolygonContact.cpp.o
-zombie: CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Contacts/b2CircleContact.cpp.o
-zombie: CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Contacts/b2Contact.cpp.o
-zombie: CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Contacts/b2ContactSolver.cpp.o
-zombie: CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Contacts/b2EdgeAndCircleContact.cpp.o
-zombie: CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Contacts/b2EdgeAndPolygonContact.cpp.o
-zombie: CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Contacts/b2PolygonAndCircleContact.cpp.o
-zombie: CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Contacts/b2PolygonContact.cpp.o
-zombie: CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Joints/b2DistanceJoint.cpp.o
-zombie: CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Joints/b2FrictionJoint.cpp.o
-zombie: CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Joints/b2GearJoint.cpp.o
-zombie: CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Joints/b2Joint.cpp.o
-zombie: CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Joints/b2MotorJoint.cpp.o
-zombie: CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Joints/b2MouseJoint.cpp.o
-zombie: CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Joints/b2PrismaticJoint.cpp.o
-zombie: CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Joints/b2PulleyJoint.cpp.o
-zombie: CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Joints/b2RevoluteJoint.cpp.o
-zombie: CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Joints/b2RopeJoint.cpp.o
-zombie: CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Joints/b2WeldJoint.cpp.o
-zombie: CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Joints/b2WheelJoint.cpp.o
-zombie: CMakeFiles/zombie.dir/ext/Box2D/Dynamics/b2Body.cpp.o
-zombie: CMakeFiles/zombie.dir/ext/Box2D/Dynamics/b2ContactManager.cpp.o
-zombie: CMakeFiles/zombie.dir/ext/Box2D/Dynamics/b2Fixture.cpp.o
-zombie: CMakeFiles/zombie.dir/ext/Box2D/Dynamics/b2Island.cpp.o
-zombie: CMakeFiles/zombie.dir/ext/Box2D/Dynamics/b2World.cpp.o
-zombie: CMakeFiles/zombie.dir/ext/Box2D/Dynamics/b2WorldCallbacks.cpp.o
-zombie: CMakeFiles/zombie.dir/ext/Box2D/Rope/b2Rope.cpp.o
 zombie: CMakeFiles/zombie.dir/build.make
 zombie: /usr/local/lib/libtinyxml2.dylib
 zombie: /usr/local/lib/libglfw.dylib
@@ -2725,7 +1555,7 @@ zombie: /usr/local/lib/libSDLmain.a
 zombie: /usr/local/lib/libSDL.dylib
 zombie: /usr/lib/libz.dylib
 zombie: CMakeFiles/zombie.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_103) "Linking CXX executable zombie"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_58) "Linking CXX executable zombie"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/zombie.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -2752,6 +1582,7 @@ CMakeFiles/zombie.dir/requires: CMakeFiles/zombie.dir/src/limbsManager.cpp.o.req
 CMakeFiles/zombie.dir/requires: CMakeFiles/zombie.dir/src/main.cpp.o.requires
 CMakeFiles/zombie.dir/requires: CMakeFiles/zombie.dir/src/missile.cpp.o.requires
 CMakeFiles/zombie.dir/requires: CMakeFiles/zombie.dir/src/mud.cpp.o.requires
+CMakeFiles/zombie.dir/requires: CMakeFiles/zombie.dir/src/mushroom_explosion.cpp.o.requires
 CMakeFiles/zombie.dir/requires: CMakeFiles/zombie.dir/src/player1.cpp.o.requires
 CMakeFiles/zombie.dir/requires: CMakeFiles/zombie.dir/src/player2.cpp.o.requires
 CMakeFiles/zombie.dir/requires: CMakeFiles/zombie.dir/src/punchleft.cpp.o.requires
@@ -2789,52 +1620,6 @@ CMakeFiles/zombie.dir/requires: CMakeFiles/zombie.dir/src/zombie.cpp.o.requires
 CMakeFiles/zombie.dir/requires: CMakeFiles/zombie.dir/src/zombieManager.cpp.o.requires
 CMakeFiles/zombie.dir/requires: CMakeFiles/zombie.dir/src/gl3w.c.o.requires
 CMakeFiles/zombie.dir/requires: CMakeFiles/zombie.dir/src/tmxparser/miniz.c.o.requires
-CMakeFiles/zombie.dir/requires: CMakeFiles/zombie.dir/ext/Box2D/Collision/Shapes/b2ChainShape.cpp.o.requires
-CMakeFiles/zombie.dir/requires: CMakeFiles/zombie.dir/ext/Box2D/Collision/Shapes/b2CircleShape.cpp.o.requires
-CMakeFiles/zombie.dir/requires: CMakeFiles/zombie.dir/ext/Box2D/Collision/Shapes/b2EdgeShape.cpp.o.requires
-CMakeFiles/zombie.dir/requires: CMakeFiles/zombie.dir/ext/Box2D/Collision/Shapes/b2PolygonShape.cpp.o.requires
-CMakeFiles/zombie.dir/requires: CMakeFiles/zombie.dir/ext/Box2D/Collision/b2BroadPhase.cpp.o.requires
-CMakeFiles/zombie.dir/requires: CMakeFiles/zombie.dir/ext/Box2D/Collision/b2CollideCircle.cpp.o.requires
-CMakeFiles/zombie.dir/requires: CMakeFiles/zombie.dir/ext/Box2D/Collision/b2CollideEdge.cpp.o.requires
-CMakeFiles/zombie.dir/requires: CMakeFiles/zombie.dir/ext/Box2D/Collision/b2CollidePolygon.cpp.o.requires
-CMakeFiles/zombie.dir/requires: CMakeFiles/zombie.dir/ext/Box2D/Collision/b2Collision.cpp.o.requires
-CMakeFiles/zombie.dir/requires: CMakeFiles/zombie.dir/ext/Box2D/Collision/b2Distance.cpp.o.requires
-CMakeFiles/zombie.dir/requires: CMakeFiles/zombie.dir/ext/Box2D/Collision/b2DynamicTree.cpp.o.requires
-CMakeFiles/zombie.dir/requires: CMakeFiles/zombie.dir/ext/Box2D/Collision/b2TimeOfImpact.cpp.o.requires
-CMakeFiles/zombie.dir/requires: CMakeFiles/zombie.dir/ext/Box2D/Common/b2BlockAllocator.cpp.o.requires
-CMakeFiles/zombie.dir/requires: CMakeFiles/zombie.dir/ext/Box2D/Common/b2Draw.cpp.o.requires
-CMakeFiles/zombie.dir/requires: CMakeFiles/zombie.dir/ext/Box2D/Common/b2Math.cpp.o.requires
-CMakeFiles/zombie.dir/requires: CMakeFiles/zombie.dir/ext/Box2D/Common/b2Settings.cpp.o.requires
-CMakeFiles/zombie.dir/requires: CMakeFiles/zombie.dir/ext/Box2D/Common/b2StackAllocator.cpp.o.requires
-CMakeFiles/zombie.dir/requires: CMakeFiles/zombie.dir/ext/Box2D/Common/b2Timer.cpp.o.requires
-CMakeFiles/zombie.dir/requires: CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Contacts/b2ChainAndCircleContact.cpp.o.requires
-CMakeFiles/zombie.dir/requires: CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Contacts/b2ChainAndPolygonContact.cpp.o.requires
-CMakeFiles/zombie.dir/requires: CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Contacts/b2CircleContact.cpp.o.requires
-CMakeFiles/zombie.dir/requires: CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Contacts/b2Contact.cpp.o.requires
-CMakeFiles/zombie.dir/requires: CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Contacts/b2ContactSolver.cpp.o.requires
-CMakeFiles/zombie.dir/requires: CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Contacts/b2EdgeAndCircleContact.cpp.o.requires
-CMakeFiles/zombie.dir/requires: CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Contacts/b2EdgeAndPolygonContact.cpp.o.requires
-CMakeFiles/zombie.dir/requires: CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Contacts/b2PolygonAndCircleContact.cpp.o.requires
-CMakeFiles/zombie.dir/requires: CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Contacts/b2PolygonContact.cpp.o.requires
-CMakeFiles/zombie.dir/requires: CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Joints/b2DistanceJoint.cpp.o.requires
-CMakeFiles/zombie.dir/requires: CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Joints/b2FrictionJoint.cpp.o.requires
-CMakeFiles/zombie.dir/requires: CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Joints/b2GearJoint.cpp.o.requires
-CMakeFiles/zombie.dir/requires: CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Joints/b2Joint.cpp.o.requires
-CMakeFiles/zombie.dir/requires: CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Joints/b2MotorJoint.cpp.o.requires
-CMakeFiles/zombie.dir/requires: CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Joints/b2MouseJoint.cpp.o.requires
-CMakeFiles/zombie.dir/requires: CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Joints/b2PrismaticJoint.cpp.o.requires
-CMakeFiles/zombie.dir/requires: CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Joints/b2PulleyJoint.cpp.o.requires
-CMakeFiles/zombie.dir/requires: CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Joints/b2RevoluteJoint.cpp.o.requires
-CMakeFiles/zombie.dir/requires: CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Joints/b2RopeJoint.cpp.o.requires
-CMakeFiles/zombie.dir/requires: CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Joints/b2WeldJoint.cpp.o.requires
-CMakeFiles/zombie.dir/requires: CMakeFiles/zombie.dir/ext/Box2D/Dynamics/Joints/b2WheelJoint.cpp.o.requires
-CMakeFiles/zombie.dir/requires: CMakeFiles/zombie.dir/ext/Box2D/Dynamics/b2Body.cpp.o.requires
-CMakeFiles/zombie.dir/requires: CMakeFiles/zombie.dir/ext/Box2D/Dynamics/b2ContactManager.cpp.o.requires
-CMakeFiles/zombie.dir/requires: CMakeFiles/zombie.dir/ext/Box2D/Dynamics/b2Fixture.cpp.o.requires
-CMakeFiles/zombie.dir/requires: CMakeFiles/zombie.dir/ext/Box2D/Dynamics/b2Island.cpp.o.requires
-CMakeFiles/zombie.dir/requires: CMakeFiles/zombie.dir/ext/Box2D/Dynamics/b2World.cpp.o.requires
-CMakeFiles/zombie.dir/requires: CMakeFiles/zombie.dir/ext/Box2D/Dynamics/b2WorldCallbacks.cpp.o.requires
-CMakeFiles/zombie.dir/requires: CMakeFiles/zombie.dir/ext/Box2D/Rope/b2Rope.cpp.o.requires
 
 .PHONY : CMakeFiles/zombie.dir/requires
 

@@ -68,6 +68,11 @@ protected:
     vec2 m_scale;
     std::string type;
     bool initialized = false;
+
+    // current frame in animation
+    int curr_frame_limb = 0;
+    // frame to draw and previous frame in sprite
+    int sprite_frame_index_limb = 0;
 };
 
 #endif //ZOMBIE_LIMB_H

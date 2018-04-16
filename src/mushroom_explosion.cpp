@@ -1,46 +1,46 @@
 // Header
-#include "blood.hpp"
+#include "mushroom_explosion.hpp"
 
 #include <cmath>
 #include <iostream>
 
-Texture Blood::blood_texture;
+Texture Mushroom_Explosion::mushroom_explosion_texture;
 
 // sprite information
-int sprite_width_blood = 512;
-int sprite_height_blood = 512;
-int num_rows_blood = 1;
-int num_cols_blood = 6;
-int frames_blood [9] = {0, 1, 2, 3, 4, 5};
+int sprite_width_mushroom_explosion = 320;
+int sprite_height_mushroom_explosion = 320;
+int num_rows_mushroom_explosion = 2;
+int num_cols_mushroom_explosion = 8;
+int frames_mushroom_explosion [16] = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15};
 // animation timing
-int frame_time_blood = 60.f;
-auto start_time_blood = std::chrono::high_resolution_clock::now();
+int frame_time_mushroom_explosion = 40.f;
+auto start_time_mushroom_explosion = std::chrono::high_resolution_clock::now();
 
-bool Blood::init(vec2 position)
+bool Mushroom_Explosion::init(vec2 position)
 {
     // Load shared texture
-    if (!blood_texture.is_valid())
+    if (!mushroom_explosion_texture.is_valid())
     {
-        if (!blood_texture.load_from_file(effects_textures_path("blood.png")))
+        if (!mushroom_explosion_texture.load_from_file(effects_textures_path("mushroom_cloud.png")))
         {
-            fprintf(stderr, "Failed to load blood texture!");
+            fprintf(stderr, "Failed to load mushroom explosion texture!");
             return false;
         }
     }
     
     // The position corresponds to the center of the texture
-    float wr = sprite_width_blood * 0.5f;
-    float hr = sprite_height_blood * 0.5f;
+    float wr = sprite_width_mushroom_explosion * 0.5f;
+    float hr = sprite_height_mushroom_explosion * 0.5f;
     
     TexturedVertex vertices[4];
     vertices[0].position = { -wr, +hr, -0.02f };
-    vertices[0].texcoord = { 1/6.f, 1.f };
+    vertices[0].texcoord = { 1/8.f, 1/2.f };
     vertices[1].position = { +wr, +hr, -0.02f };
-    vertices[1].texcoord = { 0.f, 1.f };
+    vertices[1].texcoord = { 0.f, 1/2.f };
     vertices[2].position = { +wr, -hr, -0.02f };
     vertices[2].texcoord = { 0.f, 0.f };
     vertices[3].position = { -wr, -hr, -0.02f };
-    vertices[3].texcoord = { 1/6.f, 0.f };
+    vertices[3].texcoord = { 1/8.f, 0.f };
     
     // counterclockwise as it's the default opengl front winding direction
     uint16_t indices[] = { 0, 3, 1, 1, 3, 2 };
@@ -68,17 +68,17 @@ bool Blood::init(vec2 position)
         return false;
     
     // Setting initial values
-    m_scale.x = -0.6 * ViewHelper::getRatio();
-    m_scale.y = 0.6 * ViewHelper::getRatio();
-    m_position = { position.x, position.y };
+    m_scale.x = -1.f * ViewHelper::getRatio();
+    m_scale.y = 1.f * ViewHelper::getRatio();
+    m_position = { position.x, position.y};
 
-    // std::cout << "Blood created" << "\n";
+    // std::cout << "Explosion created" << "\n";
     end_animation = false;
     
     return true;
 }
 
-void Blood::draw(const mat3& projection)
+void Mushroom_Explosion::draw(const mat3& projection)
 {
     // Transformation code, see Rendering and Transformation in the template specification for more info
     // Incrementally updates transformation matrix, thus ORDER IS IMPORTANT
@@ -118,12 +118,12 @@ void Blood::draw(const mat3& projection)
     
     // Enabling and binding texture to slot 0
     glActiveTexture(GL_TEXTURE0);
-    glBindTexture(GL_TEXTURE_2D, blood_texture.id);
+    glBindTexture(GL_TEXTURE_2D, mushroom_explosion_texture.id);
 
     // Specify uniform variables
     glUniform1iv(sprite_frame_index_uloc, 1, &sprite_frame_index_explosion);
-    glUniform1iv(num_rows_uloc, 1, &num_rows_blood);
-    glUniform1iv(num_cols_uloc, 1, &num_cols_blood);
+    glUniform1iv(num_rows_uloc, 1, &num_rows_mushroom_explosion);
+    glUniform1iv(num_cols_uloc, 1, &num_cols_mushroom_explosion);
     
     // Setting uniform values to the currently bound program
     glUniformMatrix3fv(transform_uloc, 1, GL_FALSE, (float*)&transform);
@@ -134,56 +134,55 @@ void Blood::draw(const mat3& projection)
     // Drawing!
     glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_SHORT, nullptr);
 
-    // std::cout << "Frame: " << sprite_frame_index_explosion << "\n";
+    //std::cout << "Frame: " << sprite_frame_index_explosion << "\n";
     animate();
 }
 
-void Blood::set_position(vec2 position)
+void Mushroom_Explosion::set_position(vec2 position)
 {
     m_position = position;
 }
 
-vec2 Blood::get_position()const
+vec2 Mushroom_Explosion::get_position()const
 {
     return m_position;
 }
 
-void Blood::set_scale(vec2 scale)
+void Mushroom_Explosion::set_scale(vec2 scale)
 {
     m_scale = scale;
 }
 
-bool Blood::get_end_animation()const
+bool Mushroom_Explosion::get_end_animation()const
 {
     return end_animation;
 }
 
-void Blood::destroy()
+void Mushroom_Explosion::destroy()
 {
     //printf("Destroy!\n");
     end_animation = true;
     glDeleteBuffers(1, &mesh.vbo);
     glDeleteBuffers(1, &mesh.ibo);
-    glDeleteVertexArrays(1, &mesh.vao);
+    glDeleteBuffers(1, &mesh.vao);
     
     glDeleteShader(effect.vertex);
     glDeleteShader(effect.fragment);
     glDeleteShader(effect.program);
-    glDeleteProgram(effect.program);
 }
 
-void Blood::animate() {
+void Mushroom_Explosion::animate() {
     auto curr_time = std::chrono::high_resolution_clock::now();
-    int milliseconds = std::chrono::duration_cast<std::chrono::milliseconds>(curr_time - start_time_blood).count();
+    int milliseconds = std::chrono::duration_cast<std::chrono::milliseconds>(curr_time - start_time_mushroom_explosion).count();
 
-    if (milliseconds > frame_time_blood)
+    if (milliseconds > frame_time_mushroom_explosion)
     {
         curr_frame_explosion = (curr_frame_explosion + 1);
-        sprite_frame_index_explosion = frames_blood[curr_frame_explosion];
-        start_time_blood = curr_time;
+        sprite_frame_index_explosion = frames_mushroom_explosion[curr_frame_explosion];
+        start_time_mushroom_explosion = curr_time;
     }
 
-    if (curr_frame_explosion > 6) {
+    if (curr_frame_explosion > 15) {
         destroy();
     }
 }

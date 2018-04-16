@@ -4,9 +4,9 @@
 #include "viewHelper.hpp"
 //#include <math.h>
 
-class Explosion : public Renderable
+class Mushroom_Explosion : public Renderable
 {
-    static Texture explosion_texture;
+    static Texture mushroom_explosion_texture;
 public:
     // Creates all the associated render resources and default transform
     bool init(vec2 position);
@@ -27,12 +27,14 @@ public:
     void animate();
     
 private:
-	//float m_rotation;
+	float m_rotation;
     vec2 m_scale; // 1.f in each dimension. 1.f is as big as the associated texture
+
     bool end_animation;
 
     // current frame in animation
     int curr_frame_explosion = 0;
     // frame to draw and previous frame in sprite
     int sprite_frame_index_explosion = 0;
+
 };
