@@ -2022,14 +2022,20 @@ void World::use_bomb(float ms) {
 
     for (itbomb = used_bombs.begin(); itbomb != used_bombs.end();) {
         itbomb->set_speed({itbomb->get_speed().x * (0.997f), itbomb->get_speed().y * (0.997f)});
-
-
+        std::vector<vec2> shit;
+        shit.push_back(itbomb->m_position);
+        shit.push_back(itbomb->get_bounding_box());
+        bool isShit = ZombieManager::GetInstance()->isColliding(shit);
         if ((std::fabs(itbomb->get_speed().x) <= 50 && std::fabs(itbomb->get_speed().y) <= 50)) {
             itbomb->set_speed({0.f, 0.f});
             autoExplode(*itbomb, count);
         }
-        else if (m_player1.collides_with(*itbomb)||m_player2.collides_with(*itbomb)){
-            if ((int) difftime(time(0), itbomb->bombTime) >= 2) {
+        else if (isShit || m_player1.collides_with(*itbomb)||m_player2.collides_with(*itbomb)){
+            if (isShit) {
+                itbomb->set_speed({0.f, 0.f});
+                autoExplode(*itbomb, count);
+            }
+            else if ((int) difftime(time(0), itbomb->bombTime) >= 2) {
                 itbomb->set_speed({0.f, 0.f});
                 autoExplode(*itbomb, count);
             }
@@ -2121,10 +2127,6 @@ void World::autoExplode(Bomb bomb, int position) {
         m_player2.set_explosion(true);
     }
 
-    // create_explosion(used_bombs.begin()->get_position());
-    // used_bombs.begin()->explode();
-    //fprintf(stderr,"# of bombs: %lu \n", used_bombs.size());
-    //fprintf(stderr,"bomb to remove: %d \n", position);
     std::vector<Bomb>::iterator itbomb;
     int i = 0;
     for (itbomb = used_bombs.begin(); itbomb != used_bombs.end();) {
