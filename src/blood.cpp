@@ -72,7 +72,7 @@ bool Blood::init(vec2 position)
     m_scale.y = 0.6 * ViewHelper::getRatio();
     m_position = { position.x, position.y };
 
-    std::cout << "Blood created" << "\n";
+    // std::cout << "Blood created" << "\n";
     end_animation = false;
     
     return true;
@@ -134,7 +134,7 @@ void Blood::draw(const mat3& projection)
     // Drawing!
     glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_SHORT, nullptr);
 
-    std::cout << "Frame: " << sprite_frame_index_explosion << "\n";
+    // std::cout << "Frame: " << sprite_frame_index_explosion << "\n";
     animate();
 }
 

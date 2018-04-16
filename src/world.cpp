@@ -114,9 +114,9 @@ bool World::init(vec2 screen) {
     }
     
     m_background_music = Mix_LoadMUS(audio_path("music.wav"));
-    m_explosion_sound = Mix_LoadWAV(audio_path("explosion_medium.wav"));
+    // m_explosion_sound = Mix_LoadWAV(audio_path("explosion_medium.wav"));
     
-    if (m_background_music == nullptr || m_explosion_sound == nullptr)
+    if (m_background_music == nullptr)
     {
         fprintf(stderr, "Failed to load sounds, make sure the data directory is present");
         return false;
@@ -1138,7 +1138,7 @@ bool World::spawn_bomb() {
 }
 
 bool World::create_explosion(vec2 bomb_position) {
-    Mix_PlayChannel(-1, m_explosion_sound, 0);
+    //Mix_PlayChannel(-1, m_explosion_sound, 0);
     Explosion explosion;
     if (explosion.init(bomb_position)) {
         m_explosion.emplace_back(explosion);
@@ -1157,7 +1157,7 @@ bool World::create_blood(vec2 player_position) {
 }
 
 bool World::create_mushroom_explosion(vec2 missile_position) {
-    Mix_PlayChannel(-1, m_explosion_sound, 0);
+    //Mix_PlayChannel(-1, m_explosion_sound, 0);
     vec2 explosion_position = missile_position;
     explosion_position.y = explosion_position.y - 200.f;
     //fprintf(stderr, "explosion position %f \n", explosion_position.y);

@@ -72,7 +72,7 @@ bool Mushroom_Explosion::init(vec2 position)
     m_scale.y = 1.f * ViewHelper::getRatio();
     m_position = { position.x, position.y};
 
-    std::cout << "Explosion created" << "\n";
+    // std::cout << "Explosion created" << "\n";
     end_animation = false;
     
     return true;
