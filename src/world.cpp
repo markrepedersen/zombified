@@ -245,9 +245,9 @@ bool World::update(float elapsed_ms) {
 
                 pause = false;
 
-                bool initialized = (m_timer.init({screen.x, screen.y}, "1:00", {200.f, 300.f}, 30) &&
-                                    m_leg_counter_p1.init({screen.x, screen.y}, "P1 Legs: 0", {200.f, 200.f}, 30) &&
-                                    m_leg_counter_p2.init({screen.x, screen.y}, "P2 Legs: 0", {200.f, 400.f}, 30) &&
+                bool initialized = (m_timer.init({screen.x, screen.y}, "1:00", {330.f, 550.f}, 30) &&
+                                    m_leg_counter_p1.init({screen.x, screen.y}, "P1 Legs: 0", {20.f, 160.f}, 15) &&
+                                    m_leg_counter_p2.init({screen.x, screen.y}, "P2 Legs: 0", {630.f, 160.f}, 15) &&
                                     gloveRight_p1.init(screen)&&
                                     gloveLeft_p1.init(screen)&&
                                     
@@ -418,7 +418,7 @@ bool World::update(float elapsed_ms) {
                         leg_times_1 = time(0);
                     }
                     std::string legsCounterP1 = "P1 Legs: " + std::to_string(LimbsManager::GetInstance()->getCollectedLegs(1));
-                    m_leg_counter_p1.update(legsCounterP1.c_str(), 30);
+                    m_leg_counter_p1.update(legsCounterP1.c_str(), 15);
                     //std::cout << legsCounterP1 << "\n";
                 }
                 
@@ -429,8 +429,8 @@ bool World::update(float elapsed_ms) {
                         m_player2.increase_speed_legs(-10);
                         leg_times_2 = time(0);
                     }
-                    std::string legsCounterP2 = "P2 Legs: " + std::to_string(LimbsManager::GetInstance()->getCollectedLegs(1));
-                    m_leg_counter_p2.update(legsCounterP2.c_str(), 30);
+                    std::string legsCounterP2 = "P2 Legs: " + std::to_string(LimbsManager::GetInstance()->getCollectedLegs(2));
+                    m_leg_counter_p2.update(legsCounterP2.c_str(), 15);
                 }
                 
                 if ((int) difftime(time(0), droppedAntidoteTime_p1) >= 5){

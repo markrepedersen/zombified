@@ -82,7 +82,7 @@ bool Text2D::init(vec2 screen, const char * text, vec2 position, int size)
     // Setting initial values
     m_scale.x = -2.f * ViewHelper::getRatio();
     m_scale.y = 2.f * ViewHelper::getRatio();
-    m_position = position;
+    m_position = {position.x * ViewHelper::getRatio(), position.y * ViewHelper::getRatio()};
     
     return true;
 }
@@ -135,7 +135,7 @@ void Text2D::update(const char * text, int size) {
     glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, mesh.ibo);
     glBufferSubData(GL_ELEMENT_ARRAY_BUFFER, 0, UVs_update.size() * sizeof(vec2), &UVs_update[0]);
 
-    std::cout << text << "\n";
+    //std::cout << text << "\n";
 }
 
 void Text2D::draw(const mat3& projection)

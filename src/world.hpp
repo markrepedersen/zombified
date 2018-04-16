@@ -250,7 +250,7 @@ private:
     Mix_Music* m_background_music;
 	Mix_Chunk* m_explosion_sound;
 
-    //Text2D m_timer;
+    Text2D m_timer;
     Text2D m_leg_counter_p1;
     Text2D m_leg_counter_p2;
 };
