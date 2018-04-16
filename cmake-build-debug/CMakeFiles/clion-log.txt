@@ -1,6 +1,0 @@
-/Applications/CLion.app/Contents/bin/cmake/bin/cmake -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" /Users/markpedersen/Desktop/temp
-INFO/usr/local/lib/libtinyxml2.dylib
-INFO/usr/local/include
--- Configuring done
--- Generating done
--- Build files have been written to: /Users/markpedersen/Desktop/temp/cmake-build-debug

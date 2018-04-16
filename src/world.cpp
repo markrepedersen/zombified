@@ -178,6 +178,16 @@ void World::destroy() {
         bomb_used.destroy();
     for (auto &missiles_used : used_missiles)
         missiles_used.destroy();
+    
+    onep1.destroy();
+    twop1.destroy();
+    threep1.destroy();
+    fourp1.destroy();
+    
+    onep2.destroy();
+    twop2.destroy();
+    threep2.destroy();
+    fourp2.destroy();
 
     m_freeze.clear();
     m_water.clear();
@@ -238,6 +248,16 @@ bool World::update(float elapsed_ms) {
                                     
                                     gloveRight_p2.init(screen)&&
                                     gloveLeft_p2.init(screen)&&
+                                    
+                                    onep1.init("one") &&
+                                    twop1.init("two") &&
+                                    threep1.init("three")&&
+                                    fourp1.init("four")&&
+                                    
+                                    onep2.init("one")&&
+                                    twop2.init("two")&&
+                                    threep2.init("three")&&
+                                    fourp2.init("four")&&
                                     
                                     m_worldtexture.init(screen)&&
                                     m_toolboxManager.init({screen.x, screen.y}) &&
@@ -332,50 +352,6 @@ bool World::update(float elapsed_ms) {
                     else
                         itr_b++;
 
-                if (explosion)
-                    explode();
-                //if (!m_explosion.empty())
-                //    m_explosion.begin()->animate();
-
-                if (useBomb)
-                    use_bomb(elapsed_ms);
-
-                if (useMissile)
-                    use_missile(elapsed_ms);
-
-                if ((int) difftime(time(0), armourTime_p1) >= 10) {
-                    armourInUse_p1 = false;
-                    m_player1.set_armourstate(false);
-                    armourTime_p1 = 0;
-                }
-                if ((int) difftime(time(0), armourTime_p2) >= 10) {
-                    armourInUse_p2 = false;
-                    m_player2.set_armourstate(false);
-                    armourTime_p2 = 0;
-                }
-
-                // check how many times the player has been hit
-                // if player was hit 5 times, drops items
-                if (m_player1.numberofHits >= 5) {
-                    droptool_p1 = true;
-                    use_tool_1(m_toolboxManager.useItem(1));
-                    m_player1.numberofHits = 0;
-                }
-                if (m_player2.numberofHits >= 5) {
-                    droptool_p2 = true;
-                    use_tool_2(m_toolboxManager.useItem(2));
-                    m_player2.numberofHits = 0;
-                }
-
-                /*if (m_limbsManager.getCollectedLegs(1) > 0){
-                 if ((int) difftime(time(0), leg_times_1) >= 10){
-                 //fprintf(stderr, "remove leg1 \n");
-                 m_limbsManager.decreaseCollectedLegs(1);
-                 m_player2.increase_speed_legs(-10);
-                 leg_times_1 = time(0);
-                 }
-                 }*/
-
                 LimbsManager::GetInstance()->computePaths(elapsed_ms, *mapGrid);
                 //if the freeze item is used, then zombies will stop moving
                 if ((int) difftime(time(0), freezeTime) >= 5)
@@ -394,6 +370,8 @@ bool World::update(float elapsed_ms) {
                 
                 if (explosion)
                     explode();
+                if (!m_explosion.empty())
+                    m_explosion.begin()->animate();
                 
                 if (useBomb)
                     use_bomb(elapsed_ms);
@@ -417,12 +395,12 @@ bool World::update(float elapsed_ms) {
                 }
                 // check how many times the player has been hit
                 // if player was hit 5 times, drops items
-                if (m_player1.numberofHits >= 5) {
+                if (m_player1.numberofHits >= 4) {
                     droptool_p1 = true;
                     use_tool_1(m_toolboxManager.useItem(1));
                     m_player1.numberofHits = 0;
                 }
-                if (m_player2.numberofHits >= 5) {
+                if (m_player2.numberofHits >= 4) {
                     droptool_p2 = true;
                     use_tool_2(m_toolboxManager.useItem(2));
                     m_player2.numberofHits = 0;
@@ -581,6 +559,24 @@ void World::draw() {
             gloveLeft_p2.draw(projection_2D);
         if (is_punchingright_p2)
             gloveRight_p2.draw(projection_2D);
+        
+        if (m_player1.numberofHits == 0)
+            fourp1.draw(projection_2D);
+        if (m_player1.numberofHits == 1)
+            threep1.draw(projection_2D);
+        if (m_player1.numberofHits == 2)
+            twop1.draw(projection_2D);
+        if (m_player1.numberofHits == 3)
+            onep1.draw(projection_2D);
+
+        if (m_player2.numberofHits == 0)
+            fourp2.draw(projection_2D);
+        if (m_player2.numberofHits == 1)
+            threep2.draw(projection_2D);
+        if (m_player2.numberofHits == 2)
+            twop2.draw(projection_2D);
+        if (m_player2.numberofHits == 3)
+            onep2.draw(projection_2D);
         
         if (pause)
             m_pause.draw(projection_2D);
