@@ -147,7 +147,6 @@ private:
 	Worldtexture m_worldtexture;
 	ToolboxManager m_toolboxManager;
 	//ToolManager toolManager;
-	LimbsManager m_limbsManager;
 	Player1 m_player1;
 	Player2 m_player2;
 	Antidote m_antidote;

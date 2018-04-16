@@ -178,6 +178,7 @@ CMakeFiles/zombie.dir/src/missile.cpp.o: ../src/blood.hpp
 CMakeFiles/zombie.dir/src/missile.cpp.o: ../src/bomb.hpp
 CMakeFiles/zombie.dir/src/missile.cpp.o: ../src/common.hpp
 CMakeFiles/zombie.dir/src/missile.cpp.o: ../src/explosion.hpp
+CMakeFiles/zombie.dir/src/missile.cpp.o: ../src/limbsManager.hpp
 CMakeFiles/zombie.dir/src/missile.cpp.o: ../src/missile.cpp
 CMakeFiles/zombie.dir/src/missile.cpp.o: ../src/missile.hpp
 CMakeFiles/zombie.dir/src/missile.cpp.o: ../src/mud.hpp

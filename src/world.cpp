@@ -127,8 +127,6 @@ bool World::init(vec2 screen) {
     // Playing background music undefinitely
     Mix_PlayMusic(m_background_music, -1);
 
-    //fprintf(stderr, "Loaded music");
-
     return rendered;
 }
 
@@ -138,7 +136,7 @@ void World::destroy() {
     m_toolboxManager.destroy();
     m_player1.destroy();
     m_player2.destroy();
-    m_limbsManager.destroy();
+    LimbsManager::GetInstance()->destroy();
     ZombieManager::GetInstance()->destroy();
     for (auto &freeze : m_freeze)
         freeze.destroy();
@@ -272,7 +270,7 @@ bool World::update(float elapsed_ms) {
                                     m_player1.init(screen, mapCollisionPoints) &&
                                     m_player2.init(screen, mapCollisionPoints) &&
                                     ZombieManager::GetInstance()->init({screen.x, screen.y}, mapCollisionPoints) &&
-                                    m_limbsManager.init(screen, mapCollisionPoints));
+                        LimbsManager::GetInstance()->init(screen, mapCollisionPoints));
                 
                 srand((unsigned) time(0));
                 explosion = false;
@@ -294,9 +292,9 @@ bool World::update(float elapsed_ms) {
                 
                 droppedAntidoteTime_p1 = 5;
                 droppedAntidoteTime_p2 = 5;
-                
-                m_limbsManager.set_arms_size(0);
-                m_limbsManager.set_legs_size(0);
+
+                LimbsManager::GetInstance()->set_arms_size(0);
+                LimbsManager::GetInstance()->set_legs_size(0);
                 
                 m_player1.set_key(0, false);
                 m_player1.set_key(1, false);
@@ -402,14 +400,14 @@ bool World::update(float elapsed_ms) {
                  leg_times_1 = time(0);
                  }
                  }*/
-                
-                m_limbsManager.computePaths(elapsed_ms, *mapGrid);
+
+                LimbsManager::GetInstance()->computePaths(elapsed_ms, *mapGrid);
                 //if the freeze item is used, then zombies will stop moving
                 if ((int) difftime(time(0), freezeTime) >= 5)
                 {
                     ZombieManager::GetInstance()->computeZPaths(elapsed_ms, *mapGrid);
                 }
-                std::unordered_set<vec2> new_zombie_positions = m_limbsManager.checkClusters();
+                std::unordered_set<vec2> new_zombie_positions = LimbsManager::GetInstance()->checkClusters();
                 if (!new_zombie_positions.empty()) {
                     for (const vec2 &pos : new_zombie_positions) {
                         //std::cout << "new zombie!!" << pos.x << ", " << pos.y << std::endl;
@@ -455,19 +453,19 @@ bool World::update(float elapsed_ms) {
                     m_player2.numberofHits = 0;
                 }
                 
-                if (m_limbsManager.getCollectedLegs(1) > 0){
+                if (LimbsManager::GetInstance()->getCollectedLegs(1) > 0){
                     if ((int) difftime(time(0), leg_times_1) >= 10){
                         //fprintf(stderr, "remove leg1 \n");
-                        m_limbsManager.decreaseCollectedLegs(1);
+                        LimbsManager::GetInstance()->decreaseCollectedLegs(1);
                         m_player1.increase_speed_legs(-10);
                         leg_times_1 = time(0);
                     }
                 }
                 
-                if (m_limbsManager.getCollectedLegs(2) > 0){
+                if (LimbsManager::GetInstance()->getCollectedLegs(2) > 0){
                     if ((int) difftime(time(0), leg_times_2) >= 10){
                         //fprintf(stderr, "remove leg2 \n");
-                        m_limbsManager.decreaseCollectedLegs(2);
+                        LimbsManager::GetInstance()->decreaseCollectedLegs(2);
                         m_player2.increase_speed_legs(-10);
                         leg_times_2 = time(0);
                     }
@@ -532,17 +530,17 @@ void World::draw() {
 
     std::stringstream title_ss;
     if (m_sec < 10)
-        title_ss << "player1 numberoflegs: " << m_limbsManager.getCollectedLegs(1) << "          "
+        title_ss << "player1 numberoflegs: " <<LimbsManager::GetInstance()->getCollectedLegs(1) << "          "
         << "player1 damage count: " << m_player1.numberofHits << "          "
         << "Time remaining " << m_min << ":" << "0" << m_sec << "          "
         << "player2 damage count: " << m_player2.numberofHits << "          "
-        << "player2 numberoflegs: " << m_limbsManager.getCollectedLegs(2);
+        << "player2 numberoflegs: " << LimbsManager::GetInstance()->getCollectedLegs(2);
     else
-        title_ss << "player1 numberoflegs: " << m_limbsManager.getCollectedLegs(1) << "          "
+        title_ss << "player1 numberoflegs: " <<LimbsManager::GetInstance()->getCollectedLegs(1) << "          "
         << "player1 damage count: " << m_player1.numberofHits << "          "
         << "Time remaining " << m_min << ":" << m_sec << "          "
         << "player2 damage count: " << m_player2.numberofHits << "          "
-        << "player2 numberoflegs: " << m_limbsManager.getCollectedLegs(2);
+        << "player2 numberoflegs: " << LimbsManager::GetInstance()->getCollectedLegs(2);
     glfwSetWindowTitle(m_window, title_ss.str().c_str());
 
     glViewport(0, 0, w, h);
@@ -585,7 +583,7 @@ void World::draw() {
         m_toolboxManager.draw(projection_2D);
 
         //these are drawn in ascending order w.r.t. their y position
-        m_limbsManager.draw(projection_2D);
+        LimbsManager::GetInstance()->draw(projection_2D);
         ZombieManager::GetInstance()->draw(projection_2D);
         
         for (auto& mud_collected: m_mud_collected)
@@ -679,7 +677,7 @@ void World::entityDrawOrder(mat3 projection_2D) {
                             m_armour_collected_2.size() +
                             //m_mud_collected.size() +
                             ZombieManager::GetInstance()->getZombieCount() +
-                            m_limbsManager.getLimbCount()
+                                    LimbsManager::GetInstance()->getLimbCount()
                             + 3);
 
     transform(m_freeze.begin(), m_freeze.end(), std::back_inserter(drawOrderVector),
@@ -726,7 +724,7 @@ void World::entityDrawOrder(mat3 projection_2D) {
     drawOrderVector.push_back(&m_antidote);
 
     ZombieManager::GetInstance()->transformZombies(drawOrderVector);
-    m_limbsManager.transformLimbs(drawOrderVector);
+    LimbsManager::GetInstance()->transformLimbs(drawOrderVector);
 
     sort(drawOrderVector.begin(), drawOrderVector.end(), [](Renderable *lhs, Renderable *rhs) {
         return lhs->m_position.y < rhs->m_position.y;
@@ -1191,15 +1189,15 @@ bool World::random_spawn(float elapsed_ms, vec2 screen) {
     int randNum = (rand() % (10)) + 1;
 
     //if (randNum % 2 == 0 || randNum % 1 == 0) {
-    if (randNum == 1 || randNum == 10 || randNum == 8 || m_limbsManager.get_arms_size() == 0){
-        if (m_limbsManager.get_arms_size() <= MAX_ARMS && m_next_arm_spawn < 0.f) {
-            if (!(m_limbsManager.spawn_arms()))
+    if (randNum == 1 || randNum == 10 || randNum == 8 || LimbsManager::GetInstance()->get_arms_size() == 0){
+        if (LimbsManager::GetInstance()->get_arms_size() <= MAX_ARMS && m_next_arm_spawn < 0.f) {
+            if (!(LimbsManager::GetInstance()->spawn_arms()))
                 return false;
             m_next_arm_spawn = (ARM_DELAY_MS / 2) + rand() % (1000);
         }
     } else if (randNum == 2) {
-        if (m_limbsManager.get_legs_size() <= MAX_LEGS && m_next_leg_spawn < 0.f) {
-            if (!(m_limbsManager.spawn_legs()))
+        if (LimbsManager::GetInstance()->get_legs_size() <= MAX_LEGS && m_next_leg_spawn < 0.f) {
+            if (!(LimbsManager::GetInstance()->spawn_legs()))
                 return false;
             m_next_leg_spawn = (LEG_DELAY_MS / 2) + rand() % (1000);
         }
@@ -1518,15 +1516,15 @@ void World::check_add_tools(vec2 screen) {
 
     //=================check for limbs collision
     string checklegs;
-    checklegs = m_limbsManager.check_collision_with_players(&m_player1, &m_player2, &m_toolboxManager);
+    checklegs = LimbsManager::GetInstance()->check_collision_with_players(&m_player1, &m_player2, &m_toolboxManager);
 
     if (checklegs == "1leg"){
-        if (m_limbsManager.getCollectedLegs(1) == 1)
+        if (LimbsManager::GetInstance()->getCollectedLegs(1) == 1)
             leg_times_1 = time(0);
         //fprintf(stderr, "1leg");
     }
     if (checklegs == "2leg"){
-        if (m_limbsManager.getCollectedLegs(2) == 1)
+        if (LimbsManager::GetInstance()->getCollectedLegs(2) == 1)
             leg_times_2 = time(0);
         //fprintf(stderr, "2leg");
     }
@@ -2025,13 +2023,14 @@ void World::use_bomb(float ms) {
         std::vector<vec2> shit;
         shit.push_back(itbomb->m_position);
         shit.push_back(itbomb->get_bounding_box());
+        bool isShit_vol2_remasteredVersion = LimbsManager::GetInstance()->isColliding(shit);
         bool isShit = ZombieManager::GetInstance()->isColliding(shit);
         if ((std::fabs(itbomb->get_speed().x) <= 50 && std::fabs(itbomb->get_speed().y) <= 50)) {
             itbomb->set_speed({0.f, 0.f});
             autoExplode(*itbomb, count);
         }
-        else if (isShit || m_player1.collides_with(*itbomb)||m_player2.collides_with(*itbomb)){
-            if (isShit) {
+        else if (isShit_vol2_remasteredVersion|| isShit || m_player1.collides_with(*itbomb)||m_player2.collides_with(*itbomb)){
+            if (isShit || isShit_vol2_remasteredVersion) {
                 itbomb->set_speed({0.f, 0.f});
                 autoExplode(*itbomb, count);
             }

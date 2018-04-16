@@ -4,6 +4,8 @@
 
 #define MAX_ITERATIONS 100
 
+LimbsManager* LimbsManager::instance = 0;
+
 // initialize a limbsManager
 bool LimbsManager::init(vec2 screen, const std::vector<vec2> &mapCollisionPoints) {
     m_mapCollisionPoints = mapCollisionPoints;
@@ -254,6 +256,26 @@ void LimbsManager::set_arms_size(int size) {
 
 void LimbsManager::set_legs_size(int size) {
     m_legs_total = size;
+}
+
+bool LimbsManager::isColliding(std::vector<vec2> shit) {
+    vec2 penguin = shit.front();
+    vec2 pos = shit.back();
+    for (auto it = limbs.begin(); it != limbs.end(); ++it) {
+        if (is_aabb_colliding(penguin.x,
+                              penguin.y,
+                              (int) pos.x,
+                              (int) pos.y,
+                              it->get_position().x,
+                              it->get_position().y,
+                              (int)  it->get_bounding_box().x,
+                              (int) it->get_bounding_box().y)) {
+            it->destroy();
+            limbs.erase(it);
+            return true;
+        }
+    }
+    return false;
 }
 
 void LimbsManager::computePaths(float ms, const MapGrid &mapGrid) {

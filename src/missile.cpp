@@ -1,6 +1,7 @@
 // Header
 #include "missile.hpp"
 #include "zombieManager.hpp"
+#include "limbsManager.hpp"
 
 #include <cmath>
 #include <iostream>
@@ -291,11 +292,12 @@ bool Missile::checkPoint() {
     shit.reserve(2);
     shit.push_back(m_position);
     shit.push_back(get_bounding_box());
+    bool isShit_HAHAHHAHAHA = LimbsManager::GetInstance()->isColliding(shit);
     bool isShit = ZombieManager::GetInstance()->isColliding(shit);
     float other_r = 72;
     float my_r = std::max(m_scale.x, m_scale.y);
     float r = std::max(other_r, my_r);
     r *= 0.6f;
-    return isShit || (d_sq < r * r);
+    return isShit || isShit_HAHAHHAHAHA || (d_sq < r * r);
 }
 

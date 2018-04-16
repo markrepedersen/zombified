@@ -18,6 +18,13 @@ class LimbsManager
 public:
     // initialize a limbsManager
     bool init(vec2 screen, const std::vector<vec2> &mapCollisionPoints);
+
+    static LimbsManager* GetInstance() {
+        if (instance == nullptr) {
+            instance = new LimbsManager();
+        }
+        return instance;
+    }
     
     // Renders the existing limbs
     void draw(const mat3& projection);
@@ -53,7 +60,10 @@ public:
     std::vector<Limb> getLimbs() {
         return limbs;
     }
-    
+
+    bool isColliding(std::vector<vec2>);
+
+
     int getCollectedLegs(int player);
     void decreaseCollectedLegs(int player);
     
@@ -72,4 +82,6 @@ private:
     
     int collectedLegs_p1;
     int collectedLegs_p2;
+
+    static LimbsManager* instance;
 };
