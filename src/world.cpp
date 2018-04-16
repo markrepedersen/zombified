@@ -116,7 +116,7 @@ bool World::init(vec2 screen) {
     }
 
     m_background_music = Mix_LoadMUS(audio_path("badass_background.wav"));
-//     m_explosion_sound = Mix_LoadWAV(audio_path("explosion_medium.wav"));
+    //     m_explosion_sound = Mix_LoadWAV(audio_path("explosion_medium.wav"));
 
     if (m_background_music == nullptr)
     {
@@ -1218,7 +1218,7 @@ bool World::random_spawn(float elapsed_ms, vec2 screen) {
 
             m_next_spawn = (DELAY_MS / 2) + rand() % (1000);
         }
-    } else if (randNum == 7) {
+    } else if (randNum == 3) {
         if (m_water.size() <= MAX_WATER && m_next_spawn < 0.f) {
             if (!spawn_water())
                 return false;
@@ -1597,9 +1597,11 @@ void World::use_tool_1(int tool_number) {
             immobilize = m_freeze_collected_1.front().use_freeze(2);
             freezeTime = time(0);
         }
-        m_player1.set_mass(m_player1.get_mass() - m_freeze_collected_1.begin()->get_mass());
-        m_freeze_collected_1.erase(m_freeze_collected_1.begin());
-        m_toolboxManager.decreaseSlot(1);
+        if (!m_freeze_collected_1.empty()) {
+            m_player1.set_mass(m_player1.get_mass() - m_freeze_collected_1.begin()->get_mass());
+            m_freeze_collected_1.erase(m_freeze_collected_1.begin());
+            m_toolboxManager.decreaseSlot(1);
+        }
 
     }
     if (tool_number == 2) {
@@ -1611,9 +1613,11 @@ void World::use_tool_1(int tool_number) {
                 m_mud_collected.back().mudTime = time(0);
             }
         }
-        m_player1.set_mass(m_player1.get_mass() - m_water_collected_1.begin()->get_mass());
-        m_water_collected_1.erase(m_water_collected_1.begin());
-        m_toolboxManager.decreaseSlot(1);
+        if (!m_mud_collected.empty()) {
+            m_player1.set_mass(m_player1.get_mass() - m_water_collected_1.begin()->get_mass());
+            m_water_collected_1.erase(m_water_collected_1.begin());
+            m_toolboxManager.decreaseSlot(1);
+        }
     }
 
     //antidote is the first tool, move it to the back
@@ -1673,11 +1677,12 @@ void World::use_tool_1(int tool_number) {
             use_bomb.set_speed({xspeed, yspeed});
         }
 
-        //use_bomb.set_speed({200, 100});
-        m_player1.set_mass(m_player1.get_mass() - m_bomb_collected_1.front().get_mass());
-        m_bomb_collected_1.erase(m_bomb_collected_1.begin());
+        if (!m_bomb_collected_1.empty()) {
+            m_player1.set_mass(m_player1.get_mass() - m_bomb_collected_1.front().get_mass());
+            m_bomb_collected_1.erase(m_bomb_collected_1.begin());
 
-        m_toolboxManager.decreaseSlot(1);
+            m_toolboxManager.decreaseSlot(1);
+        }
     }
     if (tool_number == 6) {
         if (!droptool_p1)
@@ -1696,9 +1701,11 @@ void World::use_tool_1(int tool_number) {
             use_missile.set_rotation(angle);
             use_missile.set_speed(missileDir);
         }
-        m_player1.set_mass(m_player1.get_mass() - m_missile_collected_1.begin()->get_mass());
-        m_missile_collected_1.erase(m_missile_collected_1.begin());
-        m_toolboxManager.decreaseSlot(1);
+        if (!m_missile_collected_1.empty()) {
+            m_player1.set_mass(m_player1.get_mass() - m_missile_collected_1.begin()->get_mass());
+            m_missile_collected_1.erase(m_missile_collected_1.begin());
+            m_toolboxManager.decreaseSlot(1);
+        }
     }
     if (tool_number == 7) {
         if (!droptool_p1) {
@@ -1706,9 +1713,11 @@ void World::use_tool_1(int tool_number) {
             m_player1.set_armourstate(true);
             armourTime_p1 = time(0);
         }
-        m_player1.set_mass(m_player1.get_mass() - m_armour_collected_1.begin()->get_mass());
-        m_armour_collected_1.erase(m_armour_collected_1.begin());
-        m_toolboxManager.decreaseSlot(1);
+        if (!m_armour_collected_1.empty()) {
+            m_player1.set_mass(m_player1.get_mass() - m_armour_collected_1.begin()->get_mass());
+            m_armour_collected_1.erase(m_armour_collected_1.begin());
+            m_toolboxManager.decreaseSlot(1);
+        }
     }
     droptool_p1 = false;
     shift_1(dropAntidote);
@@ -1795,9 +1804,11 @@ void World::use_tool_2(int tool_number) {
             immobilize = m_freeze_collected_1.front().use_freeze(1);
             freezeTime = time(0);
         }
-        m_player2.set_mass(m_player2.get_mass() - m_freeze_collected_2.begin()->get_mass());
-        m_freeze_collected_2.erase(m_freeze_collected_2.begin());
-        m_toolboxManager.decreaseSlot(2);
+        if (!m_freeze_collected_2.empty()) {
+            m_player2.set_mass(m_player2.get_mass() - m_freeze_collected_2.begin()->get_mass());
+            m_freeze_collected_2.erase(m_freeze_collected_2.begin());
+            m_toolboxManager.decreaseSlot(2);
+        }
     }
     if (tool_number == 2) {
         if (!droptool_p2) {
@@ -1808,9 +1819,11 @@ void World::use_tool_2(int tool_number) {
                 m_mud_collected.back().mudTime = time(0);
             }
         }
-        m_player2.set_mass(m_player2.get_mass() - m_water_collected_2.begin()->get_mass());
-        m_water_collected_2.erase(m_water_collected_2.begin());
-        m_toolboxManager.decreaseSlot(2);
+        if (!m_water_collected_2.empty()) {
+            m_player2.set_mass(m_player2.get_mass() - m_water_collected_2.begin()->get_mass());
+            m_water_collected_2.erase(m_water_collected_2.begin());
+            m_toolboxManager.decreaseSlot(2);
+        }
     }
 
     if (tool_number == 3) {
@@ -1867,10 +1880,12 @@ void World::use_tool_2(int tool_number) {
             use_bomb.set_speed({xspeed, yspeed});
 
         }
-        m_player2.set_mass(m_player2.get_mass() - m_bomb_collected_2.front().get_mass());
-        m_bomb_collected_2.erase(m_bomb_collected_2.begin());
+        if (!m_bomb_collected_2.empty()) {
+            m_player2.set_mass(m_player2.get_mass() - m_bomb_collected_2.front().get_mass());
+            m_bomb_collected_2.erase(m_bomb_collected_2.begin());
 
-        m_toolboxManager.decreaseSlot(2);
+            m_toolboxManager.decreaseSlot(2);
+        }
     }
     if (tool_number == 6) {
         if (!droptool_p2)
@@ -1888,9 +1903,11 @@ void World::use_tool_2(int tool_number) {
             use_missile.set_rotation(angle);
             use_missile.set_speed(missileDir);
         }
-        m_player2.set_mass(m_player2.get_mass() - m_missile_collected_2.begin()->get_mass());
-        m_missile_collected_2.erase(m_missile_collected_2.begin());
-        m_toolboxManager.decreaseSlot(2);
+        if (!m_missile_collected_2.empty()) {
+            m_player2.set_mass(m_player2.get_mass() - m_missile_collected_2.begin()->get_mass());
+            m_missile_collected_2.erase(m_missile_collected_2.begin());
+            m_toolboxManager.decreaseSlot(2);
+        }
     }
     if (tool_number == 7) {
         if (!droptool_p2) {
@@ -1898,9 +1915,11 @@ void World::use_tool_2(int tool_number) {
             m_player2.set_armourstate(true);
             armourTime_p2 = time(0);
         }
-        m_player2.set_mass(m_player2.get_mass() - m_armour_collected_2.begin()->get_mass());
-        m_armour_collected_2.erase(m_armour_collected_2.begin());
-        m_toolboxManager.decreaseSlot(2);
+        if (!m_armour_collected_2.empty()) {
+            m_player2.set_mass(m_player2.get_mass() - m_armour_collected_2.begin()->get_mass());
+            m_armour_collected_2.erase(m_armour_collected_2.begin());
+            m_toolboxManager.decreaseSlot(2);
+        }
     }
     droptool_p2 = false;
     shift_2(dropAntidote);
@@ -1987,21 +2006,14 @@ void World::use_bomb(float ms) {
 
     for (itbomb = used_bombs.begin(); itbomb != used_bombs.end();) {
         itbomb->set_speed({itbomb->get_speed().x * (0.997f), itbomb->get_speed().y * (0.997f)});
-        std::vector<vec2> shit;
-        shit.push_back(itbomb->m_position);
-        shit.push_back(itbomb->get_bounding_box());
-        bool isShit_vol2_remasteredVersion = LimbsManager::GetInstance()->isColliding(shit);
-        bool isShit = ZombieManager::GetInstance()->isColliding(shit);
+
+
         if ((std::fabs(itbomb->get_speed().x) <= 50 && std::fabs(itbomb->get_speed().y) <= 50)) {
             itbomb->set_speed({0.f, 0.f});
             autoExplode(*itbomb, count);
         }
-        else if (isShit_vol2_remasteredVersion|| isShit || m_player1.collides_with(*itbomb)||m_player2.collides_with(*itbomb)){
-            if (isShit || isShit_vol2_remasteredVersion) {
-                itbomb->set_speed({0.f, 0.f});
-                autoExplode(*itbomb, count);
-            }
-            else if ((int) difftime(time(0), itbomb->bombTime) >= 2) {
+        else if (m_player1.collides_with(*itbomb)||m_player2.collides_with(*itbomb)){
+            if ((int) difftime(time(0), itbomb->bombTime) >= 2) {
                 itbomb->set_speed({0.f, 0.f});
                 autoExplode(*itbomb, count);
             }
@@ -2037,6 +2049,59 @@ void World::use_bomb(float ms) {
             ++count;
         }
     }
+
+    /*for (itbomb = used_bombs.begin(); itbomb != used_bombs.end();) {
+     itbomb->set_speed({itbomb->get_speed().x * (0.997f), itbomb->get_speed().y * (0.997f)});
+     std::vector<vec2> shit;
+     shit.push_back(itbomb->m_position);
+     shit.push_back(itbomb->get_bounding_box());
+     bool isShit_vol2_remasteredVersion = LimbsManager::GetInstance()->isColliding(shit);
+     bool isShit = ZombieManager::GetInstance()->isColliding(shit);
+     if ((std::fabs(itbomb->get_speed().x) <= 50 && std::fabs(itbomb->get_speed().y) <= 50)) {
+     itbomb->set_speed({0.f, 0.f});
+     autoExplode(*itbomb, count);
+     }
+     else if (isShit_vol2_remasteredVersion|| isShit || m_player1.collides_with(*itbomb)||m_player2.collides_with(*itbomb)){
+     if (isShit || isShit_vol2_remasteredVersion) {
+     itbomb->set_speed({0.f, 0.f});
+     autoExplode(*itbomb, count);
+     }
+     else if ((int) difftime(time(0), itbomb->bombTime) >= 2) {
+     itbomb->set_speed({0.f, 0.f});
+     autoExplode(*itbomb, count);
+     }
+     else {
+     itbomb->move({itbomb->get_speed().x * (ms / 1000),
+     itbomb->get_speed().y * (ms / 1000)}, false);
+     itbomb->checkBoundaryCollision(width, height, ms, mapCollisionPoints);
+
+     for (checkbomb = used_bombs.begin(); checkbomb != used_bombs.end() - 1; ++checkbomb) {
+     if (checkbomb != itbomb) {
+     if (itbomb->collides_with(*checkbomb))
+     itbomb->checkCollision(*checkbomb, ms);
+     }
+     }
+
+     ++itbomb;
+     ++count;
+     }
+     }
+     else {
+     itbomb->move({itbomb->get_speed().x * (ms / 1000),
+     itbomb->get_speed().y * (ms / 1000)}, false);
+     itbomb->checkBoundaryCollision(width, height, ms, mapCollisionPoints);
+
+     for (checkbomb = used_bombs.begin(); checkbomb != used_bombs.end() - 1; ++checkbomb) {
+     if (checkbomb != itbomb) {
+     if (itbomb->collides_with(*checkbomb))
+     itbomb->checkCollision(*checkbomb, ms);
+     }
+     }
+
+     ++itbomb;
+     ++count;
+     }
+     }*/
 
 }
 
@@ -2216,70 +2281,70 @@ void World::autoExplodeMissile(Missile missile, int position) {
 
 void World::populateMapCollisionPoints() {
 
-//populate more accurate mapCollisionPoints
-        mapCollisionPoints.push_back({ 47.3633f * ViewHelper::getRatio(), 371.539f * ViewHelper::getRatio()});
-        mapCollisionPoints.push_back({ 40.1484f * ViewHelper::getRatio(), 292.309f * ViewHelper::getRatio()});
-        mapCollisionPoints.push_back({ 96.5586f * ViewHelper::getRatio(), 252.488f * ViewHelper::getRatio()});
-        mapCollisionPoints.push_back({ 142.387f * ViewHelper::getRatio(), 203.789f * ViewHelper::getRatio()});
-        mapCollisionPoints.push_back({ 139.512f * ViewHelper::getRatio(), 181.172f * ViewHelper::getRatio()});
-        mapCollisionPoints.push_back({ 176.07f * ViewHelper::getRatio(), 152.285f * ViewHelper::getRatio()});
-        mapCollisionPoints.push_back({ 256.551f * ViewHelper::getRatio(), 152.48f * ViewHelper::getRatio()});
-        mapCollisionPoints.push_back({ 261.172f * ViewHelper::getRatio(), 137.648f * ViewHelper::getRatio()});
-        mapCollisionPoints.push_back({ 334.645f * ViewHelper::getRatio(), 102.211f * ViewHelper::getRatio()});
-        mapCollisionPoints.push_back({ 422.746f * ViewHelper::getRatio(), 60.7383f * ViewHelper::getRatio()});
-        mapCollisionPoints.push_back({ 601.715f * ViewHelper::getRatio(), 96.6602f * ViewHelper::getRatio()});
-        mapCollisionPoints.push_back({ 690.293f * ViewHelper::getRatio(), 96.0742f * ViewHelper::getRatio()});
-        mapCollisionPoints.push_back({ 774.266f * ViewHelper::getRatio(), 81.8281f * ViewHelper::getRatio()});
-        mapCollisionPoints.push_back({ 794.629f * ViewHelper::getRatio(), 87.1016f * ViewHelper::getRatio()});
-        mapCollisionPoints.push_back({ 814.023f * ViewHelper::getRatio(), 63.6406f * ViewHelper::getRatio()});
-        mapCollisionPoints.push_back({ 878.555f * ViewHelper::getRatio(), 83.2891f * ViewHelper::getRatio()});
-        mapCollisionPoints.push_back({ 958.617f * ViewHelper::getRatio(), 95.7852f * ViewHelper::getRatio()});
-        mapCollisionPoints.push_back({ 1007.97f * ViewHelper::getRatio(), 122.348f * ViewHelper::getRatio()});
-        mapCollisionPoints.push_back({ 1062.52f * ViewHelper::getRatio(), 101.793f * ViewHelper::getRatio()});
-        mapCollisionPoints.push_back({ 1182.62f * ViewHelper::getRatio(), 117.871f * ViewHelper::getRatio()});
-        mapCollisionPoints.push_back({ 1136.04f * ViewHelper::getRatio(), 138.668f * ViewHelper::getRatio()});
-        mapCollisionPoints.push_back({ 1134.95f * ViewHelper::getRatio(), 218.684f * ViewHelper::getRatio()});
-        mapCollisionPoints.push_back({ 1189.22f * ViewHelper::getRatio(), 247.887f * ViewHelper::getRatio()});
-        mapCollisionPoints.push_back({ 1179.44f * ViewHelper::getRatio(), 290.305f * ViewHelper::getRatio()});
-        mapCollisionPoints.push_back({ 1223.39f * ViewHelper::getRatio(), 286.859f * ViewHelper::getRatio()});
-        mapCollisionPoints.push_back({ 1252.36f * ViewHelper::getRatio(), 309.699f * ViewHelper::getRatio()});
-        mapCollisionPoints.push_back({ 1245.82f * ViewHelper::getRatio(), 379.09f * ViewHelper::getRatio()});
-        mapCollisionPoints.push_back({ 1172.02f * ViewHelper::getRatio(), 431.262f * ViewHelper::getRatio()});
-        mapCollisionPoints.push_back({ 1023.17f * ViewHelper::getRatio(), 477.641f * ViewHelper::getRatio()});
-        mapCollisionPoints.push_back({ 1043.39f * ViewHelper::getRatio(), 510.52f * ViewHelper::getRatio()});
-        mapCollisionPoints.push_back({ 834.137f * ViewHelper::getRatio(), 565.66f * ViewHelper::getRatio()});
-        mapCollisionPoints.push_back({ 722.289f * ViewHelper::getRatio(), 554.605f * ViewHelper::getRatio()});
-        mapCollisionPoints.push_back({ 598.59f * ViewHelper::getRatio(), 612.293f * ViewHelper::getRatio()});
-        mapCollisionPoints.push_back({ 307.602f * ViewHelper::getRatio(), 521.102f * ViewHelper::getRatio()});
-        mapCollisionPoints.push_back({ 288.453f * ViewHelper::getRatio(), 457.098f * ViewHelper::getRatio()});
-        mapCollisionPoints.push_back({ 256.238f * ViewHelper::getRatio(), 469.301f * ViewHelper::getRatio()});
-        mapCollisionPoints.push_back({ 86.1797f * ViewHelper::getRatio(), 393.562f * ViewHelper::getRatio()});
-        mapCollisionPoints.push_back({ 91.6211f * ViewHelper::getRatio(), 374.586f * ViewHelper::getRatio()});
+    //populate more accurate mapCollisionPoints
+    mapCollisionPoints.push_back({ 47.3633f * ViewHelper::getRatio(), 371.539f * ViewHelper::getRatio()});
+    mapCollisionPoints.push_back({ 40.1484f * ViewHelper::getRatio(), 292.309f * ViewHelper::getRatio()});
+    mapCollisionPoints.push_back({ 96.5586f * ViewHelper::getRatio(), 252.488f * ViewHelper::getRatio()});
+    mapCollisionPoints.push_back({ 142.387f * ViewHelper::getRatio(), 203.789f * ViewHelper::getRatio()});
+    mapCollisionPoints.push_back({ 139.512f * ViewHelper::getRatio(), 181.172f * ViewHelper::getRatio()});
+    mapCollisionPoints.push_back({ 176.07f * ViewHelper::getRatio(), 152.285f * ViewHelper::getRatio()});
+    mapCollisionPoints.push_back({ 256.551f * ViewHelper::getRatio(), 152.48f * ViewHelper::getRatio()});
+    mapCollisionPoints.push_back({ 261.172f * ViewHelper::getRatio(), 137.648f * ViewHelper::getRatio()});
+    mapCollisionPoints.push_back({ 334.645f * ViewHelper::getRatio(), 102.211f * ViewHelper::getRatio()});
+    mapCollisionPoints.push_back({ 422.746f * ViewHelper::getRatio(), 60.7383f * ViewHelper::getRatio()});
+    mapCollisionPoints.push_back({ 601.715f * ViewHelper::getRatio(), 96.6602f * ViewHelper::getRatio()});
+    mapCollisionPoints.push_back({ 690.293f * ViewHelper::getRatio(), 96.0742f * ViewHelper::getRatio()});
+    mapCollisionPoints.push_back({ 774.266f * ViewHelper::getRatio(), 81.8281f * ViewHelper::getRatio()});
+    mapCollisionPoints.push_back({ 794.629f * ViewHelper::getRatio(), 87.1016f * ViewHelper::getRatio()});
+    mapCollisionPoints.push_back({ 814.023f * ViewHelper::getRatio(), 63.6406f * ViewHelper::getRatio()});
+    mapCollisionPoints.push_back({ 878.555f * ViewHelper::getRatio(), 83.2891f * ViewHelper::getRatio()});
+    mapCollisionPoints.push_back({ 958.617f * ViewHelper::getRatio(), 95.7852f * ViewHelper::getRatio()});
+    mapCollisionPoints.push_back({ 1007.97f * ViewHelper::getRatio(), 122.348f * ViewHelper::getRatio()});
+    mapCollisionPoints.push_back({ 1062.52f * ViewHelper::getRatio(), 101.793f * ViewHelper::getRatio()});
+    mapCollisionPoints.push_back({ 1182.62f * ViewHelper::getRatio(), 117.871f * ViewHelper::getRatio()});
+    mapCollisionPoints.push_back({ 1136.04f * ViewHelper::getRatio(), 138.668f * ViewHelper::getRatio()});
+    mapCollisionPoints.push_back({ 1134.95f * ViewHelper::getRatio(), 218.684f * ViewHelper::getRatio()});
+    mapCollisionPoints.push_back({ 1189.22f * ViewHelper::getRatio(), 247.887f * ViewHelper::getRatio()});
+    mapCollisionPoints.push_back({ 1179.44f * ViewHelper::getRatio(), 290.305f * ViewHelper::getRatio()});
+    mapCollisionPoints.push_back({ 1223.39f * ViewHelper::getRatio(), 286.859f * ViewHelper::getRatio()});
+    mapCollisionPoints.push_back({ 1252.36f * ViewHelper::getRatio(), 309.699f * ViewHelper::getRatio()});
+    mapCollisionPoints.push_back({ 1245.82f * ViewHelper::getRatio(), 379.09f * ViewHelper::getRatio()});
+    mapCollisionPoints.push_back({ 1172.02f * ViewHelper::getRatio(), 431.262f * ViewHelper::getRatio()});
+    mapCollisionPoints.push_back({ 1023.17f * ViewHelper::getRatio(), 477.641f * ViewHelper::getRatio()});
+    mapCollisionPoints.push_back({ 1043.39f * ViewHelper::getRatio(), 510.52f * ViewHelper::getRatio()});
+    mapCollisionPoints.push_back({ 834.137f * ViewHelper::getRatio(), 565.66f * ViewHelper::getRatio()});
+    mapCollisionPoints.push_back({ 722.289f * ViewHelper::getRatio(), 554.605f * ViewHelper::getRatio()});
+    mapCollisionPoints.push_back({ 598.59f * ViewHelper::getRatio(), 612.293f * ViewHelper::getRatio()});
+    mapCollisionPoints.push_back({ 307.602f * ViewHelper::getRatio(), 521.102f * ViewHelper::getRatio()});
+    mapCollisionPoints.push_back({ 288.453f * ViewHelper::getRatio(), 457.098f * ViewHelper::getRatio()});
+    mapCollisionPoints.push_back({ 256.238f * ViewHelper::getRatio(), 469.301f * ViewHelper::getRatio()});
+    mapCollisionPoints.push_back({ 86.1797f * ViewHelper::getRatio(), 393.562f * ViewHelper::getRatio()});
+    mapCollisionPoints.push_back({ 91.6211f * ViewHelper::getRatio(), 374.586f * ViewHelper::getRatio()});
 
     //populate less accurate mapCollisionPoints
-        mapCollisionPoints2.push_back({ 92.4023f * ViewHelper::getRatio(), 333.953f * ViewHelper::getRatio()});
-        mapCollisionPoints2.push_back({ 98.082f * ViewHelper::getRatio(), 281.676f * ViewHelper::getRatio()});
-        mapCollisionPoints2.push_back({ 221.965f * ViewHelper::getRatio(), 150.934f * ViewHelper::getRatio()});
-        mapCollisionPoints2.push_back({ 279.203f * ViewHelper::getRatio(), 139.633f * ViewHelper::getRatio()});
-        mapCollisionPoints2.push_back({ 427.48f * ViewHelper::getRatio(), 62.75f * ViewHelper::getRatio()});
-        mapCollisionPoints2.push_back({ 596.926f * ViewHelper::getRatio(), 110.805f * ViewHelper::getRatio()});
-        mapCollisionPoints2.push_back({ 820.492f * ViewHelper::getRatio(), 75.7578f * ViewHelper::getRatio()});
-        mapCollisionPoints2.push_back({ 999.898f * ViewHelper::getRatio(), 124.906f * ViewHelper::getRatio()});
-        mapCollisionPoints2.push_back({ 1058.87f * ViewHelper::getRatio(), 109.945f * ViewHelper::getRatio()});
-        mapCollisionPoints2.push_back({ 1124.63f * ViewHelper::getRatio(), 136.254f * ViewHelper::getRatio()});
-        mapCollisionPoints2.push_back({ 1124.46f * ViewHelper::getRatio(), 209.25f * ViewHelper::getRatio()});
-        mapCollisionPoints2.push_back({ 1162.25f * ViewHelper::getRatio(), 251.387f * ViewHelper::getRatio()});
-        mapCollisionPoints2.push_back({ 1159.2f * ViewHelper::getRatio(), 303.289f * ViewHelper::getRatio()});
-        mapCollisionPoints2.push_back({ 1203.61f * ViewHelper::getRatio(), 306.414f * ViewHelper::getRatio()});
-        mapCollisionPoints2.push_back({ 1199.27f * ViewHelper::getRatio(), 365.711f * ViewHelper::getRatio()});
-        mapCollisionPoints2.push_back({ 1010.06f * ViewHelper::getRatio(), 448.918f * ViewHelper::getRatio()});
-        mapCollisionPoints2.push_back({ 971.582f * ViewHelper::getRatio(), 501.141f * ViewHelper::getRatio()});
-        mapCollisionPoints2.push_back({ 833.074f * ViewHelper::getRatio(), 519.289f * ViewHelper::getRatio()});
-        mapCollisionPoints2.push_back({ 695.168f * ViewHelper::getRatio(), 514.566f * ViewHelper::getRatio()});
-        mapCollisionPoints2.push_back({ 587.352f * ViewHelper::getRatio(), 573.215f * ViewHelper::getRatio()});
-        mapCollisionPoints2.push_back({ 348.324f * ViewHelper::getRatio(), 475.59f * ViewHelper::getRatio()});
-        mapCollisionPoints2.push_back({ 292.547f * ViewHelper::getRatio(), 408.422f * ViewHelper::getRatio()});
-        mapCollisionPoints2.push_back({ 82.6211f * ViewHelper::getRatio(), 342.625f * ViewHelper::getRatio()});
+    mapCollisionPoints2.push_back({ 92.4023f * ViewHelper::getRatio(), 333.953f * ViewHelper::getRatio()});
+    mapCollisionPoints2.push_back({ 98.082f * ViewHelper::getRatio(), 281.676f * ViewHelper::getRatio()});
+    mapCollisionPoints2.push_back({ 221.965f * ViewHelper::getRatio(), 150.934f * ViewHelper::getRatio()});
+    mapCollisionPoints2.push_back({ 279.203f * ViewHelper::getRatio(), 139.633f * ViewHelper::getRatio()});
+    mapCollisionPoints2.push_back({ 427.48f * ViewHelper::getRatio(), 62.75f * ViewHelper::getRatio()});
+    mapCollisionPoints2.push_back({ 596.926f * ViewHelper::getRatio(), 110.805f * ViewHelper::getRatio()});
+    mapCollisionPoints2.push_back({ 820.492f * ViewHelper::getRatio(), 75.7578f * ViewHelper::getRatio()});
+    mapCollisionPoints2.push_back({ 999.898f * ViewHelper::getRatio(), 124.906f * ViewHelper::getRatio()});
+    mapCollisionPoints2.push_back({ 1058.87f * ViewHelper::getRatio(), 109.945f * ViewHelper::getRatio()});
+    mapCollisionPoints2.push_back({ 1124.63f * ViewHelper::getRatio(), 136.254f * ViewHelper::getRatio()});
+    mapCollisionPoints2.push_back({ 1124.46f * ViewHelper::getRatio(), 209.25f * ViewHelper::getRatio()});
+    mapCollisionPoints2.push_back({ 1162.25f * ViewHelper::getRatio(), 251.387f * ViewHelper::getRatio()});
+    mapCollisionPoints2.push_back({ 1159.2f * ViewHelper::getRatio(), 303.289f * ViewHelper::getRatio()});
+    mapCollisionPoints2.push_back({ 1203.61f * ViewHelper::getRatio(), 306.414f * ViewHelper::getRatio()});
+    mapCollisionPoints2.push_back({ 1199.27f * ViewHelper::getRatio(), 365.711f * ViewHelper::getRatio()});
+    mapCollisionPoints2.push_back({ 1010.06f * ViewHelper::getRatio(), 448.918f * ViewHelper::getRatio()});
+    mapCollisionPoints2.push_back({ 971.582f * ViewHelper::getRatio(), 501.141f * ViewHelper::getRatio()});
+    mapCollisionPoints2.push_back({ 833.074f * ViewHelper::getRatio(), 519.289f * ViewHelper::getRatio()});
+    mapCollisionPoints2.push_back({ 695.168f * ViewHelper::getRatio(), 514.566f * ViewHelper::getRatio()});
+    mapCollisionPoints2.push_back({ 587.352f * ViewHelper::getRatio(), 573.215f * ViewHelper::getRatio()});
+    mapCollisionPoints2.push_back({ 348.324f * ViewHelper::getRatio(), 475.59f * ViewHelper::getRatio()});
+    mapCollisionPoints2.push_back({ 292.547f * ViewHelper::getRatio(), 408.422f * ViewHelper::getRatio()});
+    mapCollisionPoints2.push_back({ 82.6211f * ViewHelper::getRatio(), 342.625f * ViewHelper::getRatio()});
 
 }
 
