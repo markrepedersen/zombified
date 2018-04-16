@@ -244,8 +244,8 @@ bool World::update(float elapsed_ms) {
                 m_startbutton.unclick();
 
                 pause = false;
-                
-                bool initialized = (m_text.init({screen.x, screen.y}, "1:00", {(screen.y * ViewHelper::getRatio()) / 4,(screen.y * ViewHelper::getRatio()) / 36}, 30) &&
+
+                bool initialized = (m_timer.init({screen.x, screen.y}, "1:00", {(screen.y * ViewHelper::getRatio()) / 4,(screen.y * ViewHelper::getRatio()) / 36}, 30) &&
                                     gloveRight_p1.init(screen)&&
                                     gloveLeft_p1.init(screen)&&
                                     
@@ -472,7 +472,7 @@ void World::timer_update() {
             } else {
                 timeString = std::to_string(m_min) + ":" + std::to_string(m_sec);
             }
-            m_text.update(timeString.c_str(), 30);
+            m_timer.update(timeString.c_str(), 30);
         } else {
             m_sec -= 1;
             timeDelay++;
@@ -482,7 +482,7 @@ void World::timer_update() {
             } else {
                 timeString = std::to_string(m_min) + ":" + std::to_string(m_sec);
             }
-            m_text.update(timeString.c_str(), 30);
+            m_timer.update(timeString.c_str(), 30);
         }
     }
     else
@@ -576,7 +576,7 @@ void World::draw() {
         if (is_punchingright_p2)
             gloveRight_p2.draw(projection_2D);
 
-        m_text.draw(projection_2D);
+        m_timer.draw(projection_2D);
         
         if (m_player1.numberofHits == 0)
             fourp1.draw(projection_2D);

@@ -250,5 +250,5 @@ private:
     Mix_Music* m_background_music;
 	Mix_Chunk* m_explosion_sound;
 
-    Text2D m_text;
+    Text2D m_timer;
 };
