@@ -1,5 +1,6 @@
 // Header
 #include "missile.hpp"
+#include "zombieManager.hpp"
 
 #include <cmath>
 #include <iostream>
@@ -270,21 +271,12 @@ bool Missile::collides_with(const Missile& missile)
 
 float Missile::get_force(float mass1, float speed, vec2 objPosition)
 {
-    //float blastArea = 3.14*(200.f*200.f);
     float blastRadius = 100.f;
     float force = 0;
     float dist = distance(objPosition, get_position());
-    //fprintf(stderr, "distance %f\n", dist);
     if (dist < blastRadius)
     {
-        //if (dist < 40.f)
-        //    dist = 40.f;
-        //fprintf(stderr, "distance %f\n", dist);
-        //fprintf(stderr, "speed %f\n", speed);
         force = ((speed*speed)/(dist*mass1));//+400;
-        //fprintf(stderr, "speed %f\n", speed);
-        //if (force > 950.0)
-        //    force = 950;
     }
     return force;
     
@@ -295,19 +287,15 @@ bool Missile::checkPoint() {
     float dx = m_position.x - onPlayerPos.x;
     float dy = m_position.y - onPlayerPos.y;
     float d_sq = dx * dx + dy * dy;
-    
+    std::vector<vec2> shit;
+    shit.reserve(2);
+    shit.push_back(m_position);
+    shit.push_back(get_bounding_box());
+    bool isShit = ZombieManager::GetInstance()->isColliding(shit);
     float other_r = 72;
-    
     float my_r = std::max(m_scale.x, m_scale.y);
     float r = std::max(other_r, my_r);
     r *= 0.6f;
-    if (d_sq < r * r)
-        return true;
-    return false;
-    
-    /*if (m_position.x > 1280 || m_position.x < 0 || m_position.y > 720 || m_position.y < 0)
-        return true;
-    return false;*/
-
+    return isShit || (d_sq < r * r);
 }
 

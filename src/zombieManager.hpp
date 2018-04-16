@@ -15,9 +15,18 @@ class ZombieManager
 {
 
 public:
-    // initialize a zombie manager
+
     bool init(vec2 screen, const std::vector<vec2> &mapCollisionPoints);
-    
+
+    static ZombieManager* GetInstance() {
+        if (instance == nullptr) {
+            instance = new ZombieManager();
+        }
+        return instance;
+    }
+
+    bool isColliding(std::vector<vec2>);
+
     // Renders the existing zombies
     void draw(const mat3& projection);
  
@@ -52,10 +61,11 @@ public:
     void destroy();
     
 private:
+    // initialize a zombie manager
     vec2 m_screen;
     std::vector<Zombie> zombies;
     std::vector<vec2> m_mapCollisionPoints;
     float speed;
     bool zombiesInUse;
-    
+    static ZombieManager* instance;
 };

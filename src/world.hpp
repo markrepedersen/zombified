@@ -148,7 +148,6 @@ private:
 	ToolboxManager m_toolboxManager;
 	//ToolManager toolManager;
 	LimbsManager m_limbsManager;
-    ZombieManager m_zombieManager;
 	Player1 m_player1;
 	Player2 m_player2;
 	Antidote m_antidote;

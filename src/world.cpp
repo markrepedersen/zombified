@@ -71,6 +71,8 @@ bool World::init(vec2 screen) {
     populateMapCollisionPoints();
     mapGrid = new MapGrid((unsigned) (screen.x * ViewHelper::getInstance(m_window)->getRatio()), (unsigned) (screen.y * ViewHelper::getInstance(m_window)->getRatio()));
 
+
+
     bool rendered = false;
     game_started = false;
     game_over = false;
@@ -137,7 +139,7 @@ void World::destroy() {
     m_player1.destroy();
     m_player2.destroy();
     m_limbsManager.destroy();
-    m_zombieManager.destroy();
+    ZombieManager::GetInstance()->destroy();
     for (auto &freeze : m_freeze)
         freeze.destroy();
     for (auto &water : m_water)
@@ -269,8 +271,7 @@ bool World::update(float elapsed_ms) {
                                     m_antidote.init(screen, mapCollisionPoints) &&
                                     m_player1.init(screen, mapCollisionPoints) &&
                                     m_player2.init(screen, mapCollisionPoints) &&
-                                    
-                                    m_zombieManager.init({screen.x, screen.y}, mapCollisionPoints) &&
+                                    ZombieManager::GetInstance()->init({screen.x, screen.y}, mapCollisionPoints) &&
                                     m_limbsManager.init(screen, mapCollisionPoints));
                 
                 srand((unsigned) time(0));
@@ -322,7 +323,7 @@ bool World::update(float elapsed_ms) {
                 m_player2.update(elapsed_ms);
                 
                 random_spawn(elapsed_ms, {screen.x * ViewHelper::getRatio(), screen.y * ViewHelper::getRatio()});
-                vec2 player_hits_from_zombies = m_zombieManager.update_zombies(elapsed_ms, m_player1.get_position(), m_player2.get_position());
+                vec2 player_hits_from_zombies = ZombieManager::GetInstance()->update_zombies(elapsed_ms, m_player1.get_position(), m_player2.get_position());
                 
                 if(!armourInUse_p1) {
                     if (player_hits_from_zombies.x != 0)
@@ -406,13 +407,13 @@ bool World::update(float elapsed_ms) {
                 //if the freeze item is used, then zombies will stop moving
                 if ((int) difftime(time(0), freezeTime) >= 5)
                 {
-                    m_zombieManager.computeZPaths(elapsed_ms, *mapGrid);
+                    ZombieManager::GetInstance()->computeZPaths(elapsed_ms, *mapGrid);
                 }
                 std::unordered_set<vec2> new_zombie_positions = m_limbsManager.checkClusters();
                 if (!new_zombie_positions.empty()) {
                     for (const vec2 &pos : new_zombie_positions) {
                         //std::cout << "new zombie!!" << pos.x << ", " << pos.y << std::endl;
-                        m_zombieManager.spawn_zombie(pos, m_player1.get_position(), m_player2.get_position());
+                        ZombieManager::GetInstance()->spawn_zombie(pos, m_player1.get_position(), m_player2.get_position());
                     }
                 }
                 
@@ -585,7 +586,7 @@ void World::draw() {
 
         //these are drawn in ascending order w.r.t. their y position
         m_limbsManager.draw(projection_2D);
-        m_zombieManager.draw(projection_2D);
+        ZombieManager::GetInstance()->draw(projection_2D);
         
         for (auto& mud_collected: m_mud_collected)
             mud_collected.draw(projection_2D);
@@ -677,7 +678,7 @@ void World::entityDrawOrder(mat3 projection_2D) {
                             m_armour_collected_1.size() +
                             m_armour_collected_2.size() +
                             //m_mud_collected.size() +
-                            m_zombieManager.getZombieCount() +
+                            ZombieManager::GetInstance()->getZombieCount() +
                             m_limbsManager.getLimbCount()
                             + 3);
 
@@ -724,7 +725,7 @@ void World::entityDrawOrder(mat3 projection_2D) {
     drawOrderVector.push_back(&m_player1);
     drawOrderVector.push_back(&m_antidote);
 
-    m_zombieManager.transformZombies(drawOrderVector);
+    ZombieManager::GetInstance()->transformZombies(drawOrderVector);
     m_limbsManager.transformLimbs(drawOrderVector);
 
     sort(drawOrderVector.begin(), drawOrderVector.end(), [](Renderable *lhs, Renderable *rhs) {
@@ -811,7 +812,7 @@ void World::on_key(GLFWwindow *, int key, int, int action, int mod) {
                     }
                 }
                 
-                if(m_zombieManager.attack_zombies(m_player2.get_position(), m_player2.get_bounding_box(), 2, &m_toolboxManager))
+                if(ZombieManager::GetInstance()->attack_zombies(m_player2.get_position(), m_player2.get_bounding_box(), 2, &m_toolboxManager))
                 {
                     if((m_player1.lastkey == 2) || (m_player1.lastkey == 1)) {
                         is_punchingleft_p2 = true;
@@ -926,7 +927,7 @@ void World::on_key(GLFWwindow *, int key, int, int action, int mod) {
                         break;
                     }
                 }
-                if(m_zombieManager.attack_zombies(m_player1.get_position(), m_player1.get_bounding_box(), 1, &m_toolboxManager))
+                if(ZombieManager::GetInstance()->attack_zombies(m_player1.get_position(), m_player1.get_bounding_box(), 1, &m_toolboxManager))
                 {
                     if((m_player1.lastkey == 2) || (m_player1.lastkey == 1)) {
                         is_punchingleft_p1 = true;
@@ -1728,11 +1729,6 @@ void World::use_tool_1(int tool_number) {
             float angle = atan2(missileDir.x, missileDir.y);
             
             use_missile.set_rotation(angle);
-            //float x = (m_player2.get_position().x- use_missile.get_position().x);
-            //std::fabs(( m_player2.get_position().x - use_missile.get_position().x));
-            //float y = (m_player2.get_position().y - use_missile.get_position().y);
-            //std::fabs((m_player2.get_position().y - use_missile.get_position().y));
-            
             use_missile.set_speed(missileDir);
         }
         m_player1.set_mass(m_player1.get_mass() - m_missile_collected_1.begin()->get_mass());
@@ -2168,17 +2164,11 @@ void World::use_missile(float ms) {
     glfwGetWindowSize(m_window, &width, &height);
     
     for (itmissile = used_missiles.begin(); itmissile != used_missiles.end();) {
-        /*if ((itmissile->useMissileOnPlayer == 1 && m_player1.collides_with(*itmissile))||
-         (itmissile->useMissileOnPlayer == 2 && m_player2.collides_with(*itmissile)))*/
-        //fprintf(stderr,"# of missiles: %lu", used_missiles.size());
         if (itmissile->checkPoint())
             autoExplodeMissile(*itmissile, count);
         else {
             itmissile->move({itmissile->get_speed().x * (ms / 800),
                 itmissile->get_speed().y * (ms / 800)});
-            /*if (itmissile->checkboundary())
-             used_missiles.erase(itmissile);
-             else*/
             ++itmissile;
             ++count;
         }
