@@ -1058,21 +1058,21 @@ void World::on_mouse_move(GLFWwindow *window, int button, int action, int mod) {
             
         }
     }
-    /*else {
-     if (glfwGetMouseButton(window, GLFW_MOUSE_BUTTON_1) == GLFW_RELEASE) {
+    // else {
+    //  if (glfwGetMouseButton(window, GLFW_MOUSE_BUTTON_1) == GLFW_RELEASE) {
 
      // std::cout << "mapCollisionPoints.push_back({ " << xpos << "f * ViewHelper::getRatio(), " << ypos << "f * ViewHelper::getRatio()});" << std::endl;
      //std::cout << "xpos: " << xpos << std::endl;
      //std::cout << "ypos: " << ypos << std::endl;
      //std::cout << "player pos: " << m_player1.get_position().x << ", " << m_player1.get_position().y
      //<< std::endl;
-     if (isInsidePolygon(mapCollisionPoints, {(float)xpos * ViewHelper::getRatio(), (float)ypos * ViewHelper::getRatio()})) {
-     std::cout << "yes it's inside polygon" << std::endl;
-     } else {
-     std::cout << "nope, it's outside the polygon" << std::endl;
-     }
-     }
-     }*/
+    //  if (isInsidePolygon(mapCollisionPoints, {(float)xpos * ViewHelper::getRatio(), (float)ypos * ViewHelper::getRatio()})) {
+    //  std::cout << "yes it's inside polygon" << std::endl;
+    //  } else {
+    //  std::cout << "nope, it's outside the polygon" << std::endl;
+    //  }
+    //  }
+    //  }
 }
 
 bool World::spawn_freeze() {

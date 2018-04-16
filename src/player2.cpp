@@ -498,7 +498,7 @@ vec2 Player2::get_bounding_box() const {
 }
 
 bool Player2::isBoundingBoxForFeetInsidePolygon(float dx, float dy) {
-    float D = 5.f;
+    float D = 2.5f * ViewHelper::getRatio();
     float halfX = (sprite_width_p2 / D);
     float halfY = (sprite_height_p2 / D);
 
