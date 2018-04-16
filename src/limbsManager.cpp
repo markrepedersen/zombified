@@ -263,10 +263,10 @@ void LimbsManager::computePaths(float ms, const MapGrid &mapGrid) {
         vec2 target = limb.getCurrentTarget();
 
         if (limb.getLastTarget() != target || !limb.isInitialized()) {
-            auto srcX = (unsigned) (limb.get_position().x / 100);
-            auto srcY = (unsigned) (limb.get_position().y / 100);
-            auto dstX = (unsigned) (target.x / 100);
-            auto dstY = (unsigned) (target.y / 100);
+            auto srcX = (unsigned) limb.get_position().x;
+            auto srcY = (unsigned) limb.get_position().y;
+            auto dstX = (unsigned) target.x;
+            auto dstY = (unsigned) target.y;
             JPS::findPath(path, mapGrid, srcX, srcY, dstX, dstY, 1);
             limb.setCurrentPath(path);
             limb.setInitialized(true);
@@ -281,8 +281,8 @@ void LimbsManager::computePaths(float ms, const MapGrid &mapGrid) {
             }
             float step = 50 * (ms / 1000);
             vec2 dir;
-            dir.x = nextNode.x * 100 - limb.get_position().x;
-            dir.y = nextNode.y * 100 - limb.get_position().y;
+            dir.x = nextNode.x - limb.get_position().x;
+            dir.y = nextNode.y - limb.get_position().y;
 
             auto next_pos = scale(step, normalize(dir));
 

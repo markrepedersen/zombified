@@ -69,9 +69,8 @@ bool World::init(vec2 screen) {
     
     ViewHelper::getInstance(m_window);
     populateMapCollisionPoints();
-    mapGrid = new MapGrid((unsigned) screen.x / 100, (unsigned) screen.y / 100);
-    //m_limbsManager.init(screen, mapCollisionPoints);
-    
+    mapGrid = new MapGrid((unsigned) (screen.x * ViewHelper::getInstance(m_window)->getRatio()), (unsigned) (screen.y * ViewHelper::getInstance(m_window)->getRatio()));
+
     bool rendered = false;
     game_started = false;
     game_over = false;
