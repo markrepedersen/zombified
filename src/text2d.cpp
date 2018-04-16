@@ -6,19 +6,6 @@
 
 Texture Text2D::font_texture;
 
-// sprite information
-int sprite_width_font = 32;
-int sprite_height_font = 32;
-int num_rows_font = 16;
-int num_cols_font = 16;
-int frames_font [9] = {0, 1, 2, 3, 4, 5, 6, 7, 8};
-
-std::vector<vec2> vertices;
-std::vector<vec2> UVs;
-
-float x;
-float y;
-
 bool Text2D::init(vec2 screen, const char * text, vec2 position, int size)
 {
     x = position.x;
@@ -95,7 +82,7 @@ bool Text2D::init(vec2 screen, const char * text, vec2 position, int size)
     // Setting initial values
     m_scale.x = -2.f * ViewHelper::getRatio();
     m_scale.y = 2.f * ViewHelper::getRatio();
-    m_position = {(screen.x * ViewHelper::getRatio()) / 5, (screen.y * ViewHelper::getRatio()) / 2};
+    m_position = position;
     
     return true;
 }
@@ -147,6 +134,8 @@ void Text2D::update(const char * text, int size) {
     
     glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, mesh.ibo);
     glBufferSubData(GL_ELEMENT_ARRAY_BUFFER, 0, UVs_update.size() * sizeof(vec2), &UVs_update[0]);
+
+    std::cout << text << "\n";
 }
 
 void Text2D::draw(const mat3& projection)

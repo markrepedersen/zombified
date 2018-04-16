@@ -30,8 +30,9 @@ private:
 	//float m_rotation;
     vec2 m_scale; // 1.f in each dimension. 1.f is as big as the associated texture
 
-    // current frame in animation
-    int curr_frame_font = 0;
-    // frame to draw and previous frame in sprite
-    int sprite_frame_index_font = 0;
+    std::vector<vec2> vertices;
+    std::vector<vec2> UVs;
+
+    float x;
+    float y;
 };
