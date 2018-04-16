@@ -15,10 +15,10 @@ bool ZombieManager::isColliding(std::vector<vec2> shit) {
     vec2 penguin = shit.front();
     vec2 pos = shit.back();
     for (auto it = zombies.begin(); it != zombies.end(); ++it) {
-        if (is_aabb_colliding(pos.x,
-                              pos.y,
-                              (int) penguin.x,
-                              (int) penguin.y,
+        if (is_aabb_colliding(penguin.x,
+                              penguin.y,
+                              (int) pos.x,
+                              (int) pos.y,
                               it->m_position.x,
                               it->m_position.y,
                               (int)  it->get_bounding_box().x,
