@@ -98,7 +98,8 @@ bool World::init(vec2 screen) {
                 m_armourdetails.init("armour") &&
                 m_winner1.init("winner1")&&
                 m_winner2.init("winner2")&&
-                m_gameover.init("gameover"));
+                m_gameover.init("gameover")&&
+                m_highscore.init("highscore"));
 
     //-------------------------------------------------------------------------
     // Loading music and sounds
@@ -235,7 +236,7 @@ bool World::update(float elapsed_ms) {
     }
     
     else if (!game_started) {
-
+        
         if (!instruction_page  && !game_over_limbo){
             if (m_infobutton.is_clicked()) {
                 instruction_page = true;
@@ -245,6 +246,9 @@ bool World::update(float elapsed_ms) {
             
             else if (m_startbutton.is_clicked()) {
                 
+                std::cout << "getting highscores" << std::endl;
+                getHighScores(5);
+
                 gl_has_errors();
                 game_started = true;
                 m_startbutton.unclick();
@@ -272,12 +276,12 @@ bool World::update(float elapsed_ms) {
                                     m_player2.init(screen, mapCollisionPoints) &&
                                     
                                     m_zombieManager.init({screen.x, screen.y}, mapCollisionPoints) &&
-                                    m_limbsManager.init(screen, mapCollisionPoints));
+                                    m_limbsManager.init(screen, mapCollisionPoints2));
                 
                 srand((unsigned) time(0));
                 explosion = false;
                 m_min = 0;
-                m_sec = 60;
+                m_sec = 5;
                 timeDelay = 5;
                 start = time(0);
                 immobilize = 0;
@@ -412,7 +416,6 @@ bool World::update(float elapsed_ms) {
                 std::unordered_set<vec2> new_zombie_positions = m_limbsManager.checkClusters();
                 if (!new_zombie_positions.empty()) {
                     for (const vec2 &pos : new_zombie_positions) {
-                        //std::cout << "new zombie!!" << pos.x << ", " << pos.y << std::endl;
                         m_zombieManager.spawn_zombie(pos, m_player1.get_position(), m_player2.get_position());
                     }
                 }
@@ -640,17 +643,17 @@ void World::instructionScreenDraw(mat3 projection_2D) {
 void World::startScreenDraw(mat3 projection_2D) {
 
     if(game_over_limbo) {
-            m_gameover.draw(projection_2D);
+        m_gameover.draw(projection_2D);
+        if (winner == 1)
+            m_winner1.draw(projection_2D);
+        else if (winner == 2)
+            m_winner2.draw(projection_2D);
     } else {
-    m_startbutton.draw(projection_2D);
-    m_infobutton.draw(projection_2D);
-    key_info.draw(projection_2D);
-    story_info.draw(projection_2D);
-    
-    if (winner == 1)
-        m_winner1.draw(projection_2D);
-    else if (winner == 2)
-        m_winner2.draw(projection_2D);
+        m_highscore.draw(projection_2D);
+        m_startbutton.draw(projection_2D);
+        m_infobutton.draw(projection_2D);
+        key_info.draw(projection_2D);
+        story_info.draw(projection_2D);
     }
     glfwSwapBuffers(m_window);
 }
@@ -754,7 +757,6 @@ void World::on_key(GLFWwindow *, int key, int, int action, int mod) {
     }
     
     if(game_over_limbo) {
-        std::cout<< "in limbo" << std::endl;
         int a = 'A';
         int z = 'Z';
         int a2 = 'a';
@@ -766,11 +768,15 @@ void World::on_key(GLFWwindow *, int key, int, int action, int mod) {
             //if key is a letter key
             if((key > a && key < z) || (key > a2 && key < z2)){
                 temp =(char) key;
-                std::cout<< temp << std::endl;
-                currWinnerName.append(temp);
+                if(currWinnerName.size() < 5) {
+                    currWinnerName.append(temp);
+                } else {
+                    currWinnerName = currWinnerName.substr(0, currWinnerName.length() - 1);
+                    currWinnerName.append(temp);
+                }
                 std::cout << currWinnerName << std::endl;
             } else if (key == GLFW_KEY_ENTER) {
-                std::cout<< "saving now" << currWinnerName << std::endl;
+                std::cout<< "saving winner: " << currWinnerName << std::endl;
                 saveToFile(currWinnerName);
                 game_over_limbo = false;
                 currWinnerName = "";
@@ -1086,21 +1092,21 @@ void World::on_mouse_move(GLFWwindow *window, int button, int action, int mod) {
             
         }
     }
-    /*else {
+    else {
      if (glfwGetMouseButton(window, GLFW_MOUSE_BUTTON_1) == GLFW_RELEASE) {
 
-     // std::cout << "mapCollisionPoints.push_back({ " << xpos << "f * ViewHelper::getRatio(), " << ypos << "f * ViewHelper::getRatio()});" << std::endl;
+     std::cout << "mapCollisionPoints.push_back({ " << xpos << "f * ViewHelper::getRatio(), " << ypos << "f * ViewHelper::getRatio()});" << std::endl;
      //std::cout << "xpos: " << xpos << std::endl;
      //std::cout << "ypos: " << ypos << std::endl;
      //std::cout << "player pos: " << m_player1.get_position().x << ", " << m_player1.get_position().y
      //<< std::endl;
-     if (isInsidePolygon(mapCollisionPoints, {(float)xpos * ViewHelper::getRatio(), (float)ypos * ViewHelper::getRatio()})) {
-     std::cout << "yes it's inside polygon" << std::endl;
-     } else {
-     std::cout << "nope, it's outside the polygon" << std::endl;
+    //  if (isInsidePolygon(mapCollisionPoints, {(float)xpos * ViewHelper::getRatio(), (float)ypos * ViewHelper::getRatio()})) {
+    //  std::cout << "yes it's inside polygon" << std::endl;
+    //  } else {
+    //  std::cout << "nope, it's outside the polygon" << std::endl;
+    //  }
      }
      }
-     }*/
 }
 
 bool World::spawn_freeze() {
@@ -1186,7 +1192,8 @@ bool World::random_spawn(float elapsed_ms, vec2 screen) {
     m_next_arm_spawn -= elapsed_ms;
     m_next_leg_spawn -= elapsed_ms;
     m_next_spawn -= elapsed_ms;
-
+    vec2 randompoint = getRandomPointInMap(mapCollisionPoints2, screen);
+    
     //srand((unsigned) time(0));
     int randNum = (rand() % (10)) + 1;
 
@@ -1208,7 +1215,7 @@ bool World::random_spawn(float elapsed_ms, vec2 screen) {
             if (!spawn_freeze())
                 return false;
             Ice &new_freeze = m_freeze.back();
-            new_freeze.set_position(getRandomPointInMap(mapCollisionPoints, screen));
+            new_freeze.set_position(randompoint);
 
             m_next_spawn = (DELAY_MS / 2) + rand() % (1000);
         }
@@ -1218,11 +1225,8 @@ bool World::random_spawn(float elapsed_ms, vec2 screen) {
                 return false;
 
             Missile &new_missile = m_missile.back();
-            // new_missile.set_position({(float) ((rand() % (int) screen.x)),
-            //                           (float) ((rand() % (int) screen.y))});
 
-
-            new_missile.set_position(getRandomPointInMap(mapCollisionPoints, screen));
+            new_missile.set_position(randompoint);
 
             m_next_spawn = (DELAY_MS / 2) + rand() % (1000);
         }
@@ -1232,11 +1236,8 @@ bool World::random_spawn(float elapsed_ms, vec2 screen) {
                 return false;
 
             Armour &new_armour = m_armour.back();
-            // new_armour.set_position({(float)((rand() % (int)screen.x)),
-            //     (float)((rand() % (int)screen.y))});
 
-
-            new_armour.set_position(getRandomPointInMap(mapCollisionPoints, screen));
+            new_armour.set_position(randompoint);
 
             m_next_spawn = (DELAY_MS / 2) + rand() % (1000);
         }
@@ -1246,10 +1247,8 @@ bool World::random_spawn(float elapsed_ms, vec2 screen) {
                 return false;
 
             Bomb &new_bomb = m_bomb.back();
-            // new_bomb.set_position({(float)((rand() % (int)screen.x)),
-            //     (float)((rand() % (int)screen.y))});
 
-            new_bomb.set_position(getRandomPointInMap(mapCollisionPoints, screen));
+            new_bomb.set_position(randompoint);
 
             m_next_spawn = (DELAY_MS / 2) + rand() % (1000);
         }
@@ -1258,7 +1257,7 @@ bool World::random_spawn(float elapsed_ms, vec2 screen) {
             if (!spawn_water())
                 return false;
             Water &new_water = m_water.back();
-            new_water.set_position(getRandomPointInMap(mapCollisionPoints, screen));
+            new_water.set_position(randompoint);
 
             m_next_spawn = (DELAY_MS / 2) + rand() % (1000);
         }
@@ -2259,44 +2258,71 @@ void World::autoExplodeMissile(Missile missile, int position) {
 
 void World::populateMapCollisionPoints() {
 
-    mapCollisionPoints.push_back({ 47.3633f * ViewHelper::getRatio(), 371.539f * ViewHelper::getRatio()});
-    mapCollisionPoints.push_back({ 40.1484f * ViewHelper::getRatio(), 292.309f * ViewHelper::getRatio()});
-    mapCollisionPoints.push_back({ 96.5586f * ViewHelper::getRatio(), 252.488f * ViewHelper::getRatio()});
-    mapCollisionPoints.push_back({ 142.387f * ViewHelper::getRatio(), 203.789f * ViewHelper::getRatio()});
-    mapCollisionPoints.push_back({ 139.512f * ViewHelper::getRatio(), 181.172f * ViewHelper::getRatio()});
-    mapCollisionPoints.push_back({ 176.07f * ViewHelper::getRatio(), 152.285f * ViewHelper::getRatio()});
-    mapCollisionPoints.push_back({ 256.551f * ViewHelper::getRatio(), 152.48f * ViewHelper::getRatio()});
-    mapCollisionPoints.push_back({ 261.172f * ViewHelper::getRatio(), 137.648f * ViewHelper::getRatio()});
-    mapCollisionPoints.push_back({ 334.645f * ViewHelper::getRatio(), 102.211f * ViewHelper::getRatio()});
-    mapCollisionPoints.push_back({ 422.746f * ViewHelper::getRatio(), 60.7383f * ViewHelper::getRatio()});
-    mapCollisionPoints.push_back({ 601.715f * ViewHelper::getRatio(), 96.6602f * ViewHelper::getRatio()});
-    mapCollisionPoints.push_back({ 690.293f * ViewHelper::getRatio(), 96.0742f * ViewHelper::getRatio()});
-    mapCollisionPoints.push_back({ 774.266f * ViewHelper::getRatio(), 81.8281f * ViewHelper::getRatio()});
-    mapCollisionPoints.push_back({ 794.629f * ViewHelper::getRatio(), 87.1016f * ViewHelper::getRatio()});
-    mapCollisionPoints.push_back({ 814.023f * ViewHelper::getRatio(), 63.6406f * ViewHelper::getRatio()});
-    mapCollisionPoints.push_back({ 878.555f * ViewHelper::getRatio(), 83.2891f * ViewHelper::getRatio()});
-    mapCollisionPoints.push_back({ 958.617f * ViewHelper::getRatio(), 95.7852f * ViewHelper::getRatio()});
-    mapCollisionPoints.push_back({ 1007.97f * ViewHelper::getRatio(), 122.348f * ViewHelper::getRatio()});
-    mapCollisionPoints.push_back({ 1062.52f * ViewHelper::getRatio(), 101.793f * ViewHelper::getRatio()});
-    mapCollisionPoints.push_back({ 1182.62f * ViewHelper::getRatio(), 117.871f * ViewHelper::getRatio()});
-    mapCollisionPoints.push_back({ 1136.04f * ViewHelper::getRatio(), 138.668f * ViewHelper::getRatio()});
-    mapCollisionPoints.push_back({ 1134.95f * ViewHelper::getRatio(), 218.684f * ViewHelper::getRatio()});
-    mapCollisionPoints.push_back({ 1189.22f * ViewHelper::getRatio(), 247.887f * ViewHelper::getRatio()});
-    mapCollisionPoints.push_back({ 1179.44f * ViewHelper::getRatio(), 290.305f * ViewHelper::getRatio()});
-    mapCollisionPoints.push_back({ 1223.39f * ViewHelper::getRatio(), 286.859f * ViewHelper::getRatio()});
-    mapCollisionPoints.push_back({ 1252.36f * ViewHelper::getRatio(), 309.699f * ViewHelper::getRatio()});
-    mapCollisionPoints.push_back({ 1245.82f * ViewHelper::getRatio(), 379.09f * ViewHelper::getRatio()});
-    mapCollisionPoints.push_back({ 1172.02f * ViewHelper::getRatio(), 431.262f * ViewHelper::getRatio()});
-    mapCollisionPoints.push_back({ 1023.17f * ViewHelper::getRatio(), 477.641f * ViewHelper::getRatio()});
-    mapCollisionPoints.push_back({ 1043.39f * ViewHelper::getRatio(), 510.52f * ViewHelper::getRatio()});
-    mapCollisionPoints.push_back({ 834.137f * ViewHelper::getRatio(), 565.66f * ViewHelper::getRatio()});
-    mapCollisionPoints.push_back({ 722.289f * ViewHelper::getRatio(), 554.605f * ViewHelper::getRatio()});
-    mapCollisionPoints.push_back({ 598.59f * ViewHelper::getRatio(), 612.293f * ViewHelper::getRatio()});
-    mapCollisionPoints.push_back({ 307.602f * ViewHelper::getRatio(), 521.102f * ViewHelper::getRatio()});
-    mapCollisionPoints.push_back({ 288.453f * ViewHelper::getRatio(), 457.098f * ViewHelper::getRatio()});
-    mapCollisionPoints.push_back({ 256.238f * ViewHelper::getRatio(), 469.301f * ViewHelper::getRatio()});
-    mapCollisionPoints.push_back({ 86.1797f * ViewHelper::getRatio(), 393.562f * ViewHelper::getRatio()});
-    mapCollisionPoints.push_back({ 91.6211f * ViewHelper::getRatio(), 374.586f * ViewHelper::getRatio()});
+//populate more accurate mapCollisionPoints
+        mapCollisionPoints.push_back({ 47.3633f * ViewHelper::getRatio(), 371.539f * ViewHelper::getRatio()});
+        mapCollisionPoints.push_back({ 40.1484f * ViewHelper::getRatio(), 292.309f * ViewHelper::getRatio()});
+        mapCollisionPoints.push_back({ 96.5586f * ViewHelper::getRatio(), 252.488f * ViewHelper::getRatio()});
+        mapCollisionPoints.push_back({ 142.387f * ViewHelper::getRatio(), 203.789f * ViewHelper::getRatio()});
+        mapCollisionPoints.push_back({ 139.512f * ViewHelper::getRatio(), 181.172f * ViewHelper::getRatio()});
+        mapCollisionPoints.push_back({ 176.07f * ViewHelper::getRatio(), 152.285f * ViewHelper::getRatio()});
+        mapCollisionPoints.push_back({ 256.551f * ViewHelper::getRatio(), 152.48f * ViewHelper::getRatio()});
+        mapCollisionPoints.push_back({ 261.172f * ViewHelper::getRatio(), 137.648f * ViewHelper::getRatio()});
+        mapCollisionPoints.push_back({ 334.645f * ViewHelper::getRatio(), 102.211f * ViewHelper::getRatio()});
+        mapCollisionPoints.push_back({ 422.746f * ViewHelper::getRatio(), 60.7383f * ViewHelper::getRatio()});
+        mapCollisionPoints.push_back({ 601.715f * ViewHelper::getRatio(), 96.6602f * ViewHelper::getRatio()});
+        mapCollisionPoints.push_back({ 690.293f * ViewHelper::getRatio(), 96.0742f * ViewHelper::getRatio()});
+        mapCollisionPoints.push_back({ 774.266f * ViewHelper::getRatio(), 81.8281f * ViewHelper::getRatio()});
+        mapCollisionPoints.push_back({ 794.629f * ViewHelper::getRatio(), 87.1016f * ViewHelper::getRatio()});
+        mapCollisionPoints.push_back({ 814.023f * ViewHelper::getRatio(), 63.6406f * ViewHelper::getRatio()});
+        mapCollisionPoints.push_back({ 878.555f * ViewHelper::getRatio(), 83.2891f * ViewHelper::getRatio()});
+        mapCollisionPoints.push_back({ 958.617f * ViewHelper::getRatio(), 95.7852f * ViewHelper::getRatio()});
+        mapCollisionPoints.push_back({ 1007.97f * ViewHelper::getRatio(), 122.348f * ViewHelper::getRatio()});
+        mapCollisionPoints.push_back({ 1062.52f * ViewHelper::getRatio(), 101.793f * ViewHelper::getRatio()});
+        mapCollisionPoints.push_back({ 1182.62f * ViewHelper::getRatio(), 117.871f * ViewHelper::getRatio()});
+        mapCollisionPoints.push_back({ 1136.04f * ViewHelper::getRatio(), 138.668f * ViewHelper::getRatio()});
+        mapCollisionPoints.push_back({ 1134.95f * ViewHelper::getRatio(), 218.684f * ViewHelper::getRatio()});
+        mapCollisionPoints.push_back({ 1189.22f * ViewHelper::getRatio(), 247.887f * ViewHelper::getRatio()});
+        mapCollisionPoints.push_back({ 1179.44f * ViewHelper::getRatio(), 290.305f * ViewHelper::getRatio()});
+        mapCollisionPoints.push_back({ 1223.39f * ViewHelper::getRatio(), 286.859f * ViewHelper::getRatio()});
+        mapCollisionPoints.push_back({ 1252.36f * ViewHelper::getRatio(), 309.699f * ViewHelper::getRatio()});
+        mapCollisionPoints.push_back({ 1245.82f * ViewHelper::getRatio(), 379.09f * ViewHelper::getRatio()});
+        mapCollisionPoints.push_back({ 1172.02f * ViewHelper::getRatio(), 431.262f * ViewHelper::getRatio()});
+        mapCollisionPoints.push_back({ 1023.17f * ViewHelper::getRatio(), 477.641f * ViewHelper::getRatio()});
+        mapCollisionPoints.push_back({ 1043.39f * ViewHelper::getRatio(), 510.52f * ViewHelper::getRatio()});
+        mapCollisionPoints.push_back({ 834.137f * ViewHelper::getRatio(), 565.66f * ViewHelper::getRatio()});
+        mapCollisionPoints.push_back({ 722.289f * ViewHelper::getRatio(), 554.605f * ViewHelper::getRatio()});
+        mapCollisionPoints.push_back({ 598.59f * ViewHelper::getRatio(), 612.293f * ViewHelper::getRatio()});
+        mapCollisionPoints.push_back({ 307.602f * ViewHelper::getRatio(), 521.102f * ViewHelper::getRatio()});
+        mapCollisionPoints.push_back({ 288.453f * ViewHelper::getRatio(), 457.098f * ViewHelper::getRatio()});
+        mapCollisionPoints.push_back({ 256.238f * ViewHelper::getRatio(), 469.301f * ViewHelper::getRatio()});
+        mapCollisionPoints.push_back({ 86.1797f * ViewHelper::getRatio(), 393.562f * ViewHelper::getRatio()});
+        mapCollisionPoints.push_back({ 91.6211f * ViewHelper::getRatio(), 374.586f * ViewHelper::getRatio()});
+   
+    //populate less accurate mapCollisionPoints
+        mapCollisionPoints2.push_back({ 92.4023f * ViewHelper::getRatio(), 333.953f * ViewHelper::getRatio()});
+        mapCollisionPoints2.push_back({ 98.082f * ViewHelper::getRatio(), 281.676f * ViewHelper::getRatio()});
+        mapCollisionPoints2.push_back({ 221.965f * ViewHelper::getRatio(), 150.934f * ViewHelper::getRatio()});
+        mapCollisionPoints2.push_back({ 279.203f * ViewHelper::getRatio(), 139.633f * ViewHelper::getRatio()});
+        mapCollisionPoints2.push_back({ 427.48f * ViewHelper::getRatio(), 62.75f * ViewHelper::getRatio()});
+        mapCollisionPoints2.push_back({ 596.926f * ViewHelper::getRatio(), 110.805f * ViewHelper::getRatio()});
+        mapCollisionPoints2.push_back({ 820.492f * ViewHelper::getRatio(), 75.7578f * ViewHelper::getRatio()});
+        mapCollisionPoints2.push_back({ 999.898f * ViewHelper::getRatio(), 124.906f * ViewHelper::getRatio()});
+        mapCollisionPoints2.push_back({ 1058.87f * ViewHelper::getRatio(), 109.945f * ViewHelper::getRatio()});
+        mapCollisionPoints2.push_back({ 1124.63f * ViewHelper::getRatio(), 136.254f * ViewHelper::getRatio()});
+        mapCollisionPoints2.push_back({ 1124.46f * ViewHelper::getRatio(), 209.25f * ViewHelper::getRatio()});
+        mapCollisionPoints2.push_back({ 1162.25f * ViewHelper::getRatio(), 251.387f * ViewHelper::getRatio()});
+        mapCollisionPoints2.push_back({ 1159.2f * ViewHelper::getRatio(), 303.289f * ViewHelper::getRatio()});
+        mapCollisionPoints2.push_back({ 1203.61f * ViewHelper::getRatio(), 306.414f * ViewHelper::getRatio()});
+        mapCollisionPoints2.push_back({ 1199.27f * ViewHelper::getRatio(), 365.711f * ViewHelper::getRatio()});
+        mapCollisionPoints2.push_back({ 1010.06f * ViewHelper::getRatio(), 448.918f * ViewHelper::getRatio()});
+        mapCollisionPoints2.push_back({ 971.582f * ViewHelper::getRatio(), 501.141f * ViewHelper::getRatio()});
+        mapCollisionPoints2.push_back({ 833.074f * ViewHelper::getRatio(), 519.289f * ViewHelper::getRatio()});
+        mapCollisionPoints2.push_back({ 695.168f * ViewHelper::getRatio(), 514.566f * ViewHelper::getRatio()});
+        mapCollisionPoints2.push_back({ 587.352f * ViewHelper::getRatio(), 573.215f * ViewHelper::getRatio()});
+        mapCollisionPoints2.push_back({ 348.324f * ViewHelper::getRatio(), 475.59f * ViewHelper::getRatio()});
+        mapCollisionPoints2.push_back({ 292.547f * ViewHelper::getRatio(), 408.422f * ViewHelper::getRatio()});
+        mapCollisionPoints2.push_back({ 82.6211f * ViewHelper::getRatio(), 342.625f * ViewHelper::getRatio()});
+
 }
 
 int World::saveToFile(string winnername) {
@@ -2312,19 +2338,19 @@ int World::saveToFile(string winnername) {
     /*...then open it in the appropriate way*/
     if (file_exists==1)
     {
-        printf("file exists!\n");
+        // printf("file exists!\n");
         file=fopen(filename,"r+b");
     }
     else
     {
-        printf("file does not exist!\n");
+        // printf("file does not exist!\n");
         file=fopen(filename,"w+b");
     }
     
     if (file!=NULL)
     {
         string tempWinnerName = winnername;
-        printf ("file opened succesfully!\n");
+        // printf ("file opened succesfully!\n");
         string temp = "";
 
         std::vector<std::string> scores = parseFile(file);
@@ -2385,9 +2411,6 @@ std::vector<std::string> World::parseFile(FILE *file) {
     lSize = ftell (file);
     rewind (file);
 
-
-    std::cout << lSize << std::endl;
-
     // allocate memory to contain the whole file:
     buffer = (char*) malloc ((sizeof(char))*lSize);
     if (buffer == NULL) {fputs ("Memory error",stderr); exit (2);}
@@ -2405,15 +2428,9 @@ std::vector<std::string> World::parseFile(FILE *file) {
 
     while ((pos = bufferString.find(delimiter)) != std::string::npos) {
         token = bufferString.substr(0, pos);
-        std::cout << token <<std::endl;
         bufferString.erase(0, pos + delimiter.length());
         vectorResult.push_back(token);
     }
-
-    for(string vr : vectorResult) {
-        std::cout << "vectorResult" << vr << std::endl;
-    }
-
 
 
     free(buffer);
@@ -2423,28 +2440,21 @@ std::vector<std::string> World::parseFile(FILE *file) {
 
 std::map<std::string, int> World::getHighScores(int numOfHighScores) {
     FILE *file;
-    int file_exists;
-    const char * filename="score.txt";
+    const char * filename="../src/score.txt";
     std::map<std::string, int> hsMap;
 
-    /*first check if the file exists...*/
     file=fopen(filename,"r");
-    if (file==NULL) file_exists=0;
-    else {file_exists=1; fclose(file);}
 
-    /*...then open it in the appropriate way*/
-    if (file_exists==1)
+    if (file==NULL)
     {
-        printf("file exists!\n");
-        file=fopen(filename,"r+b");
-    }
-    else
-    {
+        fclose(file);
         return hsMap;
     }
-
-    if (file!=NULL)
-    {
+    else
+    {  
+        fclose(file);
+        file=fopen(filename,"r+b");
+    
         std::vector<std::string> scores = parseFile(file);
 
         for(auto &score : scores) {
@@ -2452,9 +2462,10 @@ std::map<std::string, int> World::getHighScores(int numOfHighScores) {
             if(position != std::string::npos) {
                 string thisName = score.substr(0, position);
                 string thisScore = score.substr(position+1);
+                
                 int thisScoreInt = std::stoi(thisScore);
 
-                if(hsMap.size() <= numOfHighScores) {
+                if(hsMap.size() < numOfHighScores) {
                     hsMap[thisName] = thisScoreInt;
                 } else {
                     map<std::string, int>::iterator it;

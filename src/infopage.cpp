@@ -17,6 +17,7 @@ Texture Info::key_texture;
 Texture Info::story_texture;
 
 Texture Info::gameover_texture;
+Texture Info::highscore_texture;
 Texture Info::pause_texture;
 
 bool Info::init(std::string infotype)
@@ -141,7 +142,7 @@ bool Info::init(std::string infotype)
             hr = winner1_texture.height * 0.5f;
             m_scale.x = -0.15f * ViewHelper::getRatio();
             m_scale.y = 0.15f * ViewHelper::getRatio();
-            m_position = { 250.f* ViewHelper::getRatio(), 150.f* ViewHelper::getRatio() };
+            m_position = { 630.f* ViewHelper::getRatio(), 150.f* ViewHelper::getRatio() };
         }
     }
     else if(type == "winner2") {
@@ -155,7 +156,7 @@ bool Info::init(std::string infotype)
             hr = winner2_texture.height * 0.5f;
             m_scale.x = -0.15f * ViewHelper::getRatio();
             m_scale.y = 0.15f * ViewHelper::getRatio();
-            m_position = { 250.f* ViewHelper::getRatio(), 150.f* ViewHelper::getRatio() };
+            m_position = { 630.f* ViewHelper::getRatio(), 150.f* ViewHelper::getRatio() };
         }
     }
     else if(type == "key") {
@@ -212,7 +213,21 @@ bool Info::init(std::string infotype)
             hr = gameover_texture.height * 0.5f;
             m_scale.x = -0.25f * ViewHelper::getRatio();
             m_scale.y = 0.25f * ViewHelper::getRatio();
-            m_position = { 630.f* ViewHelper::getRatio(), 300.f* ViewHelper::getRatio() };
+            m_position = { 630.f* ViewHelper::getRatio(), 400.f* ViewHelper::getRatio() };
+        }
+    } else if(type == "highscore") {
+        if (!highscore_texture.is_valid()) {
+            // std::cout<<"render game over start"<< std::endl;
+            if (!highscore_texture.load_from_file(startworld_textures_path("highscore.png")))
+            {
+                fprintf(stderr, "Failed to load highscore texture!");
+                return false;
+            }
+            wr = highscore_texture.width * 0.5f;
+            hr = highscore_texture.height * 0.5f;
+            m_scale.x = -0.25f * ViewHelper::getRatio();
+            m_scale.y = 0.25f * ViewHelper::getRatio();
+            m_position = { 200.f* ViewHelper::getRatio(), 200.f* ViewHelper::getRatio() };
         }
     }
 
@@ -319,6 +334,8 @@ void Info::draw(const mat3& projection)
         glBindTexture(GL_TEXTURE_2D, story_texture.id);
     else if(type == "gameover")
         glBindTexture(GL_TEXTURE_2D, gameover_texture.id);
+    else if(type == "highscore")
+        glBindTexture(GL_TEXTURE_2D, highscore_texture.id);
     
     // Setting uniform values to the currently bound program
     glUniformMatrix3fv(transform_uloc, 1, GL_FALSE, (float*)&transform);

@@ -191,6 +191,7 @@ private:
 	MapGrid *mapGrid;
 
     std::vector<vec2> mapCollisionPoints;
+    std::vector<vec2> mapCollisionPoints2;
 
 	float m_next_arm_spawn;
 	float m_next_leg_spawn;
@@ -214,6 +215,7 @@ private:
     Info m_missiledetails;
     Info m_armourdetails;
     Info m_gameover;
+    Info m_highscore;
     
     std::string infoscreen;
     
