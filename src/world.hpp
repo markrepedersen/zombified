@@ -41,6 +41,8 @@
 #include <SDL/SDL.h>
 #include <SDL/SDL_mixer.h>
 
+#include "text2d.hpp"
+
 // Container for all our entities and game logic. Individual rendering / update is
 // deferred to the relative update() methods
 class World
@@ -233,4 +235,6 @@ private:
 
     Mix_Music* m_background_music;
 	Mix_Chunk* m_explosion_sound;
+
+    Text2D m_text;
 };
