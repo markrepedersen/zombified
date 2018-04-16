@@ -44,6 +44,7 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
+					<Add directory="/System/Library/Frameworks/OpenGL.framework"/>
 					<Add directory="/Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/ext/gl3w"/>
 					<Add directory="/Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/ext/glfw"/>
 					<Add directory="/Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/ext/sdl"/>
@@ -71,6 +72,7 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
+					<Add directory="/System/Library/Frameworks/OpenGL.framework"/>
 					<Add directory="/Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/ext/gl3w"/>
 					<Add directory="/Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/ext/glfw"/>
 					<Add directory="/Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/ext/sdl"/>

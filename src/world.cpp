@@ -97,7 +97,8 @@ bool World::init(vec2 screen) {
                 m_missiledetails.init("missile") &&
                 m_armourdetails.init("armour") &&
                 m_winner1.init("winner1")&&
-                m_winner2.init("winner2"));
+                m_winner2.init("winner2")&&
+                m_gameover.init("gameover"));
 
     
     return rendered;
@@ -197,15 +198,15 @@ bool World::update(float elapsed_ms) {
     }
     
     else if (!game_started) {
-        
-        if (!instruction_page){
+
+        if (!instruction_page  && !game_over_limbo){
             if (m_infobutton.is_clicked()) {
                 instruction_page = true;
                 m_infobutton.unclick();
                 return true;
             }
             
-            else if (m_startbutton.is_clicked() && !game_over_limbo) {
+            else if (m_startbutton.is_clicked()) {
                 
                 gl_has_errors();
                 game_started = true;
@@ -238,8 +239,8 @@ bool World::update(float elapsed_ms) {
                 
                 srand((unsigned) time(0));
                 explosion = false;
-                m_min = 1;
-                m_sec = 0;
+                m_min = 0;
+                m_sec = 10;
                 timeDelay = 5;
                 start = time(0);
                 immobilize = 0;
@@ -447,16 +448,17 @@ void World::draw() {
                        {tx,  ty,  1.f}};
 
     if (!game_started) {
+
         
         if (instruction_page){
             instructionScreenDraw(projection_2D);
             return;
-        }
-        
-        else if (!instruction_page){
+        } else if (!instruction_page){
             startScreenDraw(projection_2D);
             return;
         }
+
+        
 
     }
     else {
@@ -513,6 +515,10 @@ void World::instructionScreenDraw(mat3 projection_2D) {
 }
 
 void World::startScreenDraw(mat3 projection_2D) {
+    
+    if(game_over_limbo) {
+            m_gameover.draw(projection_2D);
+    } else {
     m_startbutton.draw(projection_2D);
     m_infobutton.draw(projection_2D);
     key_info.draw(projection_2D);
@@ -522,7 +528,7 @@ void World::startScreenDraw(mat3 projection_2D) {
         m_winner1.draw(projection_2D);
     else if (winner == 2)
         m_winner2.draw(projection_2D);
-    
+    }
     glfwSwapBuffers(m_window);
 }
 
@@ -875,7 +881,7 @@ void World::on_mouse_move(GLFWwindow *window, int button, int action, int mod) {
     //std::cout << "xpos: " << xpos << std::endl;
     //std::cout << "ypos: " << ypos << std::endl;
     
-    if (!game_started) {
+    if (!game_started && !game_over_limbo) {
         if (action == GLFW_PRESS && button == GLFW_MOUSE_BUTTON_1) {
             //std::cout << "xpos: " << xpos << std::endl;
             //std::cout << "ypos: " << ypos << std::endl;
@@ -919,7 +925,7 @@ void World::on_mouse_move(GLFWwindow *window, int button, int action, int mod) {
         if (glfwGetMouseButton(window, GLFW_MOUSE_BUTTON_1) == GLFW_RELEASE) {
             //std::cout << "xpos: " << xpos << std::endl;
             //std::cout << "ypos: " << ypos << std::endl;
-            if (!instruction_page && !game_over_limbo){
+            if (!instruction_page){
                 //click start button
                 //std::cout << "xpos: " << xpos << std::endl;
                 //std::cout << "ypos: " << ypos << std::endl;
@@ -2108,7 +2114,7 @@ void World::populateMapCollisionPoints() {
 int World::saveToFile(string winnername) {
     FILE *file;
     int file_exists;
-    const char * filename="score.txt";
+    const char * filename="../src/score.txt";
     
     /*first check if the file exists...*/
     file=fopen(filename,"r");

@@ -12,6 +12,7 @@ set(CMAKE_C_COMPILER_ID "AppleClang")
 
 # The include file search paths:
 set(CMAKE_C_TARGET_INCLUDE_PATH
+  "/System/Library/Frameworks/OpenGL.framework"
   "../ext/gl3w"
   "../ext/glfw"
   "../ext/sdl"
@@ -124,6 +125,7 @@ set(CMAKE_CXX_COMPILER_ID "AppleClang")
 
 # The include file search paths:
 set(CMAKE_CXX_TARGET_INCLUDE_PATH
+  "/System/Library/Frameworks/OpenGL.framework"
   "../ext/gl3w"
   "../ext/glfw"
   "../ext/sdl"

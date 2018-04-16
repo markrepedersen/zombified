@@ -16,6 +16,7 @@ Texture Info::winner2_texture;
 Texture Info::key_texture;
 Texture Info::story_texture;
 
+Texture Info::gameover_texture;
 Texture Info::pause_texture;
 
 bool Info::init(std::string infotype)
@@ -199,6 +200,20 @@ bool Info::init(std::string infotype)
             m_scale.y = 0.21f * ViewHelper::getRatio();
             m_position = { 875.f* ViewHelper::getRatio(), 310.f* ViewHelper::getRatio() };
         }
+    } else if(type == "gameover") {
+        if (!gameover_texture.is_valid()) {
+            // std::cout<<"render game over start"<< std::endl;
+            if (!gameover_texture.load_from_file(startworld_textures_path("gameover1.png")))
+            {
+                fprintf(stderr, "Failed to load gameover texture!");
+                return false;
+            }
+            wr = gameover_texture.width * 0.5f;
+            hr = gameover_texture.height * 0.5f;
+            m_scale.x = -0.25f * ViewHelper::getRatio();
+            m_scale.y = 0.25f * ViewHelper::getRatio();
+            m_position = { 630.f* ViewHelper::getRatio(), 300.f* ViewHelper::getRatio() };
+        }
     }
 
     
@@ -302,6 +317,8 @@ void Info::draw(const mat3& projection)
         glBindTexture(GL_TEXTURE_2D, pause_texture.id);
     else if(type == "story")
         glBindTexture(GL_TEXTURE_2D, story_texture.id);
+    else if(type == "gameover")
+        glBindTexture(GL_TEXTURE_2D, gameover_texture.id);
     
     // Setting uniform values to the currently bound program
     glUniformMatrix3fv(transform_uloc, 1, GL_FALSE, (float*)&transform);

@@ -212,6 +212,7 @@ private:
     Info m_bombdetails;
     Info m_missiledetails;
     Info m_armourdetails;
+    Info m_gameover;
     
     std::string infoscreen;
     
