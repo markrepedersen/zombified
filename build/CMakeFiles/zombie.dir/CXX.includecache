@@ -1847,8 +1847,6 @@ infopage.hpp
 /Users/ppnia/Documents/Winter20172018/CPSC436D/zombified/src/infopage.hpp
 vector
 -
-curses.h
--
 time.h
 -
 random
