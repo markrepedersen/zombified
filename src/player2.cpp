@@ -464,21 +464,15 @@ vec2 Player2::get_bounding_box() const {
 }
 
 bool Player2::isBoundingBoxForFeetInsidePolygon(float dx, float dy) {
-    //these numbers make no sense.. it should be divided by 2......
-    int D = 1000;
-    int halfX = sprite_width_p2 / D;
-    int halfY = sprite_height_p2 / D;
+    float D = 5.f;
+    float halfX = (sprite_width_p2 / D);
+    float halfY = (sprite_height_p2 / D);
 
-    vec2 bottomPosition = {m_position.x + dx, m_position.y - halfY + dy};
-    vec2 topLeft = {bottomPosition.x - halfX, bottomPosition.y + halfY};
-    vec2 topRight = {bottomPosition.x + halfX, bottomPosition.y + halfY};
-    vec2 bottomLeft = {bottomPosition.x - halfX, bottomPosition.y - halfY};
-    vec2 bottomRight = {bottomPosition.x + halfX, bottomPosition.y - halfY};
+    vec2 point1 = {halfX + m_position.x + dx, m_position.y + halfY + dy};
+    vec2 point2 = {m_position.x + dx - halfX, m_position.y + dy + halfY};
 
-    return isInsidePolygon(m_mapCollisionPoints, topLeft) &&
-           isInsidePolygon(m_mapCollisionPoints, topRight) &&
-           isInsidePolygon(m_mapCollisionPoints, bottomLeft) &&
-           isInsidePolygon(m_mapCollisionPoints, bottomRight);
+    return isInsidePolygon(m_mapCollisionPoints, point1) &&
+            isInsidePolygon(m_mapCollisionPoints, point2);
 }
 
 void Player2::destroy() {

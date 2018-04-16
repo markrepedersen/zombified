@@ -522,30 +522,12 @@ vec2 Player1::get_bounding_box() const{
 }
 
 bool Player1::isBoundingBoxForFeetInsidePolygon(float dx, float dy) {
-    //these numbers make no sense.. it should be divided by 2......
-    // int D = 1000;
     float D = 5.f;
     float halfX = (sprite_width_p1 / D);
     float halfY = (sprite_height_p1 / D);
-    // std::cout << halfX <<" whot" << halfY << std::endl;
 
-    // std::cout << "m_position.x" << m_position.x << std::endl;
-    // std::cout << "dx" << dx << std::endl;
-
-    // vec2 bottomPosition = {m_position.x + dx, m_position.y - halfY + dy};
-    // vec2 topLeft = {bottomPosition.x - halfX, bottomPosition.y + halfY};
-    // vec2 topRight = {bottomPosition.x + halfX, bottomPosition.y + halfY};
-    // vec2 bottomLeft = {bottomPosition.x - halfX, bottomPosition.y - halfY};
-    // vec2 bottomRight = {bottomPosition.x + halfX, bottomPosition.y - halfY};
     vec2 point1 = {halfX + dx, halfY + dy};
     vec2 point2 = {dx - halfX, dy + halfY};
-    std::cout << point1.x << ":point 1:" << point1.y << std::endl;
-    std::cout << point2.x << ":point 2:" << point2.y << std::endl;
-
-    // return isInsidePolygon(m_mapCollisionPoints, topLeft) &&
-    //        isInsidePolygon(m_mapCollisionPoints, topRight) &&
-    //        isInsidePolygon(m_mapCollisionPoints, bottomLeft) &&
-    //        isInsidePolygon(m_mapCollisionPoints, bottomRight);
 
     return isInsidePolygon(m_mapCollisionPoints, point1) &&
             isInsidePolygon(m_mapCollisionPoints, point2);
