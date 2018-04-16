@@ -19,6 +19,7 @@ class Info : public Renderable
     static Texture key_texture;
     static Texture story_texture;
     
+    static Texture gameover_texture;
     static Texture pause_texture;
     
 public:

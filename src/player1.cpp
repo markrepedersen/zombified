@@ -346,7 +346,7 @@ void Player1::update(float ms) {
     //     // stop_animate();
     // }
 
-    if (isInsidePolygon(m_mapCollisionPoints, {m_position.x + xStep, m_position.y + yStep}))
+    if (isBoundingBoxForFeetInsidePolygon(m_position.x + xStep, m_position.y + yStep))
     {
         move({xStep, yStep});
         animate();
@@ -553,6 +553,18 @@ bool Player1::collides_with(const Punchleft& punchleft) {
 
 vec2 Player1::get_bounding_box() const{
     return {std::fabs(m_scale.x) * sprite_width_p1, std::fabs(m_scale.y) * sprite_height_p1};
+}
+
+bool Player1::isBoundingBoxForFeetInsidePolygon(float dx, float dy) {
+    float D = 5.f;
+    float halfX = (sprite_width_p1 / D);
+    float halfY = (sprite_height_p1 / D);
+
+    vec2 point1 = {halfX + dx, halfY + dy};
+    vec2 point2 = {dx - halfX, dy + halfY};
+
+    return isInsidePolygon(m_mapCollisionPoints, point1) &&
+            isInsidePolygon(m_mapCollisionPoints, point2);
 }
 
 void Player1::destroy() {

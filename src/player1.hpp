@@ -80,6 +80,7 @@ public:
     bool collides_with(const Punchleft& punchleft);
 
     vec2 get_bounding_box() const;
+    bool isBoundingBoxForFeetInsidePolygon(float dx, float dy);
     void destroy();
 
     //float negy;

@@ -104,10 +104,10 @@ void ZombieManager::computeZPaths(float ms, const MapGrid &mapGrid) {
             vec2 target = zombie.getCurrentTarget();
             
             if (zombie.getLastTarget() != target || !zombie.isInitialized()) {
-                auto srcX = (unsigned) (zombie.get_position().x / 100);
-                auto srcY = (unsigned) (zombie.get_position().y / 100);
-                auto dstX = (unsigned) (target.x / 100);
-                auto dstY = (unsigned) (target.y / 100);
+                auto srcX = (unsigned) (zombie.get_position().x);
+                auto srcY = (unsigned) (zombie.get_position().y);
+                auto dstX = (unsigned) (target.x);
+                auto dstY = (unsigned) (target.y);
                 JPS::findPath(path, mapGrid, srcX, srcY, dstX, dstY, 1);
                 zombie.setCurrentPath(path);
                 zombie.setInitialized(true);
@@ -122,8 +122,8 @@ void ZombieManager::computeZPaths(float ms, const MapGrid &mapGrid) {
                 }
                 float step = speed * (ms / 1000);
                 vec2 dir;
-                dir.x = nextNode.x * 100 - zombie.get_position().x;
-                dir.y = nextNode.y * 100 - zombie.get_position().y;
+                dir.x = nextNode.x - zombie.get_position().x;
+                dir.y = nextNode.y - zombie.get_position().y;
                 
                 auto next_pos = scale(step, normalize(dir));
                 
