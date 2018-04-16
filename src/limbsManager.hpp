@@ -63,12 +63,9 @@ public:
 
     bool isColliding(std::vector<vec2>);
 
-
     int getCollectedLegs(int player);
     void decreaseCollectedLegs(int player);
     
-    //void shiftCollectedLegs(int player, ToolboxManager *m_toolboxManager, float index, int legcount);
-
     void computePaths(float ms, const MapGrid &mapGrid);
 
     void destroy();

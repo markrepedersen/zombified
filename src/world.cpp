@@ -1,6 +1,5 @@
 #include "world.hpp"
 #include <sstream>
-#include <unordered_set>
 
 using namespace std;
 
@@ -115,8 +114,8 @@ bool World::init(vec2 screen) {
         return false;
     }
 
-    m_background_music = Mix_LoadMUS(audio_path("backgroud.wav"));
-    // m_explosion_sound = Mix_LoadWAV(audio_path("explosion_medium.wav"));
+    m_background_music = Mix_LoadMUS(audio_path("badass_background.wav"));
+//     m_explosion_sound = Mix_LoadWAV(audio_path("explosion_medium.wav"));
 
     if (m_background_music == nullptr)
     {
@@ -200,17 +199,6 @@ void World::destroy() {
     used_missiles.clear();
     m_mud_collected.clear();
     
-    //mapCollisionPoints.clear();
-
-    // i think this is causing segfaults??? *******
-
-    /*if (m_background_music != nullptr)
-        Mix_FreeMusic(m_background_music);
-    if (m_explosion_sound != nullptr)
-        Mix_FreeChunk(m_explosion_sound);*/
-
-    //Mix_CloseAudio();
-
     game_over = true;
 }
 
@@ -220,10 +208,6 @@ bool World::update(float elapsed_ms) {
     vec2 screen = {(float) w, (float) h};
     
     if (game_over) {
-        /*if (winner == 1)
-         m_winner1.init("winner1");
-         else if (winner == 2)
-         m_winner2.init("winner2");*/
         game_over = false;
         if(winner != 0) {
             game_over_limbo = true;
@@ -249,15 +233,6 @@ bool World::update(float elapsed_ms) {
                 m_startbutton.unclick();
 
                 pause = false;
-                
-                /*if (winner == 1)
-                 m_winner1.destroy();
-                 else if (winner == 2)
-                 m_winner2.destroy();
-                 winner = 0;*/
-                
-                //populateMapCollisionPoints();
-                
                 bool initialized = (gloveRight_p1.init(screen)&&
                                     gloveLeft_p1.init(screen)&&
                                     
