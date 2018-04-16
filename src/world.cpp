@@ -244,7 +244,9 @@ bool World::update(float elapsed_ms) {
                 m_startbutton.unclick();
 
                 pause = false;
-                bool initialized = (gloveRight_p1.init(screen)&&
+                
+                bool initialized = (m_text.init({screen.x, screen.y}, "1:00", {(screen.y * ViewHelper::getRatio()) / 4,(screen.y * ViewHelper::getRatio()) / 36}, 30) &&
+                                    gloveRight_p1.init(screen)&&
                                     gloveLeft_p1.init(screen)&&
                                     
                                     gloveRight_p2.init(screen)&&
@@ -464,9 +466,23 @@ void World::timer_update() {
             m_sec = 59;
             m_min -= 1;
             timeDelay++;
+            std::string timeString;
+            if (m_sec < 10) {
+                timeString = std::to_string(m_min) + ":" + "0" + std::to_string(m_sec);
+            } else {
+                timeString = std::to_string(m_min) + ":" + std::to_string(m_sec);
+            }
+            m_text.update(timeString.c_str(), 30);
         } else {
             m_sec -= 1;
             timeDelay++;
+            std::string timeString;
+            if (m_sec < 10) {
+                timeString = std::to_string(m_min) + ":" + "0" + std::to_string(m_sec);
+            } else {
+                timeString = std::to_string(m_min) + ":" + std::to_string(m_sec);
+            }
+            m_text.update(timeString.c_str(), 30);
         }
     }
     else
@@ -485,13 +501,13 @@ void World::draw() {
     if (m_sec < 10)
         title_ss << "player1 numberoflegs: " <<LimbsManager::GetInstance()->getCollectedLegs(1) << "          "
         << "player1 damage count: " << m_player1.numberofHits << "          "
-        << "Time remaining " << m_min << ":" << "0" << m_sec << "          "
+        // << "Time remaining " << m_min << ":" << "0" << m_sec << "          "
         << "player2 damage count: " << m_player2.numberofHits << "          "
         << "player2 numberoflegs: " << LimbsManager::GetInstance()->getCollectedLegs(2);
     else
         title_ss << "player1 numberoflegs: " <<LimbsManager::GetInstance()->getCollectedLegs(1) << "          "
         << "player1 damage count: " << m_player1.numberofHits << "          "
-        << "Time remaining " << m_min << ":" << m_sec << "          "
+        // << "Time remaining " << m_min << ":" << m_sec << "          "
         << "player2 damage count: " << m_player2.numberofHits << "          "
         << "player2 numberoflegs: " << LimbsManager::GetInstance()->getCollectedLegs(2);
     glfwSetWindowTitle(m_window, title_ss.str().c_str());
@@ -559,6 +575,8 @@ void World::draw() {
             gloveLeft_p2.draw(projection_2D);
         if (is_punchingright_p2)
             gloveRight_p2.draw(projection_2D);
+
+        m_text.draw(projection_2D);
         
         if (m_player1.numberofHits == 0)
             fourp1.draw(projection_2D);

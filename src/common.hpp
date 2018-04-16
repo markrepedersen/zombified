@@ -27,6 +27,7 @@
 #define zombie_textures_path(name) data_path "/textures/ai/" name
 #define tools_textures_path(name) data_path "/textures/tools/" name
 #define effects_textures_path(name) data_path "/textures/effects/" name
+#define font_textures_path(name) data_path "/textures/font/" name
 #define startworld_textures_path(name) data_path "/textures/start screen/" name
 #define background_textures_path(name) data_path "/textures/background/" name
 #define audio_path(name) data_path "/audio/" name
