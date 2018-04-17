@@ -89,7 +89,7 @@ bool Text2D::init(vec2 screen, const char * text, vec2 position, int size)
 
 void Text2D::update(const char * text, int size) {
 
-    //std::cout << text << "\n";
+    std::cout << text << "\n";
 
     std::vector<vec2> vertices_update;
     std::vector<vec2> UVs_update;
@@ -140,7 +140,6 @@ void Text2D::update(const char * text, int size) {
 
 void Text2D::draw(const mat3& projection)
 {
-    // std::cout << "draw text" << "\n";
     // Transformation code, see Rendering and Transformation in the template specification for more info
     // Incrementally updates transformation matrix, thus ORDER IS IMPORTANT
     transform_begin();

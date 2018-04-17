@@ -119,6 +119,8 @@ private:
     bool create_mushroom_explosion(vec2 missile_position);
     bool create_blood(vec2 player_position);
 
+    void populate_highscores();
+
 private:
     void entityDrawOrder(mat3 projection_2D);
     
@@ -254,4 +256,10 @@ private:
     Text2D m_leg_counter_p1;
     Text2D m_leg_counter_p2;
     Text2D m_hs_name;
+
+    Text2D m_hs1;
+    Text2D m_hs2;
+    Text2D m_hs3;
+    Text2D m_hs4;
+    Text2D m_hs5;
 };

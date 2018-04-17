@@ -87,6 +87,14 @@ bool World::init(vec2 screen) {
     m_leg_counter_p1.init({screen.x, screen.y}, "P1 Legs: 0", {20.f, 160.f}, 15);
     m_leg_counter_p2.init({screen.x, screen.y}, "P2 Legs: 0", {630.f, 160.f}, 15);
     m_hs_name.init({screen.x, screen.y}, "     ", {310.f, 300.f}, 30);
+
+    m_hs1.init({screen.x, screen.y}, "     ", {100.f, 550.f}, 15);
+    m_hs2.init({screen.x, screen.y}, "     ", {100.f, 500.f}, 15);
+    m_hs3.init({screen.x, screen.y}, "     ", {100.f, 450.f}, 15);
+    m_hs4.init({screen.x, screen.y}, "     ", {100.f, 400.f}, 15);
+    m_hs5.init({screen.x, screen.y}, "     ", {100.f, 350.f}, 15);
+
+    populate_highscores();
     
     rendered = (m_infobutton.init("info")&&
                 m_startbutton.init("start") &&
@@ -514,18 +522,7 @@ void World::draw() {
     glfwGetFramebufferSize(m_window, &w, &h);
 
     std::stringstream title_ss;
-    if (m_sec < 10)
-        title_ss << "player1 numberoflegs: " <<LimbsManager::GetInstance()->getCollectedLegs(1) << "          "
-        << "player1 damage count: " << m_player1.numberofHits << "          "
-        // << "Time remaining " << m_min << ":" << "0" << m_sec << "          "
-        << "player2 damage count: " << m_player2.numberofHits << "          "
-        << "player2 numberoflegs: " << LimbsManager::GetInstance()->getCollectedLegs(2);
-    else
-        title_ss << "player1 numberoflegs: " <<LimbsManager::GetInstance()->getCollectedLegs(1) << "          "
-        << "player1 damage count: " << m_player1.numberofHits << "          "
-        // << "Time remaining " << m_min << ":" << m_sec << "          "
-        << "player2 damage count: " << m_player2.numberofHits << "          "
-        << "player2 numberoflegs: " << LimbsManager::GetInstance()->getCollectedLegs(2);
+    title_ss << "Attack on Zombies";
     glfwSetWindowTitle(m_window, title_ss.str().c_str());
 
     glViewport(0, 0, w, h);
@@ -657,6 +654,12 @@ void World::startScreenDraw(mat3 projection_2D) {
         m_infobutton.draw(projection_2D);
         key_info.draw(projection_2D);
         story_info.draw(projection_2D);
+
+        m_hs1.draw(projection_2D);
+        m_hs2.draw(projection_2D);
+        m_hs3.draw(projection_2D);
+        m_hs4.draw(projection_2D);
+        m_hs5.draw(projection_2D);
     }
     glfwSwapBuffers(m_window);
 }
@@ -2503,6 +2506,22 @@ std::vector<std::string> World::parseFile(FILE *file) {
     return vectorResult;
 }
 
+void World::populate_highscores() {
+    std::map<std::string, int> highScores = getHighScores(5);
+    std::map<std::string, int>::iterator it;
+    Text2D text_draws [5] = {m_hs1, m_hs2, m_hs3, m_hs4, m_hs5};
+        
+    int i = 0;
+
+    for ( it = highScores.begin(); it != highScores.end(); it++ )
+    {
+        std::string hsText = it->first + " " + std::to_string(it->second);
+        text_draws[i].update(hsText.c_str(), 15);
+        //std::cout << hsText << "\n";
+        i++;
+    }
+}
+
 std::map<std::string, int> World::getHighScores(int numOfHighScores) {
     FILE *file;
     const char * filename="../src/score.txt";
@@ -2554,6 +2573,3 @@ std::map<std::string, int> World::getHighScores(int numOfHighScores) {
     }
 
 }
-
-
-
