@@ -1,5 +1,12 @@
 Attack on Zombies
 
+How to run:
+-go to build folder
+-“Cmake ..”
+-copy folders “data” and “shaders” to the build folder
+-“make”
+-“./zombie”
+
 Members:
 Mark Pedersen, 37504140
 Irene Fang, 38807129
