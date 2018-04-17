@@ -88,11 +88,11 @@ bool World::init(vec2 screen) {
     m_leg_counter_p2.init({screen.x, screen.y}, "P2 Legs: 0", {630.f, 160.f}, 15);
     m_hs_name.init({screen.x, screen.y}, "     ", {310.f, 300.f}, 30);
 
-    m_hs1.init({screen.x, screen.y}, "     ", {100.f, 550.f}, 15);
-    m_hs2.init({screen.x, screen.y}, "     ", {100.f, 500.f}, 15);
-    m_hs3.init({screen.x, screen.y}, "     ", {100.f, 450.f}, 15);
-    m_hs4.init({screen.x, screen.y}, "     ", {100.f, 400.f}, 15);
-    m_hs5.init({screen.x, screen.y}, "     ", {100.f, 350.f}, 15);
+    m_hs1.init({screen.x, screen.y}, "        ", {80.f, 470.f}, 15);
+    m_hs2.init({screen.x, screen.y}, "        ", {80.f, 440.f}, 15);
+    m_hs3.init({screen.x, screen.y}, "        ", {80.f, 410.f}, 15);
+    m_hs4.init({screen.x, screen.y}, "        ", {80.f, 380.f}, 15);
+    m_hs5.init({screen.x, screen.y}, "        ", {80.f, 350.f}, 15);
 
     populate_highscores();
     
@@ -650,6 +650,13 @@ void World::startScreenDraw(mat3 projection_2D) {
         m_hs_name.draw(projection_2D);
     } else {
         m_highscore.draw(projection_2D);
+        
+        m_hs1.draw(projection_2D);
+        m_hs2.draw(projection_2D);
+        m_hs3.draw(projection_2D);
+        m_hs4.draw(projection_2D);
+        m_hs5.draw(projection_2D);
+
         m_startbutton.draw(projection_2D);
         m_infobutton.draw(projection_2D);
         key_info.draw(projection_2D);
@@ -772,7 +779,7 @@ void World::on_key(GLFWwindow *, int key, int, int action, int mod) {
         {
             string temp;
             //if key is a letter key
-            if((key > a && key < z) || (key > a2 && key < z2)){
+            if((key >= a && key <= z) || (key >= a2 && key <= z2)){
                 temp =(char) key;
                 if(currWinnerName.size() < 5) {
                     currWinnerName.append(temp);
@@ -785,6 +792,7 @@ void World::on_key(GLFWwindow *, int key, int, int action, int mod) {
                 saveToFile(currWinnerName);
                 game_over_limbo = false;
                 currWinnerName = "";
+                populate_highscores();
             } else if (key == GLFW_KEY_BACKSPACE) {
                 currWinnerName = currWinnerName.substr(0, currWinnerName.length() - 1);
             }
@@ -2509,15 +2517,16 @@ std::vector<std::string> World::parseFile(FILE *file) {
 void World::populate_highscores() {
     std::map<std::string, int> highScores = getHighScores(5);
     std::map<std::string, int>::iterator it;
-    Text2D text_draws [5] = {m_hs1, m_hs2, m_hs3, m_hs4, m_hs5};
+    Text2D text_draws[5] = {m_hs1, m_hs2, m_hs3, m_hs4, m_hs5};
         
+
     int i = 0;
 
-    for ( it = highScores.begin(); it != highScores.end(); it++ )
+    for ( it = highScores.begin(); it != highScores.end(); ++it )
     {
+        text_draws[i].update("        ", 15);
         std::string hsText = it->first + " " + std::to_string(it->second);
         text_draws[i].update(hsText.c_str(), 15);
-        //std::cout << hsText << "\n";
         i++;
     }
 }

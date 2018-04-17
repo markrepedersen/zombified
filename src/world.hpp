@@ -88,6 +88,9 @@ public:
     bool useBomb;
     bool useMissile;
 
+    
+    void populate_highscores();
+
 private:
     bool spawn_freeze();
     bool spawn_water();
@@ -119,7 +122,6 @@ private:
     bool create_mushroom_explosion(vec2 missile_position);
     bool create_blood(vec2 player_position);
 
-    void populate_highscores();
 
 private:
     void entityDrawOrder(mat3 projection_2D);
