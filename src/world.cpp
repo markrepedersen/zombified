@@ -86,7 +86,7 @@ bool World::init(vec2 screen) {
     m_timer.init({screen.x, screen.y}, "1:00", {330.f, 550.f}, 30);
     m_leg_counter_p1.init({screen.x, screen.y}, "P1 Legs: 0", {20.f, 160.f}, 15);
     m_leg_counter_p2.init({screen.x, screen.y}, "P2 Legs: 0", {630.f, 160.f}, 15);
-    m_hs_name.init({screen.x, screen.y}, "     ", {310.f, 300.f}, 30);
+    m_hs_name.init({screen.x, screen.y}, "     ", {310.f, 230.f}, 30);
 
     m_hs1.init({screen.x, screen.y}, "        ", {80.f, 470.f}, 15);
     m_hs2.init({screen.x, screen.y}, "        ", {80.f, 440.f}, 15);

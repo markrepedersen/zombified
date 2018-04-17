@@ -204,7 +204,7 @@ bool Info::init(std::string infotype)
     } else if(type == "gameover") {
         if (!gameover_texture.is_valid()) {
             // std::cout<<"render game over start"<< std::endl;
-            if (!gameover_texture.load_from_file(startworld_textures_path("gameover1.png")))
+            if (!gameover_texture.load_from_file(startworld_textures_path("gameover2.png")))
             {
                 fprintf(stderr, "Failed to load gameover texture!");
                 return false;
