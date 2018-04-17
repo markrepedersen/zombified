@@ -253,4 +253,5 @@ private:
     Text2D m_timer;
     Text2D m_leg_counter_p1;
     Text2D m_leg_counter_p2;
+    Text2D m_hs_name;
 };

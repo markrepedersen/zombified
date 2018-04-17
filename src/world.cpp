@@ -86,6 +86,7 @@ bool World::init(vec2 screen) {
     m_timer.init({screen.x, screen.y}, "1:00", {330.f, 550.f}, 30);
     m_leg_counter_p1.init({screen.x, screen.y}, "P1 Legs: 0", {20.f, 160.f}, 15);
     m_leg_counter_p2.init({screen.x, screen.y}, "P2 Legs: 0", {630.f, 160.f}, 15);
+    m_hs_name.init({screen.x, screen.y}, "     ", {310.f, 300.f}, 30);
     
     rendered = (m_infobutton.init("info")&&
                 m_startbutton.init("start") &&
@@ -471,7 +472,7 @@ void World::timer_update() {
         if (m_min == 0 && m_sec == 0) {
             m_min = 0;
             m_sec = 0;
-            fprintf(stderr, "winner is %d \n", m_antidote.belongs_to);
+            // fprintf(stderr, "winner is %d \n", m_antidote.belongs_to);
             winner = m_antidote.belongs_to;
             destroy();
             
@@ -649,6 +650,7 @@ void World::startScreenDraw(mat3 projection_2D) {
             m_winner1.draw(projection_2D);
         else if (winner == 2)
             m_winner2.draw(projection_2D);
+        m_hs_name.draw(projection_2D);
     } else {
         m_highscore.draw(projection_2D);
         m_startbutton.draw(projection_2D);
@@ -775,15 +777,20 @@ void World::on_key(GLFWwindow *, int key, int, int action, int mod) {
                     currWinnerName = currWinnerName.substr(0, currWinnerName.length() - 1);
                     currWinnerName.append(temp);
                 }
-                std::cout << currWinnerName << std::endl;
             } else if (key == GLFW_KEY_ENTER) {
-                std::cout<< "saving winner: " << currWinnerName << std::endl;
+                // std::cout<< "saving winner: " << currWinnerName << std::endl;
                 saveToFile(currWinnerName);
                 game_over_limbo = false;
                 currWinnerName = "";
             } else if (key == GLFW_KEY_BACKSPACE) {
                 currWinnerName = currWinnerName.substr(0, currWinnerName.length() - 1);
             }
+            std::string currWinnerNameText = currWinnerName;
+            int numSpaces = 5 - currWinnerName.size();
+            for (int i = 0; i < numSpaces; i++){
+                currWinnerNameText = currWinnerNameText.append(" ");
+            }
+            m_hs_name.update(currWinnerNameText.c_str(), 30);
         }
         //get keys
         //if enter key pressed,
