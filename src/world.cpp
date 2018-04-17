@@ -83,6 +83,10 @@ bool World::init(vec2 screen) {
     m_min = 0;
     m_sec = 0;
     
+    m_timer.init({screen.x, screen.y}, "1:00", {330.f, 550.f}, 30);
+    m_leg_counter_p1.init({screen.x, screen.y}, "P1 Legs: 0", {20.f, 160.f}, 15);
+    m_leg_counter_p2.init({screen.x, screen.y}, "P2 Legs: 0", {630.f, 160.f}, 15);
+    
     rendered = (m_infobutton.init("info")&&
                 m_startbutton.init("start") &&
                 m_backbutton.init("back")&&
@@ -245,9 +249,9 @@ bool World::update(float elapsed_ms) {
 
                 pause = false;
 
-                bool initialized = (m_timer.init({screen.x, screen.y}, "1:00", {330.f, 550.f}, 30) &&
-                                    m_leg_counter_p1.init({screen.x, screen.y}, "P1 Legs: 0", {20.f, 160.f}, 15) &&
-                                    m_leg_counter_p2.init({screen.x, screen.y}, "P2 Legs: 0", {630.f, 160.f}, 15) &&
+                bool initialized = (//m_timer.init({screen.x, screen.y}, "1:00", {330.f, 550.f}, 30) &&
+                                    //m_leg_counter_p1.init({screen.x, screen.y}, "P1 Legs: 0", {20.f, 160.f}, 15) &&
+                                    //m_leg_counter_p2.init({screen.x, screen.y}, "P2 Legs: 0", {630.f, 160.f}, 15) &&
                                     gloveRight_p1.init(screen)&&
                                     gloveLeft_p1.init(screen)&&
                                     
@@ -272,10 +276,14 @@ bool World::update(float elapsed_ms) {
                                     ZombieManager::GetInstance()->init({screen.x, screen.y}, mapCollisionPoints) &&
                                     LimbsManager::GetInstance()->init(screen, mapCollisionPoints2));
                 
+                m_timer.update("1:00", 30);
+                m_leg_counter_p1.update("P1 Legs: 0", 15);
+                m_leg_counter_p2.update("P2 Legs: 0", 15);
+                
                 srand((unsigned) time(0));
                 explosion = false;
-                m_min = 0;
-                m_sec = 60;
+                m_min = 1;
+                m_sec = 0;
                 timeDelay = 5;
                 start = time(0);
                 immobilize = 0;
