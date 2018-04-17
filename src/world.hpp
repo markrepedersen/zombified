@@ -118,7 +118,7 @@ private:
     
     std::vector<std::string> parseFile(FILE *file);
     
-    std::map<std::string, int> getHighScores(int numOfHighScores);
+    std::vector<std::pair<std::string, int>> getHighScores(int numOfHighScores);
     bool create_mushroom_explosion(vec2 missile_position);
     bool create_blood(vec2 player_position);
 

@@ -2515,8 +2515,8 @@ std::vector<std::string> World::parseFile(FILE *file) {
 }
 
 void World::populate_highscores() {
-    std::map<std::string, int> highScores = getHighScores(5);
-    std::map<std::string, int>::iterator it;
+    std::vector<std::pair<std::string, int>> highScores = getHighScores(5);
+    std::vector<std::pair<std::string, int>>::iterator it;
     Text2D text_draws[5] = {m_hs1, m_hs2, m_hs3, m_hs4, m_hs5};
         
 
@@ -2530,18 +2530,20 @@ void World::populate_highscores() {
         i++;
     }
 }
+        
 
-std::map<std::string, int> World::getHighScores(int numOfHighScores) {
+std::vector<std::pair<std::string, int>> World::getHighScores(int numOfHighScores) {
     FILE *file;
     const char * filename="../src/score.txt";
     std::map<std::string, int> hsMap;
+    std::vector<std::pair<std::string, int>> hsVector;
 
     file=fopen(filename,"r");
 
     if (file==NULL)
     {
         fclose(file);
-        return hsMap;
+        return hsVector;
     }
     else
     {
@@ -2578,7 +2580,13 @@ std::map<std::string, int> World::getHighScores(int numOfHighScores) {
 
         fclose(file);
 
-        return hsMap;
+       for(auto &hs : hsMap) {
+           hsVector.push_back(hs);
+       }
+
+        std::sort (hsVector.begin(), hsVector.end(),[] (const std::pair<std::string, int>& lhs, const std::pair<std::string, int>& rhs) {return lhs.second > rhs.second;});
+
+        return hsVector;
     }
 
 }
