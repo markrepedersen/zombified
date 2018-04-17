@@ -223,7 +223,7 @@ void LimbsManager::computePaths(float ms, const MapGrid &mapGrid) {
 
             auto next_pos = scale(step, normalize(dir));
 
-            limb.move(next_pos);
+            limb.move(next_pos, ms);
             limb.setLastPath(limb.getCurrentPath());
             limb.setLastTarget(target);
         }

@@ -88,8 +88,8 @@ bool World::init(vec2 screen) {
     m_leg_counter_p2.init({screen.x, screen.y}, "P2 Legs: 0", {630.f, 160.f}, 15);
     m_hs_name.init({screen.x, screen.y}, "     ", {310.f, 300.f}, 30);
 
-    m_hs1.init({screen.x, screen.y}, "     ", {100.f, 550.f}, 15);
-    m_hs2.init({screen.x, screen.y}, "     ", {100.f, 500.f}, 15);
+    m_hs1.init({screen.x, screen.y}, "test1", {100.f, 550.f}, 15);
+    m_hs2.init({screen.x, screen.y}, "test2", {100.f, 500.f}, 15);
     m_hs3.init({screen.x, screen.y}, "     ", {100.f, 450.f}, 15);
     m_hs4.init({screen.x, screen.y}, "     ", {100.f, 400.f}, 15);
     m_hs5.init({screen.x, screen.y}, "     ", {100.f, 350.f}, 15);
@@ -2176,10 +2176,10 @@ void World::autoExplode(Bomb bomb, int position) {
         armourInUse_p2 = false;
         m_player2.set_armourstate(false);
     }
-    if (force_p1 > 100) {
+    if (force_p1 > 10) {
         create_blood(m_player1.get_position());
     }
-    if (force_p2 > 100) {
+    if (force_p2 > 10) {
         create_blood(m_player2.get_position());
     }
     if (force_p1 > 0) {
@@ -2281,10 +2281,10 @@ void World::autoExplodeMissile(Missile missile, int position) {
         armourInUse_p2 = false;
         m_player2.set_armourstate(false);
     }
-    if (force_p1 > 100) {
+    if (force_p1 > 10) {
         create_blood(m_player1.get_position());
     }
-    if (force_p2 > 100) {
+    if (force_p2 > 10) {
         create_blood(m_player2.get_position());
     }
     if (force_p1 > 0) {

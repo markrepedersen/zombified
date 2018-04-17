@@ -44,7 +44,7 @@ public:
 
     void set_position(vec2 position);
 
-    void move(vec2 pos);
+    void move(vec2 pos, float ms);
 
     std::string getLimbType();
 
@@ -52,7 +52,7 @@ public:
 
     void setInitialized(bool flag) {this->initialized = flag;}
 
-    void animate();
+    void animate(float ms);
     
     void initLegTime();
     time_t getLegTime();
@@ -73,6 +73,18 @@ protected:
     int curr_frame_limb = 0;
     // frame to draw and previous frame in sprite
     int sprite_frame_index_limb = 0;
+    // sprite information
+    int sprite_width_arm = 522;
+    int sprite_height_arm = 242;
+    int sprite_width_leg = 410;
+    int sprite_height_leg = 240;
+    int num_rows_limb = 1;
+    int num_cols_limb = 5;
+    int frames_arm [5] = {0, 1, 2, 3, 4};
+    // animation timing
+    int frame_time_limb = 150;
+
+    float tot_elapsed_time = 0;
 };
 
 #endif //ZOMBIE_LIMB_H
