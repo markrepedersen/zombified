@@ -43,3 +43,6 @@ Implemented:
 -Punching visualization
 -Info page
 -fixed elastic collision for moving bomb collisions
+-fixing mapgrid so items don’t spawn on top each other
+-fixing pathfinding
+-implementing player to items collision
