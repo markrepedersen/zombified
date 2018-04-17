@@ -11,7 +11,7 @@ bool Zombie::init()
     // Load shared texture
     if (!zombie_texture.is_valid())
     {
-        if (!zombie_texture.load_from_file(zombie_textures_path("ai standing left.png")))
+        if (!zombie_texture.load_from_file(zombie_textures_path("ai_texture.png")))
         {
             fprintf(stderr, "Failed to load zombie texture!");
             return false;
@@ -19,18 +19,18 @@ bool Zombie::init()
     }
     
     // The position corresponds to the center of the texture
-    float wr = zombie_texture.width * 0.5f;
-    float hr = zombie_texture.height * 0.5f;
+    float wr = sprite_width_zombie * 0.5f;
+    float hr = sprite_height_zombie * 0.5f;
     
     TexturedVertex vertices[4];
     vertices[0].position = { -wr, +hr, -0.02f };
-    vertices[0].texcoord = { 0.f, 1.f };
+    vertices[0].texcoord = { 1/10.f, 1.f };
     vertices[1].position = { +wr, +hr, -0.02f };
-    vertices[1].texcoord = { 1.f, 1.f };
+    vertices[1].texcoord = { 0.f, 1.f };
     vertices[2].position = { +wr, -hr, -0.02f };
-    vertices[2].texcoord = { 1.f, 0.f };
+    vertices[2].texcoord = { 0.f, 0.f };
     vertices[3].position = { -wr, -hr, -0.02f };
-    vertices[3].texcoord = { 0.f, 0.f };
+    vertices[3].texcoord = { 1/10.f, 0.f };
     
     // counterclockwise as it's the default opengl front winding direction
     uint16_t indices[] = { 0, 3, 1, 1, 3, 2 };
@@ -87,6 +87,9 @@ void Zombie::draw(const mat3& projection)
     GLint transform_uloc = glGetUniformLocation(effect.program, "transform");
     GLint color_uloc = glGetUniformLocation(effect.program, "fcolor");
     GLint projection_uloc = glGetUniformLocation(effect.program, "projection");
+    GLint num_rows_uloc = glGetUniformLocation(effect.program, "num_rows");
+    GLint num_cols_uloc = glGetUniformLocation(effect.program, "num_cols");
+    GLint sprite_frame_index_uloc = glGetUniformLocation(effect.program, "sprite_frame_index");
     
     // Setting vertices and indices
     glBindVertexArray(mesh.vao);
@@ -110,6 +113,11 @@ void Zombie::draw(const mat3& projection)
     float color[] = { 1.f, 1.f, 1.f };
     glUniform3fv(color_uloc, 1, color);
     glUniformMatrix3fv(projection_uloc, 1, GL_FALSE, (float*)&projection);
+
+    // Specify uniform variables
+    glUniform1iv(sprite_frame_index_uloc, 1, &sprite_frame_index_zombie);
+    glUniform1iv(num_rows_uloc, 1, &num_rows_zombie);
+    glUniform1iv(num_cols_uloc, 1, &num_cols_zombie);
     
     // Drawing!
     glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_SHORT, nullptr);
@@ -196,6 +204,43 @@ void Zombie::set_position(vec2 position) {
     this->m_position = position;
 }
  
-void Zombie::move(vec2 pos) {
+void Zombie::move(vec2 pos, float ms) {
     this->m_position += pos;
+    if (pos.x < 0 && pos.y > 0)
+        animate(ms, 0);
+    if (pos.x < 0 && pos.y < 0)
+        animate(ms, 1);
+    if (pos.x > 0 && pos.y > 0)
+        animate(ms, 2);
+    if (pos.x > 0 && pos.y < 0)
+        animate(ms, 2);
+}
+
+void Zombie::animate(float ms, int direction)
+{
+    tot_elapsed_time += ms;
+
+    if (tot_elapsed_time > frame_time_zombie)
+    {
+        if (direction == 0) {
+            curr_frame_zombie = (curr_frame_zombie + 1) % 3;
+            sprite_frame_index_zombie = frames_zombie_left[curr_frame_zombie];
+            tot_elapsed_time = 0;
+        }
+        if (direction == 1) {
+            curr_frame_zombie = (curr_frame_zombie + 1) % 2;
+            sprite_frame_index_zombie = frames_zombie_up[curr_frame_zombie];
+            tot_elapsed_time = 0;
+        }
+        if (direction == 2) {
+            curr_frame_zombie = (curr_frame_zombie + 1) % 3;
+            sprite_frame_index_zombie = frames_zombie_right[curr_frame_zombie];
+            tot_elapsed_time = 0;
+        }
+        if (direction == 3) {
+            curr_frame_zombie = (curr_frame_zombie + 1) % 2;
+            sprite_frame_index_zombie = frames_zombie_down[curr_frame_zombie];
+            tot_elapsed_time = 0;
+        }
+    }
 }

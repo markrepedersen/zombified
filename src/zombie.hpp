@@ -48,7 +48,9 @@ public:
 
     float getMass();
 
-    void move(vec2 pos);
+    void move(vec2 pos, float ms);
+
+    void animate(float ms, int direction);
 
     bool isInitialized() {return initialized;}
 
@@ -64,4 +66,22 @@ protected:
     float attack_timeout;
     float mass;
 
+        // current frame in animation
+    int curr_frame_zombie = 0;
+    // frame to draw and previous frame in sprite
+    int sprite_frame_index_zombie = 0;
+    // sprite information
+    int sprite_width_zombie = 208;
+    int sprite_height_zombie = 340;
+    int num_rows_zombie = 1;
+    int num_cols_zombie = 10;
+    int frames_zombie_up [2] = {8, 9};
+    int frames_zombie_left [3] = {2,3,4};
+    int frames_zombie_right[3] = {5,6,7};
+    int frames_zombie_down [2] = {0, 1};
+
+    // animation timing
+    int frame_time_zombie = 50;
+
+    float tot_elapsed_time = 0;
 };
