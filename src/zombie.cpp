@@ -54,7 +54,7 @@ bool Zombie::init()
         return false;
     
     // Loading shaders
-    if (!effect.load_from_file(shader_path("textured.vs.glsl"), shader_path("textured.fs.glsl")))
+    if (!effect.load_from_file(shader_path("player.vs.glsl"), shader_path("textured.fs.glsl")))
         return false;
     
     // Setting initial values
