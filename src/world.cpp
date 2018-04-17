@@ -94,6 +94,7 @@ bool World::init(vec2 screen) {
     m_hs4.init({screen.x, screen.y}, "        ", {80.f, 380.f}, 15);
     m_hs5.init({screen.x, screen.y}, "        ", {80.f, 350.f}, 15);
 
+
     populate_highscores();
     
     rendered = (m_infobutton.init("info")&&
@@ -2184,10 +2185,10 @@ void World::autoExplode(Bomb bomb, int position) {
         armourInUse_p2 = false;
         m_player2.set_armourstate(false);
     }
-    if (force_p1 > 100) {
+    if (force_p1 > 10) {
         create_blood(m_player1.get_position());
     }
-    if (force_p2 > 100) {
+    if (force_p2 > 10) {
         create_blood(m_player2.get_position());
     }
     if (force_p1 > 0) {
@@ -2289,10 +2290,10 @@ void World::autoExplodeMissile(Missile missile, int position) {
         armourInUse_p2 = false;
         m_player2.set_armourstate(false);
     }
-    if (force_p1 > 100) {
+    if (force_p1 > 10) {
         create_blood(m_player1.get_position());
     }
-    if (force_p2 > 100) {
+    if (force_p2 > 10) {
         create_blood(m_player2.get_position());
     }
     if (force_p1 > 0) {

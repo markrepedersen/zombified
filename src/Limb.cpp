@@ -9,22 +9,6 @@
 Texture Limb::leg_texture;
 Texture Limb::arm_texture;
 
-// current frame in animation
-int curr_frame_limb = 0;
-// frame to draw and previous frame in sprite
-int sprite_frame_index_limb = 0;
-// sprite information
-int sprite_width_arm = 522;
-int sprite_height_arm = 242;
-int sprite_width_leg = 410;
-int sprite_height_leg = 240;
-int num_rows_limb = 1;
-int num_cols_limb = 5;
-int frames_arm [5] = {0, 1, 2, 3, 4};
-// animation timing
-int frame_time_limb = 100;
-auto start_time_limb = std::chrono::high_resolution_clock::now();
-
 bool Limb::init(std::string inputtype) {
     // Load shared texture
     type = inputtype;
@@ -231,21 +215,20 @@ void Limb::set_position(vec2 position) {
     this->m_position = position;
 }
  
-void Limb::move(vec2 pos) {
+void Limb::move(vec2 pos, float ms) {
     this->m_position += pos;
-    animate();
+    animate(ms);
 }
 
-void Limb::animate()
+void Limb::animate(float ms)
 {
-    auto curr_time = std::chrono::high_resolution_clock::now();
-    int milliseconds = std::chrono::duration_cast<std::chrono::milliseconds>(curr_time - start_time_limb).count();
+    tot_elapsed_time += ms;
 
-    if (milliseconds > frame_time_limb)
+    if (tot_elapsed_time > frame_time_limb)
     {
         curr_frame_limb = (curr_frame_limb + 1) % 5;
         sprite_frame_index_limb = frames_arm[curr_frame_limb];
-        start_time_limb = curr_time;
+        tot_elapsed_time = 0;
     }
 }
 

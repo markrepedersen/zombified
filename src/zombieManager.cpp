@@ -140,7 +140,7 @@ void ZombieManager::computeZPaths(float ms, const MapGrid &mapGrid) {
                 
                 auto next_pos = scale(step, normalize(dir));
                 
-                zombie.move(next_pos);
+                zombie.move(next_pos, ms);
                 zombie.setLastPath(zombie.getCurrentPath());
                 zombie.setLastTarget(target);
             }
