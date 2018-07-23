@@ -8,10 +8,10 @@ How to run:
 -“./zombie”
 
 Members:
-Mark Pedersen, 37504140
-Irene Fang, 38807129
-Pinia Chandra, 22766142
-Billy Liu, 36932135
+Mark Pedersen
+Irene Fang
+Pinia Chandra
+Billy Liu
 
 Implemented:
 -Profiling
