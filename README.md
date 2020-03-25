@@ -1,19 +1,13 @@
-Attack on Zombies
+# Zombified
 
-How to run:
+# Installation
 -go to build folder
 -“Cmake ..”
 -copy folders “data” and “shaders” to the build folder
 -“make”
 -“./zombie”
 
-Members:
-Mark Pedersen
-Irene Fang
-Pinia Chandra
-Billy Liu
-
-Implemented:
+# Implemented:
 -Profiling
 -Fixed destroying function bug
 -Fixed texture issues (textures randomly disappearing/not rendering properly)
